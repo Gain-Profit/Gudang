@@ -1,6 +1,6 @@
 object f_utama: Tf_utama
-  Left = 5
-  Top = 136
+  Left = 6
+  Top = 350
   Width = 1019
   Height = 480
   AlphaBlend = True

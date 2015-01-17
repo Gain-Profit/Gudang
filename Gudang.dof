@@ -148,7 +148,7 @@ AutoIncBuild=0
 MajorVer=2
 MinorVer=7
 Release=11
-Build=43
+Build=42
 Debug=0
 PreRelease=0
 Special=0
@@ -159,7 +159,7 @@ CodePage=1252
 [Version Info Keys]
 CompanyName=CeBe Soft
 FileDescription=Central of Profit
-FileVersion=2.7.11.43
+FileVersion=2.7.11.42
 InternalName=
 LegalCopyright=
 LegalTrademarks=
@@ -167,7 +167,7 @@ OriginalFilename=
 ProductName=
 ProductVersion=1.0.0.0
 Comments=
-LastCompiledTime=17/01/2015 19:06:10
+LastCompiledTime=17/01/2015 19:20:17
 [HistoryLists\hlConditionals]
 Count=1
 Item0=madExcept
