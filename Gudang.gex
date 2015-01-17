@@ -1,0 +1,17 @@
+[General]
+Name=Gudang
+Project=1
+[Classes]
+Count=12
+Class0="NewControl","TControl","u_edit_harga","11","D:\9966@CB\_JOB\_PENJUALAN\02_GUDANG_AKUNTANSI\01_GUDANG\01_SUMBER\u_edit_harga.pas"
+Class1="TF_Edit_Harga","TForm","u_edit_harga","12","D:\9966@CB\_JOB\_PENJUALAN\02_GUDANG_AKUNTANSI\01_GUDANG\01_SUMBER\u_edit_harga.pas"
+Class2="Tdm","TDataModule","u_dm","9","D:\9966@CB\_JOB\_PENJUALAN\02_GUDANG_AKUNTANSI\01_GUDANG\01_SUMBER\u_dm.pas"
+Class3="TF_ubah_harga","TForm","u_ubah","11","D:\9966@CB\_JOB\_PENJUALAN\02_GUDANG_AKUNTANSI\01_GUDANG\01_SUMBER\u_ubah.pas"
+Class4="Tfungsi","TObject","U_fungsi","8","D:\9966@CB\_JOB\_PENJUALAN\02_GUDANG_AKUNTANSI\01_GUDANG\01_SUMBER\U_fungsi.pas"
+Class5="NewControl","TControl","u_barang","11","D:\9966@CB\_JOB\_PENJUALAN\02_GUDANG_AKUNTANSI\01_GUDANG\01_SUMBER\u_barang.pas"
+Class6="TF_barang","TForm","u_barang","12","D:\9966@CB\_JOB\_PENJUALAN\02_GUDANG_AKUNTANSI\01_GUDANG\01_SUMBER\u_barang.pas"
+Class7="TF_barang_det","TForm","u_barang_det","11","D:\9966@CB\_JOB\_PENJUALAN\02_GUDANG_AKUNTANSI\01_GUDANG\01_SUMBER\u_barang_det.pas"
+Class8="Tf_jenis","TForm","u_jenis","9","D:\9966@CB\_JOB\_PENJUALAN\02_GUDANG_AKUNTANSI\01_GUDANG\01_SUMBER\u_jenis.pas"
+Class9="TF_satuan","TForm","u_satuan","9","D:\9966@CB\_JOB\_PENJUALAN\02_GUDANG_AKUNTANSI\01_GUDANG\01_SUMBER\u_satuan.pas"
+Class10="Tf_golongan","TForm","u_golongan","9","D:\9966@CB\_JOB\_PENJUALAN\02_GUDANG_AKUNTANSI\01_GUDANG\01_SUMBER\u_golongan.pas"
+Class11="Tf_cari","TForm","u_cari","10","D:\9966@CB\_JOB\_PENJUALAN\02_GUDANG_AKUNTANSI\01_GUDANG\01_SUMBER\u_cari.pas"

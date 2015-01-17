@@ -1,0 +1,353 @@
+object F_barang_property: TF_barang_property
+  Left = 464
+  Top = 159
+  BorderStyle = bsDialog
+  Caption = 'Property Barang'
+  ClientHeight = 463
+  ClientWidth = 491
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poOwnerFormCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object gb_detail: TsGroupBox
+    Left = 0
+    Top = 0
+    Width = 491
+    Height = 463
+    Align = alClient
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Rockwell'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+    SkinData.SkinSection = 'GROUPBOX'
+    object b_tambah: TsButton
+      Tag = 9
+      Left = 320
+      Top = 432
+      Width = 155
+      Height = 25
+      Caption = 'Tambah Supplier'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Rockwell'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+      Visible = False
+      OnClick = b_tambahClick
+      SkinData.SkinSection = 'BUTTON'
+    end
+    object b_plano: TsButton
+      Tag = 9
+      Left = 8
+      Top = 432
+      Width = 155
+      Height = 25
+      Caption = 'Tambah Plano'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Rockwell'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 3
+      OnClick = b_planoClick
+      SkinData.SkinSection = 'BUTTON'
+    end
+    object grid: TcxGrid
+      Left = 2
+      Top = 21
+      Width = 487
+      Height = 396
+      Align = alTop
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 1
+      LevelTabs.CaptionAlignment = taLeftJustify
+      LevelTabs.Style = 10
+      LookAndFeel.Kind = lfOffice11
+      RootLevelOptions.DetailTabsPosition = dtpTop
+      OnActiveTabChanged = gridActiveTabChanged
+      object t_data_plano: TcxGridDBTableView
+        OnKeyDown = t_data_planoKeyDown
+        NavigatorButtons.ConfirmDelete = False
+        DataController.DataSource = dm.ds_plano
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+        OptionsBehavior.CellHints = True
+        OptionsBehavior.IncSearch = True
+        OptionsData.Deleting = False
+        OptionsData.DeletingConfirmation = False
+        OptionsData.Inserting = False
+        OptionsView.NoDataToDisplayInfoText = '<Data Kosong>'
+        OptionsView.ColumnAutoWidth = True
+        OptionsView.GroupByBox = False
+        Styles.Inactive = dm.cxstyl1
+        Styles.Selection = dm.cxstyl1
+        object dt_rak: TcxGridDBColumn
+          Caption = 'Rak'
+          DataBinding.FieldName = 'no_rak'
+          Options.IncSearch = False
+          Width = 38
+        end
+        object dt_shelving: TcxGridDBColumn
+          Caption = 'Shelving'
+          DataBinding.FieldName = 'no_shelving'
+          Options.IncSearch = False
+          Width = 51
+        end
+        object dt_urut: TcxGridDBColumn
+          Caption = 'No'
+          DataBinding.FieldName = 'no_urut'
+          Options.IncSearch = False
+          Width = 44
+        end
+        object dt_KK: TcxGridDBColumn
+          DataBinding.FieldName = 'KK'
+          Options.IncSearch = False
+          Width = 61
+        end
+        object dt_DB: TcxGridDBColumn
+          DataBinding.FieldName = 'DB'
+          Options.IncSearch = False
+          Width = 65
+        end
+        object dt_AB: TcxGridDBColumn
+          DataBinding.FieldName = 'AB'
+          Options.IncSearch = False
+          Width = 58
+        end
+        object dt_Kapasitas: TcxGridDBColumn
+          Caption = 'Kap'
+          DataBinding.FieldName = 'kapasitas'
+          Options.IncSearch = False
+          Width = 65
+        end
+        object dt_display: TcxGridDBColumn
+          Caption = 'Min Dis'
+          DataBinding.FieldName = 'min_display'
+          Options.IncSearch = False
+          Width = 61
+        end
+      end
+      object t_supplier: TcxGridDBTableView
+        NavigatorButtons.ConfirmDelete = False
+        DataController.DataSource = dm.ds_supp
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+        OptionsBehavior.IncSearch = True
+        OptionsData.Deleting = False
+        OptionsData.DeletingConfirmation = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsView.NoDataToDisplayInfoText = '<Data Kosong>'
+        OptionsView.ColumnAutoWidth = True
+        OptionsView.GroupByBox = False
+        Styles.Inactive = dm.cxstyl1
+        Styles.Selection = dm.cxstyl1
+        object dt__supplierkd_suplier: TcxGridDBColumn
+          Caption = 'Kode'
+          DataBinding.FieldName = 'kd_suplier'
+          Width = 101
+        end
+        object dt__suppliern_supp: TcxGridDBColumn
+          Caption = 'Nama Supplier'
+          DataBinding.FieldName = 'n_supp'
+          Width = 164
+        end
+        object dt__suppliertelp: TcxGridDBColumn
+          Caption = 'Telp'
+          DataBinding.FieldName = 'telp'
+          Width = 154
+        end
+        object dt__supplieremail: TcxGridDBColumn
+          Caption = 'Email'
+          DataBinding.FieldName = 'email'
+          Width = 265
+        end
+      end
+      object t_mutasi_barang: TcxGridDBTableView
+        NavigatorButtons.ConfirmDelete = False
+        DataController.DataSource = dm.ds_mutasi
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+        DateTimeHandling.DateFormat = 'dd'
+        Filtering.ColumnMRUItemsList = False
+        OptionsBehavior.PostponedSynchronization = False
+        OptionsBehavior.IncSearch = True
+        OptionsCustomize.ColumnFiltering = False
+        OptionsCustomize.ColumnSorting = False
+        OptionsData.Deleting = False
+        OptionsData.DeletingConfirmation = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsView.NoDataToDisplayInfoText = '<Data Kosong>'
+        OptionsView.ColumnAutoWidth = True
+        OptionsView.GroupByBox = False
+        Styles.Inactive = dm.cxstyl1
+        Styles.Selection = dm.cxstyl1
+        object dt__mutasi_barangtgl: TcxGridDBColumn
+          Caption = 'Tgl'
+          DataBinding.FieldName = 'tgl'
+        end
+        object dt__mutasi_barangstok_awal: TcxGridDBColumn
+          Caption = 'Awal'
+          DataBinding.FieldName = 'stok_awal'
+        end
+        object dt__mutasi_barangstok_receipt: TcxGridDBColumn
+          Caption = 'Receipt'
+          DataBinding.FieldName = 'stok_receipt'
+        end
+        object dt__mutasi_barangstok_return: TcxGridDBColumn
+          Caption = 'Return'
+          DataBinding.FieldName = 'stok_return'
+        end
+        object dt__mutasi_barangstok_sales: TcxGridDBColumn
+          Caption = 'Sales'
+          DataBinding.FieldName = 'stok_sales'
+        end
+        object dt__mutasi_barangstok_koreksi: TcxGridDBColumn
+          Caption = 'Koreksi'
+          DataBinding.FieldName = 'stok_koreksi'
+        end
+        object dt__mutasi_barangstok_ahir: TcxGridDBColumn
+          Caption = 'Ahir'
+          DataBinding.FieldName = 'stok_ahir'
+        end
+      end
+      object t_mutasi_harga: TcxGridDBTableView
+        NavigatorButtons.ConfirmDelete = False
+        DataController.DataSource = dm.ds_mutasi
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+        DateTimeHandling.DateFormat = 'dd'
+        Filtering.ColumnMRUItemsList = False
+        OptionsBehavior.PostponedSynchronization = False
+        OptionsBehavior.IncSearch = True
+        OptionsCustomize.ColumnFiltering = False
+        OptionsCustomize.ColumnSorting = False
+        OptionsData.Deleting = False
+        OptionsData.DeletingConfirmation = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsView.NoDataToDisplayInfoText = '<Data Kosong>'
+        OptionsView.ColumnAutoWidth = True
+        OptionsView.GroupByBox = False
+        Styles.Inactive = dm.cxstyl1
+        Styles.Selection = dm.cxstyl1
+        object dt__mutasi_hargatgl: TcxGridDBColumn
+          Caption = 'Tgl'
+          DataBinding.FieldName = 'tgl'
+        end
+        object dt__mutasi_hargauang_awal: TcxGridDBColumn
+          Caption = 'Awal'
+          DataBinding.FieldName = 'uang_awal'
+          PropertiesClassName = 'TcxCurrencyEditProperties'
+          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
+          Properties.EditFormat = '###,###,##0;(###,###,##0);0'
+        end
+        object dt__mutasi_hargauang_receipt: TcxGridDBColumn
+          Caption = 'Receipt'
+          DataBinding.FieldName = 'uang_receipt'
+          PropertiesClassName = 'TcxCurrencyEditProperties'
+          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
+          Properties.EditFormat = '###,###,##0;(###,###,##0);0'
+        end
+        object dt__mutasi_hargauang_return: TcxGridDBColumn
+          Caption = 'Return'
+          DataBinding.FieldName = 'uang_return'
+          PropertiesClassName = 'TcxCurrencyEditProperties'
+          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
+          Properties.EditFormat = '###,###,##0;(###,###,##0);0'
+        end
+        object dt__mutasi_hargauang_sales: TcxGridDBColumn
+          Caption = 'Sales'
+          DataBinding.FieldName = 'uang_sales'
+          PropertiesClassName = 'TcxCurrencyEditProperties'
+          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
+          Properties.EditFormat = '###,###,##0;(###,###,##0);0'
+        end
+        object dt__mutasi_hargauang_koreksi: TcxGridDBColumn
+          Caption = 'Koreksi'
+          DataBinding.FieldName = 'uang_koreksi'
+          PropertiesClassName = 'TcxCurrencyEditProperties'
+          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
+          Properties.EditFormat = '###,###,##0;(###,###,##0);0'
+        end
+        object dt__mutasi_hargauang_ahir: TcxGridDBColumn
+          Caption = 'Ahir'
+          DataBinding.FieldName = 'uang_ahir'
+          PropertiesClassName = 'TcxCurrencyEditProperties'
+          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
+          Properties.EditFormat = '###,###,##0;(###,###,##0);0'
+        end
+      end
+      object l_data_plano: TcxGridLevel
+        Caption = 'Planogram     '
+        GridView = t_data_plano
+      end
+      object l_supplier: TcxGridLevel
+        Caption = 'Supplier     '
+        GridView = t_supplier
+      end
+      object l_mutasi_barang: TcxGridLevel
+        Caption = 'Mutasi Barang     '
+        GridView = t_mutasi_barang
+      end
+      object l_mutasi_harga: TcxGridLevel
+        Caption = 'Mutasi Harga     '
+        GridView = t_mutasi_harga
+      end
+    end
+    object cb_periode: TsComboBox
+      Left = 344
+      Top = 20
+      Width = 137
+      Height = 22
+      Alignment = taLeftJustify
+      BoundLabel.Indent = 0
+      BoundLabel.Font.Charset = DEFAULT_CHARSET
+      BoundLabel.Font.Color = clWindowText
+      BoundLabel.Font.Height = -11
+      BoundLabel.Font.Name = 'MS Sans Serif'
+      BoundLabel.Font.Style = []
+      BoundLabel.Layout = sclLeft
+      BoundLabel.MaxWidth = 0
+      BoundLabel.UseSkinColor = True
+      SkinData.SkinSection = 'COMBOBOX'
+      Style = csDropDownList
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS SANS SERIF'
+      Font.Style = []
+      ItemHeight = 16
+      ItemIndex = -1
+      ParentFont = False
+      TabOrder = 2
+      Visible = False
+      OnChange = cb_periodeChange
+    end
+  end
+end

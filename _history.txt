@@ -1,0 +1,31 @@
+2014-12-28
+* tambah auto update
+
+2014-12-27
+*tambah validasi untuk input kirim dan return kirim agar
+ pengirim dan penerima tidak dari toko yang sama
+
+2014-11-29
+* perbaiki auto kode pada return kirim dari KR menjadi RK
+
+2014-10-18
+* ubah lebar dari form user agar tidak berubah waktu create user
+
+2014-07-21
+* update hak akses user
+
+2014-05-18
+* tambah cetak pada barang supplier
+
+2014-05-05
+* tambah list daftar kirim barang (belum dikirim)
+* tambah simpan daftar kirim barang yang belum dikirim.
+* tambah list daftar return_kirim barang (belum dikirim)
+* tambah simpan daftar return kirim barang yang belum dikirim.
+
+2014-04-29
+* ubah daftar barang (tambah hpp dan tot hpp)
+
+2014-04-08
+* ubah auto kode pada nomer faktur untuk kirim dan return kirim
+* tambah planogram double
