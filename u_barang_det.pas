@@ -84,8 +84,6 @@ type
     procedure b_loadClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
-    procedure t_supplierKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
     procedure t_loadTimer(Sender: TObject);
     procedure ed_pidExit(Sender: TObject);
   private
@@ -589,30 +587,6 @@ urut_berat:=0;
 
   b_new.Enabled:=False;
  end;
-end;
-
-procedure TF_barang_det.t_supplierKeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
-begin
-if (Key=vk_delete) then
-begin
-if MessageDlg('Yakinkah, akan menghapus data ini?...', mtConfirmation, [mbYes, mbNo], 0)=mrYes then
-begin
-  dm.My_Conn.StartTransaction;
-  try
-  fungsi.SQLExec(dm.Q_Exe,'delete from tb_barang_supp where kd_suplier="'+
-  dm.q_supp.fieldbyname('kode').AsString+'" and kd_barang="'+ed_pid.Text+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',false);
-
-  fungsi.SQLExec(dm.q_supp,'select * from vw_supplier where kd_barang="'+ed_pid.Text+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
-
-  dm.My_conn.Commit;
-  except on e:exception do begin
-  dm.My_conn.Rollback;
-  showmessage('penghapusan data gagal '#10#13'' +e.Message);
-  end;
-end;
-end;
-end;
 end;
 
 procedure TF_barang_det.t_loadTimer(Sender: TObject);
