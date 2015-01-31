@@ -19128,30 +19128,6 @@ object dm: Tdm
     Top = 176
     Bitmap = {}
   end
-  object q_supp: TmySQLQuery
-    Database = My_conn
-    Filtered = True
-    Left = 8
-    Top = 112
-  end
-  object ds_supp: TDataSource
-    DataSet = q_supp
-    Left = 72
-    Top = 112
-  end
-  object ds_plano: TDataSource
-    DataSet = Q_plano
-    Left = 72
-    Top = 168
-  end
-  object Q_plano: TmySQLQuery
-    Database = My_conn
-    RequestLive = True
-    SQL.Strings = (
-      '')
-    Left = 8
-    Top = 168
-  end
   object Q_harga: TmySQLQuery
     Database = My_conn
     SQL.Strings = (
