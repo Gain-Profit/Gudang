@@ -24,7 +24,7 @@ object f_planogram: Tf_planogram
     Top = 0
     Width = 820
     Height = 512
-    ActivePage = ts_Double
+    ActivePage = ts_rak
     Align = alClient
     TabOrder = 0
     OnChange = pc_planoChange
@@ -55,7 +55,7 @@ object f_planogram: Tf_planogram
         object t_data_plano: TcxGridDBTableView
           OnKeyDown = t_data_planoKeyDown
           NavigatorButtons.ConfirmDelete = False
-          DataController.DataSource = dm.ds_plano
+          DataController.DataSource = ds_planoRak
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <
             item
@@ -748,5 +748,18 @@ object f_planogram: Tf_planogram
     DataSet = Q_PlanoD
     Left = 776
     Top = 360
+  end
+  object ds_planoRak: TDataSource
+    DataSet = Q_planoRak
+    Left = 64
+    Top = 216
+  end
+  object Q_planoRak: TmySQLQuery
+    Database = dm.My_conn
+    RequestLive = True
+    SQL.Strings = (
+      '')
+    Left = 24
+    Top = 216
   end
 end

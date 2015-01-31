@@ -89,6 +89,8 @@ type
     pPlanoD: TsPanel;
     btnRefresh: TsButton;
     btnHapus: TsButton;
+    ds_planoRak: TDataSource;
+    Q_planoRak: TmySQLQuery;
     procedure plano_double;
     procedure hapusPlanogram(aQuery:TmySQLQuery);
     procedure segarkan;
@@ -165,18 +167,18 @@ procedure Tf_planogram.se_shelvingChange(Sender: TObject);
 begin
 if se_shelving.Value>0 then
 begin
-fungsi.SQLExec(dm.Q_plano,'select * from vw_planogram_set where (kd_perusahaan="'+f_utama.sb.Panels[3].Text
+fungsi.SQLExec(Q_planoRak,'select * from vw_planogram_set where (kd_perusahaan="'+f_utama.sb.Panels[3].Text
 +'" and no_rak='+se_rak.Text+' and no_shelving='+se_shelving.Text+')',true);
 end else
 begin
-  dm.Q_plano.Close;
+  Q_planoRak.Close;
 end;
 end;
 
 procedure Tf_planogram.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-dm.Q_plano.Close;
+Q_planoRak.Close;
 action:= cafree;
 end;
 
@@ -185,9 +187,9 @@ procedure Tf_planogram.t_data_planoKeyDown(Sender: TObject; var Key: Word;
 begin
   if (key= vk_delete) then
   begin
-    hapusPlanogram(dm.Q_plano);
+    hapusPlanogram(Q_planoRak);
 
-    fungsi.SQLExec(dm.Q_plano,'select * from vw_planogram_set where (kd_perusahaan="'+f_utama.sb.Panels[3].Text
+    fungsi.SQLExec(Q_planoRak,'select * from vw_planogram_set where (kd_perusahaan="'+f_utama.sb.Panels[3].Text
     +'" and no_rak="'+se_rak.Text+'" and no_shelving="'+se_shelving.Text+'")',true);
 
     segarkan;
@@ -229,7 +231,7 @@ if (not(se_rak.Enabled)) or (not(se_shelving.Enabled)) or (ed_masuk.Text='') the
   ed_masuk.SetFocus;
   end else
   begin
-  x_data:= dm.Q_plano.RecordCount+1;
+  x_data:= Q_planoRak.RecordCount+1;
 
   dm.My_conn.StartTransaction;
   try
@@ -238,10 +240,10 @@ if (not(se_rak.Enabled)) or (not(se_shelving.Enabled)) or (ed_masuk.Text='') the
 //    se_shelving.Text+'","'+inttostr(x_data)+'","'+formatdatetime('yyyy-MM-dd', date())+'")',false);
     se_shelving.Text+'","0","'+formatdatetime('yyyy-MM-dd', date())+'")',false);
 
-    fungsi.SQLExec(dm.Q_plano,'select * from vw_planogram_set where (kd_perusahaan="'+f_utama.sb.Panels[3].Text
+    fungsi.SQLExec(Q_planoRak,'select * from vw_planogram_set where (kd_perusahaan="'+f_utama.sb.Panels[3].Text
     +'" and no_rak="'+se_rak.Text+'" and no_shelving="'+se_shelving.Text+'")',true);
 
-    dm.Q_plano.First;
+    Q_planoRak.First;
 
     segarkan;
 
@@ -270,9 +272,9 @@ t_data_plano.DataController.FocusedRowIndex+1;
 
 if (Shift=[ssctrl]) and (Key= vk_delete) then
   begin
-    hapusPlanogram(dm.Q_plano);
+    hapusPlanogram(Q_planoRak);
 
-    fungsi.SQLExec(dm.Q_plano,'select * from vw_planogram_set where (kd_perusahaan="'+f_utama.sb.Panels[3].Text
+    fungsi.SQLExec(Q_planoRak,'select * from vw_planogram_set where (kd_perusahaan="'+f_utama.sb.Panels[3].Text
     +'" and no_rak="'+se_rak.Text+'" and no_shelving="'+se_shelving.Text+'")',true);
 
     segarkan;
@@ -400,13 +402,13 @@ kode:= ed_masuk.Text;
   ed_masuk.Clear;
   key:=#0;
 
-  if dm.Q_plano.RecordCount=0 then Exit;
+  if Q_planoRak.RecordCount=0 then Exit;
   
   if (StrToIntDef(kode,0) = 0) or (Length(kode) =0) or (Length(kode) >3) then Exit;
 
-  dm.Q_plano.Edit;
-  dm.Q_plano.FieldByName('no_urut').AsString:= kode;
-  dm.Q_plano.Post;
+  Q_planoRak.Edit;
+  Q_planoRak.FieldByName('no_urut').AsString:= kode;
+  Q_planoRak.Post;
  end;
 
  if Key=#47 then //tanda (/)  ubah rak
