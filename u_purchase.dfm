@@ -253,6 +253,11 @@ object f_purchase: Tf_purchase
           HeaderAlignmentHorz = taRightJustify
           Options.IncSearch = False
         end
+        object t_view_barcode: TcxGridColumn
+          Caption = 'Barcode'
+          Visible = False
+          Options.Editing = False
+        end
       end
       object Level: TcxGridLevel
         GridView = TableView

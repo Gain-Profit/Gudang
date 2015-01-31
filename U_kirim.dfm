@@ -574,6 +574,11 @@ object F_kirim: TF_kirim
           HeaderAlignmentHorz = taRightJustify
           Options.Editing = False
         end
+        object t_view_barcode: TcxGridColumn
+          Caption = 'Barcode'
+          Visible = False
+          Options.Editing = False
+        end
       end
       object Level: TcxGridLevel
         GridView = TableView

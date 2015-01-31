@@ -296,6 +296,11 @@ object f_RO: Tf_RO
           Options.IncSearch = False
           Options.Moving = False
         end
+        object t_view_barcode: TcxGridColumn
+          Caption = 'Barcode'
+          Visible = False
+          Options.Editing = False
+        end
       end
       object Level: TcxGridLevel
         GridView = TableView

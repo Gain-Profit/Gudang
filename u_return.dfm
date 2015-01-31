@@ -260,6 +260,11 @@ object f_return: Tf_return
           Options.IncSearch = False
           Width = 83
         end
+        object t_view_barcode: TcxGridColumn
+          Caption = 'Barcode'
+          Visible = False
+          Options.Editing = False
+        end
       end
       object Level: TcxGridLevel
         GridView = TableView
