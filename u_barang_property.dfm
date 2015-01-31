@@ -3,7 +3,7 @@ object F_barang_property: TF_barang_property
   Top = 159
   BorderStyle = bsDialog
   Caption = 'Property Barang'
-  ClientHeight = 463
+  ClientHeight = 420
   ClientWidth = 491
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -19,7 +19,7 @@ object F_barang_property: TF_barang_property
     Left = 0
     Top = 0
     Width = 491
-    Height = 463
+    Height = 420
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -29,41 +29,6 @@ object F_barang_property: TF_barang_property
     ParentFont = False
     TabOrder = 0
     SkinData.SkinSection = 'GROUPBOX'
-    object b_tambah: TsButton
-      Tag = 9
-      Left = 320
-      Top = 432
-      Width = 155
-      Height = 25
-      Caption = 'Tambah Supplier'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Rockwell'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 0
-      Visible = False
-      OnClick = b_tambahClick
-      SkinData.SkinSection = 'BUTTON'
-    end
-    object b_plano: TsButton
-      Tag = 9
-      Left = 8
-      Top = 432
-      Width = 155
-      Height = 25
-      Caption = 'Tambah Plano'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Rockwell'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 3
-      OnClick = b_planoClick
-      SkinData.SkinSection = 'BUTTON'
-    end
     object grid: TcxGrid
       Left = 2
       Top = 21
@@ -76,16 +41,15 @@ object F_barang_property: TF_barang_property
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
-      TabOrder = 1
+      TabOrder = 0
       LevelTabs.CaptionAlignment = taLeftJustify
       LevelTabs.Style = 10
       LookAndFeel.Kind = lfOffice11
       RootLevelOptions.DetailTabsPosition = dtpTop
-      OnActiveTabChanged = gridActiveTabChanged
       object t_data_plano: TcxGridDBTableView
         OnKeyDown = t_data_planoKeyDown
         NavigatorButtons.ConfirmDelete = False
-        DataController.DataSource = dm.ds_plano
+        DataController.DataSource = ds_plano
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <>
         DataController.Summary.SummaryGroups = <>
@@ -147,7 +111,7 @@ object F_barang_property: TF_barang_property
       end
       object t_supplier: TcxGridDBTableView
         NavigatorButtons.ConfirmDelete = False
-        DataController.DataSource = dm.ds_supp
+        DataController.DataSource = ds_supp
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <>
         DataController.Summary.SummaryGroups = <>
@@ -185,7 +149,7 @@ object F_barang_property: TF_barang_property
       end
       object t_mutasi_barang: TcxGridDBTableView
         NavigatorButtons.ConfirmDelete = False
-        DataController.DataSource = dm.ds_mutasi
+        DataController.DataSource = ds_mutasi
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <>
         DataController.Summary.SummaryGroups = <>
@@ -236,7 +200,7 @@ object F_barang_property: TF_barang_property
       end
       object t_mutasi_harga: TcxGridDBTableView
         NavigatorButtons.ConfirmDelete = False
-        DataController.DataSource = dm.ds_mutasi
+        DataController.DataSource = ds_mutasi
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <>
         DataController.Summary.SummaryGroups = <>
@@ -345,9 +309,40 @@ object F_barang_property: TF_barang_property
       ItemHeight = 16
       ItemIndex = -1
       ParentFont = False
-      TabOrder = 2
-      Visible = False
+      TabOrder = 1
       OnChange = cb_periodeChange
     end
+  end
+  object ds_mutasi: TDataSource
+    DataSet = Q_mutasi
+    Left = 376
+    Top = 56
+  end
+  object Q_mutasi: TmySQLQuery
+    Database = dm.My_conn
+    Left = 312
+    Top = 56
+  end
+  object q_supp: TmySQLQuery
+    Filtered = True
+    Left = 8
+    Top = 112
+  end
+  object ds_supp: TDataSource
+    DataSet = q_supp
+    Left = 72
+    Top = 112
+  end
+  object ds_plano: TDataSource
+    DataSet = Q_plano
+    Left = 72
+    Top = 168
+  end
+  object Q_plano: TmySQLQuery
+    RequestLive = True
+    SQL.Strings = (
+      '')
+    Left = 8
+    Top = 168
   end
 end

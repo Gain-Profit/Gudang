@@ -7,13 +7,12 @@ uses
   Dialogs, cxStyles, cxCustomData, cxGraphics, cxFilter, cxData,
   cxDataStorage, cxEdit, DB, cxDBData, cxCurrencyEdit, StdCtrls, sComboBox,
   cxGridLevel, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
-  cxClasses, cxControls, cxGridCustomView, cxGrid, sButton, sGroupBox,u_fungsi;
+  cxClasses, cxControls, cxGridCustomView, cxGrid, sButton, sGroupBox,u_fungsi,
+  mySQLDbTables;
 
 type
   TF_barang_property = class(TForm)
     gb_detail: TsGroupBox;
-    b_tambah: TsButton;
-    b_plano: TsButton;
     grid: TcxGrid;
     t_data_plano: TcxGridDBTableView;
     dt_rak: TcxGridDBColumn;
@@ -50,12 +49,14 @@ type
     l_mutasi_barang: TcxGridLevel;
     l_mutasi_harga: TcxGridLevel;
     cb_periode: TsComboBox;
-    procedure b_planoClick(Sender: TObject);
-    procedure b_tambahClick(Sender: TObject);
+    ds_mutasi: TDataSource;
+    Q_mutasi: TmySQLQuery;
+    q_supp: TmySQLQuery;
+    ds_supp: TDataSource;
+    ds_plano: TDataSource;
+    Q_plano: TmySQLQuery;
     procedure tampil;
     procedure cb_periodeChange(Sender: TObject);
-    procedure gridActiveTabChanged(Sender: TcxCustomGrid;
-      ALevel: TcxGridLevel);
     procedure t_data_planoKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
   private
@@ -67,48 +68,14 @@ type
 var
   F_barang_property: TF_barang_property;
   fungsi: TFungsi;
-  pid: string;
+  pid, periode,bulan,tahun : string;
+  
 
 implementation
 
 uses u_dm, u_cari, u_utama;
 
 {$R *.dfm}
-
-procedure TF_barang_property.b_planoClick(Sender: TObject);
-begin
-  dm.My_conn.StartTransaction;
-  try
-    fungsi.SQLExec(dm.Q_Exe,'insert into tb_planogram(kd_perusahaan,kd_barang,`update`) values("'+
-    f_utama.sb.Panels[3].Text+'","'+pid+'","'+formatdatetime('yyyy-MM-dd', date())+'")',false);
-
-    fungsi.SQLExec(dm.Q_plano,'select * from tb_planogram where kd_barang="'+
-    pid+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
-
-    dm.My_conn.Commit;
-  except on e:exception do begin
-    dm.My_conn.Rollback;
-    showmessage('pemindahan data gagal '#10#13'' +e.Message);
-    end;
-  end;
-end;
-
-procedure TF_barang_property.b_tambahClick(Sender: TObject);
-begin
-{  application.CreateForm(tf_cari, f_cari);
-  with F_cari do
-  try
-    _SQLi:= 'select kode,n_supp from tb_supp';
-    tblcap[0]:= 'Kode';
-    tblCap[1]:= 'Nama Supplier';
-    Caption:='Daftar Supplier';
-    CariT:= 9;
-    tampil_button(true,True);
-    ShowModal;
-  finally
-  close;
-  end;
-}end;
 
 procedure TF_barang_property.tampil;
 var x: Integer;
@@ -127,46 +94,22 @@ cb_periode.ItemIndex:= cb_periode.IndexOf(dm.Q_temp.fieldbyname('sekarang').AsSt
 
 pid:= dm.Q_show.FieldByName('kd_barang').AsString;
 
-fungsi.SQLExecT(dm.Q_plano,'select * from tb_planogram where kd_barang="'+
+fungsi.SQLExecT(Q_plano,'select * from tb_planogram where kd_barang="'+
 pid+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
 
-fungsi.SQLExecT(dm.q_supp,'select * from vw_supplier where kd_barang="'+
+fungsi.SQLExecT(q_supp,'select * from vw_supplier where kd_barang="'+
 pid+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
 
 end;
 
 procedure TF_barang_property.cb_periodeChange(Sender: TObject);
 begin
-fungsi.SQLExecT(dm.Q_mutasi,'select * from tb_mutasi WHERE left(tgl,7)="'+
-cb_periode.Text+'" and kd_barang="'+pid+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
-//dm.Q_mutasi.RecNo:=dm.Q_mutasi.RecordCount;
-end;
+  periode:= cb_periode.Text;
+  bulan:= Copy(periode,6,2);
+  tahun:= Copy(periode,1,4);
 
-procedure TF_barang_property.gridActiveTabChanged(Sender: TcxCustomGrid;
-  ALevel: TcxGridLevel);
-begin
-//saat pindah level
-b_tambah.Visible:= False;
-b_plano.Visible:= False;
-cb_periode.Visible:=False;
-
-if (ALevel = l_mutasi_barang) or (ALevel= l_mutasi_harga) then
-begin
-  cb_periode.Visible:= True;
-
-  if not dm.Q_mutasi.Active then
-  begin
-    fungsi.SQLExecT(dm.Q_mutasi,'select * from tb_mutasi WHERE left(tgl,7)="'+
-    cb_periode.Text+'" and kd_barang="'+pid+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
-    //dm.Q_mutasi.RecNo:=dm.Q_mutasi.RecordCount;
-  end;
-end;
-{
-if ALevel = l_supplier then
-b_tambah.Visible:= True;
-}
-if ALevel = l_data_plano then
-b_plano.Visible:= True;
+    fungsi.SQLExecT(Q_mutasi,'select * from tb_mutasi WHERE bulan="'+
+    bulan+'" and tahun ="'+tahun+'" and kd_barang="'+pid+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
 end;
 
 procedure TF_barang_property.t_data_planoKeyDown(Sender: TObject;
@@ -179,11 +122,11 @@ begin
 dm.My_conn.StartTransaction;
 try
 fungsi.SQLExec(dm.Q_Exe,'delete from tb_planogram where kd_perusahaan="'+f_utama.sb.Panels[3].Text+'" and kd_barang="'+
-pid+'" and no_rak="'+dm.Q_plano.fieldbyname('no_rak').AsString+'" and no_shelving="'+
-dm.Q_plano.fieldbyname('no_shelving').AsString+'" and no_urut="'+
-dm.Q_plano.fieldbyname('no_urut').AsString+'"',false);
+pid+'" and no_rak="'+Q_plano.fieldbyname('no_rak').AsString+'" and no_shelving="'+
+Q_plano.fieldbyname('no_shelving').AsString+'" and no_urut="'+
+Q_plano.fieldbyname('no_urut').AsString+'"',false);
 
-fungsi.SQLExec(dm.Q_plano,'select * from tb_planogram where kd_barang="'+
+fungsi.SQLExec(Q_plano,'select * from tb_planogram where kd_barang="'+
 pid+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
 
 dm.My_conn.Commit;
