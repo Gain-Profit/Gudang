@@ -69,6 +69,7 @@ type
     l_3: TsLabel;
     l_4: TsLabel;
     l_5: TsLabel;
+    t_view_barcode: TcxGridColumn;
     procedure WMMDIACTIVATE(var msg : TWMMDIACTIVATE) ; message WM_MDIACTIVATE;
     procedure bersih;
     procedure tampil_data;
@@ -187,6 +188,7 @@ begin
   TableView.DataController.SetValue(h, 3, dm.Q_temp.fieldbyname('harga_pokok').AsFloat / dm.Q_temp.FieldByName('qty_return').AsFloat);
   TableView.DataController.SetValue(h, 4, dm.Q_temp.fieldbyname('harga_pokok').AsString);
   TableView.DataController.SetValue(h, 5, dm.Q_temp.fieldbyname('diskon').AsString);
+  TableView.DataController.SetValue(h, 6, dm.Q_temp.fieldbyname('barcode').AsString);
   dm.Q_temp.Next;
   end;
   tableview.DataController.ChangeFocusedRowIndex(tableview.DataController.RecordCount+1);
@@ -208,6 +210,7 @@ begin
       TableView.DataController.SetValue(f, 1, dm.Q_temp.fieldbyname('n_barang').AsString);
       TableView.DataController.SetValue(f, 2, TableView.DataController.getValue(f,2) + 1);
       TableView.DataController.SetValue(f, 4, TableView.DataController.getValue(f,2) * TableView.DataController.getValue(f,3));
+      TableView.DataController.SetValue(f, 6, dm.Q_temp.fieldbyname('barcode3').AsString);
       exit;
     end;
   end;
@@ -221,6 +224,7 @@ end;
   TableView.DataController.SetValue(baris_baru-1, 3, dm.Q_temp.fieldbyname('hpp_aktif').AsString);
   TableView.DataController.SetValue(baris_baru-1, 4, dm.Q_temp.fieldbyname('hpp_aktif').AsString);
   TableView.DataController.SetValue(baris_baru-1, 5, 0);
+  TableView.DataController.SetValue(baris_baru-1, 6, dm.Q_temp.fieldbyname('barcode3').AsString);
   tableview.DataController.ChangeFocusedRowIndex(baris_baru);
   mm_nama.Text:= tableView.DataController.GetValue(baris_baru-1,1);
   ce_harga.Text:= tableView.DataController.GetValue(baris_baru-1,3);
@@ -421,7 +425,9 @@ end;
   isi_sql:=isi_sql +'("'+f_utama.sb.Panels[3].Text+'","'+ed_no_faktur.Text
   +'","'+formatdatetime('yyyy-MM-dd',ed_tgl.Date)+'","'+TableView.DataController.GetDisplayText(x,0)+'","'+
   TableView.DataController.GetDisplayText(x,1)+'","'+floattostr(TableView.DataController.GetValue(x,2))+'","'+
-  floattostr(TableView.DataController.GetValue(x,4))+'","'+floattostr(TableView.DataController.GetValue(x,5))+'"),';
+  floattostr(TableView.DataController.GetValue(x,4))+'","'+
+  floattostr(TableView.DataController.GetValue(x,5))+'","'+
+  TableView.DataController.GetDisplayText(x,6)+'",date(now())),';
   end;
   delete(isi_sql,length(isi_sql),1);
 
@@ -430,12 +436,12 @@ dm.My_Conn.StartTransaction;
 try
 
 fungsi.SQLExec(dm.Q_exe,'insert into tb_return_global(kd_perusahaan,kd_return,tgl_return,'+
-'kd_suplier,disk_rp,nilai_faktur,pengguna,faktur_receipt) values ("'+f_utama.sb.Panels[3].Text+'","'+ed_no_faktur.Text
+'kd_suplier,disk_rp,nilai_faktur,pengguna,faktur_receipt,simpan_pada) values ("'+f_utama.sb.Panels[3].Text+'","'+ed_no_faktur.Text
 +'","'+formatdatetime('yyyy-MM-dd',ed_tgl.Date)+'","'+ed_supplier.Text+'","'+ce_diskonrp.Text+'","'+ed_nilai_faktur.Text
-+'","'+f_utama.Sb.Panels[0].Text+'","'+ed_fak_receipt.Text+'")',false);
++'","'+f_utama.Sb.Panels[0].Text+'","'+ed_fak_receipt.Text+'",now())',false);
 
   fungsi.SQLExec(dm.Q_exe,'insert into tb_return_rinci(kd_perusahaan,kd_return,tgl_return,'+
-  'kd_barang,n_barang,qty_return,harga_pokok,diskon) values  '+isi_sql, false);
+  'kd_barang,n_barang,qty_return,harga_pokok,diskon,barcode,tgl_simpan) values  '+isi_sql, false);
 
 dm.My_Conn.Commit;
 showmessage('penyimpanan sukses...');
@@ -539,6 +545,7 @@ begin
       Writeln(F, TableView.DataController.GetValue(x,3));
       Writeln(F, TableView.DataController.GetValue(x,4));
       Writeln(F, TableView.DataController.GetValue(x,5));
+      Writeln(F, TableView.DataController.GetValue(x,6));
     end;
   CloseFile(F);
   fungsi.amankan(sd.FileName,sd.FileName,789);
@@ -588,6 +595,8 @@ begin
       TableView.DataController.SetValue(x, 4, TmpStr);
       Readln(F, TmpStr);
       TableView.DataController.SetValue(x, 5, TmpStr);
+      Readln(F, TmpStr);
+      TableView.DataController.SetValue(x, 6, TmpStr);
     end;
   CloseFile(F);
   tableview.DataController.ChangeFocusedRowIndex(tableview.DataController.RecordCount);

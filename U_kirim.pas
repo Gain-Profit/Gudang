@@ -61,6 +61,7 @@ type
     l_2: TsLabel;
     l_3: TsLabel;
     l_4: TsLabel;
+    t_view_barcode: TcxGridColumn;
     procedure WMMDIACTIVATE(var msg : TWMMDIACTIVATE) ; message WM_MDIACTIVATE;
     procedure bersih;
     procedure tampil_data;
@@ -149,7 +150,7 @@ begin
       Writeln(F, TableView.DataController.GetValue(x,2));
       Writeln(F, TableView.DataController.GetValue(x,3));
       Writeln(F, TableView.DataController.GetValue(x,4));
-
+      Writeln(F, TableView.DataController.GetValue(x,5));
     end;
   CloseFile(F);
   fungsi.amankan(nama_file,nama_file,321);
@@ -202,6 +203,8 @@ begin
       TableView.DataController.SetValue(x, 3, TmpStr);
       Readln(F, TmpStr);
       TableView.DataController.SetValue(x, 4, TmpStr);
+      Readln(F, TmpStr);
+      TableView.DataController.SetValue(x, 5, TmpStr);
     end;
   CloseFile(F);
   
@@ -258,6 +261,7 @@ begin
   TableView.DataController.SetValue(h, 1, dm.Q_temp.fieldbyname('n_barang').AsString);
   TableView.DataController.SetValue(h, 2, dm.Q_temp.FieldByName('qty_kirim').AsString);
   TableView.DataController.SetValue(h, 4, dm.Q_temp.fieldbyname('harga_pokok').AsString);
+  TableView.DataController.SetValue(h, 5, dm.Q_temp.fieldbyname('barcode').AsString);
   x_hpp:= dm.Q_temp.fieldbyname('harga_pokok').AsFloat/dm.Q_temp.FieldByName('qty_kirim').AsFloat;
   TableView.DataController.SetValue(h, 3, x_hpp);
   dm.Q_temp.Next;
@@ -281,6 +285,7 @@ begin
       TableView.DataController.SetValue(f, 1, dm.Q_temp.fieldbyname('n_barang').AsString);
       TableView.DataController.SetValue(f, 2, TableView.DataController.GetValue(f,2) + 1);
       TableView.DataController.SetValue(f, 4, TableView.DataController.GetValue(f,2) * TableView.DataController.GetValue(f,3));
+      TableView.DataController.SetValue(f, 5, dm.Q_temp.fieldbyname('barcode3').AsString);
       exit;
     end;
   end;
@@ -293,6 +298,7 @@ end;
   TableView.DataController.SetValue(baris_baru-1, 2, 1);
   TableView.DataController.SetValue(baris_baru-1, 3, dm.Q_temp.fieldbyname('hpp_aktif').AsString);
   TableView.DataController.SetValue(baris_baru-1, 4, dm.Q_temp.fieldbyname('hpp_aktif').AsString);
+  TableView.DataController.SetValue(baris_baru-1, 5, dm.Q_temp.fieldbyname('barcode3').AsString);
   tableview.DataController.ChangeFocusedRowIndex(baris_baru);
   mm_nama.Text:= tableView.DataController.GetValue(baris_baru-1,1);
   ce_harga.Text:= tableView.DataController.GetValue(baris_baru-1,3);
@@ -490,19 +496,19 @@ end;
   isi_sql:=isi_sql +'("'+f_utama.sb.Panels[3].Text+'","'+ed_no_faktur.Text
   +'","'+formatdatetime('yyyy-MM-dd',ed_tgl.Date)+'","'+TableView.DataController.GetDisplayText(x,0)+'","'+
   TableView.DataController.GetDisplayText(x,1)+'","'+floattostr(TableView.DataController.GetValue(x,2))+'","'+
-  floattostr(TableView.DataController.GetValue(x,4))+'"),';
+  floattostr(TableView.DataController.GetValue(x,4))+'","'+TableView.DataController.GetDisplayText(x,5)+'",date(now())),';
   end;
   delete(isi_sql,length(isi_sql),1);
 
 dm.My_Conn.StartTransaction;
 try
 fungsi.SQLExec(dm.Q_exe,'insert into tb_kirim_global(kd_perusahaan,kd_kirim,tgl_kirim,'+
-'kd_tk_kirim,nilai_faktur,pengguna,jatuh_tempo) values ("'+f_utama.sb.Panels[3].Text+'","'+ed_no_faktur.Text
+'kd_tk_kirim,nilai_faktur,pengguna,jatuh_tempo,simpan_pada) values ("'+f_utama.sb.Panels[3].Text+'","'+ed_no_faktur.Text
 +'","'+formatdatetime('yyyy-MM-dd',ed_tgl.Date)+'","'+ed_toko.Text+'","'+
-ed_nilai_faktur.Text+'","'+f_utama.Sb.Panels[0].Text+'","'+ed_jatuh_tempo.Text+'")',false);
+ed_nilai_faktur.Text+'","'+f_utama.Sb.Panels[0].Text+'","'+ed_jatuh_tempo.Text+'",now())',false);
 
   fungsi.SQLExec(dm.Q_exe,'insert into tb_kirim_rinci(kd_perusahaan,kd_kirim,tgl_kirim,'+
-  'kd_barang,n_barang,qty_kirim,harga_pokok) values  '+isi_sql, false);
+  'kd_barang,n_barang,qty_kirim,harga_pokok,barcode,tgl_simpan) values  '+isi_sql, false);
 
 fungsi.SQLExec(dm.Q_exe,'INSERT tb_piutang (kd_perusahaan,faktur,tanggal,pelanggan, '+
 'piutang_awal,`user`,jatuh_tempo,`update`)VALUES("'+f_utama.sb.Panels[3].Text+'","'+
@@ -583,31 +589,12 @@ begin
     ShowMessage('untuk auto kode, data Toko harus diisi terlebih dahulu');
     Exit;
   end;
-{  fungsi.SQLExec(dm.Q_temp,'select kd_kirim from tb_kirim_global where kd_tk_kirim="'+
-  ed_toko.text+'" and kd_perusahaan = "'+f_utama.sb.Panels[3].Text
-  +'" and kd_kirim like "KR-'+ed_toko.text+'-%" order by kd_kirim',true);
-
-  dm.Q_temp.First;
-
-  for x:=1 to 10000 do
-  begin
-  if x<10    then pid:= 'KR-'+ed_toko.text+'-000' else
-  if x<100   then pid:= 'KR-'+ed_toko.text+'-00' else
-  if x<1000  then pid:= 'KR-'+ed_toko.text+'-0' else
-  if x<10000 then pid:= 'KR-'+ed_toko.text+'-';
-
-  pid_temp:= pid+inttostr(x);
-
-  if dm.Q_temp.fieldbyname('kd_kirim').AsString=pid_temp then
-  dm.Q_temp.Next else break;
-  end;
-  ed_no_faktur.Text:= pid_temp;
-}
+  
   sekarang:= formatdatetime('yyyyMMdd', waktu_sekarang);
 
   fungsi.SQLExec(dm.Q_temp,'select count(kd_kirim) as jumlah from tb_kirim_global where kd_tk_kirim="'+
   ed_toko.text+'" and kd_perusahaan = "'+f_utama.sb.Panels[3].Text
-  +'" and tgl_kirim=date(now())',true);
+  +'" and date(simpan_pada)=date(now())',true);
 
   w:= dm.Q_temp.fieldbyname('jumlah').AsInteger + 1;
 

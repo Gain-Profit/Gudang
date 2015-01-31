@@ -60,6 +60,7 @@ type
     l_2: TsLabel;
     l_3: TsLabel;
     l_4: TsLabel;
+    t_view_barcode: TcxGridColumn;
     procedure bersih;
     procedure tampil_data;
     procedure CreateRows;
@@ -163,6 +164,7 @@ begin
   TableView.DataController.SetValue(h, 1, dm.Q_temp.fieldbyname('n_barang').AsString);
   TableView.DataController.SetValue(h, 2, dm.Q_temp.FieldByName('qty_purchase').AsString);
   TableView.DataController.SetValue(h, 4, dm.Q_temp.fieldbyname('harga_pokok').AsString);
+  TableView.DataController.SetValue(h, 5, dm.Q_temp.fieldbyname('barcode').AsString);
   x_hpp:= dm.Q_temp.fieldbyname('harga_pokok').AsFloat/dm.Q_temp.FieldByName('qty_purchase').AsFloat;
   TableView.DataController.SetValue(h, 3, x_hpp);
   dm.Q_temp.Next;
@@ -185,6 +187,7 @@ begin
       TableView.DataController.SetValue(f, 1, dm.Q_temp.fieldbyname('n_barang').AsString);
       TableView.DataController.SetValue(f, 2, TableView.DataController.GetValue(f,2) + 1);
       TableView.DataController.SetValue(f, 4, TableView.DataController.GetValue(f,2) * TableView.DataController.GetValue(f,3));
+      TableView.DataController.SetValue(f, 5, dm.Q_temp.fieldbyname('barcode3').AsString);
       tableview.DataController.ChangeFocusedRecordIndex(f);
       exit;
     end;
@@ -198,6 +201,7 @@ end;
   TableView.DataController.SetValue(baris_baru-1, 2, 1);
   TableView.DataController.SetValue(baris_baru-1, 3, dm.Q_temp.fieldbyname('hpp_aktif').AsString);
   TableView.DataController.SetValue(baris_baru-1, 4, dm.Q_temp.fieldbyname('hpp_aktif').AsString);
+  TableView.DataController.SetValue(baris_baru-1, 5, dm.Q_temp.fieldbyname('barcode3').AsString);
   tableview.DataController.ChangeFocusedRowIndex(baris_baru);
   mm_nama.Text:= tableView.DataController.GetValue(baris_baru-1,1);
   ce_harga.Text:= tableView.DataController.GetValue(baris_baru-1,3);
@@ -336,19 +340,19 @@ kd_faktur:= ed_no_faktur.Text;
   isi_sql:=isi_sql +'("'+f_utama.sb.Panels[3].Text+'","'+ed_no_faktur.Text
   +'","'+formatdatetime('yyyy-MM-dd',ed_tgl.Date)+'","'+TableView.DataController.GetDisplayText(x,0)+'","'+
   TableView.DataController.GetDisplayText(x,1)+'","'+floattostr(TableView.DataController.GetValue(x,2))+'","'+
-  floattostr(TableView.DataController.GetValue(x,4))+'"),';
+  floattostr(TableView.DataController.GetValue(x,4))+'","'+TableView.DataController.GetDisplayText(x,5)+'",date(now())),';
   end;
   delete(isi_sql,length(isi_sql),1);
 
 dm.My_Conn.StartTransaction;
 try
 fungsi.SQLExec(dm.Q_exe,'insert into tb_purchase_global(kd_perusahaan,kd_purchase,tgl_purchase,'+
-'kd_suplier,nilai_faktur,pengguna) values ("'+f_utama.sb.Panels[3].Text+'","'+ed_no_faktur.Text
+'kd_suplier,nilai_faktur,pengguna,simpan_pada) values ("'+f_utama.sb.Panels[3].Text+'","'+ed_no_faktur.Text
 +'","'+formatdatetime('yyyy-MM-dd',ed_tgl.Date)+'","'+ed_supplier.Text+'","'+
-ed_nilai_faktur.Text+'","'+f_utama.Sb.Panels[0].Text+'")',false);
+ed_nilai_faktur.Text+'","'+f_utama.Sb.Panels[0].Text+'",now())',false);
 
   fungsi.SQLExec(dm.Q_exe,'insert into tb_purchase_rinci(kd_perusahaan,kd_purchase,tgl_purchase,'+
-  'kd_barang,n_barang,qty_purchase,harga_pokok) values  '+isi_sql, false);
+  'kd_barang,n_barang,qty_purchase,harga_pokok,barcode,tgl_simpan) values  '+isi_sql, false);
 
 dm.My_Conn.Commit;
 
@@ -369,7 +373,8 @@ end;
 
 procedure Tf_purchase.b_printClick(Sender: TObject);
 begin
-fungsi.SQLExec(dm.Q_laporan,'select * from vw_cetak_purchase where kd_perusahaan="'+f_utama.sb.Panels[3].Text+'" and kd_purchase="'+ed_no_faktur.Text+'"',true);
+fungsi.SQLExec(dm.Q_laporan,'select * from vw_cetak_purchase where kd_perusahaan="'+
+f_utama.sb.Panels[3].Text+'" and kd_purchase="'+ed_no_faktur.Text+'"',true);
 dm.laporan.LoadFromFile(dm.WPath + 'laporan\gp_purchase_rinci.fr3');
 dm.FRMemo(dm.laporan, 'Memo9').Text := MyTerbilang(dm.Q_laporan.fieldbyname('nilai_faktur').AsFloat)+'Rupiah';
 dm.laporan.ShowReport;
@@ -385,7 +390,8 @@ end;
 procedure Tf_purchase.ed_no_fakturChange(Sender: TObject);
 var urip: Boolean; // jenenge mbahku :-)
 begin
-fungsi.SQLExec(dm.Q_temp,'select kd_purchase from tb_purchase_global where kd_purchase="'+ed_no_faktur.Text+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
+fungsi.SQLExec(dm.Q_temp,'select kd_purchase from tb_purchase_global where kd_purchase="'+
+ed_no_faktur.Text+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
 if not(dm.Q_temp.Eof) then
 begin
 ed_no_faktur.Color:=clblue;
@@ -435,6 +441,7 @@ begin
   TableView.DataController.SetValue(h, 2, dm.Q_temp.FieldByName('purchase_order').AsString);
   TableView.DataController.SetValue(h, 3, dm.Q_temp.fieldbyname('harga_pokok').AsString);
   TableView.DataController.SetValue(h, 4, strtofloatdef(dm.Q_temp.fieldbyname('harga_pokok').AsString,0)*strtofloatdef(dm.Q_temp.FieldByName('purchase_order').AsString,0));
+  TableView.DataController.SetValue(h, 5, dm.Q_temp.fieldbyname('barcode').AsString);
   dm.Q_temp.Next;
   end;
 end;
@@ -461,6 +468,7 @@ begin
       Writeln(F, TableView.DataController.GetValue(x,2));
       Writeln(F, TableView.DataController.GetValue(x,3));
       Writeln(F, TableView.DataController.GetValue(x,4));
+      Writeln(F, TableView.DataController.GetValue(x,5));
     end;
   CloseFile(F);
   fungsi.amankan(sd.FileName,sd.FileName,123);
@@ -503,6 +511,8 @@ begin
       TableView.DataController.SetValue(x, 3, TmpStr);
       Readln(F, TmpStr);
       TableView.DataController.SetValue(x, 4, TmpStr);
+      Readln(F, TmpStr);
+      TableView.DataController.SetValue(x, 5, TmpStr);
     end;
   CloseFile(F);
   
