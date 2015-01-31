@@ -11,7 +11,7 @@ uses
   sMemo, sGauge, sTabControl, cxStyles, cxCustomData, cxGraphics, cxFilter,
   cxData, cxDataStorage, cxEdit, cxDBData, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxControls, cxGridCustomView, sEdit,
-  cxClasses, cxGridLevel, cxGrid, mySQLDbTables;//,IniFiles;
+  cxClasses, cxGridLevel, cxGrid, mySQLDbTables,WinInet;//,IniFiles;
 
   const
   WM_AFTER_SHOW = WM_USER + 300; // custom message
@@ -200,12 +200,28 @@ type
     procedure ac_kembangExecute(Sender: TObject);
     procedure SbubahPasswordClick(Sender: TObject);
     procedure ac_cekUpdateExecute(Sender: TObject);
+    procedure cek_update();
   private
     procedure WmAfterShow(var Msg: TMessage); message WM_AFTER_SHOW;
     { Private declarations }
   public
     function HakAkses(kunci:string): Boolean;
     { Public declarations }
+  end;
+
+  type
+  TupdateTread = class(TThread)
+  private
+    FUrlCek  : string;
+    FCurVer  : string;
+    FUrlDownload   : string;
+    isupdate : Boolean;
+  protected
+    procedure Execute; override;
+    procedure ThreadExecute;
+    function UpdateApp(const Url: string): string;
+  public
+    constructor create(UrlCek:string;CurrentVersion:string;UrlDownload:string);
   end;
 
 var
@@ -257,8 +273,6 @@ begin
   f_login.sb.Panels[0].Text:=sb.Panels[3].Text;
   f_login.sb.Panels[1].Text:=sb.Panels[4].Text;
   f_login.ShowModal;
-  ac_cekUpdateExecute(Self);
-//cek_login;
 end;
 
 
@@ -1111,30 +1125,105 @@ Application.CreateForm(TF_ubahPassword,F_ubahPassword);
 F_ubahPassword.ShowModal;
 end;
 
-procedure Tf_utama.ac_cekUpdateExecute(Sender: TObject);
+procedure Tf_utama.cek_update;
 var Appterbaru,URLcek,URLdownload: string;
-  thread1: integer;
+    AppUpdate: TupdateTread;
 begin
   fungsi.SQLExec(dm.Q_temp,'select * from app where kode = "update"',True);
   URLcek      := dm.Q_temp.FieldByName('URLcek').AsString;
   URLdownload := dm.Q_temp.FieldByName('URLdownload').AsString;
+
+  AppUpdate:= TupdateTread.create(URLcek,fungsi.program_versi,URLdownload);
+{      if MessageDlg('Aplikasi Gudang Terbaru Telah keluar:' + #13#10 +
+        'Versi terbaru : ' + Appterbaru + #13#10#13#10 +
+        'Download Applikasi Terbaru?',  mtWarning, [mbYes, mbNo], 0) = mrYes
+        then
+      begin
+        ShellExecute(Self.WindowHandle,'open',PAnsiChar(URLdownload+'gudang'),nil,nil, SW_SHOWNORMAL);
+      end;
+}
+end;
+
+procedure Tf_utama.ac_cekUpdateExecute(Sender: TObject);
+begin
+  cek_update;
+end;
+
+constructor TupdateTread.create(UrlCek:string;CurrentVersion:string;UrlDownload:string);
+begin
+inherited create(False);
+Self.FUrlCek:= UrlCek;
+Self.FUrlDownload:=UrlDownload;
+Self.FCurVer:= CurrentVersion;
+FreeOnTerminate := True;
+Resume;
+end;
+
+procedure TupdateTread.Execute;
+begin
+      Synchronize(ThreadExecute);
+end;
+
+procedure TupdateTread.ThreadExecute();
+var Appterbaru: string;
+begin
+  isupdate:= False;
   
-  Appterbaru:= fungsi.UpdateApp(URLcek+'gudang');
+  Appterbaru:= UpdateApp(FUrlCek+'gudang');
 
   if Appterbaru <>''then
   begin
-    if fungsi.program_versi<> Appterbaru then
+    if FCurVer<> Appterbaru then
     begin
-      if MessageDlg('Aplikasi Gudang Terbaru Telah keluar:' + #13#10 + 
-        'Versi terbaru : ' + Appterbaru + #13#10#13#10 +
-        'Download Applikasi Terbaru?',  mtWarning, [mbYes, mbNo], 0) = mrYes 
-        then
-      begin
-        ShellExecute(self.WindowHandle,'open',PAnsiChar(URLdownload+'gudang'),nil,nil, SW_SHOWNORMAL);
-      end;
+      ShowMessage('applikasi terbaru sudah ada...');
+      isupdate:= True;
     end;
   end;
 end;
+
+function TupdateTread.UpdateApp(const Url: string): string;
+var
+  NetHandle: HINTERNET;
+  UrlHandle: HINTERNET;
+  Buffer: array[0..1024] of Char;
+  BytesRead: dWord;
+begin
+  //cek koneksi
+  Result := '';
+
+  if not(InternetGetConnectedState(nil,0))then
+  begin
+    Exit;
+  end;
+
+  NetHandle := InternetOpen('Delphi 5.x', INTERNET_OPEN_TYPE_PRECONFIG, nil, nil, 0);
+
+  if Assigned(NetHandle) then 
+  begin
+    UrlHandle := InternetOpenUrl(NetHandle, PChar(Url), nil, 0, INTERNET_FLAG_RELOAD, 0);
+
+    if Assigned(UrlHandle) then
+      { UrlHandle valid? Proceed with download }
+    begin
+      FillChar(Buffer, SizeOf(Buffer), 0);
+      repeat
+        Result := Result + Buffer;
+        FillChar(Buffer, SizeOf(Buffer), 0);
+        InternetReadFile(UrlHandle, @Buffer, SizeOf(Buffer), BytesRead);
+      until BytesRead = 0;
+      InternetCloseHandle(UrlHandle);
+    end
+    else
+      { UrlHandle is not valid. Raise an exception. }
+      raise Exception.CreateFmt('Cannot open URL %s', [Url]);
+
+    InternetCloseHandle(NetHandle);
+  end
+  else
+    { NetHandle is not valid. Raise an exception }
+    raise Exception.Create('Unable to initialize Wininet');
+end;
+
 
 end.
 

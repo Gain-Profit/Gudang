@@ -1,6 +1,6 @@
 object f_utama: Tf_utama
-  Left = 6
-  Top = 350
+  Left = 16
+  Top = 123
   Width = 1019
   Height = 480
   AlphaBlend = True
@@ -145,6 +145,7 @@ object f_utama: Tf_utama
           SkinData.SkinSection = 'TOOLBUTTON'
           DisabledGlyphKind = []
           ImageIndex = 6
+          Images = dm.image
           Reflected = True
         end
         object sSpeedButton13: TsSpeedButton
@@ -338,6 +339,7 @@ object f_utama: Tf_utama
           SkinData.SkinSection = 'TOOLBUTTON'
           DisabledGlyphKind = []
           ImageIndex = 6
+          Images = dm.image
           Reflected = True
         end
         object sSpeedButton19: TsSpeedButton
@@ -486,6 +488,7 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
+          Images = dm.image
           Reflected = True
         end
         object sb_Action1: TsSpeedButton
@@ -508,6 +511,7 @@ object f_utama: Tf_utama
           SkinData.SkinSection = 'TOOLBUTTON'
           DisabledGlyphKind = []
           ImageIndex = 6
+          Images = dm.image
           Reflected = True
         end
         object sb_list_purchase: TsSpeedButton
@@ -528,6 +532,7 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
+          Images = dm.image
           Reflected = True
         end
         object sb_list_return1: TsSpeedButton
@@ -548,6 +553,7 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
+          Images = dm.image
           Reflected = True
         end
         object sb_list_kirim1: TsSpeedButton
@@ -568,6 +574,7 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
+          Images = dm.image
           Reflected = True
         end
         object sb_list_kirim: TsSpeedButton
@@ -588,6 +595,7 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
+          Images = dm.image
           Reflected = True
         end
         object sb_list_return_kirim: TsSpeedButton
@@ -608,6 +616,7 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
+          Images = dm.image
           Reflected = True
         end
         object sb_list_sales: TsSpeedButton
@@ -628,6 +637,7 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
+          Images = dm.image
           Reflected = True
         end
         object sb_kembang: TsSpeedButton
@@ -648,6 +658,7 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
+          Images = dm.image
           Reflected = True
         end
       end
@@ -687,6 +698,7 @@ object f_utama: Tf_utama
           SkinData.SkinSection = 'TOOLBUTTON'
           DisabledGlyphKind = []
           ImageIndex = 6
+          Images = dm.image
           Reflected = True
         end
         object sSpeedButton1: TsSpeedButton
@@ -859,6 +871,7 @@ object f_utama: Tf_utama
           SkinData.SkinSection = 'TOOLBUTTON'
           DisabledGlyphKind = []
           ImageIndex = 6
+          Images = dm.image
           Reflected = True
         end
         object sSpeedButton7: TsSpeedButton
