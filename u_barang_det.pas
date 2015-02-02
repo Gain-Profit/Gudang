@@ -155,7 +155,7 @@ kd_sat[1] :='';
 kd_sat[2] :='';
 kd_sat[3] :='';
 
-//kd_perusahaan:= dm.Q_show.fieldbyname('kd_perusahaan').AsString;
+//kd_perusahaan:= dm.Q_barang.fieldbyname('kd_perusahaan').AsString;
 kd_jenis :='';
 kd_merk  :='';
 kd_gol   :='';
@@ -173,8 +173,8 @@ b_auto.Enabled:=false;
 b_load.Visible:=true;
 
 
-ed_pid.Text:= dm.Q_show.FieldByName('kd_barang').AsString;
-ed_nama.Text:= dm.Q_show.FieldByName('n_barang').AsString;
+ed_pid.Text:= dm.Q_barang.FieldByName('kd_barang').AsString;
+ed_nama.Text:= dm.Q_barang.FieldByName('n_barang').AsString;
 
 tampil_gambar(alert,ed_pid.Text,False);
 
@@ -365,7 +365,7 @@ if ed_bar1.Color=clblue then ed_bar1.SetFocus;
 exit;
 end;
 
-posisi:= dm.Q_Show.RecNo;
+posisi:= dm.Q_barang.RecNo;
 
 if ed_pid.Text='' then
 begin
@@ -407,9 +407,9 @@ ed_maxstok.Text+'",leadtime="'+ed_time.Text+'",aktif="'+b_aktif+'",minor="'+
 ed_minor.Text+'",`update`="'+formatdatetime('yyyy-MM-dd', date())+'" where kd_perusahaan="'+f_utama.sb.Panels[3].Text+'" and kd_barang="'+old_pid+'"',false);
 end;
 
-dm.Q_Show.Close;
-dm.Q_Show.Open;
-dm.Q_Show.RecNo := posisi;
+dm.Q_barang.Close;
+dm.Q_barang.Open;
+dm.Q_barang.RecNo := posisi;
 
 status_simpan:= false;
 
@@ -596,14 +596,14 @@ urutan := urutan +1;
 
 if urutan = 1 then
 begin
-kd_jenis :=dm.Q_show.fieldbyname('kd_jenis').AsString;
+kd_jenis :=dm.Q_barang.fieldbyname('kd_jenis').AsString;
 fungsi.SQLExec(dm.Q_temp,'select * from tb_jenis where kd_jenis="'+kd_jenis+'"',true);
 ed_jenis.Text:= dm.Q_temp.fieldbyname('n_jenis').AsString;
 end;
 
 if urutan = 2 then
 begin
-kd_gol   :=dm.Q_show.fieldbyname('kd_golbrg').AsString;
+kd_gol   :=dm.Q_barang.fieldbyname('kd_golbrg').AsString;
 fungsi.SQLExec(dm.Q_temp,'select * from tb_golongan where kd_golbrg="'+
 kd_gol+'" and kd_jenis="'+kd_jenis+'"',true);
 ed_golongan.Text:= dm.Q_temp.fieldbyname('n_golbrg').AsString;
@@ -611,60 +611,60 @@ end;
 
 if urutan = 3 then
 begin
-kd_merk  :=dm.Q_show.fieldbyname('kd_merk').AsString;
+kd_merk  :=dm.Q_barang.fieldbyname('kd_merk').AsString;
 fungsi.SQLExec(dm.Q_temp,'select * from tb_merk where kd_merk="'+kd_merk+'"',true);
 ed_merk.Text:= dm.Q_temp.fieldbyname('n_merk').AsString;
 end;
 
 if urutan = 4 then
 begin
-kd_tag   :=dm.Q_show.fieldbyname('kd_kategori').AsString;
+kd_tag   :=dm.Q_barang.fieldbyname('kd_kategori').AsString;
 fungsi.SQLExec(dm.Q_temp,'select * from tb_kategori where tag="'+kd_tag+'"',true);
 ed_kategori.Text:= dm.Q_temp.fieldbyname('n_kategori').AsString;
 end;
 
 if urutan = 5 then
 begin
-kd_sat[1]  :=dm.Q_show.fieldbyname('kd_sat1').AsString;
+kd_sat[1]  :=dm.Q_barang.fieldbyname('kd_sat1').AsString;
 fungsi.SQLExec(dm.Q_temp,'select * from tb_satuan where kd_satuan="'+kd_sat[1]+'"',true);
 ed_sat1.Text:= dm.Q_temp.fieldbyname('n_satuan').AsString;
 end;
 
 if urutan = 6 then
 begin
-kd_sat[2]  :=dm.Q_show.fieldbyname('kd_sat2').AsString;
+kd_sat[2]  :=dm.Q_barang.fieldbyname('kd_sat2').AsString;
 fungsi.SQLExec(dm.Q_temp,'select * from tb_satuan where kd_satuan="'+kd_sat[2]+'"',true);
 ed_sat2.Text:= dm.Q_temp.fieldbyname('n_satuan').AsString;
 end;
 
 if urutan = 7 then
 begin
-kd_sat[3]  :=dm.Q_show.fieldbyname('kd_sat3').AsString;
+kd_sat[3]  :=dm.Q_barang.fieldbyname('kd_sat3').AsString;
 fungsi.SQLExec(dm.Q_temp,'select * from tb_satuan where kd_satuan="'+kd_sat[3]+'"',true);
 ed_sat3.Text:= dm.Q_temp.fieldbyname('n_satuan').AsString;
 end;
 
 if urutan = 8 then
-ed_qty1.Text:= dm.Q_show.FieldByName('qty1').AsString;
+ed_qty1.Text:= dm.Q_barang.FieldByName('qty1').AsString;
 if urutan = 9 then
-ed_qty2.Text:= dm.Q_show.FieldByName('qty2').AsString;
+ed_qty2.Text:= dm.Q_barang.FieldByName('qty2').AsString;
 if urutan = 10 then
-ed_bar1.Text:= dm.Q_show.FieldByName('barcode1').AsString;
+ed_bar1.Text:= dm.Q_barang.FieldByName('barcode1').AsString;
 if urutan = 11 then
-ed_bar2.Text:= dm.Q_show.FieldByName('barcode2').AsString;
+ed_bar2.Text:= dm.Q_barang.FieldByName('barcode2').AsString;
 if urutan = 12 then
-ed_bar3.Text:= dm.Q_show.FieldByName('barcode3').AsString;
+ed_bar3.Text:= dm.Q_barang.FieldByName('barcode3').AsString;
 if urutan = 13 then
-ed_minstok.Text:= dm.Q_show.FieldByName('minstok').AsString;
+ed_minstok.Text:= dm.Q_barang.FieldByName('minstok').AsString;
 if urutan = 14 then
-ed_maxstok.Text:= dm.Q_show.FieldByName('maxstok').AsString;
+ed_maxstok.Text:= dm.Q_barang.FieldByName('maxstok').AsString;
 if urutan = 15 then
-ed_minor.Text:= dm.Q_show.FieldByName('minor').AsString;
+ed_minor.Text:= dm.Q_barang.FieldByName('minor').AsString;
 if urutan = 16 then
-ed_time.Text:= dm.Q_show.FieldByName('leadtime').AsString;
+ed_time.Text:= dm.Q_barang.FieldByName('leadtime').AsString;
 
 if urutan = 17 then
-if dm.Q_show.FieldByName('aktif').AsString='Y' then cb_aktif.Checked:=true else cb_aktif.Checked:=false;
+if dm.Q_barang.FieldByName('aktif').AsString='Y' then cb_aktif.Checked:=true else cb_aktif.Checked:=false;
 
 if urutan = 18 then
 begin

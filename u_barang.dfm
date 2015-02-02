@@ -43,7 +43,7 @@ object F_barang: TF_barang
         OnKeyDown = TvDataKeyDown
         NavigatorButtons.ConfirmDelete = False
         OnCellDblClick = TvDataCellDblClick
-        DataController.DataSource = dm.ds_show
+        DataController.DataSource = dm.ds_barang
         DataController.Summary.DefaultGroupSummaryItems = <
           item
             Kind = skCount

@@ -21048,4 +21048,16 @@ object dm: Tdm
     Left = 560
     Top = 56
   end
+  object ds_barang: TDataSource
+    DataSet = Q_barang
+    Left = 72
+    Top = 136
+  end
+  object Q_barang: TmySQLQuery
+    Database = My_conn
+    SQL.Strings = (
+      'select * from vw_daftar_barang')
+    Left = 8
+    Top = 136
+  end
 end

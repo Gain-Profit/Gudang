@@ -49,6 +49,8 @@ type
     Q_stock_out: TmySQLQuery;
     ds_stock_out: TDataSource;
     frxmlxprt1: TfrxXMLExport;
+    ds_barang: TDataSource;
+    Q_barang: TmySQLQuery;
     procedure DataModuleCreate(Sender: TObject);
     procedure smAfterChange(Sender: TObject);
     procedure koneksikan;

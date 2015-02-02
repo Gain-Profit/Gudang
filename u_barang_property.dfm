@@ -1,10 +1,10 @@
 object F_barang_property: TF_barang_property
-  Left = 464
+  Left = 195
   Top = 159
   BorderStyle = bsDialog
   Caption = 'Property Barang'
-  ClientHeight = 420
-  ClientWidth = 491
+  ClientHeight = 454
+  ClientWidth = 760
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,9 +17,9 @@ object F_barang_property: TF_barang_property
   TextHeight = 13
   object gb_detail: TsGroupBox
     Left = 0
-    Top = 0
-    Width = 491
-    Height = 420
+    Top = 65
+    Width = 760
+    Height = 389
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -32,7 +32,7 @@ object F_barang_property: TF_barang_property
     object grid: TcxGrid
       Left = 2
       Top = 21
-      Width = 487
+      Width = 756
       Height = 396
       Align = alTop
       Font.Charset = DEFAULT_CHARSET
@@ -169,33 +169,55 @@ object F_barang_property: TF_barang_property
         OptionsView.GroupByBox = False
         Styles.Inactive = dm.cxstyl1
         Styles.Selection = dm.cxstyl1
-        object dt__mutasi_barangtgl: TcxGridDBColumn
+        object t_tgl: TcxGridDBColumn
           Caption = 'Tgl'
           DataBinding.FieldName = 'tgl'
+          Options.Editing = False
         end
-        object dt__mutasi_barangstok_awal: TcxGridDBColumn
+        object t_awal: TcxGridDBColumn
           Caption = 'Awal'
           DataBinding.FieldName = 'stok_awal'
+          Options.Editing = False
         end
-        object dt__mutasi_barangstok_receipt: TcxGridDBColumn
+        object t_receipt: TcxGridDBColumn
           Caption = 'Receipt'
           DataBinding.FieldName = 'stok_receipt'
+          Options.Editing = False
         end
-        object dt__mutasi_barangstok_return: TcxGridDBColumn
+        object t_return: TcxGridDBColumn
           Caption = 'Return'
           DataBinding.FieldName = 'stok_return'
+          Options.Editing = False
         end
-        object dt__mutasi_barangstok_sales: TcxGridDBColumn
+        object t_sales: TcxGridDBColumn
           Caption = 'Sales'
           DataBinding.FieldName = 'stok_sales'
+          Options.Editing = False
         end
-        object dt__mutasi_barangstok_koreksi: TcxGridDBColumn
+        object t_return_jual: TcxGridDBColumn
+          Caption = 'Return Jual'
+          DataBinding.FieldName = 'stok_return_jual'
+          Options.Editing = False
+        end
+        object t_kirim: TcxGridDBColumn
+          Caption = 'Kirim'
+          DataBinding.FieldName = 'stok_kirim'
+          Options.Editing = False
+        end
+        object t_return_kirim: TcxGridDBColumn
+          Caption = 'Return Kirim'
+          DataBinding.FieldName = 'stok_return_kirim'
+          Options.Editing = False
+        end
+        object t_koreksi: TcxGridDBColumn
           Caption = 'Koreksi'
           DataBinding.FieldName = 'stok_koreksi'
+          Options.Editing = False
         end
-        object dt__mutasi_barangstok_ahir: TcxGridDBColumn
+        object t_ahir: TcxGridDBColumn
           Caption = 'Ahir'
           DataBinding.FieldName = 'stok_ahir'
+          Options.Editing = False
         end
       end
       object t_mutasi_harga: TcxGridDBTableView
@@ -223,6 +245,7 @@ object F_barang_property: TF_barang_property
         object dt__mutasi_hargatgl: TcxGridDBColumn
           Caption = 'Tgl'
           DataBinding.FieldName = 'tgl'
+          Options.Editing = False
         end
         object dt__mutasi_hargauang_awal: TcxGridDBColumn
           Caption = 'Awal'
@@ -230,6 +253,7 @@ object F_barang_property: TF_barang_property
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
           Properties.EditFormat = '###,###,##0;(###,###,##0);0'
+          Options.Editing = False
         end
         object dt__mutasi_hargauang_receipt: TcxGridDBColumn
           Caption = 'Receipt'
@@ -237,6 +261,7 @@ object F_barang_property: TF_barang_property
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
           Properties.EditFormat = '###,###,##0;(###,###,##0);0'
+          Options.Editing = False
         end
         object dt__mutasi_hargauang_return: TcxGridDBColumn
           Caption = 'Return'
@@ -244,6 +269,7 @@ object F_barang_property: TF_barang_property
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
           Properties.EditFormat = '###,###,##0;(###,###,##0);0'
+          Options.Editing = False
         end
         object dt__mutasi_hargauang_sales: TcxGridDBColumn
           Caption = 'Sales'
@@ -251,6 +277,31 @@ object F_barang_property: TF_barang_property
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
           Properties.EditFormat = '###,###,##0;(###,###,##0);0'
+          Options.Editing = False
+        end
+        object t_mutasi_return_jual: TcxGridDBColumn
+          Caption = 'Return Jual'
+          DataBinding.FieldName = 'uang_return_jual'
+          PropertiesClassName = 'TcxCurrencyEditProperties'
+          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
+          Properties.EditFormat = '###,###,##0;(###,###,##0);0'
+          Options.Editing = False
+        end
+        object t_mutasi_kirim: TcxGridDBColumn
+          Caption = 'Kirim'
+          DataBinding.FieldName = 'uang_kirim'
+          PropertiesClassName = 'TcxCurrencyEditProperties'
+          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
+          Properties.EditFormat = '###,###,##0;(###,###,##0);0'
+          Options.Editing = False
+        end
+        object t_mutasi_return_kirim: TcxGridDBColumn
+          Caption = 'Return Kirim'
+          DataBinding.FieldName = 'uang_return_kirim'
+          PropertiesClassName = 'TcxCurrencyEditProperties'
+          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
+          Properties.EditFormat = '###,###,##0;(###,###,##0);0'
+          Options.Editing = False
         end
         object dt__mutasi_hargauang_koreksi: TcxGridDBColumn
           Caption = 'Koreksi'
@@ -258,6 +309,7 @@ object F_barang_property: TF_barang_property
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
           Properties.EditFormat = '###,###,##0;(###,###,##0);0'
+          Options.Editing = False
         end
         object dt__mutasi_hargauang_ahir: TcxGridDBColumn
           Caption = 'Ahir'
@@ -265,6 +317,7 @@ object F_barang_property: TF_barang_property
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
           Properties.EditFormat = '###,###,##0;(###,###,##0);0'
+          Options.Editing = False
         end
       end
       object l_data_plano: TcxGridLevel
@@ -285,7 +338,7 @@ object F_barang_property: TF_barang_property
       end
     end
     object cb_periode: TsComboBox
-      Left = 344
+      Left = 616
       Top = 20
       Width = 137
       Height = 22
@@ -312,6 +365,22 @@ object F_barang_property: TF_barang_property
       TabOrder = 1
       OnChange = cb_periodeChange
     end
+  end
+  object p_barang: TsPanel
+    Left = 0
+    Top = 0
+    Width = 760
+    Height = 65
+    Align = alTop
+    Alignment = taLeftJustify
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -27
+    Font.Name = 'arial'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+    SkinData.SkinSection = 'PANEL'
   end
   object ds_mutasi: TDataSource
     DataSet = Q_mutasi
@@ -346,5 +415,10 @@ object F_barang_property: TF_barang_property
       '')
     Left = 8
     Top = 168
+  end
+  object Q_temp: TmySQLQuery
+    Database = dm.My_conn
+    Left = 8
+    Top = 72
   end
 end

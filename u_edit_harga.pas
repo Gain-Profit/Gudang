@@ -45,8 +45,6 @@ type
     procedure T(Sender: TObject);
     procedure Ed_CariKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure db_barangKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure t_dataCellDblClick(Sender: TcxCustomGridTableView;
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
@@ -137,13 +135,6 @@ begin
   grid.SetFocus;
   ed_cari.SetFocus;
 end;
-end;
-
-procedure TF_Edit_Harga.db_barangKeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
-begin
-if (key=vk_up) and (dm.Q_Show.RecNo=1) then
-ed_cari.SetFocus;
 end;
 
 procedure TF_Edit_Harga.FormClose(Sender: TObject;

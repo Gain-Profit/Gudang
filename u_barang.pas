@@ -110,7 +110,7 @@ end;
 
 procedure TF_barang.WmAfterShow(var Msg: TMessage);
 begin
-fungsi.SQLExecT(dm.Q_Show,'SELECT kd_perusahaan,kd_barang,n_barang,kd_jenis, '+
+fungsi.SQLExecT(dm.Q_barang,'SELECT kd_perusahaan,kd_barang,n_barang,kd_jenis, '+
 'kd_kategori,kd_golbrg,kd_merk,kd_sat1,kd_sat2,kd_sat3,barcode3,minstok,maxstok, '+
 'leadtime,aktif,minor,barcode1,barcode2,Qty1,Qty2,N_golbrg,N_merk,N_Jenis, '+
 'n_kategori,stok_OH,hpp_aktif,hpp_ahir,tot_HPP '+
@@ -173,20 +173,20 @@ if MessageDlg('Yakinkah, akan menghapus data ini?...', mtConfirmation, [mbYes, m
 begin
 dm.My_conn.StartTransaction;
 try
-fungsi.SQLExec(dm.Q_Exe,'delete from tb_barang where kd_perusahaan="'+dm.Q_Show.fieldbyname('kd_perusahaan').AsString+'" and kd_barang="'+
-dm.Q_Show.fieldbyname('kd_barang').AsString+'" ',false);
+fungsi.SQLExec(dm.Q_Exe,'delete from tb_barang where kd_perusahaan="'+dm.Q_barang.fieldbyname('kd_perusahaan').AsString+'" and kd_barang="'+
+dm.Q_barang.fieldbyname('kd_barang').AsString+'" ',false);
 
-fungsi.SQLExec(dm.Q_Exe,'delete from tb_mutasi where kd_perusahaan="'+dm.Q_Show.fieldbyname('kd_perusahaan').AsString+'" and kd_barang="'+
-dm.Q_Show.fieldbyname('kd_barang').AsString+'" ',false);
+fungsi.SQLExec(dm.Q_Exe,'delete from tb_mutasi where kd_perusahaan="'+dm.Q_barang.fieldbyname('kd_perusahaan').AsString+'" and kd_barang="'+
+dm.Q_barang.fieldbyname('kd_barang').AsString+'" ',false);
 
-fungsi.SQLExec(dm.Q_Exe,'delete from tb_barang_harga where kd_perusahaan="'+dm.Q_Show.fieldbyname('kd_perusahaan').AsString+'" and kd_barang="'+
-dm.Q_Show.fieldbyname('kd_barang').AsString+'" ',false);
+fungsi.SQLExec(dm.Q_Exe,'delete from tb_barang_harga where kd_perusahaan="'+dm.Q_barang.fieldbyname('kd_perusahaan').AsString+'" and kd_barang="'+
+dm.Q_barang.fieldbyname('kd_barang').AsString+'" ',false);
 
-fungsi.SQLExec(dm.Q_Exe,'delete from tb_barang_supp where kd_perusahaan="'+dm.Q_Show.fieldbyname('kd_perusahaan').AsString+'" and kd_barang="'+
-dm.Q_Show.fieldbyname('kd_barang').AsString+'" ',false);
+fungsi.SQLExec(dm.Q_Exe,'delete from tb_barang_supp where kd_perusahaan="'+dm.Q_barang.fieldbyname('kd_perusahaan').AsString+'" and kd_barang="'+
+dm.Q_barang.fieldbyname('kd_barang').AsString+'" ',false);
 
-fungsi.SQLExec(dm.Q_Exe,'delete from tb_planogram where kd_perusahaan="'+dm.Q_Show.fieldbyname('kd_perusahaan').AsString+'" and kd_barang="'+
-dm.Q_Show.fieldbyname('kd_barang').AsString+'" ',false);
+fungsi.SQLExec(dm.Q_Exe,'delete from tb_planogram where kd_perusahaan="'+dm.Q_barang.fieldbyname('kd_perusahaan').AsString+'" and kd_barang="'+
+dm.Q_barang.fieldbyname('kd_barang').AsString+'" ',false);
 
 sb_2Click(Sender);
 dm.My_conn.Commit;
@@ -220,7 +220,7 @@ if key=vk_down then grid.SetFocus;
 if key=vk_return then
 begin
 PeekMessage(Mgs, 0, WM_CHAR, WM_CHAR, PM_REMOVE );
-fungsi.SQLExec(dm.Q_Show,'SELECT kd_perusahaan,kd_barang,n_barang,kd_jenis, '+
+fungsi.SQLExec(dm.Q_barang,'SELECT kd_perusahaan,kd_barang,n_barang,kd_jenis, '+
 'kd_kategori,kd_golbrg,kd_merk,kd_sat1,kd_sat2,kd_sat3,barcode3,minstok,maxstok, '+
 'leadtime,aktif,minor,barcode1,barcode2,Qty1,Qty2,N_golbrg,N_merk,N_Jenis,n_kategori,stok_OH '+
 'from vw_daftar_barang where (kd_barang like "%'+
