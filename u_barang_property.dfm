@@ -324,6 +324,7 @@ object F_barang_property: TF_barang_property
     Top = 56
   end
   object q_supp: TmySQLQuery
+    Database = dm.My_conn
     Filtered = True
     Left = 8
     Top = 112
@@ -339,6 +340,7 @@ object F_barang_property: TF_barang_property
     Top = 168
   end
   object Q_plano: TmySQLQuery
+    Database = dm.My_conn
     RequestLive = True
     SQL.Strings = (
       '')
