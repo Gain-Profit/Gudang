@@ -14,41 +14,22 @@ uses
 
 type
   TF_toko = class(TForm)
-    pc_toko: TsPageControl;
-    ts_margin: TsTabSheet;
-    sLabel1: TsLabel;
-    sStickyLabel1: TsStickyLabel;
-    sStickyLabel2: TsStickyLabel;
-    DBGrid3: TDBGrid;
-    DBGrid4: TDBGrid;
-    b_cetak: TsButton;
-    ts_mutasi: TsTabSheet;
-    sLabel10: TsLabel;
-    sStickyLabel3: TsStickyLabel;
-    sStickyLabel4: TsStickyLabel;
-    DBGrid1: TDBGrid;
-    DBGrid2: TDBGrid;
-    sButton1: TsButton;
-    sTabSheet1: TsTabSheet;
-    sLabel3: TsLabel;
     sButton2: TsButton;
-    grid_data: TcxGridDBTableView;
-    g_Grid1Level1: TcxGridLevel;
-    g_stok: TcxGrid;
-    clmn_stokGrid1DBTableView1Column1: TcxGridDBColumn;
-    clmn_stokGrid1DBTableView1Column2: TcxGridDBColumn;
-    clmn_stokGrid1DBTableView1Column3: TcxGridDBColumn;
-    clmn_stokGrid1DBTableView1Column4: TcxGridDBColumn;
     cb_periode: TsComboBox;
-    b_benarkan_mutasi: TsButton;
+    btnMutasi: TsButton;
     de_mutasi: TsDateEdit;
-    procedure FormShow(Sender: TObject);
-    procedure b_cetakClick(Sender: TObject);
-    procedure sButton1Click(Sender: TObject);
+    b_benarkan_mutasi: TsButton;
+    btnGross: TsButton;
+    lbl1: TsLabel;
+    btnMutasiHarga: TsButton;
+    lbl2: TsLabel;
+    procedure btnGrossClick(Sender: TObject);
+    procedure btnMutasiClick(Sender: TObject);
     procedure sButton2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure cb_periodeChange(Sender: TObject);
     procedure b_benarkan_mutasiClick(Sender: TObject);
+    procedure cb_periodeChange(Sender: TObject);
+    procedure cekPeriode;
   private
     { Private declarations }
   public
@@ -58,6 +39,7 @@ type
 var
   F_toko: TF_toko;
   fungsi: TFungsi;
+  periode,bulan,tahun : string;
 
 implementation
 
@@ -65,32 +47,22 @@ uses u_dm, u_utama;
 
 {$R *.dfm}
 
-procedure TF_toko.FormShow(Sender: TObject);
+procedure TF_toko.btnGrossClick(Sender: TObject);
 begin
-pc_toko.ActivePage:= ts_margin;
-fungsi.SQLExecT(dm.Q_gross,'select * from vw_gross_margin where periode="'+
-cb_periode.Text+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
-fungsi.SQLExecT(dm.Q_mutasi,'select * from vw_mutasi_toko where periode="'+
-cb_periode.Text+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
-fungsi.SQLExecT(dm.q_stock_out,'select * from vw_stok_out where kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
-//dm.Q_mutasi.RecNo:=dm.Q_mutasi.RecordCount;
-//dm.Q_gross.RecNo:= dm.Q_Gross.RecordCount;
-//grid_data.DataController.FocusedRowIndex:=1;
-end;
-
-procedure TF_toko.b_cetakClick(Sender: TObject);
-begin
-fungsi.SQLExec(dm.Q_laporan,'select * from vw_gross_margin where periode="'+
-cb_periode.Text+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
+fungsi.SQLExec(dm.Q_laporan,'select * from tb_gross_margin where MONTH(tanggal)="'+
+bulan+'" and YEAR(tanggal)="'+tahun+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
 dm.laporan.LoadFromFile(dm.WPath + 'laporan\gp_gross.fr3');
 dm.laporan.ShowReport;
 end;
 
-procedure TF_toko.sButton1Click(Sender: TObject);
+procedure TF_toko.btnMutasiClick(Sender: TObject);
 begin
-fungsi.SQLExec(dm.Q_laporan,'select * from vw_mutasi_toko where periode="'+
-cb_periode.Text+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
-dm.laporan.LoadFromFile(dm.WPath + 'laporan\gp_mutasi_tgl.fr3');
+fungsi.SQLExec(dm.Q_laporan,'select * from tb_mutasi_bulan where MONTH(tgl)="'+
+bulan+'" and YEAR(tgl)="'+tahun+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
+if TsButton(Sender).Name = 'btnMutasi' then
+dm.laporan.LoadFromFile(dm.WPath + 'laporan\gp_mutasi_global_stok.fr3') else
+dm.laporan.LoadFromFile(dm.WPath + 'laporan\gp_mutasi_global_uang.fr3');
+
 dm.laporan.ShowReport;
 end;
 
@@ -115,17 +87,8 @@ for x:= 1 to dm.Q_temp.RecordCount do
     dm.Q_temp.Next;
   end;
 
-cb_periode.ItemIndex:= cb_periode.IndexOf(dm.Q_temp.fieldbyname('sekarang').AsString);
-end;
-
-procedure TF_toko.cb_periodeChange(Sender: TObject);
-begin
-fungsi.SQLExec(dm.Q_gross,'select * from vw_gross_margin where periode="'+
-cb_periode.Text+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
-fungsi.SQLExec(dm.Q_mutasi,'select * from vw_mutasi_toko where periode="'+
-cb_periode.Text+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
-dm.Q_mutasi.RecNo:=dm.Q_mutasi.RecordCount;
-dm.Q_gross.RecNo:= dm.Q_Gross.RecordCount;
+cb_periode.ItemIndex:= cb_periode.Items.Count-1;
+cekPeriode;
 end;
 
 procedure TF_toko.b_benarkan_mutasiClick(Sender: TObject);
@@ -145,6 +108,18 @@ dm.My_Conn.Rollback;
 messagedlg('proses penyimpanan gagal,ulangi lagi!!! '#10#13'' + e.Message, mterror, [mbOk],0);
 end;
 end;
+end;
+
+procedure TF_toko.cb_periodeChange(Sender: TObject);
+begin
+cekPeriode;
+end;
+
+procedure TF_toko.cekPeriode;
+begin
+  periode:= cb_periode.Text;
+  bulan:= Copy(periode,6,2);
+  tahun:= Copy(periode,1,4);
 end;
 
 end.
