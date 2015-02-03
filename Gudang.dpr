@@ -1,11 +1,6 @@
 program Gudang;
 
 uses
-  madExcept,
-  madLinkDisAsm,
-  madListHardware,
-  madListProcesses,
-  madListModules,
   Forms,
   u_edit_harga in 'u_edit_harga.pas' {F_Edit_Harga},
   u_dm in 'u_dm.pas' {dm: TDataModule},

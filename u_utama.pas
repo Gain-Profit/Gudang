@@ -51,7 +51,6 @@ type
     Action1: TAction;
     ac_lap: TAction;
     Timer1: TTimer;
-    MadExceptionHandler1: TMadExceptionHandler;
     HidePanelControl1: TMenuItem;
     UbahSkin1: TMenuItem;
     N1: TMenuItem;
@@ -143,13 +142,20 @@ type
     utup1: TMenuItem;
     N3: TMenuItem;
     N5: TMenuItem;
-    ac_kembang: TAction;
-    sb_kembang: TsSpeedButton;
+    ac_realcard: TAction;
     Q_time: TmySQLQuery;
     SbubahPassword: TsSpeedButton;
     mniN6: TMenuItem;
     mniCekUpdateProgram1: TMenuItem;
     ac_cekUpdate: TAction;
+    sb_kembang: TsSpeedButton;
+    ReturnKirim1: TMenuItem;
+    RealCard1: TMenuItem;
+    DaftarReturnKirim1: TMenuItem;
+    DaftarPenjualan1: TMenuItem;
+    DaftarStokOpnameSO1: TMenuItem;
+    ac_list_return_jual: TAction;
+    btnRetunJual: TsSpeedButton;
     procedure ac_barangExecute(Sender: TObject);
     procedure ac_hargaExecute(Sender: TObject);
     procedure ac_receiptExecute(Sender: TObject);
@@ -197,10 +203,11 @@ type
     procedure ac_return_kirimExecute(Sender: TObject);
     procedure ac_list_return_kirimExecute(Sender: TObject);
     procedure panel_auto_width;
-    procedure ac_kembangExecute(Sender: TObject);
+    procedure ac_realcardExecute(Sender: TObject);
     procedure SbubahPasswordClick(Sender: TObject);
     procedure ac_cekUpdateExecute(Sender: TObject);
     procedure cek_update();
+    procedure ac_list_return_jualExecute(Sender: TObject);
   private
     procedure WmAfterShow(var Msg: TMessage); message WM_AFTER_SHOW;
     { Private declarations }
@@ -678,8 +685,8 @@ end;
 
 procedure Tf_utama.ac_lapExecute(Sender: TObject);
 begin
-application.CreateForm(TF_lap,F_lap);
-f_lap.ShowModal;
+Application.CreateForm(TF_toko,F_toko);
+F_toko.ShowModal;
 end;
 
 procedure Tf_utama.Timer1Timer(Sender: TObject);
@@ -1105,11 +1112,10 @@ begin
  end;
 end;
 
-procedure Tf_utama.ac_kembangExecute(Sender: TObject);
+procedure Tf_utama.ac_realcardExecute(Sender: TObject);
 begin
-//melihat perkembangan toko
-Application.CreateForm(TF_toko,F_toko);
-F_toko.ShowModal;
+application.CreateForm(TF_lap,F_lap);
+f_lap.ShowModal;
 end;
 
 function Tf_utama.HakAkses(kunci: string): Boolean;
@@ -1224,6 +1230,11 @@ begin
     raise Exception.Create('Unable to initialize Wininet');
 end;
 
+
+procedure Tf_utama.ac_list_return_jualExecute(Sender: TObject);
+begin
+ShowMessage('UNDER CONSTRUCTIONS');
+end;
 
 end.
 
