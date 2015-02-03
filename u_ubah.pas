@@ -7,7 +7,7 @@ uses
   Dialogs, sSkinProvider, StdCtrls, sEdit, sLabel, Mask, sMaskEdit,
   sCustomComboEdit, sCurrEdit, sCurrencyEdit, ComCtrls, sStatusBar,
   ExtCtrls, DBCtrls,u_fungsi, Buttons, sBitBtn, sComboBox, sTooledit,
-  sCheckBox, cxControls, cxDBNavigator, AdvAlertWindow, sGroupBox, sButton,DateUtils;
+  sCheckBox, cxControls, cxDBNavigator, sGroupBox, sButton,DateUtils;
 
 type
   TF_ubah_harga = class(TForm)
@@ -39,7 +39,6 @@ type
     cb_macam: TsComboBox;
     sLabel7: TsLabel;
     b_update: TsBitBtn;
-    alert: TAdvAlertWindow;
     g_1: TsGroupBox;
     de_awal: TsDateEdit;
     l_1: TsLabel;
@@ -61,7 +60,6 @@ type
     l_8: TsLabel;
     l_9: TsLabel;
     sButton1: TsButton;
-    procedure tampil_gambar(alert:TAdvAlertWindow;kode:string;A_hide:Boolean);
     procedure FormShow(Sender: TObject);
     procedure ubah;
     procedure btn_simpanClick(Sender: TObject);
@@ -112,20 +110,6 @@ ed_harga2New.Value :=  ed_harga2.Value - (ed_discRp.Value*ed_qty2.Value);
 ed_harga1New.Value :=  ed_harga1.Value - (ed_discRp.Value*ed_qty2.Value*ed_qty1.Value);
 end;
 
-procedure TF_ubah_harga.tampil_gambar(alert:TAdvAlertWindow;kode:string;A_hide:Boolean);
-begin
-   if alert.IsVisible then alert.Hide;
-
-   if FileExists(ExtractFilePath(Application.ExeName)+'image\'+kode+'.jpg') then
-    begin
-       alert.Background.LoadFromFile(ExtractFilePath(Application.ExeName)+'image\'+kode+'.jpg');
-//       alert.AlertMessages[0].Text.Clear;
-//       alert.WindowPosition:=wpRightBottom;
-//       alert.AutoHide:= A_hide;
-       alert.Show;
-    end;
-end;
-
 procedure TF_ubah_harga.ubah;
 var sat1,sat2,sat3:string;
 begin
@@ -174,7 +158,6 @@ harga_baru;
 
 sb.SimpleText:= 'Updated at: '+dm.Q_harga.FieldByName('update').AsString+' by: '+dm.Q_harga.FieldByName('kode_user').AsString+'';
 
-tampil_gambar(alert,ed_plu.Text,False);
 end;
 
 
@@ -339,7 +322,6 @@ end;
 procedure TF_ubah_harga.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-alert.CloseAlert;
 Action:=caFree;
 F_ubah_harga:=nil;
 end;

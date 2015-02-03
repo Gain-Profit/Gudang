@@ -703,7 +703,7 @@ object F_barang_det: TF_barang_det
     object cb_aktif: TsCheckBox
       Left = 305
       Top = 34
-      Width = 115
+      Width = 114
       Height = 36
       Caption = 'AKTI&F'
       Font.Charset = DEFAULT_CHARSET
@@ -870,22 +870,6 @@ object F_barang_det: TF_barang_det
     OnClick = b_autoClick
     SkinData.SkinSection = 'BUTTON'
   end
-  object b_load: TsButton
-    Left = 8
-    Top = 432
-    Width = 97
-    Height = 25
-    Caption = '&Load Image'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'Rockwell'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 12
-    OnClick = b_loadClick
-    SkinData.SkinSection = 'BUTTON'
-  end
   object sSkinProvider1: TsSkinProvider
     AddedTitle.Font.Charset = DEFAULT_CHARSET
     AddedTitle.Font.Color = clNone
@@ -895,65 +879,6 @@ object F_barang_det: TF_barang_det
     SkinData.SkinSection = 'FORM'
     TitleButtons = <>
     Left = 392
-  end
-  object opd: TOpenPictureDialog
-    DefaultExt = '.jpg'
-    Filter = 'JPEG Image File (*.jpg)|*.jpg|JPEG Image File (*.jpeg)|*.jpeg'
-    Left = 128
-    Top = 408
-  end
-  object alert: TAdvAlertWindow
-    AlertMessages = <
-      item
-        Text.Strings = (
-          '         ')
-        ImageIndex = 0
-        Tag = 0
-      end>
-    AlwaysOnTop = True
-    AutoHide = True
-    AutoSize = False
-    AutoDelete = False
-    BorderColor = 6050636
-    BtnHoverColor = 14483455
-    BtnHoverColorTo = 6013175
-    BtnDownColor = 557032
-    BtnDownColorTo = 8182519
-    CaptionColor = 15921648
-    CaptionColorTo = 13222589
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'MS Sans Serif'
-    Font.Style = []
-    GradientDirection = gdVertical
-    HintNextBtn = 'Next'
-    HintPrevBtn = 'Previous'
-    HintCloseBtn = 'Close'
-    HintDeleteBtn = 'Delete'
-    HintPopupBtn = 'Popup'
-    Hover = True
-    MarginX = 50
-    MarginY = 50
-    PopupLeft = 1
-    PopupTop = 1
-    PopupWidth = 300
-    PopupHeight = 300
-    PositionFormat = '%d of %d'
-    WindowColor = 15855846
-    WindowColorTo = 13024437
-    ShowScrollers = False
-    ShowDelete = False
-    ShowPopup = False
-    AlphaEnd = 255
-    AlphaStart = 255
-    DisplayTime = 5000
-    FadeStep = 5
-    WindowPosition = wpRightBottom
-    Style = asOffice2007Obsidian
-    Version = '1.8.0.0'
-    Left = 40
-    Top = 8
   end
   object t_load: TTimer
     Enabled = False

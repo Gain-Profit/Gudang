@@ -7,7 +7,7 @@ uses
   Dialogs, ExtCtrls, DBCtrls, StdCtrls, sLabel, sGroupBox, sEdit, U_fungsi,
   Buttons, sSpeedButton, Mask, sMaskEdit, sCustomComboEdit,
   sCurrEdit, sCurrencyEdit, sButton, sCheckBox, Grids, DBGrids,
-  sSkinProvider, ExtDlgs, sDialogs,jpeg, AdvAlertWindow, cxStyles,
+  sSkinProvider, ExtDlgs, sDialogs,jpeg, cxStyles,
   cxCustomData, cxGraphics, cxFilter, cxData, cxDataStorage, cxEdit, DB,
   cxDBData, cxGridLevel, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxClasses, cxControls, cxGridCustomView, cxGrid,
@@ -60,12 +60,8 @@ type
     b_save: TsButton;
     b_auto: TsButton;
     sSkinProvider1: TsSkinProvider;
-    b_load: TsButton;
     cb_aktif: TsCheckBox;
-    opd: TOpenPictureDialog;
-    alert: TAdvAlertWindow;
     t_load: TTimer;
-    procedure tampil_gambar(alert:TAdvAlertWindow;kode:string;A_hide:Boolean);
     procedure baru;
     procedure tampil;
     procedure duplikat;
@@ -81,7 +77,6 @@ type
       Shift: TShiftState);
     procedure ed_bar1Change(Sender: TObject);
     procedure ed_bar1Exit(Sender: TObject);
-    procedure b_loadClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure t_loadTimer(Sender: TObject);
@@ -107,27 +102,11 @@ uses u_dm, u_cari, u_utama;
 
 {$R *.dfm}
 
-procedure TF_barang_det.tampil_gambar(alert:TAdvAlertWindow;kode:string;A_hide:Boolean);
-begin
-   if alert.IsVisible then alert.Hide;
-
-   if FileExists(ExtractFilePath(Application.ExeName)+'image\'+kode+'.jpg') then
-    begin
-       alert.Background.LoadFromFile(ExtractFilePath(Application.ExeName)+'image\'+kode+'.jpg');
-//       alert.AlertMessages[0].Text.Clear;
-//       alert.WindowPosition:=wpRightBottom;
-//       alert.AutoHide:= A_hide;
-       alert.Show;
-    end;
-end;
-
-
 procedure TF_barang_det.baru;
 begin
 ed_pid.ReadOnly:= False;
 
 b_auto.Enabled:=true;
-b_load.Visible:=False;
 
 ed_pid.Clear;
 ed_nama.Clear;
@@ -170,13 +149,11 @@ status_simpan:= false;
 
 ed_pid.ReadOnly:= True;
 b_auto.Enabled:=false;
-b_load.Visible:=true;
 
 
 ed_pid.Text:= dm.Q_barang.FieldByName('kd_barang').AsString;
 ed_nama.Text:= dm.Q_barang.FieldByName('n_barang').AsString;
 
-tampil_gambar(alert,ed_pid.Text,False);
 
 t_load.Enabled := True;
 
@@ -188,7 +165,6 @@ begin
 status_simpan:= True;
 
 b_auto.Enabled:=True;
-b_load.Visible:=False;
 
 ed_pid.Clear;
 ed_nama.Clear;
@@ -510,41 +486,9 @@ if ed_bar2.Text='' then ed_bar2.Color:= clwhite;
 if ed_bar3.Text='' then ed_bar3.Color:= clwhite;
 end;
 
-procedure TF_barang_det.b_loadClick(Sender: TObject);
-var   foto,Msg: string;
-      NewFile: TFileStream;
-      OldFile: TFileStream;
-begin
-if ed_pid.Text='' then
-  begin
-    ShowMessage('PID harus di isi terlebih dahulu...');
-    Exit;
-  end;
-
-  if opd.Execute then
-    begin
-      foto:= dm.WPath+'image\'+ed_pid.Text+'.jpg';
-
-      Msg := Format('Copy %s to %s?', [opd.FileName, foto]);
-      OldFile := TFileStream.Create(opd.FileName, fmOpenRead or fmShareDenyWrite);
-      try
-        NewFile := TFileStream.Create(foto, fmCreate or fmShareDenyRead);
-        try
-          NewFile.CopyFrom(OldFile, OldFile.Size);
-        finally
-          FreeAndNil(NewFile);
-        end;
-      finally
-      FreeAndNil(OldFile);
-      end;
-      tampil_gambar(alert,ed_pid.Text,False);
-    end;
-end;
-
 procedure TF_barang_det.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-alert.CloseAlert;
 Action:=caFree;
 F_barang_det:=nil;
 end;
