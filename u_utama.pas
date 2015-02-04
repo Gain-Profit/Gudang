@@ -244,7 +244,8 @@ uses u_barang, u_edit_harga, u_return, u_cari, u_dm, u_purchase,
   u_barang_supp, u_planogram,u_list_purchase, u_list_receipt,
   u_list_return, U_Login,acselectskin, u_lap, u_RO, U_kirim, u_list_kirim,
   u_kirim_data, u_list_sales, u_list_SO, u_return_kirim,
-  u_list_return_kirim, U_toko, u_hari, u_emp, u_ubahPassword;//, u_koneksi;
+  u_list_return_kirim, U_toko, u_hari, u_emp, u_ubahPassword,
+  u_list_return_jual;//, u_koneksi;
 
 {$R *.dfm}
 
@@ -1233,7 +1234,10 @@ end;
 
 procedure Tf_utama.ac_list_return_jualExecute(Sender: TObject);
 begin
-ShowMessage('UNDER CONSTRUCTIONS');
+if f_list_return_jual = nil then
+application.CreateForm(Tf_list_return_jual, f_list_return_jual);
+
+f_list_return_jual.Show;
 end;
 
 end.

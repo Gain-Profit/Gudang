@@ -21060,4 +21060,16 @@ object dm: Tdm
     Left = 8
     Top = 136
   end
+  object ds_list_return_jual: TDataSource
+    DataSet = Q_list_return_jual
+    Left = 224
+    Top = 424
+  end
+  object Q_list_return_jual: TmySQLQuery
+    Database = My_conn
+    SQL.Strings = (
+      '')
+    Left = 136
+    Top = 424
+  end
 end

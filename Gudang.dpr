@@ -39,7 +39,8 @@ uses
   U_toko in 'U_toko.pas' {F_toko},
   u_hari in 'u_hari.pas' {f_hari},
   u_barang_property in 'u_barang_property.pas' {F_barang_property},
-  u_ubahPassword in 'u_ubahPassword.pas' {F_ubahPassword};
+  u_ubahPassword in 'u_ubahPassword.pas' {F_ubahPassword},
+  u_list_return_jual in 'u_list_return_jual.pas' {f_list_return_jual};
 
 {$R *.res}
 
