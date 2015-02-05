@@ -276,7 +276,7 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
-          ImageIndex = 10
+          ImageIndex = 12
           Images = dm.image
           Reflected = True
         end

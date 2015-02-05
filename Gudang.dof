@@ -145,10 +145,10 @@ RootDir=
 [Version Info]
 IncludeVerInfo=1
 AutoIncBuild=0
-MajorVer=2
-MinorVer=8
+MajorVer=3
+MinorVer=0
 Release=1
-Build=1
+Build=0
 Debug=0
 PreRelease=0
 Special=0
@@ -159,7 +159,7 @@ CodePage=1252
 [Version Info Keys]
 CompanyName=CeBe Soft
 FileDescription=Central of Profit
-FileVersion=2.8.1.1
+FileVersion=3.0.1.0
 InternalName=
 LegalCopyright=
 LegalTrademarks=

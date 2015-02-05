@@ -1137,8 +1137,8 @@ begin
   URLcek      := dm.Q_temp.FieldByName('URLcek').AsString;
   URLdownload := dm.Q_temp.FieldByName('URLdownload').AsString;
 
-  WinExec(PAnsiChar('tools/cekVersi.exe '+fungsi.program_versi+' '+
-  URLcek +' '+ URLdownload +' Gudang'),SW_SHOWNOACTIVATE);
+  WinExec(PAnsiChar('tools/cekVersi.exe '+
+  fungsi.program_versi+' gudang'),SW_SHOWNOACTIVATE);
 end;
 
 end.
