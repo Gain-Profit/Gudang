@@ -1131,12 +1131,7 @@ f_list_return_jual.Show;
 end;
 
 procedure Tf_utama.cek_update;
-var Appterbaru,URLcek,URLdownload: string;
 begin
-  fungsi.SQLExec(dm.Q_temp,'select * from app_versi where kode = "gudang"',True);
-  URLcek      := dm.Q_temp.FieldByName('URLcek').AsString;
-  URLdownload := dm.Q_temp.FieldByName('URLdownload').AsString;
-
   WinExec(PAnsiChar('tools/cekVersi.exe '+
   fungsi.program_versi+' gudang'),SW_SHOWNOACTIVATE);
 end;
