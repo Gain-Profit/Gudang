@@ -184,6 +184,7 @@ if SelectDirectory('Pilih Folder', ExtractFileDrive(dm.WPath), tempat) then
           Writeln(F, dm.Q_temp.FieldByName('qty_return_kirim').AsString);
           Writeln(F, floattostr(tot));
           Writeln(F, dm.Q_temp.fieldbyname('harga_pokok').AsString);
+          Writeln(F, dm.Q_temp.fieldbyname('barcode').AsString);
 
           dm.Q_temp.Next;
         end;

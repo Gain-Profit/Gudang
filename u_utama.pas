@@ -7,11 +7,11 @@ uses
   Dialogs, sSkinProvider, ComCtrls, sStatusBar, 
   Menus, ActnList, StdActns, XPStyleActnCtrls, ActnMan,U_fungsi,
   sPageControl, Buttons, sSpeedButton, ExtCtrls, sPanel,inifiles,
-  madExceptVcl,shellapi, StdCtrls, sButton, DB, Grids, DBGrids, sListBox,
+  shellapi, StdCtrls, sButton, DB, Grids, DBGrids, sListBox,
   sMemo, sGauge, sTabControl, cxStyles, cxCustomData, cxGraphics, cxFilter,
   cxData, cxDataStorage, cxEdit, cxDBData, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxControls, cxGridCustomView, sEdit,
-  cxClasses, cxGridLevel, cxGrid, mySQLDbTables;//,IniFiles;
+  cxClasses, cxGridLevel, cxGrid, mySQLDbTables;
 
   const
   WM_AFTER_SHOW = WM_USER + 300; // custom message

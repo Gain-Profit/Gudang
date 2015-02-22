@@ -180,7 +180,8 @@ if SelectDirectory('Pilih Folder', ExtractFileDrive(dm.WPath), tempat) then
           Writeln(F, dm.Q_temp.fieldbyname('n_barang').AsString);
           Writeln(F, dm.Q_temp.FieldByName('qty_kirim').asstring);
           Writeln(F, floattostr(tot));
-          Writeln(F, dm.Q_temp.fieldbyname('harga_pokok').AsFloat);
+          Writeln(F, dm.Q_temp.fieldbyname('harga_pokok').AsString);
+          Writeln(F, dm.Q_temp.fieldbyname('barcode').AsString);
 
           dm.Q_temp.Next;
         end;

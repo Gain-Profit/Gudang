@@ -574,6 +574,7 @@ if od.Execute then
 begin
   try
   fungsi.amankan(od.FileName,od.FileName,159);
+  try
   AssignFile(F, od.FileName);
   Reset(F);
   Readln(F, TmpStr);
@@ -604,7 +605,9 @@ begin
       Readln(F, TmpStr);
       TableView.DataController.SetValue(x, 5, TmpStr);
     end;
+  finally
   CloseFile(F);
+  end;
   tableview.DataController.ChangeFocusedRowIndex(tableview.DataController.RecordCount);
   mm_nama.Text:= tableView.DataController.GetValue(tableview.DataController.RecordCount-1,1);
   ce_harga.Text:= tableView.DataController.GetValue(tableview.DataController.RecordCount-1,3);
