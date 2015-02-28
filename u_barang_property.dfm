@@ -33,8 +33,8 @@ object F_barang_property: TF_barang_property
       Left = 2
       Top = 21
       Width = 756
-      Height = 396
-      Align = alTop
+      Height = 366
+      Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
