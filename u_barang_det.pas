@@ -110,37 +110,9 @@ b_auto.Enabled:=true;
 
 ed_pid.Clear;
 ed_nama.Clear;
-ed_qty1.Value:=1;
-ed_qty2.Value:=1;
-ed_bar1.Clear;
-ed_bar2.Clear;
-ed_bar3.Clear;
-ed_minstok.Clear;
-ed_maxstok.Clear;
-ed_minor.Clear;
-ed_time.Clear;
-
-cb_aktif.Checked:=true;
-ed_jenis.Clear;
-ed_golongan.Clear;
-ed_merk.Clear;
-ed_kategori.Clear;
-
-ed_sat1.Clear;
-ed_sat2.Clear;
-ed_sat3.Clear;
-
-kd_sat[1] :='';
-kd_sat[2] :='';
-kd_sat[3] :='';
-
-//kd_perusahaan:= dm.Q_barang.fieldbyname('kd_perusahaan').AsString;
-kd_jenis :='';
-kd_merk  :='';
-kd_gol   :='';
-kd_tag   :='';
 
 status_simpan:= true;
+Caption:= 'Inventory Barang - Barang Baru';
 end;
 
 procedure TF_barang_det.tampil;
@@ -158,6 +130,7 @@ ed_nama.Text:= dm.Q_barang.FieldByName('n_barang').AsString;
 t_load.Enabled := True;
 
 old_pid:=ed_pid.Text;
+Caption:= 'Inventory Barang - Edit Barang';
 end;
 
 procedure TF_barang_det.duplikat;
@@ -165,6 +138,7 @@ begin
 status_simpan:= True;
 
 b_auto.Enabled:=True;
+Caption:= 'Inventory Barang - Barang Baru';
 
 ed_pid.Clear;
 ed_nama.Clear;
@@ -388,6 +362,8 @@ dm.Q_barang.Open;
 dm.Q_barang.RecNo := posisi;
 
 status_simpan:= false;
+b_auto.Enabled:= False;
+Caption:= 'Inventory Barang - Edit Barang';
 
 dm.My_conn.Commit;
 showmessage('penyimpanan data sukses....');
@@ -500,7 +476,6 @@ urut_berat:=0;
 
  if f_utama.sb.Panels[8].Text='PUSAT' then
  begin
-  b_auto.Enabled:=True;
   ed_nama.Enabled:=True;
   sb_jenis.Enabled:=True;
   sb_gol.Enabled:=True;
