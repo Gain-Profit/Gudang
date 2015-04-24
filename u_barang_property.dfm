@@ -19,7 +19,7 @@ object F_barang_property: TF_barang_property
     Left = 0
     Top = 65
     Width = 760
-    Height = 389
+    Height = 343
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -33,7 +33,7 @@ object F_barang_property: TF_barang_property
       Left = 2
       Top = 21
       Width = 756
-      Height = 366
+      Height = 320
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -381,6 +381,42 @@ object F_barang_property: TF_barang_property
     ParentFont = False
     TabOrder = 1
     SkinData.SkinSection = 'PANEL'
+  end
+  object panelBawah: TsPanel
+    Left = 0
+    Top = 408
+    Width = 760
+    Height = 46
+    Align = alBottom
+    Alignment = taLeftJustify
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 2
+    SkinData.SkinSection = 'PANEL'
+    object btnMutasiHrg: TsButton
+      Left = 528
+      Top = 8
+      Width = 123
+      Height = 25
+      Caption = 'Preview Mutasi'
+      TabOrder = 0
+      OnClick = btnMutasiHrgClick
+      SkinData.SkinSection = 'BUTTON'
+    end
+    object btnClose: TsButton
+      Left = 672
+      Top = 8
+      Width = 75
+      Height = 25
+      Caption = 'Tutup'
+      TabOrder = 1
+      OnClick = btnCloseClick
+      SkinData.SkinSection = 'BUTTON'
+    end
   end
   object ds_mutasi: TDataSource
     DataSet = Q_mutasi

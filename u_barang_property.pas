@@ -63,11 +63,16 @@ type
     t_mutasi_return_kirim: TcxGridDBColumn;
     t_mutasi_return_jual: TcxGridDBColumn;
     p_barang: TsPanel;
+    panelBawah: TsPanel;
+    btnMutasiHrg: TsButton;
+    btnClose: TsButton;
     procedure tampil;
     procedure cb_periodeChange(Sender: TObject);
     procedure t_data_planoKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure refresh_mutasi;
+    procedure btnCloseClick(Sender: TObject);
+    procedure btnMutasiHrgClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -156,5 +161,20 @@ end;
 end;
 end;
 
+
+procedure TF_barang_property.btnCloseClick(Sender: TObject);
+begin
+close;
+end;
+
+procedure TF_barang_property.btnMutasiHrgClick(Sender: TObject);
+begin
+fungsi.SQLExec(dm.Q_laporan,'select * from tb_mutasi WHERE MONTH(tgl)="'+
+    bulan+'" and YEAR(tgl) ="'+tahun+'" and kd_barang="'+pid+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
+dm.laporan.LoadFromFile(dm.WPath+ 'laporan\gp_mutasi_brg.fr3');
+dm.FRMemo(dm.laporan, 'mmPerusahaan').Text := 'LAPORAN MUTASI '+f_utama.sb.Panels[3].Text;
+dm.FRMemo(dm.laporan, 'mmPeriode').Text := 'Periode: '+ tahun +'-'+ bulan;
+dm.laporan.ShowReport;
+end;
 
 end.
