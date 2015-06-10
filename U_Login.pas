@@ -153,6 +153,8 @@ F_utama.sb.Panels[4].Text:=sb.Panels[1].Text;
 
 F_utama.sb.Panels[8].Text:=dm.Q_Show.fieldbyname('ket').AsString;
 
+onServer := dm.Q_Show.fieldbyname('onserver').asstring;
+
 if F_utama.sb.Panels[8].Text='PUSAT' then
 begin
   F_utama.ac_kirim_data.Visible:=False;
@@ -167,6 +169,14 @@ begin
   F_utama.ac_return.Enabled:=True;
   F_utama.ac_purchase.Enabled:=True;
   f_utama.ac_kirim.Enabled:=True;
+
+  fungsi.SQLExec(dm.Q_temp,'select kd_perusahaan from tb_company where ket = "'+sb.Panels[0].Text+'"',true);
+  while not(dm.Q_temp.eof) do
+  begin
+    cabang.add(dm.Q_temp.fieldByName('kd_perusahaan').AsString);
+    dm.Q_temp.next;
+  end;  
+
 end else
 begin
   F_utama.ac_kirim_data.Visible:=True;
@@ -181,6 +191,12 @@ begin
   F_utama.ac_return.Enabled:=False;
   F_utama.ac_purchase.Enabled:=False;
   f_utama.ac_kirim.Enabled:=false;
+
+  if (onServer = 'Y') then
+  begin
+  F_utama.ac_kirim_data.Visible:=False;
+  F_utama.ac_update.Visible:=False;
+  end;
 end;
 
 f_utama.panel_auto_width;
