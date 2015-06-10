@@ -72,6 +72,7 @@ type
     procedure sb_2Click(Sender: TObject);
     procedure sb_1Click(Sender: TObject);
     procedure B_propertyClick(Sender: TObject);
+    procedure HapusBarang(perusahaan:String);
   private
    procedure WmAfterShow(var Msg: TMessage); message WM_AFTER_SHOW;
     { Private declarations }
@@ -168,25 +169,20 @@ f_barang_det.ShowModal;
 end;
 
 procedure TF_barang.b_hapusClick(Sender: TObject);
+var i: Integer;
 begin
 if MessageDlg('Yakinkah, akan menghapus data ini?...', mtConfirmation, [mbYes, mbNo], 0)=mrYes then
 begin
 dm.My_conn.StartTransaction;
 try
-fungsi.SQLExec(dm.Q_Exe,'delete from tb_barang where kd_perusahaan="'+dm.Q_barang.fieldbyname('kd_perusahaan').AsString+'" and kd_barang="'+
-dm.Q_barang.fieldbyname('kd_barang').AsString+'" ',false);
-
-fungsi.SQLExec(dm.Q_Exe,'delete from tb_mutasi where kd_perusahaan="'+dm.Q_barang.fieldbyname('kd_perusahaan').AsString+'" and kd_barang="'+
-dm.Q_barang.fieldbyname('kd_barang').AsString+'" ',false);
-
-fungsi.SQLExec(dm.Q_Exe,'delete from tb_barang_harga where kd_perusahaan="'+dm.Q_barang.fieldbyname('kd_perusahaan').AsString+'" and kd_barang="'+
-dm.Q_barang.fieldbyname('kd_barang').AsString+'" ',false);
-
-fungsi.SQLExec(dm.Q_Exe,'delete from tb_barang_supp where kd_perusahaan="'+dm.Q_barang.fieldbyname('kd_perusahaan').AsString+'" and kd_barang="'+
-dm.Q_barang.fieldbyname('kd_barang').AsString+'" ',false);
-
-fungsi.SQLExec(dm.Q_Exe,'delete from tb_planogram where kd_perusahaan="'+dm.Q_barang.fieldbyname('kd_perusahaan').AsString+'" and kd_barang="'+
-dm.Q_barang.fieldbyname('kd_barang').AsString+'" ',false);
+HapusBarang(dm.Q_barang.fieldbyname('kd_perusahaan').AsString);
+if F_utama.sb.Panels[8].Text='PUSAT' then
+begin
+  for i:=0 to cabang.Count -1 do
+  begin
+    HapusBarang(cabang[i]);
+  end;
+end;
 
 sb_2Click(Sender);
 dm.My_conn.Commit;
@@ -198,6 +194,25 @@ except on e:exception do begin
 end;
 end;
 end;
+
+procedure TF_barang.HapusBarang(perusahaan:string);
+begin
+fungsi.SQLExec(dm.Q_Exe,'delete from tb_barang where kd_perusahaan="'+perusahaan+'" and kd_barang="'+
+dm.Q_barang.fieldbyname('kd_barang').AsString+'" ',false);
+
+fungsi.SQLExec(dm.Q_Exe,'delete from tb_mutasi where kd_perusahaan="'+perusahaan+'" and kd_barang="'+
+dm.Q_barang.fieldbyname('kd_barang').AsString+'" ',false);
+
+fungsi.SQLExec(dm.Q_Exe,'delete from tb_barang_harga where kd_perusahaan="'+perusahaan+'" and kd_barang="'+
+dm.Q_barang.fieldbyname('kd_barang').AsString+'" ',false);
+
+fungsi.SQLExec(dm.Q_Exe,'delete from tb_barang_supp where kd_perusahaan="'+perusahaan+'" and kd_barang="'+
+dm.Q_barang.fieldbyname('kd_barang').AsString+'" ',false);
+
+fungsi.SQLExec(dm.Q_Exe,'delete from tb_planogram where kd_perusahaan="'+perusahaan+'" and kd_barang="'+
+dm.Q_barang.fieldbyname('kd_barang').AsString+'" ',false);
+end;
+  
 procedure TF_barang.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 f_utama.MDIChildDestroyed(Self.Handle);
