@@ -79,6 +79,7 @@ type
     procedure ed_discPExit(Sender: TObject);
     procedure Ed_harga1Exit(Sender: TObject);
     procedure de_ahirExit(Sender: TObject);
+    procedure ubahHarga(perusahaan:string);
   private
     { Private declarations }
   public
@@ -191,33 +192,20 @@ begin
 end;
 
 procedure TF_ubah_harga.btn_simpanClick(Sender: TObject);
-var posisi:integer;
+var posisi,i:integer;
 begin
 posisi:= dm.Q_harga.RecNo;
 
 dm.My_conn.StartTransaction;
 try
-fungsi.SQLExec(dm.q_temp,'select * from tb_barang_harga where kd_perusahaan="'+
-f_utama.sb.Panels[3].Text+'" and kd_barang="'+ed_plu.Text+'" and kd_macam_harga="'+cb_macam.Text+'"',true);
-
-if dm.q_temp.Eof then
-fungsi.SQLExec(dm.Q_Exe,'insert into tb_barang_harga(kd_perusahaan,kd_macam_harga,kd_barang,laba,laba_P,harga_jual1, '+
-'harga_jual2,harga_jual3,kode_user,awal,ahir,`update`,diskon,diskonP) values ("'+
-f_utama.sb.Panels[3].Text+'","'+cb_macam.Text+'","'+ed_plu.Text+'","'+
-ed_marginrp.Text+'","'+caridanganti(ed_marginP.Text,',','.')+'","'+ed_harga1.Text+'","'+
-ed_harga2.Text+'","'+ed_harga3.Text+'","'+f_utama.sb.Panels[0].Text+'","'+
-formatdatetime('yyyy-MM-dd',de_awal.date)+'","'+formatdatetime('yyyy-MM-dd',de_ahir.Date)+'","'+
-formatdatetime('yyyy-MM-dd', date())+'","'+ed_discRp.Text+'","'+caridanganti(ed_discP.Text,',','.')+'")',false) else
-fungsi.SQLExec(dm.Q_Exe,'update tb_barang_harga set laba="'+
-ed_marginRP.Text+'",laba_P="'+caridanganti(ed_marginP.Text,',','.')+'",harga_jual1="'+ed_harga1.Text+'",harga_jual2="'+
-ed_harga2.Text+'",harga_jual3="'+ed_harga3.Text+'",kode_user="'+
-f_utama.sb.Panels[0].Text+'",`update`="'+formatdatetime('yyyy-MM-dd', date())+'",awal="'+formatdatetime('yyyy-MM-dd',de_awal.Date)+'",ahir="'+
-formatdatetime('yyyy-MM-dd',de_ahir.Date)+'",diskon="'+ed_discRp.Text+'",diskonP="'+
-caridanganti(ed_discP.Text,',','.')+'" where kd_barang="'+ed_plu.Text+'" and kd_macam_harga="'+
-cb_macam.Text+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',false);
-
-fungsi.SQLExec(dm.Q_Exe,'update tb_barang set hpp_aktif="'+ed_pokok.Text
-+'",`update` = "'+formatdatetime('yyyy-MM-dd', date())+'" where kd_barang="'+ed_plu.Text+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',false);
+ubahHarga(f_utama.sb.Panels[3].Text);
+if F_utama.sb.Panels[8].Text='PUSAT' then
+begin
+  for i:=0 to cabang.Count -1 do
+  begin
+    ubahHarga(cabang[i]);
+  end;
+end;
 
 dm.Q_harga.Close;
 dm.Q_harga.Open;
@@ -232,6 +220,35 @@ dm.My_Conn.Rollback;
 messagedlg('proses ubah harga gagal '#10#13''+e.Message, mterror, [mbOk],0);
 end;
 end;
+end;
+
+procedure TF_ubah_harga.ubahHarga(perusahaan:string);
+begin
+fungsi.SQLExec(dm.q_temp,'select * from tb_barang_harga where kd_perusahaan="'+
+perusahaan+'" and kd_barang="'+ed_plu.Text+'" and kd_macam_harga="'+cb_macam.Text+'"',true);
+
+if dm.q_temp.Eof then
+begin
+fungsi.SQLExec(dm.Q_Exe,'insert into tb_barang_harga(kd_perusahaan,kd_macam_harga,kd_barang,laba,laba_P,harga_jual1, '+
+'harga_jual2,harga_jual3,kode_user,awal,ahir,`update`,diskon,diskonP) values ("'+
+perusahaan+'","'+cb_macam.Text+'","'+ed_plu.Text+'","'+
+ed_marginrp.Text+'","'+caridanganti(ed_marginP.Text,',','.')+'","'+ed_harga1.Text+'","'+
+ed_harga2.Text+'","'+ed_harga3.Text+'","'+f_utama.sb.Panels[0].Text+'","'+
+formatdatetime('yyyy-MM-dd',de_awal.date)+'","'+formatdatetime('yyyy-MM-dd',de_ahir.Date)+'","'+
+formatdatetime('yyyy-MM-dd', date())+'","'+ed_discRp.Text+'","'+caridanganti(ed_discP.Text,',','.')+'")',false)
+end else
+begin
+fungsi.SQLExec(dm.Q_Exe,'update tb_barang_harga set laba="'+
+ed_marginRP.Text+'",laba_P="'+caridanganti(ed_marginP.Text,',','.')+'",harga_jual1="'+ed_harga1.Text+'",harga_jual2="'+
+ed_harga2.Text+'",harga_jual3="'+ed_harga3.Text+'",kode_user="'+
+f_utama.sb.Panels[0].Text+'",`update`="'+formatdatetime('yyyy-MM-dd', date())+'",awal="'+formatdatetime('yyyy-MM-dd',de_awal.Date)+'",ahir="'+
+formatdatetime('yyyy-MM-dd',de_ahir.Date)+'",diskon="'+ed_discRp.Text+'",diskonP="'+
+caridanganti(ed_discP.Text,',','.')+'" where kd_barang="'+ed_plu.Text+'" and kd_macam_harga="'+
+cb_macam.Text+'" and kd_perusahaan="'+perusahaan+'"',false);
+end;
+
+fungsi.SQLExec(dm.Q_Exe,'update tb_barang set hpp_aktif="'+ed_pokok.Text
++'",`update` = "'+formatdatetime('yyyy-MM-dd', date())+'" where kd_barang="'+ed_plu.Text+'" and kd_perusahaan="'+perusahaan+'"',false);
 end;
 
 procedure TF_ubah_harga.FormKeyDown(Sender: TObject; var Key: Word;

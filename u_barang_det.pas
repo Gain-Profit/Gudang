@@ -81,6 +81,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure t_loadTimer(Sender: TObject);
     procedure ed_pidExit(Sender: TObject);
+    procedure SimpanDatabase(perusahaan:string;b_aktif:string;status_simpan:Boolean);
   private
     { Private declarations }
   public
@@ -296,7 +297,7 @@ end;
 
 procedure TF_barang_det.b_saveClick(Sender: TObject);
 var b_aktif: string;
-posisi:integer;
+posisi,i:integer;
 begin
 if (ed_bar1.Color=clred) or (ed_bar2.Color=clred) or (ed_bar3.Color=clred) then
 begin
@@ -336,25 +337,17 @@ b_aktif:='Y' else b_aktif:= 'N';
 
 dm.My_Conn.StartTransaction;
 try
-if status_simpan=true then
+SimpanDatabase(f_utama.sb.Panels[3].Text,b_aktif,status_simpan);
+
+if F_utama.sb.Panels[8].Text='PUSAT' then
 begin
-//simpan data
-fungsi.SQLExec(dm.Q_Exe,'insert into tb_barang (kd_perusahaan,kd_barang,n_barang,kd_jenis,kd_kategori, '+
-'kd_golbrg,kd_merk,kd_sat1,kd_sat2,kd_sat3,barcode1,barcode2,barcode3,Qty1,Qty2,minstok,maxstok, '+
-'leadtime,aktif,minor,`update`)values ("'+f_utama.sb.Panels[3].Text+'","'+ed_pid.Text+'","'+ed_nama.Text+'","'+kd_jenis+'","'+
-kd_tag+'","'+kd_gol+'","'+kd_merk+'","'+kd_sat[1]+'","'+kd_sat[2]+'","'+kd_sat[3]+'","'+
-ed_bar1.Text+'","'+ed_bar2.Text+'","'+ed_bar3.Text+'","'+ed_qty1.Text+'","'+
-ed_qty2.Text+'","'+ed_minstok.Text+'","'+ed_maxstok.Text+'","'+ed_time.Text+'","'+
-b_aktif+'","'+ed_minor.Text+'","'+formatdatetime('yyyy-MM-dd', date())+'")',false);
-end else
-begin
-//ubah data
-fungsi.SQLExec(dm.Q_Exe,'update tb_barang set n_barang="'+ed_nama.Text+'",kd_jenis="'+kd_jenis+'",kd_kategori="'+
-kd_tag+'",kd_golbrg="'+kd_gol+'",kd_merk="'+kd_merk+'",kd_sat1="'+kd_sat[1]+'",kd_sat2="'+kd_sat[2]+'",kd_sat3="'+
-kd_sat[3]+'",barcode1="'+ed_bar1.Text+'",barcode2="'+ed_bar2.Text+'",barcode3="'+ed_bar3.Text
-+'",Qty1="'+ed_qty1.Text+'",Qty2="'+ed_qty2.Text+'",minstok="'+ed_minstok.Text+'",maxstok="'+
-ed_maxstok.Text+'",leadtime="'+ed_time.Text+'",aktif="'+b_aktif+'",minor="'+
-ed_minor.Text+'",`update`="'+formatdatetime('yyyy-MM-dd', date())+'" where kd_perusahaan="'+f_utama.sb.Panels[3].Text+'" and kd_barang="'+old_pid+'"',false);
+  for i:=0 to cabang.Count -1 do
+  begin
+    SimpanDatabase(cabang[i],b_aktif,status_simpan);
+
+    fungsi.SQLExec(dm.Q_Exe,'INSERT IGNORE INTO tb_barang_supp(kd_perusahaan,kd_suplier,kd_barang,`update`) values ("'+
+    cabang[i]+'","'+f_utama.sb.Panels[3].Text+'","'+ed_pid.Text+'",date(now()))',False);
+  end;
 end;
 
 dm.Q_barang.Close;
@@ -372,7 +365,30 @@ except on e:exception do begin
   showmessage('penyimpanan data gagal '#10#13'' +e.Message);
   end;
 end;
+end;
 
+procedure TF_barang_det.SimpanDatabase(perusahaan:string;b_aktif:string;status_simpan:Boolean);
+begin
+  if status_simpan=true then
+  begin
+    //simpan data
+    fungsi.SQLExec(dm.Q_Exe,'insert into tb_barang (kd_perusahaan,kd_barang,n_barang,kd_jenis,kd_kategori, '+
+    'kd_golbrg,kd_merk,kd_sat1,kd_sat2,kd_sat3,barcode1,barcode2,barcode3,Qty1,Qty2,minstok,maxstok, '+
+    'leadtime,aktif,minor,`update`)values ("'+perusahaan+'","'+ed_pid.Text+'","'+ed_nama.Text+'","'+kd_jenis+'","'+
+    kd_tag+'","'+kd_gol+'","'+kd_merk+'","'+kd_sat[1]+'","'+kd_sat[2]+'","'+kd_sat[3]+'","'+
+    ed_bar1.Text+'","'+ed_bar2.Text+'","'+ed_bar3.Text+'","'+ed_qty1.Text+'","'+
+    ed_qty2.Text+'","'+ed_minstok.Text+'","'+ed_maxstok.Text+'","'+ed_time.Text+'","'+
+    b_aktif+'","'+ed_minor.Text+'","'+formatdatetime('yyyy-MM-dd', date())+'")',false);
+  end else
+  begin
+    //ubah data
+    fungsi.SQLExec(dm.Q_Exe,'update tb_barang set n_barang="'+ed_nama.Text+'",kd_jenis="'+kd_jenis+'",kd_kategori="'+
+    kd_tag+'",kd_golbrg="'+kd_gol+'",kd_merk="'+kd_merk+'",kd_sat1="'+kd_sat[1]+'",kd_sat2="'+kd_sat[2]+'",kd_sat3="'+
+    kd_sat[3]+'",barcode1="'+ed_bar1.Text+'",barcode2="'+ed_bar2.Text+'",barcode3="'+ed_bar3.Text
+    +'",Qty1="'+ed_qty1.Text+'",Qty2="'+ed_qty2.Text+'",minstok="'+ed_minstok.Text+'",maxstok="'+
+    ed_maxstok.Text+'",leadtime="'+ed_time.Text+'",aktif="'+b_aktif+'",minor="'+
+    ed_minor.Text+'",`update`="'+formatdatetime('yyyy-MM-dd', date())+'" where kd_perusahaan="'+perusahaan+'" and kd_barang="'+old_pid+'"',false);
+  end;
 end;
 
 procedure TF_barang_det.FormKeyDown(Sender: TObject; var Key: Word;
