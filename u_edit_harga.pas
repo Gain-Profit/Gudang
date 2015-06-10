@@ -57,6 +57,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure sb_2Click(Sender: TObject);
     procedure sb_1Click(Sender: TObject);
+    procedure deleteHargaBarang(perusahaan:string);
   private
    procedure WmAfterShow(var Msg: TMessage); message WM_AFTER_SHOW;
     { Private declarations }
@@ -170,13 +171,20 @@ end;
 
 procedure TF_Edit_Harga.t_dataKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
+  var i:Integer;
 begin
 if (key= vk_delete) and (MessageDlg('Yakinkah, akan menghapus data ini?...', mtConfirmation, [mbYes, mbNo], 0)=mrYes) then
 begin
   dm.My_conn.StartTransaction;
   try
-    fungsi.SQLExec(dm.Q_Exe,'delete from tb_barang_harga where kd_perusahaan="'+f_utama.sb.Panels[3].Text
-    +'" and kd_macam_harga="'+dm.Q_harga.fieldbyname('kd_macam_harga').AsString+'" and kd_barang="'+dm.Q_harga.fieldbyname('kd_barang').AsString+'"',false);
+    deleteHargaBarang(f_utama.sb.Panels[3].Text);
+    if F_utama.sb.Panels[8].Text='PUSAT' then
+    begin
+      for i:=0 to cabang.Count -1 do
+      begin
+        deleteHargaBarang(cabang[i]);
+      end;
+    end;
 
     dm.My_conn.Commit;
 except on e:exception do begin
@@ -192,6 +200,13 @@ begin
   f_ubah_harga.ubah;
   F_ubah_harga.ShowModal;
 end;
+end;
+
+procedure TF_Edit_Harga.deleteHargaBarang(perusahaan:string);
+begin
+    fungsi.SQLExec(dm.Q_Exe,'delete from tb_barang_harga where kd_perusahaan="'+perusahaan
+    +'" and kd_macam_harga="'+dm.Q_harga.fieldbyname('kd_macam_harga').AsString
+    +'" and kd_barang="'+dm.Q_harga.fieldbyname('kd_barang').AsString+'"',false);
 end;
 
 procedure TF_Edit_Harga.FormCreate(Sender: TObject);
