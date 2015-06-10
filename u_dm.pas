@@ -67,12 +67,13 @@ type
 
 var
   dm: Tdm;
-  kd_comp : string;
+  kd_comp,onServer : string;
   waktu_sekarang: TDateTime;
   sop,metu_kabeh,terkoneksi:boolean;
   PPN:real;
   batasan :integer;
   Mgs : TMsg;
+  cabang : TStringList;
 
 implementation
 
@@ -182,4 +183,10 @@ begin
  end;
 end;
 
+initialization
+  cabang := TStringList.Create;
+
+finalization
+  cabang.Free;
+  
 end.
