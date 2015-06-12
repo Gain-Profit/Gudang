@@ -211,7 +211,6 @@ end;
 
 procedure Tf_planogram.ed_masukKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
-var x_data:integer;
 begin
 if key= vk_f2 then sb_cariClick(Sender);
 
@@ -231,13 +230,10 @@ if (not(se_rak.Enabled)) or (not(se_shelving.Enabled)) or (ed_masuk.Text='') the
   ed_masuk.SetFocus;
   end else
   begin
-  x_data:= Q_planoRak.RecordCount+1;
-
   dm.My_conn.StartTransaction;
   try
     fungsi.SQLExec(dm.Q_Exe,'insert into tb_planogram(kd_perusahaan,kd_barang,no_rak,no_shelving,no_urut,`update`) values("'+
     f_utama.sb.Panels[3].Text+'","'+dm.Q_temp.fieldbyname('kd_barang').AsString+'","'+se_rak.Text+'","'+
-//    se_shelving.Text+'","'+inttostr(x_data)+'","'+formatdatetime('yyyy-MM-dd', date())+'")',false);
     se_shelving.Text+'","0","'+formatdatetime('yyyy-MM-dd', date())+'")',false);
 
     fungsi.SQLExec(Q_planoRak,'select * from vw_planogram_set where (kd_perusahaan="'+f_utama.sb.Panels[3].Text
@@ -250,11 +246,12 @@ if (not(se_rak.Enabled)) or (not(se_shelving.Enabled)) or (ed_masuk.Text='') the
     ed_masuk.Clear;
     ed_masuk.SetFocus;
     dm.My_conn.Commit;
-except on e:exception do begin
-  dm.My_conn.Rollback;
-  showmessage('pemindahan data gagal '#10#13'' +e.Message);
+  except on e:exception do
+    begin
+      dm.My_conn.Rollback;
+      showmessage('pemindahan data gagal '#10#13'' +e.Message);
+    end;
   end;
-end;
   end;
 end;
 

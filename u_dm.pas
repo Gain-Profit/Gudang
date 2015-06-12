@@ -121,7 +121,6 @@ procedure Tdm.koneksikan;
 var
   data,pusat,jalur1,jalur2,nama,kata: string;
   X: TextFile;
-  appINI : TIniFile;
 begin
 My_conn.Connected:= False;
  assignfile(X,'tools\koneksi.cbCon');

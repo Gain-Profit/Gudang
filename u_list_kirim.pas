@@ -145,7 +145,7 @@ end;
 procedure TF_list_kirim.btnSimpanClick(Sender: TObject);
 var
   tempat,nama_file : string;
-  x,y: Integer;
+  y: Integer;
   F: TextFile;
   qty,hpp,tot:Real;
 begin
