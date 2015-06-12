@@ -96,6 +96,7 @@ type
     procedure ed_fak_kirimKeyPress(Sender: TObject; var Key: Char);
     procedure ed_pelangganChange(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure returnCabang;
   private
     { Private declarations }
   public
@@ -379,7 +380,7 @@ end;
 
 procedure Tf_return_kirim.b_autoClick(Sender: TObject);
 var w:Integer;
-x,pid,pid_temp,sekarang:string;
+x,sekarang:string;
 begin
   if ed_pelanggan.Text='' then
   begin
@@ -447,7 +448,7 @@ dm.laporan.ShowReport;
 end;
 
 procedure Tf_return_kirim.b_simpanClick(Sender: TObject);
-var x: integer;
+var x,i: integer;
 isi_sql,kd_faktur:string;
 begin
 if (ed_pelanggan.Text=f_utama.sb.Panels[3].Text) then
@@ -502,12 +503,18 @@ ed_nilai_faktur.Text+'","'+f_utama.Sb.Panels[0].Text+'",now())',false);
   fungsi.SQLExec(dm.Q_exe,'insert into tb_return_kirim_rinci(kd_perusahaan,kd_return_kirim,tgl_return_kirim,'+
   'kd_barang,n_barang,qty_return_kirim,harga_pokok,barcode,tgl_simpan) values  '+isi_sql, false);
 
+  for i:=0 to cabang.Count -1 do
+  begin
+    if (cabang[i]=ed_pelanggan.Text) then
+      returnCabang;
+  end;
+
 
 dm.My_Conn.Commit;
 
 showmessage('penyimpanan data berhasil...');
 
-b_simpan_fileClick(Self);
+//b_simpan_fileClick(Self);
 
 ed_no_faktur.Clear;
 ed_no_faktur.Text:= kd_faktur;
@@ -521,6 +528,28 @@ dm.My_Conn.Rollback;
 messagedlg('proses penyimpanan gagal '#10#13'' + e.Message, mterror, [mbOk],0);
 end;
 end;
+end;
+
+procedure Tf_return_kirim.returnCabang;
+var x: integer;
+isi_sql:string;
+begin
+  for x:=0 to tableview.DataController.RecordCount-1 do
+  begin
+  isi_sql:=isi_sql +'("'+ed_pelanggan.Text+'","'+ed_no_faktur.Text
+  +'","'+formatdatetime('yyyy-MM-dd',ed_tgl.Date)+'","'+TableView.DataController.GetDisplayText(x,0)+'","'+
+  TableView.DataController.GetDisplayText(x,1)+'","'+floattostr(TableView.DataController.GetValue(x,2))+'","'+
+  floattostr(TableView.DataController.GetValue(x,4))+'",0,"'+TableView.DataController.GetDisplayText(x,5)+'",date(now())),';
+  end;
+  delete(isi_sql,length(isi_sql),1);
+
+  fungsi.SQLExec(dm.Q_exe,'insert into tb_return_global(kd_perusahaan,kd_return,tgl_return,'+
+  'kd_suplier,disk_rp,nilai_faktur,pengguna,faktur_receipt,simpan_pada) values ("'+ed_pelanggan.Text+'","'+ed_no_faktur.Text
+  +'","'+formatdatetime('yyyy-MM-dd',ed_tgl.Date)+'","'+f_utama.sb.Panels[3].Text+'",0,"'+ed_nilai_faktur.Text
+  +'","AUTO","'+ed_fak_kirim.Text+'",now())',false);
+
+    fungsi.SQLExec(dm.Q_exe,'insert into tb_return_rinci(kd_perusahaan,kd_return,tgl_return,'+
+    'kd_barang,n_barang,qty_return,harga_pokok,diskon,barcode,tgl_simpan) values  '+isi_sql, false);
 end;
 
 procedure Tf_return_kirim.ed_fak_kirimChange(Sender: TObject);

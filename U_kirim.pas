@@ -96,6 +96,7 @@ type
       Shift: TShiftState);
     procedure ed_codeKeyPress(Sender: TObject; var Key: Char);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure receiptCabang();
   private
     { Private declarations }
   public
@@ -464,7 +465,7 @@ begin
 end;
 
 procedure TF_kirim.b_simpanClick(Sender: TObject);
-var x: integer;
+var x,i: integer;
 isi_sql,kd_faktur:string;
 begin
   kd_faktur:= ed_no_faktur.Text;
@@ -517,16 +518,18 @@ fungsi.SQLExec(dm.Q_exe,'INSERT tb_piutang (kd_perusahaan,faktur,tanggal,pelangg
 ed_no_faktur.Text+'","'+formatdatetime('yyyy-MM-dd',ed_tgl.Date)+'","'+ed_toko.Text+'","'+
 ed_nilai_faktur.Text+'","'+f_utama.Sb.Panels[0].Text+'","'+ed_jatuh_tempo.Text+'",DATE(NOW()))',False);
 
+  for i:=0 to cabang.Count -1 do
+  begin
+    if (cabang[i]=ed_toko.Text) then
+      receiptCabang;
+  end;
+
+
 dm.My_Conn.Commit;
 
 showmessage('penyimpanan data berhasil...');
 
-sd.FileName:= ed_no_faktur.Text + sd.DefaultExt;
-sd.InitialDir:= dm.WPath;
-if sd.Execute then
-  begin
-    simpan_file(sd.FileName);
-  end;
+//b_simpanClick(Self);
 
 ed_no_faktur.Clear;
 ed_no_faktur.Text:= kd_faktur;
@@ -539,6 +542,37 @@ dm.My_Conn.Rollback;
 messagedlg('proses penyimpanan gagal,ulangi lagi!!! '#10#13'' + e.Message, mterror, [mbOk],0);
 end;
 end;
+end;
+
+procedure TF_kirim.receiptCabang();
+var
+  x: Integer;
+  isi_sql_receipt,tunai,plus_PPN:string;
+begin
+  tunai:='N';
+  plus_PPN:='Y';
+
+  for x:=0 to tableview.DataController.RecordCount-1 do
+  begin
+    isi_sql_receipt:=isi_sql_receipt +'("'+ed_toko.Text+'","'+ed_no_faktur.Text
+    +'","'+formatdatetime('yyyy-MM-dd',ed_tgl.Date)+'","'+TableView.DataController.GetDisplayText(x,0)+'","'+
+    TableView.DataController.GetDisplayText(x,1)+'","'+floattostr(TableView.DataController.GetValue(x,2))+'","'+
+    floattostr(TableView.DataController.GetValue(x,4))+'",0,"'+TableView.DataController.GetDisplayText(x,5)+'",date(now())),';
+
+    fungsi.SQLExec(dm.Q_exe,'update tb_barang set hpp_ahir= "'+floattostr(TableView.DataController.GetValue(x,3))
+    +'" where kd_perusahaan= "'+ed_toko.Text+'" and kd_barang="'+
+    inttostr(TableView.DataController.GetValue(x,0))+'"', false);
+  end;       
+  delete(isi_sql_receipt,length(isi_sql_receipt),1);
+
+  fungsi.SQLExec(dm.Q_exe,'insert into tb_receipt_global(kd_perusahaan,kd_receipt,tgl_receipt,'+
+  'kd_suplier,jatuh_tempo,tunai,plus_PPN,PPN,disk_rp,nilai_faktur,pengguna,simpan_pada) values ("'+
+  ed_toko.Text+'","'+ed_no_faktur.Text+'","'+formatdatetime('yyyy-MM-dd',ed_tgl.Date)+'","'+
+  f_utama.sb.Panels[3].Text+'",7,"'+tunai+'","'+plus_PPN+'",0,0,"'+
+  ed_nilai_faktur.Text+'","AUTO",now())',false);
+
+    fungsi.SQLExec(dm.Q_exe,'insert into tb_receipt_rinci(kd_perusahaan,kd_receipt,tgl_receipt,'+
+    'kd_barang,n_barang,qty_receipt,harga_pokok,diskon,barcode,tgl_simpan) values '+isi_sql_receipt, false);
 end;
 
 procedure TF_kirim.b_printClick(Sender: TObject);
@@ -584,7 +618,7 @@ end;
 
 procedure TF_kirim.b_autoClick(Sender: TObject);
 var w:Integer;
-x, pid,pid_temp,sekarang:string;
+x, sekarang:string;
 begin
   if ed_toko.Text='' then
   begin
