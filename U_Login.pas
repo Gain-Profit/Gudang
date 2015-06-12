@@ -144,7 +144,7 @@ ed_password.SetFocus;
 end else
 begin
 
-F_utama.Sb.Panels[0].Text:= ed_kd_user.Text;
+F_utama.Sb.Panels[0].Text:= UpperCase(ed_kd_user.Text);
 F_utama.Sb.Panels[1].Text:= ed_N_User.Text;
 
 F_utama.sb.Panels[3].Text:=sb.Panels[0].Text;
@@ -170,12 +170,13 @@ begin
   F_utama.ac_purchase.Enabled:=True;
   f_utama.ac_kirim.Enabled:=True;
 
-  fungsi.SQLExec(dm.Q_temp,'select kd_perusahaan from tb_company where ket = "'+sb.Panels[0].Text+'"',true);
+  fungsi.SQLExec(dm.Q_temp,'select kd_perusahaan from tb_company where ket = "'+sb.Panels[0].Text+'" and onserver ="Y"',true);
+  cabang.clear;
   while not(dm.Q_temp.eof) do
   begin
     cabang.add(dm.Q_temp.fieldByName('kd_perusahaan').AsString);
     dm.Q_temp.next;
-  end;  
+  end;
 
 end else
 begin
