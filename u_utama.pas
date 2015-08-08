@@ -1131,9 +1131,37 @@ f_list_return_jual.Show;
 end;
 
 procedure Tf_utama.cek_update;
+var
+  versiDB,versiAPP,URLDownload:string;
 begin
-  WinExec(PAnsiChar('tools/cekVersi.exe '+
-  fungsi.program_versi+' gudang'),SW_SHOWNOACTIVATE);
+  versiAPP := fungsi.program_versi;
+
+  fungsi.SQLExec(dm.Q_Show,'select versi_terbaru from  app_versi where kode="GUDANG"',true);
+  versiDB := dm.Q_Show.FieldByName('versi_terbaru').AsString;
+
+  if versiAPP = versiDB then
+  begin
+    Exit;
+  end;
+  
+  if versiAPP > versiDB then
+  begin
+    fungsi.SQLExec(dm.Q_Exe,'REPLACE INTO app_versi(kode,versi_terbaru) '+
+    'values ("GUDANG","'+versiAPP+'")',False);
+  end else
+  begin
+    URLDownload:= 'https://github.com/Gain-Profit/Gudang/releases/download/v'+
+    versiDB +'/gudang-'+ versiDB +'.zip';
+    
+    ShowMessage('APLIKASI GUDANG TIDAK DAPAT DIJALANKAN' + #13#10 +
+    'aplikasi terbaru dengan versi : '+ versiDB + #13#10 +
+    'SUDAH DIRILIS...'+ #13#10#13#10 +
+    'Download Applikasi Terbaru!!!' );
+
+    WinExec(PChar('rundll32 url.dll,FileProtocolHandler '+ URLDownload),
+    SW_MAXIMIZE);
+    Application.Terminate;
+  end;  
 end;
 
 end.
