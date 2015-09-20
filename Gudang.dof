@@ -147,7 +147,7 @@ IncludeVerInfo=1
 AutoIncBuild=0
 MajorVer=3
 MinorVer=1
-Release=2
+Release=3
 Build=0
 Debug=0
 PreRelease=0
@@ -159,7 +159,7 @@ CodePage=1252
 [Version Info Keys]
 CompanyName=CeBe Soft
 FileDescription=Central of Profit
-FileVersion=3.1.2.0
+FileVersion=3.1.3.0
 InternalName=
 LegalCopyright=
 LegalTrademarks=
@@ -167,6 +167,12 @@ OriginalFilename=
 ProductName=
 ProductVersion=1.0.0.0
 Comments=
+[Excluded Packages]
+C:\Program Files (x86)\Borland\Delphi7\Projects\Bpl\fs7.bpl=(untitled)
+C:\Program Files (x86)\Borland\Delphi7\Projects\Bpl\cxDataD7.bpl=ExpressDataController by Developer Express Inc.
+C:\Program Files (x86)\Borland\Delphi7\Projects\Bpl\fqb70.bpl=FastQueryBuilder 1.03
+C:\Program Files (x86)\Borland\Delphi7\Projects\Bpl\frxTee7.bpl=(untitled)
+C:\Program Files (x86)\Borland\Delphi7\Projects\Bpl\fsTee7.bpl=(untitled)
 [HistoryLists\hlConditionals]
 Count=1
 Item0=madExcept
