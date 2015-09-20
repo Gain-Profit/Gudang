@@ -1133,26 +1133,18 @@ end;
 procedure Tf_utama.cek_update;
 var
   versiDB,versiAPP,URLDownload:string;
+  fileName, UrlDownloadLocal:string;
 begin
   versiAPP := fungsi.program_versi;
 
-  fungsi.SQLExec(dm.Q_Show,'select versi_terbaru from  app_versi where kode="GUDANG"',true);
-  versiDB := dm.Q_Show.FieldByName('versi_terbaru').AsString;
+  fungsi.SQLExec(dm.Q_Show,'select versi_terbaru, URLdownload from  app_versi where kode="gudang.exe"',true);
+  versiDB           := dm.Q_Show.FieldByName('versi_terbaru').AsString;
+  URLDownload       := dm.Q_Show.FieldByName('URLdownload').AsString;
+  fileName          := Copy(URLDownload,LastDelimiter('/',URLDownload) + 1,Length(URLDownload));
+  UrlDownloadLocal  := dm.My_conn.Host + '/GainProfit/' + fileName;
 
-  if versiAPP = versiDB then
+  if versiAPP < versiDB then
   begin
-    Exit;
-  end;
-  
-  if versiAPP > versiDB then
-  begin
-    fungsi.SQLExec(dm.Q_Exe,'REPLACE INTO app_versi(kode,versi_terbaru) '+
-    'values ("GUDANG","'+versiAPP+'")',False);
-  end else
-  begin
-    URLDownload:= 'https://github.com/Gain-Profit/Gudang/releases/download/v'+
-    versiDB +'/gudang-'+ versiDB +'.zip';
-    
     ShowMessage('APLIKASI GUDANG TIDAK DAPAT DIJALANKAN' + #13#10 +
     'aplikasi terbaru dengan versi : '+ versiDB + #13#10 +
     'SUDAH DIRILIS...'+ #13#10#13#10 +
