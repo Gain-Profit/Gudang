@@ -57,6 +57,21 @@ object f_RO: Tf_RO
       Images = dm.image
       Reflected = True
     end
+    object lbl1: TsLabel
+      Left = 1
+      Top = 188
+      Width = 148
+      Height = 16
+      Align = alTop
+      Alignment = taCenter
+      Caption = 'Keterangan'
+      ParentFont = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+    end
     object sPanel2: TsPanel
       Left = 1
       Top = 359
@@ -125,6 +140,45 @@ object f_RO: Tf_RO
         OnClick = b_printClick
         SkinData.SkinSection = 'BUTTON'
       end
+    end
+    object pnlKeterangan: TsPanel
+      Left = 1
+      Top = 320
+      Width = 148
+      Height = 39
+      Align = alBottom
+      TabOrder = 2
+      Visible = False
+      SkinData.SkinSection = 'PANEL'
+      object btnUpdateKeterangan: TsButton
+        Left = 8
+        Top = 8
+        Width = 129
+        Height = 25
+        Caption = 'Edit Keterangan'
+        TabOrder = 0
+        OnClick = btnUpdateKeteranganClick
+        SkinData.SkinSection = 'BUTTON'
+      end
+    end
+    object mmKeterangan: TsMemo
+      Left = 1
+      Top = 204
+      Width = 148
+      Height = 116
+      Align = alClient
+      MaxLength = 255
+      TabOrder = 3
+      BoundLabel.Indent = 0
+      BoundLabel.Font.Charset = DEFAULT_CHARSET
+      BoundLabel.Font.Color = clWindowText
+      BoundLabel.Font.Height = -11
+      BoundLabel.Font.Name = 'MS Sans Serif'
+      BoundLabel.Font.Style = []
+      BoundLabel.Layout = sclLeft
+      BoundLabel.MaxWidth = 0
+      BoundLabel.UseSkinColor = True
+      SkinData.SkinSection = 'EDIT'
     end
   end
   object sPanel1: TsPanel

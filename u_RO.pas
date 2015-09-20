@@ -76,6 +76,10 @@ type
     l_4: TsLabel;
     l_5: TsLabel;
     t_view_barcode: TcxGridColumn;
+    pnlKeterangan: TsPanel;
+    mmKeterangan: TsMemo;
+    btnUpdateKeterangan: TsButton;
+    lbl1: TsLabel;
     procedure WMMDIACTIVATE(var msg : TWMMDIACTIVATE) ; message WM_MDIACTIVATE;
     procedure bersih;
     procedure tampil_data;
@@ -119,6 +123,7 @@ type
     procedure ed_no_fakturKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure btnUpdateKeteranganClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -168,6 +173,9 @@ ce_diskonrp.Clear;
 ce_diskonpr.Clear;
 ce_PPN.Clear;
 ed_nilai_faktur.Clear;
+mmKeterangan.Clear;
+mmKeterangan.Enabled:= True;
+pnlKeterangan.Visible :=False;
 end;
 
 procedure Tf_RO.tampil_purchase;
@@ -223,6 +231,12 @@ ed_jatuh_tempo.Value:= DaySpan(dm.Q_list_receipt.fieldbyname('jatuh_tempo').AsDa
 ce_diskonrp.Text:= dm.Q_list_receipt.fieldbyname('disk_rp').AsString;
 //ce_harga.Text:= dm.Q_list_receipt.fieldbyname('nilai_faktur').AsString;
 
+fungsi.SQLExec(dm.Q_temp,'select * from tb_receipt_global where kd_perusahaan="'+
+dm.Q_list_receipt.fieldbyname('kd_perusahaan').AsString+'" and kd_receipt="'+
+dm.Q_list_receipt.fieldbyname('kd_receipt').AsString+'"',true);
+
+mmKeterangan.Text:= dm.Q_temp.fieldbyname('Keterangan').AsString;
+
 fungsi.SQLExec(dm.Q_temp,'select * from tb_receipt_rinci where kd_perusahaan="'+
 dm.Q_list_receipt.fieldbyname('kd_perusahaan').AsString+'" and kd_receipt="'+
 dm.Q_list_receipt.fieldbyname('kd_receipt').AsString+'"',true);
@@ -245,6 +259,9 @@ begin
   refresh_HPP;
   tableview.DataController.ChangeFocusedRowIndex(tableview.DataController.RecordCount+1);
 end;
+
+pnlKeterangan.Visible := True;
+mmKeterangan.Enabled:= False;
 end;
 
 procedure Tf_RO.refresh_HPP;
@@ -484,9 +501,10 @@ begin
   application.CreateForm(tf_cari, f_cari);
   with F_cari do
   try
-    _SQLi:= 'select kd_barang, n_barang from tb_barang where kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"';
+    _SQLi:= 'select kd_barang, n_barang, hpp_aktif from tb_barang where kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"';
     tblcap[0]:= 'PID';
     tblCap[1]:= 'Deskripsi Barang';
+    tblCap[2]:= 'HPP';
     tampil_button(False,True);
     if ShowModal = mrOk then
     begin
@@ -500,6 +518,7 @@ end;
 procedure Tf_RO.b_simpanClick(Sender: TObject);
 var x: integer;
     tunai,plus_PPN,isi_sql,isi_sql2,kd_faktur:string;
+    _sql:string;
 begin
 refresh_HPP;
 if (ed_supplier.Text='') or (ed_no_faktur.Text='') then
@@ -540,12 +559,16 @@ if cb_PPN.Checked=true then plus_PPN:='Y' else plus_PPN:='N';
   delete(isi_sql,length(isi_sql),1);
   delete(isi_sql2,length(isi_sql2),1);
 
+  _sql := Format('insert into tb_receipt_global(kd_perusahaan, kd_receipt, tgl_receipt, '+
+          'kd_suplier, jatuh_tempo, tunai, plus_PPN, PPN, disk_rp, nilai_faktur, simpan_pada, '+
+          'pengguna, keterangan) values ("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", %s, "%s", "%s")',
+          [f_utama.sb.Panels[3].Text,ed_no_faktur.Text,formatdatetime('yyyy-MM-dd',ed_tgl.Date),
+          ed_supplier.Text,ed_jatuh_tempo.Text,tunai,plus_PPN,floattostr(ce_PPN.value),ce_diskonrp.Text,
+          ed_nilai_faktur.Text,'now()',f_utama.Sb.Panels[0].Text,mmKeterangan.Text]);
+
 dm.My_Conn.StartTransaction;
 try
-fungsi.SQLExec(dm.Q_exe,'insert into tb_receipt_global(kd_perusahaan,kd_receipt,tgl_receipt,'+
-'kd_suplier,jatuh_tempo,tunai,plus_PPN,PPN,disk_rp,nilai_faktur,simpan_pada,pengguna) values ("'+f_utama.sb.Panels[3].Text+'","'+ed_no_faktur.Text
-+'","'+formatdatetime('yyyy-MM-dd',ed_tgl.Date)+'","'+ed_supplier.Text+'","'+ed_jatuh_tempo.Text+'","'+tunai+'","'+plus_PPN+'","'+
-floattostr(ce_PPN.value)+'","'+ce_diskonrp.Text+'","'+ed_nilai_faktur.Text+'",now(),"'+f_utama.Sb.Panels[0].Text+'")',false);
+fungsi.SQLExec(dm.Q_exe,_sql,false);
 
   fungsi.SQLExec(dm.Q_exe,'insert into tb_receipt_rinci(kd_perusahaan,kd_receipt,tgl_receipt,'+
   'kd_barang,n_barang,qty_receipt,harga_pokok,diskon,tgl_simpan,barcode) values '+isi_sql, false);
@@ -585,7 +608,9 @@ begin
 dm.My_Conn.Rollback;
 messagedlg('proses ubah hpp ahir gagal...'#10#13'' + e.Message, mterror, [mbOk],0);
 end;
-end; 
+end;
+pnlKeterangan.Visible := True;
+mmKeterangan.Enabled:= False;
 end;
 
 procedure Tf_RO.b_printClick(Sender: TObject);
@@ -629,6 +654,13 @@ b_print.Enabled:= urip;
 
 ed_tgl.ReadOnly:=urip;
 ed_code.ReadOnly:=urip;
+
+mmKeterangan.Enabled := not (urip);
+pnlKeterangan.Visible := urip;
+if urip then
+  btnUpdateKeterangan.Caption := 'Edit Keterangan'
+  else
+  btnUpdateKeterangan.Caption := 'Simpan Keterangan';
 end;
 
 procedure Tf_RO.sSpeedButton18Click(Sender: TObject);
@@ -901,6 +933,31 @@ end;
 
 end;  
 
+end;
+
+procedure Tf_RO.btnUpdateKeteranganClick(Sender: TObject);
+var
+  _sql : string;
+begin
+  _sql := Format('update tb_receipt_global set keterangan = "%s" '+
+      'where kd_perusahaan = "%s" and kd_receipt = "%s"',
+      [mmKeterangan.Text,f_utama.sb.Panels[3].Text,ed_no_faktur.Text]);
+      
+  if btnUpdateKeterangan.Caption = 'Edit Keterangan' then
+  begin
+    mmKeterangan.Enabled := True;
+    mmKeterangan.SetFocus;
+    btnUpdateKeterangan.Caption := 'Simpan Keterangan';
+  end else
+  begin
+
+    fungsi.SQLExec(dm.Q_exe,_sql,false);
+
+    ShowMessage('Keterangan Transaksi Berhasil disimpan..');
+    mmKeterangan.Enabled := False;
+    btnUpdateKeterangan.Caption := 'Edit Keterangan';
+    ed_code.SetFocus;
+  end;
 end;
 
 end.
