@@ -148,7 +148,6 @@ type
     mniN6: TMenuItem;
     mniCekUpdateProgram1: TMenuItem;
     ac_cekUpdate: TAction;
-    sb_kembang: TsSpeedButton;
     ReturnKirim1: TMenuItem;
     RealCard1: TMenuItem;
     DaftarReturnKirim1: TMenuItem;
@@ -156,6 +155,9 @@ type
     DaftarStokOpnameSO1: TMenuItem;
     ac_list_return_jual: TAction;
     btnRetunJual: TsSpeedButton;
+    ac_barcode: TAction;
+    sb_realCard: TsSpeedButton;
+    sb_Barcode: TsSpeedButton;
     procedure ac_barangExecute(Sender: TObject);
     procedure ac_hargaExecute(Sender: TObject);
     procedure ac_receiptExecute(Sender: TObject);
@@ -208,6 +210,7 @@ type
     procedure ac_cekUpdateExecute(Sender: TObject);
     procedure ac_list_return_jualExecute(Sender: TObject);
     procedure cek_update;
+    procedure ac_barcodeExecute(Sender: TObject);
   private
     procedure WmAfterShow(var Msg: TMessage); message WM_AFTER_SHOW;
     { Private declarations }
@@ -227,10 +230,10 @@ implementation
 
 uses u_barang, u_edit_harga, u_return, u_cari, u_dm, u_purchase,
   u_barang_supp, u_planogram,u_list_purchase, u_list_receipt,
-  u_list_return, U_Login,acselectskin, u_lap, u_RO, U_kirim, u_list_kirim,
+  u_list_return, U_Login,acselectskin, u_RO, U_kirim, u_list_kirim,
   u_kirim_data, u_list_sales, u_list_SO, u_return_kirim,
   u_list_return_kirim, U_toko, u_hari, u_emp, u_ubahPassword,
-  u_list_return_jual;
+  u_list_return_jual, u_barcode, u_realCard;
 
 {$R *.dfm}
 
@@ -1099,8 +1102,8 @@ end;
 
 procedure Tf_utama.ac_realcardExecute(Sender: TObject);
 begin
-application.CreateForm(TF_lap,F_lap);
-f_lap.ShowModal;
+application.CreateForm(TF_realCard,F_realCard);
+f_realCard.ShowModal;
 end;
 
 function Tf_utama.HakAkses(kunci: string): Boolean;
@@ -1154,6 +1157,12 @@ begin
     SW_MAXIMIZE);
     Application.Terminate;
   end;  
+end;
+
+procedure Tf_utama.ac_barcodeExecute(Sender: TObject);
+begin
+application.CreateForm(Tf_Barcode,f_Barcode);
+f_Barcode.ShowModal;
 end;
 
 end.
