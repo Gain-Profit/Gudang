@@ -25,7 +25,6 @@ uses
   u_list_receipt in 'u_list_receipt.pas' {f_list_receipt},
   u_list_return in 'u_list_return.pas' {f_list_return},
   U_Login in 'U_Login.pas' {F_Login},
-  u_lap in 'u_lap.pas' {f_lap},
   u_RO in 'u_RO.pas' {f_RO},
   u_purchase in 'u_purchase.pas' {f_purchase},
   u_return in 'u_return.pas' {f_return},
@@ -40,7 +39,9 @@ uses
   u_hari in 'u_hari.pas' {f_hari},
   u_barang_property in 'u_barang_property.pas' {F_barang_property},
   u_ubahPassword in 'u_ubahPassword.pas' {F_ubahPassword},
-  u_list_return_jual in 'u_list_return_jual.pas' {f_list_return_jual};
+  u_list_return_jual in 'u_list_return_jual.pas' {f_list_return_jual},
+  u_barcode in 'u_barcode.pas' {f_Barcode},
+  u_realCard in 'u_realCard.pas' {f_realCard};
 
 {$R *.res}
 
