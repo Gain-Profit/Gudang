@@ -292,8 +292,7 @@ begin
       end;
       12 : //user
       begin
-      fungsi.SQLExec(dm.Q_Exe,'delete from tb_user where kd_user="'+
-      q_cari.fieldbyname('kd_user').AsString+'" and kd_perusahaan="'+F_UTAMA.sb.Panels[3].Text+'" ',false);
+        ShowMessage('Sementara Tidak bisa hapus User. '#10#13'Hubungi Programmer untuk Hapus User...');
       end;
       else
       //satuan
