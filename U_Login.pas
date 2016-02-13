@@ -25,7 +25,6 @@ type
     gambar: TcxImage;
     sSkinProvider1: TsSkinProvider;
     l_1: TsLabel;
-    procedure persiapan_mutasi;
     procedure Ed_Kd_UserKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure sButton1Click(Sender: TObject);
@@ -71,27 +70,6 @@ function GetBlobStream(dataset : TmySQLQuery; kolom_image:string):string;
 begin
  TBlobField(dataset.FieldByName(kolom_image)).SaveToFile(tempdir + 'login.jpg');
  result:= tempdir+'login.jpg';
-end;
-
-procedure TF_Login.persiapan_mutasi;
-begin
-sg_login.Enabled:= False;
-
-dm.My_conn.StartTransaction;
-try
-fungsi.SQLExec(dm.Q_Exe,'call sp_persiapan_mutasi("'+sb.Panels[0].Text+'")',false);
-dm.My_conn.Commit;
-
-  sg_login.Enabled:=true;
-  ed_kd_user.SetFocus;
-
-showmessage('proses persiapan mutasi berhasil');
-except on e:exception do begin
-  dm.My_conn.Rollback;
-  showmessage('proses persiapan mutasi gagal '#10#13'' +e.Message);
-  application.terminate;
-  end;
-end;
 end;
 
 procedure TF_Login.Ed_Kd_UserKeyDown(Sender: TObject; var Key: Word;
@@ -251,19 +229,6 @@ Ed_N_User.Clear;
 Ed_Kd_User.setfocus;
 
 sb.Panels[2].Text:=dm.My_conn.DatabaseName+'@'+dm.My_conn.Host;
-{
-fungsi.SQLExec(dm.Q_show,'select aktif_terahir,date(now()) as sekarang from tb_company where kd_perusahaan="'+sb.Panels[0].Text+'"',true);
-
-if dm.Q_show.fieldbyname('aktif_terahir').AsDateTime <> dm.Q_show.fieldbyname('sekarang').AsDateTime then
-begin
-persiapan_mutasi;
-end;
-}
-{
-setcueBanner(ed_kd_user,'Kode User');
-setcueBanner(ed_n_user,'Nama User');
-setcueBanner(ed_password,'Password');
-}
 end;
 
 procedure TF_Login.Ed_PasswordKeyDown(Sender: TObject; var Key: Word;
