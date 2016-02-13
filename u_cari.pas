@@ -76,7 +76,7 @@ uses u_dm, u_barang_det, u_jenis, u_golongan, u_satuan, u_kategori, u_merk,
 function cari_tabel(sql:string):string;
 var  nPos,npos2,npos3   : integer;
 begin
-  nPos:= Pos( 'from', sql );
+  nPos:= Pos( 'from', LowerCase(sql) );
   delete(sql,1,npos+4);
 
   npos2:= pos(' ',sql);

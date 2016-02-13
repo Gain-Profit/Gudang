@@ -103,7 +103,7 @@ object f_cari: Tf_cari
       object clm1: TcxGridDBColumn
         Tag = 1
         Visible = False
-        Width = 55
+        Width = 109
         IsCaptionAssigned = True
       end
       object clm2: TcxGridDBColumn
@@ -111,18 +111,19 @@ object f_cari: Tf_cari
         Visible = False
         SortIndex = 0
         SortOrder = soAscending
+        Width = 215
         IsCaptionAssigned = True
       end
       object clm3: TcxGridDBColumn
         Tag = 3
         Visible = False
-        Width = 335
+        Width = 224
         IsCaptionAssigned = True
       end
       object clm4: TcxGridDBColumn
         Tag = 4
         Visible = False
-        Width = 79
+        Width = 124
         IsCaptionAssigned = True
       end
     end
