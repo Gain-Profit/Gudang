@@ -166,14 +166,14 @@ showmessage('password dan konfirmasi tidak sama');
 exit;
 end;
 
-fungsi.SQLExec(dm.Q_Exe,'insert into tb_user (kd_perusahaan,kd_user,n_user,password,`update`)values ("'+
-f_utama.sb.Panels[3].text+'","'+ed_kode.Text+'","'+ed_nama.Text+'",md5("'+ed_pass.Text+'"),"'+
+fungsi.SQLExec(dm.Q_Exe,'insert into tb_user (kd_user,n_user,password,`update`)values ("'+
+ed_kode.Text+'","'+ed_nama.Text+'",md5("'+ed_pass.Text+'"),"'+
 formatdatetime('yyyy-MM-dd', date())+'")',false);
 updateprivasi;
 end else
 begin
 fungsi.SQLExec(dm.Q_Exe,'update tb_user set `update`="'+formatdatetime('yyyy-MM-dd', date())+'",n_user="'+
-ed_nama.Text+'",kd_user="'+ed_kode.Text+'" where kd_user="'+kdUser+'" and kd_perusahaan="'+f_utama.sb.Panels[3].text+'" ',false);
+ed_nama.Text+'",kd_user="'+ed_kode.Text+'" where kd_user="'+kdUser+'"',false);
 updateprivasi;
 end;
 
@@ -223,21 +223,25 @@ showmessage('Proses Pengubahan Password sukses....');
 end;
 
 procedure Tf_emp.updateprivasi;
+var
+  sql : String;
 begin
-  fungsi.SQLExec(dm.Q_Exe,Format('update tb_user set admin ="%s",gudang="%s",akun="%s",toko="%s",kasir="%s" where kd_user="%s" and kd_perusahaan="%s"',
-  [ubahCB(cb_admin),ubahCB(cb_gudang),ubahCB(cb_akun),ubahCB(cb_server),ubahCB(cb_kasir),ed_kode.Text,f_utama.sb.Panels[3].text]),False);
-
+  kdUser := ed_kode.Text;
   if not(cb_gudang.Checked) then
   hakgudang(False);
 
-  fungsi.SQLExec(dm.Q_Exe,Format('update tb_user set gdInvBarang="%s",gdInvHarga="%s", '+
-  'gdInvPlano="%s",gdInvBrgSupp="%s",gdInvBrgUpdate="%s",gdTrPO="%s",gdTrRO="%s", '+
-  'gdTrReturn="%s",gdTrKirim="%s",gdTrReturnKirim="%s",gdMaster="%s",gdSetting="%s" '+
-  'where kd_user="%s" and kd_perusahaan="%s"',
-  [ubahCB(cb_Barang),ubahCB(cb_Harga),ubahCB(cb_Plano),ubahCB(cb_BrgSupp),
-  ubahCB(cb_brgUpdate),ubahCB(cb_PO),ubahCB(cb_RO),ubahCB(cb_Return),
-  ubahCB(cb_kirim),ubahCB(cb_ReturnKirim),ubahCB(cb_master),ubahCB(cb_Setting),
-  ed_kode.Text,f_utama.sb.Panels[3].text]),False);
+  sql := Format('REPLACE INTO tb_user_company (kd_perusahaan, ' +
+  'kd_user, admin, gudang, akun, toko, kasir, gdInvBarang, gdInvHarga, ' +
+  'gdInvPlano, gdInvBrgSupp, gdInvBrgUpdate, gdTrPO, gdTrRO, gdTrReturn, ' +
+  'gdTrKirim, gdTrReturnKirim, gdMaster, gdSetting,`update`) VALUES '+
+  '("'+f_utama.sb.Panels[3].text+'","'+kdUser+'", "%s", "%s", "%s", "%s", ' +
+  '"%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", ' +
+  '"%s", date(now()))', [ubahCB(cb_admin),ubahCB(cb_gudang),ubahCB(cb_akun),
+  ubahCB(cb_server),ubahCB(cb_kasir),ubahCB(cb_Barang),ubahCB(cb_Harga),
+  ubahCB(cb_Plano),ubahCB(cb_BrgSupp),ubahCB(cb_brgUpdate),ubahCB(cb_PO),
+  ubahCB(cb_RO),ubahCB(cb_Return),ubahCB(cb_kirim),ubahCB(cb_ReturnKirim),
+  ubahCB(cb_master),ubahCB(cb_Setting)]);
+  fungsi.SQLExec(dm.Q_Exe,sql,False);
 end;
 
 procedure Tf_emp.mniallClick(Sender: TObject);
