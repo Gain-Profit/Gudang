@@ -35,7 +35,7 @@ uses u_dm, u_utama;
 procedure TF_ubahPassword.btnpassClick(Sender: TObject);
 begin
 fungsi.SQLExec(dm.Q_temp,'SELECT STRCMP(`password`,MD5("'+edpassLama.Text+'")) as sama FROM tb_user where kd_user="'+
-f_utama.sb.Panels[0].Text+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
+f_utama.sb.Panels[0].Text+'"',true);
   if dm.Q_temp.FieldByName('sama').AsInteger <> 0 then
   begin
   showmessage('Password Lama Tidak Sesuai....');
@@ -56,11 +56,9 @@ f_utama.sb.Panels[0].Text+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',
   end;
 
 fungsi.SQLExec(dm.Q_Exe,'update tb_user set `update`="'+formatdatetime('yyyy-MM-dd', date())
-+'",password=md5("'+ed_pass.Text+'") where kd_user="'+f_utama.sb.Panels[0].text
-+'" and kd_perusahaan="'+f_utama.sb.Panels[3].text+'" ',false);
++'",password=md5("'+ed_pass.Text+'") where kd_user="'+f_utama.sb.Panels[0].text+'"',false);
 showmessage('Proses Pengubahan Password sukses....');
-Close;
-
+Close;                                                                             
 end;
 
 end.
