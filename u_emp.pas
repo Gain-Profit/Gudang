@@ -104,17 +104,19 @@ end;
 procedure Tf_emp.ubah;
 begin
 f_emp.Width:=483;
-//ed_kode.ReadOnly:= true;
+ed_kode.ReadOnly:= true;
 btnpass.Visible:= True;
 kdUser:= ed_kode.Text;
 
-fungsi.SQLExec(dm.Q_temp,'select * from tb_user where kd_user="'+kdUser+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
+fungsi.SQLExec(dm.Q_temp,'select * from tb_user where kd_user="'+kdUser+'"',true);
 ed_nama.Text:= dm.Q_temp.FieldByName('n_user').AsString;
 
 if FileExists(dm.WPath+'image/'+ed_kode.Text+'.jpg') then
 gambar.Picture.LoadFromFile(dm.WPath+'image/'+ed_kode.Text+'.jpg')else
 gambar.Clear;
 
+fungsi.SQLExec(dm.Q_temp,'select * from tb_user_company where ' +
+'kd_user="'+kdUser+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
 
 cb_gudang.Checked       := dm.Q_temp.FieldByName('gudang').AsBoolean;
 cb_akun.Checked         := dm.Q_temp.FieldByName('akun').AsBoolean;
@@ -216,8 +218,7 @@ exit;
 end;
 
 fungsi.SQLExec(dm.Q_Exe,'update tb_user set `update`="'+formatdatetime('yyyy-MM-dd', date())
-+'",password=md5("'+ed_pass.Text+'") where kd_user="'+ed_kode.Text
-+'" and kd_perusahaan="'+f_utama.sb.Panels[3].text+'" ',false);
++'",password=md5("'+ed_pass.Text+'") where kd_user="'+ed_kode.Text+'"',false);
 showmessage('Proses Pengubahan Password sukses....');
 end;
 
