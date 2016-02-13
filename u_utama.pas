@@ -583,7 +583,10 @@ begin
   application.CreateForm(tf_cari, f_cari);
   with F_cari do
   try
-    _SQLi:= 'select kd_user,n_user from tb_user where kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"';
+    _SQLi:= 'SELECT tb_user.kd_user, tb_user.n_user, FROM tb_user INNER JOIN ' +
+    'tb_user_company ON tb_user.kd_user = tb_user_company.kd_user WHERE ' +
+    'tb_user_company.kd_perusahaan="'+sb.Panels[0].Text+'"';
+
     tblcap[0]:= 'Kode';
     tblCap[1]:= 'Nama Pengguna';
     Caption:='Daftar Pengguna';
@@ -1107,14 +1110,18 @@ f_realCard.ShowModal;
 end;
 
 function Tf_utama.HakAkses(kunci: string): Boolean;
+var
+  sql : string;
 begin
-fungsi.SQLExec(dm.Q_temp,'select '+kunci+' from tb_user where kd_user="'+sb.Panels[0].Text+'" and kd_perusahaan="'+sb.Panels[3].Text+'"',true);
-Result:= dm.Q_temp.FieldByName(kunci).AsBoolean;
+  sql:= 'SELECT '+kunci+' FROM tb_user_company WHERE ' +
+  'kd_user="'+sb.Panels[0].Text+'" AND kd_perusahaan="'+sb.Panels[3].Text+'"';
+
+  fungsi.SQLExec(dm.Q_temp,sql,true);
+  Result:= dm.Q_temp.FieldByName(kunci).AsBoolean;
 end;
 
 procedure Tf_utama.SbubahPasswordClick(Sender: TObject);
 begin
-//ubah password
 Application.CreateForm(TF_ubahPassword,F_ubahPassword);
 F_ubahPassword.ShowModal;
 end;
