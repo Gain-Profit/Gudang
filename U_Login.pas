@@ -47,6 +47,8 @@ type
 var
   F_Login: TF_Login;
   fungsi:Tfungsi;
+  userPassword,userRealName:string;
+  isAdmin : Boolean;
 
 implementation
 
@@ -74,33 +76,52 @@ end;
 
 procedure TF_Login.Ed_Kd_UserKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
+var
+  sql : string;
 begin
 if key=vk_return then
 begin
-PeekMessage(Mgs, 0, WM_CHAR, WM_CHAR, PM_REMOVE );
-  FUNGSI.SQLExec(DM.Q_Show,'select kd_user,`password` as pass,n_user, admin from tb_user where kd_perusahaan='+
-  quotedstr(sb.Panels[0].Text)+' and kd_user="'+
-  ed_kd_user.Text+'" and gudang=''Y''',true);
-    if dm.Q_show.Eof then
-    Begin
+  PeekMessage(Mgs, 0, WM_CHAR, WM_CHAR, PM_REMOVE );
+  sql:= 'SELECT tb_user.n_user, tb_user.`password`, tb_user_company.admin ' +
+      'FROM tb_user INNER JOIN ' +
+      'tb_user_company ON tb_user.kd_user = tb_user_company.kd_user WHERE ' +
+      'tb_user.kd_user="'+ed_kd_user.Text+'" AND tb_user_company.gudang="Y" ' +
+      'AND tb_user_company.kd_perusahaan="'+sb.Panels[0].Text+'"';
+  fungsi.SQLExec(DM.Q_Show,sql,true);
+  if dm.Q_show.Eof then
+  Begin
     messagedlg('Kode ini tidak terdaftar...',mtError,[mbOk],0);
     ed_kd_user.SetFocus;
-    End else
+  End else
+  begin
+    userRealName:= dm.Q_show.FieldByName('n_user').AsString;
+    userPassword:= dm.Q_show.FieldByName('password').AsString;
+    isAdmin := dm.Q_show.FieldByName('admin').AsBoolean;
+
+    sql:= 'SELECT user_id FROM tb_checkinout WHERE ISNULL(checkout_time) ' +
+          'AND user_id="'+ed_kd_user.Text+'"';
+    fungsi.SQLExec(DM.Q_Show,sql,true);
+    if dm.Q_show.Eof then
+    begin
+      messagedlg('Tidak Dapat Login '#10#13'USER belum Check IN....',mtError,[mbOk],0);
+      ed_kd_user.SetFocus;
+    end
+    else
     begin
       ed_password.Enabled:= true;
       Ed_Password.SetFocus;
-      Ed_N_User.Text:= dm.Q_show.fieldbyname('n_user').AsString;
-
-      f_utama.ac_user.visible:=dm.Q_show.fieldbyname('admin').AsBoolean;
+      Ed_N_User.Text:= userRealName;
+      f_utama.ac_user.visible:=isAdmin;
 
       if FileExists(dm.WPath+'image/'+ed_kd_user.Text+'.jpg') then
-      gambar.Picture.LoadFromFile(dm.WPath+'image/'+ed_kd_user.Text+'.jpg')
+        gambar.Picture.LoadFromFile(dm.WPath+'image/'+ed_kd_user.Text+'.jpg')
       else
       begin
-      if FileExists(dm.WPath+'image/login.jpg') then
-      gambar.Picture.LoadFromFile(dm.WPath+'image/login.jpg');
+        if FileExists(dm.WPath+'image/login.jpg') then
+        gambar.Picture.LoadFromFile(dm.WPath+'image/login.jpg');
       end;
-    end;
+    end;                          
+  end;
 end;
 
 if key=vk_escape then close;
@@ -113,8 +134,7 @@ if ed_n_user.Text<>'' then
 begin
 fungsi.SQLExec(dm.Q_temp,'select md5("'+ed_password.Text+'")as passs',true);
 passs:=dm.Q_temp.fieldbyname('passs').AsString;
-if compareText(dm.Q_show.FieldByName('pass').AsString,passs)<>0 then
-//if compareText(dm.Q_show.FieldByName('pass').AsString,ed_password.Text)<>0 then
+if compareText(userPassword,passs)<>0 then
 begin
 messagedlg('Password salah..',mtError,[mbOk],0);
 ed_password.Clear;

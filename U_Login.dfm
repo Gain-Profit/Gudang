@@ -148,6 +148,7 @@ object F_Login: TF_Login
       Top = 48
       Width = 249
       Height = 27
+      CharCase = ecUpperCase
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
