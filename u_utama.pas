@@ -583,9 +583,7 @@ begin
   application.CreateForm(tf_cari, f_cari);
   with F_cari do
   try
-    _SQLi:= 'SELECT tb_user.kd_user, tb_user.n_user, FROM tb_user INNER JOIN ' +
-    'tb_user_company ON tb_user.kd_user = tb_user_company.kd_user WHERE ' +
-    'tb_user_company.kd_perusahaan="'+sb.Panels[0].Text+'"';
+    _SQLi:= 'SELECT kd_user, n_user FROM tb_user';
 
     tblcap[0]:= 'Kode';
     tblCap[1]:= 'Nama Pengguna';
@@ -1076,7 +1074,7 @@ begin
 if not(HakAkses('gdTrReturnKirim')) then
 begin
 messagedlg('Anda tidak mempunyai hak untuk ' + #13#10 +
-  'melanjutkan AKSES ke dalamMENU ini...',mtWarning,[mbOk],0);
+  'melanjutkan AKSES ke dalam MENU ini...',mtWarning,[mbOk],0);
 Exit;
 end;
 
