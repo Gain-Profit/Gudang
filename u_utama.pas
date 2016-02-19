@@ -1158,7 +1158,7 @@ begin
     'SUDAH DIRILIS...'+ #13#10#13#10 +
     'Download Applikasi Terbaru!!!' );
 
-    WinExec(PChar('rundll32 url.dll,FileProtocolHandler '+ URLDownload),
+    WinExec(PChar('rundll32 url.dll,FileProtocolHandler '+ UrlDownloadLocal),
     SW_MAXIMIZE);
     Application.Terminate;
   end;  
