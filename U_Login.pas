@@ -113,12 +113,12 @@ begin
       Ed_N_User.Text:= userRealName;
       f_utama.ac_user.visible:=isAdmin;
 
-      if FileExists(dm.WPath+'image/'+ed_kd_user.Text+'.jpg') then
-        gambar.Picture.LoadFromFile(dm.WPath+'image/'+ed_kd_user.Text+'.jpg')
+      if FileExists(dm.AppPath+'image/'+ed_kd_user.Text+'.jpg') then
+        gambar.Picture.LoadFromFile(dm.AppPath+'image/'+ed_kd_user.Text+'.jpg')
       else
       begin
-        if FileExists(dm.WPath+'image/login.jpg') then
-        gambar.Picture.LoadFromFile(dm.WPath+'image/login.jpg');
+        if FileExists(dm.AppPath+'image/login.jpg') then
+        gambar.Picture.LoadFromFile(dm.AppPath+'image/login.jpg');
       end;
     end;                          
   end;

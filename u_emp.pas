@@ -111,8 +111,8 @@ kdUser:= ed_kode.Text;
 fungsi.SQLExec(dm.Q_temp,'select * from tb_user where kd_user="'+kdUser+'"',true);
 ed_nama.Text:= dm.Q_temp.FieldByName('n_user').AsString;
 
-if FileExists(dm.WPath+'image/'+ed_kode.Text+'.jpg') then
-gambar.Picture.LoadFromFile(dm.WPath+'image/'+ed_kode.Text+'.jpg')else
+if FileExists(dm.AppPath+'image/'+ed_kode.Text+'.jpg') then
+gambar.Picture.LoadFromFile(dm.AppPath+'image/'+ed_kode.Text+'.jpg')else
 gambar.Clear;
 
 fungsi.SQLExec(dm.Q_temp,'select * from tb_user_company where ' +
