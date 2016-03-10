@@ -175,10 +175,10 @@ var
   Tmp, x: Integer;
   TmpStr: string;
 begin
+od.InitialDir:= dm.DocPath;
 if od.Execute then
 begin
   try
-  od.InitialDir:= dm.DocPath;
   fungsi.amankan(od.FileName,od.FileName,321);
   try
   AssignFile(F, od.FileName);

@@ -676,6 +676,7 @@ begin
   if cb_tunai.Checked then tunai:=1 else tunai:=0;
   if cb_PPN.Checked then ppn:=1 else ppn:=0;
 
+sd.InitialDir:= dm.DocPath;
 if sd.Execute then
 begin
   AssignFile(F, sd.FileName);
@@ -712,6 +713,7 @@ var
   Tmp, x: Integer;
   TmpStr: string;
 begin
+od.InitialDir:= dm.DocPath;
 if od.Execute then
 begin
   try
