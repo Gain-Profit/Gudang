@@ -624,7 +624,7 @@ end;
 procedure Tf_utama.FormClose(Sender: TObject; var Action: TCloseAction);
 var appINI : TIniFile;
 begin
-  appINI := TIniFile.Create(dm.WPath+'\tools\gain.ini') ;
+  appINI := TIniFile.Create(dm.AppPath+'gain.ini') ;
   appINI.WriteString('gudang','kd_perusahaan',sb.Panels[3].Text);
   appINI.Free;
 

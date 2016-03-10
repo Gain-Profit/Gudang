@@ -59,7 +59,7 @@ type
   private
     { Private declarations }
   public
-    WPath,AppPath: string;
+    WPath, AppPath: string;
     function FRObject(FastReport: TfrxReport; ObjectName: string): TObject;
     function FRMemo(FastReport: TfrxReport; ObjectName: string): TfrxMemoView;
     { Public declarations }
@@ -77,7 +77,8 @@ var
 
 implementation
 
-uses Math;
+uses
+  Math;
 
 
 {$R *.dfm}
@@ -165,14 +166,14 @@ begin
 
   WPath := ExtractFilePath(Application.ExeName);
   AppPath := GetAppData;
-  if not(DirectoryExists(AppPath)) then
+  if not (DirectoryExists(AppPath)) then
     CreateDir(AppPath);
-  sm.SkinDirectory := wpath + '\tools\skins';
-  appINI := TIniFile.Create(WPath + '\tools\gain.ini');
+  sm.SkinDirectory := AppPath + 'skins';
+  appINI := TIniFile.Create(AppPath + 'gain.ini');
   try
     kd_comp := appINI.ReadString('gudang', 'kd_perusahaan', '');
     PPN := appINI.ReadFloat('gudang', 'PPN', 10);
-    sm.SkinName := appINI.ReadString('gudang', 'nama_skin', 'Air (internal)');
+    sm.SkinName := appINI.ReadString('gudang', 'nama_skin', 'Air');
     sm.HueOffset := appini.ReadInteger('gudang', 'hue_skin', 0);
     sm.Saturation := appini.ReadInteger('gudang', 'sat_skin', 0);
   finally
@@ -187,7 +188,7 @@ procedure Tdm.smAfterChange(Sender: TObject);
 var
   appINI: TIniFile;
 begin
-  appINI := TIniFile.Create(dm.WPath + '\tools\gain.ini');
+  appINI := TIniFile.Create(AppPath + 'gain.ini');
   try
     appINI.WriteString('gudang', 'nama_skin', dm.sm.SkinName);
     appINI.WriteInteger('gudang', 'hue_skin', dm.sm.HueOffset);
