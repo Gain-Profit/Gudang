@@ -119,31 +119,31 @@ end;
 
 procedure TF_kirim_data.cek_dir_kirim;
 begin
-if not DirectoryExists(dm.AppPath+'DATA_KIRIM') then
-  MkDir(dm.AppPath+'DATA_KIRIM');
+if not DirectoryExists(dm.DocPath+'DATA_KIRIM') then
+  MkDir(dm.DocPath+'DATA_KIRIM');
 
-if not DirectoryExists(dm.AppPath+'\DATA_KIRIM\'+f_utama.sb.Panels[3].text+'_'+f_utama.sb.Panels[4].text) then
-  MkDir(dm.AppPath+'DATA_KIRIM\'+f_utama.sb.Panels[3].text+'_'+f_utama.sb.Panels[4].text);
+if not DirectoryExists(dm.DocPath+'\DATA_KIRIM\'+f_utama.sb.Panels[3].text+'_'+f_utama.sb.Panels[4].text) then
+  MkDir(dm.DocPath+'DATA_KIRIM\'+f_utama.sb.Panels[3].text+'_'+f_utama.sb.Panels[4].text);
 
-if not DirectoryExists(dm.AppPath+'\DATA_KIRIM\'+f_utama.sb.Panels[3].text+'_'+
+if not DirectoryExists(dm.DocPath+'\DATA_KIRIM\'+f_utama.sb.Panels[3].text+'_'+
 f_utama.sb.Panels[4].text+'\PC_'+f_utama.sb.Panels[3].text+'_'+formatdatetime('yyyy-MM-dd',edt_kirim.date)) then
-    MkDir(dm.AppPath+'DATA_KIRIM\'+f_utama.sb.Panels[3].text+'_'+
+    MkDir(dm.DocPath+'DATA_KIRIM\'+f_utama.sb.Panels[3].text+'_'+
     f_utama.sb.Panels[4].text+'\PC_'+f_utama.sb.Panels[3].text+'_'+formatdatetime('yyyy-MM-dd',edt_kirim.date));
 
-dir_simpan:=dm.AppPath+'DATA_KIRIM\'+f_utama.sb.Panels[3].text+'_'+
+dir_simpan:=dm.DocPath+'DATA_KIRIM\'+f_utama.sb.Panels[3].text+'_'+
             f_utama.sb.Panels[4].text+'\PC_'+f_utama.sb.Panels[3].text+'_'+formatdatetime('yyyy-MM-dd',edt_kirim.Date);
 end;
 
 procedure TF_kirim_data.cek_dir_terima;
 begin
-if not DirectoryExists(dm.AppPath+'DATA_TERIMA') then
-  MkDir(dm.AppPath+'DATA_TERIMA');
+if not DirectoryExists(dm.DocPath+'DATA_TERIMA') then
+  MkDir(dm.DocPath+'DATA_TERIMA');
 
-if not DirectoryExists(dm.AppPath+'DATA_TERIMA\'+f_utama.sb.Panels[3].text+'_'+f_utama.sb.Panels[4].text) then
-  MkDir(dm.AppPath+'DATA_TERIMA\'+f_utama.sb.Panels[3].text+'_'+f_utama.sb.Panels[4].text);
+if not DirectoryExists(dm.DocPath+'DATA_TERIMA\'+f_utama.sb.Panels[3].text+'_'+f_utama.sb.Panels[4].text) then
+  MkDir(dm.DocPath+'DATA_TERIMA\'+f_utama.sb.Panels[3].text+'_'+f_utama.sb.Panels[4].text);
 
-dir_load:=dm.AppPath+'DATA_TERIMA\'+f_utama.sb.Panels[3].text+'_'+f_utama.sb.Panels[4].text+'\';
-file_load:=dm.AppPath+'DATA_TERIMA\'+f_utama.sb.Panels[3].text+'_'+f_utama.sb.Panels[4].text+'\CP_'+
+dir_load:=dm.DocPath+'DATA_TERIMA\'+f_utama.sb.Panels[3].text+'_'+f_utama.sb.Panels[4].text+'\';
+file_load:=dm.DocPath+'DATA_TERIMA\'+f_utama.sb.Panels[3].text+'_'+f_utama.sb.Panels[4].text+'\CP_'+
 f_utama.sb.Panels[3].text+'_'+formatdatetime('yyyy-MM-dd',edt_terima.Date)+'.zip';
 end;
 
@@ -159,7 +159,7 @@ DeleteFile(dir_simpan+'.zip');
 
 zipp:= TAbZipper.Create(Self);
 zipp.AutoSave:=True;
-zipp.BaseDirectory:= dm.AppPath+'DATA_KIRIM\'+f_utama.sb.Panels[3].text+'_'+
+zipp.BaseDirectory:= dm.DocPath+'DATA_KIRIM\'+f_utama.sb.Panels[3].text+'_'+
           f_utama.sb.Panels[4].text+'\';
 
 zipp.FileName:=dir_simpan+'.zip';
