@@ -119,15 +119,15 @@ end;
 
 procedure TF_kirim_data.cek_dir_kirim;
 begin
-if not DirectoryExists(dm.wpath+'DATA_KIRIM') then
-  MkDir(dm.wpath+'DATA_KIRIM');
+if not DirectoryExists(dm.AppPath+'DATA_KIRIM') then
+  MkDir(dm.AppPath+'DATA_KIRIM');
 
-if not DirectoryExists(dm.wpath+'\DATA_KIRIM\'+f_utama.sb.Panels[3].text+'_'+f_utama.sb.Panels[4].text) then
-  MkDir(dm.wpath+'DATA_KIRIM\'+f_utama.sb.Panels[3].text+'_'+f_utama.sb.Panels[4].text);
+if not DirectoryExists(dm.AppPath+'\DATA_KIRIM\'+f_utama.sb.Panels[3].text+'_'+f_utama.sb.Panels[4].text) then
+  MkDir(dm.AppPath+'DATA_KIRIM\'+f_utama.sb.Panels[3].text+'_'+f_utama.sb.Panels[4].text);
 
-if not DirectoryExists(dm.wpath+'\DATA_KIRIM\'+f_utama.sb.Panels[3].text+'_'+
+if not DirectoryExists(dm.AppPath+'\DATA_KIRIM\'+f_utama.sb.Panels[3].text+'_'+
 f_utama.sb.Panels[4].text+'\PC_'+f_utama.sb.Panels[3].text+'_'+formatdatetime('yyyy-MM-dd',edt_kirim.date)) then
-    MkDir(dm.wpath+'DATA_KIRIM\'+f_utama.sb.Panels[3].text+'_'+
+    MkDir(dm.AppPath+'DATA_KIRIM\'+f_utama.sb.Panels[3].text+'_'+
     f_utama.sb.Panels[4].text+'\PC_'+f_utama.sb.Panels[3].text+'_'+formatdatetime('yyyy-MM-dd',edt_kirim.date));
 
 dir_simpan:=dm.AppPath+'DATA_KIRIM\'+f_utama.sb.Panels[3].text+'_'+
