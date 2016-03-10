@@ -59,7 +59,7 @@ type
   private
     { Private declarations }
   public
-    WPath, AppPath: string;
+    WPath, AppPath, DocPath: string;
     function FRObject(FastReport: TfrxReport; ObjectName: string): TObject;
     function FRMemo(FastReport: TfrxReport; ObjectName: string): TfrxMemoView;
     { Public declarations }
@@ -83,11 +83,11 @@ uses
 
 {$R *.dfm}
 
-function GetAppData: string;
+function GetAppData(Folder: Integer): string;
 var
   path: array[0..MAX_PATH] of Char;
 begin
-  if Succeeded(SHGetFolderPath(0, CSIDL_COMMON_APPDATA, 0, 0, @Path[0])) then
+  if Succeeded(SHGetFolderPath(0, Folder, 0, 0, @Path[0])) then
     Result := path + '\Gain Profit\'
   else
     Result := '';
@@ -165,9 +165,15 @@ begin
   batasan := 1000;
 
   WPath := ExtractFilePath(Application.ExeName);
-  AppPath := GetAppData;
+
+  AppPath := GetAppData(CSIDL_COMMON_APPDATA);
   if not (DirectoryExists(AppPath)) then
     CreateDir(AppPath);
+
+  DocPath := GetAppData(CSIDL_PERSONAL);
+  if not (DirectoryExists(DocPath)) then
+    CreateDir(DocPath);
+
   sm.SkinDirectory := AppPath + 'skins';
   appINI := TIniFile.Create(AppPath + 'gain.ini');
   try
