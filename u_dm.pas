@@ -3,9 +3,9 @@ unit u_dm;
 interface
 
 uses
-  SysUtils, Classes, mySQLDbTables, DB, sSkinManager, dialogs,forms,
-  ImgList, Controls, acAlphaImageList, frxClass, frxDBSet,inifiles,
-  frxDesgn,  frxBarcode, cxStyles,Windows,raw_ping, frxExportXML;
+  SysUtils, Classes, mySQLDbTables, DB, sSkinManager, dialogs, forms, ImgList,
+  Controls, acAlphaImageList, frxClass, frxDBSet, inifiles, frxDesgn, frxBarcode,
+  cxStyles, Windows, raw_ping, frxExportXML, SHFolder;
 
 type
   Tdm = class(TDataModule)
@@ -59,54 +59,66 @@ type
   private
     { Private declarations }
   public
-    WPath: string;
-    function FRObject(FastReport: TfrxReport; ObjectName: String): TObject;
-    function FRMemo (FastReport: TfrxReport; ObjectName: String): TfrxMemoView;
+    WPath,AppPath: string;
+    function FRObject(FastReport: TfrxReport; ObjectName: string): TObject;
+    function FRMemo(FastReport: TfrxReport; ObjectName: string): TfrxMemoView;
     { Public declarations }
   end;
 
 var
   dm: Tdm;
-  kd_comp,onServer : string;
+  kd_comp, onServer: string;
   waktu_sekarang: TDateTime;
-  sop,metu_kabeh,terkoneksi:boolean;
-  PPN:real;
-  batasan :integer;
-  Mgs : TMsg;
-  cabang : TStringList;
+  sop, metu_kabeh, terkoneksi: boolean;
+  PPN: real;
+  batasan: integer;
+  Mgs: TMsg;
+  cabang: TStringList;
 
 implementation
+
+uses Math;
 
 
 {$R *.dfm}
 
-function Tdm.FRObject(FastReport: TfrxReport; ObjectName: String): TObject;
+function GetAppData: string;
+var
+  path: array[0..MAX_PATH] of Char;
+begin
+  if Succeeded(SHGetFolderPath(0, CSIDL_COMMON_APPDATA, 0, 0, @Path[0])) then
+    Result := path + '\Gain Profit\'
+  else
+    Result := '';
+end;
+
+function Tdm.FRObject(FastReport: TfrxReport; ObjectName: string): TObject;
 var
   i: Integer;
   AFound: Boolean;
 begin
-  AFound:=False;
+  AFound := False;
   for I := 0 to FastReport.ComponentCount - 1 do
   begin
     if LowerCase(FastReport.Components[i].Name) = LowerCase(ObjectName) then
     begin
-      Result:=TObject(FastReport.Components[i]);
-      AFound:=True;
+      Result := TObject(FastReport.Components[i]);
+      AFound := True;
       Break;
     end;
   end;
   if not AFound then
   begin
-    Result:=nil;
+    Result := nil;
   end;
 end;
 
-function Tdm.FRMemo (FastReport: TfrxReport; ObjectName: String): TfrxMemoView;
+function Tdm.FRMemo(FastReport: TfrxReport; ObjectName: string): TfrxMemoView;
 begin
   Result := TfrxMemoView(FRObject(FastReport, ObjectName));
 end;
 
-function krupuk(const s: String; CryptInt: Integer): String;
+function krupuk(const s: string; CryptInt: Integer): string;
 var
   i: integer;
   s2: string;
@@ -119,67 +131,70 @@ end;
 
 procedure Tdm.koneksikan;
 var
-  data,pusat,jalur1,jalur2,nama,kata: string;
+  data, pusat, jalur1, jalur2, nama, kata: string;
   X: TextFile;
 begin
-My_conn.Connected:= False;
- assignfile(X,'tools\koneksi.cbCon');
- try
-   reset(X);
-   readln(X,pusat);
-   readln(X,data);
-   readln(X,jalur2);
-   readln(X,nama);
-   readln(X,kata);
-   closefile(X);
- my_conn.Host :=krupuk(pusat,6);
- my_conn.DatabaseName:= krupuk(data,6);
- jalur1 :=krupuk(jalur2,6);
- my_conn.Port :=strtoint(jalur1);
- my_conn.UserName :=krupuk(nama,6);
- my_conn.UserPassword :=krupuk(kata,6);
- my_conn.Connected:= true;
-
- except
- showmessage('koneksi tidak berhasil');
- application.Terminate;
- end;
+  My_conn.Connected := False;
+  assignfile(X, 'tools\koneksi.cbCon');
+  try
+    reset(X);
+    readln(X, pusat);
+    readln(X, data);
+    readln(X, jalur2);
+    readln(X, nama);
+    readln(X, kata);
+    closefile(X);
+    my_conn.Host := krupuk(pusat, 6);
+    my_conn.DatabaseName := krupuk(data, 6);
+    jalur1 := krupuk(jalur2, 6);
+    my_conn.Port := strtoint(jalur1);
+    my_conn.UserName := krupuk(nama, 6);
+    my_conn.UserPassword := krupuk(kata, 6);
+    my_conn.Connected := true;
+  except
+    showmessage('koneksi tidak berhasil');
+    application.Terminate;
+  end;
 end;
 
 procedure Tdm.DataModuleCreate(Sender: TObject);
 var
-  appINI : TIniFile;
+  appINI: TIniFile;
 begin
-batasan:=1000;
+  batasan := 1000;
 
-WPath := ExtractFilePath(Application.ExeName);
-sm.SkinDirectory:=wpath+'\tools\skins';
-  appINI := TIniFile.Create(WPath+'\tools\gain.ini') ;
- try
-  kd_comp := appINI.ReadString ('gudang', 'kd_perusahaan', '');
-  PPN:= appINI.ReadFloat('gudang','PPN',10);
-  sm.SkinName:=appINI.ReadString('gudang','nama_skin','Air (internal)');
-  sm.HueOffset:=appini.ReadInteger('gudang','hue_skin',0);
-  sm.Saturation:=appini.ReadInteger('gudang','sat_skin',0);
- finally
- appINI.Free;
- end;
+  WPath := ExtractFilePath(Application.ExeName);
+  AppPath := GetAppData;
+  if not(DirectoryExists(AppPath)) then
+    CreateDir(AppPath);
+  sm.SkinDirectory := wpath + '\tools\skins';
+  appINI := TIniFile.Create(WPath + '\tools\gain.ini');
+  try
+    kd_comp := appINI.ReadString('gudang', 'kd_perusahaan', '');
+    PPN := appINI.ReadFloat('gudang', 'PPN', 10);
+    sm.SkinName := appINI.ReadString('gudang', 'nama_skin', 'Air (internal)');
+    sm.HueOffset := appini.ReadInteger('gudang', 'hue_skin', 0);
+    sm.Saturation := appini.ReadInteger('gudang', 'sat_skin', 0);
+  finally
+    appINI.Free;
+  end;
 
-sop:=true;
-koneksikan;
+  sop := true;
+  koneksikan;
 end;
 
 procedure Tdm.smAfterChange(Sender: TObject);
-var appINI : TIniFile;
+var
+  appINI: TIniFile;
 begin
-  appINI := TIniFile.Create(dm.WPath+'\tools\gain.ini') ;
- try
-  appINI.WriteString('gudang','nama_skin',dm.sm.SkinName);
-  appINI.WriteInteger('gudang','hue_skin',dm.sm.HueOffset);
-  appINI.WriteInteger('gudang','sat_skin',dm.sm.Saturation);
- finally
- appINI.Free;
- end;
+  appINI := TIniFile.Create(dm.WPath + '\tools\gain.ini');
+  try
+    appINI.WriteString('gudang', 'nama_skin', dm.sm.SkinName);
+    appINI.WriteInteger('gudang', 'hue_skin', dm.sm.HueOffset);
+    appINI.WriteInteger('gudang', 'sat_skin', dm.sm.Saturation);
+  finally
+    appINI.Free;
+  end;
 end;
 
 initialization
@@ -187,5 +202,6 @@ initialization
 
 finalization
   cabang.Free;
-  
+
 end.
+
