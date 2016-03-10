@@ -804,11 +804,7 @@ end;
 end;
 
 procedure Tf_utama.FormCreate(Sender: TObject);
-const
-  crMycursor = 1;
 begin
-  Screen.Cursors[crMyCursor]:=LoadCursorFromFile(pchar(dm.WPath+'\tools\c_gudang.ani'));
-  Cursor := crMyCursor;
   DecimalSeparator:= '.';
   ThousandSeparator := ',';
   ShortDateFormat:='dd/mm/yyyy';
