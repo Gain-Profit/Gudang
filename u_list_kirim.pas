@@ -149,7 +149,7 @@ var
   F: TextFile;
   qty,hpp,tot:Real;
 begin
-if SelectDirectory('Pilih Folder', ExtractFileDrive(dm.WPath), tempat) then
+if SelectDirectory('Pilih Folder', ExtractFileDrive(dm.DocPath), tempat) then
   begin
     dm.Q_list_kirim.First;
     while not(dm.Q_list_kirim.Eof) do

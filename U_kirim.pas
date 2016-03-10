@@ -162,7 +162,7 @@ end;
 procedure TF_kirim.b_simpan_fileClick(Sender: TObject);
 begin
 sd.FileName:= ed_no_faktur.Text + sd.DefaultExt;
-sd.InitialDir:= dm.WPath;
+sd.InitialDir:= dm.DocPath;
 if sd.Execute then
   begin
     simpan_file(sd.FileName);
@@ -178,7 +178,7 @@ begin
 if od.Execute then
 begin
   try
-  od.InitialDir:= dm.WPath;
+  od.InitialDir:= dm.DocPath;
   fungsi.amankan(od.FileName,od.FileName,321);
   try
   AssignFile(F, od.FileName);

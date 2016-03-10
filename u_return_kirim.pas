@@ -567,7 +567,7 @@ var
   x: Integer;
 begin
   sd.FileName:= ed_no_faktur.Text +sd.DefaultExt;
-  sd.InitialDir:= dm.WPath;
+  sd.InitialDir:= dm.DocPath;
 
 if sd.Execute then
 begin
