@@ -1151,11 +1151,8 @@ begin
   begin
     ShowMessage('APLIKASI GUDANG TIDAK DAPAT DIJALANKAN' + #13#10 +
     'aplikasi terbaru dengan versi : '+ versiDB + #13#10 +
-    'SUDAH DIRILIS...'+ #13#10#13#10 +
-    'Download Applikasi Terbaru!!!' );
+    'SUDAH DIRILIS...');
 
-    WinExec(PChar('rundll32 url.dll,FileProtocolHandler '+ UrlDownloadLocal),
-    SW_MAXIMIZE);
     Application.Terminate;
   end;  
 end;
