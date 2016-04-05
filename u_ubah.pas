@@ -234,14 +234,14 @@ fungsi.SQLExec(dm.Q_Exe,'insert into tb_barang_harga(kd_perusahaan,kd_macam_harg
 perusahaan+'","'+cb_macam.Text+'","'+ed_plu.Text+'","'+
 ed_marginrp.Text+'","'+caridanganti(ed_marginP.Text,',','.')+'","'+ed_harga1.Text+'","'+
 ed_harga2.Text+'","'+ed_harga3.Text+'","'+f_utama.sb.Panels[0].Text+'","'+
-formatdatetime('yyyy-MM-dd',de_awal.date)+'","'+formatdatetime('yyyy-MM-dd',de_ahir.Date)+'","'+
-formatdatetime('yyyy-MM-dd', date())+'","'+ed_discRp.Text+'","'+caridanganti(ed_discP.Text,',','.')+'")',false)
+formatdatetime('yyyy-MM-dd',de_awal.date)+'","'+formatdatetime('yyyy-MM-dd',de_ahir.Date)
++'",NOW(),"'+ed_discRp.Text+'","'+caridanganti(ed_discP.Text,',','.')+'")',false)
 end else
 begin
 fungsi.SQLExec(dm.Q_Exe,'update tb_barang_harga set laba="'+
 ed_marginRP.Text+'",laba_P="'+caridanganti(ed_marginP.Text,',','.')+'",harga_jual1="'+ed_harga1.Text+'",harga_jual2="'+
 ed_harga2.Text+'",harga_jual3="'+ed_harga3.Text+'",kode_user="'+
-f_utama.sb.Panels[0].Text+'",`update`="'+formatdatetime('yyyy-MM-dd', date())+'",awal="'+formatdatetime('yyyy-MM-dd',de_awal.Date)+'",ahir="'+
+f_utama.sb.Panels[0].Text+'",`update`=NOW(),awal="'+formatdatetime('yyyy-MM-dd',de_awal.Date)+'",ahir="'+
 formatdatetime('yyyy-MM-dd',de_ahir.Date)+'",diskon="'+ed_discRp.Text+'",diskonP="'+
 caridanganti(ed_discP.Text,',','.')+'" where kd_barang="'+ed_plu.Text+'" and kd_macam_harga="'+
 cb_macam.Text+'" and kd_perusahaan="'+perusahaan+'"',false);
