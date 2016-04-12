@@ -378,7 +378,7 @@ begin
     kd_tag+'","'+kd_gol+'","'+kd_merk+'","'+kd_sat[1]+'","'+kd_sat[2]+'","'+kd_sat[3]+'","'+
     ed_bar1.Text+'","'+ed_bar2.Text+'","'+ed_bar3.Text+'","'+ed_qty1.Text+'","'+
     ed_qty2.Text+'","'+ed_minstok.Text+'","'+ed_maxstok.Text+'","'+ed_time.Text+'","'+
-    b_aktif+'","'+ed_minor.Text+'",NOW())',false);
+    b_aktif+'","'+ed_minor.Text+'",CURRENT_TIMESTAMP)',false);
   end else
   begin
     //ubah data
@@ -387,7 +387,7 @@ begin
     kd_sat[3]+'",barcode1="'+ed_bar1.Text+'",barcode2="'+ed_bar2.Text+'",barcode3="'+ed_bar3.Text
     +'",Qty1="'+ed_qty1.Text+'",Qty2="'+ed_qty2.Text+'",minstok="'+ed_minstok.Text+'",maxstok="'+
     ed_maxstok.Text+'",leadtime="'+ed_time.Text+'",aktif="'+b_aktif+'",minor="'+
-    ed_minor.Text+'",`update`=NOW() where kd_perusahaan="'+perusahaan+'" and kd_barang="'+old_pid+'"',false);
+    ed_minor.Text+'",`update`=CURRENT_TIMESTAMP where kd_perusahaan="'+perusahaan+'" and kd_barang="'+old_pid+'"',false);
   end;
 end;
 
