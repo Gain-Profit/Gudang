@@ -91,7 +91,7 @@ type
 var
   F_barang_det: TF_barang_det;
   fungsi: TFungsi;
-  old_pid,kd_jenis,kd_merk,kd_gol,kd_tag: string;
+  kd_jenis,kd_merk,kd_gol,kd_tag: string;
   //kd_sat1,kd_sat2,kd_sat3: string;
   kd_sat: array[1..3] of string;
   status_simpan:boolean;
@@ -130,7 +130,6 @@ ed_nama.Text:= dm.Q_barang.FieldByName('n_barang').AsString;
 
 t_load.Enabled := True;
 
-old_pid:=ed_pid.Text;
 Caption:= 'Inventory Barang - Edit Barang';
 end;
 
@@ -387,7 +386,7 @@ begin
     kd_sat[3]+'",barcode1="'+ed_bar1.Text+'",barcode2="'+ed_bar2.Text+'",barcode3="'+ed_bar3.Text
     +'",Qty1="'+ed_qty1.Text+'",Qty2="'+ed_qty2.Text+'",minstok="'+ed_minstok.Text+'",maxstok="'+
     ed_maxstok.Text+'",leadtime="'+ed_time.Text+'",aktif="'+b_aktif+'",minor="'+
-    ed_minor.Text+'",`update`=CURRENT_TIMESTAMP where kd_perusahaan="'+perusahaan+'" and kd_barang="'+old_pid+'"',false);
+    ed_minor.Text+'",`update`=CURRENT_TIMESTAMP where kd_perusahaan="'+perusahaan+'" and kd_barang="'+ed_pid.Text+'"',false);
   end;
 end;
 
