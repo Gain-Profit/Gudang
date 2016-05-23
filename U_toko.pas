@@ -10,7 +10,7 @@ uses
   cxCustomData, cxGraphics, cxFilter, cxData, cxDataStorage, cxEdit, DB,
   cxDBData, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
   cxGridLevel, cxClasses, cxControls, cxGridCustomView, cxGrid, sComboBox,
-  sMaskEdit, sCustomComboEdit, sTooledit;
+  sMaskEdit, sCustomComboEdit, sTooledit, DateUtils;
 
 type
   TF_toko = class(TForm)
@@ -23,6 +23,7 @@ type
     lbl1: TsLabel;
     btnMutasiHarga: TsButton;
     lbl2: TsLabel;
+    function TotalDay(Year: Integer; Month: Integer): Integer;
     procedure btnGrossClick(Sender: TObject);
     procedure btnMutasiClick(Sender: TObject);
     procedure sButton2Click(Sender: TObject);
@@ -120,6 +121,36 @@ begin
   periode:= cb_periode.Text;
   bulan:= Copy(periode,6,2);
   tahun:= Copy(periode,1,4);
+end;
+
+function TF_toko.TotalDay(Year, Month: Integer): Integer;
+var
+  MinOne, MinTwo, Now: Integer;
+begin
+  if Month = 2 then
+  begin
+    MinOne := DaysInAMonth(Year, 1);
+    MinTwo := DaysInAMonth(Year - 1, 12);
+  end else
+  if Month = 1 then
+  begin
+    MinOne := DaysInAMonth(Year - 1, 12);
+    MinTwo := DaysInAMonth(Year - 1, 11);
+  end else
+  begin
+    MinOne := DaysInAMonth(Year, Month -1);
+    MinTwo := DaysInAMonth(Year, Month -2);
+  end;
+
+  if ((YearOf(Date) = Year) and (MonthOf(Date) = Month)) then
+  begin
+    Now := DayOf(Date);
+  end else
+  begin
+    Now := DaysInAMonth(Year, Month);
+  end;
+
+  Result := Now + MinOne + MinTwo;
 end;
 
 end.
