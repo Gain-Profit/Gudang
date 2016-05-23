@@ -42,7 +42,7 @@ object F_toko: TF_toko
     Top = 136
     Width = 233
     Height = 25
-    Caption = 'Preview Stok Out Harian'
+    Caption = 'Preview Stok Out Barang'
     TabOrder = 0
     OnClick = sButton2Click
     SkinData.SkinSection = 'BUTTON'
