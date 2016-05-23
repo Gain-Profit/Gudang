@@ -27,6 +27,7 @@ type
      function program_versi:string;
      function caridanganti(sSrc, sLookFor, sReplaceWith : string) : string;
      function UpdateApp(const Url: string): string;
+     function jumlahHariBulan(bulan: Integer):Integer;
      procedure hapusdir(const DirName: string);
      procedure savetofile(aQuery:TmySQLQuery; _SQL,nm_file:string);
      procedure amankan(pathin, pathout: string; Chave: Word);
@@ -266,6 +267,28 @@ begin
   else
     { NetHandle is not valid. Raise an exception }
     raise Exception.Create('Unable to initialize Wininet');
+end;
+
+function Tfungsi.jumlahHariBulan(bulan: Integer): Integer;
+var
+  hasil:Integer;
+begin
+  case bulan of
+    1  : hasil:= 31;
+    2  : hasil:= 29;
+    3  : hasil:= 31;
+    4  : hasil:= 30;
+    5  : hasil:= 31;
+    6  : hasil:= 30;
+    7  : hasil:= 31;
+    8  : hasil:= 31;
+    9  : hasil:= 30;
+    10 : hasil:= 31;
+    11 : hasil:= 30;
+    12 : hasil:= 31;
+  else hasil:= 0;
+  end;
+  Result:= hasil;
 end;
 
 end.
