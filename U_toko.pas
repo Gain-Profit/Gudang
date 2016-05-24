@@ -123,6 +123,7 @@ begin
   tahun:= Copy(periode,1,4);
 end;
 
+// procdure untuk mendapatkan total hari dalam tiga bulan terahir.
 function TF_toko.TotalDay(Year, Month: Integer): Integer;
 var
   MinOne, MinTwo, Now: Integer;
