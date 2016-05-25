@@ -116,6 +116,7 @@ begin
 cekPeriode;
 end;
 
+// procdure untuk mendapatkan bulan dan tahun dari combo box
 procedure TF_toko.cekPeriode;
 begin
   periode:= cb_periode.Text;
