@@ -23,7 +23,7 @@ object f_utama: Tf_utama
   TextHeight = 13
   object sg_update: TsGauge
     Left = 0
-    Top = 366
+    Top = 367
     Width = 1003
     Height = 30
     Align = alBottom
@@ -36,7 +36,7 @@ object f_utama: Tf_utama
   end
   object sb: TsStatusBar
     Left = 0
-    Top = 396
+    Top = 397
     Width = 1003
     Height = 25
     Panels = <
@@ -852,6 +852,29 @@ object f_utama: Tf_utama
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           ImageIndex = 5
+          Images = dm.image
+          Reflected = True
+        end
+        object SbGroupBarang: TsSpeedButton
+          Left = 639
+          Top = 6
+          Width = 142
+          Height = 69
+          Cursor = crHandPoint
+          Caption = 'Group Barang'
+          Flat = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Rockwell'
+          Font.Style = [fsBold]
+          Layout = blGlyphTop
+          ParentFont = False
+          Spacing = 0
+          OnClick = SbGroupBarangClick
+          Align = alLeft
+          SkinData.SkinSection = 'TOOLBUTTON'
+          ImageIndex = 9
           Images = dm.image
           Reflected = True
         end
