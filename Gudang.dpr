@@ -41,7 +41,8 @@ uses
   u_ubahPassword in 'u_ubahPassword.pas' {F_ubahPassword},
   u_list_return_jual in 'u_list_return_jual.pas' {f_list_return_jual},
   u_barcode in 'u_barcode.pas' {f_Barcode},
-  u_realCard in 'u_realCard.pas' {f_realCard};
+  u_realCard in 'u_realCard.pas' {f_realCard},
+  U_Group_Barang in 'U_Group_Barang.pas' {FGroupBarang};
 
 {$R *.res}
 
