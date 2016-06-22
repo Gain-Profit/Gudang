@@ -148,14 +148,6 @@ object FGroupBarang: TFGroupBarang
         Caption = 'Jumlah Qty'
         Width = 96
       end
-      object tvTotalHarga: TcxGridDBColumn
-        Caption = 'Harga Total'
-        PropertiesClassName = 'TcxCurrencyEditProperties'
-        Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
-        HeaderAlignmentHorz = taRightJustify
-        HeaderGlyphAlignmentHorz = taCenter
-        Width = 123
-      end
     end
     object l_data: TcxGridLevel
       GridView = t_data

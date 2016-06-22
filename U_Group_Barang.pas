@@ -21,7 +21,6 @@ type
     t_data: TcxGridDBTableView;
     tvKodeGroup: TcxGridDBColumn;
     tvDeskripsi: TcxGridDBColumn;
-    tvTotalHarga: TcxGridDBColumn;
     l_data: TcxGridLevel;
     btnBaru: TsButton;
     btnEdit: TsButton;
