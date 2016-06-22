@@ -42,7 +42,8 @@ uses
   u_list_return_jual in 'u_list_return_jual.pas' {f_list_return_jual},
   u_barcode in 'u_barcode.pas' {f_Barcode},
   u_realCard in 'u_realCard.pas' {f_realCard},
-  U_Group_Barang in 'U_Group_Barang.pas' {FGroupBarang};
+  U_Group_Barang in 'U_Group_Barang.pas' {FGroupBarang},
+  u_Group_Barang_Detail in 'u_Group_Barang_Detail.pas' {FGroupBarangDetail};
 
 {$R *.res}
 
