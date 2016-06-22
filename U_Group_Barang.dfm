@@ -135,18 +135,22 @@ object FGroupBarang: TFGroupBarang
       OptionsView.GroupByBox = False
       object tvKodeGroup: TcxGridDBColumn
         Caption = 'Kode Group'
+        DataBinding.FieldName = 'id_group'
         Width = 67
       end
       object tvDeskripsi: TcxGridDBColumn
         Caption = 'Deskripsi Group'
+        DataBinding.FieldName = 'deskripsi'
         Width = 303
       end
       object tvJumlahItem: TcxGridDBColumn
         Caption = 'Jumlah Item'
+        DataBinding.FieldName = 'jumlah_item'
         Width = 95
       end
       object tvJumlahQty: TcxGridDBColumn
         Caption = 'Jumlah Qty'
+        DataBinding.FieldName = 'jumlah_qty'
         Width = 96
       end
     end
