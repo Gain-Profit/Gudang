@@ -235,7 +235,7 @@ uses u_barang, u_edit_harga, u_return, u_cari, u_dm, u_purchase,
   u_list_return, U_Login,acselectskin, u_RO, U_kirim, u_list_kirim,
   u_kirim_data, u_list_sales, u_list_SO, u_return_kirim,
   u_list_return_kirim, U_toko, u_hari, u_emp, u_ubahPassword,
-  u_list_return_jual, u_barcode, u_realCard;
+  u_list_return_jual, u_barcode, u_realCard, U_Group_Barang;
 
 {$R *.dfm}
 
@@ -1167,7 +1167,10 @@ end;
 
 procedure Tf_utama.SbGroupBarangClick(Sender: TObject);
 begin
-//
+if FGroupBarang = nil then
+application.CreateForm(TFGroupBarang, FGroupBarang);
+
+FGroupBarang.Show;
 end;
 
 end.
