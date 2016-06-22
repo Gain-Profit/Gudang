@@ -123,6 +123,7 @@ object FGroupBarang: TFGroupBarang
     LookAndFeel.Kind = lfOffice11
     object t_data: TcxGridDBTableView
       NavigatorButtons.ConfirmDelete = False
+      DataController.DataSource = dsGroupBarang
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <>
       DataController.Summary.SummaryGroups = <>
@@ -162,6 +163,16 @@ object FGroupBarang: TFGroupBarang
     SkinData.SkinSection = 'FORM'
     TitleButtons = <>
     Left = 16
+    Top = 24
+  end
+  object QGroupBarang: TmySQLQuery
+    Database = dm.My_conn
+    Left = 56
+    Top = 24
+  end
+  object dsGroupBarang: TDataSource
+    DataSet = QGroupBarang
+    Left = 88
     Top = 24
   end
 end
