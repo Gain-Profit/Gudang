@@ -10,7 +10,11 @@ object FGroupBarang: TFGroupBarang
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  FormStyle = fsMDIChild
   OldCreateOrder = False
+  Position = poDefault
+  Visible = True
+  WindowState = wsMaximized
   PixelsPerInch = 96
   TextHeight = 13
 end
