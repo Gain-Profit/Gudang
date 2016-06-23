@@ -23,7 +23,7 @@ object FGroupBarang: TFGroupBarang
     Left = 530
     Top = 0
     Width = 150
-    Height = 442
+    Height = 441
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 0
@@ -78,7 +78,7 @@ object FGroupBarang: TFGroupBarang
     end
     object p1: TsPanel
       Left = 0
-      Top = 328
+      Top = 327
       Width = 150
       Height = 114
       Align = alBottom
@@ -91,6 +91,7 @@ object FGroupBarang: TFGroupBarang
         Height = 25
         Caption = 'Baru'
         TabOrder = 0
+        OnClick = btnBaruClick
         SkinData.SkinSection = 'BUTTON'
       end
       object btnEdit: TsButton
@@ -100,6 +101,7 @@ object FGroupBarang: TFGroupBarang
         Height = 25
         Caption = 'Edit'
         TabOrder = 1
+        OnClick = btnEditClick
         SkinData.SkinSection = 'BUTTON'
       end
       object btnHapus: TsButton
@@ -109,6 +111,7 @@ object FGroupBarang: TFGroupBarang
         Height = 25
         Caption = 'Hapus'
         TabOrder = 2
+        OnClick = btnHapusClick
         SkinData.SkinSection = 'BUTTON'
       end
     end
@@ -117,12 +120,13 @@ object FGroupBarang: TFGroupBarang
     Left = 0
     Top = 0
     Width = 530
-    Height = 442
+    Height = 441
     Align = alClient
     TabOrder = 1
     LookAndFeel.Kind = lfOffice11
     object t_data: TcxGridDBTableView
       NavigatorButtons.ConfirmDelete = False
+      OnCellDblClick = t_dataCellDblClick
       DataController.DataSource = dsGroupBarang
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <>

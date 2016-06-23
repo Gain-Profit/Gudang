@@ -30,11 +30,18 @@ type
     QGroupBarang: TmySQLQuery;
     dsGroupBarang: TDataSource;
     procedure WMMDIACTIVATE(var msg: TWMMDIACTIVATE); message WM_MDIACTIVATE;
+    procedure OpenGroupDetail(Baru: Boolean);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure sb_1Click(Sender: TObject);
     procedure sb_2Click(Sender: TObject);
     procedure segarkan;
     procedure FormCreate(Sender: TObject);
+    procedure btnEditClick(Sender: TObject);
+    procedure t_dataCellDblClick(Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
+    procedure btnBaruClick(Sender: TObject);
+    procedure btnHapusClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -47,7 +54,7 @@ var
 implementation
 
 uses
-  u_utama, u_dm;
+  u_utama, u_dm, u_Group_Barang_Detail;
 
 {$R *.dfm}
 
@@ -97,6 +104,34 @@ procedure TFGroupBarang.FormCreate(Sender: TObject);
 begin
   f_utama.MDIChildCreated(self.Handle);
   segarkan;
+end;
+
+procedure TFGroupBarang.btnEditClick(Sender: TObject);
+begin
+  OpenGroupDetail(False);
+end;
+
+procedure TFGroupBarang.t_dataCellDblClick(Sender: TcxCustomGridTableView;
+  ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+  AShift: TShiftState; var AHandled: Boolean);
+begin
+  OpenGroupDetail(False);
+end;
+
+procedure TFGroupBarang.OpenGroupDetail(Baru: Boolean);
+begin
+  Application.CreateForm(TFGroupBarangDetail,FGroupBarang);
+  FGroupBarang.ShowModal;
+end;
+
+procedure TFGroupBarang.btnBaruClick(Sender: TObject);
+begin
+  OpenGroupDetail(True);
+end;
+
+procedure TFGroupBarang.btnHapusClick(Sender: TObject);
+begin
+  // Hapus Data Group Barang...
 end;
 
 end.
