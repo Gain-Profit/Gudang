@@ -1,9 +1,11 @@
 object FGroupBarangDetail: TFGroupBarangDetail
   Left = 192
   Top = 124
-  Width = 696
-  Height = 480
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
   Caption = 'Detail Group Barang'
+  ClientHeight = 441
+  ClientWidth = 680
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,6 +13,7 @@ object FGroupBarangDetail: TFGroupBarangDetail
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
   PixelsPerInch = 96
   TextHeight = 13
   object grid: TcxGrid
@@ -19,7 +22,7 @@ object FGroupBarangDetail: TFGroupBarangDetail
     Width = 680
     Height = 303
     Align = alClient
-    TabOrder = 0
+    TabOrder = 2
     LookAndFeel.Kind = lfOffice11
     object t_data: TcxGridDBTableView
       NavigatorButtons.ConfirmDelete = False
@@ -65,7 +68,7 @@ object FGroupBarangDetail: TFGroupBarangDetail
     Width = 680
     Height = 97
     Align = alTop
-    TabOrder = 1
+    TabOrder = 0
     SkinData.SkinSection = 'PANEL'
     DesignSize = (
       680
@@ -169,7 +172,7 @@ object FGroupBarangDetail: TFGroupBarangDetail
     Width = 680
     Height = 41
     Align = alBottom
-    TabOrder = 2
+    TabOrder = 1
     SkinData.SkinSection = 'PANEL'
     object btnSimpan: TsButton
       Left = 504
@@ -188,6 +191,15 @@ object FGroupBarangDetail: TFGroupBarangDetail
       Caption = '&keluar'
       TabOrder = 1
       SkinData.SkinSection = 'BUTTON'
+    end
+    object btnBaru: TButton
+      Left = 8
+      Top = 8
+      Width = 75
+      Height = 25
+      Caption = '&Group Baru'
+      TabOrder = 2
+      OnClick = btnBaruClick
     end
   end
   object sSkinProvider1: TsSkinProvider

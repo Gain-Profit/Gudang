@@ -32,6 +32,10 @@ type
     sBevel1: TsBevel;
     sb_cari: TsSpeedButton;
     ed_code: TsEdit;
+    btnBaru: TButton;
+    procedure baru;
+    procedure edit(GroupId: string);
+    procedure btnBaruClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -44,5 +48,27 @@ var
 implementation
 
 {$R *.dfm}
+
+{ TFGroupBarangDetail }
+
+procedure TFGroupBarangDetail.baru;
+begin
+  edKodeGroup.Enabled:= True;
+  edKodeGroup.Clear;
+  edDeskripsiGroup.Clear;
+  t_data.DataController.RecordCount:= 0;
+end;
+
+procedure TFGroupBarangDetail.edit(GroupId: string);
+begin
+  edKodeGroup.Text := GroupId;
+  edKodeGroup.Enabled:= False;
+end;
+
+procedure TFGroupBarangDetail.btnBaruClick(Sender: TObject);
+begin
+  baru;
+  edKodeGroup.SetFocus;
+end;
 
 end.
