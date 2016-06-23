@@ -120,8 +120,12 @@ end;
 
 procedure TFGroupBarang.OpenGroupDetail(Baru: Boolean);
 begin
-  Application.CreateForm(TFGroupBarangDetail,FGroupBarang);
-  FGroupBarang.ShowModal;
+  Application.CreateForm(TFGroupBarangDetail,FGroupBarangDetail);
+  if Baru then
+  FGroupBarangDetail.baru else
+  FGroupBarangDetail.edit(QGroupBarang.FieldByName('id_group').AsString);
+
+  FGroupBarangDetail.ShowModal;
 end;
 
 procedure TFGroupBarang.btnBaruClick(Sender: TObject);
