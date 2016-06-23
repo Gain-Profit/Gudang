@@ -49,13 +49,11 @@ object FGroupBarangDetail: TFGroupBarangDetail
         DataBinding.FieldName = 'deskripsi'
         Width = 105
       end
-      object vwJenis: TcxGridDBColumn
-        Caption = 'Jenis'
+      object vwQty: TcxGridDBColumn
+        Caption = 'Qty'
+        DataBinding.ValueType = 'Integer'
+        HeaderAlignmentHorz = taCenter
         Width = 104
-      end
-      object vwGolongan: TcxGridDBColumn
-        Caption = 'Golongan'
-        Width = 108
       end
     end
     object l_data: TcxGridLevel
@@ -211,6 +209,6 @@ object FGroupBarangDetail: TFGroupBarangDetail
     SkinData.SkinSection = 'FORM'
     TitleButtons = <>
     Left = 8
-    Top = 96
+    Top = 120
   end
 end

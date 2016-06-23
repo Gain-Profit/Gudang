@@ -19,8 +19,7 @@ type
     l_data: TcxGridLevel;
     sSkinProvider1: TsSkinProvider;
     vwDeskripsi: TcxGridDBColumn;
-    vwJenis: TcxGridDBColumn;
-    vwGolongan: TcxGridDBColumn;
+    vwQty: TcxGridDBColumn;
     pnlTop: TsPanel;
     pnlBottom: TsPanel;
     btnSimpan: TsButton;
@@ -47,6 +46,8 @@ var
 
 implementation
 
+uses u_dm, U_fungsi;
+
 {$R *.dfm}
 
 { TFGroupBarangDetail }
@@ -63,6 +64,11 @@ procedure TFGroupBarangDetail.edit(GroupId: string);
 begin
   edKodeGroup.Text := GroupId;
   edKodeGroup.Enabled:= False;
+
+  fungsi.SQLExec(dm.Q_temp,'select deskripsi from tb_barang_group where id_group="'+GroupId+'"',true);
+  edDeskripsiGroup.Text:= dm.Q_temp.FieldByName('deskripsi').AsString;
+
+  fungsi.SQLExec(dm.Q_temp,'select deskripsi from tb_barang_group where id_group="'+GroupId+'"',true);
 end;
 
 procedure TFGroupBarangDetail.btnBaruClick(Sender: TObject);
