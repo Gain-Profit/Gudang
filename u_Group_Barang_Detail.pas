@@ -46,6 +46,7 @@ type
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure btnSimpanClick(Sender: TObject);
+    procedure ed_codeKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -252,6 +253,28 @@ begin
   dm.My_Conn.Rollback;
   messagedlg('proses penyimpanan gagal,ulangi lagi!!! '#10#13'' + e.Message, mterror, [mbOk],0);
   end;
+  end;
+end;
+
+procedure TFGroupBarangDetail.ed_codeKeyPress(Sender: TObject;
+  var Key: Char);
+var
+  kode: string;
+  b: integer;
+begin
+  if TableView.DataController.RecordCount=0 then Exit;
+  kode:=Ed_Code.Text;
+  b:= TableView.DataController.GetFocusedRecordIndex;
+
+  if key=#43 then // tanda + (repeat)
+  begin
+    delete(kode,pos('+',kode),1);
+    ed_code.Clear;
+    key:=#0;
+
+    if (StrToIntDef(kode,0) = 0) or (Length(kode) =0) then Exit;
+
+    TableView.DataController.SetValue(b, 3, kode); //Qty
   end;
 end;
 

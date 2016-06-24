@@ -111,6 +111,7 @@ object FGroupBarangDetail: TFGroupBarangDetail
       ParentFont = False
       TabOrder = 2
       OnKeyDown = ed_codeKeyDown
+      OnKeyPress = ed_codeKeyPress
       SkinData.CustomColor = True
       SkinData.SkinSection = 'EDIT'
       BoundLabel.Indent = 0
