@@ -230,6 +230,7 @@ object FGroupBarangDetail: TFGroupBarangDetail
         Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
         Properties.EditFormat = '###,###,##0;(###,###,##0);0'
         Properties.MinValue = 1.000000000000000000
+        FooterAlignmentHorz = taCenter
         GroupSummaryAlignment = taCenter
         HeaderAlignmentHorz = taCenter
         Options.IncSearch = False

@@ -38,6 +38,7 @@ type
     procedure sb_cariClick(Sender: TObject);
     procedure ed_codeKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure createrows;
   private
     { Private declarations }
   public
@@ -131,6 +132,55 @@ begin
 
   if key= vk_down then
     tableview.DataController.FocusedRowIndex:= tableview.DataController.FocusedRowIndex+1;
+  if key=vk_return then
+  begin
+    PeekMessage(Mgs, 0, WM_CHAR, WM_CHAR, PM_REMOVE );
+    if ed_code.Text='' then exit;
+
+    fungsi.sqlExec(dm.Q_temp,'SELECT kd_barang,n_barang,barcode3 '+
+    'FROM tb_barang WHERE ((kd_barang = "'+ed_code.Text+'" OR barcode3 = "'+
+    ed_code.Text+'" OR barcode2 = "'+ed_code.Text+'" OR barcode1 = "'+
+    ed_code.Text+'") AND kd_perusahaan="'+f_utama.sb.Panels[3].Text+'")', true);
+
+    if dm.Q_temp.RecordCount<>0 then
+    begin
+      createrows;
+    end else
+    begin
+      showmessage('data tidak dapat ditemukan dalam daftar barang...');
+    end;
+      
+    ed_code.Clear
+  end;
+end;
+procedure TFGroupBarangDetail.createrows;
+var
+  baris_baru: integer;
+  f: integer;
+begin
+  if tableview.DataController.RecordCount<>0 then
+  begin
+    for f:=0 to tableview.DataController.RecordCount-1 do
+    begin
+      if (pos(TableView.DataController.GetValue(f,0),dm.Q_temp.fieldbyname('kd_barang').AsString)>0)then
+      begin
+        tableview.DataController.ChangeFocusedRecordIndex(f);
+        TableView.DataController.SetValue(f, 0, dm.Q_temp.fieldbyname('kd_barang').AsString);
+        TableView.DataController.SetValue(f, 1, dm.Q_temp.fieldbyname('n_barang').AsString);
+        TableView.DataController.SetValue(f, 2, dm.Q_temp.fieldbyname('barcode3').AsString);
+        TableView.DataController.SetValue(f, 3, TableView.DataController.getValue(f,3) + 1);
+        exit;
+      end;
+    end;
+  end;
+
+  baris_baru:= tableview.DataController.RecordCount+1;
+  tableview.DataController.RecordCount:=baris_baru;
+  TableView.DataController.SetValue(baris_baru-1, 0, dm.Q_temp.fieldbyname('kd_barang').AsString);
+  TableView.DataController.SetValue(baris_baru-1, 1, dm.Q_temp.fieldbyname('n_barang').AsString);
+  TableView.DataController.SetValue(baris_baru-1, 2, dm.Q_temp.fieldbyname('barcode3').AsString);
+  TableView.DataController.SetValue(baris_baru-1, 3, 1);
+  tableview.DataController.ChangeFocusedRowIndex(baris_baru);
 end;
 
 end.
