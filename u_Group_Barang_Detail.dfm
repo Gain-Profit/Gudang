@@ -160,6 +160,7 @@ object FGroupBarangDetail: TFGroupBarangDetail
       Height = 25
       Caption = '&Simpan'
       TabOrder = 0
+      OnClick = btnSimpanClick
       SkinData.SkinSection = 'BUTTON'
     end
     object btnKeluar: TsButton

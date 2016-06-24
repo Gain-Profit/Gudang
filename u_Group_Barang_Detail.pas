@@ -45,6 +45,7 @@ type
     procedure btnKeluarClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure btnSimpanClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -56,7 +57,7 @@ var
 
 implementation
 
-uses u_dm, U_fungsi, u_utama, u_cari;
+uses u_dm, U_fungsi, u_utama, u_cari, U_Group_Barang;
 
 {$R *.dfm}
 
@@ -202,6 +203,56 @@ begin
   TableView.DataController.DeleteFocused;
 
   if key=vk_f2 then ed_code.SetFocus;
+end;
+
+procedure TFGroupBarangDetail.btnSimpanClick(Sender: TObject);
+var
+  x: integer;
+  isi_sql:string;
+begin
+  if (edKodeGroup.Text='') or (edDeskripsiGroup.Text='') then
+  begin
+    showmessage('Kode Group dan Deskripsi Tidak Boleh Kosong...');
+    exit;
+  end;
+
+  if tableview.DataController.RecordCount=0 then
+  begin
+    showmessage('Data barang masih kosong...');
+    exit;
+  end;
+
+  for x:=0 to tableview.DataController.RecordCount-1 do
+  begin
+    isi_sql:=isi_sql +'("'+edKodeGroup.Text+'","'+TableView.DataController.GetDisplayText(x,0)+'","'+
+    floattostr(TableView.DataController.GetValue(x,3))+'"),';
+  end;
+  delete(isi_sql,length(isi_sql),1);
+
+  dm.My_Conn.StartTransaction;
+  try
+    fungsi.SQLExec(dm.Q_Exe,Format('REPLACE tb_barang_group (id_group, deskripsi) '+
+    'VALUES ("%s","%s")',[edKodeGroup.Text, edDeskripsiGroup.Text]),False);
+
+    fungsi.SQLExec(dm.Q_Exe,Format('DELETE FROM tb_barang_group_detail WHERE '+
+    'barang_group_id = "%s"',[edKodeGroup.Text]),False);
+
+    fungsi.SQLExec(dm.Q_exe,'insert into tb_barang_group_detail(barang_group_id, '+
+    'kd_barang, qty) values  '+isi_sql, false);
+
+  dm.My_Conn.Commit;
+
+  showmessage('penyimpanan data sukses...');
+  edKodeGroup.Enabled:= False;
+  FGroupBarang.segarkan;
+
+  except
+  on E:exception do
+  begin
+  dm.My_Conn.Rollback;
+  messagedlg('proses penyimpanan gagal,ulangi lagi!!! '#10#13'' + e.Message, mterror, [mbOk],0);
+  end;
+  end;
 end;
 
 end.
