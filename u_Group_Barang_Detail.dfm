@@ -16,50 +16,6 @@ object FGroupBarangDetail: TFGroupBarangDetail
   Position = poScreenCenter
   PixelsPerInch = 96
   TextHeight = 13
-  object grid: TcxGrid
-    Left = 0
-    Top = 97
-    Width = 680
-    Height = 303
-    Align = alClient
-    TabOrder = 2
-    LookAndFeel.Kind = lfOffice11
-    object t_data: TcxGridDBTableView
-      NavigatorButtons.ConfirmDelete = False
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <>
-      DataController.Summary.SummaryGroups = <>
-      OptionsBehavior.CellHints = True
-      OptionsBehavior.IncSearch = True
-      OptionsData.Editing = False
-      OptionsData.Inserting = False
-      OptionsView.ColumnAutoWidth = True
-      OptionsView.GroupByBox = False
-      object tvKodeGroup: TcxGridDBColumn
-        Caption = 'Kode'
-        DataBinding.FieldName = 'id_group'
-        Width = 66
-      end
-      object vwDeskripsi: TcxGridDBColumn
-        Caption = 'Deskripsi'
-        Width = 295
-      end
-      object vwBarcode: TcxGridDBColumn
-        Caption = 'Barcode'
-        DataBinding.FieldName = 'deskripsi'
-        Width = 105
-      end
-      object vwQty: TcxGridDBColumn
-        Caption = 'Qty'
-        DataBinding.ValueType = 'Integer'
-        HeaderAlignmentHorz = taCenter
-        Width = 104
-      end
-    end
-    object l_data: TcxGridLevel
-      GridView = t_data
-    end
-  end
   object pnlTop: TsPanel
     Left = 0
     Top = 0
@@ -198,6 +154,88 @@ object FGroupBarangDetail: TFGroupBarangDetail
       Caption = '&Group Baru'
       TabOrder = 2
       OnClick = btnBaruClick
+    end
+  end
+  object Grid: TcxGrid
+    Left = 0
+    Top = 97
+    Width = 680
+    Height = 303
+    Align = alClient
+    TabOrder = 2
+    LookAndFeel.Kind = lfOffice11
+    object TableView: TcxGridTableView
+      NavigatorButtons.ConfirmDelete = False
+      NavigatorButtons.Append.Visible = False
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <
+        item
+          Format = 'Total'
+          Kind = skCount
+          Column = vwKode
+          DisplayText = 'Total'
+        end
+        item
+          Format = '0 Item Barang'
+          Kind = skCount
+          Column = vwDeskripsi
+        end
+        item
+          Format = '###,###,##0;(###,###,##0);0'
+          Kind = skSum
+          Column = vwQty
+        end>
+      DataController.Summary.SummaryGroups = <>
+      OptionsBehavior.CellHints = True
+      OptionsBehavior.FocusCellOnTab = True
+      OptionsBehavior.GoToNextCellOnEnter = True
+      OptionsBehavior.IncSearch = True
+      OptionsCustomize.ColumnMoving = False
+      OptionsCustomize.ColumnSorting = False
+      OptionsCustomize.ColumnsQuickCustomization = True
+      OptionsData.Deleting = False
+      OptionsData.DeletingConfirmation = False
+      OptionsData.Editing = False
+      OptionsData.Inserting = False
+      OptionsView.NoDataToDisplayInfoText = '<Belum ada Data>'
+      OptionsView.ColumnAutoWidth = True
+      OptionsView.Footer = True
+      OptionsView.GroupByBox = False
+      OptionsView.Indicator = True
+      OptionsView.IndicatorWidth = 10
+      Styles.Inactive = dm.cxstyl1
+      object vwKode: TcxGridColumn
+        Caption = 'PID'
+        GroupSummaryAlignment = taCenter
+        Options.Editing = False
+        Width = 58
+      end
+      object vwDeskripsi: TcxGridColumn
+        Caption = 'Deskripsi'
+        GroupSummaryAlignment = taCenter
+        Options.Editing = False
+        Width = 232
+      end
+      object vwBarcode: TcxGridColumn
+        Caption = 'Barcode'
+        Options.Editing = False
+      end
+      object vwQty: TcxGridColumn
+        Caption = 'Qty'
+        DataBinding.ValueType = 'Integer'
+        PropertiesClassName = 'TcxCurrencyEditProperties'
+        Properties.Alignment.Horz = taCenter
+        Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
+        Properties.EditFormat = '###,###,##0;(###,###,##0);0'
+        Properties.MinValue = 1.000000000000000000
+        GroupSummaryAlignment = taCenter
+        HeaderAlignmentHorz = taCenter
+        Options.IncSearch = False
+        Width = 58
+      end
+    end
+    object Level: TcxGridLevel
+      GridView = TableView
     end
   end
   object sSkinProvider1: TsSkinProvider
