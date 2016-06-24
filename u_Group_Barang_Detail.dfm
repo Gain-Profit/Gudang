@@ -12,8 +12,10 @@ object FGroupBarangDetail: TFGroupBarangDetail
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  KeyPreview = True
   OldCreateOrder = False
   Position = poScreenCenter
+  OnKeyDown = FormKeyDown
   PixelsPerInch = 96
   TextHeight = 13
   object pnlTop: TsPanel
@@ -146,6 +148,7 @@ object FGroupBarangDetail: TFGroupBarangDetail
       Height = 25
       Caption = '&keluar'
       TabOrder = 1
+      OnClick = btnKeluarClick
       SkinData.SkinSection = 'BUTTON'
     end
     object btnBaru: TButton

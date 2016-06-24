@@ -39,6 +39,9 @@ type
     procedure ed_codeKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure createrows;
+    procedure btnKeluarClick(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -181,6 +184,21 @@ begin
   TableView.DataController.SetValue(baris_baru-1, 2, dm.Q_temp.fieldbyname('barcode3').AsString);
   TableView.DataController.SetValue(baris_baru-1, 3, 1);
   tableview.DataController.ChangeFocusedRowIndex(baris_baru);
+end;
+
+procedure TFGroupBarangDetail.btnKeluarClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TFGroupBarangDetail.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if (Shift=[ssctrl]) and (Key= vk_delete) then
+  if (MessageDlg('Yakinkah, Anda akan menghapus data ini???', mtConfirmation, [mbYes, mbNo], 0) = mrYes) then
+  TableView.DataController.DeleteFocused;
+
+  if key=vk_f2 then ed_code.SetFocus;
 end;
 
 end.
