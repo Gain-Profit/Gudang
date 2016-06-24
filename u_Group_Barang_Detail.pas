@@ -241,18 +241,18 @@ begin
     fungsi.SQLExec(dm.Q_exe,'insert into tb_barang_group_detail(barang_group_id, '+
     'kd_barang, qty) values  '+isi_sql, false);
 
-  dm.My_Conn.Commit;
+    dm.My_Conn.Commit;
 
-  showmessage('penyimpanan data sukses...');
-  edKodeGroup.Enabled:= False;
-  FGroupBarang.segarkan;
+    showmessage('penyimpanan data sukses...');
+    edKodeGroup.Enabled:= False;
+    FGroupBarang.segarkan;
 
   except
-  on E:exception do
-  begin
-  dm.My_Conn.Rollback;
-  messagedlg('proses penyimpanan gagal,ulangi lagi!!! '#10#13'' + e.Message, mterror, [mbOk],0);
-  end;
+    on E:exception do
+    begin
+      dm.My_Conn.Rollback;
+      messagedlg('proses penyimpanan gagal,ulangi lagi!!! '#10#13'' + e.Message, mterror, [mbOk],0);
+    end;
   end;
 end;
 
