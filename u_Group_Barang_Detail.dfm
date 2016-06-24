@@ -55,6 +55,7 @@ object FGroupBarangDetail: TFGroupBarangDetail
       Width = 24
       Height = 21
       Anchors = [akLeft, akRight, akBottom]
+      OnClick = sb_cariClick
       SkinData.SkinSection = 'SPEEDBUTTON'
       ImageIndex = 0
       Images = dm.gambar
@@ -107,6 +108,7 @@ object FGroupBarangDetail: TFGroupBarangDetail
       Font.Style = []
       ParentFont = False
       TabOrder = 2
+      OnKeyDown = ed_codeKeyDown
       SkinData.CustomColor = True
       SkinData.SkinSection = 'EDIT'
       BoundLabel.Indent = 0

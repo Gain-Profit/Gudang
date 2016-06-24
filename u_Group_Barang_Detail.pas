@@ -35,6 +35,9 @@ type
     procedure baru;
     procedure edit(GroupId: string);
     procedure btnBaruClick(Sender: TObject);
+    procedure sb_cariClick(Sender: TObject);
+    procedure ed_codeKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -46,7 +49,7 @@ var
 
 implementation
 
-uses u_dm, U_fungsi, u_utama;
+uses u_dm, U_fungsi, u_utama, u_cari;
 
 {$R *.dfm}
 
@@ -93,6 +96,41 @@ procedure TFGroupBarangDetail.btnBaruClick(Sender: TObject);
 begin
   baru;
   edKodeGroup.SetFocus;
+end;
+
+procedure TFGroupBarangDetail.sb_cariClick(Sender: TObject);
+begin
+  ed_code.SetFocus;
+  application.CreateForm(tf_cari, f_cari);
+  with F_cari do
+  try
+    _SQLi:= 'select kd_barang, n_barang from tb_barang where kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"';
+    tblcap[0]:= 'PID';
+    tblCap[1]:= 'Deskripsi Barang';
+    tampil_button(False,True);
+    if ShowModal = mrOk then
+    begin
+        ed_code.Text:=TblVal[0];
+    end;
+  finally
+  close;
+  end;
+end;
+
+procedure TFGroupBarangDetail.ed_codeKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  if (key= vk_f2) then sb_cariClick(Sender);
+
+  if key= vk_up then
+  begin
+    if tableview.DataController.FocusedRecordIndex >=1 then
+       tableview.DataController.FocusedRecordIndex:= tableview.DataController.FocusedRecordIndex-1;
+    key:=VK_NONAME;
+  end;
+
+  if key= vk_down then
+    tableview.DataController.FocusedRowIndex:= tableview.DataController.FocusedRowIndex+1;
 end;
 
 end.
