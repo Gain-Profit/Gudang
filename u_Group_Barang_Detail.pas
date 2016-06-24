@@ -204,6 +204,8 @@ begin
   TableView.DataController.DeleteFocused;
 
   if key=vk_f2 then ed_code.SetFocus;
+
+  if Key=vk_escape then Close;
 end;
 
 procedure TFGroupBarangDetail.btnSimpanClick(Sender: TObject);
