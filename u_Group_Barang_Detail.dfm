@@ -132,6 +132,27 @@ object FGroupBarangDetail: TFGroupBarangDetail
     Align = alBottom
     TabOrder = 1
     SkinData.SkinSection = 'PANEL'
+    object l_2: TsLabel
+      Left = 120
+      Top = 4
+      Width = 121
+      Height = 13
+      Caption = 'ubah Qty -> angka+ (11+)'
+    end
+    object l_1: TsLabel
+      Left = 96
+      Top = 4
+      Width = 22
+      Height = 13
+      Caption = 'Ket :'
+    end
+    object l_5: TsLabel
+      Left = 120
+      Top = 20
+      Width = 130
+      Height = 13
+      Caption = 'Hapus Baris -> Ctrl + Delete'
+    end
     object btnSimpan: TsButton
       Left = 504
       Top = 8

@@ -32,6 +32,9 @@ type
     vwQty: TcxGridColumn;
     vwBarcode: TcxGridColumn;
     Level: TcxGridLevel;
+    l_2: TsLabel;
+    l_1: TsLabel;
+    l_5: TsLabel;
     procedure baru;
     procedure edit(GroupId: string);
     procedure btnBaruClick(Sender: TObject);
