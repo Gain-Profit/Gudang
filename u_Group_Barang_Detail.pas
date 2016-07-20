@@ -80,12 +80,25 @@ end;
 
 procedure TFGroupBarangDetail.edit(GroupId: string);
 var i: Integer;
+  jenis: string;
 begin
   edKodeGroup.Text := GroupId;
   edKodeGroup.Enabled:= False;
 
-  fungsi.SQLExec(dm.Q_temp,'select deskripsi from tb_barang_group where id_group="'+GroupId+'"',true);
+  fungsi.SQLExec(dm.Q_temp,'select * from tb_barang_group where id_group="'+GroupId+'"',true);
   edDeskripsiGroup.Text:= dm.Q_temp.FieldByName('deskripsi').AsString;
+  edDiskon.Value:= dm.Q_temp.FieldByName('diskon').AsFloat;
+  jenis := dm.Q_temp.FieldByName('jenis').AsString;
+  if jenis = '%' then
+  begin
+    btnDiskon.Caption:= 'Persen';
+    edDiskon.DisplayFormat := '##0.00;(##0.00);0.00';
+  end
+  else
+  begin
+    btnDiskon.Caption:= 'Rupiah';
+    edDiskon.DisplayFormat := '###,###,##0;(###,###,##0);0';
+  end;
 
   fungsi.SQLExec(dm.Q_temp,Format('SELECT gr.kd_barang, gr.qty, '+
   'br.n_barang, br.barcode3, br.kd_perusahaan FROM tb_barang_group_detail gr '+
@@ -217,7 +230,7 @@ end;
 procedure TFGroupBarangDetail.btnSimpanClick(Sender: TObject);
 var
   x: integer;
-  isi_sql:string;
+  isi_sql, jenis:string;
 begin
   if (edKodeGroup.Text='') or (edDeskripsiGroup.Text='') then
   begin
@@ -231,6 +244,9 @@ begin
     exit;
   end;
 
+  if btnDiskon.Caption = 'Rupiah' then
+    jenis := '$' else jenis := '%';
+    
   for x:=0 to tableview.DataController.RecordCount-1 do
   begin
     isi_sql:=isi_sql +'("'+edKodeGroup.Text+'","'+TableView.DataController.GetDisplayText(x,0)+'","'+
@@ -240,8 +256,9 @@ begin
 
   dm.My_Conn.StartTransaction;
   try
-    fungsi.SQLExec(dm.Q_Exe,Format('REPLACE tb_barang_group (id_group, deskripsi) '+
-    'VALUES ("%s","%s")',[edKodeGroup.Text, edDeskripsiGroup.Text]),False);
+    fungsi.SQLExec(dm.Q_Exe,Format('REPLACE tb_barang_group (id_group, deskripsi, diskon, jenis) '+
+    'VALUES ("%s","%s","%s","%s")',[edKodeGroup.Text, edDeskripsiGroup.Text,
+    edDiskon.Text,jenis]),False);
 
     fungsi.SQLExec(dm.Q_Exe,Format('DELETE FROM tb_barang_group_detail WHERE '+
     'barang_group_id = "%s"',[edKodeGroup.Text]),False);
