@@ -31,14 +31,14 @@ object FGroupBarangDetail: TFGroupBarangDetail
       121)
     object sLabel1: TsLabel
       Left = 8
-      Top = 8
+      Top = 10
       Width = 57
       Height = 13
       Caption = 'Kode Group'
     end
     object sLabel2: TsLabel
       Left = 8
-      Top = 32
+      Top = 34
       Width = 75
       Height = 13
       Caption = 'Deskripsi Group'
@@ -64,10 +64,10 @@ object FGroupBarangDetail: TFGroupBarangDetail
     end
     object lblDiskon: TsLabel
       Left = 8
-      Top = 56
-      Width = 56
+      Top = 60
+      Width = 33
       Height = 13
-      Caption = 'Diskon (Rp)'
+      Caption = 'Diskon'
     end
     object edKodeGroup: TsEdit
       Left = 96
@@ -131,7 +131,7 @@ object FGroupBarangDetail: TFGroupBarangDetail
       BoundLabel.MaxWidth = 0
       BoundLabel.UseSkinColor = True
     end
-    object ed_diskonpr: TsCurrencyEdit
+    object edDiskon: TsCurrencyEdit
       Left = 96
       Top = 58
       Width = 137
@@ -143,9 +143,8 @@ object FGroupBarangDetail: TFGroupBarangDetail
       Font.Height = -11
       Font.Name = 'MS Sans Serif'
       Font.Style = []
-      MaxLength = 6
       ParentFont = False
-      TabOrder = 2
+      TabOrder = 3
       BoundLabel.Indent = 0
       BoundLabel.Font.Charset = DEFAULT_CHARSET
       BoundLabel.Font.Color = clWindowText
@@ -159,15 +158,16 @@ object FGroupBarangDetail: TFGroupBarangDetail
       SkinData.SkinSection = 'EDIT'
       GlyphMode.Blend = 0
       GlyphMode.Grayed = False
-      DisplayFormat = '##0.00;(##0.00);0.00'
+      DisplayFormat = '###,###,##0;(###,###,##0);0'
     end
     object btnDiskon: TsButton
-      Left = 240
+      Left = 42
       Top = 58
-      Width = 57
+      Width = 50
       Height = 20
       Caption = 'Rupiah'
-      TabOrder = 3
+      TabOrder = 2
+      OnClick = btnDiskonClick
       SkinData.SkinSection = 'BUTTON'
     end
   end

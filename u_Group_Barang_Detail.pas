@@ -36,7 +36,7 @@ type
     l_2: TsLabel;
     l_1: TsLabel;
     l_5: TsLabel;
-    ed_diskonpr: TsCurrencyEdit;
+    edDiskon: TsCurrencyEdit;
     lblDiskon: TsLabel;
     btnDiskon: TsButton;
     procedure baru;
@@ -51,6 +51,7 @@ type
       Shift: TShiftState);
     procedure btnSimpanClick(Sender: TObject);
     procedure ed_codeKeyPress(Sender: TObject; var Key: Char);
+    procedure btnDiskonClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -281,6 +282,20 @@ begin
     if (StrToIntDef(kode,0) = 0) or (Length(kode) =0) then Exit;
 
     TableView.DataController.SetValue(b, 3, kode); //Qty
+  end;
+end;
+
+procedure TFGroupBarangDetail.btnDiskonClick(Sender: TObject);
+begin
+  if btnDiskon.Caption = 'Rupiah' then
+  begin
+    btnDiskon.Caption:= 'Persen';
+    edDiskon.DisplayFormat := '##0.00;(##0.00);0.00';
+  end
+  else
+  begin
+    btnDiskon.Caption:= 'Rupiah';
+    edDiskon.DisplayFormat := '###,###,##0;(###,###,##0);0';
   end;
 end;
 
