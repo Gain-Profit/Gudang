@@ -29,6 +29,8 @@ type
     tvJumlahQty: TcxGridDBColumn;
     QGroupBarang: TmySQLQuery;
     dsGroupBarang: TDataSource;
+    tvDiskon: TcxGridDBColumn;
+    tvJenis: TcxGridDBColumn;
     procedure WMMDIACTIVATE(var msg: TWMMDIACTIVATE); message WM_MDIACTIVATE;
     procedure OpenGroupDetail(Baru: Boolean);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

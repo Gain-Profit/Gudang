@@ -23,7 +23,7 @@ object FGroupBarang: TFGroupBarang
     Left = 530
     Top = 0
     Width = 150
-    Height = 441
+    Height = 442
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 0
@@ -78,7 +78,7 @@ object FGroupBarang: TFGroupBarang
     end
     object p1: TsPanel
       Left = 0
-      Top = 327
+      Top = 328
       Width = 150
       Height = 114
       Align = alBottom
@@ -120,7 +120,7 @@ object FGroupBarang: TFGroupBarang
     Left = 0
     Top = 0
     Width = 530
-    Height = 441
+    Height = 442
     Align = alClient
     TabOrder = 1
     LookAndFeel.Kind = lfOffice11
@@ -156,6 +156,15 @@ object FGroupBarang: TFGroupBarang
         Caption = 'Jumlah Qty'
         DataBinding.FieldName = 'jumlah_qty'
         Width = 96
+      end
+      object tvDiskon: TcxGridDBColumn
+        DataBinding.FieldName = 'Diskon'
+        PropertiesClassName = 'TcxCurrencyEditProperties'
+        Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
+        Properties.EditFormat = '###,###,##0.00;(###,###,##0.00);0.00'
+      end
+      object tvJenis: TcxGridDBColumn
+        DataBinding.FieldName = 'Jenis'
       end
     end
     object l_data: TcxGridLevel
