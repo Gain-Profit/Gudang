@@ -74,6 +74,7 @@ begin
   edKodeGroup.Enabled:= True;
   edKodeGroup.Clear;
   edDeskripsiGroup.Clear;
+  edDiskon.Value:= 0;
   TableView.DataController.RecordCount:= 0;
 end;
 
