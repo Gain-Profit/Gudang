@@ -162,9 +162,11 @@ object FGroupBarang: TFGroupBarang
         PropertiesClassName = 'TcxCurrencyEditProperties'
         Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
         Properties.EditFormat = '###,###,##0.00;(###,###,##0.00);0.00'
+        Width = 96
       end
       object tvJenis: TcxGridDBColumn
         DataBinding.FieldName = 'Jenis'
+        Width = 50
       end
     end
     object l_data: TcxGridLevel
