@@ -8,7 +8,8 @@ uses
   cxDataStorage, cxEdit, DB, cxDBData, sSkinProvider, cxGridLevel,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
   cxControls, cxGridCustomView, cxGrid, ExtCtrls, sPanel, StdCtrls, sButton,
-  sEdit, sLabel, Buttons, sSpeedButton, sBevel, cxCurrencyEdit;
+  sEdit, sLabel, Buttons, sSpeedButton, sBevel, cxCurrencyEdit, Mask,
+  sMaskEdit, sCustomComboEdit, sCurrEdit, sCurrencyEdit;
 
 type
   TFGroupBarangDetail = class(TForm)
@@ -35,6 +36,9 @@ type
     l_2: TsLabel;
     l_1: TsLabel;
     l_5: TsLabel;
+    ed_diskonpr: TsCurrencyEdit;
+    lblDiskon: TsLabel;
+    btnDiskon: TsButton;
     procedure baru;
     procedure edit(GroupId: string);
     procedure btnBaruClick(Sender: TObject);

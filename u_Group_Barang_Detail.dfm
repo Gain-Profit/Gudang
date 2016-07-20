@@ -22,13 +22,13 @@ object FGroupBarangDetail: TFGroupBarangDetail
     Left = 0
     Top = 0
     Width = 680
-    Height = 97
+    Height = 121
     Align = alTop
     TabOrder = 0
     SkinData.SkinSection = 'PANEL'
     DesignSize = (
       680
-      97)
+      121)
     object sLabel1: TsLabel
       Left = 8
       Top = 8
@@ -45,7 +45,7 @@ object FGroupBarangDetail: TFGroupBarangDetail
     end
     object sBevel1: TsBevel
       Left = 1
-      Top = 64
+      Top = 88
       Width = 678
       Height = 32
       Align = alBottom
@@ -53,7 +53,7 @@ object FGroupBarangDetail: TFGroupBarangDetail
     object sb_cari: TsSpeedButton
       Tag = 9
       Left = 652
-      Top = 70
+      Top = 94
       Width = 24
       Height = 21
       Anchors = [akLeft, akRight, akBottom]
@@ -61,6 +61,13 @@ object FGroupBarangDetail: TFGroupBarangDetail
       SkinData.SkinSection = 'SPEEDBUTTON'
       ImageIndex = 0
       Images = dm.gambar
+    end
+    object lblDiskon: TsLabel
+      Left = 8
+      Top = 56
+      Width = 56
+      Height = 13
+      Caption = 'Diskon (Rp)'
     end
     object edKodeGroup: TsEdit
       Left = 96
@@ -98,7 +105,7 @@ object FGroupBarangDetail: TFGroupBarangDetail
     end
     object ed_code: TsEdit
       Left = 8
-      Top = 70
+      Top = 94
       Width = 640
       Height = 21
       Anchors = [akLeft, akRight, akBottom]
@@ -109,7 +116,7 @@ object FGroupBarangDetail: TFGroupBarangDetail
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
-      TabOrder = 2
+      TabOrder = 4
       OnKeyDown = ed_codeKeyDown
       OnKeyPress = ed_codeKeyPress
       SkinData.CustomColor = True
@@ -123,6 +130,45 @@ object FGroupBarangDetail: TFGroupBarangDetail
       BoundLabel.Layout = sclLeft
       BoundLabel.MaxWidth = 0
       BoundLabel.UseSkinColor = True
+    end
+    object ed_diskonpr: TsCurrencyEdit
+      Left = 96
+      Top = 58
+      Width = 137
+      Height = 20
+      AutoSize = False
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      MaxLength = 6
+      ParentFont = False
+      TabOrder = 2
+      BoundLabel.Indent = 0
+      BoundLabel.Font.Charset = DEFAULT_CHARSET
+      BoundLabel.Font.Color = clWindowText
+      BoundLabel.Font.Height = -11
+      BoundLabel.Font.Name = 'MS Sans Serif'
+      BoundLabel.Font.Style = []
+      BoundLabel.Layout = sclLeft
+      BoundLabel.MaxWidth = 0
+      BoundLabel.UseSkinColor = True
+      SkinData.CustomColor = True
+      SkinData.SkinSection = 'EDIT'
+      GlyphMode.Blend = 0
+      GlyphMode.Grayed = False
+      DisplayFormat = '##0.00;(##0.00);0.00'
+    end
+    object btnDiskon: TsButton
+      Left = 240
+      Top = 58
+      Width = 57
+      Height = 20
+      Caption = 'Rupiah'
+      TabOrder = 3
+      SkinData.SkinSection = 'BUTTON'
     end
   end
   object pnlBottom: TsPanel
@@ -186,9 +232,9 @@ object FGroupBarangDetail: TFGroupBarangDetail
   end
   object Grid: TcxGrid
     Left = 0
-    Top = 97
+    Top = 121
     Width = 680
-    Height = 303
+    Height = 279
     Align = alClient
     TabOrder = 2
     LookAndFeel.Kind = lfOffice11
