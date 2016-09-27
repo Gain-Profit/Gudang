@@ -204,7 +204,8 @@ end;
 
 procedure Tf_planogram.b_cetakClick(Sender: TObject);
 begin
-fungsi.SQLExec(dm.Q_laporan,'select * from vw_planogram where kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
+fungsi.SQLExec(dm.Q_laporan,'select * from vw_planogram_set where '+
+'kd_perusahaan="'+f_utama.sb.Panels[3].Text+'" ORDER BY no_rak, no_shelving',true);
 dm.laporan.LoadFromFile(dm.WPath + '\laporan\gp_planogram.fr3');
 dm.laporan.ShowReport;
 end;
@@ -292,8 +293,8 @@ end;
 
 procedure Tf_planogram.sButton1Click(Sender: TObject);
 begin
-fungsi.SQLExec(dm.Q_laporan,'select * from vw_planogram where kd_perusahaan="'+
-f_utama.sb.Panels[3].Text+'" and no_rak ='+se_rak.Text+'',true);
+fungsi.SQLExec(dm.Q_laporan,'select * from vw_planogram_set where kd_perusahaan="'+
+f_utama.sb.Panels[3].Text+'" and no_rak ='+se_rak.Text+' ORDER BY no_shelving',true);
 dm.laporan.LoadFromFile(dm.WPath + '\laporan\gp_planogram.fr3');
 dm.laporan.ShowReport;
 end;
