@@ -94,33 +94,37 @@ begin
     ed_kd_user.SetFocus;
   End else
   begin
-    userRealName:= dm.Q_show.FieldByName('n_user').AsString;
-    userPassword:= dm.Q_show.FieldByName('password').AsString;
-    isAdmin := dm.Q_show.FieldByName('admin').AsBoolean;
+    userRealName := dm.Q_show.FieldByName('n_user').AsString;
+    userPassword := dm.Q_show.FieldByName('password').AsString;
+    isAdmin      := dm.Q_show.FieldByName('admin').AsBoolean;
 
-    sql:= 'SELECT user_id FROM tb_checkinout WHERE ISNULL(checkout_time) ' +
-          'AND user_id="'+ed_kd_user.Text+'"';
+    sql:= 'SELECT `nilai` FROM `tb_settings` WHERE `parameter`="checkin"';
     fungsi.SQLExec(DM.Q_Show,sql,true);
-    if dm.Q_show.Eof then
+    if dm.Q_show.FieldByName('nilai').AsBoolean then
     begin
-      messagedlg('Tidak Dapat Login '#10#13'USER belum Check IN....',mtError,[mbOk],0);
-      ed_kd_user.SetFocus;
-    end
+      sql:= 'SELECT user_id FROM tb_checkinout WHERE ISNULL(checkout_time) ' +
+            'AND user_id="'+ed_kd_user.Text+'"';
+      fungsi.SQLExec(DM.Q_Show,sql,true);
+      if dm.Q_show.Eof then
+      begin
+        messagedlg('Tidak Dapat Login '#10#13'USER belum Check IN....',mtError,[mbOk],0);
+        ed_kd_user.SetFocus;
+        Exit;
+      end;
+    end;
+
+    ed_password.Enabled:= true;
+    Ed_Password.SetFocus;
+    Ed_N_User.Text:= userRealName;
+    f_utama.ac_user.visible:=isAdmin;
+
+    if FileExists(dm.AppPath+'image/'+ed_kd_user.Text+'.jpg') then
+      gambar.Picture.LoadFromFile(dm.AppPath+'image/'+ed_kd_user.Text+'.jpg')
     else
     begin
-      ed_password.Enabled:= true;
-      Ed_Password.SetFocus;
-      Ed_N_User.Text:= userRealName;
-      f_utama.ac_user.visible:=isAdmin;
-
-      if FileExists(dm.AppPath+'image/'+ed_kd_user.Text+'.jpg') then
-        gambar.Picture.LoadFromFile(dm.AppPath+'image/'+ed_kd_user.Text+'.jpg')
-      else
-      begin
-        if FileExists(dm.AppPath+'image/login.jpg') then
-        gambar.Picture.LoadFromFile(dm.AppPath+'image/login.jpg');
-      end;
-    end;                          
+      if FileExists(dm.AppPath+'image/login.jpg') then
+      gambar.Picture.LoadFromFile(dm.AppPath+'image/login.jpg');
+    end;
   end;
 end;
 
