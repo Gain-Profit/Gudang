@@ -9,7 +9,7 @@ uses
   sCurrencyEdit, sLabel, ExtCtrls, sPanel, sMemo, cxCustomData,
   cxGraphics, cxDataStorage, cxEdit, cxGridLevel,
   cxClasses, cxControls, cxGridCustomView, cxGridCustomTableView,
-  cxGridTableView, cxGrid, cxCurrencyEdit,u_fungsi, sBevel, ComCtrls,
+  cxGridTableView, cxGrid, cxCurrencyEdit,UFungsi, sBevel, ComCtrls,
   sSkinProvider, cxImageComboBox, cxStyles, cxFilter,uTerbilang,
   cxData, sDialogs,DateUtils;
 

@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, sEdit, sLabel, sButton, Buttons, 
-  sComboBox, U_fungsi, sSkinProvider;
+  sComboBox, UFungsi, sSkinProvider;
 
 type
   Tf_golongan = class(TForm)

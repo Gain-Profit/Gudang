@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, sButton,U_fungsi,DB, sDialogs, sCheckBox, sGroupBox,
+  Dialogs, StdCtrls, sButton,UFungsi,DB, sDialogs, sCheckBox, sGroupBox,
   sRadioButton, ComCtrls, sListView, sLabel, sEdit, acShellCtrls, Mask,
   sMaskEdit, sCustomComboEdit, sTooledit, sMemo, sPageControl, sListBox,
   AbZView,AbZipKit, Grids, AbView, AbBase, AbBrowse, AbZBrows, AbZipper,

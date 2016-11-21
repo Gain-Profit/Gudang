@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, sEdit, sButton, sLabel, U_fungsi, sSkinProvider;
+  Dialogs, StdCtrls, sEdit, sButton, sLabel, UFungsi, sSkinProvider;
 
 type
   TF_satuan = class(TForm)

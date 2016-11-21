@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, sLabel, sButton, sEdit,u_fungsi;
+  Dialogs, StdCtrls, sLabel, sButton, sEdit,UFungsi;
 
 type
   TF_ubahPassword = class(TForm)

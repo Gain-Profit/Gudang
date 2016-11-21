@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, sButton, sEdit, sLabel,u_fungsi, sSkinProvider;
+  Dialogs, StdCtrls, sButton, sEdit, sLabel,UFungsi, sSkinProvider;
 
 type
   TF_Kategori = class(TForm)

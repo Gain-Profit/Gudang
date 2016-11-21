@@ -7,7 +7,7 @@ uses
   Dialogs, cxStyles, cxCustomData, cxGraphics, cxFilter, cxData,
   cxDataStorage, cxEdit, DB, cxDBData, cxCurrencyEdit, StdCtrls, sComboBox,
   cxGridLevel, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
-  cxClasses, cxControls, cxGridCustomView, cxGrid, sButton, sGroupBox,u_fungsi,
+  cxClasses, cxControls, cxGridCustomView, cxGrid, sButton, sGroupBox,UFungsi,
   mySQLDbTables, ExtCtrls, sPanel;
 
 type

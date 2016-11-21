@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, sLabel,U_fungsi, sEdit, sGroupBox, Buttons, sBitBtn,
+  Dialogs, StdCtrls, sLabel,UFungsi, sEdit, sGroupBox, Buttons, sBitBtn,
   sButton, Mask, sMaskEdit, sCustomComboEdit, 
   ComCtrls, sStatusBar, sTooledit, cxControls, cxContainer,
   cxEdit, cxImage,mySQLDbTables,db,Registry, sSkinProvider, jpeg, ExtCtrls,
@@ -57,7 +57,9 @@ uses u_dm, u_utama, u_cari;
 {$R *.dfm}
 
 function IsCapsLockOn : Boolean;
-begin  Result := 0  =(GetKeyState(VK_CAPITAL) and $01);end;
+begin
+  Result := 0  =(GetKeyState(VK_CAPITAL) and $01);
+end;
 
 function tempdir: String;
 var

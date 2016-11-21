@@ -8,7 +8,7 @@ uses
   cxDataStorage, cxEdit, DB, cxDBData, cxCurrencyEdit, cxGridLevel,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
   cxControls, cxGridCustomView, cxGrid, StdCtrls, Buttons, sBitBtn,
-  ExtCtrls, sPanel, sSkinProvider,U_fungsi, sSpeedButton, Mask, sMaskEdit,
+  ExtCtrls, sPanel, sSkinProvider,UFungsi, sSpeedButton, Mask, sMaskEdit,
   sCustomComboEdit, sTooledit, sLabel, sButton, sComboBox, sCheckBox,FileCtrl;
 
 type

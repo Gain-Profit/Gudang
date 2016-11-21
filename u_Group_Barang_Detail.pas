@@ -63,7 +63,7 @@ var
 
 implementation
 
-uses u_dm, U_fungsi, u_utama, u_cari, U_Group_Barang;
+uses u_dm, UFungsi, u_utama, u_cari, U_Group_Barang;
 
 {$R *.dfm}
 

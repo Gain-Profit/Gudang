@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, sSkinProvider, StdCtrls, sEdit, sLabel, Mask, sMaskEdit,
   sCustomComboEdit, sCurrEdit, sCurrencyEdit, ComCtrls, sStatusBar,
-  ExtCtrls, DBCtrls,u_fungsi, Buttons, sBitBtn, sComboBox, sTooledit,
+  ExtCtrls, DBCtrls,UFungsi, Buttons, sBitBtn, sComboBox, sTooledit,
   sCheckBox, cxControls, cxDBNavigator, sGroupBox, sButton,DateUtils;
 
 type
