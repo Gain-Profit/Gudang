@@ -63,7 +63,7 @@ type
     sop, metu_kabeh, terkoneksi: boolean;
     PPN: real;
     batasan: integer;
-    kd_comp, WPath, AppPath, DocPath: string;
+    kd_perusahaan, WPath, AppPath, DocPath: string;
     function FRObject(FastReport: TfrxReport; ObjectName: string): TObject;
     function FRMemo(FastReport: TfrxReport; ObjectName: string): TfrxMemoView;
     { Public declarations }
@@ -176,7 +176,7 @@ begin
   sm.SkinDirectory := AppPath + 'skins';
   appINI := TIniFile.Create(AppPath + 'gain.ini');
   try
-    kd_comp := appINI.ReadString('gudang', 'kd_perusahaan', '');
+    kd_perusahaan := appINI.ReadString('gudang', 'kd_perusahaan', '');
     PPN := appINI.ReadFloat('gudang', 'PPN', 10);
     sm.SkinName := appINI.ReadString('gudang', 'nama_skin', 'Air');
     sm.HueOffset := appini.ReadInteger('gudang', 'hue_skin', 0);

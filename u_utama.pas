@@ -546,7 +546,7 @@ begin
   dm.metu_kabeh:=False;
 
   sb.Panels[2].Text:= dm.db_conn.DatabaseName +'@'+ dm.db_conn.Host;
-  sb.Panels[3].Text:=dm.kd_comp;
+  sb.Panels[3].Text:=dm.kd_perusahaan;
   fungsi.SQLExec(dm.Q_Show,'select * from tb_company where kd_perusahaan = "'+sb.Panels[3].text+'"',true);
   sb.Panels[4].Text:=dm.Q_Show.fieldbyname('n_perusahaan').AsString;
 
