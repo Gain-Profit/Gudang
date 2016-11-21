@@ -119,7 +119,7 @@ var
   idx: Integer;
 begin
   active := FindControl(msg.ActiveWnd) ;
-if not(metu_kabeh) then
+if not(dm.metu_kabeh) then
 begin
   if Assigned(active) then
   begin
@@ -388,7 +388,7 @@ begin
     Exit;
   end;
 
-  sekarang:= formatdatetime('yyyyMMdd', waktu_sekarang);
+  sekarang:= formatdatetime('yyyyMMdd', dm.waktu_sekarang);
 
   fungsi.SQLExec(dm.Q_temp,'select Count(kd_return_kirim) as jumlah from '+
   'tb_return_kirim_global where kd_tk_return_kirim="'+ed_pelanggan.text+'" and kd_perusahaan = "'+

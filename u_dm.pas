@@ -59,7 +59,11 @@ type
   private
     { Private declarations }
   public
-    WPath, AppPath, DocPath: string;
+    waktu_sekarang: TDateTime;
+    sop, metu_kabeh, terkoneksi: boolean;
+    PPN: real;
+    batasan: integer;
+    kd_comp, WPath, AppPath, DocPath: string;
     function FRObject(FastReport: TfrxReport; ObjectName: string): TObject;
     function FRMemo(FastReport: TfrxReport; ObjectName: string): TfrxMemoView;
     { Public declarations }
@@ -67,11 +71,6 @@ type
 
 var
   dm: Tdm;
-  kd_comp, onServer: string;
-  waktu_sekarang: TDateTime;
-  sop, metu_kabeh, terkoneksi: boolean;
-  PPN: real;
-  batasan: integer;
   Mgs: TMsg;
   cabang: TStringList;
 

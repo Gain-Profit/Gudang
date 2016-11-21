@@ -543,10 +543,10 @@ begin
   sb.Panels[9].Text:='Versi: '+fungsi.GetVersiApp;
   pc.ActivePage:= ts_master;
 
-  metu_kabeh:=False;
+  dm.metu_kabeh:=False;
 
   sb.Panels[2].Text:= dm.My_conn.DatabaseName +'@'+ dm.My_conn.Host;
-  sb.Panels[3].Text:=kd_comp;
+  sb.Panels[3].Text:=dm.kd_comp;
   fungsi.SQLExec(dm.Q_Show,'select * from tb_company where kd_perusahaan = "'+sb.Panels[3].text+'"',true);
   sb.Panels[4].Text:=dm.Q_Show.fieldbyname('n_perusahaan').AsString;
 
@@ -629,7 +629,7 @@ begin
   appINI.WriteString('gudang','kd_perusahaan',sb.Panels[3].Text);
   appINI.Free;
 
-metu_kabeh:=True;
+dm.metu_kabeh:=True;
 dm.My_conn.Connected:= false;
 
 action:=cafree;
@@ -702,7 +702,7 @@ fungsi.SQLExec(Q_time,'select now() as sekarang',True);
 
 sb.Panels[5].Text:=days[DayOfWeek(Q_time.fieldbyname('sekarang').AsDateTime)];
 sb.Panels[6].Text:=formatdatetime('dd mmm yyyy', Q_time.fieldbyname('sekarang').AsDateTime);
-waktu_sekarang:= Q_time.fieldbyname('sekarang').AsDateTime;
+dm.waktu_sekarang:= Q_time.fieldbyname('sekarang').AsDateTime;
 sb.Panels[7].Text:=FormatDateTime('hh:nn:ss',Q_time.fieldbyname('sekarang').AsDateTime);
 except
   Timer1.Enabled:= False;
@@ -774,7 +774,7 @@ end;
 
 sb.Panels[0].Text:= 'USER';
 sb.Panels[1].Text:= 'NAMA USER';
-sop:= true;
+dm.sop:= true;
 
 application.CreateForm(tF_login, f_login);
 f_login.sb.Panels[0].Text:=sb.Panels[3].Text;

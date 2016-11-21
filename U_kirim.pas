@@ -119,7 +119,7 @@ var
   idx: Integer;
 begin
   active := FindControl(msg.ActiveWnd) ;
-if not(metu_kabeh) then
+if not(dm.metu_kabeh) then
 begin
   if Assigned(active) then
   begin
@@ -232,7 +232,7 @@ end;
 procedure TF_kirim.bersih;
 begin
 l_toko.Caption:= '';
-ed_tgl.Date:= waktu_sekarang;
+ed_tgl.Date:= dm.waktu_sekarang;
 mm_nama.Clear;
 ce_harga.Clear;
 ed_toko.Clear;                                 
@@ -625,7 +625,7 @@ begin
     Exit;
   end;
   
-  sekarang:= formatdatetime('yyyyMMdd', waktu_sekarang);
+  sekarang:= formatdatetime('yyyyMMdd', dm.waktu_sekarang);
 
   fungsi.SQLExec(dm.Q_temp,'select count(kd_kirim) as jumlah from tb_kirim_global where kd_tk_kirim="'+
   ed_toko.text+'" and kd_perusahaan = "'+f_utama.sb.Panels[3].Text

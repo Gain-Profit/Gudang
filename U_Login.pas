@@ -41,6 +41,7 @@ type
   private
     { Private declarations }
   public
+    OnServer: string;
     { Public declarations }
   end;
 
@@ -204,7 +205,7 @@ begin
 end;
 
 f_utama.panel_auto_width;
-sop:= false;
+dm.sop:= false;
 close;
 end;
 end;
@@ -226,7 +227,7 @@ turun:= false;
 f_utama.animasi.Enabled:= turun;
 f_utama.AlphaBlendValue:=255;
 
-if sop=true then
+if dm.sop=true then
 f_utama.time_out.Enabled:= true;
 
 action:= cafree;
