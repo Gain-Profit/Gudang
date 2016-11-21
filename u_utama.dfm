@@ -23,7 +23,7 @@ object f_utama: Tf_utama
   TextHeight = 13
   object sg_update: TsGauge
     Left = 0
-    Top = 367
+    Top = 366
     Width = 1003
     Height = 30
     Align = alBottom
@@ -36,7 +36,7 @@ object f_utama: Tf_utama
   end
   object sb: TsStatusBar
     Left = 0
-    Top = 397
+    Top = 396
     Width = 1003
     Height = 25
     Panels = <
@@ -1434,7 +1434,7 @@ object f_utama: Tf_utama
     end
   end
   object Q_time: TmySQLQuery
-    Database = dm.My_conn
+    Database = dm.db_conn
     Left = 56
     Top = 192
   end

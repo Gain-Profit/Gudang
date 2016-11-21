@@ -171,7 +171,7 @@ var i: Integer;
 begin
 if MessageDlg('Yakinkah, akan menghapus data ini?...', mtConfirmation, [mbYes, mbNo], 0)=mrYes then
 begin
-dm.My_conn.StartTransaction;
+dm.db_conn.StartTransaction;
 try
 HapusBarang(dm.Q_barang.fieldbyname('kd_perusahaan').AsString);
 if F_utama.sb.Panels[8].Text='PUSAT' then
@@ -183,10 +183,10 @@ begin
 end;
 
 sb_2Click(Sender);
-dm.My_conn.Commit;
+dm.db_conn.Commit;
 showmessage('Penghapusan data sukses...');
 except on e:exception do begin
-  dm.My_conn.Rollback;
+  dm.db_conn.Rollback;
   showmessage('penghapusan data gagal '#10#13'' +e.Message);
   end;
 end;

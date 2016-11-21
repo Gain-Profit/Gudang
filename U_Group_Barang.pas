@@ -142,7 +142,7 @@ begin
   if (MessageDlg('Yakinkah, Anda akan menghapus data ini???', mtConfirmation, [mbYes, mbNo], 0) = mrYes) then
   begin
     GroupId := QGroupBarang.FieldByName('id_group').AsString;
-    dm.My_Conn.StartTransaction;
+    dm.db_conn.StartTransaction;
     try
       fungsi.SQLExec(dm.Q_Exe,Format('DELETE FROM tb_barang_group_detail WHERE '+
       'barang_group_id = "%s"',[GroupId]),False);
@@ -150,7 +150,7 @@ begin
       fungsi.SQLExec(dm.Q_Exe,Format('DELETE FROM tb_barang_group WHERE '+
       'id_group = "%s"',[GroupId]),False);
 
-      dm.My_Conn.Commit;
+      dm.db_conn.Commit;
 
       showmessage('Data Berhasil Dihapus...');
       segarkan;
@@ -158,7 +158,7 @@ begin
     except
       on E:exception do
       begin
-        dm.My_Conn.Rollback;
+        dm.db_conn.Rollback;
         messagedlg('proses Penghapusan Data gagal,ulangi lagi!!! '#10#13'' + e.Message, mterror, [mbOk],0);
       end;
     end;

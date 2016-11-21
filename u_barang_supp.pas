@@ -100,16 +100,16 @@ procedure Tf_barang_supp.cxGridDBTableView1KeyDown(Sender: TObject;
 begin
 if (key= vk_delete) and (MessageDlg('Yakinkah, akan menghapus data ini?...', mtConfirmation, [mbYes, mbNo], 0)=mrYes) then
 begin
-dm.My_conn.StartTransaction;
+dm.db_conn.StartTransaction;
 try
 fungsi.SQLExec(dm.Q_Exe,'delete from tb_barang_supp where kd_perusahaan="'+f_utama.sb.panels[3].text
 +'" and kd_suplier="'+ed_supp.Text+'" and kd_barang="'+q_supp.fieldbyname('kd_barang').AsString+'"',false);
 
 fungsi.SQLExec(q_supp,'select * from vw_supp_barang where kd_perusahaan="'+f_utama.sb.panels[3].text+'" and kd_suplier="'+ed_supp.Text+'"',true);
 
-dm.My_conn.Commit;
+dm.db_conn.Commit;
 except on e:exception do begin
-  dm.My_conn.Rollback;
+  dm.db_conn.Rollback;
   showmessage('penghapusan data gagal '#10#13'' +e.Message);
   end;
 end;
@@ -162,7 +162,7 @@ end;
   ed_kode.SetFocus;
   end else
   begin
-  dm.My_conn.StartTransaction;
+  dm.db_conn.StartTransaction;
   try
     fungsi.SQLExec(dm.Q_Exe,'insert into tb_barang_supp (kd_perusahaan,kd_suplier,kd_barang,`update`) values("'+
     f_utama.sb.panels[3].text+'","'+ed_supp.Text+'","'+dm.Q_Show.fieldbyname('kd_barang').AsString+'","'+
@@ -173,9 +173,9 @@ end;
 
     ed_kode.Clear;
     ed_kode.SetFocus;
-    dm.My_conn.Commit;
+    dm.db_conn.Commit;
 except on e:exception do begin
-  dm.My_conn.Rollback;
+  dm.db_conn.Rollback;
   showmessage('pemindahan data gagal '#10#13'' +e.Message);
   end;
 end;

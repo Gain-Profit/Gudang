@@ -424,12 +424,12 @@ object F_barang_property: TF_barang_property
     Top = 56
   end
   object Q_mutasi: TmySQLQuery
-    Database = dm.My_conn
+    Database = dm.db_conn
     Left = 312
     Top = 56
   end
   object q_supp: TmySQLQuery
-    Database = dm.My_conn
+    Database = dm.db_conn
     Filtered = True
     Left = 8
     Top = 112
@@ -445,7 +445,7 @@ object F_barang_property: TF_barang_property
     Top = 168
   end
   object Q_plano: TmySQLQuery
-    Database = dm.My_conn
+    Database = dm.db_conn
     RequestLive = True
     SQL.Strings = (
       '')
@@ -453,7 +453,7 @@ object F_barang_property: TF_barang_property
     Top = 168
   end
   object Q_temp: TmySQLQuery
-    Database = dm.My_conn
+    Database = dm.db_conn
     Left = 8
     Top = 72
   end

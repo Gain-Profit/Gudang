@@ -230,7 +230,7 @@ if (not(se_rak.Enabled)) or (not(se_shelving.Enabled)) or (ed_masuk.Text='') the
   ed_masuk.SetFocus;
   end else
   begin
-  dm.My_conn.StartTransaction;
+  dm.db_conn.StartTransaction;
   try
     fungsi.SQLExec(dm.Q_Exe,'insert into tb_planogram(kd_perusahaan,kd_barang,no_rak,no_shelving,no_urut,`update`) values("'+
     f_utama.sb.Panels[3].Text+'","'+dm.Q_temp.fieldbyname('kd_barang').AsString+'","'+se_rak.Text+'","'+
@@ -245,10 +245,10 @@ if (not(se_rak.Enabled)) or (not(se_shelving.Enabled)) or (ed_masuk.Text='') the
 
     ed_masuk.Clear;
     ed_masuk.SetFocus;
-    dm.My_conn.Commit;
+    dm.db_conn.Commit;
   except on e:exception do
     begin
-      dm.My_conn.Rollback;
+      dm.db_conn.Rollback;
       showmessage('pemindahan data gagal '#10#13'' +e.Message);
     end;
   end;
@@ -517,7 +517,7 @@ PeekMessage(Mgs, 0, WM_CHAR, WM_CHAR, PM_REMOVE );
   edBarang.SetFocus;
   end else
   begin
-    dm.My_conn.StartTransaction;
+    dm.db_conn.StartTransaction;
     try
       fungsi.SQLExec(dm.Q_Exe,'insert into tb_planogram(kd_perusahaan,kd_barang,`update`) values("'+
       f_utama.sb.Panels[3].Text+'","'+dm.Q_temp.fieldbyname('kd_barang').AsString+'",date(now()))',false);
@@ -526,9 +526,9 @@ PeekMessage(Mgs, 0, WM_CHAR, WM_CHAR, PM_REMOVE );
 
       edBarang.Clear;
       edBarang.SetFocus;
-      dm.My_conn.Commit;
+      dm.db_conn.Commit;
     except on e:exception do begin
-      dm.My_conn.Rollback;
+      dm.db_conn.Rollback;
       showmessage('pemindahan data gagal '#10#13'' +e.Message);
       end;
     end;
@@ -560,7 +560,7 @@ procedure Tf_planogram.hapusPlanogram(aQuery:TmySQLQuery);
 begin
 if MessageDlg('Yakinkah, akan menghapus data ini?...', mtConfirmation, [mbYes, mbNo], 0)=mrYes then
 begin
-dm.My_conn.StartTransaction;
+dm.db_conn.StartTransaction;
 try
 fungsi.SQLExec(dm.Q_Exe,'delete from tb_planogram where kd_perusahaan="'+f_utama.sb.Panels[3].Text
 +'" and kd_barang="'+aQuery.fieldbyname('kd_barang').AsString+'" and no_rak="'+
@@ -568,9 +568,9 @@ aQuery.fieldbyname('no_rak').AsString+'" and no_shelving="'+
 aQuery.fieldbyname('no_shelving').AsString+'" and no_urut="'+
 aQuery.fieldbyname('no_urut').AsString+'"',false);
 
-dm.My_conn.Commit;
+dm.db_conn.Commit;
 except on e:exception do begin
-  dm.My_conn.Rollback;
+  dm.db_conn.Rollback;
   showmessage('penghapusan data gagal '#10#13'' +e.Message);
   end;
 end;

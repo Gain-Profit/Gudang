@@ -94,7 +94,7 @@ end;
 
 procedure Tf_golongan.B_saveClick(Sender: TObject);
 begin
-  dm.My_Conn.StartTransaction;
+  dm.db_conn.StartTransaction;
   try
     if gol_baru=true then
       fungsi.SQLExec(dm.Q_Exe,'insert into tb_golongan (kd_jenis, kd_golbrg,n_golbrg,`update`)values ("'+
@@ -107,10 +107,10 @@ begin
       fungsi.SQLExec(dm.Q_Exe,'update tb_golongan set n_golbrg="'+ed_desk.Text+'",`update`="'+
       formatdatetime('yyyy-MM-dd', date())+'" where kd_golbrg="'+ed_kode.Text+'" and kd_jenis="'+inttostr(cb_jenis.ItemIndex+1)+'"',false);
 }
-    dm.My_conn.Commit;
+    dm.db_conn.Commit;
     showmessage('penyimpanan data sukses....');
   except on e:exception do begin
-    dm.My_conn.Rollback;
+    dm.db_conn.Rollback;
     showmessage('penyimpanan data gagal '#10#13'' +e.Message);
     end;
   end;

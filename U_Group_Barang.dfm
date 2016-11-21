@@ -23,7 +23,7 @@ object FGroupBarang: TFGroupBarang
     Left = 530
     Top = 0
     Width = 150
-    Height = 442
+    Height = 441
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 0
@@ -78,7 +78,7 @@ object FGroupBarang: TFGroupBarang
     end
     object p1: TsPanel
       Left = 0
-      Top = 328
+      Top = 327
       Width = 150
       Height = 114
       Align = alBottom
@@ -120,7 +120,7 @@ object FGroupBarang: TFGroupBarang
     Left = 0
     Top = 0
     Width = 530
-    Height = 442
+    Height = 441
     Align = alClient
     TabOrder = 1
     LookAndFeel.Kind = lfOffice11
@@ -185,7 +185,7 @@ object FGroupBarang: TFGroupBarang
     Top = 24
   end
   object QGroupBarang: TmySQLQuery
-    Database = dm.My_conn
+    Database = dm.db_conn
     Left = 56
     Top = 24
   end

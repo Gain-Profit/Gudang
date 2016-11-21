@@ -149,7 +149,7 @@ end;
 
 procedure Tf_emp.B_saveClick(Sender: TObject);
 begin
-dm.My_Conn.StartTransaction;
+dm.db_conn.StartTransaction;
 try
 if supp_baru=true then
 begin
@@ -176,11 +176,11 @@ ed_nama.Text+'",kd_user="'+ed_kode.Text+'" where kd_user="'+kdUser+'"',false);
 updateprivasi;
 end;
 
-dm.My_conn.Commit;
+dm.db_conn.Commit;
 showmessage('penyimpanan data sukses....');
 close;
 except on e:exception do begin
-  dm.My_conn.Rollback;
+  dm.db_conn.Rollback;
   showmessage('penyimpanan data gagal '#10#13'' +e.Message);
   end;
 end;  

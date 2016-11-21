@@ -307,7 +307,7 @@ with uz do
   end;
  uz.Free;
 
- dm.My_conn.StartTransaction;
+ dm.db_conn.StartTransaction;
 try
   sg_load.Visible:=True;
   sg_load.MaxValue:= zk_load.Count-1;
@@ -343,7 +343,7 @@ try
   f_utama.sb.Panels[3].text+'"',False);
 
 
- dm.My_conn.Commit;
+ dm.db_conn.Commit;
 
   nm_file:= zk_load.FileName;
 
@@ -360,7 +360,7 @@ try
 except
  on E:exception do
  begin
-  dm.My_conn.Rollback;
+  dm.db_conn.Rollback;
   sg_load.Visible:=False;
 
   for i:=0 to zk_load.Count-1 do

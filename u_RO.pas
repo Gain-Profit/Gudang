@@ -565,7 +565,7 @@ if cb_PPN.Checked=true then plus_PPN:='Y' else plus_PPN:='N';
           ed_supplier.Text,ed_jatuh_tempo.Text,tunai,plus_PPN,floattostr(ce_PPN.value),ce_diskonrp.Text,
           ed_nilai_faktur.Text,'now()',f_utama.Sb.Panels[0].Text,mmKeterangan.Text]);
 
-dm.My_Conn.StartTransaction;
+dm.db_conn.StartTransaction;
 try
 fungsi.SQLExec(dm.Q_exe,_sql,false);
 
@@ -575,19 +575,19 @@ fungsi.SQLExec(dm.Q_exe,_sql,false);
   fungsi.SQLExec(dm.Q_exe,'REPLACE tb_barang_supp(kd_perusahaan,kd_suplier,kd_barang,`update`) '+
   'values ' + isi_sql2,false);
 
-dm.My_Conn.Commit;
+dm.db_conn.Commit;
 showmessage('penyimpanan data berhasil...');
 ed_code.SetFocus;
 except
 on E:exception do
 begin
-dm.My_Conn.Rollback;
+dm.db_conn.Rollback;
 messagedlg('proses penyimpanan gagal,ulangi lagi!!! '#10#13'' + e.Message, mterror, [mbOk],0);
 exit;
 end;
 end;
 
-dm.My_Conn.StartTransaction;
+dm.db_conn.StartTransaction;
 try
   for x:=0 to tableview.DataController.RecordCount-1 do
   begin
@@ -595,7 +595,7 @@ try
   +'" where kd_perusahaan= "'+f_utama.sb.Panels[3].Text+'" and kd_barang="'+
   inttostr(TableView.DataController.GetValue(x,0))+'"', false);
   end;   
-dm.My_Conn.Commit;
+dm.db_conn.Commit;
 
 ed_no_faktur.Clear;
 ed_no_faktur.Text:= kd_faktur;
@@ -604,7 +604,7 @@ b_print.SetFocus;
 except
 on E:exception do
 begin
-dm.My_Conn.Rollback;
+dm.db_conn.Rollback;
 messagedlg('proses ubah hpp ahir gagal...'#10#13'' + e.Message, mterror, [mbOk],0);
 end;
 end;

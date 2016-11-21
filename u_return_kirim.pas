@@ -492,7 +492,7 @@ kd_faktur:= ed_no_faktur.Text;
   end;
   delete(isi_sql,length(isi_sql),1);
 
-dm.My_Conn.StartTransaction;
+dm.db_conn.StartTransaction;
 try
 fungsi.SQLExec(dm.Q_exe,'insert into tb_return_kirim_global(kd_perusahaan,kd_return_kirim, '+
 'kd_kirim,tgl_return_kirim,kd_tk_return_kirim,nilai_faktur,pengguna,simpan_pada) values ("'+f_utama.sb.Panels[3].Text+'","'+ed_no_faktur.Text
@@ -509,7 +509,7 @@ ed_nilai_faktur.Text+'","'+f_utama.Sb.Panels[0].Text+'",now())',false);
   end;
 
 
-dm.My_Conn.Commit;
+dm.db_conn.Commit;
 
 showmessage('penyimpanan data berhasil...');
 
@@ -523,7 +523,7 @@ b_print.SetFocus;
 except
 on E:exception do
 begin
-dm.My_Conn.Rollback;
+dm.db_conn.Rollback;
 messagedlg('proses penyimpanan gagal '#10#13'' + e.Message, mterror, [mbOk],0);
 end;
 end;

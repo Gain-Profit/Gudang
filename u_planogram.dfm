@@ -716,7 +716,7 @@ object f_planogram: Tf_planogram
     Top = 56
   end
   object Q_plano: TmySQLQuery
-    Database = dm.My_conn
+    Database = dm.db_conn
     RequestLive = True
     SQL.Strings = (
       '')
@@ -724,7 +724,7 @@ object f_planogram: Tf_planogram
     Top = 56
   end
   object Q_barangD: TmySQLQuery
-    Database = dm.My_conn
+    Database = dm.db_conn
     RequestLive = True
     SQL.Strings = (
       'Select * from vw_planogram_double')
@@ -737,7 +737,7 @@ object f_planogram: Tf_planogram
     Top = 56
   end
   object Q_PlanoD: TmySQLQuery
-    Database = dm.My_conn
+    Database = dm.db_conn
     RequestLive = True
     SQL.Strings = (
       'select * from tb_planogram')
@@ -755,7 +755,7 @@ object f_planogram: Tf_planogram
     Top = 216
   end
   object Q_planoRak: TmySQLQuery
-    Database = dm.My_conn
+    Database = dm.db_conn
     RequestLive = True
     SQL.Strings = (
       '')

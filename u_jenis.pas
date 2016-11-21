@@ -62,7 +62,7 @@ end;
 
 procedure Tf_jenis.B_saveClick(Sender: TObject);
 begin
-dm.My_Conn.StartTransaction;
+dm.db_conn.StartTransaction;
 try
 if jenis_baru=true then
 fungsi.SQLExec(dm.Q_Exe,'insert into tb_jenis (kd_jenis,n_jenis,`update`)values ("'+
@@ -70,10 +70,10 @@ ed_kode.Text+'","'+ed_desc.Text+'","'+formatdatetime('yyyy-MM-dd', date())+'")',
 fungsi.SQLExec(dm.Q_Exe,'update tb_jenis set n_jenis="'+ed_desc.Text+'",`update`="'+
 formatdatetime('yyyy-MM-dd', date())+'" where kd_jenis="'+ed_kode.Text+'"',false);
 
-dm.My_conn.Commit;
+dm.db_conn.Commit;
 showmessage('penyimpanan data sukses....');
 except on e:exception do begin
-  dm.My_conn.Rollback;
+  dm.db_conn.Rollback;
   showmessage('penyimpanan data gagal '#10#13'' +e.Message);
   end;
 end;

@@ -93,18 +93,18 @@ end;
 
 procedure TF_toko.b_benarkan_mutasiClick(Sender: TObject);
 begin
-dm.My_Conn.StartTransaction;
+dm.db_conn.StartTransaction;
 try
 fungsi.SQLExec(dm.Q_exe,'call sp_mutasi_repair("'+f_utama.sb.Panels[3].Text+'","'+
 formatdatetime('yyyy-MM-dd',de_mutasi.Date)+'")',false);
-dm.My_Conn.Commit;
+dm.db_conn.Commit;
 
 showmessage('Proses Repair Mutasi Berhasil....');
 
 except
 on E:exception do
 begin
-dm.My_Conn.Rollback;
+dm.db_conn.Rollback;
 messagedlg('proses penyimpanan gagal,ulangi lagi!!! '#10#13'' + e.Message, mterror, [mbOk],0);
 end;
 end;

@@ -545,7 +545,7 @@ begin
 
   dm.metu_kabeh:=False;
 
-  sb.Panels[2].Text:= dm.My_conn.DatabaseName +'@'+ dm.My_conn.Host;
+  sb.Panels[2].Text:= dm.db_conn.DatabaseName +'@'+ dm.db_conn.Host;
   sb.Panels[3].Text:=dm.kd_comp;
   fungsi.SQLExec(dm.Q_Show,'select * from tb_company where kd_perusahaan = "'+sb.Panels[3].text+'"',true);
   sb.Panels[4].Text:=dm.Q_Show.fieldbyname('n_perusahaan').AsString;
@@ -630,7 +630,7 @@ begin
   appINI.Free;
 
 dm.metu_kabeh:=True;
-dm.My_conn.Connected:= false;
+dm.db_conn.Connected:= false;
 
 action:=cafree;
 f_utama:=nil;
@@ -871,7 +871,7 @@ sg_update.Progress:=0;
 sg_update.Suffix:=' %(Menambah Barang Baru)';
 sg_update.Visible:=True;
 //memasukkan barang baru
-dm.My_conn.StartTransaction;
+dm.db_conn.StartTransaction;
 try
 fungsi.SQLExec(dm.Q_Exe,'INSERT IGNORE INTO tb_barang(kd_perusahaan,kd_barang,n_barang,kd_jenis,kd_kategori,kd_golbrg, '+
 'kd_merk,kd_sat1,kd_sat2,kd_sat3,barcode1,barcode2,barcode3,Qty1,Qty2,minstok,maxstok, '+
@@ -972,11 +972,11 @@ sg_update.Progress:=70;
 sg_update.Suffix:=' %(Proses Update selesai)';
 
 sg_update.Visible:=False;
-dm.My_conn.Commit;
+dm.db_conn.Commit;
 ShowMessage('proses update barang dan harga Berhasil....');
 except on E:Exception do
 begin
-  dm.My_conn.Rollback;
+  dm.db_conn.Rollback;
   sg_update.Visible:=False;
   ShowMessage('proses update barang dan harga gagal.... '#10#13''+e.Message);
 end;
@@ -1146,7 +1146,7 @@ begin
   versiDB           := dm.Q_Show.FieldByName('versi_terbaru').AsString;
   URLDownload       := dm.Q_Show.FieldByName('URLdownload').AsString;
   fileName          := Copy(URLDownload,LastDelimiter('/',URLDownload) + 1,Length(URLDownload));
-  UrlDownloadLocal  := 'http://'+dm.My_conn.Host + '/GainProfit/' + fileName;
+  UrlDownloadLocal  := 'http://'+dm.db_conn.Host + '/GainProfit/' + fileName;
 
   if versiAPP < versiDB then
   begin

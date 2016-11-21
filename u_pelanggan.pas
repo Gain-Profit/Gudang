@@ -88,7 +88,7 @@ end;
 
 procedure Tf_cust.B_saveClick(Sender: TObject);
 begin
-dm.My_Conn.StartTransaction;
+dm.db_conn.StartTransaction;
 try
 if supp_baru=true then
 fungsi.SQLExec(dm.Q_Exe,'insert into tb_pelanggan (kd_perusahaan,kd_pelanggan,no_rekening,n_pelanggan,alamat, '+
@@ -100,10 +100,10 @@ ed_alamat.Text+'",no_rekening="'+ed_rekening.Text+'",alamat_kirim="'+
 ed_alamat_kirim.Text+'",`limit`="'+ed_limit.Text+'",n_pelanggan="'+ed_nama.Text+'",telephone="'+
 ed_telp.Text+'" where kd_pelanggan="'+ed_kode.Text+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'" ',false);
 
-dm.My_conn.Commit;
+dm.db_conn.Commit;
 showmessage('penyimpanan data sukses....');
 except on e:exception do begin
-  dm.My_conn.Rollback;
+  dm.db_conn.Rollback;
   showmessage('penyimpanan data gagal '#10#13'' +e.Message);
   end;
 end;

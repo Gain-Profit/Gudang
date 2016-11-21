@@ -72,7 +72,7 @@ end;
 
 procedure Tf_comp.B_saveClick(Sender: TObject);
 begin
-dm.My_Conn.StartTransaction;
+dm.db_conn.StartTransaction;
 try
 if comp_baru=true then
 fungsi.SQLExec(dm.Q_Exe,'insert into tb_company (kd_perusahaan, n_perusahaan,alamat,telp,e_mail)values ("'+ed_kode.Text
@@ -80,10 +80,10 @@ fungsi.SQLExec(dm.Q_Exe,'insert into tb_company (kd_perusahaan, n_perusahaan,ala
 fungsi.SQLExec(dm.Q_Exe,'update tb_company set n_perusahaan="'+ed_desk.Text+'", alamat="'+
 mm_alamat.Text+'", telp="'+ed_telp.Text+'", e_mail="'+ed_mail.Text+'" where kd_perusahaan="'+ed_kode.Text+'"',false);
 
-dm.My_conn.Commit;
+dm.db_conn.Commit;
 showmessage('penyimpanan data sukses....');
 except on e:exception do begin
-  dm.My_conn.Rollback;
+  dm.db_conn.Rollback;
   showmessage('penyimpanan data gagal '#10#13'' +e.Message);
   end;
 end;

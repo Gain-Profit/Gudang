@@ -60,7 +60,7 @@ end;
 
 procedure TF_satuan.b_saveClick(Sender: TObject);
 begin
-dm.My_Conn.StartTransaction;
+dm.db_conn.StartTransaction;
 try
 if satuan_baru=true then
 fungsi.SQLExec(dm.Q_Exe,'insert into tb_satuan(kd_satuan,n_satuan,n_singkat,`update`)values("'+ed_nomer.Text
@@ -68,10 +68,10 @@ fungsi.SQLExec(dm.Q_Exe,'insert into tb_satuan(kd_satuan,n_satuan,n_singkat,`upd
 fungsi.SQLExec(dm.Q_Exe,'update tb_satuan set `update`="'+formatdatetime('yyyy-MM-dd', date())+'",n_satuan="'+ed_desk.Text+'",n_singkat="'+ed_singkat.Text
 +'" where kd_satuan="'+ed_nomer.Text+'"',false);
 
-dm.My_conn.Commit;
+dm.db_conn.Commit;
 showmessage('penyimpanan data sukses...');
 except on e:exception do begin
-  dm.My_conn.Rollback;
+  dm.db_conn.Rollback;
   showmessage('penyimpanan data gagal '#10#13'' +e.Message);
   end;
 end;

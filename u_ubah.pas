@@ -195,7 +195,7 @@ var posisi,i:integer;
 begin
 posisi:= dm.Q_harga.RecNo;
 
-dm.My_conn.StartTransaction;
+dm.db_conn.StartTransaction;
 try
 ubahHarga(f_utama.sb.Panels[3].Text);
 if F_utama.sb.Panels[8].Text='PUSAT' then
@@ -209,13 +209,13 @@ end;
 dm.Q_harga.Close;
 dm.Q_harga.Open;
 dm.Q_harga.RecNo:= posisi;
-dm.My_conn.Commit;
+dm.db_conn.Commit;
 showmessage('proses ubah harga berhasil');
 close;
 
 except on E:exception do
 begin
-dm.My_Conn.Rollback;
+dm.db_conn.Rollback;
 messagedlg('proses ubah harga gagal '#10#13''+e.Message, mterror, [mbOk],0);
 end;
 end;

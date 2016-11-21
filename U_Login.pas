@@ -254,7 +254,7 @@ Ed_N_User.Clear;
 
 Ed_Kd_User.setfocus;
 
-sb.Panels[2].Text:=dm.My_conn.DatabaseName+'@'+dm.My_conn.Host;
+sb.Panels[2].Text:=dm.db_conn.DatabaseName+'@'+dm.db_conn.Host;
 end;
 
 procedure TF_Login.Ed_PasswordKeyDown(Sender: TObject; var Key: Word;

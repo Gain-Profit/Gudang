@@ -9,7 +9,7 @@ uses
 
 type
   Tdm = class(TDataModule)
-    My_conn: TmySQLDatabase;
+    db_conn: TmySQLDatabase;
     ds_show: TDataSource;
     Q_Exe: TmySQLQuery;
     Q_Show: TmySQLQuery;
@@ -134,7 +134,7 @@ var
   data, pusat, jalur1, jalur2, nama, kata: string;
   X: TextFile;
 begin
-  My_conn.Connected := False;
+  db_conn.Connected := False;
   assignfile(X, 'tools\koneksi.cbCon');
   try
     reset(X);
@@ -144,13 +144,13 @@ begin
     readln(X, nama);
     readln(X, kata);
     closefile(X);
-    my_conn.Host := krupuk(pusat, 6);
-    my_conn.DatabaseName := krupuk(data, 6);
+    db_conn.Host := krupuk(pusat, 6);
+    db_conn.DatabaseName := krupuk(data, 6);
     jalur1 := krupuk(jalur2, 6);
-    my_conn.Port := strtoint(jalur1);
-    my_conn.UserName := krupuk(nama, 6);
-    my_conn.UserPassword := krupuk(kata, 6);
-    my_conn.Connected := true;
+    db_conn.Port := strtoint(jalur1);
+    db_conn.UserName := krupuk(nama, 6);
+    db_conn.UserPassword := krupuk(kata, 6);
+    db_conn.Connected := true;
   except
     showmessage('koneksi tidak berhasil');
     application.Terminate;

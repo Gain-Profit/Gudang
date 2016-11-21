@@ -207,7 +207,7 @@ object f_barang_supp: Tf_barang_supp
     Top = 120
   end
   object Q_supp: TmySQLQuery
-    Database = dm.My_conn
+    Database = dm.db_conn
     Filtered = True
     Left = 64
     Top = 112

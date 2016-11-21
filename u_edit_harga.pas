@@ -175,7 +175,7 @@ procedure TF_Edit_Harga.t_dataKeyDown(Sender: TObject; var Key: Word;
 begin
 if (key= vk_delete) and (MessageDlg('Yakinkah, akan menghapus data ini?...', mtConfirmation, [mbYes, mbNo], 0)=mrYes) then
 begin
-  dm.My_conn.StartTransaction;
+  dm.db_conn.StartTransaction;
   try
     deleteHargaBarang(f_utama.sb.Panels[3].Text);
     if F_utama.sb.Panels[8].Text='PUSAT' then
@@ -186,9 +186,9 @@ begin
       end;
     end;
 
-    dm.My_conn.Commit;
+    dm.db_conn.Commit;
 except on e:exception do begin
-  dm.My_conn.Rollback;
+  dm.db_conn.Rollback;
   showmessage('penghapusan data gagal '#10#13'' +e.Message);
   end;
 end;

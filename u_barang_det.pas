@@ -333,7 +333,7 @@ end;
 if cb_aktif.Checked=true then
 b_aktif:='Y' else b_aktif:= 'N';
 
-dm.My_Conn.StartTransaction;
+dm.db_conn.StartTransaction;
 try
 SimpanDatabase(f_utama.sb.Panels[3].Text,b_aktif,status_simpan);
 
@@ -356,10 +356,10 @@ status_simpan:= false;
 b_auto.Enabled:= False;
 Caption:= 'Inventory Barang - Edit Barang';
 
-dm.My_conn.Commit;
+dm.db_conn.Commit;
 showmessage('penyimpanan data sukses....');
 except on e:exception do begin
-  dm.My_conn.Rollback;
+  dm.db_conn.Rollback;
   showmessage('penyimpanan data gagal '#10#13'' +e.Message);
   end;
 end;

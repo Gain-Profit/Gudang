@@ -139,7 +139,7 @@ if (Key= vk_delete) then
 begin
 if MessageDlg('Yakinkah, akan menghapus data ini?...', mtConfirmation, [mbYes, mbNo], 0)=mrYes then
 begin
-dm.My_conn.StartTransaction;
+dm.db_conn.StartTransaction;
 try
 fungsi.SQLExec(dm.Q_Exe,'delete from tb_planogram where kd_perusahaan="'+f_utama.sb.Panels[3].Text+'" and kd_barang="'+
 pid+'" and no_rak="'+Q_plano.fieldbyname('no_rak').AsString+'" and no_shelving="'+
@@ -149,9 +149,9 @@ Q_plano.fieldbyname('no_urut').AsString+'"',false);
 fungsi.SQLExec(Q_plano,'select * from tb_planogram where kd_barang="'+
 pid+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
 
-dm.My_conn.Commit;
+dm.db_conn.Commit;
 except on e:exception do begin
-  dm.My_conn.Rollback;
+  dm.db_conn.Rollback;
   showmessage('penghapusan data gagal '#10#13'' +e.Message);
   end;
 end;

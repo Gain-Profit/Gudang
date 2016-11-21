@@ -5,7 +5,7 @@ object dm: Tdm
   Top = 149
   Height = 518
   Width = 764
-  object My_conn: TmySQLDatabase
+  object db_conn: TmySQLDatabase
     DatabaseName = 'profit'
     UserName = 'root'
     UserPassword = 'server'
@@ -27,12 +27,12 @@ object dm: Tdm
     Top = 56
   end
   object Q_Exe: TmySQLQuery
-    Database = My_conn
+    Database = db_conn
     Left = 72
     Top = 8
   end
   object Q_Show: TmySQLQuery
-    Database = My_conn
+    Database = db_conn
     SQL.Strings = (
       'select * from vw_daftar_barang')
     Left = 8
@@ -84,7 +84,7 @@ object dm: Tdm
     Top = 128
   end
   object Q_temp: TmySQLQuery
-    Database = My_conn
+    Database = db_conn
     Left = 120
     Top = 8
   end
@@ -19129,7 +19129,7 @@ object dm: Tdm
     Bitmap = {}
   end
   object Q_harga: TmySQLQuery
-    Database = My_conn
+    Database = db_conn
     SQL.Strings = (
       '')
     Left = 8
@@ -19431,7 +19431,7 @@ object dm: Tdm
     end
   end
   object q_list_purchase: TmySQLQuery
-    Database = My_conn
+    Database = db_conn
     SQL.Strings = (
       '')
     Left = 136
@@ -19443,7 +19443,7 @@ object dm: Tdm
     Top = 56
   end
   object Q_list_receipt: TmySQLQuery
-    Database = My_conn
+    Database = db_conn
     Left = 136
     Top = 112
   end
@@ -19453,7 +19453,7 @@ object dm: Tdm
     Top = 112
   end
   object q_list_return: TmySQLQuery
-    Database = My_conn
+    Database = db_conn
     SQL.Strings = (
       ''
       ''
@@ -19467,7 +19467,7 @@ object dm: Tdm
     Top = 168
   end
   object Q_laporan: TmySQLQuery
-    Database = My_conn
+    Database = db_conn
     SQL.Strings = (
       
         'select * from vw_supp_barang where kd_perusahaan='#39'00'#39' and kd_sup' +
@@ -20916,7 +20916,7 @@ object dm: Tdm
     Top = 224
   end
   object Q_list_kirim: TmySQLQuery
-    Database = My_conn
+    Database = db_conn
     SQL.Strings = (
       '')
     Left = 136
@@ -20928,7 +20928,7 @@ object dm: Tdm
     Top = 272
   end
   object Q_list_sales: TmySQLQuery
-    Database = My_conn
+    Database = db_conn
     SQL.Strings = (
       'select * from vw_list_sales where kd_perusahaan = '#39'00'#39)
     Left = 136
@@ -20940,7 +20940,7 @@ object dm: Tdm
     Top = 320
   end
   object Q_List_SO: TmySQLQuery
-    Database = My_conn
+    Database = db_conn
     SQL.Strings = (
       '')
     Left = 136
@@ -20952,7 +20952,7 @@ object dm: Tdm
     Top = 368
   end
   object Q_list_return_kirim: TmySQLQuery
-    Database = My_conn
+    Database = db_conn
     SQL.Strings = (
       '')
     Left = 136
@@ -20992,7 +20992,7 @@ object dm: Tdm
     end
   end
   object Q_mutasi: TmySQLQuery
-    Database = My_conn
+    Database = db_conn
     Left = 312
     Top = 56
   end
@@ -21007,14 +21007,14 @@ object dm: Tdm
     Top = 272
   end
   object Q_child_sales: TmySQLQuery
-    Database = My_conn
+    Database = db_conn
     SQL.Strings = (
       'select * from tb_jual_rinci where kd_perusahaan = '#39'00'#39)
     Left = 296
     Top = 272
   end
   object Q_gross: TmySQLQuery
-    Database = My_conn
+    Database = db_conn
     Left = 312
     Top = 104
   end
@@ -21024,7 +21024,7 @@ object dm: Tdm
     Top = 104
   end
   object Q_stock_out: TmySQLQuery
-    Database = My_conn
+    Database = db_conn
     Left = 312
     Top = 152
   end
@@ -21054,7 +21054,7 @@ object dm: Tdm
     Top = 136
   end
   object Q_barang: TmySQLQuery
-    Database = My_conn
+    Database = db_conn
     SQL.Strings = (
       'select * from vw_daftar_barang')
     Left = 8
@@ -21066,7 +21066,7 @@ object dm: Tdm
     Top = 424
   end
   object Q_list_return_jual: TmySQLQuery
-    Database = My_conn
+    Database = db_conn
     SQL.Strings = (
       '')
     Left = 136
