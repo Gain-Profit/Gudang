@@ -5,7 +5,7 @@ uses
   u_edit_harga in 'u_edit_harga.pas' {F_Edit_Harga},
   u_dm in 'u_dm.pas' {dm: TDataModule},
   u_ubah in 'u_ubah.pas' {F_ubah_harga},
-  U_fungsi in 'U_fungsi.pas',
+  UFungsi in 'UFungsi.pas',
   u_barang in 'u_barang.pas' {F_barang},
   u_barang_det in 'u_barang_det.pas' {F_barang_det},
   u_jenis in 'u_jenis.pas' {f_jenis},
