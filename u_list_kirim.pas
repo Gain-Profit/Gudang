@@ -53,7 +53,6 @@ type
 
 var
   F_list_kirim: TF_list_kirim;
-  fungsi:tfungsi;
 
 implementation
 

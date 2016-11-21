@@ -81,7 +81,6 @@ type
 
 var
   F_barang_property: TF_barang_property;
-  fungsi: TFungsi;
   pid, periode,bulan,tahun : string;
   
 

@@ -90,7 +90,6 @@ type
 
 var
   F_barang_det: TF_barang_det;
-  fungsi: TFungsi;
   kd_jenis,kd_merk,kd_gol,kd_tag: string;
   //kd_sat1,kd_sat2,kd_sat3: string;
   kd_sat: array[1..3] of string;

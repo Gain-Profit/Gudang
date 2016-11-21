@@ -50,7 +50,6 @@ type
 
 var
   f_list_return: Tf_list_return;
-  fungsi:tfungsi;
 
 implementation
 

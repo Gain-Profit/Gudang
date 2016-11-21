@@ -136,7 +136,6 @@ type
 
 var
   f_planogram: Tf_planogram;
-  fungsi:tfungsi;
   kd_barang: string;
 
 implementation

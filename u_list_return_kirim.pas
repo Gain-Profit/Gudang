@@ -53,7 +53,6 @@ type
 
 var
   f_list_return_kirim: Tf_list_return_kirim;
-  fungsi:tfungsi;
 
 implementation
 

@@ -42,7 +42,6 @@ type
 
 var
   f_supplier: Tf_supplier;
-  fungsi:tfungsi;
   supp_baru:boolean;
 
 implementation

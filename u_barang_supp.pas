@@ -54,7 +54,6 @@ type
   end;
 
 var  f_barang_supp: Tf_barang_supp;
-  fungsi: TFungsi;
 
 implementation
 

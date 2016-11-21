@@ -23,7 +23,7 @@ object f_list_receipt: Tf_list_receipt
     Left = 0
     Top = 0
     Width = 762
-    Height = 442
+    Height = 441
     Align = alClient
     TabOrder = 0
     LookAndFeel.Kind = lfOffice11
@@ -122,7 +122,7 @@ object f_list_receipt: Tf_list_receipt
     Left = 762
     Top = 0
     Width = 150
-    Height = 442
+    Height = 441
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 1
@@ -177,7 +177,7 @@ object f_list_receipt: Tf_list_receipt
     end
     object p1: TsPanel
       Left = 0
-      Top = 352
+      Top = 351
       Width = 150
       Height = 90
       Align = alBottom

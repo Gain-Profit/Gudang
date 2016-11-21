@@ -33,7 +33,6 @@ type
 
 var
   f_comp: Tf_comp;
-  fungsi:TFungsi;
   comp_baru:boolean;
 
 implementation

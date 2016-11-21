@@ -72,7 +72,6 @@ type
 
 var
   f_emp: Tf_emp;
-  fungsi:tfungsi;
   supp_baru:boolean;
   kdUser:string;
 

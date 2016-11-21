@@ -105,7 +105,6 @@ type
 
 var
   f_return_kirim: Tf_return_kirim;
-  fungsi:tfungsi;
   sub_sub_total,diskon:integer;
 
 implementation

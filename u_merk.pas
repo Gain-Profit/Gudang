@@ -27,7 +27,6 @@ type
 
 var
   f_merk: Tf_merk;
-  fungsi:tfungsi;
   merk_baru:boolean;
 
 implementation

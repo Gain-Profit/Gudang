@@ -78,7 +78,6 @@ type
 
 var
   F_kirim_data: TF_kirim_data;
-  fungsi:Tfungsi;
   dir_simpan,file_load,dir_load:string;
 
   const

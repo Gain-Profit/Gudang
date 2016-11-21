@@ -68,7 +68,6 @@ type
 
 var
   f_list_return_jual: Tf_list_return_jual;
-  fungsi: Tfungsi;
 implementation
 
 uses u_utama, u_dm;

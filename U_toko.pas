@@ -39,7 +39,6 @@ type
 
 var
   F_toko: TF_toko;
-  fungsi: TFungsi;
   periode,bulan,tahun : string;
 
 implementation

@@ -24,7 +24,6 @@ type
 
 var
   F_ubahPassword: TF_ubahPassword;
-  fungsi:tfungsi;
 
 implementation
 

@@ -42,7 +42,6 @@ type
 
 var
   f_cust: Tf_cust;
-  fungsi:tfungsi;
   supp_baru:boolean;
 
 implementation

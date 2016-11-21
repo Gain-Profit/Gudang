@@ -52,7 +52,6 @@ type
 
 var
   f_List_purchase: Tf_List_purchase;
-  fungsi:tfungsi;
 
 implementation
 

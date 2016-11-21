@@ -103,7 +103,6 @@ type
 
 var
   f_purchase: Tf_purchase;
-  fungsi:tfungsi;
   sub_sub_total:integer;
 
 implementation

@@ -27,7 +27,6 @@ type
 
 var
   f_jenis: Tf_jenis;
-  fungsi:tfungsi;
   jenis_baru:boolean;
 implementation
 

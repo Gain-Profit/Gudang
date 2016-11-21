@@ -120,7 +120,6 @@ type
 
 var
   f_return: Tf_return;
-  fungsi:tfungsi;
   sub_sub_total,diskon:integer;
 
 implementation

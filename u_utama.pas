@@ -223,7 +223,6 @@ type
 
 var
   f_utama: Tf_utama;
-  fungsi:TFungsi;
   turun,koneksi:boolean;
 
 //function tes_koneksi:Boolean; external 'tools\gain.dll';

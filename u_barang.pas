@@ -82,8 +82,6 @@ type
 
 var
   F_barang: TF_barang;
-  fungsi: TFungsi;
-//  limit,jum_data,hal,br_awal:Integer;
 
 implementation
 

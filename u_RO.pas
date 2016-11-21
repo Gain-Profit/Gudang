@@ -132,7 +132,6 @@ type
 
 var
   f_RO: Tf_RO;
-  fungsi:tfungsi;
   sub_sub_total,diskon:integer;
 
 implementation

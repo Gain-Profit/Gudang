@@ -28,7 +28,6 @@ type
 
 var
   F_Kategori: TF_Kategori;
-  fungsi:tfungsi;
   kategori_baru:boolean;
 
 implementation

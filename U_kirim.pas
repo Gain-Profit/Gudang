@@ -105,7 +105,6 @@ type
 
 var
   F_kirim: TF_kirim;
-  fungsi:tfungsi;
   sub_sub_total:integer;
 
 implementation

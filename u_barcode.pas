@@ -51,7 +51,6 @@ type
 
 var
   f_Barcode: Tf_Barcode;
-  fungsi:tfungsi;
 
 implementation
 

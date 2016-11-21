@@ -29,7 +29,6 @@ type
 
 var
   F_satuan: TF_satuan;
-  fungsi: tfungsi;
   satuan_baru:boolean;
 implementation
 

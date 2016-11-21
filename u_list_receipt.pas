@@ -52,7 +52,6 @@ type
 
 var
   f_list_receipt: Tf_list_receipt;
-  fungsi:tfungsi;
 
 implementation
 

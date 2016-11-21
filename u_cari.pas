@@ -61,7 +61,6 @@ var
   F_cari:TF_cari;
   kondisi,nm_tabel: string;
   TblTemp : TStringList;
-  fungsi:tfungsi;
   
 implementation
 

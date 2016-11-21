@@ -33,7 +33,6 @@ type
 
 var
   f_golongan: Tf_golongan;
-  fungsi:TFungsi;
   kd_jenis:string;
   gol_baru:boolean;
 

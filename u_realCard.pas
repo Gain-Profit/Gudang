@@ -57,7 +57,6 @@ type
 
 var
   f_realCard: Tf_realCard;
-  fungsi:tfungsi;
 
 implementation
 

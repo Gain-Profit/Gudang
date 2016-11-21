@@ -88,7 +88,6 @@ type
 
 var
   F_ubah_harga: TF_ubah_harga;
-  fungsi:TFungsi;
 
 implementation
 
