@@ -56,7 +56,7 @@ var
 implementation
 
 uses
-  u_utama, u_dm, u_Group_Barang_Detail;
+  u_utama, u_dm, u_Group_Barang_Detail, UFungsi;
 
 {$R *.dfm}
 
