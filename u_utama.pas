@@ -540,7 +540,7 @@ end;
 procedure Tf_utama.FormShow(Sender: TObject);
 begin
   cek_update;
-  sb.Panels[9].Text:='Versi: '+fungsi.program_versi;
+  sb.Panels[9].Text:='Versi: '+fungsi.GetVersiApp;
   pc.ActivePage:= ts_master;
 
   metu_kabeh:=False;
@@ -1140,7 +1140,7 @@ var
   versiDB,versiAPP,URLDownload:string;
   fileName, UrlDownloadLocal:string;
 begin
-  versiAPP := fungsi.program_versi;
+  versiAPP := fungsi.GetVersiApp;
 
   fungsi.SQLExec(dm.Q_Show,'select versi_terbaru, URLdownload from  app_versi where kode="gudang.exe"',true);
   versiDB           := dm.Q_Show.FieldByName('versi_terbaru').AsString;
