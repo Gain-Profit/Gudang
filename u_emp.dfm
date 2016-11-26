@@ -221,6 +221,7 @@ object f_emp: Tf_emp
         Height = 20
         Caption = 'Server POS'
         TabOrder = 7
+        OnClick = cb_serverClick
         SkinData.SkinSection = 'CHECKBOX'
         ImgChecked = 0
         ImgUnchecked = 0

@@ -66,6 +66,8 @@ type
     procedure mniallClick(Sender: TObject);
     procedure mniNotAllClick(Sender: TObject);
     procedure hakgudang(boleh: Boolean);
+    procedure hakToko(boleh: Boolean);
+    procedure cb_serverClick(Sender: TObject);
   private
     { Private declarations }
     function ubahCB(checkbox: TsCheckBox): string;
@@ -86,9 +88,9 @@ uses u_dm, u_cari, u_utama;
 
 procedure Tf_emp.baru;
 begin
-//f_emp.Width:=316;
 btnpass.Visible:= False;
 ts_gudang.tabVisible:= False;
+ts_server.TabVisible:= False;
 
 ed_kode.Clear;
 ed_nama.Clear;
@@ -127,6 +129,7 @@ cb_server.Checked       := dm.Q_temp.FieldByName('toko').AsBoolean;
 cb_admin.Checked        := dm.Q_temp.FieldByName('admin').AsBoolean;
 
 ts_gudang.tabVisible:= cb_gudang.Checked;
+ts_server.TabVisible:= cb_server.Checked;
 
 cb_Barang.Checked		    := dm.Q_temp.FieldByName('gdInvBarang').AsBoolean;
 cb_Harga.Checked  		  := dm.Q_temp.FieldByName('gdInvHarga').AsBoolean;
@@ -141,6 +144,7 @@ cb_ReturnKirim.Checked  := dm.Q_temp.FieldByName('gdTrReturnKirim').AsBoolean;
 cb_master.Checked	  	  := dm.Q_temp.FieldByName('gdMaster').AsBoolean;
 cb_Setting.Checked		  := dm.Q_temp.FieldByName('gdSetting').AsBoolean;
 
+cb_md.Checked           := dm.Q_temp.FieldByName('tkAdmin').AsBoolean;
 supp_baru:= false;
 end;
 
@@ -232,17 +236,20 @@ begin
   if not(cb_gudang.Checked) then
   hakgudang(False);
 
+  if not(cb_server.Checked) then
+  hakToko(False);
+  
   sql := Format('REPLACE INTO tb_user_company (kd_perusahaan, ' +
   'kd_user, admin, gudang, akun, toko, kasir, gdInvBarang, gdInvHarga, ' +
   'gdInvPlano, gdInvBrgSupp, gdInvBrgUpdate, gdTrPO, gdTrRO, gdTrReturn, ' +
-  'gdTrKirim, gdTrReturnKirim, gdMaster, gdSetting,`update`) VALUES '+
+  'gdTrKirim, gdTrReturnKirim, gdMaster, gdSetting, tkAdmin, `update`) VALUES '+
   '("'+f_utama.sb.Panels[3].text+'","'+kdUser+'", "%s", "%s", "%s", "%s", ' +
   '"%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", ' +
-  '"%s", date(now()))', [ubahCB(cb_admin),ubahCB(cb_gudang),ubahCB(cb_akun),
+  '"%s", "%s", date(now()))', [ubahCB(cb_admin),ubahCB(cb_gudang),ubahCB(cb_akun),
   ubahCB(cb_server),ubahCB(cb_kasir),ubahCB(cb_Barang),ubahCB(cb_Harga),
   ubahCB(cb_Plano),ubahCB(cb_BrgSupp),ubahCB(cb_brgUpdate),ubahCB(cb_PO),
   ubahCB(cb_RO),ubahCB(cb_Return),ubahCB(cb_kirim),ubahCB(cb_ReturnKirim),
-  ubahCB(cb_master),ubahCB(cb_Setting)]);
+  ubahCB(cb_master),ubahCB(cb_Setting),ubahCB(cb_md)]);
   fungsi.SQLExec(dm.Q_Exe,sql,False);
 end;
 
@@ -262,7 +269,23 @@ begin
   for i:= 0 to ComponentCount -1 do
   begin
     if (Components[i] is TsCheckBox) then
-      if (TsCheckBox(Components[i]).Parent is TsGroupBox) then
+      if (TsTabSheet(TsCheckBox(Components[i]).Parent.Parent).Name) = 'ts_gudang' then
+          TsCheckBox(Components[i]).Checked:= boleh;
+  end;
+end;
+
+procedure Tf_emp.cb_serverClick(Sender: TObject);
+begin
+ts_server.TabVisible:= cb_server.Checked;
+end;
+
+procedure Tf_emp.hakToko(boleh: Boolean);
+var i: integer;
+begin
+  for i:= 0 to ComponentCount -1 do
+  begin
+    if (Components[i] is TsCheckBox) then
+      if (TsTabSheet(TsCheckBox(Components[i]).Parent.Parent).Name) = 'ts_server' then
           TsCheckBox(Components[i]).Checked:= boleh;
   end;
 end;
