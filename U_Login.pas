@@ -149,7 +149,7 @@ dm.kd_pengguna := UpperCase(ed_kd_user.Text);
 F_utama.Sb.Panels[0].Text:= dm.kd_pengguna;
 F_utama.Sb.Panels[1].Text:= ed_N_User.Text;
 
-dm.kd_perusahaan:=dm.kd_perusahaan;
+F_utama.Sb.Panels[3].Text:=dm.kd_perusahaan;
 fungsi.SQLExec(dm.Q_Show,'select * from tb_company where kd_perusahaan = "'+dm.kd_perusahaan+'"',true);
 F_utama.sb.Panels[4].Text:=sb.Panels[1].Text;
 
