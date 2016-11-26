@@ -581,6 +581,13 @@ end;
 
 procedure Tf_utama.ac_userExecute(Sender: TObject);
 begin
+  if not(HakAkses('admin')) then
+  begin
+  messagedlg('Anda tidak mempunyai hak untuk ' + #13#10 +
+    'melanjutkan AKSES ke dalamMENU ini...',mtWarning,[mbOk],0);
+  Exit;
+  end;
+
   application.CreateForm(tf_cari, f_cari);
   with F_cari do
   try
