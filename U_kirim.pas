@@ -98,6 +98,7 @@ type
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure receiptCabang();
   private
+    sub_sub_total:integer;
     { Private declarations }
   public
     { Public declarations }
@@ -105,7 +106,6 @@ type
 
 var
   F_kirim: TF_kirim;
-  sub_sub_total:integer;
 
 implementation
 

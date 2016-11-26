@@ -71,6 +71,7 @@ type
     procedure SbSegarkanClick(Sender: TObject);
     procedure cbJenisChange(Sender: TObject);
   private
+    dir_simpan,file_load,dir_load:string;
     { Private declarations }
   public
     { Public declarations }
@@ -78,9 +79,8 @@ type
 
 var
   F_kirim_data: TF_kirim_data;
-  dir_simpan,file_load,dir_load:string;
 
-  const
+const
   OFASI_EDIT = $0001;
   OFASI_OPENDESKTOP = $0002;
 

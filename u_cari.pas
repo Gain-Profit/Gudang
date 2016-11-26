@@ -47,19 +47,18 @@ type
     procedure B_AmbilClick(Sender: TObject);
     procedure refresh;
   private
+    kondisi,nm_tabel: string;
     { Private declarations }
   public
     _SQLi: string;
     TblCap: array [0..3] of string;
     TblVal: array [0..3] of string;
     CariT: Integer;
-    Fsumber:TForm;
     { Public declarations }
   end;
 
 var
   F_cari:TF_cari;
-  kondisi,nm_tabel: string;
   TblTemp : TStringList;
   
 implementation

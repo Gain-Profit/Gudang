@@ -22,6 +22,7 @@ type
     procedure b_newClick(Sender: TObject);
     procedure b_saveClick(Sender: TObject);
   private
+    satuan_baru:boolean;
     { Private declarations }
   public
     { Public declarations }
@@ -29,7 +30,6 @@ type
 
 var
   F_satuan: TF_satuan;
-  satuan_baru:boolean;
 implementation
 
 uses u_dm, u_cari;

@@ -26,6 +26,7 @@ type
     procedure B_newClick(Sender: TObject);
     procedure B_saveClick(Sender: TObject);
   private
+    comp_baru:boolean;
     { Private declarations }
   public
     { Public declarations }
@@ -33,7 +34,6 @@ type
 
 var
   f_comp: Tf_comp;
-  comp_baru:boolean;
 
 implementation
 

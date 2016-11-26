@@ -125,6 +125,7 @@ type
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure btnUpdateKeteranganClick(Sender: TObject);
   private
+    sub_sub_total,diskon:integer;
     { Private declarations }
   public
     { Public declarations }
@@ -132,7 +133,6 @@ type
 
 var
   f_RO: Tf_RO;
-  sub_sub_total,diskon:integer;
 
 implementation
 

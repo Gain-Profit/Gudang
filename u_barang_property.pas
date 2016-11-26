@@ -74,6 +74,7 @@ type
     procedure btnCloseClick(Sender: TObject);
     procedure btnMutasiHrgClick(Sender: TObject);
   private
+    pid, periode,bulan,tahun : string;
     { Private declarations }
   public
     { Public declarations }
@@ -81,8 +82,7 @@ type
 
 var
   F_barang_property: TF_barang_property;
-  pid, periode,bulan,tahun : string;
-  
+
 
 implementation
 

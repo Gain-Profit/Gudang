@@ -20,6 +20,7 @@ type
     procedure B_newClick(Sender: TObject);
     procedure B_saveClick(Sender: TObject);
   private
+    merk_baru:boolean;
     { Private declarations }
   public
     { Public declarations }
@@ -27,7 +28,6 @@ type
 
 var
   f_merk: Tf_merk;
-  merk_baru:boolean;
 
 implementation
 

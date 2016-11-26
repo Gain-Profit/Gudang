@@ -20,6 +20,7 @@ type
     procedure B_newClick(Sender: TObject);
     procedure B_saveClick(Sender: TObject);
   private
+    jenis_baru:boolean;
     { Private declarations }
   public
     { Public declarations }
@@ -27,7 +28,7 @@ type
 
 var
   f_jenis: Tf_jenis;
-  jenis_baru:boolean;
+
 implementation
 
 uses u_dm, u_cari;

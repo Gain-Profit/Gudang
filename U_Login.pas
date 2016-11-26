@@ -39,9 +39,9 @@ type
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
   private
+    OnServer, userPassword, userRealName: string;
     { Private declarations }
   public
-    OnServer, userPassword, userRealName: string;
     { Public declarations }
   end;
 

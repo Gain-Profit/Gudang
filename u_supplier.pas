@@ -35,6 +35,7 @@ type
     procedure B_saveClick(Sender: TObject);
     procedure b_autoClick(Sender: TObject);
   private
+    supp_baru:boolean;
     { Private declarations }
   public
     { Public declarations }
@@ -42,7 +43,6 @@ type
 
 var
   f_supplier: Tf_supplier;
-  supp_baru:boolean;
 
 implementation
 

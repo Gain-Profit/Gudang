@@ -35,6 +35,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure b_autoClick(Sender: TObject);
   private
+    supp_baru:boolean;
     { Private declarations }
   public
     { Public declarations }
@@ -42,7 +43,6 @@ type
 
 var
   f_cust: Tf_cust;
-  supp_baru:boolean;
 
 implementation
 

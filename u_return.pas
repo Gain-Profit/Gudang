@@ -113,6 +113,7 @@ type
     procedure ed_supplierChange(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
   private
+    sub_sub_total,diskon:integer;
     { Private declarations }
   public
     { Public declarations }
@@ -120,7 +121,6 @@ type
 
 var
   f_return: Tf_return;
-  sub_sub_total,diskon:integer;
 
 implementation
 

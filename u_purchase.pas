@@ -96,6 +96,7 @@ type
       ANewItemRecordFocusingChanged: Boolean);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
   private
+    sub_sub_total:integer;
     { Private declarations }
   public
     { Public declarations }
@@ -103,7 +104,6 @@ type
 
 var
   f_purchase: Tf_purchase;
-  sub_sub_total:integer;
 
 implementation
 

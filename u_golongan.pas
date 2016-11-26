@@ -26,6 +26,8 @@ type
     procedure B_newClick(Sender: TObject);
     procedure B_saveClick(Sender: TObject);
   private
+    kd_jenis:string;
+    gol_baru:boolean;
     { Private declarations }
   public
     { Public declarations }
@@ -33,8 +35,6 @@ type
 
 var
   f_golongan: Tf_golongan;
-  kd_jenis:string;
-  gol_baru:boolean;
 
 implementation
 
@@ -47,7 +47,7 @@ begin
   ed_kode.Enabled:= True;
   cb_jenis.Enabled:= True;
 
-  fungsi.SQLExec(dm.q_temp,'select * from tb_golongan where kd_jenis="'+u_barang_det.kd_jenis+'"',true);
+  fungsi.SQLExec(dm.q_temp,'select * from tb_golongan where kd_jenis="'+f_barang_det.kd_jenis+'"',true);
   if Length(IntToStr(dm.Q_temp.recordcount+1))<> 1 then
   ed_kode.Text:= inttostr(dm.Q_temp.recordcount+1) else
   ed_kode.Text:= '0'+inttostr(dm.Q_temp.recordcount+1);

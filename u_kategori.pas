@@ -21,6 +21,7 @@ type
     procedure B_saveClick(Sender: TObject);
 
   private
+    kategori_baru:boolean;
     { Private declarations }
   public
     { Public declarations }
@@ -28,7 +29,6 @@ type
 
 var
   F_Kategori: TF_Kategori;
-  kategori_baru:boolean;
 
 implementation
 
