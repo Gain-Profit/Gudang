@@ -462,7 +462,7 @@ end;
   application.CreateForm(tf_cari, f_cari);
   with F_cari do
   try
-    _SQLi:= 'select kode,n_supp from tb_supp where kd_perusahaan = "'+sb.Panels[3].text+'"';
+    _SQLi:= 'select kode,n_supp from tb_supp where kd_perusahaan = "'+dm.kd_perusahaan+'"';
     tblcap[0]:= 'Kode';
     tblCap[1]:= 'Nama Supplier';
     Caption:='Daftar Supplier';
@@ -547,7 +547,7 @@ begin
 
   sb.Panels[2].Text:= dm.db_conn.DatabaseName +'@'+ dm.db_conn.Host;
   sb.Panels[3].Text:=dm.kd_perusahaan;
-  fungsi.SQLExec(dm.Q_Show,'select * from tb_company where kd_perusahaan = "'+sb.Panels[3].text+'"',true);
+  fungsi.SQLExec(dm.Q_Show,'select * from tb_company where kd_perusahaan = "'+dm.kd_perusahaan+'"',true);
   sb.Panels[4].Text:=dm.Q_Show.fieldbyname('n_perusahaan').AsString;
 
   sb.Panels[8].Text:=dm.Q_Show.fieldbyname('ket').AsString;
@@ -633,7 +633,7 @@ procedure Tf_utama.FormClose(Sender: TObject; var Action: TCloseAction);
 var appINI : TIniFile;
 begin
   appINI := TIniFile.Create(dm.AppPath+'gain.ini') ;
-  appINI.WriteString('gudang','kd_perusahaan',sb.Panels[3].Text);
+  appINI.WriteString('gudang','kd_perusahaan',dm.kd_perusahaan);
   appINI.Free;
 
 dm.metu_kabeh:=True;
@@ -661,7 +661,7 @@ end;
     tampil_button(False,True);
     if ShowModal = mrOk then
     begin
-      if sb.Panels[3].Text <> TblVal[0] then
+      if dm.kd_perusahaan <> TblVal[0] then
        begin
          application.CreateForm(Tf_login, f_login);
          F_Login.sb.Panels[0].Text:= tblval[0];
@@ -784,7 +784,7 @@ sb.Panels[1].Text:= 'NAMA USER';
 dm.sop:= true;
 
 application.CreateForm(tF_login, f_login);
-f_login.sb.Panels[0].Text:=sb.Panels[3].Text;
+f_login.sb.Panels[0].Text:=dm.kd_perusahaan;
 f_login.sb.Panels[1].Text:=sb.Panels[4].Text;
 f_login.ShowModal;
 end;
@@ -882,7 +882,7 @@ dm.db_conn.StartTransaction;
 try
 fungsi.SQLExec(dm.Q_Exe,'INSERT IGNORE INTO tb_barang(kd_perusahaan,kd_barang,n_barang,kd_jenis,kd_kategori,kd_golbrg, '+
 'kd_merk,kd_sat1,kd_sat2,kd_sat3,barcode1,barcode2,barcode3,Qty1,Qty2,minstok,maxstok, '+
-'leadtime,aktif,minor,hpp_ahir,hpp_aktif,`update`) SELECT "'+SB.Panels[3].Text+'",kd_barang,n_barang,'+
+'leadtime,aktif,minor,hpp_ahir,hpp_aktif,`update`) SELECT "'+dm.kd_perusahaan+'",kd_barang,n_barang,'+
 'kd_jenis,kd_kategori,kd_golbrg,kd_merk,kd_sat1,kd_sat2,kd_sat3,barcode1,barcode2,'+
 'barcode3,Qty1,Qty2,minstok,maxstok,leadtime,aktif,minor,hpp_ahir,hpp_aktif,`update` '+
 'FROM tb_barang WHERE kd_perusahaan = "'+SB.Panels[8].Text+'"',False);
@@ -896,13 +896,13 @@ fungsi.SQLExec(dm.Q_Exe,'UPDATE tb_barang B2,tb_barang B1 SET B2.n_barang=B1.n_b
 'B2.kd_merk=B1.kd_merk,B2.kd_sat1=B1.kd_sat1,B2.kd_sat2=B1.kd_sat2,B2.kd_sat3=B1.kd_sat3, '+
 'B2.barcode1=B1.barcode1,B2.barcode2=B1.barcode2,B2.barcode3=B1.barcode3,B2.Qty1=B1.Qty1, '+
 'B2.Qty2=B1.Qty2,B2.hpp_ahir=B1.hpp_ahir,B2.hpp_aktif=B1.hpp_aktif,B2.`update`=B1.`update` '+
-'WHERE B2.kd_barang=B1.kd_barang AND B2.kd_perusahaan="'+SB.Panels[3].Text+'" AND B1.kd_perusahaan="'+SB.Panels[8].Text+'"',False);
+'WHERE B2.kd_barang=B1.kd_barang AND B2.kd_perusahaan="'+dm.kd_perusahaan+'" AND B1.kd_perusahaan="'+SB.Panels[8].Text+'"',False);
 
 sg_update.Progress:=20;
 sg_update.Suffix:=' %(Menghapus data Barang lama)';
 
 fungsi.SQLExec(dm.Q_temp,'SELECT kd_barang from tb_barang WHERE kd_perusahaan = "'+
-SB.Panels[3].Text+'" AND kd_barang NOT IN (SELECT kd_barang FROM tb_barang WHERE kd_perusahaan="'+SB.Panels[8].Text+'")',True);
+dm.kd_perusahaan+'" AND kd_barang NOT IN (SELECT kd_barang FROM tb_barang WHERE kd_perusahaan="'+SB.Panels[8].Text+'")',True);
 
 if not(dm.Q_temp.Eof) then
 begin
@@ -911,19 +911,19 @@ dm.Q_temp.First;
   for W:=1 to dm.Q_temp.RecordCount do
   begin
     fungsi.SQLExec(dm.Q_Exe,'delete from tb_barang '+
-    'WHERE kd_perusahaan = "'+SB.Panels[3].Text+'" AND '+
+    'WHERE kd_perusahaan = "'+dm.kd_perusahaan+'" AND '+
     'kd_barang = "'+dm.Q_temp.fieldbyname('kd_barang').AsString+'"',False);
 
     fungsi.SQLExec(dm.Q_Exe,'delete from tb_mutasi '+
-    'WHERE kd_perusahaan = "'+SB.Panels[3].Text+'" AND '+
+    'WHERE kd_perusahaan = "'+dm.kd_perusahaan+'" AND '+
     'kd_barang = "'+dm.Q_temp.fieldbyname('kd_barang').AsString+'"',False);
 
     fungsi.SQLExec(dm.Q_Exe,'delete from tb_barang_supp '+
-    'WHERE kd_perusahaan = "'+SB.Panels[3].Text+'" AND '+
+    'WHERE kd_perusahaan = "'+dm.kd_perusahaan+'" AND '+
     'kd_barang = "'+dm.Q_temp.fieldbyname('kd_barang').AsString+'"',False);
 
     fungsi.SQLExec(dm.Q_Exe,'delete from tb_planogram '+
-    'WHERE kd_perusahaan = "'+SB.Panels[3].Text+'" AND '+
+    'WHERE kd_perusahaan = "'+dm.kd_perusahaan+'" AND '+
     'kd_barang = "'+dm.Q_temp.fieldbyname('kd_barang').AsString+'"',False);
 
     dm.Q_temp.Next;
@@ -935,7 +935,7 @@ sg_update.Suffix:=' %(Menambah Harga Barang Baru)';
 
 fungsi.SQLExec(dm.Q_Exe,'INSERT IGNORE INTO tb_barang_harga(kd_perusahaan,kd_barang,kd_macam_harga, '+
 'laba,laba_P,harga_jual1,harga_jual2,harga_jual3,kode_user,`update`,awal,ahir,diskon,diskonP) '+
-'SELECT "'+SB.Panels[3].Text+'",kd_barang,kd_macam_harga,laba,laba_P,harga_jual1,harga_jual2,harga_jual3, '+
+'SELECT "'+dm.kd_perusahaan+'",kd_barang,kd_macam_harga,laba,laba_P,harga_jual1,harga_jual2,harga_jual3, '+
 'kode_user,`update`,awal,ahir,diskon,diskonP FROM tb_barang_harga WHERE kd_perusahaan = "'+SB.Panels[8].Text+'"',False);
 
 sg_update.Progress:=40;
@@ -947,13 +947,13 @@ fungsi.SQLExec(dm.Q_Exe,'UPDATE tb_barang_harga H1,tb_barang_harga H2 SET '+
 'H1.kode_user=H2.kode_user,H1.`update`=H2.`update`,H1.awal=H2.awal,H1.ahir=H2.ahir,'+
 'H1.diskon =H2.diskon,H1.diskonP =H2.diskonP WHERE H1.kd_barang=H2.kd_barang AND '+
 'H1.kd_macam_harga=H2.kd_macam_harga AND '+
-'H1.kd_perusahaan="'+SB.Panels[3].Text+'" AND H2.kd_perusahaan="'+SB.Panels[8].Text+'"',False);
+'H1.kd_perusahaan="'+dm.kd_perusahaan+'" AND H2.kd_perusahaan="'+SB.Panels[8].Text+'"',False);
 
 sg_update.Progress:=50;
 sg_update.Suffix:=' %(Proses hapus data harga barang...)';
 
 fungsi.SQLExec(dm.Q_temp,'SELECT kd_barang from tb_barang_harga WHERE kd_perusahaan = "'+
-SB.Panels[3].Text+'" AND kd_barang NOT IN (SELECT kd_barang FROM tb_barang_harga WHERE kd_perusahaan="'+SB.Panels[8].Text+'")',True);
+dm.kd_perusahaan+'" AND kd_barang NOT IN (SELECT kd_barang FROM tb_barang_harga WHERE kd_perusahaan="'+SB.Panels[8].Text+'")',True);
 
 if not(dm.Q_temp.Eof) then
 begin
@@ -962,7 +962,7 @@ dm.Q_temp.First;
   for W:=1 to dm.Q_temp.RecordCount do
   begin
     fungsi.SQLExec(dm.Q_Exe,'delete from tb_barang_harga '+
-    'WHERE kd_perusahaan = "'+SB.Panels[3].Text+'" AND '+
+    'WHERE kd_perusahaan = "'+dm.kd_perusahaan+'" AND '+
     'kd_barang = "'+dm.Q_temp.fieldbyname('kd_barang').AsString+'"',False);
     dm.Q_temp.Next;
   end;
@@ -972,7 +972,7 @@ sg_update.Progress:=60;
 sg_update.Suffix:=' %(Proses memasukkan barang supp...)';
 
 fungsi.SQLExec(dm.Q_Exe,'INSERT IGNORE INTO tb_barang_supp(kd_perusahaan,kd_suplier,kd_barang,`update`) SELECT "'+
-SB.Panels[3].Text+'","'+SB.Panels[8].Text+'",kd_barang,date(now()) '+
+dm.kd_perusahaan+'","'+SB.Panels[8].Text+'",kd_barang,date(now()) '+
 'FROM tb_barang WHERE kd_perusahaan = "'+SB.Panels[8].Text+'"',False);
 
 sg_update.Progress:=70;
@@ -1116,7 +1116,7 @@ var
   sql : string;
 begin
   sql:= 'SELECT '+kunci+' FROM tb_user_company WHERE ' +
-  'kd_user="'+sb.Panels[0].Text+'" AND kd_perusahaan="'+sb.Panels[3].Text+'"';
+  'kd_user="'+sb.Panels[0].Text+'" AND kd_perusahaan="'+dm.kd_perusahaan+'"';
 
   fungsi.SQLExec(dm.Q_temp,sql,true);
   Result:= dm.Q_temp.FieldByName(kunci).AsBoolean;
