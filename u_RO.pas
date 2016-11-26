@@ -563,7 +563,7 @@ if cb_PPN.Checked=true then plus_PPN:='Y' else plus_PPN:='N';
           'pengguna, keterangan) values ("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", %s, "%s", "%s")',
           [dm.kd_perusahaan,ed_no_faktur.Text,formatdatetime('yyyy-MM-dd',ed_tgl.Date),
           ed_supplier.Text,ed_jatuh_tempo.Text,tunai,plus_PPN,floattostr(ce_PPN.value),ce_diskonrp.Text,
-          ed_nilai_faktur.Text,'now()',f_utama.Sb.Panels[0].Text,mmKeterangan.Text]);
+          ed_nilai_faktur.Text,'now()',dm.kd_pengguna,mmKeterangan.Text]);
 
 dm.db_conn.StartTransaction;
 try

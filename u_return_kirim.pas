@@ -497,7 +497,7 @@ try
 fungsi.SQLExec(dm.Q_exe,'insert into tb_return_kirim_global(kd_perusahaan,kd_return_kirim, '+
 'kd_kirim,tgl_return_kirim,kd_tk_return_kirim,nilai_faktur,pengguna,simpan_pada) values ("'+dm.kd_perusahaan+'","'+ed_no_faktur.Text
 +'","'+ed_fak_kirim.Text+'","'+formatdatetime('yyyy-MM-dd',ed_tgl.Date)+'","'+ed_pelanggan.Text+'","'+
-ed_nilai_faktur.Text+'","'+f_utama.Sb.Panels[0].Text+'",now())',false);
+ed_nilai_faktur.Text+'","'+dm.kd_pengguna+'",now())',false);
 
   fungsi.SQLExec(dm.Q_exe,'insert into tb_return_kirim_rinci(kd_perusahaan,kd_return_kirim,tgl_return_kirim,'+
   'kd_barang,n_barang,qty_return_kirim,harga_pokok,barcode,tgl_simpan) values  '+isi_sql, false);

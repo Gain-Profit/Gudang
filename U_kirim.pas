@@ -507,7 +507,7 @@ try
 fungsi.SQLExec(dm.Q_exe,'insert into tb_kirim_global(kd_perusahaan,kd_kirim,tgl_kirim,'+
 'kd_tk_kirim,nilai_faktur,pengguna,jatuh_tempo,simpan_pada) values ("'+dm.kd_perusahaan+'","'+ed_no_faktur.Text
 +'","'+formatdatetime('yyyy-MM-dd',ed_tgl.Date)+'","'+ed_toko.Text+'","'+
-ed_nilai_faktur.Text+'","'+f_utama.Sb.Panels[0].Text+'","'+ed_jatuh_tempo.Text+'",now())',false);
+ed_nilai_faktur.Text+'","'+dm.kd_pengguna+'","'+ed_jatuh_tempo.Text+'",now())',false);
 
   fungsi.SQLExec(dm.Q_exe,'insert into tb_kirim_rinci(kd_perusahaan,kd_kirim,tgl_kirim,'+
   'kd_barang,n_barang,qty_kirim,harga_pokok,barcode,tgl_simpan) values  '+isi_sql, false);
@@ -515,7 +515,7 @@ ed_nilai_faktur.Text+'","'+f_utama.Sb.Panels[0].Text+'","'+ed_jatuh_tempo.Text+'
 fungsi.SQLExec(dm.Q_exe,'INSERT tb_piutang (kd_perusahaan,faktur,tanggal,pelanggan, '+
 'piutang_awal,`user`,jatuh_tempo,`update`)VALUES("'+dm.kd_perusahaan+'","'+
 ed_no_faktur.Text+'","'+formatdatetime('yyyy-MM-dd',ed_tgl.Date)+'","'+ed_toko.Text+'","'+
-ed_nilai_faktur.Text+'","'+f_utama.Sb.Panels[0].Text+'","'+ed_jatuh_tempo.Text+'",DATE(NOW()))',False);
+ed_nilai_faktur.Text+'","'+dm.kd_pengguna+'","'+ed_jatuh_tempo.Text+'",DATE(NOW()))',False);
 
   for i:=0 to cabang.Count -1 do
   begin

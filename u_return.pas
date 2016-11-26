@@ -437,7 +437,7 @@ try
 fungsi.SQLExec(dm.Q_exe,'insert into tb_return_global(kd_perusahaan,kd_return,tgl_return,'+
 'kd_suplier,disk_rp,nilai_faktur,pengguna,faktur_receipt,simpan_pada) values ("'+dm.kd_perusahaan+'","'+ed_no_faktur.Text
 +'","'+formatdatetime('yyyy-MM-dd',ed_tgl.Date)+'","'+ed_supplier.Text+'","'+ce_diskonrp.Text+'","'+ed_nilai_faktur.Text
-+'","'+f_utama.Sb.Panels[0].Text+'","'+ed_fak_receipt.Text+'",now())',false);
++'","'+dm.kd_pengguna+'","'+ed_fak_receipt.Text+'",now())',false);
 
   fungsi.SQLExec(dm.Q_exe,'insert into tb_return_rinci(kd_perusahaan,kd_return,tgl_return,'+
   'kd_barang,n_barang,qty_return,harga_pokok,diskon,barcode,tgl_simpan) values  '+isi_sql, false);
