@@ -83,18 +83,15 @@ type
     procedure ed_pidExit(Sender: TObject);
     procedure SimpanDatabase(perusahaan:string;b_aktif:string;status_simpan:Boolean);
   private
-    { Private declarations }
+    kd_jenis,kd_merk,kd_gol,kd_tag: string;
+    kd_sat: array[1..3] of string;
+    status_simpan:boolean;
+    urutan,urut_berat : Integer;
   public
-    { Public declarations }
   end;
 
 var
   F_barang_det: TF_barang_det;
-  kd_jenis,kd_merk,kd_gol,kd_tag: string;
-  //kd_sat1,kd_sat2,kd_sat3: string;
-  kd_sat: array[1..3] of string;
-  status_simpan:boolean;
-  urutan,urut_berat : Integer;
 
 implementation
 
