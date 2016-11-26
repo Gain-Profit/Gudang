@@ -744,7 +744,8 @@ showmessage('tutup dulu semua windows...');
 exit;
 end;
 
-sb.Panels[0].Text:= 'USER';
+dm.kd_pengguna := 'USER';
+sb.Panels[0].Text:= dm.kd_pengguna;
 sb.Panels[1].Text:= 'NAMA USER';
 dm.sop:= true;
 
@@ -1081,7 +1082,7 @@ var
   sql : string;
 begin
   sql:= 'SELECT '+kunci+' FROM tb_user_company WHERE ' +
-  'kd_user="'+sb.Panels[0].Text+'" AND kd_perusahaan="'+dm.kd_perusahaan+'"';
+  'kd_user="'+dm.kd_pengguna+'" AND kd_perusahaan="'+dm.kd_perusahaan+'"';
 
   fungsi.SQLExec(dm.Q_temp,sql,true);
   Result:= dm.Q_temp.FieldByName(kunci).AsBoolean;
