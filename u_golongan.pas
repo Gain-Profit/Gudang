@@ -47,10 +47,7 @@ begin
   ed_kode.Enabled:= True;
   cb_jenis.Enabled:= True;
 
-  fungsi.SQLExec(dm.q_temp,'select * from tb_golongan where kd_jenis="'+f_barang_det.kd_jenis+'"',true);
-  if Length(IntToStr(dm.Q_temp.recordcount+1))<> 1 then
-  ed_kode.Text:= inttostr(dm.Q_temp.recordcount+1) else
-  ed_kode.Text:= '0'+inttostr(dm.Q_temp.recordcount+1);
+  cb_jenis.ItemIndex:= cb_1.Items.IndexOf(f_cari.q_cari.FieldByName('kd_jenis').AsString);
 
   ed_desk.Clear;
   gol_baru:= true;
@@ -61,9 +58,9 @@ begin
   ed_kode.Enabled:= False;
   cb_jenis.Enabled:= False;
 
-  ed_kode.Text:= f_cari.q_cari.FieldByName('kd_golbrg').AsString;
   cb_jenis.ItemIndex:= cb_1.Items.IndexOf(f_cari.q_cari.FieldByName('kd_jenis').AsString);
   ed_desk.text:= f_cari.q_cari.FieldByName('n_golbrg').AsString;
+  ed_kode.Text:= f_cari.q_cari.FieldByName('kd_golbrg').AsString;
   gol_baru:= false;
 end;
 
@@ -94,6 +91,8 @@ end;
 
 procedure Tf_golongan.B_saveClick(Sender: TObject);
 begin
+  if ed_kode.Text = '' then Exit;
+  
   dm.db_conn.StartTransaction;
   try
     if gol_baru=true then
