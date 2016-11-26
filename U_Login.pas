@@ -172,7 +172,7 @@ begin
   F_utama.ac_purchase.Enabled:=True;
   f_utama.ac_kirim.Enabled:=True;
 
-  fungsi.SQLExec(dm.Q_temp,'select kd_perusahaan from tb_company where ket = "'+sb.Panels[0].Text+'" and onserver ="Y"',true);
+  fungsi.SQLExec(dm.Q_temp,'select kd_perusahaan from tb_company where ket = "'+dm.kd_perusahaan+'" and onserver ="Y"',true);
   cabang.clear;
   while not(dm.Q_temp.eof) do
   begin
