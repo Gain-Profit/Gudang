@@ -67,7 +67,6 @@ type
 
 var
   F_Edit_Harga: TF_Edit_Harga;
-  fungsi:TFungsi;
 
 implementation
 
