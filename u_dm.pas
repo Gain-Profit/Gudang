@@ -57,14 +57,14 @@ type
     procedure smAfterChange(Sender: TObject);
     procedure koneksikan;
   private
+    terkoneksi: boolean;
+    function FRObject(FastReport: TfrxReport; ObjectName: string): TObject;
     { Private declarations }
   public
-    waktu_sekarang: TDateTime;
-    sop, metu_kabeh, terkoneksi: boolean;
     PPN: real;
-    batasan: integer;
+    sop, metu_kabeh: boolean;
+    waktu_sekarang: TDateTime;
     kd_perusahaan, kd_pengguna, WPath, AppPath, DocPath: string;
-    function FRObject(FastReport: TfrxReport; ObjectName: string): TObject;
     function FRMemo(FastReport: TfrxReport; ObjectName: string): TfrxMemoView;
     { Public declarations }
   end;
@@ -161,7 +161,6 @@ procedure Tdm.DataModuleCreate(Sender: TObject);
 var
   appINI: TIniFile;
 begin
-  batasan := 1000;
 
   WPath := ExtractFilePath(Application.ExeName);
 
