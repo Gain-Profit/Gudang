@@ -63,7 +63,7 @@ type
     sop, metu_kabeh, terkoneksi: boolean;
     PPN: real;
     batasan: integer;
-    kd_perusahaan, WPath, AppPath, DocPath: string;
+    kd_perusahaan, kd_pengguna, WPath, AppPath, DocPath: string;
     function FRObject(FastReport: TfrxReport; ObjectName: string): TObject;
     function FRMemo(FastReport: TfrxReport; ObjectName: string): TfrxMemoView;
     { Public declarations }
