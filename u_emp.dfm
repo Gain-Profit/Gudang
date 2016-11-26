@@ -449,6 +449,32 @@ object f_emp: Tf_emp
         end
       end
     end
+    object ts_server: TsTabSheet
+      Caption = 'Hak Akses Server POS '
+      SkinData.CustomColor = False
+      SkinData.CustomFont = False
+      object gb_md: TsGroupBox
+        Left = 0
+        Top = 0
+        Width = 456
+        Height = 41
+        Align = alTop
+        Caption = '| Admin |'
+        TabOrder = 0
+        SkinData.SkinSection = 'GROUPBOX'
+        object cb_md: TsCheckBox
+          Left = 8
+          Top = 16
+          Width = 110
+          Height = 20
+          Caption = 'Merchandiser (MD)'
+          TabOrder = 0
+          SkinData.SkinSection = 'CHECKBOX'
+          ImgChecked = 0
+          ImgUnchecked = 0
+        end
+      end
+    end
   end
   object t_upd: TmySQLUpdateSQL
     Left = 400

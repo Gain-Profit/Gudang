@@ -52,6 +52,9 @@ type
     mniall: TMenuItem;
     mniNotAll: TMenuItem;
     cb_admin: TsCheckBox;
+    ts_server: TsTabSheet;
+    gb_md: TsGroupBox;
+    cb_md: TsCheckBox;
     procedure baru;
     procedure ubah;
     procedure B_saveClick(Sender: TObject);
