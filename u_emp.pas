@@ -72,13 +72,13 @@ type
     { Private declarations }
     function ubahCB(checkbox: TsCheckBox): string;
   public
+    user_baru:boolean;
+    kdUser:string;
     { Public declarations }
   end;
 
 var
   f_emp: Tf_emp;
-  supp_baru:boolean;
-  kdUser:string;
 
 implementation
 
@@ -102,7 +102,7 @@ cb_server.Checked:= false;
 cb_akun.Checked:= false;
 cb_kasir.Checked:=false;
 
-supp_baru:= true;
+user_baru:= true;
 end;
 
 procedure Tf_emp.ubah;
@@ -145,7 +145,7 @@ cb_master.Checked	  	  := dm.Q_temp.FieldByName('gdMaster').AsBoolean;
 cb_Setting.Checked		  := dm.Q_temp.FieldByName('gdSetting').AsBoolean;
 
 cb_md.Checked           := dm.Q_temp.FieldByName('tkAdmin').AsBoolean;
-supp_baru:= false;
+user_baru:= false;
 end;
 
 function Tf_emp.ubahCB(checkbox: TsCheckBox): string;
@@ -158,7 +158,7 @@ procedure Tf_emp.B_saveClick(Sender: TObject);
 begin
 dm.db_conn.StartTransaction;
 try
-if supp_baru=true then
+if user_baru=true then
 begin
   if (ed_pass.Text='') or (ed_pass2.Text='') then
   begin
