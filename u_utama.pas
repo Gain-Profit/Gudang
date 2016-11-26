@@ -386,9 +386,9 @@ end;
   application.CreateForm(tf_cari, f_cari);
   with F_cari do
   try
-    _SQLi:= 'select kd_golbrg, kd_jenis,n_golbrg from tb_golongan';
-    tblcap[0]:= 'No Gol';
-    tblCap[1]:= 'No Jenis';
+    _SQLi:= 'select kd_jenis, kd_golbrg, n_golbrg from tb_golongan';
+    tblCap[0]:= 'kd Jenis';
+    tblcap[1]:= 'Kd Gol';
     tblCap[2]:= 'Deskripsi';
     Caption:='Daftar Golongan Barang';
     cariT:= 2;
