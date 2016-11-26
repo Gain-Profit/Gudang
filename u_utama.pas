@@ -214,13 +214,13 @@ type
     procedure WmAfterShow(var Msg: TMessage); message WM_AFTER_SHOW;
     { Private declarations }
   public
+    turun,koneksi:boolean;
     function HakAkses(kunci:string): Boolean;
     { Public declarations }
   end;
 
 var
   f_utama: Tf_utama;
-  turun,koneksi:boolean;
 
 //function tes_koneksi:Boolean; external 'tools\gain.dll';
 

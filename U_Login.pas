@@ -41,13 +41,12 @@ type
   private
     { Private declarations }
   public
-    OnServer: string;
+    OnServer, userPassword, userRealName: string;
     { Public declarations }
   end;
 
 var
   F_Login: TF_Login;
-  userPassword,userRealName:string;
 
 implementation
 
@@ -221,8 +220,8 @@ end;
 
 procedure TF_Login.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-turun:= false;
-f_utama.animasi.Enabled:= turun;
+f_utama.turun:= false;
+f_utama.animasi.Enabled:= f_utama.turun;
 f_utama.AlphaBlendValue:=255;
 
 if dm.sop=true then
@@ -244,8 +243,8 @@ end;
 
 procedure TF_Login.FormShow(Sender: TObject);
 begin
-turun:= true;
-f_utama.animasi.Enabled:= turun;
+f_utama.turun:= true;
+f_utama.animasi.Enabled:= f_utama.turun;
 
 Ed_Kd_User.Clear;
 Ed_N_User.Clear;
