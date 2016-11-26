@@ -113,7 +113,7 @@ fungsi.SQLExecT(dm.Q_barang,'SELECT kd_perusahaan,kd_barang,n_barang,kd_jenis, '
 'kd_kategori,kd_golbrg,kd_merk,kd_sat1,kd_sat2,kd_sat3,barcode3,minstok,maxstok, '+
 'leadtime,aktif,minor,barcode1,barcode2,Qty1,Qty2,N_golbrg,N_merk,N_Jenis, '+
 'n_kategori,stok_OH,hpp_aktif,hpp_ahir,tot_HPP '+
-' from vw_daftar_barang where kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
+' from vw_daftar_barang where kd_perusahaan="'+dm.kd_perusahaan+'"',true);
 //limit '+inttostr(br_awal)+','+inttostr(limit)+'',true);
 tvdata.DataController.FocusedRowIndex:=1;
 end;
@@ -239,7 +239,7 @@ fungsi.SQLExec(dm.Q_barang,'SELECT kd_perusahaan,kd_barang,n_barang,kd_jenis, '+
 'from vw_daftar_barang where (kd_barang like "%'+
 ed_cari.Text+'%" or n_barang like "%'+ed_cari.Text+'%" or barcode3 like "%'+ed_cari.Text+'%" or barcode2 like "%'+
 ed_cari.Text+'%" or barcode1 like "%'+ed_cari.Text+'%") and (kd_perusahaan="'+
-f_utama.sb.Panels[3].Text+'")',true);
+dm.kd_perusahaan+'")',true);
 grid.SetFocus;
 ed_cari.SetFocus;
 end;

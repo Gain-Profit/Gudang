@@ -168,7 +168,7 @@ showmessage('Jenis dan Golongan harus diisi terlebih dahulu, '#10#13' karena '+
 exit;
 end;
 fungsi.SQLExec(dm.Q_Exe,'select kd_barang from tb_barang where kd_perusahaan="'+
-f_utama.sb.Panels[3].Text+'" and LEFT(kd_barang,'+inttostr(length(kd_jenis))+')="'+
+dm.kd_perusahaan+'" and LEFT(kd_barang,'+inttostr(length(kd_jenis))+')="'+
 kd_jenis+'" and MID(kd_barang,'+inttostr(length(kd_jenis)+1)+','+inttostr(length(kd_gol))+')="'+kd_gol+'" order by kd_barang',true);
 dm.Q_Exe.first;
 
@@ -335,7 +335,7 @@ b_aktif:='Y' else b_aktif:= 'N';
 
 dm.db_conn.StartTransaction;
 try
-SimpanDatabase(f_utama.sb.Panels[3].Text,b_aktif,status_simpan);
+SimpanDatabase(dm.kd_perusahaan,b_aktif,status_simpan);
 
 if F_utama.sb.Panels[8].Text='PUSAT' then
 begin
@@ -344,7 +344,7 @@ begin
     SimpanDatabase(cabang[i],b_aktif,status_simpan);
 
     fungsi.SQLExec(dm.Q_Exe,'INSERT IGNORE INTO tb_barang_supp(kd_perusahaan,kd_suplier,kd_barang,`update`) values ("'+
-    cabang[i]+'","'+f_utama.sb.Panels[3].Text+'","'+ed_pid.Text+'",date(now()))',False);
+    cabang[i]+'","'+dm.kd_perusahaan+'","'+ed_pid.Text+'",date(now()))',False);
   end;
 end;
 
@@ -430,7 +430,7 @@ begin
 if status_simpan then
 begin
 fungsi.SQLExec(dm.Q_temp,'select kd_barang, n_barang, barcode1,barcode2,barcode3 from tb_barang where kd_perusahaan = "'+
-f_utama.sb.Panels[3].Text+'" and barcode3="'+
+dm.kd_perusahaan+'" and barcode3="'+
 TsEdit(sender).Text+'" or barcode2="'+TsEdit(sender).Text+'" or barcode1="'+TsEdit(sender).Text+'"',true);
 if (dm.Q_temp.RecordCount>0) and (TsEdit(sender).Text<>'') then
     TsEdit(sender).Color:=clblue else
@@ -438,7 +438,7 @@ if (dm.Q_temp.RecordCount>0) and (TsEdit(sender).Text<>'') then
 end else
 begin
 fungsi.SQLExec(dm.Q_temp,'select kd_barang, n_barang, barcode1,barcode2,barcode3 from tb_barang where  kd_perusahaan = "'+
-f_utama.sb.Panels[3].Text+'" and kd_barang<>"'+ed_pid.Text+'" and (barcode3="'+
+dm.kd_perusahaan+'" and kd_barang<>"'+ed_pid.Text+'" and (barcode3="'+
 TsEdit(sender).Text+'" or barcode2="'+TsEdit(sender).Text+'" or barcode1="'+TsEdit(sender).Text+'")',true);
 if (dm.Q_temp.RecordCount>0) and (TsEdit(sender).Text<>'') then
     TsEdit(sender).Color:=clblue else
@@ -610,7 +610,7 @@ procedure TF_barang_det.ed_pidExit(Sender: TObject);
 begin
 if status_simpan = True then
 begin
-  fungsi.SQLExec(dm.Q_temp,'select kd_barang from tb_barang where kd_barang="'+ed_pid.Text+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
+  fungsi.SQLExec(dm.Q_temp,'select kd_barang from tb_barang where kd_barang="'+ed_pid.Text+'" and kd_perusahaan="'+dm.kd_perusahaan+'"',true);
   if not(dm.Q_temp.Eof) then
   begin
     ShowMessage('PID ini sudah ada dalam database....');

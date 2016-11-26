@@ -96,7 +96,7 @@ end;
 procedure TF_Edit_Harga.WmAfterShow(var Msg: TMessage);
 begin
 fungsi.SQLExecT(dm.Q_harga,'select * from vw_harga_barang where kd_perusahaan="'+
-f_utama.sb.Panels[3].Text+'"',true);
+dm.kd_perusahaan+'"',true);
 t_data.DataController.FocusedRowIndex:=1;
 end;
 
@@ -130,7 +130,7 @@ begin
       ed_cari.Text+'%" or n_barang like "%'+ed_cari.Text+'%" or barcode3 like "%'+
       ed_cari.Text+'%" or barcode2 like "%'+ed_cari.Text+'%" or barcode1 like "%'+
       ed_cari.Text+'%") and (kd_perusahaan="'+
-      f_utama.sb.Panels[3].Text+'")',true);
+      dm.kd_perusahaan+'")',true);
 
   
   grid.SetFocus;
@@ -177,7 +177,7 @@ if (key= vk_delete) and (MessageDlg('Yakinkah, akan menghapus data ini?...', mtC
 begin
   dm.db_conn.StartTransaction;
   try
-    deleteHargaBarang(f_utama.sb.Panels[3].Text);
+    deleteHargaBarang(dm.kd_perusahaan);
     if F_utama.sb.Panels[8].Text='PUSAT' then
     begin
       for i:=0 to cabang.Count -1 do
@@ -219,7 +219,7 @@ var posisi:integer;
 begin
 posisi:= dm.Q_harga.RecNo;
 fungsi.SQLExecT(dm.Q_harga,'select * from vw_harga_barang where kd_perusahaan="'+
-f_utama.sb.Panels[3].Text+'"',true);
+dm.kd_perusahaan+'"',true);
 
 dm.Q_harga.RecNo:= posisi;
 end;

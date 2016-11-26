@@ -148,7 +148,7 @@ procedure Tf_planogram.se_rakChange(Sender: TObject);
 begin
 {if se_rak.Value>0 then
 begin
-fungsi.SQLExec(dm.Q_plano,'select * from vw_planogram_set where (kd_perusahaan="'+f_utama.sb.Panels[3].Text
+fungsi.SQLExec(dm.Q_plano,'select * from vw_planogram_set where (kd_perusahaan="'+dm.kd_perusahaan
 +'" and no_rak='+se_rak.Text+' and no_shelving='+se_shelving.Text+')',true);
 
 se_shelving.Enabled:= true
@@ -166,7 +166,7 @@ procedure Tf_planogram.se_shelvingChange(Sender: TObject);
 begin
 if se_shelving.Value>0 then
 begin
-fungsi.SQLExec(Q_planoRak,'select * from vw_planogram_set where (kd_perusahaan="'+f_utama.sb.Panels[3].Text
+fungsi.SQLExec(Q_planoRak,'select * from vw_planogram_set where (kd_perusahaan="'+dm.kd_perusahaan
 +'" and no_rak='+se_rak.Text+' and no_shelving='+se_shelving.Text+')',true);
 end else
 begin
@@ -188,7 +188,7 @@ begin
   begin
     hapusPlanogram(Q_planoRak);
 
-    fungsi.SQLExec(Q_planoRak,'select * from vw_planogram_set where (kd_perusahaan="'+f_utama.sb.Panels[3].Text
+    fungsi.SQLExec(Q_planoRak,'select * from vw_planogram_set where (kd_perusahaan="'+dm.kd_perusahaan
     +'" and no_rak="'+se_rak.Text+'" and no_shelving="'+se_shelving.Text+'")',true);
 
     segarkan;
@@ -204,7 +204,7 @@ end;
 procedure Tf_planogram.b_cetakClick(Sender: TObject);
 begin
 fungsi.SQLExec(dm.Q_laporan,'select * from vw_planogram_set where '+
-'kd_perusahaan="'+f_utama.sb.Panels[3].Text+'" ORDER BY no_rak, no_shelving',true);
+'kd_perusahaan="'+dm.kd_perusahaan+'" ORDER BY no_rak, no_shelving',true);
 dm.laporan.LoadFromFile(dm.WPath + '\laporan\gp_planogram.fr3');
 dm.laporan.ShowReport;
 end;
@@ -220,7 +220,7 @@ PeekMessage(Mgs, 0, WM_CHAR, WM_CHAR, PM_REMOVE );
 if (not(se_rak.Enabled)) or (not(se_shelving.Enabled)) or (ed_masuk.Text='') then exit;
 
   fungsi.SQLExec(dm.Q_temp,'select kd_barang from tb_barang where (kd_perusahaan="'+
-  f_utama.sb.Panels[3].Text+'") and (kd_barang ="'+ed_masuk.Text+'" or barcode1 ="'+ed_masuk.Text
+  dm.kd_perusahaan+'") and (kd_barang ="'+ed_masuk.Text+'" or barcode1 ="'+ed_masuk.Text
   +'" or barcode2 = "'+ed_masuk.Text+'" or barcode3 = "'+ed_masuk.Text+'")',true);
 
   if dm.Q_temp.Eof then
@@ -233,10 +233,10 @@ if (not(se_rak.Enabled)) or (not(se_shelving.Enabled)) or (ed_masuk.Text='') the
   dm.db_conn.StartTransaction;
   try
     fungsi.SQLExec(dm.Q_Exe,'insert into tb_planogram(kd_perusahaan,kd_barang,no_rak,no_shelving,no_urut,`update`) values("'+
-    f_utama.sb.Panels[3].Text+'","'+dm.Q_temp.fieldbyname('kd_barang').AsString+'","'+se_rak.Text+'","'+
+    dm.kd_perusahaan+'","'+dm.Q_temp.fieldbyname('kd_barang').AsString+'","'+se_rak.Text+'","'+
     se_shelving.Text+'","0","'+formatdatetime('yyyy-MM-dd', date())+'")',false);
 
-    fungsi.SQLExec(Q_planoRak,'select * from vw_planogram_set where (kd_perusahaan="'+f_utama.sb.Panels[3].Text
+    fungsi.SQLExec(Q_planoRak,'select * from vw_planogram_set where (kd_perusahaan="'+dm.kd_perusahaan
     +'" and no_rak="'+se_rak.Text+'" and no_shelving="'+se_shelving.Text+'")',true);
 
     Q_planoRak.First;
@@ -271,7 +271,7 @@ if (Shift=[ssctrl]) and (Key= vk_delete) then
   begin
     hapusPlanogram(Q_planoRak);
 
-    fungsi.SQLExec(Q_planoRak,'select * from vw_planogram_set where (kd_perusahaan="'+f_utama.sb.Panels[3].Text
+    fungsi.SQLExec(Q_planoRak,'select * from vw_planogram_set where (kd_perusahaan="'+dm.kd_perusahaan
     +'" and no_rak="'+se_rak.Text+'" and no_shelving="'+se_shelving.Text+'")',true);
 
     segarkan;
@@ -293,7 +293,7 @@ end;
 procedure Tf_planogram.sButton1Click(Sender: TObject);
 begin
 fungsi.SQLExec(dm.Q_laporan,'select * from vw_planogram_set where kd_perusahaan="'+
-f_utama.sb.Panels[3].Text+'" and no_rak ='+se_rak.Text+' ORDER BY no_shelving',true);
+dm.kd_perusahaan+'" and no_rak ='+se_rak.Text+' ORDER BY no_shelving',true);
 dm.laporan.LoadFromFile(dm.WPath + '\laporan\gp_planogram.fr3');
 dm.laporan.ShowReport;
 end;
@@ -302,11 +302,11 @@ procedure Tf_planogram.segarkan;
 var all_brg:integer;
 begin
 fungsi.SQLExec(dm.Q_Exe,'select count(kd_barang) as all_jumlah from tb_barang where kd_perusahaan="'+
-f_utama.sb.Panels[3].Text+'"',true);
+dm.kd_perusahaan+'"',true);
 all_brg:= dm.Q_Exe.fieldbyname('all_jumlah').AsInteger;
 
 fungsi.SQLExec(dm.Q_Exe,'select count(distinct kd_barang) as jumlah from tb_planogram where kd_perusahaan="'+
-f_utama.sb.Panels[3].Text+'"',true);
+dm.kd_perusahaan+'"',true);
 ce_set.Value:= dm.Q_Exe.fieldbyname('jumlah').AsInteger;;
 ce_notset.Value:=all_brg-ce_set.Value;
 end;
@@ -320,7 +320,7 @@ edBarang.SetFocus;
   application.CreateForm(tf_cari, f_cari);
   with F_cari do
   try
-    _SQLi:= 'select kd_barang, n_barang from tb_barang where kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"';
+    _SQLi:= 'select kd_barang, n_barang from tb_barang where kd_perusahaan="'+dm.kd_perusahaan+'"';
     tblcap[0]:= 'PID';
     tblCap[1]:= 'Deskripsi Barang';
     tampil_button(False,True);
@@ -341,9 +341,9 @@ begin
   with F_cari do
   try
     _SQLi:= 'select kd_barang, n_barang from tb_barang where kd_perusahaan="'+
-            f_utama.sb.Panels[3].Text+'" and kd_barang IN '+
+            dm.kd_perusahaan+'" and kd_barang IN '+
             '(select kd_barang from tb_planogram where kd_perusahaan="'+
-            f_utama.sb.Panels[3].Text+'" GROUP BY kd_barang)';
+            dm.kd_perusahaan+'" GROUP BY kd_barang)';
     tblcap[0]:= 'PID';
     tblCap[1]:= 'Deskripsi Barang';
     tampil_button(False,False);
@@ -360,9 +360,9 @@ begin
   with F_cari do
   try
     _SQLi:= 'select kd_barang, n_barang from tb_barang where kd_perusahaan="'+
-            f_utama.sb.Panels[3].Text+'" and kd_barang not IN '+
+            dm.kd_perusahaan+'" and kd_barang not IN '+
             '(select kd_barang from tb_planogram where kd_perusahaan="'+
-            f_utama.sb.Panels[3].Text+'" GROUP BY kd_barang)';
+            dm.kd_perusahaan+'" GROUP BY kd_barang)';
     tblcap[0]:= 'PID';
     tblCap[1]:= 'Deskripsi Barang';
     tampil_button(False,False);
@@ -434,7 +434,7 @@ end;
 procedure Tf_planogram.segarkan_barang;
 begin
 //untuk me refresh barang
-fungsi.SQLExec(Q_plano,'select * from vw_planogram_set where kd_perusahaan="'+f_utama.sb.Panels[3].Text
+fungsi.SQLExec(Q_plano,'select * from vw_planogram_set where kd_perusahaan="'+dm.kd_perusahaan
 +'" and (no_rak=0 or no_shelving=0 or no_urut=0)',true);
 end;
 
@@ -507,7 +507,7 @@ PeekMessage(Mgs, 0, WM_CHAR, WM_CHAR, PM_REMOVE );
   if (edBarang.Text='') then exit;
 
   fungsi.SQLExec(dm.Q_temp,'select kd_barang from tb_barang where (kd_perusahaan="'+
-  f_utama.sb.Panels[3].Text+'") and (kd_barang ="'+edBarang.Text+'" or barcode1 ="'+edBarang.Text
+  dm.kd_perusahaan+'") and (kd_barang ="'+edBarang.Text+'" or barcode1 ="'+edBarang.Text
   +'" or barcode2 = "'+edBarang.Text+'" or barcode3 = "'+edBarang.Text+'")',true);
 
   if dm.Q_temp.Eof then
@@ -520,7 +520,7 @@ PeekMessage(Mgs, 0, WM_CHAR, WM_CHAR, PM_REMOVE );
     dm.db_conn.StartTransaction;
     try
       fungsi.SQLExec(dm.Q_Exe,'insert into tb_planogram(kd_perusahaan,kd_barang,`update`) values("'+
-      f_utama.sb.Panels[3].Text+'","'+dm.Q_temp.fieldbyname('kd_barang').AsString+'",date(now()))',false);
+      dm.kd_perusahaan+'","'+dm.Q_temp.fieldbyname('kd_barang').AsString+'",date(now()))',false);
 
       segarkan_barang;
 
@@ -562,7 +562,7 @@ if MessageDlg('Yakinkah, akan menghapus data ini?...', mtConfirmation, [mbYes, m
 begin
 dm.db_conn.StartTransaction;
 try
-fungsi.SQLExec(dm.Q_Exe,'delete from tb_planogram where kd_perusahaan="'+f_utama.sb.Panels[3].Text
+fungsi.SQLExec(dm.Q_Exe,'delete from tb_planogram where kd_perusahaan="'+dm.kd_perusahaan
 +'" and kd_barang="'+aQuery.fieldbyname('kd_barang').AsString+'" and no_rak="'+
 aQuery.fieldbyname('no_rak').AsString+'" and no_shelving="'+
 aQuery.fieldbyname('no_shelving').AsString+'" and no_urut="'+
@@ -591,9 +591,9 @@ end;
 procedure Tf_planogram.plano_double;
 begin
 fungsi.SQLExec(Q_barangD,'select * from vw_planogram_double where kd_perusahaan = "'+
-f_utama.sb.Panels[3].Text+'"',True);
+dm.kd_perusahaan+'"',True);
 fungsi.SQLExec(Q_PlanoD,'select * from tb_planogram where kd_perusahaan = "'+
-f_utama.sb.Panels[3].Text+'" and kd_barang="'+Q_barangD.fieldbyname('kd_barang').AsString+'"',True);
+dm.kd_perusahaan+'" and kd_barang="'+Q_barangD.fieldbyname('kd_barang').AsString+'"',True);
 end;
 
 procedure Tf_planogram.t_BarangDFocusedRecordChanged(
@@ -602,7 +602,7 @@ procedure Tf_planogram.t_BarangDFocusedRecordChanged(
   ANewItemRecordFocusingChanged: Boolean);
 begin
 fungsi.SQLExec(Q_PlanoD,'select * from tb_planogram where kd_perusahaan = "'+
-f_utama.sb.Panels[3].Text+'" and kd_barang="'+Q_barangD.fieldbyname('kd_barang').AsString+'"',True);
+dm.kd_perusahaan+'" and kd_barang="'+Q_barangD.fieldbyname('kd_barang').AsString+'"',True);
 end;
 
 procedure Tf_planogram.pc_planoChange(Sender: TObject);

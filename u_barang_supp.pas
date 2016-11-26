@@ -67,7 +67,7 @@ begin
   with F_cari do
   try
     _SQLi:= 'select kode,n_supp from tb_supp where kd_perusahaan="'+
-            f_utama.sb.Panels[3].Text+'"';
+            dm.kd_perusahaan+'"';
     tblcap[0]:= 'Kode';
     tblCap[1]:= 'Nama Supplier';
     CariT := 9;
@@ -85,7 +85,7 @@ end;
 procedure Tf_barang_supp.ed_suppChange(Sender: TObject);
 begin
 fungsi.SQLExec(q_supp,'select * from vw_supp_barang where kd_perusahaan="'+
-f_utama.sb.panels[3].text+'" and kd_suplier="'+ed_supp.Text+'"',true);
+dm.kd_perusahaan+'" and kd_suplier="'+ed_supp.Text+'"',true);
 end;
 
 procedure Tf_barang_supp.FormClose(Sender: TObject;
@@ -102,10 +102,10 @@ if (key= vk_delete) and (MessageDlg('Yakinkah, akan menghapus data ini?...', mtC
 begin
 dm.db_conn.StartTransaction;
 try
-fungsi.SQLExec(dm.Q_Exe,'delete from tb_barang_supp where kd_perusahaan="'+f_utama.sb.panels[3].text
+fungsi.SQLExec(dm.Q_Exe,'delete from tb_barang_supp where kd_perusahaan="'+dm.kd_perusahaan
 +'" and kd_suplier="'+ed_supp.Text+'" and kd_barang="'+q_supp.fieldbyname('kd_barang').AsString+'"',false);
 
-fungsi.SQLExec(q_supp,'select * from vw_supp_barang where kd_perusahaan="'+f_utama.sb.panels[3].text+'" and kd_suplier="'+ed_supp.Text+'"',true);
+fungsi.SQLExec(q_supp,'select * from vw_supp_barang where kd_perusahaan="'+dm.kd_perusahaan+'" and kd_suplier="'+ed_supp.Text+'"',true);
 
 dm.db_conn.Commit;
 except on e:exception do begin
@@ -153,7 +153,7 @@ begin
 end;
 
   fungsi.SQLExec(dm.Q_Show,'select kd_barang from tb_barang where (kd_perusahaan="'+
-  f_utama.sb.Panels[3].Text+'") and (kd_barang ="'+ed_kode.Text+'" or barcode1 ="'+ed_kode.Text
+  dm.kd_perusahaan+'") and (kd_barang ="'+ed_kode.Text+'" or barcode1 ="'+ed_kode.Text
   +'" or barcode2 = "'+ed_kode.Text+'" or barcode3 = "'+ed_kode.Text+'")',true);
 
   if dm.Q_Show.Eof then
@@ -165,11 +165,11 @@ end;
   dm.db_conn.StartTransaction;
   try
     fungsi.SQLExec(dm.Q_Exe,'insert into tb_barang_supp (kd_perusahaan,kd_suplier,kd_barang,`update`) values("'+
-    f_utama.sb.panels[3].text+'","'+ed_supp.Text+'","'+dm.Q_Show.fieldbyname('kd_barang').AsString+'","'+
+    dm.kd_perusahaan+'","'+ed_supp.Text+'","'+dm.Q_Show.fieldbyname('kd_barang').AsString+'","'+
     formatdatetime('yyyy-MM-dd', date())+'")',false);
 
     fungsi.SQLExec(q_supp,'select * from vw_supp_barang where kd_perusahaan="'+
-    f_utama.sb.panels[3].text+'" and kd_suplier="'+ed_supp.Text+'"',true);
+    dm.kd_perusahaan+'" and kd_suplier="'+ed_supp.Text+'"',true);
 
     ed_kode.Clear;
     ed_kode.SetFocus;
@@ -189,7 +189,7 @@ begin
   application.CreateForm(tf_cari, f_cari);
   with F_cari do
   try
-    _SQLi:= 'select kd_barang, n_barang from tb_barang where kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"';
+    _SQLi:= 'select kd_barang, n_barang from tb_barang where kd_perusahaan="'+dm.kd_perusahaan+'"';
     tblcap[0]:= 'PID';
     tblCap[1]:= 'Deskripsi Barang';
     tampil_button(False,True);

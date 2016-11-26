@@ -131,12 +131,12 @@ end;
 procedure Tf_list_sales.segarkan;
 begin
 fungsi.SQLExecT(dm.Q_list_sales,'select * from vw_list_sales where kd_perusahaan = '+
-QuotedStr(f_utama.sb.panels[3].text)+' and tgl_transaksi >= '+
+QuotedStr(dm.kd_perusahaan)+' and tgl_transaksi >= '+
 quotedstr(FormatDateTime('yyyy-MM-dd',de_mulai.Date))+' and tgl_transaksi <= '+
 quotedstr(FormatDateTime('yyyy-MM-dd',de_sampai.Date))+'',true);
 
 fungsi.SQLExecT(dm.Q_child_sales,'select * from tb_jual_rinci where kd_perusahaan = '+
-QuotedStr(f_utama.sb.panels[3].text)+' and tgl >= '+
+QuotedStr(dm.kd_perusahaan)+' and tgl >= '+
 quotedstr(FormatDateTime('yyyy-MM-dd',de_mulai.Date))+' and tgl <= '+
 quotedstr(FormatDateTime('yyyy-MM-dd',de_sampai.Date))+'',True);
 end;
@@ -191,7 +191,7 @@ end;
 procedure Tf_list_sales.b_cetakClick(Sender: TObject);
 begin
   fungsi.SQLExec(dm.Q_laporan,'select * from vw_jual_barang where no_transaksi="'+
-  dm.Q_list_sales.fieldbyname('kd_transaksi').AsString+'" and kd_perusahaan='+quotedstr(f_utama.sb.Panels[3].Text)+'',true);
+  dm.Q_list_sales.fieldbyname('kd_transaksi').AsString+'" and kd_perusahaan='+quotedstr(dm.kd_perusahaan)+'',true);
   dm.laporan.LoadFromFile(dm.WPath + 'laporan/k_struk_retail.fr3');
   FRMemo(dm.laporan, 'Memo9').Text := MyTerbilang(dm.Q_laporan.fieldbyname('grand_total').AsFloat)+'Rupiah';
   dm.laporan.ShowReport;

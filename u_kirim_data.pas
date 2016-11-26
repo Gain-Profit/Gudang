@@ -121,16 +121,16 @@ begin
 if not DirectoryExists(dm.DocPath+'DATA_KIRIM') then
   MkDir(dm.DocPath+'DATA_KIRIM');
 
-if not DirectoryExists(dm.DocPath+'\DATA_KIRIM\'+f_utama.sb.Panels[3].text+'_'+f_utama.sb.Panels[4].text) then
-  MkDir(dm.DocPath+'DATA_KIRIM\'+f_utama.sb.Panels[3].text+'_'+f_utama.sb.Panels[4].text);
+if not DirectoryExists(dm.DocPath+'\DATA_KIRIM\'+dm.kd_perusahaan+'_'+f_utama.sb.Panels[4].text) then
+  MkDir(dm.DocPath+'DATA_KIRIM\'+dm.kd_perusahaan+'_'+f_utama.sb.Panels[4].text);
 
-if not DirectoryExists(dm.DocPath+'\DATA_KIRIM\'+f_utama.sb.Panels[3].text+'_'+
-f_utama.sb.Panels[4].text+'\PC_'+f_utama.sb.Panels[3].text+'_'+formatdatetime('yyyy-MM-dd',edt_kirim.date)) then
-    MkDir(dm.DocPath+'DATA_KIRIM\'+f_utama.sb.Panels[3].text+'_'+
-    f_utama.sb.Panels[4].text+'\PC_'+f_utama.sb.Panels[3].text+'_'+formatdatetime('yyyy-MM-dd',edt_kirim.date));
+if not DirectoryExists(dm.DocPath+'\DATA_KIRIM\'+dm.kd_perusahaan+'_'+
+f_utama.sb.Panels[4].text+'\PC_'+dm.kd_perusahaan+'_'+formatdatetime('yyyy-MM-dd',edt_kirim.date)) then
+    MkDir(dm.DocPath+'DATA_KIRIM\'+dm.kd_perusahaan+'_'+
+    f_utama.sb.Panels[4].text+'\PC_'+dm.kd_perusahaan+'_'+formatdatetime('yyyy-MM-dd',edt_kirim.date));
 
-dir_simpan:=dm.DocPath+'DATA_KIRIM\'+f_utama.sb.Panels[3].text+'_'+
-            f_utama.sb.Panels[4].text+'\PC_'+f_utama.sb.Panels[3].text+'_'+formatdatetime('yyyy-MM-dd',edt_kirim.Date);
+dir_simpan:=dm.DocPath+'DATA_KIRIM\'+dm.kd_perusahaan+'_'+
+            f_utama.sb.Panels[4].text+'\PC_'+dm.kd_perusahaan+'_'+formatdatetime('yyyy-MM-dd',edt_kirim.Date);
 end;
 
 procedure TF_kirim_data.cek_dir_terima;
@@ -138,12 +138,12 @@ begin
 if not DirectoryExists(dm.DocPath+'DATA_TERIMA') then
   MkDir(dm.DocPath+'DATA_TERIMA');
 
-if not DirectoryExists(dm.DocPath+'DATA_TERIMA\'+f_utama.sb.Panels[3].text+'_'+f_utama.sb.Panels[4].text) then
-  MkDir(dm.DocPath+'DATA_TERIMA\'+f_utama.sb.Panels[3].text+'_'+f_utama.sb.Panels[4].text);
+if not DirectoryExists(dm.DocPath+'DATA_TERIMA\'+dm.kd_perusahaan+'_'+f_utama.sb.Panels[4].text) then
+  MkDir(dm.DocPath+'DATA_TERIMA\'+dm.kd_perusahaan+'_'+f_utama.sb.Panels[4].text);
 
-dir_load:=dm.DocPath+'DATA_TERIMA\'+f_utama.sb.Panels[3].text+'_'+f_utama.sb.Panels[4].text+'\';
-file_load:=dm.DocPath+'DATA_TERIMA\'+f_utama.sb.Panels[3].text+'_'+f_utama.sb.Panels[4].text+'\CP_'+
-f_utama.sb.Panels[3].text+'_'+formatdatetime('yyyy-MM-dd',edt_terima.Date)+'.zip';
+dir_load:=dm.DocPath+'DATA_TERIMA\'+dm.kd_perusahaan+'_'+f_utama.sb.Panels[4].text+'\';
+file_load:=dm.DocPath+'DATA_TERIMA\'+dm.kd_perusahaan+'_'+f_utama.sb.Panels[4].text+'\CP_'+
+dm.kd_perusahaan+'_'+formatdatetime('yyyy-MM-dd',edt_terima.Date)+'.zip';
 end;
 
 procedure TF_kirim_data.b_kirimClick(Sender: TObject);
@@ -158,7 +158,7 @@ DeleteFile(dir_simpan+'.zip');
 
 zipp:= TAbZipper.Create(Self);
 zipp.AutoSave:=True;
-zipp.BaseDirectory:= dm.DocPath+'DATA_KIRIM\'+f_utama.sb.Panels[3].text+'_'+
+zipp.BaseDirectory:= dm.DocPath+'DATA_KIRIM\'+dm.kd_perusahaan+'_'+
           f_utama.sb.Panels[4].text+'\';
 
 zipp.FileName:=dir_simpan+'.zip';
@@ -170,7 +170,7 @@ zipp.FileName:=dir_simpan+'.zip';
     begin
       namafile:= dir_simpan+'\'+lv_data_awal.Items.Item[Q].Caption+'.cbQ';
       fungsi.savetofile(dm.Q_Exe,'select * from '+lv_data_awal.Items.Item[Q].Caption,namafile);
-      zipp.AddFiles('PC_'+f_utama.sb.Panels[3].text+'_'+formatdatetime('yyyy-MM-dd',edt_kirim.Date)+'\'+lv_data_awal.Items.Item[Q].Caption+'.cbQ', 0);
+      zipp.AddFiles('PC_'+dm.kd_perusahaan+'_'+formatdatetime('yyyy-MM-dd',edt_kirim.Date)+'\'+lv_data_awal.Items.Item[Q].Caption+'.cbQ', 0);
     end;
   end;
 
@@ -180,8 +180,8 @@ zipp.FileName:=dir_simpan+'.zip';
     begin
       namafile:= dir_simpan+'\'+lv_harian.Items.Item[Q].Caption+'.cbQ';
       fungsi.savetofile(dm.Q_Exe,'select * from '+lv_harian.Items.Item[Q].Caption+' where kd_perusahaan="'+
-      f_utama.sb.Panels[3].Text+'"',namafile);
-      zipp.AddFiles('PC_'+f_utama.sb.Panels[3].text+'_'+formatdatetime('yyyy-MM-dd',edt_kirim.Date)+'\'+lv_harian.Items.Item[Q].Caption+'.cbQ', 0);
+      dm.kd_perusahaan+'"',namafile);
+      zipp.AddFiles('PC_'+dm.kd_perusahaan+'_'+formatdatetime('yyyy-MM-dd',edt_kirim.Date)+'\'+lv_harian.Items.Item[Q].Caption+'.cbQ', 0);
     end;
   end;
 
@@ -189,7 +189,7 @@ zipp.FileName:=dir_simpan+'.zip';
   fungsi.hapusdir(dir_simpan);
 
   fungsi.SQLExec(dm.Q_Exe,'replace into tb_export_import(kd_perusahaan, data, ket, tanggal) values ("'+
-  f_utama.sb.Panels[3].text+'","'+ExtractFileName(zipp.FileName)+'","kirim",now())',False);
+  dm.kd_perusahaan+'","'+ExtractFileName(zipp.FileName)+'","kirim",now())',False);
 
   ShowMessage('penyimpanan data sukses...');
   pilih_data(dir_simpan+'.zip');
@@ -288,7 +288,7 @@ begin
 end;  
 
   fungsi.SQLExec(dm.Q_temp,'select * from tb_export_import where kd_perusahaan = "'+
-  f_utama.sb.Panels[3].text+'" and data = "'+ExtractFileName(zk_load.FileName)+'" and ket = "terima"',True);
+  dm.kd_perusahaan+'" and data = "'+ExtractFileName(zk_load.FileName)+'" and ket = "terima"',True);
 
   if not(dm.Q_temp.Eof) then
   begin
@@ -334,13 +334,13 @@ try
   end;
 
   fungsi.SQLExec(dm.Q_Exe,'insert ignore into tb_export_import(kd_perusahaan, data, ket, tanggal) values ("'+
-  f_utama.sb.Panels[3].text+'","'+ExtractFileName(zk_load.FileName)+'","terima",now())',False);
+  dm.kd_perusahaan+'","'+ExtractFileName(zk_load.FileName)+'","terima",now())',False);
 
   fungsi.SQLExec(dm.Q_Exe,'insert ignore into tb_mutasi_bulan(kd_perusahaan, tgl) values ("'+
-  f_utama.sb.Panels[3].text+'","'+FormatDateTime('yyyy-MM-dd',edt_terima.Date)+'")',False);
+  dm.kd_perusahaan+'","'+FormatDateTime('yyyy-MM-dd',edt_terima.Date)+'")',False);
 
   fungsi.SQLExec(dm.Q_Exe,'update tb_company set update_mutasi="YA" where kd_perusahaan="'+
-  f_utama.sb.Panels[3].text+'"',False);
+  dm.kd_perusahaan+'"',False);
 
 
  dm.db_conn.Commit;
@@ -410,12 +410,12 @@ procedure TF_kirim_data.SbSegarkanClick(Sender: TObject);
 var data: string;
 begin
 if cbJenis.ItemIndex = 0 then
-data := 'PC_'+ f_utama.sb.Panels[3].Text +'_'
+data := 'PC_'+ dm.kd_perusahaan +'_'
 else
-data := 'CP_'+ f_utama.sb.Panels[3].Text +'_';
+data := 'CP_'+ dm.kd_perusahaan +'_';
 
 fungsi.SQLExec(Q_export,'select * from tb_export_import where kd_perusahaan = "'+
-f_utama.sb.Panels[3].Text+'" and `data` LIKE "'+data+'%" '+
+dm.kd_perusahaan+'" and `data` LIKE "'+data+'%" '+
 'ORDER BY `data` DESC, tanggal DESC LIMIT '+ edtHari.Text,True);
 end;
 

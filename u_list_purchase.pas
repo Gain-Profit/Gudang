@@ -79,7 +79,7 @@ end;
 
 procedure Tf_List_purchase.segarkan;
 begin
-fungsi.SQLExecT(dm.q_list_purchase,'select * from vw_list_purchase  where kd_perusahaan="'+f_utama.sb.panels[3].Text+'" and tgl_purchase >= '+
+fungsi.SQLExecT(dm.q_list_purchase,'select * from vw_list_purchase  where kd_perusahaan="'+dm.kd_perusahaan+'" and tgl_purchase >= '+
 quotedstr(FormatDateTime('yyyy-MM-dd',de_mulai.Date))+' and tgl_purchase <= '+
 quotedstr(FormatDateTime('yyyy-MM-dd',de_sampai.Date))+'',true);
 end;

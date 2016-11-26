@@ -70,7 +70,7 @@ b_auto.Enabled:=False;
 
 ed_kode.Text:= f_cari.q_cari.FieldByName('kd_pelanggan').AsString;
 fungsi.SQLExec(dm.Q_temp,'select * from tb_pelanggan where kd_pelanggan="'+
-ed_kode.Text+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
+ed_kode.Text+'" and kd_perusahaan="'+dm.kd_perusahaan+'"',true);
 ed_alamat.Text:= dm.Q_temp.FieldByName('alamat').AsString;
 ed_alamat_kirim.Text:= dm.Q_temp.FieldByName('alamat_kirim').AsString;
 ed_rekening.Text:= dm.Q_temp.FieldByName('no_rekening').AsString;
@@ -92,13 +92,13 @@ dm.db_conn.StartTransaction;
 try
 if supp_baru=true then
 fungsi.SQLExec(dm.Q_Exe,'insert into tb_pelanggan (kd_perusahaan,kd_pelanggan,no_rekening,n_pelanggan,alamat, '+
-'telephone,alamat_kirim,`limit`,`update`)values ("'+f_utama.sb.Panels[3].Text+'","'+ed_kode.Text+'","'+ed_rekening.Text+'","'+
+'telephone,alamat_kirim,`limit`,`update`)values ("'+dm.kd_perusahaan+'","'+ed_kode.Text+'","'+ed_rekening.Text+'","'+
 ed_nama.Text+'","'+ed_alamat.Text+'","'+ed_telp.Text+'","'+
 ed_alamat_kirim.Text+'","'+ed_limit.Text+'","'+formatdatetime('yyyy-MM-dd', date())+'")',false) else
 fungsi.SQLExec(dm.Q_Exe,'update tb_pelanggan set `update`="'+formatdatetime('yyyy-MM-dd', date())+'",alamat="'+
 ed_alamat.Text+'",no_rekening="'+ed_rekening.Text+'",alamat_kirim="'+
 ed_alamat_kirim.Text+'",`limit`="'+ed_limit.Text+'",n_pelanggan="'+ed_nama.Text+'",telephone="'+
-ed_telp.Text+'" where kd_pelanggan="'+ed_kode.Text+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'" ',false);
+ed_telp.Text+'" where kd_pelanggan="'+ed_kode.Text+'" and kd_perusahaan="'+dm.kd_perusahaan+'" ',false);
 
 dm.db_conn.Commit;
 showmessage('penyimpanan data sukses....');
@@ -121,7 +121,7 @@ var x:Integer;
 pid,pid_temp:string;
 begin
   fungsi.SQLExec(dm.Q_temp,'select kd_pelanggan from tb_pelanggan where kd_perusahaan="'+
-  f_utama.sb.Panels[3].text+'" and kd_pelanggan like "CU-%" order by kd_pelanggan',true);
+  dm.kd_perusahaan+'" and kd_pelanggan like "CU-%" order by kd_pelanggan',true);
 
   dm.Q_temp.First;
 

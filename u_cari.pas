@@ -287,7 +287,7 @@ begin
         end;
 
       fungsi.SQLExec(dm.Q_Exe,'delete from tb_pelanggan where kd_pelanggan="'+
-      q_cari.fieldbyname('kd_pelanggan').AsString+'" and kd_perusahaan="'+F_UTAMA.sb.Panels[3].Text+'" ',false);
+      q_cari.fieldbyname('kd_pelanggan').AsString+'" and kd_perusahaan="'+dm.kd_perusahaan+'" ',false);
       end;
       12 : //user
       begin

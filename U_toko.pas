@@ -50,7 +50,7 @@ uses u_dm, u_utama;
 procedure TF_toko.btnGrossClick(Sender: TObject);
 begin
 fungsi.SQLExec(dm.Q_laporan,'select * from tb_gross_margin where MONTH(tanggal)="'+
-bulan+'" and YEAR(tanggal)="'+tahun+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
+bulan+'" and YEAR(tanggal)="'+tahun+'" and kd_perusahaan="'+dm.kd_perusahaan+'"',true);
 dm.laporan.LoadFromFile(dm.WPath + 'laporan\gp_gross.fr3');
 dm.laporan.ShowReport;
 end;
@@ -58,7 +58,7 @@ end;
 procedure TF_toko.btnMutasiClick(Sender: TObject);
 begin
 fungsi.SQLExec(dm.Q_laporan,'select * from tb_mutasi_bulan where MONTH(tgl)="'+
-bulan+'" and YEAR(tgl)="'+tahun+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
+bulan+'" and YEAR(tgl)="'+tahun+'" and kd_perusahaan="'+dm.kd_perusahaan+'"',true);
 if TsButton(Sender).Name = 'btnMutasi' then
 dm.laporan.LoadFromFile(dm.WPath + 'laporan\gp_mutasi_global_stok.fr3') else
 dm.laporan.LoadFromFile(dm.WPath + 'laporan\gp_mutasi_global_uang.fr3');
@@ -68,7 +68,7 @@ end;
 
 procedure TF_toko.sButton2Click(Sender: TObject);
 begin
-fungsi.SQLExec(dm.Q_laporan,'select * from vw_stok_out where kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
+fungsi.SQLExec(dm.Q_laporan,'select * from vw_stok_out where kd_perusahaan="'+dm.kd_perusahaan+'"',true);
 dm.laporan.LoadFromFile(dm.WPath + 'laporan\gp_stok_out_harian.fr3');
 dm.laporan.ShowReport;
 end;
@@ -79,7 +79,7 @@ begin
 de_mutasi.Date := Date;
 fungsi.SQLExec(dm.Q_temp,'SELECT LEFT(tb_mutasi_bulan.tgl,7) as periode, '+
 'left(date(now()),7) as sekarang FROM tb_mutasi_bulan where kd_perusahaan = "'+
-F_Utama.sb.Panels[3].Text+'" GROUP BY LEFT(tb_mutasi_bulan.tgl,7)', true);
+dm.kd_perusahaan+'" GROUP BY LEFT(tb_mutasi_bulan.tgl,7)', true);
 
 for x:= 1 to dm.Q_temp.RecordCount do
   begin
@@ -95,7 +95,7 @@ procedure TF_toko.b_benarkan_mutasiClick(Sender: TObject);
 begin
 dm.db_conn.StartTransaction;
 try
-fungsi.SQLExec(dm.Q_exe,'call sp_mutasi_repair("'+f_utama.sb.Panels[3].Text+'","'+
+fungsi.SQLExec(dm.Q_exe,'call sp_mutasi_repair("'+dm.kd_perusahaan+'","'+
 formatdatetime('yyyy-MM-dd',de_mutasi.Date)+'")',false);
 dm.db_conn.Commit;
 

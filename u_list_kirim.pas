@@ -83,7 +83,7 @@ begin
 btnSimpan.Enabled:= False;
   if not(cb_belum.Checked) then
   begin
-    fungsi.SQLExecT(dm.Q_list_kirim,'select * from vw_list_kirim  where kd_perusahaan="'+f_utama.sb.panels[3].Text+'"  and tgl_kirim >= '+
+    fungsi.SQLExecT(dm.Q_list_kirim,'select * from vw_list_kirim  where kd_perusahaan="'+dm.kd_perusahaan+'"  and tgl_kirim >= '+
     quotedstr(FormatDateTime('yyyy-MM-dd',de_mulai.Date))+' and tgl_kirim <= '+quotedstr(FormatDateTime('yyyy-MM-dd',de_sampai.Date))+'',true);
   end
   else

@@ -337,7 +337,7 @@ begin
   fungsi.sqlExec(dm.Q_temp,'SELECT kd_barang,n_barang,barcode3, '+
   'hpp_aktif,kd_sat3 FROM tb_barang WHERE ((kd_barang = "'+
   ed_code.Text+'" OR barcode3 = "'+ed_code.Text+'" OR barcode2 = "'+
-  ed_code.Text+'" OR barcode1 = "'+ed_code.Text+'") AND kd_perusahaan="'+f_utama.sb.Panels[3].Text+'")', true);
+  ed_code.Text+'" OR barcode1 = "'+ed_code.Text+'") AND kd_perusahaan="'+dm.kd_perusahaan+'")', true);
   if dm.Q_temp.RecordCount<>0 then
    begin
    createrows;
@@ -469,7 +469,7 @@ ed_supplier.SetFocus;
   with F_cari do
   try
     _SQLi:= 'select kode,n_supp from tb_supp where kd_perusahaan="'+
-            f_utama.sb.Panels[3].Text+'"';
+            dm.kd_perusahaan+'"';
     tblcap[0]:= 'Kode';
     tblCap[1]:= 'Nama Supplier';
     CariT := 9;
@@ -500,7 +500,7 @@ begin
   application.CreateForm(tf_cari, f_cari);
   with F_cari do
   try
-    _SQLi:= 'select kd_barang, n_barang, hpp_aktif from tb_barang where kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"';
+    _SQLi:= 'select kd_barang, n_barang, hpp_aktif from tb_barang where kd_perusahaan="'+dm.kd_perusahaan+'"';
     tblcap[0]:= 'PID';
     tblCap[1]:= 'Deskripsi Barang';
     tblCap[2]:= 'HPP';
@@ -545,14 +545,14 @@ if cb_PPN.Checked=true then plus_PPN:='Y' else plus_PPN:='N';
 
   for x:=0 to tableview.DataController.RecordCount-1 do
   begin
-  isi_sql:=isi_sql +'("'+f_utama.sb.Panels[3].Text+'","'+ed_no_faktur.Text
+  isi_sql:=isi_sql +'("'+dm.kd_perusahaan+'","'+ed_no_faktur.Text
   +'","'+formatdatetime('yyyy-MM-dd',ed_tgl.Date)+'","'+TableView.DataController.GetDisplayText(x,0)+'","'+
   TableView.DataController.GetDisplayText(x,1)+'","'+floattostr(TableView.DataController.GetValue(x,2))+'","'+
   floattostr(TableView.DataController.GetValue(x,3))+'","'+
   floattostr(TableView.DataController.GetValue(x,4))+'",date(now()),"'+
   TableView.DataController.GetDisplayText(x,8)+'"),';
 
-  isi_sql2:=isi_sql2 +'("'+f_utama.sb.Panels[3].Text+'","'+ed_supplier.Text+'","'+
+  isi_sql2:=isi_sql2 +'("'+dm.kd_perusahaan+'","'+ed_supplier.Text+'","'+
   TableView.DataController.GetDisplayText(x,0)+'",date(now())),';
   end;
   delete(isi_sql,length(isi_sql),1);
@@ -561,7 +561,7 @@ if cb_PPN.Checked=true then plus_PPN:='Y' else plus_PPN:='N';
   _sql := Format('insert into tb_receipt_global(kd_perusahaan, kd_receipt, tgl_receipt, '+
           'kd_suplier, jatuh_tempo, tunai, plus_PPN, PPN, disk_rp, nilai_faktur, simpan_pada, '+
           'pengguna, keterangan) values ("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", %s, "%s", "%s")',
-          [f_utama.sb.Panels[3].Text,ed_no_faktur.Text,formatdatetime('yyyy-MM-dd',ed_tgl.Date),
+          [dm.kd_perusahaan,ed_no_faktur.Text,formatdatetime('yyyy-MM-dd',ed_tgl.Date),
           ed_supplier.Text,ed_jatuh_tempo.Text,tunai,plus_PPN,floattostr(ce_PPN.value),ce_diskonrp.Text,
           ed_nilai_faktur.Text,'now()',f_utama.Sb.Panels[0].Text,mmKeterangan.Text]);
 
@@ -592,7 +592,7 @@ try
   for x:=0 to tableview.DataController.RecordCount-1 do
   begin
   fungsi.SQLExec(dm.Q_exe,'update tb_barang set hpp_ahir= "'+floattostr(TableView.DataController.GetValue(x,6))
-  +'" where kd_perusahaan= "'+f_utama.sb.Panels[3].Text+'" and kd_barang="'+
+  +'" where kd_perusahaan= "'+dm.kd_perusahaan+'" and kd_barang="'+
   inttostr(TableView.DataController.GetValue(x,0))+'"', false);
   end;   
 dm.db_conn.Commit;
@@ -614,7 +614,7 @@ end;
 
 procedure Tf_RO.b_printClick(Sender: TObject);
 begin
-fungsi.SQLExec(dm.Q_laporan,'select * from vw_cetak_receipt where kd_perusahaan="'+f_utama.sb.Panels[3].Text+'" and kd_receipt="'+ed_no_faktur.Text+'"',true);
+fungsi.SQLExec(dm.Q_laporan,'select * from vw_cetak_receipt where kd_perusahaan="'+dm.kd_perusahaan+'" and kd_receipt="'+ed_no_faktur.Text+'"',true);
 dm.laporan.LoadFromFile(dm.WPath + 'laporan\gp_receipt_rinci.fr3');
 dm.FRMemo(dm.laporan, 'Memo9').Text := MyTerbilang(dm.Q_laporan.fieldbyname('nilai_faktur').AsFloat)+'Rupiah';
 dm.laporan.ShowReport;
@@ -630,7 +630,7 @@ end;
 procedure Tf_RO.ed_no_fakturChange(Sender: TObject);
 var urip:Boolean;
 begin
-fungsi.SQLExec(dm.Q_temp,'select kd_receipt from tb_receipt_global where kd_receipt="'+ed_no_faktur.Text+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
+fungsi.SQLExec(dm.Q_temp,'select kd_receipt from tb_receipt_global where kd_receipt="'+ed_no_faktur.Text+'" and kd_perusahaan="'+dm.kd_perusahaan+'"',true);
 if not(dm.Q_temp.Eof) then
 begin
 urip:= True;
@@ -883,7 +883,7 @@ begin
   end;
 
   fungsi.SQLExec(dm.Q_temp,'select kd_receipt from tb_receipt_global where kd_suplier="'+
-  ed_supplier.text+'" and kd_perusahaan = "'+f_utama.sb.Panels[3].Text
+  ed_supplier.text+'" and kd_perusahaan = "'+dm.kd_perusahaan
   +'" and kd_receipt like "RO-'+ed_supplier.Text+'-%" order by kd_receipt',true);
 
   dm.Q_temp.First;
@@ -942,7 +942,7 @@ var
 begin
   _sql := Format('update tb_receipt_global set keterangan = "%s" '+
       'where kd_perusahaan = "%s" and kd_receipt = "%s"',
-      [mmKeterangan.Text,f_utama.sb.Panels[3].Text,ed_no_faktur.Text]);
+      [mmKeterangan.Text,dm.kd_perusahaan,ed_no_faktur.Text]);
       
   if btnUpdateKeterangan.Caption = 'Edit Keterangan' then
   begin

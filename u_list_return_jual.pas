@@ -95,7 +95,7 @@ end;
 procedure Tf_list_return_jual.segarkan;
 begin
 fungsi.SQLExecT(dm.Q_list_return_jual,'select * from vw_list_return_jual where kd_perusahaan = '+
-QuotedStr(f_utama.sb.panels[3].text)+' and tgl_return_jual >= '+
+QuotedStr(dm.kd_perusahaan)+' and tgl_return_jual >= '+
 quotedstr(FormatDateTime('yyyy-MM-dd',de_mulai.Date))+' and tgl_return_jual <= '+
 quotedstr(FormatDateTime('yyyy-MM-dd',de_sampai.Date))+'',true);
 end;
@@ -147,7 +147,7 @@ end;
 procedure Tf_list_return_jual.b_cetakClick(Sender: TObject);
 begin
   fungsi.SQLExec(dm.Q_laporan,'select * from vw_cetak_return_jual where kd_perusahaan="'+
-  f_utama.sb.Panels[3].Text+'" and kd_return_jual="'+
+  dm.kd_perusahaan+'" and kd_return_jual="'+
   dm.Q_list_return_jual.fieldbyname('kd_return_jual').AsString+'"',true);
 
   dm.laporan.LoadFromFile(dm.WPath + 'laporan\gp_return_jual_rinci.fr3');

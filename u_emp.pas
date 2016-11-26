@@ -120,7 +120,7 @@ gambar.Picture.LoadFromFile(dm.AppPath+'image/'+ed_kode.Text+'.jpg')else
 gambar.Clear;
 
 fungsi.SQLExec(dm.Q_temp,'select * from tb_user_company where ' +
-'kd_user="'+kdUser+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
+'kd_user="'+kdUser+'" and kd_perusahaan="'+dm.kd_perusahaan+'"',true);
 
 cb_gudang.Checked       := dm.Q_temp.FieldByName('gudang').AsBoolean;
 cb_akun.Checked         := dm.Q_temp.FieldByName('akun').AsBoolean;
@@ -243,7 +243,7 @@ begin
   'kd_user, admin, gudang, akun, toko, kasir, gdInvBarang, gdInvHarga, ' +
   'gdInvPlano, gdInvBrgSupp, gdInvBrgUpdate, gdTrPO, gdTrRO, gdTrReturn, ' +
   'gdTrKirim, gdTrReturnKirim, gdMaster, gdSetting, tkAdmin, `update`) VALUES '+
-  '("'+f_utama.sb.Panels[3].text+'","'+kdUser+'", "%s", "%s", "%s", "%s", ' +
+  '("'+dm.kd_perusahaan+'","'+kdUser+'", "%s", "%s", "%s", "%s", ' +
   '"%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", ' +
   '"%s", "%s", date(now()))', [ubahCB(cb_admin),ubahCB(cb_gudang),ubahCB(cb_akun),
   ubahCB(cb_server),ubahCB(cb_kasir),ubahCB(cb_Barang),ubahCB(cb_Harga),

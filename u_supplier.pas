@@ -72,7 +72,7 @@ b_auto.Enabled:=False;
 
 ed_kode.Text:= f_cari.q_cari.FieldByName('kode').AsString;
 fungsi.SQLExec(dm.Q_temp,'select * from tb_supp where kode="'+
-ed_kode.Text+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
+ed_kode.Text+'" and kd_perusahaan="'+dm.kd_perusahaan+'"',true);
 ed_alamat.Text:= dm.Q_temp.FieldByName('alamat').AsString;
 ed_kontak.Text:= dm.Q_temp.FieldByName('kontak').AsString;
 ed_kota.Text:= dm.Q_temp.FieldByName('kota').AsString;
@@ -96,12 +96,12 @@ try
 if supp_baru=true then
 fungsi.SQLExec(dm.Q_Exe,'insert into tb_supp (kode,alamat,kontak,kota,email,n_supp,telp,website,kd_perusahaan,`update`)values ("'+
 ed_kode.Text+'","'+ed_alamat.Text+'","'+ed_kontak.Text+'","'+ed_kota.Text+'","'+ed_mail.Text+'","'+
-ed_nama.Text+'","'+ed_telp.Text+'","'+ed_web.Text+'","'+f_utama.sb.Panels[3].text+'","'+
+ed_nama.Text+'","'+ed_telp.Text+'","'+ed_web.Text+'","'+dm.kd_perusahaan+'","'+
 formatdatetime('yyyy-MM-dd', date())+'")',false) else
 fungsi.SQLExec(dm.Q_Exe,'update tb_supp set `update`="'+formatdatetime('yyyy-MM-dd', date())+'",alamat="'+
 ed_alamat.Text+'",kontak="'+ed_kontak.Text+'",kota="'+
 ed_kota.Text+'",email="'+ed_mail.Text+'",n_supp="'+ed_nama.Text+'",telp="'+ed_telp.Text+'",website="'+
-ed_web.Text+'" where kode="'+ed_kode.Text+'" and kd_perusahaan = "'+f_utama.sb.Panels[3].text+'"',false);
+ed_web.Text+'" where kode="'+ed_kode.Text+'" and kd_perusahaan = "'+dm.kd_perusahaan+'"',false);
 
 dm.db_conn.Commit;
 showmessage('penyimpanan data sukses....');
@@ -124,7 +124,7 @@ var x:Integer;
 pid,pid_temp:string;
 begin
   fungsi.SQLExec(dm.Q_temp,'select kode from tb_supp where kd_perusahaan="'+
-  f_utama.sb.Panels[3].text+'" and kode like "SU-%" order by kode',true);
+  dm.kd_perusahaan+'" and kode like "SU-%" order by kode',true);
 
   dm.Q_temp.First;
 

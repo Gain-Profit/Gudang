@@ -567,7 +567,7 @@ end;
   application.CreateForm(tf_cari, f_cari);
   with F_cari do
   try
-    _SQLi:= 'select kd_pelanggan,n_pelanggan from tb_pelanggan where kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"';
+    _SQLi:= 'select kd_pelanggan,n_pelanggan from tb_pelanggan where kd_perusahaan="'+dm.kd_perusahaan+'"';
     tblcap[0]:= 'Kode';
     tblCap[1]:= 'Nama Pelanggan';
     Caption:='Daftar Pelanggan';

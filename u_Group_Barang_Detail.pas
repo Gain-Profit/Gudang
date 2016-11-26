@@ -103,7 +103,7 @@ begin
   fungsi.SQLExec(dm.Q_temp,Format('SELECT gr.kd_barang, gr.qty, '+
   'br.n_barang, br.barcode3, br.kd_perusahaan FROM tb_barang_group_detail gr '+
   'INNER JOIN tb_barang br ON br.kd_barang = gr.kd_barang WHERE br.kd_perusahaan = "%s" '+
-  'AND gr.barang_group_id = "%s"',[f_utama.sb.Panels[3].Text, GroupId]),true);
+  'AND gr.barang_group_id = "%s"',[dm.kd_perusahaan, GroupId]),true);
 
   if dm.Q_temp.RecordCount<>0 then
   begin
@@ -132,7 +132,7 @@ begin
   application.CreateForm(tf_cari, f_cari);
   with F_cari do
   try
-    _SQLi:= 'select kd_barang, n_barang from tb_barang where kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"';
+    _SQLi:= 'select kd_barang, n_barang from tb_barang where kd_perusahaan="'+dm.kd_perusahaan+'"';
     tblcap[0]:= 'PID';
     tblCap[1]:= 'Deskripsi Barang';
     tampil_button(False,True);
@@ -167,7 +167,7 @@ begin
     fungsi.sqlExec(dm.Q_temp,'SELECT kd_barang,n_barang,barcode3 '+
     'FROM tb_barang WHERE ((kd_barang = "'+ed_code.Text+'" OR barcode3 = "'+
     ed_code.Text+'" OR barcode2 = "'+ed_code.Text+'" OR barcode1 = "'+
-    ed_code.Text+'") AND kd_perusahaan="'+f_utama.sb.Panels[3].Text+'")', true);
+    ed_code.Text+'") AND kd_perusahaan="'+dm.kd_perusahaan+'")', true);
 
     if dm.Q_temp.RecordCount<>0 then
     begin

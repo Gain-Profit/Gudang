@@ -172,7 +172,7 @@ end;
 
 procedure Tf_Barcode.FormCreate(Sender: TObject);
 begin
-  kd_perusahaan := f_utama.sb.Panels[3].text;
+  kd_perusahaan := dm.kd_perusahaan;
 end;
 
 procedure Tf_Barcode.ed_PIDKeyPress(Sender: TObject; var Key: Char);

@@ -79,7 +79,7 @@ end;
 
 procedure Tf_list_receipt.segarkan;
 begin
-fungsi.SQLExecT(dm.q_list_receipt,'select * from vw_list_receipt where kd_perusahaan="'+f_utama.sb.panels[3].Text+'" and tgl_receipt >= '+
+fungsi.SQLExecT(dm.q_list_receipt,'select * from vw_list_receipt where kd_perusahaan="'+dm.kd_perusahaan+'" and tgl_receipt >= '+
 quotedstr(FormatDateTime('yyyy-MM-dd',de_mulai.Date))+' and tgl_receipt <= '+
 quotedstr(FormatDateTime('yyyy-MM-dd',de_sampai.Date))+'',true);
 end;

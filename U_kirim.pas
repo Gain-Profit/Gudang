@@ -322,11 +322,11 @@ begin
   fungsi.sqlExec(dm.Q_temp,'SELECT kd_barang,n_barang,barcode3, '+
   'hpp_aktif,kd_sat3 FROM tb_barang WHERE ((kd_barang = "'+
   KodeCari+'" OR barcode3 = "'+KodeCari+'" OR barcode2 = "'+
-  KodeCari+'" OR barcode1 = "'+KodeCari+'") AND kd_perusahaan="'+f_utama.sb.Panels[3].Text+'")', true);
+  KodeCari+'" OR barcode1 = "'+KodeCari+'") AND kd_perusahaan="'+dm.kd_perusahaan+'")', true);
   if dm.Q_temp.RecordCount<>0 then
    begin
      fungsi.SQLExec(dm.Q_Exe,'select kd_barang from tb_barang_harga where kd_perusahaan="'+
-     f_utama.sb.Panels[3].Text+'" and kd_barang="'+dm.Q_temp.fieldbyname('kd_barang').AsString+'"',True);
+     dm.kd_perusahaan+'" and kd_barang="'+dm.Q_temp.fieldbyname('kd_barang').AsString+'"',True);
      if dm.Q_Exe.RecordCount=0 then
      begin
        ShowMessage('harga barang belum di set... tidak bisa mengirim barang ini...');
@@ -416,7 +416,7 @@ ed_toko.SetFocus;
   try
     _SQLi:= 'select kd_pelanggan,n_pelanggan from '+
             'tb_pelanggan where kd_pelanggan IN (SELECT kd_perusahaan from tb_company) and kd_perusahaan="'+
-            f_utama.sb.Panels[3].Text+'"';
+            dm.kd_perusahaan+'"';
     tblcap[0]:= 'Kode';
     tblCap[1]:= 'Nama Pelanggan';
     CariT := 11;
@@ -450,7 +450,7 @@ begin
   application.CreateForm(tf_cari, f_cari);
   with F_cari do
   try
-    _SQLi:= 'select kd_barang, n_barang from tb_barang where kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"';
+    _SQLi:= 'select kd_barang, n_barang from tb_barang where kd_perusahaan="'+dm.kd_perusahaan+'"';
     tblcap[0]:= 'PID';
     tblCap[1]:= 'Deskripsi Barang';
     tampil_button(False,True);
@@ -469,7 +469,7 @@ isi_sql,kd_faktur:string;
 begin
   kd_faktur:= ed_no_faktur.Text;
 
-if (ed_toko.Text=f_utama.sb.Panels[3].Text) then
+if (ed_toko.Text=dm.kd_perusahaan) then
 begin
 showmessage('data tidak dapat disimpan karena toko pegirim dan penerima sama...');
 exit;
@@ -495,7 +495,7 @@ end;
 
   for x:=0 to tableview.DataController.RecordCount-1 do
   begin
-  isi_sql:=isi_sql +'("'+f_utama.sb.Panels[3].Text+'","'+ed_no_faktur.Text
+  isi_sql:=isi_sql +'("'+dm.kd_perusahaan+'","'+ed_no_faktur.Text
   +'","'+formatdatetime('yyyy-MM-dd',ed_tgl.Date)+'","'+TableView.DataController.GetDisplayText(x,0)+'","'+
   TableView.DataController.GetDisplayText(x,1)+'","'+floattostr(TableView.DataController.GetValue(x,2))+'","'+
   floattostr(TableView.DataController.GetValue(x,4))+'","'+TableView.DataController.GetDisplayText(x,5)+'",date(now())),';
@@ -505,7 +505,7 @@ end;
 dm.db_conn.StartTransaction;
 try
 fungsi.SQLExec(dm.Q_exe,'insert into tb_kirim_global(kd_perusahaan,kd_kirim,tgl_kirim,'+
-'kd_tk_kirim,nilai_faktur,pengguna,jatuh_tempo,simpan_pada) values ("'+f_utama.sb.Panels[3].Text+'","'+ed_no_faktur.Text
+'kd_tk_kirim,nilai_faktur,pengguna,jatuh_tempo,simpan_pada) values ("'+dm.kd_perusahaan+'","'+ed_no_faktur.Text
 +'","'+formatdatetime('yyyy-MM-dd',ed_tgl.Date)+'","'+ed_toko.Text+'","'+
 ed_nilai_faktur.Text+'","'+f_utama.Sb.Panels[0].Text+'","'+ed_jatuh_tempo.Text+'",now())',false);
 
@@ -513,7 +513,7 @@ ed_nilai_faktur.Text+'","'+f_utama.Sb.Panels[0].Text+'","'+ed_jatuh_tempo.Text+'
   'kd_barang,n_barang,qty_kirim,harga_pokok,barcode,tgl_simpan) values  '+isi_sql, false);
 
 fungsi.SQLExec(dm.Q_exe,'INSERT tb_piutang (kd_perusahaan,faktur,tanggal,pelanggan, '+
-'piutang_awal,`user`,jatuh_tempo,`update`)VALUES("'+f_utama.sb.Panels[3].Text+'","'+
+'piutang_awal,`user`,jatuh_tempo,`update`)VALUES("'+dm.kd_perusahaan+'","'+
 ed_no_faktur.Text+'","'+formatdatetime('yyyy-MM-dd',ed_tgl.Date)+'","'+ed_toko.Text+'","'+
 ed_nilai_faktur.Text+'","'+f_utama.Sb.Panels[0].Text+'","'+ed_jatuh_tempo.Text+'",DATE(NOW()))',False);
 
@@ -567,7 +567,7 @@ begin
   fungsi.SQLExec(dm.Q_exe,'insert into tb_receipt_global(kd_perusahaan,kd_receipt,tgl_receipt,'+
   'kd_suplier,jatuh_tempo,tunai,plus_PPN,PPN,disk_rp,nilai_faktur,pengguna,simpan_pada) values ("'+
   ed_toko.Text+'","'+ed_no_faktur.Text+'","'+formatdatetime('yyyy-MM-dd',ed_tgl.Date)+'","'+
-  f_utama.sb.Panels[3].Text+'",7,"'+tunai+'","'+plus_PPN+'",0,0,"'+
+  dm.kd_perusahaan+'",7,"'+tunai+'","'+plus_PPN+'",0,0,"'+
   ed_nilai_faktur.Text+'","AUTO",now())',false);
 
     fungsi.SQLExec(dm.Q_exe,'insert into tb_receipt_rinci(kd_perusahaan,kd_receipt,tgl_receipt,'+
@@ -576,7 +576,7 @@ end;
 
 procedure TF_kirim.b_printClick(Sender: TObject);
 begin
-fungsi.SQLExec(dm.Q_laporan,'select * from vw_cetak_kirim where kd_perusahaan="'+f_utama.sb.Panels[3].Text+'" and kd_kirim="'+ed_no_faktur.Text+'"',true);
+fungsi.SQLExec(dm.Q_laporan,'select * from vw_cetak_kirim where kd_perusahaan="'+dm.kd_perusahaan+'" and kd_kirim="'+ed_no_faktur.Text+'"',true);
 dm.laporan.LoadFromFile(dm.WPath + 'laporan\gp_kirim_rinci.fr3');
 dm.FRMemo(dm.laporan, 'Memo9').Text := MyTerbilang(dm.Q_laporan.fieldbyname('nilai_faktur').AsFloat)+'Rupiah';
 dm.laporan.ShowReport;
@@ -585,7 +585,7 @@ end;
 procedure TF_kirim.ed_no_fakturChange(Sender: TObject);
 var urip : Boolean;
 begin
-fungsi.SQLExec(dm.Q_temp,'select kd_kirim from tb_kirim_global where kd_kirim="'+ed_no_faktur.Text+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
+fungsi.SQLExec(dm.Q_temp,'select kd_kirim from tb_kirim_global where kd_kirim="'+ed_no_faktur.Text+'" and kd_perusahaan="'+dm.kd_perusahaan+'"',true);
 if not(dm.Q_temp.Eof) then
 begin
 ed_no_faktur.Color:=clblue;
@@ -628,7 +628,7 @@ begin
   sekarang:= formatdatetime('yyyyMMdd', dm.waktu_sekarang);
 
   fungsi.SQLExec(dm.Q_temp,'select count(kd_kirim) as jumlah from tb_kirim_global where kd_tk_kirim="'+
-  ed_toko.text+'" and kd_perusahaan = "'+f_utama.sb.Panels[3].Text
+  ed_toko.text+'" and kd_perusahaan = "'+dm.kd_perusahaan
   +'" and date(simpan_pada)=date(now())',true);
 
   w:= dm.Q_temp.fieldbyname('jumlah').AsInteger + 1;
@@ -725,7 +725,7 @@ end;
 
 procedure TF_kirim.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
-if (ed_toko.Text=f_utama.sb.Panels[3].Text) then
+if (ed_toko.Text=dm.kd_perusahaan) then
 begin
 CanClose:=True;
 Exit;

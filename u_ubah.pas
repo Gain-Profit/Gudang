@@ -197,7 +197,7 @@ posisi:= dm.Q_harga.RecNo;
 
 dm.db_conn.StartTransaction;
 try
-ubahHarga(f_utama.sb.Panels[3].Text);
+ubahHarga(dm.kd_perusahaan);
 if F_utama.sb.Panels[8].Text='PUSAT' then
 begin
   for i:=0 to cabang.Count -1 do
@@ -266,7 +266,7 @@ if cb_macam.Text='HGTK' then
 
 
 fungsi.SQLExec(dm.Q_temp,'select hpp_aktif from tb_barang where kd_barang="'+
-ed_plu.Text+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
+ed_plu.Text+'" and kd_perusahaan="'+dm.kd_perusahaan+'"',true);
 ed_pokok.Text:= dm.Q_temp.fieldbyname('hpp_aktif').AsString;
 
 fungsi.SQLExec(dm.Q_temp,'select * from tb_barang_harga where kd_barang = "'+
@@ -330,7 +330,7 @@ end;
 procedure TF_ubah_harga.b_updateClick(Sender: TObject);
 begin
 fungsi.SQLExec(dm.Q_temp,'select hpp_ahir from tb_barang where kd_barang="'+
-ed_plu.Text+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
+ed_plu.Text+'" and kd_perusahaan="'+dm.kd_perusahaan+'"',true);
 ed_pokok.Text:= dm.Q_temp.fieldbyname('hpp_ahir').Text;
 ed_pokokExit(Sender);
 end;

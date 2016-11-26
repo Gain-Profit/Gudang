@@ -216,7 +216,7 @@ PeekMessage(Mgs, 0, WM_CHAR, WM_CHAR, PM_REMOVE );
   fungsi.sqlExec(dm.Q_temp,'SELECT kd_barang,n_barang,barcode3, '+
   'hpp_aktif,kd_sat3 FROM tb_barang WHERE ((kd_barang = "'+
   ed_code.Text+'" OR barcode3 = "'+ed_code.Text+'" OR barcode2 = "'+
-  ed_code.Text+'" OR barcode1 = "'+ed_code.Text+'") AND kd_perusahaan="'+f_utama.sb.Panels[3].Text+'")', true);
+  ed_code.Text+'" OR barcode1 = "'+ed_code.Text+'") AND kd_perusahaan="'+dm.kd_perusahaan+'")', true);
   if dm.Q_temp.RecordCount<>0 then
    begin
    createrows;
@@ -266,7 +266,7 @@ ed_supplier.SetFocus;
   with F_cari do
   try
     _SQLi:= 'select kode,n_supp from tb_supp where kd_perusahaan="'+
-            f_utama.sb.Panels[3].Text+'"';
+            dm.kd_perusahaan+'"';
     tblcap[0]:= 'Kode';
     tblCap[1]:= 'Nama Supplier';
     CariT := 9;
@@ -297,7 +297,7 @@ begin
   application.CreateForm(tf_cari, f_cari);
   with F_cari do
   try
-    _SQLi:= 'select kd_barang, n_barang from tb_barang where kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"';
+    _SQLi:= 'select kd_barang, n_barang from tb_barang where kd_perusahaan="'+dm.kd_perusahaan+'"';
     tblcap[0]:= 'PID';
     tblCap[1]:= 'Deskripsi Barang';
     tampil_button(False,True);
@@ -336,7 +336,7 @@ kd_faktur:= ed_no_faktur.Text;
 
   for x:=0 to tableview.DataController.RecordCount-1 do
   begin
-  isi_sql:=isi_sql +'("'+f_utama.sb.Panels[3].Text+'","'+ed_no_faktur.Text
+  isi_sql:=isi_sql +'("'+dm.kd_perusahaan+'","'+ed_no_faktur.Text
   +'","'+formatdatetime('yyyy-MM-dd',ed_tgl.Date)+'","'+TableView.DataController.GetDisplayText(x,0)+'","'+
   TableView.DataController.GetDisplayText(x,1)+'","'+floattostr(TableView.DataController.GetValue(x,2))+'","'+
   floattostr(TableView.DataController.GetValue(x,4))+'","'+TableView.DataController.GetDisplayText(x,5)+'",date(now())),';
@@ -346,7 +346,7 @@ kd_faktur:= ed_no_faktur.Text;
 dm.db_conn.StartTransaction;
 try
 fungsi.SQLExec(dm.Q_exe,'insert into tb_purchase_global(kd_perusahaan,kd_purchase,tgl_purchase,'+
-'kd_suplier,nilai_faktur,pengguna,simpan_pada) values ("'+f_utama.sb.Panels[3].Text+'","'+ed_no_faktur.Text
+'kd_suplier,nilai_faktur,pengguna,simpan_pada) values ("'+dm.kd_perusahaan+'","'+ed_no_faktur.Text
 +'","'+formatdatetime('yyyy-MM-dd',ed_tgl.Date)+'","'+ed_supplier.Text+'","'+
 ed_nilai_faktur.Text+'","'+f_utama.Sb.Panels[0].Text+'",now())',false);
 
@@ -373,7 +373,7 @@ end;
 procedure Tf_purchase.b_printClick(Sender: TObject);
 begin
 fungsi.SQLExec(dm.Q_laporan,'select * from vw_cetak_purchase where kd_perusahaan="'+
-f_utama.sb.Panels[3].Text+'" and kd_purchase="'+ed_no_faktur.Text+'"',true);
+dm.kd_perusahaan+'" and kd_purchase="'+ed_no_faktur.Text+'"',true);
 dm.laporan.LoadFromFile(dm.WPath + 'laporan\gp_purchase_rinci.fr3');
 dm.FRMemo(dm.laporan, 'Memo9').Text := MyTerbilang(dm.Q_laporan.fieldbyname('nilai_faktur').AsFloat)+'Rupiah';
 dm.laporan.ShowReport;
@@ -390,7 +390,7 @@ procedure Tf_purchase.ed_no_fakturChange(Sender: TObject);
 var urip: Boolean; // jenenge mbahku :-)
 begin
 fungsi.SQLExec(dm.Q_temp,'select kd_purchase from tb_purchase_global where kd_purchase="'+
-ed_no_faktur.Text+'" and kd_perusahaan="'+f_utama.sb.Panels[3].Text+'"',true);
+ed_no_faktur.Text+'" and kd_perusahaan="'+dm.kd_perusahaan+'"',true);
 if not(dm.Q_temp.Eof) then
 begin
 ed_no_faktur.Color:=clblue;
@@ -428,7 +428,7 @@ begin
 if (ed_supplier.Text='') then exit;
 
 fungsi.SQLExec(dm.Q_temp,'select * from vw_purchase_order where kd_perusahaan="'+
-f_utama.sb.panels[3].text+'" and kd_suplier="'+ED_SUPPLIER.Text+'" and aktif="Y"',true);
+dm.kd_perusahaan+'" and kd_suplier="'+ED_SUPPLIER.Text+'" and aktif="Y"',true);
 
 if dm.Q_temp.RecordCount<>0 then
 begin
@@ -538,7 +538,7 @@ begin
     Exit;
   end;
   fungsi.SQLExec(dm.Q_temp,'select kd_purchase from tb_purchase_global where kd_suplier="'+
-  ed_supplier.text+'" and kd_perusahaan = "'+f_utama.sb.Panels[3].Text
+  ed_supplier.text+'" and kd_perusahaan = "'+dm.kd_perusahaan
   +'" and kd_purchase like "PO-'+ed_supplier.text+'-%"order by kd_purchase',true);
 
   dm.Q_temp.First;
