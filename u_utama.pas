@@ -267,7 +267,7 @@ begin
   dm.sm.Active:= true;
 
   application.CreateForm(tF_login, f_login);
-  f_login.sb.Panels[0].Text:=sb.Panels[3].Text;
+  f_login.sb.Panels[0].Text:=dm.kd_perusahaan;
   f_login.sb.Panels[1].Text:=sb.Panels[4].Text;
   f_login.ShowModal;
 end;

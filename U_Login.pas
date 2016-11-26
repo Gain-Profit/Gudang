@@ -87,7 +87,7 @@ begin
       'FROM tb_user INNER JOIN ' +
       'tb_user_company ON tb_user.kd_user = tb_user_company.kd_user WHERE ' +
       'tb_user.kd_user="'+ed_kd_user.Text+'" AND tb_user_company.gudang="Y" ' +
-      'AND tb_user_company.kd_perusahaan="'+sb.Panels[0].Text+'"';
+      'AND tb_user_company.kd_perusahaan="'+dm.kd_perusahaan+'"';
   fungsi.SQLExec(DM.Q_Show,sql,true);
   if dm.Q_show.Eof then
   Begin
@@ -145,11 +145,12 @@ ed_password.SetFocus;
 end else
 begin
 
-F_utama.Sb.Panels[0].Text:= UpperCase(ed_kd_user.Text);
+dm.kd_pengguna := UpperCase(ed_kd_user.Text);
+F_utama.Sb.Panels[0].Text:= dm.kd_pengguna;
 F_utama.Sb.Panels[1].Text:= ed_N_User.Text;
 
-F_utama.sb.Panels[3].Text:=sb.Panels[0].Text;
-fungsi.SQLExec(dm.Q_Show,'select * from tb_company where kd_perusahaan = "'+sb.Panels[0].Text+'"',true);
+F_utama.sb.Panels[3].Text:=dm.kd_perusahaan;
+fungsi.SQLExec(dm.Q_Show,'select * from tb_company where kd_perusahaan = "'+dm.kd_perusahaan+'"',true);
 F_utama.sb.Panels[4].Text:=sb.Panels[1].Text;
 
 F_utama.sb.Panels[8].Text:=dm.Q_Show.fieldbyname('ket').AsString;
@@ -276,9 +277,10 @@ begin
     tampil_button(False,True);
     if ShowModal = mrOk then
     begin
-        sb.Panels[0].Text:=TblVal[0];
-        sb.Panels[1].Text:=TblVal[1];
-        F_Login.FormShow(Sender);
+      dm.kd_perusahaan:= TblVal[0];
+      sb.Panels[0].Text:=dm.kd_perusahaan;
+      sb.Panels[1].Text:=TblVal[1];
+      F_Login.FormShow(Sender);
     end;
   finally
   close;
