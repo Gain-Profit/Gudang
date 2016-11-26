@@ -48,7 +48,6 @@ type
 var
   F_Login: TF_Login;
   userPassword,userRealName:string;
-  isAdmin : Boolean;
 
 implementation
 
@@ -84,7 +83,7 @@ begin
 if key=vk_return then
 begin
   PeekMessage(Mgs, 0, WM_CHAR, WM_CHAR, PM_REMOVE );
-  sql:= 'SELECT tb_user.n_user, tb_user.`password`, tb_user_company.admin ' +
+  sql:= 'SELECT tb_user.n_user, tb_user.`password` ' +
       'FROM tb_user INNER JOIN ' +
       'tb_user_company ON tb_user.kd_user = tb_user_company.kd_user WHERE ' +
       'tb_user.kd_user="'+ed_kd_user.Text+'" AND tb_user_company.gudang="Y" ' +
@@ -98,7 +97,6 @@ begin
   begin
     userRealName := dm.Q_show.FieldByName('n_user').AsString;
     userPassword := dm.Q_show.FieldByName('password').AsString;
-    isAdmin      := dm.Q_show.FieldByName('admin').AsBoolean;
 
     sql:= 'SELECT `nilai` FROM `tb_settings` WHERE `parameter`="checkin"';
     fungsi.SQLExec(DM.Q_Show,sql,true);
@@ -118,7 +116,6 @@ begin
     ed_password.Enabled:= true;
     Ed_Password.SetFocus;
     Ed_N_User.Text:= userRealName;
-    f_utama.ac_user.visible:=isAdmin;
 
     if FileExists(dm.AppPath+'image/'+ed_kd_user.Text+'.jpg') then
       gambar.Picture.LoadFromFile(dm.AppPath+'image/'+ed_kd_user.Text+'.jpg')
