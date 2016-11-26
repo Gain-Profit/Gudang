@@ -26,7 +26,6 @@ type
     procedure B_newClick(Sender: TObject);
     procedure B_saveClick(Sender: TObject);
   private
-    kd_jenis:string;
     gol_baru:boolean;
     { Private declarations }
   public

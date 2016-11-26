@@ -98,7 +98,6 @@ type
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure receiptCabang();
   private
-    sub_sub_total:integer;
     { Private declarations }
   public
     { Public declarations }

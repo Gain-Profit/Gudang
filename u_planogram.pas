@@ -129,7 +129,6 @@ type
     procedure t_PlanoDKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
   private
-    kd_barang: string;
     { Private declarations }
   public
     { Public declarations }

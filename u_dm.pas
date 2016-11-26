@@ -57,7 +57,6 @@ type
     procedure smAfterChange(Sender: TObject);
     procedure koneksikan;
   private
-    terkoneksi: boolean;
     function FRObject(FastReport: TfrxReport; ObjectName: string): TObject;
     { Private declarations }
   public
@@ -97,6 +96,7 @@ var
   i: Integer;
   AFound: Boolean;
 begin
+  Result := nil;
   AFound := False;
   for I := 0 to FastReport.ComponentCount - 1 do
   begin
