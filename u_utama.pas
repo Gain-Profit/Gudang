@@ -47,7 +47,6 @@ type
     ts_set_inv: TsTabSheet;
     ts_transaksi: TsTabSheet;
     SetUpDefaultCompany1: TMenuItem;
-    DefaultCompany1: TMenuItem;
     Action1: TAction;
     ac_lap: TAction;
     Timer1: TTimer;
@@ -80,7 +79,6 @@ type
     BarangSupplier1: TMenuItem;
     Laporan1: TMenuItem;
     time_out: TTimer;
-    N2: TMenuItem;
     LogOut1: TMenuItem;
     animasi: TTimer;
     sPanel2: TsPanel;
@@ -180,7 +178,6 @@ type
     procedure ac_list_receiptExecute(Sender: TObject);
     procedure ac_list_returnExecute(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure DefaultCompany1Click(Sender: TObject);
     procedure Action1Execute(Sender: TObject);
     procedure ac_lapExecute(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -641,38 +638,6 @@ dm.db_conn.Connected:= false;
 
 action:=cafree;
 f_utama:=nil;
-end;
-
-procedure Tf_utama.DefaultCompany1Click(Sender: TObject);
-begin
-if f_utama.MDIChildCount<>0 then
-begin
-showmessage('tutup dulu semua windows...');
-exit;
-end;
-
-  application.CreateForm(tf_cari, f_cari);
-  with F_cari do
-  try
-    _SQLi:= 'select kd_perusahaan, n_perusahaan from tb_company';
-    tblcap[0]:= 'Kode';
-    tblCap[1]:= 'Nama Perusahaan';
-    CariT := 8;
-    tampil_button(False,True);
-    if ShowModal = mrOk then
-    begin
-      if dm.kd_perusahaan <> TblVal[0] then
-       begin
-         application.CreateForm(Tf_login, f_login);
-         F_Login.sb.Panels[0].Text:= tblval[0];
-         F_Login.sb.Panels[1].Text:= tblval[1];
-         f_login.ShowModal;
-       end;
-    end;
-  finally
-  close;
-  end;
-
 end;
 
 procedure Tf_utama.Action1Execute(Sender: TObject);

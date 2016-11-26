@@ -1075,14 +1075,6 @@ object f_utama: Tf_utama
       object N1: TMenuItem
         Caption = '-'
       end
-      object DefaultCompany1: TMenuItem
-        Caption = 'Default Company'
-        ShortCut = 16452
-        OnClick = DefaultCompany1Click
-      end
-      object N2: TMenuItem
-        Caption = '-'
-      end
       object LogOut1: TMenuItem
         Caption = 'Log Out'
         ShortCut = 16465
