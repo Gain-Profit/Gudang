@@ -4,13 +4,14 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, sBitBtn, ComCtrls,
+  Dialogs, Buttons, sBitBtn, ComCtrls,
   ExtCtrls, sPanel, sSkinProvider,
   cxGraphics, cxDataStorage,
   cxEdit, DB, cxDBData, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxControls, cxGridCustomView, cxClasses, cxGridLevel,
-  cxGrid,UFungsi, cxStyles, cxCustomData, cxFilter, cxData, sSpeedButton,
-  Mask, sMaskEdit, sCustomComboEdit, sTooledit, sLabel;
+  cxGrid,UFungsi, cxStyles, sSpeedButton,
+  sTooledit, sLabel, cxCustomData, cxFilter, cxData, StdCtrls, Mask,
+  sMaskEdit, sCustomComboEdit;
 
 type
   Tf_List_purchase = class(TForm)

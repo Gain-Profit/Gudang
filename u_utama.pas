@@ -5,13 +5,13 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, sSkinProvider, ComCtrls, sStatusBar, 
-  Menus, ActnList, StdActns, XPStyleActnCtrls, ActnMan,UFungsi,
+  Menus, ActnList, XPStyleActnCtrls, ActnMan,UFungsi,
   sPageControl, Buttons, sSpeedButton, ExtCtrls, sPanel,inifiles,
-  shellapi, StdCtrls, sButton, DB, Grids, DBGrids, sListBox,
-  sMemo, sGauge, sTabControl, cxStyles, cxCustomData, cxGraphics, cxFilter,
-  cxData, cxDataStorage, cxEdit, cxDBData, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxControls, cxGridCustomView, sEdit,
-  cxClasses, cxGridLevel, cxGrid, mySQLDbTables;
+  shellapi, DB, 
+  sGauge, sTabControl, cxStyles, cxGraphics, 
+  cxDataStorage, cxEdit, cxDBData, cxGridCustomTableView,
+  cxGridTableView, cxGridDBTableView, cxControls, cxGridCustomView, 
+  cxClasses, cxGrid, mySQLDbTables;
 
   const
   WM_AFTER_SHOW = WM_USER + 300; // custom message
@@ -230,7 +230,7 @@ uses u_barang, u_edit_harga, u_return, u_cari, u_dm, u_purchase,
   u_barang_supp, u_planogram,u_list_purchase, u_list_receipt,
   u_list_return, U_Login,acselectskin, u_RO, U_kirim, u_list_kirim,
   u_kirim_data, u_list_sales, u_list_SO, u_return_kirim,
-  u_list_return_kirim, U_toko, u_hari, u_emp, u_ubahPassword,
+  u_list_return_kirim, U_toko, u_hari, u_ubahPassword,
   u_list_return_jual, u_barcode, u_realCard, U_Group_Barang;
 
 {$R *.dfm}

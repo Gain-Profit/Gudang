@@ -4,12 +4,13 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs,UFungsi, StdCtrls, sLabel, sEdit, Buttons,
-  sSpeedButton, cxCustomData, cxGraphics, 
+  Dialogs,UFungsi, sLabel, sEdit, Buttons,
+  sSpeedButton, cxGraphics, 
   cxDataStorage, cxEdit, DB, cxDBData, cxGridLevel,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
-  cxControls, cxGridCustomView, cxGrid, sSkinProvider, cxStyles, cxFilter,
-  cxData, ExtCtrls, sPanel, sButton, mySQLDbTables;
+  cxControls, cxGridCustomView, cxGrid, sSkinProvider, cxStyles, 
+  ExtCtrls, sPanel, sButton, mySQLDbTables, cxCustomData, cxFilter, cxData,
+  StdCtrls;
 
 type
   Tf_barang_supp = class(TForm)
@@ -57,7 +58,7 @@ var  f_barang_supp: Tf_barang_supp;
 
 implementation
 
-uses u_dm, u_cari, u_utama;
+uses u_dm, u_cari;
 
 {$R *.dfm}
 

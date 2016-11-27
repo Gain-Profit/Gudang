@@ -4,8 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, sEdit, sLabel, sButton, Buttons, 
-  sComboBox, UFungsi, sSkinProvider;
+  Dialogs, sEdit, sLabel, sButton, Buttons, 
+  sComboBox, UFungsi, sSkinProvider, StdCtrls;
 
 type
   Tf_golongan = class(TForm)
@@ -37,7 +37,7 @@ var
 
 implementation
 
-uses u_dm, u_cari, u_barang_det;
+uses u_dm, u_cari;
 
 {$R *.dfm}
 

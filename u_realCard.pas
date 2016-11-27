@@ -4,10 +4,10 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Mask, sMaskEdit, sCustomComboEdit, sTooledit, sButton,
+  Dialogs, StdCtrls, sTooledit, sButton,
   sLabel,UFungsi, ComCtrls, sEdit, sCheckBox,
   sGroupBox, sComboBox, sSkinProvider, Buttons, sSpeedButton, Menus,
-  sRadioButton, sCurrEdit, sCurrencyEdit;
+  sRadioButton, sCurrEdit, sCurrencyEdit, Mask, sMaskEdit, sCustomComboEdit;
 
 type
   Tf_realCard = class(TForm)
@@ -60,7 +60,7 @@ var
 
 implementation
 
-uses u_dm, u_cari, u_utama;
+uses u_dm, u_cari;
 
 {$R *.dfm}
 

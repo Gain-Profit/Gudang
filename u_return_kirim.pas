@@ -4,12 +4,13 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, cxStyles, cxCustomData, cxGraphics, cxFilter, cxData,
+  Dialogs, cxStyles, cxCustomData, cxGraphics, 
   cxDataStorage, cxEdit, cxCurrencyEdit, sDialogs, StdCtrls, sButton,
   sSkinProvider, sTooledit, sEdit, Buttons, sSpeedButton, ExtCtrls, sBevel,
-  sLabel, Mask, sMaskEdit, sCustomComboEdit, sCurrEdit, sCurrencyEdit,
+  sLabel, Mask, sCustomComboEdit, sCurrEdit, sCurrencyEdit,
   sMemo, cxGridLevel, cxGridCustomTableView, cxGridTableView, cxClasses,uTerbilang,
-  cxControls, cxGridCustomView, cxGrid, sPanel,UFungsi;
+  cxControls, cxGridCustomView, cxGrid, sPanel,UFungsi, cxFilter, cxData,
+  sMaskEdit;
 
 type
   Tf_return_kirim = class(TForm)

@@ -5,10 +5,9 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, sLabel,UFungsi, sEdit, sGroupBox, Buttons, sBitBtn,
-  sButton, Mask, sMaskEdit, sCustomComboEdit, 
-  ComCtrls, sStatusBar, sTooledit, cxControls, cxContainer,
-  cxEdit, cxImage,mySQLDbTables,db,Registry, sSkinProvider, jpeg, ExtCtrls,
-  sPanel,XPMan;
+  sButton, 
+  ComCtrls, sStatusBar, cxControls, cxContainer,
+  cxEdit, cxImage,mySQLDbTables,db,sSkinProvider, ExtCtrls, jpeg;
 
 type
   TF_Login = class(TForm)

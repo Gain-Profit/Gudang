@@ -4,11 +4,11 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, sSkinProvider, cxStyles, cxCustomData, cxGraphics, cxFilter, cxData,
+  Dialogs, sSkinProvider, cxStyles, cxGraphics, 
   cxDataStorage, cxEdit, DB, cxDBData, cxCurrencyEdit, cxGridLevel,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
   cxControls, cxGridCustomView, cxGrid, Buttons, sSpeedButton, ExtCtrls, sPanel,
-  StdCtrls, sButton, mySQLDbTables;
+  sButton, mySQLDbTables, cxCustomData, cxFilter, cxData, StdCtrls;
 
 type
   TFGroupBarang = class(TForm)

@@ -5,13 +5,13 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, sTooledit, sEdit, Buttons,
-  sSpeedButton, sButton, Mask, sMaskEdit, sCustomComboEdit, sCurrEdit,
+  sSpeedButton, sButton, Mask, sCustomComboEdit, sCurrEdit,
   sCurrencyEdit, sLabel, ExtCtrls, sPanel, sMemo, cxCustomData,
   cxGraphics, cxDataStorage, cxEdit, cxGridLevel,
   cxClasses, cxControls, cxGridCustomView, cxGridCustomTableView,
   cxGridTableView, cxGrid, cxCurrencyEdit,UFungsi, sBevel, ComCtrls,
-  sSkinProvider, cxImageComboBox, cxStyles, cxFilter,
-  cxData, sDialogs,uTerbilang;
+  sSkinProvider, cxImageComboBox, cxStyles, 
+  sDialogs,uTerbilang, cxFilter, cxData, sMaskEdit;
 
 type                                               
   Tf_purchase = class(TForm)
@@ -106,7 +106,7 @@ var
 
 implementation
 
-uses u_dm, u_cari, u_utama, u_list_purchase;
+uses u_dm, u_cari, u_utama;
 
 {$R *.dfm}
 

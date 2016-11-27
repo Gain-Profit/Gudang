@@ -5,12 +5,13 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, cxGraphics, 
-  cxDataStorage, cxEdit, DB, cxDBData, sSkinProvider, StdCtrls, Buttons,
-  sBitBtn, ExtCtrls, sPanel, cxGridLevel, cxGridCustomTableView,
+  cxDataStorage, cxEdit, DB, cxDBData, sSkinProvider, Buttons,
+  ExtCtrls, sPanel, cxGridLevel, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxClasses, cxControls,
   cxGridCustomView, cxGrid,UFungsi, cxCurrencyEdit, 
-  cxStyles, cxCustomData, cxFilter, cxData, cxCalendar, sSpeedButton, Mask,
-  sMaskEdit, sCustomComboEdit, sTooledit, sLabel;
+  cxStyles, cxCalendar, sSpeedButton, 
+  sTooledit, sLabel, cxCustomData, cxFilter, cxData, StdCtrls, Mask,
+  sMaskEdit, sCustomComboEdit;
 
 type
   Tf_list_receipt = class(TForm)

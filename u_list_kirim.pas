@@ -4,13 +4,14 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, cxStyles, cxCustomData, cxGraphics, cxFilter, cxData,
+  Dialogs, cxStyles, cxGraphics, 
   cxDataStorage, cxEdit, DB, cxDBData, sSkinProvider, cxGridLevel,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
-  cxControls, cxGridCustomView, cxGrid, StdCtrls, Buttons, sBitBtn,
-  ExtCtrls, sPanel,UFungsi, sSpeedButton, cxCurrencyEdit, Mask, sMaskEdit,
-  sCustomComboEdit, sTooledit, sLabel, sCheckBox, sComboBox, sButton,
-  sDialogs,FileCtrl;
+  cxControls, cxGridCustomView, cxGrid, Buttons, 
+  ExtCtrls, sPanel,UFungsi, sSpeedButton, cxCurrencyEdit, 
+  sTooledit, sLabel, sCheckBox, sComboBox, sButton,
+  sDialogs,FileCtrl, cxCustomData, cxFilter, cxData, StdCtrls, Mask,
+  sMaskEdit, sCustomComboEdit;
 
 type
   TF_list_kirim = class(TForm)

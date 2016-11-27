@@ -5,7 +5,7 @@ interface
 uses
   SysUtils, Classes, mySQLDbTables, DB, sSkinManager, dialogs, forms, ImgList,
   Controls, acAlphaImageList, frxClass, frxDBSet, inifiles, frxDesgn, frxBarcode,
-  cxStyles, Windows, raw_ping, frxExportXML, SHFolder;
+  cxStyles, Windows, frxExportXML, SHFolder;
 
 type
   Tdm = class(TDataModule)
@@ -75,8 +75,7 @@ var
 
 implementation
 
-uses
-  Math;
+
 
 
 {$R *.dfm}

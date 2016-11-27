@@ -61,7 +61,7 @@ object f_RO: Tf_RO
       Left = 1
       Top = 188
       Width = 148
-      Height = 16
+      Height = 13
       Align = alTop
       Alignment = taCenter
       Caption = 'Keterangan'
@@ -163,9 +163,9 @@ object f_RO: Tf_RO
     end
     object mmKeterangan: TsMemo
       Left = 1
-      Top = 204
+      Top = 201
       Width = 148
-      Height = 116
+      Height = 119
       Align = alClient
       MaxLength = 255
       TabOrder = 3

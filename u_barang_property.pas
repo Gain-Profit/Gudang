@@ -4,11 +4,11 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, cxStyles, cxCustomData, cxGraphics, cxFilter, cxData,
-  cxDataStorage, cxEdit, DB, cxDBData, cxCurrencyEdit, StdCtrls, sComboBox,
+  Dialogs, cxStyles, cxGraphics, 
+  cxDataStorage, cxEdit, DB, cxDBData, cxCurrencyEdit, sComboBox,
   cxGridLevel, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
   cxClasses, cxControls, cxGridCustomView, cxGrid, sButton, sGroupBox,UFungsi,
-  mySQLDbTables, ExtCtrls, sPanel;
+  mySQLDbTables, ExtCtrls, sPanel, cxCustomData, cxFilter, cxData, StdCtrls;
 
 type
   TF_barang_property = class(TForm)
@@ -86,7 +86,7 @@ var
 
 implementation
 
-uses u_dm, u_cari, u_utama;
+uses u_dm, u_cari;
 
 {$R *.dfm}
 

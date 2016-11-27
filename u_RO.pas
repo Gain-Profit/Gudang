@@ -5,13 +5,13 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, sCheckBox, sTooledit, sEdit, Buttons,
-  sSpeedButton, sButton, Mask, sMaskEdit, sCustomComboEdit, sCurrEdit,
+  sSpeedButton, sButton, Mask, sCustomComboEdit, sCurrEdit,
   sCurrencyEdit, sLabel, ExtCtrls, sPanel, sMemo, cxCustomData,
   cxGraphics, cxDataStorage, cxEdit, cxGridLevel,
   cxClasses, cxControls, cxGridCustomView, cxGridCustomTableView,
   cxGridTableView, cxGrid, cxCurrencyEdit,UFungsi, sBevel, ComCtrls,
-  sSkinProvider, cxImageComboBox, cxStyles, cxFilter,uTerbilang,
-  cxData, sDialogs,DateUtils;
+  sSkinProvider, cxImageComboBox, cxStyles, uTerbilang,
+  sDialogs,DateUtils, cxFilter, cxData, sMaskEdit;
 
 type                                               
   Tf_RO = class(TForm)

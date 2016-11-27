@@ -4,14 +4,15 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Buttons, StdCtrls, sLabel, sEdit,UFungsi,
+  Dialogs, Buttons, sLabel, sEdit,UFungsi,
   sSpinEdit, sButton, sSkinProvider, cxStyles,
   cxGraphics, cxDataStorage, cxEdit, DB,
   cxDBData, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
-  cxGridLevel, cxClasses, cxControls, cxGridCustomView, cxGrid, sCheckBox,
-  Mask, sMaskEdit, sCustomComboEdit, sCurrEdit, 
-  cxCustomData, cxFilter, cxData, sCurrencyEdit, sSpeedButton, ExtCtrls,
-  sPanel, DBCtrls, ComCtrls, sPageControl, mySQLDbTables, sSplitter;
+  cxGridLevel, cxClasses, cxControls, cxGridCustomView, cxGrid, 
+  sCurrEdit, 
+  cxCustomData, sCurrencyEdit, sSpeedButton, ExtCtrls,
+  sPanel, DBCtrls, ComCtrls, sPageControl, mySQLDbTables, sSplitter,
+  cxFilter, cxData, Mask, sMaskEdit, sCustomComboEdit, StdCtrls;
 
 type
   Tf_planogram = class(TForm)
@@ -139,7 +140,7 @@ var
 
 implementation
 
-uses u_dm, u_utama, u_cari;
+uses u_dm, u_cari;
 
 {$R *.dfm}
 

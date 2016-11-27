@@ -4,12 +4,12 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, UFungsi, StdCtrls, sEdit, sButton, ExtCtrls,
+  Dialogs, UFungsi, sEdit, sButton, ExtCtrls,
   DBCtrls, sSkinProvider, cxCustomData, cxGraphics,
   cxDataStorage, cxEdit, DB, cxDBData, cxGridLevel,
   cxClasses, cxControls, cxGridCustomView, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxGrid, cxStyles,
-  cxFilter, cxData, mySQLDbTables;
+  mySQLDbTables, cxFilter, cxData, StdCtrls;
 
 type
   NewControl = class(TControl);
@@ -63,10 +63,9 @@ var
   
 implementation
 
-uses u_dm, u_barang_det, u_jenis, u_golongan, u_satuan, u_kategori, u_merk,
-  u_comp, u_supplier, u_return, u_purchase, u_barang_supp,
-  u_pelanggan, u_emp, u_utama, u_RO, U_Login, U_kirim, 
-  u_return_kirim, u_planogram;
+uses u_dm, u_jenis, u_golongan, u_satuan, u_kategori, u_merk,
+  u_comp, u_supplier, 
+  u_pelanggan, u_emp;
 
 {$R *.dfm}
 

@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, sButton, sLabel, Buttons, UFungsi,  sEdit,
-  sCheckBox, cxControls, cxContainer, cxEdit, cxImage, ExtDlgs, sDialogs,mySQLDbTables,db,
+  sCheckBox, cxControls, cxContainer, cxEdit, cxImage, sDialogs,mySQLDbTables,db,
   sSkinProvider, ExtCtrls, sPanel, cxPC, sGroupBox, ComCtrls, sPageControl,
   Menus;
 
@@ -82,7 +82,7 @@ var
 
 implementation
 
-uses u_dm, u_cari, u_utama;
+uses u_dm, u_cari;
 
 {$R *.dfm}
 

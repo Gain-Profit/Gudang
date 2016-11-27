@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, sEdit, sLabel, sButton, sMemo,UFungsi, sSkinProvider;
+  Dialogs, sEdit, sLabel, sButton, sMemo,UFungsi, sSkinProvider, StdCtrls;
 
 type
   Tf_comp = class(TForm)

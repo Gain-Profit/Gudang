@@ -5,13 +5,13 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, DBCtrls, StdCtrls, sLabel, sGroupBox, sEdit, UFungsi,
-  Buttons, sSpeedButton, Mask, sMaskEdit, sCustomComboEdit,
-  sCurrEdit, sCurrencyEdit, sButton, sCheckBox, Grids, DBGrids,
-  sSkinProvider, ExtDlgs, sDialogs,jpeg, cxStyles,
-  cxCustomData, cxGraphics, cxFilter, cxData, cxDataStorage, cxEdit, DB,
-  cxDBData, cxGridLevel, cxGridCustomTableView, cxGridTableView,
+  Buttons, sSpeedButton, 
+  sCurrEdit, sCurrencyEdit, sButton, sCheckBox, 
+  sSkinProvider, sDialogs,cxStyles,
+  cxGraphics, cxDataStorage, cxEdit, DB,
+  cxDBData, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxClasses, cxControls, cxGridCustomView, cxGrid,
-  sComboBox, cxCurrencyEdit;
+  cxCurrencyEdit, Mask, sMaskEdit, sCustomComboEdit;
 
 type
   TF_barang_det = class(TForm)

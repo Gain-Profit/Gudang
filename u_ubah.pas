@@ -4,10 +4,11 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, sSkinProvider, StdCtrls, sEdit, sLabel, Mask, sMaskEdit,
-  sCustomComboEdit, sCurrEdit, sCurrencyEdit, ComCtrls, sStatusBar,
+  Dialogs, sSkinProvider, sEdit, sLabel, 
+  sCurrEdit, sCurrencyEdit, ComCtrls, sStatusBar,
   ExtCtrls, DBCtrls,UFungsi, Buttons, sBitBtn, sComboBox, sTooledit,
-  sCheckBox, cxControls, cxDBNavigator, sGroupBox, sButton,DateUtils;
+  cxControls, sGroupBox, sButton,DateUtils, StdCtrls, Mask, sMaskEdit,
+  sCustomComboEdit;
 
 type
   TF_ubah_harga = class(TForm)

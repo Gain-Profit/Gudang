@@ -4,13 +4,13 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, sEdit, sSkinProvider,UFungsi,
-  ExtCtrls, sPanel, Buttons, sBitBtn, ComCtrls, 
+  Dialogs, sEdit, sSkinProvider,UFungsi,
+  ExtCtrls, sPanel, Buttons, ComCtrls, 
   cxCustomData, cxGraphics, cxDataStorage, cxEdit, DB,
   cxDBData, cxGridLevel, cxClasses, cxControls, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
   cxCheckBox, cxCurrencyEdit, cxTextEdit, cxImageComboBox, cxStyles,
-  cxFilter, cxData, sSpeedButton;
+  sSpeedButton, cxFilter, cxData, StdCtrls;
 
   const
   WM_AFTER_SHOW = WM_USER + 300; // custom message

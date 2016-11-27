@@ -4,15 +4,17 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, sButton,UFungsi,DB, sDialogs, sCheckBox, sGroupBox,
-  sRadioButton, ComCtrls, sListView, sLabel, sEdit, acShellCtrls, Mask,
-  sMaskEdit, sCustomComboEdit, sTooledit, sMemo, sPageControl, sListBox,
-  AbZView,AbZipKit, Grids, AbView, AbBase, AbBrowse, AbZBrows, AbZipper,
+  Dialogs, sButton,UFungsi,DB, sDialogs, 
+  ComCtrls, sListView, sLabel, acShellCtrls, 
+  sTooledit, sPageControl, 
+  AbZView,AbZipKit, AbView, AbBrowse, AbZipper,
   ExtCtrls, sPanel, AbUnZper, sGauge, Menus,ShellAPI,ShlObj, sSpinEdit,
-  Buttons, sSpeedButton, cxStyles, cxCustomData, cxGraphics, cxFilter,
-  cxData, cxDataStorage, cxEdit, cxDBData, cxCurrencyEdit, cxGridLevel,
+  Buttons, sSpeedButton, cxStyles, cxGraphics, 
+  cxDataStorage, cxEdit, cxDBData, cxCurrencyEdit, cxGridLevel,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
-  cxControls, cxGridCustomView, cxGrid, mySQLDbTables, sComboBox;
+  cxControls, cxGridCustomView, cxGrid, mySQLDbTables, sComboBox,
+  cxCustomData, cxFilter, cxData, AbBase, AbZBrows, StdCtrls, sEdit, Grids,
+  Mask, sMaskEdit, sCustomComboEdit;
 
 type
   TF_kirim_data = class(TForm)

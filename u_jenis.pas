@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, sLabel, sEdit, sButton, UFungsi, sSkinProvider;
+  Dialogs, sLabel, sEdit, sButton, UFungsi, sSkinProvider, StdCtrls;
 
 type
   Tf_jenis = class(TForm)

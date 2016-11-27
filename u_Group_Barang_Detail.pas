@@ -4,12 +4,13 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, cxStyles, cxCustomData, cxGraphics, cxFilter, cxData,
+  Dialogs, cxStyles, cxCustomData, cxGraphics, 
   cxDataStorage, cxEdit, DB, cxDBData, sSkinProvider, cxGridLevel,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
   cxControls, cxGridCustomView, cxGrid, ExtCtrls, sPanel, StdCtrls, sButton,
-  sEdit, sLabel, Buttons, sSpeedButton, sBevel, cxCurrencyEdit, Mask,
-  sMaskEdit, sCustomComboEdit, sCurrEdit, sCurrencyEdit;
+  sEdit, sLabel, Buttons, sSpeedButton, sBevel, cxCurrencyEdit, 
+  sCurrEdit, sCurrencyEdit, cxFilter, cxData, Mask, sMaskEdit,
+  sCustomComboEdit;
 
 type
   TFGroupBarangDetail = class(TForm)
@@ -63,7 +64,7 @@ var
 
 implementation
 
-uses u_dm, UFungsi, u_utama, u_cari, U_Group_Barang;
+uses u_dm, UFungsi, u_cari, U_Group_Barang;
 
 {$R *.dfm}
 

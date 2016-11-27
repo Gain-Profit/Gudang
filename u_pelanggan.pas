@@ -5,8 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, sButton, sEdit, sLabel,UFungsi, Buttons, 
-  sSkinProvider, Mask, sMaskEdit, sCustomComboEdit, sCurrEdit,
-  sCurrencyEdit;
+  sSkinProvider, sCurrEdit,
+  sCurrencyEdit, Mask, sMaskEdit, sCustomComboEdit;
 
 type
   Tf_cust = class(TForm)
@@ -46,7 +46,7 @@ var
 
 implementation
 
-uses u_dm, u_cari, u_utama;
+uses u_dm, u_cari;
 
 {$R *.dfm}
 

@@ -4,13 +4,14 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Mask, sMaskEdit, sCustomComboEdit, sTooledit, sButton,
-  sLabel,UFungsi, ComCtrls, sEdit, sCheckBox,
-  sGroupBox, sComboBox, sSkinProvider, Buttons, sSpeedButton, Menus,
-  sRadioButton, sCurrEdit, sCurrencyEdit, cxStyles, cxCustomData,
-  cxGraphics, cxFilter, cxData, cxDataStorage, cxEdit, cxCurrencyEdit,
+  Dialogs, sButton,
+  sLabel,UFungsi, ComCtrls, sEdit, 
+  sSkinProvider, Buttons, sSpeedButton, Menus,
+  cxStyles, cxCustomData,
+  cxGraphics, cxDataStorage, cxEdit, cxCurrencyEdit,
   cxGridLevel, cxGridCustomTableView, cxGridTableView, cxClasses,
-  cxControls, cxGridCustomView, cxGrid, frxClass;
+  cxControls, cxGridCustomView, cxGrid, frxClass, cxFilter, cxData,
+  StdCtrls;
 
 type
   Tf_Barcode = class(TForm)
@@ -54,7 +55,7 @@ var
 
 implementation
 
-uses u_dm, u_cari, u_utama;
+uses u_dm, u_cari;
 
 {$R *.dfm}
 

@@ -4,12 +4,13 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, cxStyles, cxCustomData, cxGraphics, cxFilter, cxData,
+  Dialogs, cxStyles, cxGraphics, 
   cxDataStorage, cxEdit, DB, cxDBData, cxCurrencyEdit, sSkinProvider,
-  StdCtrls, Buttons, sBitBtn, ExtCtrls, sPanel, cxGridLevel,
+  Buttons, ExtCtrls, sPanel, cxGridLevel,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
-  cxControls, cxGridCustomView, cxGrid, sSpeedButton, Mask, sMaskEdit,
-  sCustomComboEdit, sTooledit, sLabel;
+  cxControls, cxGridCustomView, cxGrid, sSpeedButton, 
+  sTooledit, sLabel, cxCustomData, cxFilter, cxData, StdCtrls, Mask,
+  sMaskEdit, sCustomComboEdit;
 
 type
   Tf_list_SO = class(TForm)
