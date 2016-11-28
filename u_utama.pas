@@ -588,7 +588,7 @@ begin
   application.CreateForm(tf_cari, f_cari);
   with F_cari do
   try
-    _SQLi:= 'SELECT kd_user, n_user FROM tb_user';
+    _SQLi:= 'SELECT kd_user, n_user FROM tb_user where aktif ="Y"';
 
     tblcap[0]:= 'Kode';
     tblCap[1]:= 'Nama Pengguna';
