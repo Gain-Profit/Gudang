@@ -19128,8 +19128,6 @@ object dm: Tdm
   end
   object Q_harga: TmySQLQuery
     Database = db_conn
-    SQL.Strings = (
-      '')
     Left = 8
     Top = 216
   end
@@ -19430,8 +19428,6 @@ object dm: Tdm
   end
   object q_list_purchase: TmySQLQuery
     Database = db_conn
-    SQL.Strings = (
-      '')
     Left = 136
     Top = 56
   end
@@ -19452,10 +19448,6 @@ object dm: Tdm
   end
   object q_list_return: TmySQLQuery
     Database = db_conn
-    SQL.Strings = (
-      ''
-      ''
-      '')
     Left = 136
     Top = 168
   end
@@ -20911,8 +20903,6 @@ object dm: Tdm
   end
   object Q_list_kirim: TmySQLQuery
     Database = db_conn
-    SQL.Strings = (
-      '')
     Left = 136
     Top = 224
   end
@@ -20933,8 +20923,6 @@ object dm: Tdm
   end
   object Q_List_SO: TmySQLQuery
     Database = db_conn
-    SQL.Strings = (
-      '')
     Left = 136
     Top = 320
   end
@@ -20945,8 +20933,6 @@ object dm: Tdm
   end
   object Q_list_return_kirim: TmySQLQuery
     Database = db_conn
-    SQL.Strings = (
-      '')
     Left = 136
     Top = 368
   end
@@ -21055,8 +21041,6 @@ object dm: Tdm
   end
   object Q_list_return_jual: TmySQLQuery
     Database = db_conn
-    SQL.Strings = (
-      '')
     Left = 136
     Top = 424
   end
