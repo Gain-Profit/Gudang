@@ -33,8 +33,6 @@ object dm: Tdm
   end
   object Q_Show: TmySQLQuery
     Database = db_conn
-    SQL.Strings = (
-      'select * from vw_daftar_barang')
     Left = 8
     Top = 56
   end
@@ -19468,10 +19466,6 @@ object dm: Tdm
   end
   object Q_laporan: TmySQLQuery
     Database = db_conn
-    SQL.Strings = (
-      
-        'select * from vw_supp_barang where kd_perusahaan='#39'00'#39' and kd_sup' +
-        'lier='#39'SU-0046'#39)
     Left = 448
     Top = 56
   end
@@ -20929,8 +20923,6 @@ object dm: Tdm
   end
   object Q_list_sales: TmySQLQuery
     Database = db_conn
-    SQL.Strings = (
-      'select * from vw_list_sales where kd_perusahaan = '#39'00'#39)
     Left = 136
     Top = 272
   end
@@ -21008,8 +21000,6 @@ object dm: Tdm
   end
   object Q_child_sales: TmySQLQuery
     Database = db_conn
-    SQL.Strings = (
-      'select * from tb_jual_rinci where kd_perusahaan = '#39'00'#39)
     Left = 296
     Top = 272
   end
@@ -21055,8 +21045,6 @@ object dm: Tdm
   end
   object Q_barang: TmySQLQuery
     Database = db_conn
-    SQL.Strings = (
-      'select * from vw_daftar_barang')
     Left = 8
     Top = 136
   end
