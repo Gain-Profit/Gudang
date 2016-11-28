@@ -20739,16 +20739,6 @@ object dm: Tdm
       TextColor = clHighlightText
     end
   end
-  object Q_mutasi: TmySQLQuery
-    Database = db_conn
-    Left = 312
-    Top = 56
-  end
-  object ds_mutasi: TDataSource
-    DataSet = Q_mutasi
-    Left = 376
-    Top = 56
-  end
   object ds_child_sales: TDataSource
     DataSet = Q_child_sales
     Left = 376
@@ -20758,26 +20748,6 @@ object dm: Tdm
     Database = db_conn
     Left = 296
     Top = 272
-  end
-  object Q_gross: TmySQLQuery
-    Database = db_conn
-    Left = 312
-    Top = 104
-  end
-  object ds_gross: TDataSource
-    DataSet = Q_gross
-    Left = 376
-    Top = 104
-  end
-  object Q_stock_out: TmySQLQuery
-    Database = db_conn
-    Left = 312
-    Top = 152
-  end
-  object ds_stock_out: TDataSource
-    DataSet = Q_stock_out
-    Left = 376
-    Top = 152
   end
   object frxmlxprt1: TfrxXMLExport
     UseFileCache = True

@@ -40,14 +40,8 @@ type
     frxbrcdbjct1: TfrxBarCodeObject;
     stl_focus: TcxStyleRepository;
     cxstyl1: TcxStyle;
-    Q_mutasi: TmySQLQuery;
-    ds_mutasi: TDataSource;
     ds_child_sales: TDataSource;
     Q_child_sales: TmySQLQuery;
-    Q_gross: TmySQLQuery;
-    ds_gross: TDataSource;
-    Q_stock_out: TmySQLQuery;
-    ds_stock_out: TDataSource;
     frxmlxprt1: TfrxXMLExport;
     ds_barang: TDataSource;
     Q_barang: TmySQLQuery;
