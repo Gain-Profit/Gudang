@@ -19144,8 +19144,8 @@ object dm: Tdm
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
-    ReportOptions.CreateDate = 41777.292460682900000000
-    ReportOptions.LastChange = 41777.311138703700000000
+    ReportOptions.CreateDate = 42702.542911724540000000
+    ReportOptions.LastChange = 42702.542911724540000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -19154,11 +19154,7 @@ object dm: Tdm
       'end.')
     Left = 448
     Top = 8
-    Datasets = <
-      item
-        DataSet = db_Laporan
-        DataSetName = 'db_laporan'
-      end>
+    Datasets = <>
     Variables = <>
     Style = <>
     object Data: TfrxDataPage
@@ -19173,255 +19169,29 @@ object dm: Tdm
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
-      object MasterData1: TfrxMasterData
-        Height = 18.897650000000000000
-        Top = 128.504020000000000000
-        Width = 718.110700000000000000
-        DataSet = db_Laporan
-        DataSetName = 'db_laporan'
-        RowCount = 0
-        object db_laporankd_barang: TfrxMemoView
-          Left = 34.015770000000000000
-          Width = 75.590600000000000000
-          Height = 18.897650000000000000
-          ShowHint = False
-          DataField = 'kd_barang'
-          DataSet = db_Laporan
-          DataSetName = 'db_laporan'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight]
-          Memo.UTF8 = (
-            '[db_laporan."kd_barang"]')
-          ParentFont = False
-        end
-        object db_laporann_barang: TfrxMemoView
-          Left = 219.212740000000000000
-          Width = 498.897960000000000000
-          Height = 18.897650000000000000
-          ShowHint = False
-          DataField = 'n_barang'
-          DataSet = db_Laporan
-          DataSetName = 'db_laporan'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = [ftRight]
-          Memo.UTF8 = (
-            '[db_laporan."n_barang"]')
-          ParentFont = False
-        end
-        object db_laporanbarcode3: TfrxMemoView
-          Left = 109.606370000000000000
-          Width = 109.606370000000000000
-          Height = 18.897650000000000000
-          ShowHint = False
-          DataField = 'barcode3'
-          DataSet = db_Laporan
-          DataSetName = 'db_laporan'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = [ftRight]
-          Memo.UTF8 = (
-            '[db_laporan."barcode3"]')
-          ParentFont = False
-        end
-        object Memo1: TfrxMemoView
-          Width = 34.015770000000000000
-          Height = 18.897650000000000000
-          ShowHint = False
-          DataSet = db_Laporan
-          DataSetName = 'db_laporan'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight]
-          Memo.UTF8 = (
-            '[Line]')
-          ParentFont = False
-        end
-      end
-      object Footer1: TfrxFooter
-        Height = 18.897650000000000000
-        Top = 170.078850000000000000
-        Width = 718.110700000000000000
-        object Memo6: TfrxMemoView
-          Width = 718.110700000000000000
-          Height = 18.897650000000000000
-          ShowHint = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = [ftTop]
-          ParentFont = False
-        end
-      end
-      object Header1: TfrxHeader
-        Height = 86.929190000000000000
+      object ReportTitle1: TfrxReportTitle
+        Height = 22.677180000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
-        object db_laporankd_suplier: TfrxMemoView
-          Left = 109.606370000000000000
-          Top = 30.236240000000000000
-          Width = 321.260050000000000000
-          Height = 18.897650000000000000
-          ShowHint = False
-          DataSet = db_Laporan
-          DataSetName = 'db_laporan'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Memo.UTF8 = (
-            ': [db_laporan."kd_suplier"]')
-          ParentFont = False
-        end
-        object db_laporann_supp: TfrxMemoView
-          Left = 109.606370000000000000
-          Top = 49.133890000000000000
-          Width = 321.260050000000000000
-          Height = 18.897650000000000000
-          ShowHint = False
-          DataSet = db_Laporan
-          DataSetName = 'db_laporan'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Memo.UTF8 = (
-            ': [db_laporan."n_supp"]')
-          ParentFont = False
-        end
-        object Memo2: TfrxMemoView
-          Width = 718.110700000000000000
-          Height = 30.236240000000000000
-          ShowHint = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -24
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haCenter
-          Memo.UTF8 = (
-            'DAFTAR BARANG SUPPLIER')
-          ParentFont = False
-        end
-        object Memo3: TfrxMemoView
-          Left = 34.015770000000000000
-          Top = 68.031540000000000000
+      end
+      object MasterData1: TfrxMasterData
+        Height = 22.677180000000000000
+        Top = 102.047310000000000000
+        Width = 718.110700000000000000
+        RowCount = 0
+      end
+      object PageFooter1: TfrxPageFooter
+        Height = 22.677180000000000000
+        Top = 185.196970000000000000
+        Width = 718.110700000000000000
+        object Memo1: TfrxMemoView
+          Left = 642.520100000000000000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
           ShowHint = False
-          DataSet = db_Laporan
-          DataSetName = 'db_laporan'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haRight
           Memo.UTF8 = (
-            'PID')
-          ParentFont = False
-        end
-        object Memo4: TfrxMemoView
-          Left = 219.212740000000000000
-          Top = 68.031540000000000000
-          Width = 498.897960000000000000
-          Height = 18.897650000000000000
-          ShowHint = False
-          DataSet = db_Laporan
-          DataSetName = 'db_laporan'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          Memo.UTF8 = (
-            'Deskripsi Barang')
-          ParentFont = False
-        end
-        object Memo5: TfrxMemoView
-          Left = 109.606370000000000000
-          Top = 68.031540000000000000
-          Width = 109.606370000000000000
-          Height = 18.897650000000000000
-          ShowHint = False
-          DataSet = db_Laporan
-          DataSetName = 'db_laporan'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          Memo.UTF8 = (
-            'Barcode')
-          ParentFont = False
-        end
-        object Memo7: TfrxMemoView
-          Top = 68.031540000000000000
-          Width = 34.015770000000000000
-          Height = 18.897650000000000000
-          ShowHint = False
-          DataSet = db_Laporan
-          DataSetName = 'db_laporan'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          Memo.UTF8 = (
-            'No')
-          ParentFont = False
-        end
-        object Memo8: TfrxMemoView
-          Top = 30.236240000000000000
-          Width = 109.606370000000000000
-          Height = 18.897650000000000000
-          ShowHint = False
-          DataSet = db_Laporan
-          DataSetName = 'db_laporan'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Memo.UTF8 = (
-            'Kode Supplier')
-          ParentFont = False
-        end
-        object Memo9: TfrxMemoView
-          Top = 49.133890000000000000
-          Width = 109.606370000000000000
-          Height = 18.897650000000000000
-          ShowHint = False
-          DataSet = db_Laporan
-          DataSetName = 'db_laporan'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Memo.UTF8 = (
-            'Nama Supplier')
-          ParentFont = False
+            '[Page#]')
         end
       end
     end
@@ -21010,7 +20780,6 @@ object dm: Tdm
     Top = 152
   end
   object frxmlxprt1: TfrxXMLExport
-    FileName = 'D:\gp_barang_supplier.xls'
     UseFileCache = True
     ShowProgress = True
     OverwritePrompt = False
