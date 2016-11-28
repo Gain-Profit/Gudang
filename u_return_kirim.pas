@@ -553,7 +553,7 @@ end;
 
 procedure Tf_return_kirim.ed_fak_kirimChange(Sender: TObject);
 begin
-fungsi.SQLExec(dm.Q_temp,'select faktur from _vw_piutang where `status`= "belum lunas" and faktur="'+
+fungsi.SQLExec(dm.Q_temp,'select faktur from vw_piutang where `status`= "belum lunas" and faktur="'+
 ed_fak_kirim.Text+'" and kd_perusahaan="'+dm.kd_perusahaan+'" and pelanggan = "'+ed_pelanggan.Text+'"',true);
 if dm.Q_temp.Eof then
 ed_fak_kirim.Color:=clblue
