@@ -123,8 +123,8 @@ begin
   bulan:= Copy(periode,6,2);
   tahun:= Copy(periode,1,4);
 
-    fungsi.SQLExecT(Q_mutasi,'select * from tb_mutasi WHERE MONTH(tgl)="'+
-    bulan+'" and YEAR(tgl) ="'+tahun+'" and kd_barang="'+pid+'" and kd_perusahaan="'+dm.kd_perusahaan+'"',true);
+    fungsi.SQLExecT(Q_mutasi,'select * from tb_mutasi WHERE bulan="'+
+    bulan+'" and tahun ="'+tahun+'" and kd_barang="'+pid+'" and kd_perusahaan="'+dm.kd_perusahaan+'"',true);
 end;
 
 procedure TF_barang_property.cb_periodeChange(Sender: TObject);
@@ -168,11 +168,12 @@ end;
 
 procedure TF_barang_property.btnMutasiHrgClick(Sender: TObject);
 begin
-fungsi.SQLExec(dm.Q_laporan,'select * from tb_mutasi WHERE MONTH(tgl)="'+
-    bulan+'" and YEAR(tgl) ="'+tahun+'" and kd_barang="'+pid+'" and kd_perusahaan="'+dm.kd_perusahaan+'"',true);
+fungsi.SQLExec(dm.Q_laporan,'select * from tb_mutasi WHERE bulan="'+
+    bulan+'" and tahun ="'+tahun+'" and kd_barang="'+pid+'" and kd_perusahaan="'+dm.kd_perusahaan+'"',true);
 dm.laporan.LoadFromFile(dm.WPath+ 'laporan\gp_mutasi_brg.fr3');
 dm.FRMemo(dm.laporan, 'mmPerusahaan').Text := 'LAPORAN MUTASI '+dm.kd_perusahaan;
 dm.FRMemo(dm.laporan, 'mmPeriode').Text := 'Periode: '+ tahun +'-'+ bulan;
+dm.FRMemo(dm.laporan, 'mmBarang').Text := dm.Q_barang.FieldByName('n_barang').AsString;
 dm.laporan.ShowReport;
 end;
 
