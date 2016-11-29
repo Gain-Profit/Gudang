@@ -698,24 +698,6 @@ begin
   f_hari.Close;
 end;
 
-//tes_koneksi(koneksi);
-{
-if tes_koneksi = False then
-begin
-  if f_koneksi = nil then
-  begin
-    Application.CreateForm(Tf_koneksi, f_koneksi);
-    f_koneksi.ShowModal;
-    dm.koneksikan;
-  end;
-end else
-begin
-  if f_koneksi <> nil then
-  begin
-    f_koneksi.Close;
-    dm.koneksikan;
-  end;
-end;}
 end;
 
 procedure Tf_utama.HidePanelControl1Click(Sender: TObject);

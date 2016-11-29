@@ -375,21 +375,6 @@ nm_tabel:= cari_tabel(_SQLi);
     TblTemp.Add(q_cari.Fields[x].FieldName);
   end;
 
-{
-if f_utama.sb.Panels[8].Text='PUSAT' then
-begin
-  tampil_button(True,True);
-end else
-begin
-  if tipe_cari in [8,9,11,12] then
-  begin
-  tampil_button(True,True);
-  end else
-  begin
-  tampil_button(False,True);
-  end;
-end;
-}
   for x:= 0 to q_cari.FieldCount-1 do
   begin
   TcxGridDBColumn(FindComponent('clm'+IntToStr(x+1))).DataBinding.FieldName :=
