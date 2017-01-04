@@ -43,7 +43,6 @@ type
       Shift: TShiftState);
     procedure t_dataKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure B_AmbilClick(Sender: TObject);
     procedure refresh;
   private
@@ -397,13 +396,6 @@ begin
 if key= vk_return then
 B_AmbilClick(Sender);
 end;
-
-procedure Tf_cari.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-//action:=cafree;
-//f_cari:=nil;
-end;
-
 
 procedure Tf_cari.B_AmbilClick(Sender: TObject);
 var x: Integer;
