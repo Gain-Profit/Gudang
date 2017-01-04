@@ -222,8 +222,6 @@ type
 var
   f_utama: Tf_utama;
 
-//function tes_koneksi:Boolean; external 'tools\gain.dll';
-
 implementation
 
 uses u_barang, u_edit_harga, u_return, u_cari, u_dm, u_purchase,
