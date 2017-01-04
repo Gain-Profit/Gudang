@@ -206,14 +206,6 @@ begin
           Exit;
         end;
 
-{        fungsi.SQLExec(dm.Q_temp,'select kd_perusahaan from tb_company where kd_perusahaan= '+
-        quotedstr(q_cari.fieldbyname('kd_pelanggan').AsString)+'',True);
-        if not(dm.Q_temp.Eof) then
-        begin
-          ShowMessage('Toko cabang Tidak Bisa di Edit...');
-          Exit;
-        end;
-}
       application.CreateForm(TF_cust,F_cust);
       F_cust.ubah;
       F_cust.ShowModal;
