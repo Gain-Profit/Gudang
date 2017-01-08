@@ -146,7 +146,7 @@ RootDir=
 IncludeVerInfo=1
 AutoIncBuild=0
 MajorVer=4
-MinorVer=2
+MinorVer=3
 Release=2
 Build=0
 Debug=0
@@ -159,7 +159,7 @@ CodePage=1252
 [Version Info Keys]
 CompanyName=Gain-Profit
 FileDescription=
-FileVersion=4.2.2.0
+FileVersion=4.3.2.0
 InternalName=Gudang
 LegalCopyright=
 LegalTrademarks=
