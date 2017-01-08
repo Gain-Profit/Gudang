@@ -151,8 +151,7 @@ baru;
 end;
 
 procedure TF_barang_det.b_autoClick(Sender: TObject);
-var x:integer;
-    pid_temp,pid:string;
+var prefix:string;
 begin
 if status_simpan=false then
 exit;
@@ -164,23 +163,12 @@ showmessage('Jenis dan Golongan harus diisi terlebih dahulu, '#10#13' karena '+
 'auto PID diambil dari jenis dan golongan...');
 exit;
 end;
-fungsi.SQLExec(dm.Q_Exe,'select kd_barang from tb_barang where kd_perusahaan="'+
-dm.kd_perusahaan+'" and LEFT(kd_barang,'+inttostr(length(kd_jenis))+')="'+
-kd_jenis+'" and MID(kd_barang,'+inttostr(length(kd_jenis)+1)+','+inttostr(length(kd_gol))+')="'+kd_gol+'" order by kd_barang',true);
-dm.Q_Exe.first;
+  prefix := kd_jenis + kd_gol;
+  fungsi.SQLExec(dm.Q_temp,Format('SELECT CONCAT("%s",LPAD(right(max(kd_barang),4)+1, 4, "0")) '+
+  'as new_id FROM tb_barang WHERE kd_perusahaan= "%s" AND kd_barang like "%s%%"',
+  [prefix, dm.kd_perusahaan, prefix]),true);
 
-for x:=1 to 10000 do
-begin
-  if x<10     then pid:= kd_jenis+kd_gol+'000' else
-  if x<100    then pid:= kd_jenis+kd_gol+'00' else
-  if x<1000   then pid:= kd_jenis+kd_gol+'0' else
-  if x<10000  then pid:= kd_jenis+kd_gol;
-  pid_temp:= pid+inttostr(x);
-
-  if dm.Q_Exe.fieldbyname('kd_barang').AsString=pid_temp then
-  dm.Q_Exe.Next else break;
-end;
-ed_pid.Text:= pid_temp;
+  ed_pid.Text:= dm.Q_temp.fieldbyname('new_id').AsString;
 end;
 
 procedure TF_barang_det.sb_sat1Click(Sender: TObject);
