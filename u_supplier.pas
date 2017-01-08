@@ -91,6 +91,13 @@ end;
 
 procedure Tf_supplier.B_saveClick(Sender: TObject);
 begin
+  if ed_kode.Text = '' then
+  begin
+    ShowMessage('Kode Supplier Tidak Boleh Kosong');
+    b_auto.SetFocus;
+    Exit;
+  end;
+
 dm.db_conn.StartTransaction;
 try
 if supp_baru=true then
@@ -120,27 +127,12 @@ close;
 end;
 
 procedure Tf_supplier.b_autoClick(Sender: TObject);
-var x:Integer;
-pid,pid_temp:string;
 begin
-  fungsi.SQLExec(dm.Q_temp,'select kode from tb_supp where kd_perusahaan="'+
-  dm.kd_perusahaan+'" and kode like "SU-%" order by kode',true);
+  fungsi.SQLExec(dm.Q_temp,Format('SELECT CONCAT("SU-",LPAD(right(max(kode),4)+1, 4, "0")) '+
+  'as new_id FROM tb_supp WHERE kd_perusahaan= "%s"  AND kode like "SU-%%"',
+  [dm.kd_perusahaan]),true);
 
-  dm.Q_temp.First;
-
-for x:=1 to 10000 do
-begin
-  if x<10    then pid:= 'SU-000' else
-  if x<100   then pid:= 'SU-00' else
-  if x<1000  then pid:= 'SU-0' else
-  if x<10000 then pid:= 'SU-';
-
-  pid_temp:= pid+inttostr(x);
-
-  if dm.Q_temp.fieldbyname('kode').AsString=pid_temp then
-  dm.Q_temp.Next else break;
-end;
-  ed_kode.Text:= pid_temp;
+  ed_kode.Text:= dm.Q_temp.fieldbyname('new_id').AsString;
 end;
 
 end.

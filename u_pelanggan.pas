@@ -88,6 +88,13 @@ end;
 
 procedure Tf_cust.B_saveClick(Sender: TObject);
 begin
+  if ed_kode.Text = '' then
+  begin
+    ShowMessage('Kode Pelanggan Tidak Boleh Kosong');
+    b_auto.SetFocus;
+    Exit;
+  end;
+    
 dm.db_conn.StartTransaction;
 try
 if supp_baru=true then
@@ -117,27 +124,12 @@ f_cari.q_cari.Open;
 end;
 
 procedure Tf_cust.b_autoClick(Sender: TObject);
-var x:Integer;
-pid,pid_temp:string;
 begin
-  fungsi.SQLExec(dm.Q_temp,'select kd_pelanggan from tb_pelanggan where kd_perusahaan="'+
-  dm.kd_perusahaan+'" and kd_pelanggan like "CU-%" order by kd_pelanggan',true);
+  fungsi.SQLExec(dm.Q_temp,Format('SELECT CONCAT("CU-",LPAD(right(max(kd_pelanggan),4)+1, 4, "0")) '+
+  'as new_id FROM tb_pelanggan WHERE kd_perusahaan= "%s"  AND kd_pelanggan like "CU-%%"',
+  [dm.kd_perusahaan]),true);
 
-  dm.Q_temp.First;
-
-  for x:=1 to 10000 do
-  begin
-  if x<10    then pid:= 'CU-000' else
-  if x<100   then pid:= 'CU-00' else
-  if x<1000  then pid:= 'CU-0' else
-  if x<10000 then pid:= 'CU-';
-
-  pid_temp:= pid+inttostr(x);
-
-  if dm.Q_temp.fieldbyname('kd_pelanggan').AsString=pid_temp then
-  dm.Q_temp.Next else break;
-  end;
-  ed_kode.Text:= pid_temp;
+  ed_kode.Text:= dm.Q_temp.fieldbyname('new_id').AsString;
 end;
 
 end.
