@@ -176,21 +176,6 @@ begin
 end;
 end;
 
-function caridanganti
-  (sSrc, sLookFor, sReplaceWith : string) : string;
-var
-  nPos, nLenLookFor : integer;
-begin
-  nPos        := Pos(sLookFor, sSrc);
-  nLenLookFor := Length(sLookFor);
-  while (nPos > 0) do begin
-    Delete(sSrc, nPos, nLenLookFor);
-    Insert(sReplaceWith, sSrc, nPos);
-    nPos := Pos(sLookFor, sSrc);
-  end;
-  Result := sSrc;
-end;
-
 procedure TF_ubah_harga.btn_simpanClick(Sender: TObject);
 var posisi,i:integer;
 begin
@@ -232,18 +217,18 @@ begin
 fungsi.SQLExec(dm.Q_Exe,'insert into tb_barang_harga(kd_perusahaan,kd_macam_harga,kd_barang,laba,laba_P,harga_jual1, '+
 'harga_jual2,harga_jual3,kode_user,awal,ahir,`update`,diskon,diskonP) values ("'+
 perusahaan+'","'+cb_macam.Text+'","'+ed_plu.Text+'","'+
-ed_marginrp.Text+'","'+caridanganti(ed_marginP.Text,',','.')+'","'+ed_harga1.Text+'","'+
+ed_marginrp.Text+'","'+StringReplace(ed_marginP.Text,',','.',[rfReplaceAll])+'","'+ed_harga1.Text+'","'+
 ed_harga2.Text+'","'+ed_harga3.Text+'","'+dm.kd_pengguna+'","'+
 formatdatetime('yyyy-MM-dd',de_awal.date)+'","'+formatdatetime('yyyy-MM-dd',de_ahir.Date)
-+'",CURRENT_TIMESTAMP,"'+ed_discRp.Text+'","'+caridanganti(ed_discP.Text,',','.')+'")',false)
++'",CURRENT_TIMESTAMP,"'+ed_discRp.Text+'","'+StringReplace(ed_discP.Text,',','.',[rfReplaceAll])+'")',false)
 end else
 begin
 fungsi.SQLExec(dm.Q_Exe,'update tb_barang_harga set laba="'+
-ed_marginRP.Text+'",laba_P="'+caridanganti(ed_marginP.Text,',','.')+'",harga_jual1="'+ed_harga1.Text+'",harga_jual2="'+
+ed_marginRP.Text+'",laba_P="'+StringReplace(ed_marginP.Text,',','.',[rfReplaceAll])+'",harga_jual1="'+ed_harga1.Text+'",harga_jual2="'+
 ed_harga2.Text+'",harga_jual3="'+ed_harga3.Text+'",kode_user="'+
 dm.kd_pengguna+'",`update`=CURRENT_TIMESTAMP,awal="'+formatdatetime('yyyy-MM-dd',de_awal.Date)+'",ahir="'+
 formatdatetime('yyyy-MM-dd',de_ahir.Date)+'",diskon="'+ed_discRp.Text+'",diskonP="'+
-caridanganti(ed_discP.Text,',','.')+'" where kd_barang="'+ed_plu.Text+'" and kd_macam_harga="'+
+StringReplace(ed_discP.Text,',','.',[rfReplaceAll])+'" where kd_barang="'+ed_plu.Text+'" and kd_macam_harga="'+
 cb_macam.Text+'" and kd_perusahaan="'+perusahaan+'"',false);
 end;
 
