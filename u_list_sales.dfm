@@ -228,7 +228,7 @@ object f_list_sales: Tf_list_sales
             Value = 'HGTK'
           end
           item
-            Description = 'Tunai'
+            Description = 'Retail'
             Value = 'HETK'
           end>
         Visible = False
