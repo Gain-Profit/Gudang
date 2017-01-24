@@ -26,7 +26,7 @@ object F_Edit_Harga: TF_Edit_Harga
     Left = 764
     Top = 0
     Width = 150
-    Height = 447
+    Height = 446
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 1
@@ -84,7 +84,7 @@ object F_Edit_Harga: TF_Edit_Harga
     Left = 0
     Top = 0
     Width = 764
-    Height = 447
+    Height = 446
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
@@ -93,7 +93,7 @@ object F_Edit_Harga: TF_Edit_Harga
       Left = 0
       Top = 21
       Width = 764
-      Height = 426
+      Height = 425
       Align = alClient
       TabOrder = 1
       LookAndFeel.Kind = lfOffice11
@@ -153,8 +153,6 @@ object F_Edit_Harga: TF_Edit_Harga
         object t_datan_barang: TcxGridDBColumn
           Caption = 'Deskripsi Barang'
           DataBinding.FieldName = 'n_barang'
-          PropertiesClassName = 'TcxTextEditProperties'
-          Properties.Alignment.Vert = taVCenter
           SortIndex = 0
           SortOrder = soAscending
           Width = 175
