@@ -60,7 +60,6 @@ type
     ed_marginRpNew: TsCurrencyEdit;
     l_8: TsLabel;
     l_9: TsLabel;
-    sButton1: TsButton;
     procedure FormShow(Sender: TObject);
     procedure ubah;
     procedure btn_simpanClick(Sender: TObject);
@@ -74,7 +73,6 @@ type
     procedure ed_marginRpExit(Sender: TObject);
     procedure b_updateClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure sButton1Click(Sender: TObject);
     procedure harga_baru;
     procedure ed_discRpExit(Sender: TObject);
     procedure ed_discPExit(Sender: TObject);
@@ -326,24 +324,6 @@ procedure TF_ubah_harga.FormClose(Sender: TObject;
 begin
 Action:=caFree;
 F_ubah_harga:=nil;
-end;
-
-procedure TF_ubah_harga.sButton1Click(Sender: TObject);
-var x,banyak:Integer;
-    tanggal:TDate;
-begin
-  banyak:= DaysBetween(de_awal.date, de_ahir.date)+1;
-  tanggal:= de_awal.Date -1;
-
-  for x:=0 to banyak do
-  begin
-    tanggal := tanggal + 1;
-    if FormatDateTime('dd/MM/yyyy',Date()) = FormatDateTime('dd/MM/yyyy',tanggal) then
-    begin
-      sbutton1.Caption:='ONO';
-      Exit;
-    end  else sbutton1.Caption := 'GAK MASUK';
-  end;
 end;
 
 procedure TF_ubah_harga.ed_discRpExit(Sender: TObject);

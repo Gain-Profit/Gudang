@@ -1059,17 +1059,6 @@ object F_ubah_harga: TF_ubah_harga
       end
     end
   end
-  object sButton1: TsButton
-    Left = 24
-    Top = 440
-    Width = 75
-    Height = 25
-    Caption = 'sButton1'
-    TabOrder = 21
-    Visible = False
-    OnClick = sButton1Click
-    SkinData.SkinSection = 'BUTTON'
-  end
   object sSkinProvider1: TsSkinProvider
     AddedTitle.Font.Charset = DEFAULT_CHARSET
     AddedTitle.Font.Color = clNone
