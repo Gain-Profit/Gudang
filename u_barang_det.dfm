@@ -703,7 +703,7 @@ object F_barang_det: TF_barang_det
     object cb_aktif: TsCheckBox
       Left = 305
       Top = 34
-      Width = 114
+      Width = 115
       Height = 36
       Caption = 'AKTI&F'
       Font.Charset = DEFAULT_CHARSET
@@ -879,12 +879,5 @@ object F_barang_det: TF_barang_det
     SkinData.SkinSection = 'FORM'
     TitleButtons = <>
     Left = 392
-  end
-  object t_load: TTimer
-    Enabled = False
-    Interval = 10
-    OnTimer = t_loadTimer
-    Left = 16
-    Top = 56
   end
 end

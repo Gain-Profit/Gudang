@@ -61,7 +61,6 @@ type
     b_auto: TsButton;
     sSkinProvider1: TsSkinProvider;
     cb_aktif: TsCheckBox;
-    t_load: TTimer;
     procedure baru;
     procedure tampil;
     procedure duplikat;
@@ -79,14 +78,13 @@ type
     procedure ed_bar1Exit(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
-    procedure t_loadTimer(Sender: TObject);
+    procedure LoadData;
     procedure ed_pidExit(Sender: TObject);
     procedure SimpanDatabase(perusahaan:string;b_aktif:string;status_simpan:Boolean);
   private
     kd_jenis,kd_merk,kd_gol,kd_tag: string;
     kd_sat: array[1..3] of string;
     status_simpan:boolean;
-    urutan,urut_berat : Integer;
   public
   end;
 
@@ -119,12 +117,10 @@ status_simpan:= false;
 ed_pid.ReadOnly:= True;
 b_auto.Enabled:=false;
 
-
 ed_pid.Text:= dm.Q_barang.FieldByName('kd_barang').AsString;
 ed_nama.Text:= dm.Q_barang.FieldByName('n_barang').AsString;
 
-
-t_load.Enabled := True;
+LoadData;
 
 Caption:= 'Inventory Barang - Edit Barang';
 end;
@@ -139,7 +135,7 @@ Caption:= 'Inventory Barang - Barang Baru';
 ed_pid.Clear;
 ed_nama.Clear;
 
-t_load.Enabled := True;
+LoadData;
 
 cb_aktif.Checked:=true;
 end;
@@ -470,9 +466,6 @@ end;
 
 procedure TF_barang_det.FormShow(Sender: TObject);
 begin
-urutan:= 0;
-urut_berat:=0;
-
  if f_utama.sb.Panels[8].Text='PUSAT' then
  begin
   ed_nama.Enabled:=True;
@@ -507,88 +500,49 @@ urut_berat:=0;
  end;
 end;
 
-procedure TF_barang_det.t_loadTimer(Sender: TObject);
-begin
-//load berkala
-urutan := urutan +1;
-
-if urutan = 1 then
+procedure TF_barang_det.LoadData;
 begin
 kd_jenis :=dm.Q_barang.fieldbyname('kd_jenis').AsString;
 fungsi.SQLExec(dm.Q_temp,'select * from tb_jenis where kd_jenis="'+kd_jenis+'"',true);
 ed_jenis.Text:= dm.Q_temp.fieldbyname('n_jenis').AsString;
-end;
 
-if urutan = 2 then
-begin
 kd_gol   :=dm.Q_barang.fieldbyname('kd_golbrg').AsString;
 fungsi.SQLExec(dm.Q_temp,'select * from tb_golongan where kd_golbrg="'+
 kd_gol+'" and kd_jenis="'+kd_jenis+'"',true);
 ed_golongan.Text:= dm.Q_temp.fieldbyname('n_golbrg').AsString;
-end;
 
-if urutan = 3 then
-begin
 kd_merk  :=dm.Q_barang.fieldbyname('kd_merk').AsString;
 fungsi.SQLExec(dm.Q_temp,'select * from tb_merk where kd_merk="'+kd_merk+'"',true);
 ed_merk.Text:= dm.Q_temp.fieldbyname('n_merk').AsString;
-end;
 
-if urutan = 4 then
-begin
 kd_tag   :=dm.Q_barang.fieldbyname('kd_kategori').AsString;
 fungsi.SQLExec(dm.Q_temp,'select * from tb_kategori where tag="'+kd_tag+'"',true);
 ed_kategori.Text:= dm.Q_temp.fieldbyname('n_kategori').AsString;
-end;
 
-if urutan = 5 then
-begin
 kd_sat[1]  :=dm.Q_barang.fieldbyname('kd_sat1').AsString;
 fungsi.SQLExec(dm.Q_temp,'select * from tb_satuan where kd_satuan="'+kd_sat[1]+'"',true);
 ed_sat1.Text:= dm.Q_temp.fieldbyname('n_satuan').AsString;
-end;
 
-if urutan = 6 then
-begin
 kd_sat[2]  :=dm.Q_barang.fieldbyname('kd_sat2').AsString;
 fungsi.SQLExec(dm.Q_temp,'select * from tb_satuan where kd_satuan="'+kd_sat[2]+'"',true);
 ed_sat2.Text:= dm.Q_temp.fieldbyname('n_satuan').AsString;
-end;
 
-if urutan = 7 then
-begin
 kd_sat[3]  :=dm.Q_barang.fieldbyname('kd_sat3').AsString;
 fungsi.SQLExec(dm.Q_temp,'select * from tb_satuan where kd_satuan="'+kd_sat[3]+'"',true);
 ed_sat3.Text:= dm.Q_temp.fieldbyname('n_satuan').AsString;
-end;
 
-if urutan = 8 then
 ed_qty1.Text:= dm.Q_barang.FieldByName('qty1').AsString;
-if urutan = 9 then
 ed_qty2.Text:= dm.Q_barang.FieldByName('qty2').AsString;
-if urutan = 10 then
 ed_bar1.Text:= dm.Q_barang.FieldByName('barcode1').AsString;
-if urutan = 11 then
 ed_bar2.Text:= dm.Q_barang.FieldByName('barcode2').AsString;
-if urutan = 12 then
 ed_bar3.Text:= dm.Q_barang.FieldByName('barcode3').AsString;
-if urutan = 13 then
 ed_minstok.Text:= dm.Q_barang.FieldByName('minstok').AsString;
-if urutan = 14 then
 ed_maxstok.Text:= dm.Q_barang.FieldByName('maxstok').AsString;
-if urutan = 15 then
 ed_minor.Text:= dm.Q_barang.FieldByName('minor').AsString;
-if urutan = 16 then
 ed_time.Text:= dm.Q_barang.FieldByName('leadtime').AsString;
 
-if urutan = 17 then
-if dm.Q_barang.FieldByName('aktif').AsString='Y' then cb_aktif.Checked:=true else cb_aktif.Checked:=false;
-
-if urutan = 18 then
-begin
-t_load.Enabled:= False;
-end;
-
+if dm.Q_barang.FieldByName('aktif').AsString='Y' then
+cb_aktif.Checked:=true else cb_aktif.Checked:=false;
 end;
 
 procedure TF_barang_det.ed_pidExit(Sender: TObject);
