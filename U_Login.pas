@@ -222,17 +222,6 @@ begin
 action:= cafree;
 end;
 
-function SetCueBanner(const Edit: TEdit; const Placeholder: String): Boolean;
-const
-  EM_SETCUEBANNER = $1501;
-var
-  UniStr: WideString;
-begin
-  UniStr := Placeholder;
-  SendMessage(Edit.Handle, EM_SETCUEBANNER, WParam(True),LParam(UniStr));
-  Result := GetLastError() = ERROR_SUCCESS;
-end;
-
 procedure TF_Login.FormShow(Sender: TObject);
 begin
 Ed_Kd_User.Clear;
