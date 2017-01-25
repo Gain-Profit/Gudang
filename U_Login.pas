@@ -4,31 +4,28 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, sLabel,UFungsi, sEdit, sGroupBox, Buttons, sBitBtn,
-  sButton, 
-  ComCtrls, sStatusBar, cxControls, cxContainer,
-  cxEdit, cxImage,mySQLDbTables,db,sSkinProvider, ExtCtrls, jpeg;
+  Dialogs, StdCtrls, ComCtrls, mySQLDbTables,db,sSkinProvider, ExtCtrls,
+  Buttons, UFungsi;
 
 type
   TF_Login = class(TForm)
-    sb: TsStatusBar;
-    sg_login: TsGroupBox;
-    sLabel4: TsLabel;
-    sLabel5: TsLabel;
-    sLabel6: TsLabel;
-    sBitBtn2: TsBitBtn;
-    sButton1: TsButton;
-    Ed_Kd_User: TsEdit;
-    Ed_N_User: TsEdit;
-    Ed_Password: TsEdit;
-    gambar: TcxImage;
+    sb: TStatusBar;
+    sg_login: TGroupBox;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    BtnClose: TBitBtn;
+    BtnLogin: TButton;
+    Ed_Kd_User: TEdit;
+    Ed_N_User: TEdit;
+    Ed_Password: TEdit;
     sSkinProvider1: TsSkinProvider;
-    l_1: TsLabel;
+    l_1: TLabel;
     procedure Ed_Kd_UserKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure sButton1Click(Sender: TObject);
+    procedure BtnLoginClick(Sender: TObject);
     procedure Ed_N_UserEnter(Sender: TObject);
-    procedure sBitBtn2Click(Sender: TObject);
+    procedure BtnCloseClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure Ed_PasswordKeyDown(Sender: TObject; var Key: Word;
@@ -114,21 +111,13 @@ begin
     ed_password.Enabled:= true;
     Ed_Password.SetFocus;
     Ed_N_User.Text:= userRealName;
-
-    if FileExists(dm.AppPath+'image/'+ed_kd_user.Text+'.jpg') then
-      gambar.Picture.LoadFromFile(dm.AppPath+'image/'+ed_kd_user.Text+'.jpg')
-    else
-    begin
-      if FileExists(dm.AppPath+'image/login.jpg') then
-      gambar.Picture.LoadFromFile(dm.AppPath+'image/login.jpg');
-    end;
   end;
 end;
 
 if key=vk_escape then close;
 end;
 
-procedure TF_Login.sButton1Click(Sender: TObject);
+procedure TF_Login.BtnLoginClick(Sender: TObject);
 var passs:string;
 begin
 if ed_n_user.Text<>'' then
@@ -212,7 +201,7 @@ begin
 ed_kd_user.SetFocus;
 end;
 
-procedure TF_Login.sBitBtn2Click(Sender: TObject);
+procedure TF_Login.BtnCloseClick(Sender: TObject);
 begin
 close;
 end;
@@ -238,7 +227,7 @@ begin
 if key=vk_return then
 begin
 PeekMessage(Mgs, 0, WM_CHAR, WM_CHAR, PM_REMOVE );
-sButton1Click(Sender);
+BtnLoginClick(Sender);
 end;
 end;
 
