@@ -465,39 +465,24 @@ F_barang_det:=nil;
 end;
 
 procedure TF_barang_det.FormShow(Sender: TObject);
+var
+  pusat: Boolean;
 begin
- if f_utama.sb.Panels[8].Text='PUSAT' then
- begin
-  ed_nama.Enabled:=True;
-  sb_jenis.Enabled:=True;
-  sb_gol.Enabled:=True;
-  sb_tag.Enabled:=True;
-  sb_merk.Enabled:=True;
-  Ed_Jenis.Enabled:=True;
-  Ed_golongan.Enabled:=True;
-  Ed_Merk.Enabled:=True;
-  Ed_Kategori.Enabled:=True;
-  sGroupBox3.Enabled:=True;
-  sGroupBox4.Enabled:=True;
+  pusat:= (f_utama.sb.Panels[8].Text = 'PUSAT');
 
-  b_new.Enabled:=True;
- end else
- begin
-  b_auto.Enabled:=False;
-  ed_nama.Enabled:=False;
-  sb_jenis.Enabled:=False;
-  sb_gol.Enabled:=False;
-  sb_tag.Enabled:=False;
-  sb_merk.Enabled:=False;
-  Ed_Jenis.Enabled:=False;
-  Ed_golongan.Enabled:=False;
-  Ed_Merk.Enabled:=False;
-  Ed_Kategori.Enabled:=False;
-  sGroupBox3.Enabled:=False;
-  sGroupBox4.Enabled:=False;
-
-  b_new.Enabled:=False;
- end;
+  b_auto.Enabled:=pusat;
+  ed_nama.Enabled:=pusat;
+  sb_jenis.Enabled:=pusat;
+  sb_gol.Enabled:=pusat;
+  sb_tag.Enabled:=pusat;
+  sb_merk.Enabled:=pusat;
+  Ed_Jenis.Enabled:=pusat;
+  Ed_golongan.Enabled:=pusat;
+  Ed_Merk.Enabled:=pusat;
+  Ed_Kategori.Enabled:=pusat;
+  sGroupBox3.Enabled:=pusat;
+  sGroupBox4.Enabled:=pusat;
+  b_new.Enabled:=pusat;
 end;
 
 procedure TF_barang_det.LoadData;
