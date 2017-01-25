@@ -78,9 +78,7 @@ type
     Planogram1: TMenuItem;
     BarangSupplier1: TMenuItem;
     Laporan1: TMenuItem;
-    time_out: TTimer;
     LogOut1: TMenuItem;
-    animasi: TTimer;
     sPanel2: TsPanel;
     sSpeedButton12: TsSpeedButton;
     sSpeedButton13: TsSpeedButton;
@@ -184,8 +182,6 @@ type
     procedure HidePanelControl1Click(Sender: TObject);
     procedure UbahSkin1Click(Sender: TObject);
     procedure LogOut1Click(Sender: TObject);
-    procedure time_outTimer(Sender: TObject);
-    procedure animasiTimer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure CentralofProfitHelp1Click(Sender: TObject);
     procedure ac_kirimExecute(Sender: TObject);
@@ -214,7 +210,7 @@ type
     procedure WmAfterShow(var Msg: TMessage); message WM_AFTER_SHOW;
     { Private declarations }
   public
-    turun,koneksi:boolean;
+    koneksi:boolean;
     function HakAkses(kunci:string): Boolean;
     { Public declarations }
   end;
@@ -265,6 +261,7 @@ begin
   f_login.sb.Panels[0].Text:=dm.kd_perusahaan;
   f_login.sb.Panels[1].Text:=sb.Panels[4].Text;
   f_login.ShowModal;
+  if not(dm.CanLogin) then Close;
 end;
 
 
@@ -727,34 +724,13 @@ end;
 dm.kd_pengguna := 'USER';
 sb.Panels[0].Text:= dm.kd_pengguna;
 sb.Panels[1].Text:= 'NAMA USER';
-dm.sop:= true;
+dm.CanLogin:= False;
 
 application.CreateForm(tF_login, f_login);
 f_login.sb.Panels[0].Text:=dm.kd_perusahaan;
 f_login.sb.Panels[1].Text:=sb.Panels[4].Text;
 f_login.ShowModal;
-end;
-
-procedure Tf_utama.time_outTimer(Sender: TObject);
-begin
-time_out.Enabled:= false;
-close;
-end;
-
-procedure Tf_utama.animasiTimer(Sender: TObject);
-begin
-if turun=true then
-begin
-AlphaBlendValue:= AlphaBlendValue-1;
-  if AlphaBlendValue = 0 then turun:= false;
-end else
-begin
-f_utama.AlphaBlendValue:= f_utama.AlphaBlendValue+1;
-  if AlphaBlendValue = 255 then
-  begin
-  turun:= true;
-  end;
-end;
+if not(dm.CanLogin) then Close;
 end;
 
 procedure Tf_utama.FormCreate(Sender: TObject);

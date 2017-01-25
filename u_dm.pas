@@ -55,7 +55,7 @@ type
     { Private declarations }
   public
     PPN: real;
-    sop, metu_kabeh: boolean;
+    CanLogin, metu_kabeh: boolean;
     waktu_sekarang: TDateTime;
     kd_perusahaan, kd_pengguna, WPath, AppPath, DocPath: string;
     function FRMemo(FastReport: TfrxReport; ObjectName: string): TfrxMemoView;
@@ -177,7 +177,7 @@ begin
     appINI.Free;
   end;
 
-  sop := true;
+  CanLogin := False;
   koneksikan;
 end;
 

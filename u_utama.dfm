@@ -1389,20 +1389,6 @@ object f_utama: Tf_utama
     Left = 104
     Top = 296
   end
-  object time_out: TTimer
-    Enabled = False
-    Interval = 500
-    OnTimer = time_outTimer
-    Left = 16
-    Top = 328
-  end
-  object animasi: TTimer
-    Enabled = False
-    Interval = 20
-    OnTimer = animasiTimer
-    Left = 48
-    Top = 328
-  end
   object pm1: TPopupMenu
     Left = 16
     Top = 120

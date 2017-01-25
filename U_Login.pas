@@ -201,7 +201,7 @@ begin
 end;
 
 f_utama.panel_auto_width;
-dm.sop:= false;
+dm.CanLogin:= True;
 close;
 end;
 end;
@@ -219,13 +219,6 @@ end;
 
 procedure TF_Login.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-f_utama.turun:= false;
-f_utama.animasi.Enabled:= f_utama.turun;
-f_utama.AlphaBlendValue:=255;
-
-if dm.sop=true then
-f_utama.time_out.Enabled:= true;
-
 action:= cafree;
 end;
 
@@ -242,9 +235,6 @@ end;
 
 procedure TF_Login.FormShow(Sender: TObject);
 begin
-f_utama.turun:= true;
-f_utama.animasi.Enabled:= f_utama.turun;
-
 Ed_Kd_User.Clear;
 Ed_N_User.Clear;
 
