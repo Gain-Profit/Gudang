@@ -271,10 +271,12 @@ end;
 procedure TF_barang.sb_2Click(Sender: TObject);
 var posisi:integer;
 begin
+Screen.Cursor:= crHourGlass;
 posisi:= tvdata.DataController.DataSource.DataSet.RecNo;
 tvdata.DataController.DataSource.DataSet.Close;
 tvdata.DataController.DataSource.DataSet.Open;
 tvdata.DataController.DataSource.DataSet.RecNo:= posisi;
+Screen.Cursor:= crDefault;
 end;
 
 procedure TF_barang.sb_1Click(Sender: TObject);
