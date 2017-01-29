@@ -49,9 +49,6 @@ type
     procedure t_dataCellDblClick(Sender: TcxCustomGridTableView;
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
       AShift: TShiftState; var AHandled: Boolean);
-    procedure t_dataEditKeyDown(Sender: TcxCustomGridTableView;
-      AItem: TcxCustomGridTableItem; AEdit: TcxCustomEdit; var Key: Word;
-      Shift: TShiftState);
     procedure t_dataKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FormCreate(Sender: TObject);
@@ -60,6 +57,7 @@ type
     procedure deleteHargaBarang(perusahaan:string);
   private
    procedure WmAfterShow(var Msg: TMessage); message WM_AFTER_SHOW;
+   procedure LihatData;
     { Private declarations }
   public
     { Public declarations }
@@ -149,23 +147,7 @@ procedure TF_Edit_Harga.t_dataCellDblClick(Sender: TcxCustomGridTableView;
   ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
   AShift: TShiftState; var AHandled: Boolean);
 begin
-  application.CreateForm(TF_ubah_harga,F_ubah_harga);
-//  f_ubah_harga.ed_macam.Text:= L_macam_harga.Text;
-//  f_ubah_harga.cb_macam.Text:=cb_macam.Text;
-  f_ubah_harga.ubah;
-  F_ubah_harga.ShowModal;
-end;
-
-procedure TF_Edit_Harga.t_dataEditKeyDown(Sender: TcxCustomGridTableView;
-  AItem: TcxCustomGridTableItem; AEdit: TcxCustomEdit; var Key: Word;
-  Shift: TShiftState);
-begin
-if key=vk_return then
-begin
-  application.CreateForm(TF_ubah_harga,F_ubah_harga);
-  f_ubah_harga.ubah;
-  F_ubah_harga.ShowModal;
-end;
+  LihatData;
 end;
 
 procedure TF_Edit_Harga.t_dataKeyDown(Sender: TObject; var Key: Word;
@@ -195,9 +177,7 @@ end;
 
 if key=vk_return then
 begin
-  application.CreateForm(TF_ubah_harga,F_ubah_harga);
-  f_ubah_harga.ubah;
-  F_ubah_harga.ShowModal;
+  LihatData;
 end;
 end;
 
@@ -226,6 +206,13 @@ end;
 procedure TF_Edit_Harga.sb_1Click(Sender: TObject);
 begin
 close;
+end;
+
+procedure TF_Edit_Harga.LihatData;
+begin
+  application.CreateForm(TF_ubah_harga,F_ubah_harga);
+  f_ubah_harga.ubah;
+  F_ubah_harga.ShowModal;
 end;
 
 end.

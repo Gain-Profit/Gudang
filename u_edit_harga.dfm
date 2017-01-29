@@ -102,7 +102,6 @@ object F_Edit_Harga: TF_Edit_Harga
         OnKeyDown = t_dataKeyDown
         NavigatorButtons.ConfirmDelete = False
         OnCellDblClick = t_dataCellDblClick
-        OnEditKeyDown = t_dataEditKeyDown
         DataController.DataSource = dm.ds_harga
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <
