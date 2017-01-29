@@ -168,10 +168,8 @@ end;
 end;
 
 procedure TF_ubah_harga.btn_simpanClick(Sender: TObject);
-var posisi,i:integer;
+var i:integer;
 begin
-posisi:= dm.Q_harga.RecNo;
-
 dm.db_conn.StartTransaction;
 try
 ubahHarga(dm.kd_perusahaan);
@@ -183,10 +181,9 @@ begin
   end;
 end;
 
-dm.Q_harga.Close;
-dm.Q_harga.Open;
-dm.Q_harga.RecNo:= posisi;
 dm.db_conn.Commit;
+dm.Q_harga.Refresh;
+
 showmessage('proses ubah harga berhasil');
 close;
 
