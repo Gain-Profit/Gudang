@@ -11,6 +11,15 @@ uses
   sCustomComboEdit;
 
 type
+  THarga = record
+    HPP: Extended;
+    Harga3: Extended;
+    Harga2: Extended;
+    Harga1: Extended;
+    Awal: TDateTime;
+    Ahir: TDateTime;
+  end;
+  
   TF_ubah_harga = class(TForm)
     sSkinProvider1: TsSkinProvider;
     Ed_Plu: TsEdit;
@@ -78,8 +87,9 @@ type
     procedure ed_discPExit(Sender: TObject);
     procedure Ed_harga1Exit(Sender: TObject);
     procedure de_ahirExit(Sender: TObject);
-    procedure ubahHarga(perusahaan:string);
   private
+    procedure ubahHarga(perusahaan:string);
+    procedure UbahJenis(Jenis: Byte);
     { Private declarations }
   public
     { Public declarations }
@@ -87,6 +97,7 @@ type
 
 var
   F_ubah_harga: TF_ubah_harga;
+  HargaAsli, HargaBaru: THarga;
 
 implementation
 
@@ -114,42 +125,25 @@ var sat1,sat2,sat3:string;
 begin
   cb_macam.ItemIndex:=cb_macam.Items.IndexOf(dm.Q_harga.FieldByName('kd_macam_harga').AsString);
 
-  if cb_macam.Text='HGTK' then
-  ed_macam.Text:='HARGA GROSIR' else
-  begin
-  ed_macam.Text:='HARGA ECERAN';
-  cb_macam.ItemIndex:= 0;
-  end;
-  
-ed_plu.Text:= dm.Q_harga.FieldByName('kd_barang').AsString;
-ed_DESKRIPSI.Text:= dm.Q_harga.FieldByName('n_barang').AsString;
-ed_pokok.Text:= dm.Q_harga.FieldByName('hpp_aktif').AsString;
-ed_marginP.Text:= dm.Q_harga.FieldByName('laba_P').AsString;
-ed_marginRp.Text:= dm.Q_harga.FieldByName('laba').AsString;
-ed_harga1.Text:= dm.Q_harga.FieldByName('harga_jual1').AsString;
-ed_harga2.Text:= dm.Q_harga.FieldByName('harga_jual2').AsString;
-ed_harga3.Text:= dm.Q_harga.FieldByName('harga_jual3').AsString;
-ed_qty1.Text:= dm.Q_harga.FieldByName('Qty1').AsString;
-ed_qty2.Text:= dm.Q_harga.FieldByName('Qty2').AsString;
-sat1:= dm.Q_harga.FieldByName('kd_sat1').AsString;
-fungsi.SQLExec(dm.Q_Exe,'select * from tb_satuan where kd_satuan="'+sat1+'"',true);
-ed_sat1.Text:= dm.Q_Exe.FieldByName('n_singkat').AsString;
-sat2:= dm.Q_harga.FieldByName('kd_sat2').AsString;
-fungsi.SQLExec(dm.Q_Exe,'select * from tb_satuan where kd_satuan="'+sat2+'"',true);
-ed_sat2.Text:= dm.Q_Exe.FieldByName('n_singkat').AsString;
-sat3:= dm.Q_harga.FieldByName('kd_sat3').AsString;
-fungsi.SQLExec(dm.Q_Exe,'select * from tb_satuan where kd_satuan="'+sat3+'"',true);
-ed_sat3.Text:= dm.Q_Exe.FieldByName('n_singkat').AsString;
+  if cb_macam.ItemIndex = -1 then
+    cb_macam.ItemIndex:= 0;
 
-de_awal.date:= dm.Q_harga.FieldByName('awal').AsDateTime;
-de_ahir.date:= dm.Q_harga.FieldByName('ahir').AsDateTime;
-ed_discRp.Text:= dm.Q_harga.FieldByName('diskon').AsString;
-ed_discP.Text:= dm.Q_harga.FieldByName('diskonP').AsString;
+  ed_plu.Text:= dm.Q_harga.FieldByName('kd_barang').AsString;
+  ed_DESKRIPSI.Text:= dm.Q_harga.FieldByName('n_barang').AsString;
 
-harga_baru;
+  ed_qty1.Text:= dm.Q_harga.FieldByName('Qty1').AsString;
+  ed_qty2.Text:= dm.Q_harga.FieldByName('Qty2').AsString;
+  sat1:= dm.Q_harga.FieldByName('kd_sat1').AsString;
+  fungsi.SQLExec(dm.Q_Exe,'select * from tb_satuan where kd_satuan="'+sat1+'"',true);
+  ed_sat1.Text:= dm.Q_Exe.FieldByName('n_singkat').AsString;
+  sat2:= dm.Q_harga.FieldByName('kd_sat2').AsString;
+  fungsi.SQLExec(dm.Q_Exe,'select * from tb_satuan where kd_satuan="'+sat2+'"',true);
+  ed_sat2.Text:= dm.Q_Exe.FieldByName('n_singkat').AsString;
+  sat3:= dm.Q_harga.FieldByName('kd_sat3').AsString;
+  fungsi.SQLExec(dm.Q_Exe,'select * from tb_satuan where kd_satuan="'+sat3+'"',true);
+  ed_sat3.Text:= dm.Q_Exe.FieldByName('n_singkat').AsString;
 
-sb.SimpleText:= 'Updated at: '+dm.Q_harga.FieldByName('update').AsString+' by: '+dm.Q_harga.FieldByName('kode_user').AsString+'';
-
+  UbahJenis(cb_macam.ItemIndex);
 end;
 
 
@@ -168,8 +162,23 @@ end;
 end;
 
 procedure TF_ubah_harga.btn_simpanClick(Sender: TObject);
-var i:integer;
+var
+  i: integer;
 begin
+  HargaBaru.HPP:= ed_pokok.Value;
+  HargaBaru.Harga3:= ed_harga3New.Value;
+  HargaBaru.Harga2:= ed_harga2New.Value;
+  HargaBaru.Harga1:= ed_harga1New.Value;
+  HargaBaru.Awal:= de_awal.Date;
+  HargaBaru.Ahir:= de_ahir.Date;
+
+  if (HargaAsli.HPP = HargaBaru.HPP) and (HargaAsli.Harga3 = HargaBaru.Harga3) and
+  (HargaAsli.Harga2 = HargaBaru.Harga2) and (HargaAsli.Harga1 = HargaBaru.Harga1) and
+  (HargaAsli.Awal = HargaBaru.Awal) and (HargaAsli.Ahir = HargaBaru.Ahir)  then
+  begin
+    Exit;
+  end;
+
 dm.db_conn.StartTransaction;
 try
 ubahHarga(dm.kd_perusahaan);
@@ -182,10 +191,7 @@ begin
 end;
 
 dm.db_conn.Commit;
-dm.Q_harga.Refresh;
-
 showmessage('proses ubah harga berhasil');
-close;
 
 except on E:exception do
 begin
@@ -197,10 +203,10 @@ end;
 
 procedure TF_ubah_harga.ubahHarga(perusahaan:string);
 begin
-fungsi.SQLExec(dm.q_temp,'select * from tb_barang_harga where kd_perusahaan="'+
+fungsi.SQLExec(dm.q_temp,'select COUNT(kd_barang) as jumlah from tb_barang_harga where kd_perusahaan="'+
 perusahaan+'" and kd_barang="'+ed_plu.Text+'" and kd_macam_harga="'+cb_macam.Text+'"',true);
 
-if dm.q_temp.Eof then
+if dm.q_temp.FieldByName('jumlah').AsInteger = 0 then
 begin
 fungsi.SQLExec(dm.Q_Exe,'insert into tb_barang_harga(kd_perusahaan,kd_macam_harga,kd_barang,laba,laba_P,harga_jual1, '+
 'harga_jual2,harga_jual3,kode_user,awal,ahir,`update`,diskon,diskonP) values ("'+
@@ -220,8 +226,12 @@ StringReplace(ed_discP.Text,',','.',[rfReplaceAll])+'" where kd_barang="'+ed_plu
 cb_macam.Text+'" and kd_perusahaan="'+perusahaan+'"',false);
 end;
 
-fungsi.SQLExec(dm.Q_Exe,'update tb_barang set hpp_aktif="'+ed_pokok.Text
-+'",`update` = "'+formatdatetime('yyyy-MM-dd', date())+'" where kd_barang="'+ed_plu.Text+'" and kd_perusahaan="'+perusahaan+'"',false);
+  if HargaAsli.HPP <> HargaBaru.HPP then
+  begin
+    fungsi.SQLExec(dm.Q_Exe,'update tb_barang set hpp_aktif="'+ed_pokok.Text
+    +'",`update` = "'+formatdatetime('yyyy-MM-dd', date())+'" where kd_barang="'+
+    ed_plu.Text+'" and kd_perusahaan="'+perusahaan+'"',false);
+  end;
 end;
 
 procedure TF_ubah_harga.FormKeyDown(Sender: TObject; var Key: Word;
@@ -232,28 +242,7 @@ end;
 
 procedure TF_ubah_harga.cb_macamChange(Sender: TObject);
 begin
-if cb_macam.Text='HETK' then
-  ed_macam.Text:='HARGA ECERAN' else
-if cb_macam.Text='HGTK' then
-  ed_macam.Text:='HARGA GROSIR' else
-  ed_macam.Text:='';
-
-
-fungsi.SQLExec(dm.Q_temp,'select hpp_aktif from tb_barang where kd_barang="'+
-ed_plu.Text+'" and kd_perusahaan="'+dm.kd_perusahaan+'"',true);
-ed_pokok.Text:= dm.Q_temp.fieldbyname('hpp_aktif').AsString;
-
-fungsi.SQLExec(dm.Q_temp,'select * from tb_barang_harga where kd_barang = "'+
-ed_plu.Text+'"and kd_macam_harga = "'+cb_macam.Text+'"',true);
-
-ed_marginP.Text:= dm.Q_temp.FieldByName('laba_P').AsString;
-ed_marginRp.Text:= dm.Q_temp.FieldByName('laba').AsString;
-ed_harga1.Text:= dm.Q_temp.FieldByName('harga_jual1').AsString;
-ed_harga2.Text:= dm.Q_temp.FieldByName('harga_jual2').AsString;
-ed_harga3.Text:= dm.Q_temp.FieldByName('harga_jual3').AsString;
-
-sb.SimpleText:= 'Updated at: '+dm.Q_temp.FieldByName('update').AsString+' by: '+dm.Q_temp.FieldByName('kode_user').AsString+''
-
+  UbahJenis(cb_macam.ItemIndex);
 end;
 
 procedure TF_ubah_harga.ed_harga3Exit(Sender: TObject);
@@ -336,6 +325,43 @@ procedure TF_ubah_harga.de_ahirExit(Sender: TObject);
 begin
 if de_ahir.Date < de_awal.Date then
    de_ahir.Date:= de_awal.Date;
+end;
+
+procedure TF_ubah_harga.UbahJenis(Jenis: Byte);
+begin
+  if Jenis = 1 then
+    ed_macam.Text:='HARGA GROSIR' else
+    ed_macam.Text:='HARGA ECERAN';
+
+  fungsi.SQLExec(dm.Q_temp,'select hpp_aktif from tb_barang where kd_barang="'+
+  ed_plu.Text+'" and kd_perusahaan="'+dm.kd_perusahaan+'"',true);
+  ed_pokok.Text:= dm.Q_temp.fieldbyname('hpp_aktif').AsString;
+
+  fungsi.SQLExec(dm.Q_temp,'select * from tb_barang_harga where kd_barang = "'+
+  ed_plu.Text+'"and kd_macam_harga = "'+cb_macam.Text+'"',true);
+
+  ed_marginP.Text:= dm.Q_temp.FieldByName('laba_P').AsString;
+  ed_marginRp.Text:= dm.Q_temp.FieldByName('laba').AsString;
+  ed_harga1.Text:= dm.Q_temp.FieldByName('harga_jual1').AsString;
+  ed_harga2.Text:= dm.Q_temp.FieldByName('harga_jual2').AsString;
+  ed_harga3.Text:= dm.Q_temp.FieldByName('harga_jual3').AsString;
+
+  de_awal.date:= dm.Q_temp.FieldByName('awal').AsDateTime;
+  de_ahir.date:= dm.Q_temp.FieldByName('ahir').AsDateTime;
+  ed_discRp.Text:= dm.Q_temp.FieldByName('diskon').AsString;
+  ed_discP.Text:= dm.Q_temp.FieldByName('diskonP').AsString;
+
+  sb.SimpleText:= 'Updated at: '+dm.Q_temp.FieldByName('update').AsString+' by: '+
+    dm.Q_temp.FieldByName('kode_user').AsString;
+
+  harga_baru;
+
+  HargaAsli.HPP:= ed_pokok.Value;
+  HargaAsli.Harga3:= ed_harga3New.Value;
+  HargaAsli.Harga2:= ed_harga2New.Value;
+  HargaAsli.Harga1:= ed_harga1New.Value;
+  HargaAsli.Awal:= de_awal.Date;
+  HargaAsli.Ahir:= de_ahir.Date;
 end;
 
 end.
