@@ -197,7 +197,7 @@ procedure TF_Edit_Harga.sb_2Click(Sender: TObject);
 var posisi:integer;
 begin
 posisi:= dm.Q_harga.RecNo;
-fungsi.SQLExecT(dm.Q_harga,'select * from vw_harga_barang where kd_perusahaan="'+
+fungsi.SQLExec(dm.Q_harga,'select * from vw_harga_barang where kd_perusahaan="'+
 dm.kd_perusahaan+'"',true);
 
 dm.Q_harga.RecNo:= posisi;
