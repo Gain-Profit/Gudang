@@ -549,6 +549,7 @@ object F_ubah_harga: TF_ubah_harga
     Font.Height = -13
     Font.Name = 'Rockwell'
     Font.Style = []
+    ModalResult = 1
     ParentFont = False
     TabOrder = 18
     OnClick = btn_simpanClick
