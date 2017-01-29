@@ -112,14 +112,7 @@ end;
 procedure TF_ubah_harga.ubah;
 var sat1,sat2,sat3:string;
 begin
-cb_macam.ItemIndex:=cb_macam.Items.IndexOf(dm.Q_harga.FieldByName('kd_macam_harga').AsString);
-
-{if cb_macam.Text='HETK' then
-  ed_macam.Text:='HARGA ECERAN' else
-if cb_macam.Text='HGTK' then
-  ed_macam.Text:='HARGA GROSIR' else
-  ed_macam.Text:='';
-}
+  cb_macam.ItemIndex:=cb_macam.Items.IndexOf(dm.Q_harga.FieldByName('kd_macam_harga').AsString);
 
   if cb_macam.Text='HGTK' then
   ed_macam.Text:='HARGA GROSIR' else
