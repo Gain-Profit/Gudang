@@ -77,7 +77,7 @@ type
     procedure ed_bar1Change(Sender: TObject);
     procedure ed_bar1Exit(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure FormShow(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
     procedure LoadData;
     procedure ed_pidExit(Sender: TObject);
     procedure SimpanDatabase(perusahaan:string;b_aktif:string;status_simpan:Boolean);
@@ -464,7 +464,7 @@ Action:=caFree;
 F_barang_det:=nil;
 end;
 
-procedure TF_barang_det.FormShow(Sender: TObject);
+procedure TF_barang_det.FormCreate(Sender: TObject);
 var
   pusat: Boolean;
 begin
