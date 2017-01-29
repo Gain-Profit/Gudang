@@ -196,11 +196,13 @@ end;
 procedure TF_Edit_Harga.sb_2Click(Sender: TObject);
 var posisi:integer;
 begin
+Screen.Cursor:= crHourGlass;
 posisi:= dm.Q_harga.RecNo;
 fungsi.SQLExec(dm.Q_harga,'select * from vw_harga_barang where kd_perusahaan="'+
 dm.kd_perusahaan+'"',true);
 
 dm.Q_harga.RecNo:= posisi;
+Screen.Cursor:= crDefault;
 end;
 
 procedure TF_Edit_Harga.sb_1Click(Sender: TObject);
