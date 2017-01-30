@@ -78,7 +78,7 @@ type
     procedure ed_bar1Exit(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
-    procedure LoadData;
+    procedure LoadData(PID: string);
     procedure ed_pidExit(Sender: TObject);
     procedure SimpanDatabase(perusahaan:string;b_aktif:string;status_simpan:Boolean);
   private
@@ -118,9 +118,7 @@ ed_pid.ReadOnly:= True;
 b_auto.Enabled:=false;
 
 ed_pid.Text:= dm.Q_barang.FieldByName('kd_barang').AsString;
-ed_nama.Text:= dm.Q_barang.FieldByName('n_barang').AsString;
-
-LoadData;
+LoadData(dm.Q_barang.FieldByName('kd_barang').AsString);
 
 Caption:= 'Inventory Barang - Edit Barang';
 end;
@@ -132,10 +130,9 @@ status_simpan:= True;
 b_auto.Enabled:=True;
 Caption:= 'Inventory Barang - Barang Baru';
 
+LoadData(dm.Q_barang.FieldByName('kd_barang').AsString);
 ed_pid.Clear;
 ed_nama.Clear;
-
-LoadData;
 
 cb_aktif.Checked:=true;
 end;
@@ -276,7 +273,7 @@ end;
 
 procedure TF_barang_det.b_saveClick(Sender: TObject);
 var b_aktif: string;
-posisi,i:integer;
+i:integer;
 begin
 if (ed_bar1.Color=clred) or (ed_bar2.Color=clred) or (ed_bar3.Color=clred) then
 begin
@@ -294,8 +291,6 @@ if ed_bar2.Color=clblue then ed_bar2.SetFocus;
 if ed_bar1.Color=clblue then ed_bar1.SetFocus;
 exit;
 end;
-
-posisi:= dm.Q_barang.RecNo;
 
 if ed_pid.Text='' then
 begin
@@ -328,10 +323,6 @@ begin
     cabang[i]+'","'+dm.kd_perusahaan+'","'+ed_pid.Text+'",date(now()))',False);
   end;
 end;
-
-dm.Q_barang.Close;
-dm.Q_barang.Open;
-dm.Q_barang.RecNo := posisi;
 
 status_simpan:= false;
 b_auto.Enabled:= False;
@@ -485,49 +476,54 @@ begin
   b_new.Enabled:=pusat;
 end;
 
-procedure TF_barang_det.LoadData;
+procedure TF_barang_det.LoadData(PID: String);
 begin
-kd_jenis :=dm.Q_barang.fieldbyname('kd_jenis').AsString;
-fungsi.SQLExec(dm.Q_temp,'select * from tb_jenis where kd_jenis="'+kd_jenis+'"',true);
-ed_jenis.Text:= dm.Q_temp.fieldbyname('n_jenis').AsString;
+  fungsi.SQLExec(dm.Q_Show, Format('select * from tb_barang where kd_perusahaan = "%s" '+
+  'AND kd_barang = "%s"', [dm.kd_perusahaan, PID]),true);
 
-kd_gol   :=dm.Q_barang.fieldbyname('kd_golbrg').AsString;
-fungsi.SQLExec(dm.Q_temp,'select * from tb_golongan where kd_golbrg="'+
-kd_gol+'" and kd_jenis="'+kd_jenis+'"',true);
-ed_golongan.Text:= dm.Q_temp.fieldbyname('n_golbrg').AsString;
+  ed_nama.Text:= dm.Q_Show.FieldByName('n_barang').AsString;
 
-kd_merk  :=dm.Q_barang.fieldbyname('kd_merk').AsString;
-fungsi.SQLExec(dm.Q_temp,'select * from tb_merk where kd_merk="'+kd_merk+'"',true);
-ed_merk.Text:= dm.Q_temp.fieldbyname('n_merk').AsString;
+  kd_jenis :=dm.Q_Show.fieldbyname('kd_jenis').AsString;
+  fungsi.SQLExec(dm.Q_temp,'select * from tb_jenis where kd_jenis="'+kd_jenis+'"',true);
+  ed_jenis.Text:= dm.Q_temp.fieldbyname('n_jenis').AsString;
 
-kd_tag   :=dm.Q_barang.fieldbyname('kd_kategori').AsString;
-fungsi.SQLExec(dm.Q_temp,'select * from tb_kategori where tag="'+kd_tag+'"',true);
-ed_kategori.Text:= dm.Q_temp.fieldbyname('n_kategori').AsString;
+  kd_gol   :=dm.Q_Show.fieldbyname('kd_golbrg').AsString;
+  fungsi.SQLExec(dm.Q_temp,'select * from tb_golongan where kd_golbrg="'+
+  kd_gol+'" and kd_jenis="'+kd_jenis+'"',true);
+  ed_golongan.Text:= dm.Q_temp.fieldbyname('n_golbrg').AsString;
 
-kd_sat[1]  :=dm.Q_barang.fieldbyname('kd_sat1').AsString;
-fungsi.SQLExec(dm.Q_temp,'select * from tb_satuan where kd_satuan="'+kd_sat[1]+'"',true);
-ed_sat1.Text:= dm.Q_temp.fieldbyname('n_satuan').AsString;
+  kd_merk  :=dm.Q_Show.fieldbyname('kd_merk').AsString;
+  fungsi.SQLExec(dm.Q_temp,'select * from tb_merk where kd_merk="'+kd_merk+'"',true);
+  ed_merk.Text:= dm.Q_temp.fieldbyname('n_merk').AsString;
 
-kd_sat[2]  :=dm.Q_barang.fieldbyname('kd_sat2').AsString;
-fungsi.SQLExec(dm.Q_temp,'select * from tb_satuan where kd_satuan="'+kd_sat[2]+'"',true);
-ed_sat2.Text:= dm.Q_temp.fieldbyname('n_satuan').AsString;
+  kd_tag   :=dm.Q_Show.fieldbyname('kd_kategori').AsString;
+  fungsi.SQLExec(dm.Q_temp,'select * from tb_kategori where tag="'+kd_tag+'"',true);
+  ed_kategori.Text:= dm.Q_temp.fieldbyname('n_kategori').AsString;
 
-kd_sat[3]  :=dm.Q_barang.fieldbyname('kd_sat3').AsString;
-fungsi.SQLExec(dm.Q_temp,'select * from tb_satuan where kd_satuan="'+kd_sat[3]+'"',true);
-ed_sat3.Text:= dm.Q_temp.fieldbyname('n_satuan').AsString;
+  kd_sat[1]  :=dm.Q_Show.fieldbyname('kd_sat1').AsString;
+  fungsi.SQLExec(dm.Q_temp,'select * from tb_satuan where kd_satuan="'+kd_sat[1]+'"',true);
+  ed_sat1.Text:= dm.Q_temp.fieldbyname('n_satuan').AsString;
 
-ed_qty1.Text:= dm.Q_barang.FieldByName('qty1').AsString;
-ed_qty2.Text:= dm.Q_barang.FieldByName('qty2').AsString;
-ed_bar1.Text:= dm.Q_barang.FieldByName('barcode1').AsString;
-ed_bar2.Text:= dm.Q_barang.FieldByName('barcode2').AsString;
-ed_bar3.Text:= dm.Q_barang.FieldByName('barcode3').AsString;
-ed_minstok.Text:= dm.Q_barang.FieldByName('minstok').AsString;
-ed_maxstok.Text:= dm.Q_barang.FieldByName('maxstok').AsString;
-ed_minor.Text:= dm.Q_barang.FieldByName('minor').AsString;
-ed_time.Text:= dm.Q_barang.FieldByName('leadtime').AsString;
+  kd_sat[2]  :=dm.Q_Show.fieldbyname('kd_sat2').AsString;
+  fungsi.SQLExec(dm.Q_temp,'select * from tb_satuan where kd_satuan="'+kd_sat[2]+'"',true);
+  ed_sat2.Text:= dm.Q_temp.fieldbyname('n_satuan').AsString;
 
-if dm.Q_barang.FieldByName('aktif').AsString='Y' then
-cb_aktif.Checked:=true else cb_aktif.Checked:=false;
+  kd_sat[3]  :=dm.Q_Show.fieldbyname('kd_sat3').AsString;
+  fungsi.SQLExec(dm.Q_temp,'select * from tb_satuan where kd_satuan="'+kd_sat[3]+'"',true);
+  ed_sat3.Text:= dm.Q_temp.fieldbyname('n_satuan').AsString;
+
+  ed_qty1.Text:= dm.Q_Show.FieldByName('qty1').AsString;
+  ed_qty2.Text:= dm.Q_Show.FieldByName('qty2').AsString;
+  ed_bar1.Text:= dm.Q_Show.FieldByName('barcode1').AsString;
+  ed_bar2.Text:= dm.Q_Show.FieldByName('barcode2').AsString;
+  ed_bar3.Text:= dm.Q_Show.FieldByName('barcode3').AsString;
+  ed_minstok.Text:= dm.Q_Show.FieldByName('minstok').AsString;
+  ed_maxstok.Text:= dm.Q_Show.FieldByName('maxstok').AsString;
+  ed_minor.Text:= dm.Q_Show.FieldByName('minor').AsString;
+  ed_time.Text:= dm.Q_Show.FieldByName('leadtime').AsString;
+
+  if dm.Q_Show.FieldByName('aktif').AsString='Y' then
+  cb_aktif.Checked:=true else cb_aktif.Checked:=false;
 end;
 
 procedure TF_barang_det.ed_pidExit(Sender: TObject);
