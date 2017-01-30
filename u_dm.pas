@@ -10,7 +10,6 @@ uses
 type
   Tdm = class(TDataModule)
     db_conn: TmySQLDatabase;
-    ds_show: TDataSource;
     Q_Exe: TmySQLQuery;
     Q_Show: TmySQLQuery;
     sm: TsSkinManager;

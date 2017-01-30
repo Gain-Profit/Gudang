@@ -21,11 +21,6 @@ object dm: Tdm
     Left = 16
     Top = 8
   end
-  object ds_show: TDataSource
-    DataSet = Q_Show
-    Left = 72
-    Top = 56
-  end
   object Q_Exe: TmySQLQuery
     Database = db_conn
     Left = 72
