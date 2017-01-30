@@ -430,7 +430,6 @@ object F_barang_property: TF_barang_property
   end
   object q_supp: TmySQLQuery
     Database = dm.db_conn
-    Filtered = True
     Left = 8
     Top = 112
   end
