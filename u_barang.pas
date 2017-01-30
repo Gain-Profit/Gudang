@@ -10,7 +10,7 @@ uses
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGridLevel,
   cxClasses, cxControls, cxGridCustomView, cxGrid, cxSpinEdit,
   cxGridCustomPopupMenu, sButton,sSkinProvider, cxStyles, cxTextEdit,
-  sSpeedButton, cxFilter, cxData, StdCtrls;
+  sSpeedButton, cxFilter, cxData, StdCtrls, mySQLDbTables;
 
   const
   WM_AFTER_SHOW = WM_USER + 300; // custom message
@@ -51,6 +51,8 @@ type
     tDataColumn3: TcxGridDBColumn;
     tDataColumn4: TcxGridDBColumn;
     tDataColumn5: TcxGridDBColumn;
+    ds_barang: TDataSource;
+    Q_barang: TmySQLQuery;
     procedure WMMDIACTIVATE(var msg : TWMMDIACTIVATE) ; message WM_MDIACTIVATE;
     procedure FormShow(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
@@ -109,7 +111,7 @@ end;
 
 procedure TF_barang.WmAfterShow(var Msg: TMessage);
 begin
-fungsi.SQLExecT(dm.Q_barang,'SELECT kd_perusahaan,kd_barang,n_barang,kd_jenis, '+
+fungsi.SQLExecT(Q_barang,'SELECT kd_perusahaan,kd_barang,n_barang,kd_jenis, '+
 'kd_kategori,kd_golbrg,kd_merk,kd_sat1,kd_sat2,kd_sat3,barcode3,minstok,maxstok, '+
 'leadtime,aktif,minor,barcode1,barcode2,Qty1,Qty2,N_golbrg,N_merk,N_Jenis, '+
 'n_kategori,stok_OH,hpp_aktif,hpp_ahir,tot_HPP '+
@@ -150,7 +152,7 @@ end;
 procedure TF_barang.db_barangDblClick(Sender: TObject);
 begin
 application.CreateForm(TF_barang_det,F_barang_det);
-f_barang_det.tampil;
+f_barang_det.tampil(Q_barang.FieldByName('kd_barang').AsString);
 f_barang_det.ShowModal;
 end;
 
@@ -173,7 +175,7 @@ if MessageDlg('Yakinkah, akan menghapus data ini?...', mtConfirmation, [mbYes, m
 begin
 dm.db_conn.StartTransaction;
 try
-HapusBarang(dm.Q_barang.fieldbyname('kd_perusahaan').AsString);
+HapusBarang(Q_barang.fieldbyname('kd_perusahaan').AsString);
 if F_utama.sb.Panels[8].Text='PUSAT' then
 begin
   for i:=0 to cabang.Count -1 do
@@ -196,19 +198,19 @@ end;
 procedure TF_barang.HapusBarang(perusahaan:string);
 begin
 fungsi.SQLExec(dm.Q_Exe,'delete from tb_barang where kd_perusahaan="'+perusahaan+'" and kd_barang="'+
-dm.Q_barang.fieldbyname('kd_barang').AsString+'" ',false);
+Q_barang.fieldbyname('kd_barang').AsString+'" ',false);
 
 fungsi.SQLExec(dm.Q_Exe,'delete from tb_mutasi where kd_perusahaan="'+perusahaan+'" and kd_barang="'+
-dm.Q_barang.fieldbyname('kd_barang').AsString+'" ',false);
+Q_barang.fieldbyname('kd_barang').AsString+'" ',false);
 
 fungsi.SQLExec(dm.Q_Exe,'delete from tb_barang_harga where kd_perusahaan="'+perusahaan+'" and kd_barang="'+
-dm.Q_barang.fieldbyname('kd_barang').AsString+'" ',false);
+Q_barang.fieldbyname('kd_barang').AsString+'" ',false);
 
 fungsi.SQLExec(dm.Q_Exe,'delete from tb_barang_supp where kd_perusahaan="'+perusahaan+'" and kd_barang="'+
-dm.Q_barang.fieldbyname('kd_barang').AsString+'" ',false);
+Q_barang.fieldbyname('kd_barang').AsString+'" ',false);
 
 fungsi.SQLExec(dm.Q_Exe,'delete from tb_planogram where kd_perusahaan="'+perusahaan+'" and kd_barang="'+
-dm.Q_barang.fieldbyname('kd_barang').AsString+'" ',false);
+Q_barang.fieldbyname('kd_barang').AsString+'" ',false);
 end;
   
 procedure TF_barang.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -233,7 +235,7 @@ if key=vk_down then grid.SetFocus;
 if key=vk_return then
 begin
 PeekMessage(Mgs, 0, WM_CHAR, WM_CHAR, PM_REMOVE );
-fungsi.SQLExec(dm.Q_barang,'SELECT kd_perusahaan,kd_barang,n_barang,kd_jenis, '+
+fungsi.SQLExec(Q_barang,'SELECT kd_perusahaan,kd_barang,n_barang,kd_jenis, '+
 'kd_kategori,kd_golbrg,kd_merk,kd_sat1,kd_sat2,kd_sat3,barcode3,minstok,maxstok, '+
 'leadtime,aktif,minor,barcode1,barcode2,Qty1,Qty2,N_golbrg,N_merk,N_Jenis,n_kategori,stok_OH '+
 'from vw_daftar_barang where (kd_barang like "%'+
@@ -264,7 +266,7 @@ end;
 procedure TF_barang.b_duplikatClick(Sender: TObject);
 begin
 application.CreateForm(TF_barang_det,F_barang_det);
-f_barang_det.duplikat;
+f_barang_det.duplikat(Q_barang.FieldByName('kd_barang').AsString);
 f_barang_det.ShowModal;
 end;
 
@@ -287,7 +289,8 @@ end;
 procedure TF_barang.B_propertyClick(Sender: TObject);
 begin
 application.CreateForm(TF_barang_property,F_barang_property);
-F_barang_property.tampil;
+F_barang_property.tampil(Q_barang.FieldByName('kd_barang').AsString,
+  Q_barang.FieldByName('n_barang').AsString);
 F_barang_property.ShowModal;
 end;
 

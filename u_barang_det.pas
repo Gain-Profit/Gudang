@@ -61,9 +61,6 @@ type
     b_auto: TsButton;
     sSkinProvider1: TsSkinProvider;
     cb_aktif: TsCheckBox;
-    procedure baru;
-    procedure tampil;
-    procedure duplikat;
     procedure b_newClick(Sender: TObject);
     procedure b_autoClick(Sender: TObject);
     procedure sb_sat1Click(Sender: TObject);
@@ -78,14 +75,17 @@ type
     procedure ed_bar1Exit(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
-    procedure LoadData(PID: string);
     procedure ed_pidExit(Sender: TObject);
-    procedure SimpanDatabase(perusahaan:string;b_aktif:string;status_simpan:Boolean);
   private
     kd_jenis,kd_merk,kd_gol,kd_tag: string;
     kd_sat: array[1..3] of string;
     status_simpan:boolean;
+    procedure LoadData(PID: string);
+    procedure SimpanDatabase(perusahaan:string;b_aktif:string;status_simpan:Boolean);
   public
+    procedure baru;
+    procedure tampil(PID: string);
+    procedure duplikat(PID: string);
   end;
 
 var
@@ -110,27 +110,27 @@ status_simpan:= true;
 Caption:= 'Inventory Barang - Barang Baru';
 end;
 
-procedure TF_barang_det.tampil;
+procedure TF_barang_det.tampil(PID: string);
 begin
 status_simpan:= false;
 
 ed_pid.ReadOnly:= True;
 b_auto.Enabled:=false;
 
-ed_pid.Text:= dm.Q_barang.FieldByName('kd_barang').AsString;
-LoadData(dm.Q_barang.FieldByName('kd_barang').AsString);
+ed_pid.Text:= PID;
+LoadData(PID);
 
 Caption:= 'Inventory Barang - Edit Barang';
 end;
 
-procedure TF_barang_det.duplikat;
+procedure TF_barang_det.duplikat(PID: string);
 begin
 status_simpan:= True;
 
 b_auto.Enabled:=True;
 Caption:= 'Inventory Barang - Barang Baru';
 
-LoadData(dm.Q_barang.FieldByName('kd_barang').AsString);
+LoadData(PID);
 ed_pid.Clear;
 ed_nama.Clear;
 

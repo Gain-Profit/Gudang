@@ -20758,16 +20758,6 @@ object dm: Tdm
     Left = 560
     Top = 56
   end
-  object ds_barang: TDataSource
-    DataSet = Q_barang
-    Left = 72
-    Top = 136
-  end
-  object Q_barang: TmySQLQuery
-    Database = db_conn
-    Left = 8
-    Top = 136
-  end
   object ds_list_return_jual: TDataSource
     DataSet = Q_list_return_jual
     Left = 224

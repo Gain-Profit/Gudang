@@ -66,17 +66,17 @@ type
     panelBawah: TsPanel;
     btnMutasiHrg: TsButton;
     btnClose: TsButton;
-    procedure tampil;
     procedure cb_periodeChange(Sender: TObject);
     procedure t_data_planoKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure refresh_mutasi;
     procedure btnCloseClick(Sender: TObject);
     procedure btnMutasiHrgClick(Sender: TObject);
   private
-    pid, periode,bulan,tahun : string;
+    FPid, FDeskripsi, periode,bulan,tahun : string;
+    procedure refresh_mutasi;
     { Private declarations }
   public
+    procedure tampil(APID, ADeskripsi: string);
     { Public declarations }
   end;
 
@@ -90,7 +90,7 @@ uses u_dm, u_cari;
 
 {$R *.dfm}
 
-procedure TF_barang_property.tampil;
+procedure TF_barang_property.tampil(APID, ADeskripsi: string);
 var x: Integer;
 begin
 fungsi.SQLExec(Q_temp,'SELECT LEFT(tb_mutasi_bulan.tgl,7) as periode, '+
@@ -105,16 +105,17 @@ for x:= 1 to Q_temp.RecordCount do
 
 cb_periode.ItemIndex:= cb_periode.Items.Count-1;
 
-pid:= dm.Q_barang.FieldByName('kd_barang').AsString;
-p_barang.Caption:= pid + ' - '+dm.Q_barang.FieldByName('n_barang').AsString;
+FPid:= APID;
+FDeskripsi:= ADeskripsi;
+p_barang.Caption:= FPid + ' - '+ FDeskripsi;
 
 refresh_mutasi;
 
 fungsi.SQLExecT(Q_plano,'select * from tb_planogram where kd_barang="'+
-pid+'" and kd_perusahaan="'+dm.kd_perusahaan+'"',true);
+FPid+'" and kd_perusahaan="'+dm.kd_perusahaan+'"',true);
 
 fungsi.SQLExecT(q_supp,'select * from vw_supplier where kd_barang="'+
-pid+'" and kd_perusahaan="'+dm.kd_perusahaan+'"',true);
+FPid + '" and kd_perusahaan="'+dm.kd_perusahaan+'"',true);
 
 end;
 procedure TF_barang_property.refresh_mutasi;
@@ -124,7 +125,7 @@ begin
   tahun:= Copy(periode,1,4);
 
     fungsi.SQLExecT(Q_mutasi,'select * from tb_mutasi WHERE bulan="'+
-    bulan+'" and tahun ="'+tahun+'" and kd_barang="'+pid+'" and kd_perusahaan="'+dm.kd_perusahaan+'"',true);
+    bulan+'" and tahun ="'+tahun+'" and kd_barang="'+FPid+'" and kd_perusahaan="'+dm.kd_perusahaan+'"',true);
 end;
 
 procedure TF_barang_property.cb_periodeChange(Sender: TObject);
@@ -142,12 +143,12 @@ begin
 dm.db_conn.StartTransaction;
 try
 fungsi.SQLExec(dm.Q_Exe,'delete from tb_planogram where kd_perusahaan="'+dm.kd_perusahaan+'" and kd_barang="'+
-pid+'" and no_rak="'+Q_plano.fieldbyname('no_rak').AsString+'" and no_shelving="'+
+FPid +'" and no_rak="'+Q_plano.fieldbyname('no_rak').AsString+'" and no_shelving="'+
 Q_plano.fieldbyname('no_shelving').AsString+'" and no_urut="'+
 Q_plano.fieldbyname('no_urut').AsString+'"',false);
 
 fungsi.SQLExec(Q_plano,'select * from tb_planogram where kd_barang="'+
-pid+'" and kd_perusahaan="'+dm.kd_perusahaan+'"',true);
+FPid+'" and kd_perusahaan="'+dm.kd_perusahaan+'"',true);
 
 dm.db_conn.Commit;
 except on e:exception do begin
@@ -169,11 +170,11 @@ end;
 procedure TF_barang_property.btnMutasiHrgClick(Sender: TObject);
 begin
 fungsi.SQLExec(dm.Q_laporan,'select * from tb_mutasi WHERE bulan="'+
-    bulan+'" and tahun ="'+tahun+'" and kd_barang="'+pid+'" and kd_perusahaan="'+dm.kd_perusahaan+'"',true);
+    bulan+'" and tahun ="'+tahun+'" and kd_barang="'+FPid+'" and kd_perusahaan="'+dm.kd_perusahaan+'"',true);
 dm.laporan.LoadFromFile(dm.WPath+ 'laporan\gp_mutasi_brg.fr3');
 dm.FRMemo(dm.laporan, 'mmPerusahaan').Text := 'LAPORAN MUTASI '+dm.kd_perusahaan;
 dm.FRMemo(dm.laporan, 'mmPeriode').Text := 'Periode: '+ tahun +'-'+ bulan;
-dm.FRMemo(dm.laporan, 'mmBarang').Text := dm.Q_barang.FieldByName('n_barang').AsString;
+dm.FRMemo(dm.laporan, 'mmBarang').Text := FDeskripsi;
 dm.laporan.ShowReport;
 end;
 

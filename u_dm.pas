@@ -42,8 +42,6 @@ type
     ds_child_sales: TDataSource;
     Q_child_sales: TmySQLQuery;
     frxmlxprt1: TfrxXMLExport;
-    ds_barang: TDataSource;
-    Q_barang: TmySQLQuery;
     ds_list_return_jual: TDataSource;
     Q_list_return_jual: TmySQLQuery;
     procedure DataModuleCreate(Sender: TObject);

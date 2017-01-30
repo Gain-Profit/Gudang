@@ -43,7 +43,7 @@ object F_barang: TF_barang
         OnKeyDown = TvDataKeyDown
         NavigatorButtons.ConfirmDelete = False
         OnCellDblClick = TvDataCellDblClick
-        DataController.DataSource = dm.ds_barang
+        DataController.DataSource = ds_barang
         DataController.Summary.DefaultGroupSummaryItems = <
           item
             Kind = skCount
@@ -358,6 +358,16 @@ object F_barang: TF_barang
     SkinData.SkinSection = 'FORM'
     TitleButtons = <>
     Left = 8
+    Top = 40
+  end
+  object ds_barang: TDataSource
+    DataSet = Q_barang
+    Left = 80
+    Top = 40
+  end
+  object Q_barang: TmySQLQuery
+    Database = dm.db_conn
+    Left = 48
     Top = 40
   end
 end
