@@ -57,7 +57,6 @@ type
     procedure FormShow(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure db_barangDblClick(Sender: TObject);
     procedure b_editClick(Sender: TObject);
     procedure B_tambahClick(Sender: TObject);
     procedure b_hapusClick(Sender: TObject);
@@ -149,16 +148,11 @@ begin
 if key=vk_f2 then ed_cari.SetFocus;
 end;
 
-procedure TF_barang.db_barangDblClick(Sender: TObject);
+procedure TF_barang.b_editClick(Sender: TObject);
 begin
 application.CreateForm(TF_barang_det,F_barang_det);
 f_barang_det.tampil(Q_barang.FieldByName('kd_barang').AsString);
 f_barang_det.ShowModal;
-end;
-
-procedure TF_barang.b_editClick(Sender: TObject);
-begin
-db_barangDblClick(Sender);
 end;
 
 procedure TF_barang.B_tambahClick(Sender: TObject);
@@ -252,7 +246,7 @@ procedure TF_barang.TvDataKeyDown(Sender: TObject; var Key: Word;
 begin
 if key=vk_return then
 begin
-db_barangDblClick(Sender);
+b_editClick(Sender);
 end;
 
 if Key= vk_delete then b_hapusClick(Sender);
