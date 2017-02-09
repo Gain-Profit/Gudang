@@ -11,8 +11,10 @@ uses
   cxGridLevel, cxClasses, cxControls, cxGridCustomView, cxGrid, 
   sCurrEdit, 
   cxCustomData, sCurrencyEdit, sSpeedButton, ExtCtrls,
-  sPanel, DBCtrls, ComCtrls, sPageControl, mySQLDbTables, sSplitter,
-  cxFilter, cxData, Mask, sMaskEdit, sCustomComboEdit, StdCtrls;
+  sPanel, DBCtrls, ComCtrls, sPageControl, sSplitter,
+  
+  MyAccess, cxFilter, cxData, MemDS, DBAccess, Mask, sMaskEdit,
+  sCustomComboEdit, StdCtrls;
 
 type
   Tf_planogram = class(TForm)
@@ -57,7 +59,7 @@ type
     edBarang: TsEdit;
     SbBarang: TsSpeedButton;
     ds_plano: TDataSource;
-    Q_plano: TmySQLQuery;
+    Q_plano: TMyQuery;
     tPlanoBarangColumn1: TcxGridDBColumn;
     tPlanoBarangColumn2: TcxGridDBColumn;
     t_data_planoColumn1: TcxGridDBColumn;
@@ -82,18 +84,18 @@ type
     cxGridDBColumn23: TcxGridDBColumn;
     cxGridDBColumn24: TcxGridDBColumn;
     LvPlanoD: TcxGridLevel;
-    Q_barangD: TmySQLQuery;
+    Q_barangD: TMyQuery;
     ds_BarangD: TDataSource;
-    Q_PlanoD: TmySQLQuery;
+    Q_PlanoD: TMyQuery;
     ds_PlanoD: TDataSource;
     spltrD1: TsSplitter;
     pPlanoD: TsPanel;
     btnRefresh: TsButton;
     btnHapus: TsButton;
     ds_planoRak: TDataSource;
-    Q_planoRak: TmySQLQuery;
+    Q_planoRak: TMyQuery;
     procedure plano_double;
-    procedure hapusPlanogram(aQuery:TmySQLQuery);
+    procedure hapusPlanogram(aQuery:TMyQuery);
     procedure segarkan;
     procedure se_rakChange(Sender: TObject);
     procedure se_shelvingChange(Sender: TObject);
@@ -556,7 +558,7 @@ if (Shift=[ssctrl]) and (Key= vk_delete) then
   end;
 end;
 
-procedure Tf_planogram.hapusPlanogram(aQuery:TmySQLQuery);
+procedure Tf_planogram.hapusPlanogram(aQuery:TMyQuery);
 begin
 if MessageDlg('Yakinkah, akan menghapus data ini?...', mtConfirmation, [mbYes, mbNo], 0)=mrYes then
 begin

@@ -715,17 +715,15 @@ object f_planogram: Tf_planogram
     Left = 56
     Top = 56
   end
-  object Q_plano: TmySQLQuery
-    Database = dm.db_conn
-    RequestLive = True
+  object Q_plano: TMyQuery
+    Connection = dm.db_conn
     SQL.Strings = (
       '')
     Left = 16
     Top = 56
   end
-  object Q_barangD: TmySQLQuery
-    Database = dm.db_conn
-    RequestLive = True
+  object Q_barangD: TMyQuery
+    Connection = dm.db_conn
     SQL.Strings = (
       'Select * from vw_planogram_double')
     Left = 736
@@ -736,9 +734,7 @@ object f_planogram: Tf_planogram
     Left = 776
     Top = 56
   end
-  object Q_PlanoD: TmySQLQuery
-    Database = dm.db_conn
-    RequestLive = True
+  object Q_PlanoD: TMyQuery
     SQL.Strings = (
       'select * from tb_planogram')
     Left = 736
@@ -754,9 +750,8 @@ object f_planogram: Tf_planogram
     Left = 64
     Top = 216
   end
-  object Q_planoRak: TmySQLQuery
-    Database = dm.db_conn
-    RequestLive = True
+  object Q_planoRak: TMyQuery
+    Connection = dm.db_conn
     SQL.Strings = (
       '')
     Left = 24

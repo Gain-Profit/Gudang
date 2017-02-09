@@ -11,7 +11,7 @@ uses
   sGauge, sTabControl, cxStyles, cxGraphics, 
   cxDataStorage, cxEdit, cxDBData, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxControls, cxGridCustomView, 
-  cxClasses, cxGrid, mySQLDbTables;
+  cxClasses, cxGrid, MemDS, DBAccess, MyAccess;
 
   const
   WM_AFTER_SHOW = WM_USER + 300; // custom message
@@ -139,7 +139,7 @@ type
     N3: TMenuItem;
     N5: TMenuItem;
     ac_realcard: TAction;
-    Q_time: TmySQLQuery;
+    Q_time: TMyQuery;
     SbubahPassword: TsSpeedButton;
     mniN6: TMenuItem;
     mniCekUpdateProgram1: TMenuItem;
@@ -537,7 +537,7 @@ begin
 
   dm.metu_kabeh:=False;
 
-  sb.Panels[2].Text:= dm.db_conn.DatabaseName +'@'+ dm.db_conn.Host;
+  sb.Panels[2].Text:= dm.db_conn.Database +'@'+ dm.db_conn.Server;
   sb.Panels[3].Text:=dm.kd_perusahaan;
   fungsi.SQLExec(dm.Q_Show,'select * from tb_company where kd_perusahaan = "'+dm.kd_perusahaan+'"',true);
   sb.Panels[4].Text:=dm.Q_Show.fieldbyname('n_perusahaan').AsString;
@@ -1075,7 +1075,7 @@ begin
   versiDB           := dm.Q_Show.FieldByName('versi_terbaru').AsString;
   URLDownload       := dm.Q_Show.FieldByName('URLdownload').AsString;
   fileName          := Copy(URLDownload,LastDelimiter('/',URLDownload) + 1,Length(URLDownload));
-  UrlDownloadLocal  := 'http://'+dm.db_conn.Host + '/GainProfit/' + fileName;
+  UrlDownloadLocal  := 'http://'+dm.db_conn.Server + '/GainProfit/' + fileName;
 
   if versiAPP < versiDB then
   begin

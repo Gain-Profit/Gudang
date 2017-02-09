@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ComCtrls, mySQLDbTables,db,sSkinProvider, ExtCtrls,
+  Dialogs, StdCtrls, ComCtrls, db,sSkinProvider, ExtCtrls,
   Buttons, UFungsi;
 
 type
@@ -62,12 +62,6 @@ var
 begin
   GetTempPath(255, @TempDir);
   Result := StrPas(TempDir);
-end;
-
-function GetBlobStream(dataset : TmySQLQuery; kolom_image:string):string;
-begin
- TBlobField(dataset.FieldByName(kolom_image)).SaveToFile(tempdir + 'login.jpg');
- result:= tempdir+'login.jpg';
 end;
 
 procedure TF_Login.Ed_Kd_UserKeyDown(Sender: TObject; var Key: Word;
@@ -218,7 +212,7 @@ Ed_N_User.Clear;
 
 Ed_Kd_User.setfocus;
 
-sb.Panels[2].Text:=dm.db_conn.DatabaseName+'@'+dm.db_conn.Host;
+sb.Panels[2].Text:=dm.db_conn.Database+'@'+dm.db_conn.Server;
 end;
 
 procedure TF_Login.Ed_PasswordKeyDown(Sender: TObject; var Key: Word;

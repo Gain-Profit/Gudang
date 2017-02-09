@@ -10,7 +10,8 @@ uses
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGridLevel,
   cxClasses, cxControls, cxGridCustomView, cxGrid, cxSpinEdit,
   cxGridCustomPopupMenu, sButton,sSkinProvider, cxStyles, cxTextEdit,
-  sSpeedButton, cxFilter, cxData, StdCtrls, mySQLDbTables;
+  sSpeedButton, 
+  MyAccess, cxFilter, cxData, MemDS, DBAccess, StdCtrls;
 
   const
   WM_AFTER_SHOW = WM_USER + 300; // custom message
@@ -52,7 +53,7 @@ type
     tDataColumn4: TcxGridDBColumn;
     tDataColumn5: TcxGridDBColumn;
     ds_barang: TDataSource;
-    Q_barang: TmySQLQuery;
+    Q_barang: TMyQuery;
     procedure WMMDIACTIVATE(var msg : TWMMDIACTIVATE) ; message WM_MDIACTIVATE;
     procedure FormShow(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;

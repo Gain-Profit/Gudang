@@ -12,9 +12,10 @@ uses
   Buttons, sSpeedButton, cxStyles, cxGraphics, 
   cxDataStorage, cxEdit, cxDBData, cxCurrencyEdit, cxGridLevel,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
-  cxControls, cxGridCustomView, cxGrid, mySQLDbTables, sComboBox,
-  cxCustomData, cxFilter, cxData, AbBase, AbZBrows, StdCtrls, sEdit, Grids,
-  Mask, sMaskEdit, sCustomComboEdit;
+  cxControls, cxGridCustomView, cxGrid, sComboBox,
+  
+  MyAccess, cxCustomData, cxFilter, cxData, MemDS, DBAccess, AbBase,
+  AbZBrows, StdCtrls, sEdit, Grids, Mask, sMaskEdit, sCustomComboEdit;
 
 type
   TF_kirim_data = class(TForm)
@@ -53,7 +54,7 @@ type
     grid: TcxGrid;
     grid_data: TcxGridDBTableView;
     l_data: TcxGridLevel;
-    Q_export: TmySQLQuery;
+    Q_export: TMyQuery;
     dsExport: TDataSource;
     t_datadata: TcxGridDBColumn;
     t_dataket: TcxGridDBColumn;

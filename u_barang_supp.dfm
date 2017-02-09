@@ -206,8 +206,8 @@ object f_barang_supp: Tf_barang_supp
     TitleButtons = <>
     Top = 120
   end
-  object Q_supp: TmySQLQuery
-    Database = dm.db_conn
+  object Q_supp: TMyQuery
+    Connection = dm.db_conn
     Filtered = True
     Left = 64
     Top = 112

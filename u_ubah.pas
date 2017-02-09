@@ -7,8 +7,7 @@ uses
   Dialogs, sSkinProvider, sEdit, sLabel, 
   sCurrEdit, sCurrencyEdit, ComCtrls, sStatusBar,
   ExtCtrls, DBCtrls,UFungsi, Buttons, sBitBtn, sComboBox, sTooledit,
-  cxControls, sGroupBox, sButton,DateUtils, StdCtrls, Mask, sMaskEdit,
-  sCustomComboEdit;
+  cxControls, sGroupBox, StdCtrls, Mask, sMaskEdit, sCustomComboEdit;
 
 type
   THarga = record

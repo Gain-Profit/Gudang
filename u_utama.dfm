@@ -1411,8 +1411,8 @@ object f_utama: Tf_utama
       OnClick = utupSemuaKecualiini1Click
     end
   end
-  object Q_time: TmySQLQuery
-    Database = dm.db_conn
+  object Q_time: TMyQuery
+    Connection = dm.db_conn
     Left = 56
     Top = 192
   end

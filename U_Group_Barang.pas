@@ -8,7 +8,8 @@ uses
   cxDataStorage, cxEdit, DB, cxDBData, cxCurrencyEdit, cxGridLevel,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
   cxControls, cxGridCustomView, cxGrid, Buttons, sSpeedButton, ExtCtrls, sPanel,
-  sButton, mySQLDbTables, cxCustomData, cxFilter, cxData, StdCtrls;
+  sButton, 
+  MyAccess, cxCustomData, cxFilter, cxData, MemDS, DBAccess, StdCtrls;
 
 type
   TFGroupBarang = class(TForm)
@@ -27,7 +28,7 @@ type
     btnHapus: TsButton;
     tvJumlahItem: TcxGridDBColumn;
     tvJumlahQty: TcxGridDBColumn;
-    QGroupBarang: TmySQLQuery;
+    QGroupBarang: TMyQuery;
     dsGroupBarang: TDataSource;
     tvDiskon: TcxGridDBColumn;
     tvJenis: TcxGridDBColumn;

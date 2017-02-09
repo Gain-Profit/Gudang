@@ -423,13 +423,13 @@ object F_barang_property: TF_barang_property
     Left = 376
     Top = 56
   end
-  object Q_mutasi: TmySQLQuery
-    Database = dm.db_conn
+  object Q_mutasi: TMyQuery
+    Connection = dm.db_conn
     Left = 312
     Top = 56
   end
-  object q_supp: TmySQLQuery
-    Database = dm.db_conn
+  object q_supp: TMyQuery
+    Connection = dm.db_conn
     Left = 8
     Top = 112
   end
@@ -443,16 +443,15 @@ object F_barang_property: TF_barang_property
     Left = 72
     Top = 168
   end
-  object Q_plano: TmySQLQuery
-    Database = dm.db_conn
-    RequestLive = True
+  object Q_plano: TMyQuery
+    Connection = dm.db_conn
     SQL.Strings = (
       '')
     Left = 8
     Top = 168
   end
-  object Q_temp: TmySQLQuery
-    Database = dm.db_conn
+  object Q_temp: TMyQuery
+    Connection = dm.db_conn
     Left = 8
     Top = 72
   end

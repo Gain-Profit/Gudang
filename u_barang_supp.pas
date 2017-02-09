@@ -9,8 +9,8 @@ uses
   cxDataStorage, cxEdit, DB, cxDBData, cxGridLevel,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
   cxControls, cxGridCustomView, cxGrid, sSkinProvider, cxStyles, 
-  ExtCtrls, sPanel, sButton, mySQLDbTables, cxCustomData, cxFilter, cxData,
-  StdCtrls;
+  ExtCtrls, sPanel, sButton, 
+  DBAccess, MyAccess, cxCustomData, cxFilter, cxData, MemDS, StdCtrls;
 
 type
   Tf_barang_supp = class(TForm)
@@ -33,7 +33,7 @@ type
     l_supp: TsLabel;
     ed_kode: TsEdit;
     btnPrint: TsButton;
-    Q_supp: TmySQLQuery;
+    Q_supp: TMyQuery;
     ds_supp: TDataSource;
     procedure sb_suppClick(Sender: TObject);
     procedure ed_suppChange(Sender: TObject);

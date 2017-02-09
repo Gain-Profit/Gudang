@@ -184,8 +184,8 @@ object FGroupBarang: TFGroupBarang
     Left = 16
     Top = 24
   end
-  object QGroupBarang: TmySQLQuery
-    Database = dm.db_conn
+  object QGroupBarang: TMyQuery
+    Connection = dm.db_conn
     Left = 56
     Top = 24
   end

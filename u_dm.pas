@@ -3,47 +3,47 @@ unit u_dm;
 interface
 
 uses
-  SysUtils, Classes, mySQLDbTables, DB, sSkinManager, dialogs, forms, ImgList,
+  SysUtils, Classes, DB, sSkinManager, dialogs, forms, ImgList,
   Controls, acAlphaImageList, frxClass, frxDBSet, inifiles, frxDesgn, frxBarcode,
-  cxStyles, Windows, frxExportXML, SHFolder;
+  cxStyles, Windows, frxExportXML, SHFolder, DBAccess, MyAccess, MemDS;
 
 type
   Tdm = class(TDataModule)
-    db_conn: TmySQLDatabase;
-    Q_Exe: TmySQLQuery;
-    Q_Show: TmySQLQuery;
+    db_conn: TMyConnection;
+    Q_Exe: TMyQuery;
+    Q_Show: TMyQuery;
     sm: TsSkinManager;
-    Q_temp: TmySQLQuery;
+    Q_temp: TMyQuery;
     gambar: TsAlphaImageList;
-    Q_harga: TmySQLQuery;
+    Q_harga: TMyQuery;
     ds_harga: TDataSource;
     Laporan: TfrxReport;
-    q_list_purchase: TmySQLQuery;
+    q_list_purchase: TMyQuery;
     ds_list_purchase: TDataSource;
-    Q_list_receipt: TmySQLQuery;
+    Q_list_receipt: TMyQuery;
     ds_list_receipt: TDataSource;
-    q_list_return: TmySQLQuery;
+    q_list_return: TMyQuery;
     ds_list_return: TDataSource;
-    Q_laporan: TmySQLQuery;
+    Q_laporan: TMyQuery;
     db_Laporan: TfrxDBDataset;
     image: TsAlphaImageList;
     ds_list_kirim: TDataSource;
-    Q_list_kirim: TmySQLQuery;
+    Q_list_kirim: TMyQuery;
     ds_list_sales: TDataSource;
-    Q_list_sales: TmySQLQuery;
+    Q_list_sales: TMyQuery;
     ds_list_so: TDataSource;
-    Q_List_SO: TmySQLQuery;
+    Q_List_SO: TMyQuery;
     ds_list_return_kirim: TDataSource;
-    Q_list_return_kirim: TmySQLQuery;
+    Q_list_return_kirim: TMyQuery;
     frxdsgnr1: TfrxDesigner;
     frxbrcdbjct1: TfrxBarCodeObject;
     stl_focus: TcxStyleRepository;
     cxstyl1: TcxStyle;
     ds_child_sales: TDataSource;
-    Q_child_sales: TmySQLQuery;
+    Q_child_sales: TMyQuery;
     frxmlxprt1: TfrxXMLExport;
     ds_list_return_jual: TDataSource;
-    Q_list_return_jual: TmySQLQuery;
+    Q_list_return_jual: TMyQuery;
     procedure DataModuleCreate(Sender: TObject);
     procedure smAfterChange(Sender: TObject);
     procedure koneksikan;
@@ -134,13 +134,13 @@ begin
     readln(X, nama);
     readln(X, kata);
     closefile(X);
-    db_conn.Host := krupuk(pusat, 6);
-    db_conn.DatabaseName := krupuk(data, 6);
+    db_conn.Server := krupuk(pusat, 6);
+    db_conn.Database := krupuk(data, 6);
     jalur1 := krupuk(jalur2, 6);
     db_conn.Port := strtoint(jalur1);
-    db_conn.UserName := krupuk(nama, 6);
-    db_conn.UserPassword := krupuk(kata, 6);
-    db_conn.Connected := true;
+    db_conn.Username := krupuk(nama, 6);
+    db_conn.Password := krupuk(kata, 6);
+    //db_conn.Connected := true;
   except
     showmessage('koneksi tidak berhasil');
     application.Terminate;

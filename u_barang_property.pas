@@ -8,7 +8,8 @@ uses
   cxDataStorage, cxEdit, DB, cxDBData, cxCurrencyEdit, sComboBox,
   cxGridLevel, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
   cxClasses, cxControls, cxGridCustomView, cxGrid, sButton, sGroupBox,UFungsi,
-  mySQLDbTables, ExtCtrls, sPanel, cxCustomData, cxFilter, cxData, StdCtrls;
+  ExtCtrls, sPanel, 
+  MyAccess, cxCustomData, cxFilter, cxData, MemDS, DBAccess, StdCtrls;
 
 type
   TF_barang_property = class(TForm)
@@ -50,12 +51,12 @@ type
     l_mutasi_harga: TcxGridLevel;
     cb_periode: TsComboBox;
     ds_mutasi: TDataSource;
-    Q_mutasi: TmySQLQuery;
-    q_supp: TmySQLQuery;
+    Q_mutasi: TMyQuery;
+    q_supp: TMyQuery;
     ds_supp: TDataSource;
     ds_plano: TDataSource;
-    Q_plano: TmySQLQuery;
-    Q_temp: TmySQLQuery;
+    Q_plano: TMyQuery;
+    Q_temp: TMyQuery;
     t_kirim: TcxGridDBColumn;
     t_return_kirim: TcxGridDBColumn;
     t_return_jual: TcxGridDBColumn;

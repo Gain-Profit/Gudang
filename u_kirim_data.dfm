@@ -506,8 +506,8 @@ object F_kirim_data: TF_kirim_data
       OnClick = MenuItem5Click
     end
   end
-  object Q_export: TmySQLQuery
-    Database = dm.db_conn
+  object Q_export: TMyQuery
+    Connection = dm.db_conn
     SQL.Strings = (
       'select * from tb_export_import'
       'order by `data` desc, tanggal desc')

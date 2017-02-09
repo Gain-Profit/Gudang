@@ -365,8 +365,8 @@ object F_barang: TF_barang
     Left = 80
     Top = 40
   end
-  object Q_barang: TmySQLQuery
-    Database = dm.db_conn
+  object Q_barang: TMyQuery
+    Connection = dm.db_conn
     Left = 48
     Top = 40
   end

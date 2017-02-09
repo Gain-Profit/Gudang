@@ -5,29 +5,17 @@ object dm: Tdm
   Top = 149
   Height = 518
   Width = 764
-  object db_conn: TmySQLDatabase
-    DatabaseName = 'profit'
-    UserName = 'root'
-    UserPassword = 'server'
-    Host = 'localhost'
-    ConnectOptions = []
-    Params.Strings = (
-      'Port=3306'
-      'TIMEOUT=30'
-      'DatabaseName=profit'
-      'Host=localhost'
-      'UID=root'
-      'PWD=server')
+  object db_conn: TMyConnection
     Left = 16
     Top = 8
   end
-  object Q_Exe: TmySQLQuery
-    Database = db_conn
+  object Q_Exe: TMyQuery
+    Connection = db_conn
     Left = 72
     Top = 8
   end
-  object Q_Show: TmySQLQuery
-    Database = db_conn
+  object Q_Show: TMyQuery
+    Connection = db_conn
     Left = 8
     Top = 56
   end
@@ -76,8 +64,8 @@ object dm: Tdm
     Left = 592
     Top = 128
   end
-  object Q_temp: TmySQLQuery
-    Database = db_conn
+  object Q_temp: TMyQuery
+    Connection = db_conn
     Left = 120
     Top = 8
   end
@@ -19121,8 +19109,8 @@ object dm: Tdm
     Top = 176
     Bitmap = {}
   end
-  object Q_harga: TmySQLQuery
-    Database = db_conn
+  object Q_harga: TMyQuery
+    Connection = db_conn
     Left = 8
     Top = 216
   end
@@ -19191,8 +19179,8 @@ object dm: Tdm
       end
     end
   end
-  object q_list_purchase: TmySQLQuery
-    Database = db_conn
+  object q_list_purchase: TMyQuery
+    Connection = db_conn
     Left = 136
     Top = 56
   end
@@ -19201,8 +19189,8 @@ object dm: Tdm
     Left = 224
     Top = 56
   end
-  object Q_list_receipt: TmySQLQuery
-    Database = db_conn
+  object Q_list_receipt: TMyQuery
+    Connection = db_conn
     Left = 136
     Top = 112
   end
@@ -19211,8 +19199,8 @@ object dm: Tdm
     Left = 224
     Top = 112
   end
-  object q_list_return: TmySQLQuery
-    Database = db_conn
+  object q_list_return: TMyQuery
+    Connection = db_conn
     Left = 136
     Top = 168
   end
@@ -19221,8 +19209,8 @@ object dm: Tdm
     Left = 224
     Top = 168
   end
-  object Q_laporan: TmySQLQuery
-    Database = db_conn
+  object Q_laporan: TMyQuery
+    Connection = db_conn
     Left = 448
     Top = 56
   end
@@ -20666,8 +20654,8 @@ object dm: Tdm
     Left = 224
     Top = 224
   end
-  object Q_list_kirim: TmySQLQuery
-    Database = db_conn
+  object Q_list_kirim: TMyQuery
+    Connection = db_conn
     Left = 136
     Top = 224
   end
@@ -20676,8 +20664,8 @@ object dm: Tdm
     Left = 224
     Top = 272
   end
-  object Q_list_sales: TmySQLQuery
-    Database = db_conn
+  object Q_list_sales: TMyQuery
+    Connection = db_conn
     Left = 136
     Top = 272
   end
@@ -20686,8 +20674,8 @@ object dm: Tdm
     Left = 224
     Top = 320
   end
-  object Q_List_SO: TmySQLQuery
-    Database = db_conn
+  object Q_List_SO: TMyQuery
+    Connection = db_conn
     Left = 136
     Top = 320
   end
@@ -20696,8 +20684,8 @@ object dm: Tdm
     Left = 224
     Top = 368
   end
-  object Q_list_return_kirim: TmySQLQuery
-    Database = db_conn
+  object Q_list_return_kirim: TMyQuery
+    Connection = db_conn
     Left = 136
     Top = 368
   end
@@ -20739,8 +20727,8 @@ object dm: Tdm
     Left = 376
     Top = 272
   end
-  object Q_child_sales: TmySQLQuery
-    Database = db_conn
+  object Q_child_sales: TMyQuery
+    Connection = db_conn
     Left = 296
     Top = 272
   end
@@ -20763,8 +20751,8 @@ object dm: Tdm
     Left = 224
     Top = 424
   end
-  object Q_list_return_jual: TmySQLQuery
-    Database = db_conn
+  object Q_list_return_jual: TMyQuery
+    Connection = db_conn
     Left = 136
     Top = 424
   end

@@ -9,7 +9,7 @@ uses
   cxDataStorage, cxEdit, DB, cxDBData, cxGridLevel,
   cxClasses, cxControls, cxGridCustomView, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxGrid, cxStyles,
-  mySQLDbTables, cxFilter, cxData, StdCtrls;
+  MyAccess, cxFilter, cxData, MemDS, DBAccess, StdCtrls;
 
 type
   NewControl = class(TControl);
@@ -27,7 +27,7 @@ type
     clm4: TcxGridDBColumn;
     l_data: TcxGridLevel;
     ds_cari: TDataSource;
-    Q_cari: TmySQLQuery;
+    Q_cari: TMyQuery;
     b_keluar: TsButton;
     B_Ambil: TsButton;
     procedure tampil_button(lihatA,lihatB: boolean);
