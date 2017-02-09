@@ -125,7 +125,7 @@ end;
 
 procedure Tf_cust.b_autoClick(Sender: TObject);
 begin
-  fungsi.SQLExec(dm.Q_temp,Format('SELECT CONCAT("CU-",LPAD(right(max(kd_pelanggan),4)+1, 4, "0")) '+
+  fungsi.SQLExec(dm.Q_temp,Format('SELECT CONCAT("CU-",LPAD(IFNULL(max(right(kd_pelanggan,4)),0)+1, 4, "0")) '+
   'as new_id FROM tb_pelanggan WHERE kd_perusahaan= "%s"  AND kd_pelanggan like "CU-%%"',
   [dm.kd_perusahaan]),true);
 

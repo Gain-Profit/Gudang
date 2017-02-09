@@ -128,7 +128,7 @@ end;
 
 procedure Tf_supplier.b_autoClick(Sender: TObject);
 begin
-  fungsi.SQLExec(dm.Q_temp,Format('SELECT CONCAT("SU-",LPAD(right(max(kode),4)+1, 4, "0")) '+
+  fungsi.SQLExec(dm.Q_temp,Format('SELECT CONCAT("SU-",LPAD(IFNULL(max(right(kode,4)),0)+1, 4, "0")) '+
   'as new_id FROM tb_supp WHERE kd_perusahaan= "%s"  AND kode like "SU-%%"',
   [dm.kd_perusahaan]),true);
 
