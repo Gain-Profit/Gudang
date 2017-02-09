@@ -157,7 +157,7 @@ showmessage('Jenis dan Golongan harus diisi terlebih dahulu, '#10#13' karena '+
 exit;
 end;
   prefix := kd_jenis + kd_gol;
-  fungsi.SQLExec(dm.Q_temp,Format('SELECT CONCAT("%s",LPAD(right(max(kd_barang),4)+1, 4, "0")) '+
+  fungsi.SQLExec(dm.Q_temp,Format('SELECT CONCAT("%s",LPAD(IFNULL(max(right(kd_barang,4)),0)+1, 4, "0")) '+
   'as new_id FROM tb_barang WHERE kd_perusahaan= "%s" AND kd_barang like "%s%%"',
   [prefix, dm.kd_perusahaan, prefix]),true);
 
