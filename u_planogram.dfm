@@ -735,6 +735,7 @@ object f_planogram: Tf_planogram
     Top = 56
   end
   object Q_PlanoD: TMyQuery
+    Connection = dm.db_conn
     SQL.Strings = (
       'select * from tb_planogram')
     Left = 736
