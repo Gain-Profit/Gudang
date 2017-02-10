@@ -4,7 +4,7 @@ object F_toko: TF_toko
   BorderStyle = bsDialog
   Caption = 'Laporan Perkembangan Toko'
   ClientHeight = 170
-  ClientWidth = 435
+  ClientWidth = 252
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -43,7 +43,7 @@ object F_toko: TF_toko
     Width = 233
     Height = 25
     Caption = 'Preview Stok Out Barang'
-    TabOrder = 0
+    TabOrder = 4
     OnClick = sButton2Click
     SkinData.SkinSection = 'BUTTON'
   end
@@ -72,7 +72,7 @@ object F_toko: TF_toko
     ItemHeight = 16
     ItemIndex = -1
     ParentFont = False
-    TabOrder = 1
+    TabOrder = 0
     OnChange = cb_periodeChange
   end
   object btnMutasi: TsButton
@@ -91,9 +91,10 @@ object F_toko: TF_toko
     Width = 161
     Height = 21
     AutoSize = False
+    Enabled = False
     EditMask = '!99/99/9999;1; '
     MaxLength = 10
-    TabOrder = 3
+    TabOrder = 5
     Text = '  /  /    '
     BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
@@ -114,7 +115,8 @@ object F_toko: TF_toko
     Width = 161
     Height = 25
     Caption = '&Repair Mutasi'
-    TabOrder = 4
+    Enabled = False
+    TabOrder = 6
     OnClick = b_benarkan_mutasiClick
     SkinData.SkinSection = 'BUTTON'
   end
@@ -124,7 +126,7 @@ object F_toko: TF_toko
     Width = 233
     Height = 25
     Caption = 'Preview Gross Margin'
-    TabOrder = 5
+    TabOrder = 1
     OnClick = btnGrossClick
     SkinData.SkinSection = 'BUTTON'
   end
@@ -134,7 +136,7 @@ object F_toko: TF_toko
     Width = 233
     Height = 25
     Caption = 'Preview Mutasi Harga'
-    TabOrder = 6
+    TabOrder = 3
     OnClick = btnMutasiClick
     SkinData.SkinSection = 'BUTTON'
   end
