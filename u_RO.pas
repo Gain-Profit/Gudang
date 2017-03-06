@@ -55,7 +55,7 @@ type
     ed_nilai_faktur: TsCurrencyEdit;
     sSpeedButton18: TsSpeedButton;
     sSkinProvider1: TsSkinProvider;
-    t_view_hpp_aktif: TcxGridColumn;
+    t_view_hpp_akhir: TcxGridColumn;
     t_view_stat: TcxGridColumn;
     sLabel5: TsLabel;
     sd: TsSaveDialog;
@@ -323,7 +323,7 @@ begin
           (f, 2) + 1);
         TableView.DataController.SetValue(f, 3, TableView.DataController.GetValue
           (f, 6) * StrToFloatdef(TableView.DataController.GetValue(f, 2), 0)); //total harga
-        TableView.DataController.SetValue(f, 5, dm.Q_temp.fieldbyname('hpp_aktif').AsString);
+        TableView.DataController.SetValue(f, 5, dm.Q_temp.fieldbyname('hpp_ahir').AsString);
         TableView.DataController.SetValue(f, 8, dm.Q_temp.fieldbyname('barcode3').AsString);
         refresh_HPP;
         exit;
@@ -336,9 +336,9 @@ begin
   TableView.DataController.SetValue(baris_baru - 1, 0, dm.Q_temp.fieldbyname('kd_barang').AsString);
   TableView.DataController.SetValue(baris_baru - 1, 1, dm.Q_temp.fieldbyname('n_barang').AsString);
   TableView.DataController.SetValue(baris_baru - 1, 2, 1);
-  TableView.DataController.SetValue(baris_baru - 1, 3, dm.Q_temp.fieldbyname('hpp_aktif').AsString);
+  TableView.DataController.SetValue(baris_baru - 1, 3, dm.Q_temp.fieldbyname('hpp_ahir').AsString);
   TableView.DataController.SetValue(baris_baru - 1, 4, 0);
-  TableView.DataController.SetValue(baris_baru - 1, 5, dm.Q_temp.fieldbyname('hpp_aktif').AsString);
+  TableView.DataController.SetValue(baris_baru - 1, 5, dm.Q_temp.fieldbyname('hpp_ahir').AsString);
   TableView.DataController.SetValue(baris_baru - 1, 8, dm.Q_temp.fieldbyname('barcode3').AsString);
   tableview.DataController.ChangeFocusedRowIndex(baris_baru);
   mm_nama.Text := tableView.DataController.GetValue(baris_baru - 1, 1);
@@ -354,7 +354,7 @@ begin
     if ed_code.Text = '' then
       exit;
     fungsi.sqlExec(dm.Q_temp, 'SELECT kd_barang,n_barang,barcode3, ' +
-      'hpp_aktif,kd_sat3 FROM tb_barang WHERE ((kd_barang = "' + ed_code.Text +
+      'hpp_ahir,kd_sat3 FROM tb_barang WHERE ((kd_barang = "' + ed_code.Text +
       '" OR barcode3 = "' + ed_code.Text + '" OR barcode2 = "' + ed_code.Text +
       '" OR barcode1 = "' + ed_code.Text + '") AND kd_perusahaan="' + dm.kd_perusahaan
       + '")', true);
@@ -551,9 +551,11 @@ end;
 
 procedure Tf_RO.b_simpanClick(Sender: TObject);
 var
-  x: integer;
-  tunai, plus_PPN, isi_sql, isi_sql2, kd_faktur: string;
-  _sql: string;
+  _sql, isi_sql, isi_sql2: string;
+  LIsiHppAktif, LIsiHppAkhir, LIsiStokOH: string;
+  tunai, plus_PPN, kd_faktur: string;
+  LKdBarang, LKdBarangs: string;
+  x, LQty, LHppAhir: integer;
 begin
   refresh_HPP;
   if (ed_supplier.Text = '') or (ed_no_faktur.Text = '') then
@@ -587,42 +589,67 @@ begin
 
   for x := 0 to tableview.DataController.RecordCount - 1 do
   begin
+    LHppAhir := TableView.DataController.GetValue(x, 6);
+    LQty := TableView.DataController.GetValue(x,2);
+    LKdBarang:= TableView.DataController.GetDisplayText(x, 0);
+
     isi_sql := isi_sql + '("' + dm.kd_perusahaan + '","' + ed_no_faktur.Text +
-      '","' + formatdatetime('yyyy-MM-dd', ed_tgl.Date) + '","' + TableView.DataController.GetDisplayText
-      (x, 0) + '","' + TableView.DataController.GetDisplayText(x, 1) + '","' +
-      floattostr(TableView.DataController.GetValue(x, 2)) + '","' + floattostr(TableView.DataController.GetValue
+      '","' + formatdatetime('yyyy-MM-dd', ed_tgl.Date) + '","' + LKdBarang + '","' +
+      TableView.DataController.GetDisplayText(x, 1) + '","' +
+      floattostr(LQty) + '","' + floattostr(TableView.DataController.GetValue
       (x, 3)) + '","' + floattostr(TableView.DataController.GetValue(x, 4)) +
-      '",date(now()),"' + TableView.DataController.GetDisplayText(x, 8) + '"),';
+      '",date(now()),"' + TableView.DataController.GetDisplayText(x, 8) + '"), ';
 
     isi_sql2 := isi_sql2 + '("' + dm.kd_perusahaan + '","' + ed_supplier.Text +
-      '","' + TableView.DataController.GetDisplayText(x, 0) + '",date(now())),';
-  end;
-  delete(isi_sql, length(isi_sql), 1);
-  delete(isi_sql2, length(isi_sql2), 1);
+      '","' + LKdBarang + '",date(now())), ';
 
-  _sql := Format('insert into tb_receipt_global(kd_perusahaan, kd_receipt, tgl_receipt, '
-    + 'kd_suplier, jatuh_tempo, tunai, plus_PPN, PPN, disk_rp, nilai_faktur, simpan_pada, '
-    + 'pengguna, keterangan) values ("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", %s, "%s", "%s")',
-    [dm.kd_perusahaan, ed_no_faktur.Text, formatdatetime('yyyy-MM-dd', ed_tgl.Date),
-    ed_supplier.Text, ed_jatuh_tempo.Text, tunai, plus_PPN, floattostr(ce_PPN.value),
-    ce_diskonrp.Text, ed_nilai_faktur.Text, 'now()', dm.kd_pengguna, mmKeterangan.Text]);
+    LIsiHppAktif := LIsiHppAktif + Format('WHEN "%s" THEN (((hpp_aktif * stok_OH) + (%d * %d))/(stok_OH + %d)) ',
+      [LKdBarang, LHppAhir, LQty, LQty]);
+
+    LIsiHppAkhir := LIsiHppAkhir + Format('WHEN "%s" THEN (%d) ', [LKdBarang, LHppAhir]);
+
+    LIsiStokOH := LIsiStokOH + Format('WHEN "%s" THEN (stok_OH + %d) ', [LKdBarang, LQty]);
+
+    LKdBarangs := LKdBarangs + Format('"%s", ', [LKdBarang]);
+  end;
+  SetLength(isi_sql, length(isi_sql) - 2);
+  SetLength(isi_sql2, length(isi_sql2) - 2);
+  SetLength(LIsiHppAktif, Length(LIsiHppAktif) - 1);
+  SetLength(LIsiHppAkhir, Length(LIsiHppAkhir) - 1);
+  SetLength(LIsiStokOH, Length(LIsiStokOH) - 1);
+  SetLength(LKdBarangs, Length(LKdBarangs) - 2);
 
   dm.db_conn.StartTransaction;
   try
+      + 'kd_suplier, jatuh_tempo, tunai, plus_PPN, PPN, disk_rp, nilai_faktur, simpan_pada, '
+      [dm.kd_perusahaan, ed_no_faktur.Text, formatdatetime('yyyy-MM-dd', ed_tgl.Date),
+      ed_supplier.Text, ed_jatuh_tempo.Text, tunai, plus_PPN, floattostr(ce_PPN.value),
+      ce_diskonrp.Text, ed_nilai_faktur.Text, 'now()', dm.kd_pengguna, mmKeterangan.Text]);
+
     fungsi.SQLExec(dm.Q_exe, _sql, false);
 
-    fungsi.SQLExec(dm.Q_exe,
-      'insert into tb_receipt_rinci(kd_perusahaan,kd_receipt,tgl_receipt,' +
-      'kd_barang,n_barang,qty_receipt,harga_pokok,diskon,tgl_simpan,barcode) values ' +
-      isi_sql, false);
+      [isi_sql]);
 
-    fungsi.SQLExec(dm.Q_exe,
-      'REPLACE tb_barang_supp(kd_perusahaan,kd_suplier,kd_barang,`update`) ' +
-      'values ' + isi_sql2, false);
+    fungsi.SQLExec(dm.Q_exe, _sql , false);
+
+    _sql := Format('UPDATE tb_barang SET hpp_aktif = (CASE kd_barang %s END), '
+      + 'hpp_ahir = (CASE kd_barang %s END), stok_OH = (CASE kd_barang %s END), '
+      + 'Tr_Akhir = date(now()) '
+      + 'WHERE kd_perusahaan = "%s" AND kd_barang IN (%s)',
+      [LIsiHppAktif, LIsiHppAkhir, LIsiStokOH, dm.kd_perusahaan, LKdBarangs]);
+
+    fungsi.SQLExec(dm.Q_exe, _sql, false);
+
+    _sql := Format('REPLACE tb_barang_supp(kd_perusahaan,kd_suplier,kd_barang,`update`) '
+
+    fungsi.SQLExec(dm.Q_exe, _sql, false);
 
     dm.db_conn.Commit;
     showmessage('penyimpanan data berhasil...');
     ed_code.SetFocus;
+    ed_no_faktur.Clear;
+    ed_no_faktur.Text := kd_faktur;
+    b_print.SetFocus;
   except
     on E: exception do
     begin
@@ -630,29 +657,6 @@ begin
       messagedlg('proses penyimpanan gagal,ulangi lagi!!! '#10#13'' + e.Message,
         mterror, [mbOk], 0);
       exit;
-    end;
-  end;
-
-  dm.db_conn.StartTransaction;
-  try
-    for x := 0 to tableview.DataController.RecordCount - 1 do
-    begin
-      fungsi.SQLExec(dm.Q_exe, 'update tb_barang set hpp_ahir= "' + floattostr(TableView.DataController.GetValue
-        (x, 6)) + '" where kd_perusahaan= "' + dm.kd_perusahaan +
-        '" and kd_barang="' + inttostr(TableView.DataController.GetValue(x, 0))
-        + '"', false);
-    end;
-    dm.db_conn.Commit;
-
-    ed_no_faktur.Clear;
-    ed_no_faktur.Text := kd_faktur;
-    b_print.SetFocus;
-
-  except
-    on E: exception do
-    begin
-      dm.db_conn.Rollback;
-      messagedlg('proses ubah hpp ahir gagal...'#10#13'' + e.Message, mterror, [mbOk], 0);
     end;
   end;
   pnlKeterangan.Visible := True;
