@@ -22,7 +22,7 @@ object F_Edit_Harga: TF_Edit_Harga
   OnShow = T
   PixelsPerInch = 96
   TextHeight = 13
-  object sPanel1: TsPanel
+  object pnlSide: TsPanel
     Left = 764
     Top = 0
     Width = 150
@@ -80,7 +80,7 @@ object F_Edit_Harga: TF_Edit_Harga
       Reflected = True
     end
   end
-  object sPanel2: TsPanel
+  object pnlMain: TsPanel
     Left = 0
     Top = 0
     Width = 764
@@ -91,11 +91,11 @@ object F_Edit_Harga: TF_Edit_Harga
     SkinData.SkinSection = 'CHECKBOX'
     object grid: TcxGrid
       Left = 0
-      Top = 21
+      Top = 33
       Width = 764
-      Height = 425
+      Height = 413
       Align = alClient
-      TabOrder = 1
+      TabOrder = 0
       LookAndFeel.Kind = lfOffice11
       LookAndFeel.NativeStyle = False
       object t_data: TcxGridDBTableView
@@ -121,6 +121,8 @@ object F_Edit_Harga: TF_Edit_Harga
         OptionsView.ColumnAutoWidth = True
         OptionsView.Footer = True
         OptionsView.GroupByBox = False
+        Styles.Inactive = dm.cxstyl1
+        Styles.Selection = dm.cxstyl1
         object t_datakd_barang: TcxGridDBColumn
           Caption = 'PID'
           DataBinding.FieldName = 'kd_barang'
@@ -242,31 +244,77 @@ object F_Edit_Harga: TF_Edit_Harga
         GridView = t_data
       end
     end
-    object Ed_Cari: TsEdit
+    object pnlheader: TPanel
       Left = 0
       Top = 0
       Width = 764
-      Height = 21
-      Color = clWhite
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlack
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 0
-      OnKeyDown = Ed_CariKeyDown
+      Height = 33
       Align = alTop
-      SkinData.SkinSection = 'EDIT'
-      BoundLabel.Indent = 0
-      BoundLabel.Font.Charset = DEFAULT_CHARSET
-      BoundLabel.Font.Color = clWindowText
-      BoundLabel.Font.Height = -11
-      BoundLabel.Font.Name = 'MS Sans Serif'
-      BoundLabel.Font.Style = []
-      BoundLabel.Layout = sclLeft
-      BoundLabel.MaxWidth = 0
-      BoundLabel.UseSkinColor = True
+      TabOrder = 1
+      object Ed_Cari: TsEdit
+        Left = 81
+        Top = 1
+        Width = 447
+        Height = 31
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -19
+        Font.Name = 'Rockwell'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        OnKeyDown = Ed_CariKeyDown
+        Align = alClient
+        SkinData.SkinSection = 'EDIT'
+        BoundLabel.Indent = 0
+        BoundLabel.Font.Charset = DEFAULT_CHARSET
+        BoundLabel.Font.Color = clWindowText
+        BoundLabel.Font.Height = -11
+        BoundLabel.Font.Name = 'MS Sans Serif'
+        BoundLabel.Font.Style = []
+        BoundLabel.Layout = sclLeft
+        BoundLabel.MaxWidth = 0
+        BoundLabel.UseSkinColor = True
+      end
+      object pnlcheck: TPanel
+        Left = 528
+        Top = 1
+        Width = 235
+        Height = 31
+        Align = alRight
+        TabOrder = 1
+        object CkSemua: TCheckBox
+          Left = 8
+          Top = 8
+          Width = 225
+          Height = 17
+          Caption = 'Tampilkan Semua Data'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -19
+          Font.Name = 'Rockwell'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+          OnClick = CkSemuaClick
+        end
+      end
+      object pnlFilter: TPanel
+        Left = 1
+        Top = 1
+        Width = 80
+        Height = 31
+        Align = alLeft
+        Caption = 'Filter'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'Rockwell'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 2
+      end
     end
   end
   object sSkinProvider1: TsSkinProvider
@@ -277,8 +325,8 @@ object F_Edit_Harga: TF_Edit_Harga
     AddedTitle.Font.Style = []
     SkinData.SkinSection = 'FORM'
     TitleButtons = <>
-    Left = 16
-    Top = 8
+    Left = 8
+    Top = 56
   end
   object Q_harga: TMyQuery
     Connection = dm.db_conn

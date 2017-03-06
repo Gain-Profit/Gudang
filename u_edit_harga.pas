@@ -17,9 +17,8 @@ const
 type
   TF_Edit_Harga = class(TForm)
     sSkinProvider1: TsSkinProvider;
-    sPanel1: TsPanel;
-    sPanel2: TsPanel;
-    Ed_Cari: TsEdit;
+    pnlSide: TsPanel;
+    pnlMain: TsPanel;
     grid: TcxGrid;
     t_data: TcxGridDBTableView;
     l_data: TcxGridLevel;
@@ -38,6 +37,11 @@ type
     sb_1: TsSpeedButton;
     Q_harga: TMyQuery;
     Ds_harga: TDataSource;
+    pnlheader: TPanel;
+    Ed_Cari: TsEdit;
+    pnlcheck: TPanel;
+    CkSemua: TCheckBox;
+    pnlFilter: TPanel;
     procedure WMMDIACTIVATE(var msg: TWMMDIACTIVATE); message WM_MDIACTIVATE;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure T(Sender: TObject);
@@ -51,9 +55,11 @@ type
     procedure sb_2Click(Sender: TObject);
     procedure sb_1Click(Sender: TObject);
     procedure deleteHargaBarang(perusahaan: string);
+    procedure CkSemuaClick(Sender: TObject);
   private
     procedure WmAfterShow(var Msg: TMessage); message WM_AFTER_SHOW;
     procedure LihatData;
+    procedure Segarkan(ASemua: Boolean);
     { Private declarations }
   public
     { Public declarations }
@@ -97,15 +103,13 @@ end;
 
 procedure TF_Edit_Harga.WmAfterShow(var Msg: TMessage);
 begin
-  fungsi.SQLExecT(Q_harga, Format('%s WHERE br.kd_perusahaan = "%s"', [sHargaSQL,
-    dm.kd_perusahaan]), True);
+  Segarkan(CkSemua.Checked);
   t_data.DataController.FocusedRowIndex := 1;
 end;
 
 procedure TF_Edit_Harga.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
-
-  if key = vk_f2 then
+  if (key = vk_f2) and (not CkSemua.Checked) then
     ed_cari.SetFocus;
 end;
 
@@ -116,27 +120,19 @@ end;
 
 procedure TF_Edit_Harga.Ed_CariKeyDown(Sender: TObject; var Key: Word; Shift:
   TShiftState);
-var
-  LKode, LSQL: string;
 begin
   if key = vk_down then
     grid.SetFocus;
 
   if key = vk_return then
   begin
-    LKode := Ed_Cari.Text;
     PeekMessage(Mgs, 0, WM_CHAR, WM_CHAR, PM_REMOVE);
-    if LKode <> '' then
-      caption := 'Edit Harga - ' + LKode
+    if Ed_Cari.Text <> '' then
+      caption := 'Edit Harga - ' + Ed_Cari.Text
     else
       caption := 'Edit Harga';
-      
-    LSQL := Format('%s WHERE ((br.kd_perusahaan = "%s") AND ' +
-      '(br.kd_barang LIKE "%%%s%%" or br.n_barang LIKE "%%%s%%" or br.barcode3 LIKE "%%%s%%"))',
-      [sHargaSQL, dm.kd_perusahaan, LKode, LKode, LKode]);
 
-    fungsi.SQLExecT(Q_harga, LSQL, True);
-
+    Segarkan(CkSemua.Checked);
     grid.SetFocus;
     ed_cari.SetFocus;
   end;
@@ -203,16 +199,8 @@ begin
 end;
 
 procedure TF_Edit_Harga.sb_2Click(Sender: TObject);
-var
-  posisi: integer;
 begin
-  Screen.Cursor := crHourGlass;
-  posisi := Q_harga.RecNo;
-  fungsi.SQLExec(Q_harga, Format('%s WHERE br.kd_perusahaan = "%s"', [sHargaSQL,
-    dm.kd_perusahaan]), true);
-
-  Q_harga.RecNo := posisi;
-  Screen.Cursor := crDefault;
+  Segarkan(CkSemua.Checked);
 end;
 
 procedure TF_Edit_Harga.sb_1Click(Sender: TObject);
@@ -225,7 +213,41 @@ begin
   application.CreateForm(TF_ubah_harga, F_ubah_harga);
   f_ubah_harga.ubah(Q_harga.FieldByName('kd_barang').AsString, Q_harga.FieldByName
     ('kd_macam_harga').AsString);
-  F_ubah_harga.ShowModal;
+  if F_ubah_harga.ShowModal = mrOk then
+    Segarkan(CkSemua.Checked);
+end;
+
+procedure TF_Edit_Harga.Segarkan(ASemua: Boolean);
+var
+  LKode, LSQL: string;
+  posisi: integer;
+begin
+  if CkSemua.Checked then
+  begin
+    LSQL := Format('%s WHERE br.kd_perusahaan = "%s"', [sHargaSQL, dm.kd_perusahaan]);
+  end
+  else
+  begin
+    LKode := Ed_Cari.Text;
+    LSQL := Format('%s WHERE ((br.kd_perusahaan = "%s") AND ' +
+      '(br.kd_barang LIKE "%%%s%%" or br.n_barang LIKE "%%%s%%" or br.barcode3 LIKE "%%%s%%"))',
+      [sHargaSQL, dm.kd_perusahaan, LKode, LKode, LKode]);
+    if LKode = '' then
+      LSQL := LSQL + ' LIMIT 50';
+  end;
+
+  Screen.Cursor := crHourGlass;
+  posisi := Q_harga.RecNo;
+  fungsi.SQLExec(Q_harga, LSQL, True);
+  Q_harga.RecNo := posisi;
+  Screen.Cursor := crDefault;
+end;
+
+procedure TF_Edit_Harga.CkSemuaClick(Sender: TObject);
+begin
+  Segarkan(CkSemua.Checked);
+  Ed_Cari.Enabled := not CkSemua.Checked;
+  Ed_Cari.Clear;
 end;
 
 end.
