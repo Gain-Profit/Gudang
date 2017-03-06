@@ -19109,16 +19109,6 @@ object dm: Tdm
     Top = 176
     Bitmap = {}
   end
-  object Q_harga: TMyQuery
-    Connection = db_conn
-    Left = 8
-    Top = 216
-  end
-  object ds_harga: TDataSource
-    DataSet = Q_harga
-    Left = 72
-    Top = 216
-  end
   object Laporan: TfrxReport
     Version = '4.9.35'
     DotMatrixReport = False

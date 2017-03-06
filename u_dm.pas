@@ -15,8 +15,6 @@ type
     sm: TsSkinManager;
     Q_temp: TMyQuery;
     gambar: TsAlphaImageList;
-    Q_harga: TMyQuery;
-    ds_harga: TDataSource;
     Laporan: TfrxReport;
     q_list_purchase: TMyQuery;
     ds_list_purchase: TDataSource;
