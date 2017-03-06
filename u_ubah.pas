@@ -164,6 +164,7 @@ begin
     and (HargaAsli.Harga1 = HargaBaru.Harga1) and (HargaAsli.Awal = HargaBaru.Awal)
     and (HargaAsli.Ahir = HargaBaru.Ahir) then
   begin
+    Self.ModalResult:= mrCancel;
     Exit;
   end;
 
@@ -179,6 +180,7 @@ begin
     end;
 
     dm.db_conn.Commit;
+    Self.ModalResult:= mrOk;
     showmessage('proses ubah harga berhasil');
 
   except
