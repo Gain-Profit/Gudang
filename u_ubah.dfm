@@ -3,7 +3,7 @@ object F_ubah_harga: TF_ubah_harga
   Top = 95
   BorderStyle = bsDialog
   Caption = 'Ubah Harga'
-  ClientHeight = 503
+  ClientHeight = 466
   ClientWidth = 398
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -16,28 +16,14 @@ object F_ubah_harga: TF_ubah_harga
   Position = poScreenCenter
   OnClose = FormClose
   OnKeyDown = FormKeyDown
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object sLabel1: TsLabel
     Left = 8
     Top = 80
-    Width = 95
+    Width = 76
     Height = 19
-    Caption = 'Harga Pokok'
-    ParentFont = False
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clBlack
-    Font.Height = -16
-    Font.Name = 'Rockwell'
-    Font.Style = []
-  end
-  object sLabel2: TsLabel
-    Left = 8
-    Top = 112
-    Width = 107
-    Height = 19
-    Caption = 'Margin Persen'
+    Caption = 'Harga Beli'
     ParentFont = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
@@ -47,7 +33,7 @@ object F_ubah_harga: TF_ubah_harga
   end
   object sLabel3: TsLabel
     Left = 8
-    Top = 240
+    Top = 208
     Width = 59
     Height = 19
     Caption = 'Harga 1'
@@ -60,7 +46,7 @@ object F_ubah_harga: TF_ubah_harga
   end
   object sLabel4: TsLabel
     Left = 8
-    Top = 208
+    Top = 176
     Width = 59
     Height = 19
     Caption = 'Harga 2'
@@ -73,7 +59,7 @@ object F_ubah_harga: TF_ubah_harga
   end
   object sLabel5: TsLabel
     Left = 8
-    Top = 176
+    Top = 144
     Width = 59
     Height = 19
     Caption = 'Harga 3'
@@ -85,7 +71,7 @@ object F_ubah_harga: TF_ubah_harga
     Font.Style = []
   end
   object sLabel6: TsLabel
-    Left = 248
+    Left = 368
     Top = 114
     Width = 16
     Height = 19
@@ -99,10 +85,10 @@ object F_ubah_harga: TF_ubah_harga
   end
   object sLabel7: TsLabel
     Left = 8
-    Top = 144
-    Width = 77
+    Top = 112
+    Width = 53
     Height = 19
-    Caption = 'Margin Rp'
+    Caption = 'Margin'
     ParentFont = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
@@ -163,20 +149,20 @@ object F_ubah_harga: TF_ubah_harga
     BoundLabel.UseSkinColor = True
   end
   object ed_pokok: TsCurrencyEdit
-    Left = 128
+    Left = 104
     Top = 80
-    Width = 153
+    Width = 177
     Height = 24
     AutoSize = False
     Color = clWhite
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
     Font.Height = -13
     Font.Name = 'Rockwell'
     Font.Style = []
     ParentFont = False
-    TabOrder = 5
-    OnExit = ed_pokokExit
+    TabOrder = 4
     BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
     BoundLabel.Font.Color = clWindowText
@@ -194,12 +180,13 @@ object F_ubah_harga: TF_ubah_harga
     DisplayFormat = '###,###,##0;-###,###,##0;0'
   end
   object ed_marginP: TsCurrencyEdit
-    Left = 128
+    Left = 288
     Top = 112
-    Width = 81
+    Width = 73
     Height = 24
     AutoSize = False
     Color = clWhite
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
     Font.Height = -13
@@ -207,7 +194,6 @@ object F_ubah_harga: TF_ubah_harga
     Font.Style = []
     ParentFont = False
     TabOrder = 6
-    OnExit = ed_pokokExit
     BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
     BoundLabel.Font.Color = clWindowText
@@ -224,9 +210,9 @@ object F_ubah_harga: TF_ubah_harga
     DisplayFormat = '##0.00;##0.00;0.00'
   end
   object ed_marginRp: TsCurrencyEdit
-    Left = 128
-    Top = 144
-    Width = 153
+    Left = 104
+    Top = 112
+    Width = 177
     Height = 24
     AutoSize = False
     Color = clWhite
@@ -236,7 +222,7 @@ object F_ubah_harga: TF_ubah_harga
     Font.Name = 'Rockwell'
     Font.Style = []
     ParentFont = False
-    TabOrder = 7
+    TabOrder = 5
     OnExit = ed_marginRpExit
     BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
@@ -255,9 +241,9 @@ object F_ubah_harga: TF_ubah_harga
     DisplayFormat = '###,###,##0;-###,###,##0;0'
   end
   object Ed_harga1: TsCurrencyEdit
-    Left = 128
-    Top = 240
-    Width = 153
+    Left = 104
+    Top = 208
+    Width = 177
     Height = 24
     AutoSize = False
     Color = clWhite
@@ -267,7 +253,7 @@ object F_ubah_harga: TF_ubah_harga
     Font.Name = 'Rockwell'
     Font.Style = []
     ParentFont = False
-    TabOrder = 10
+    TabOrder = 9
     OnExit = Ed_harga1Exit
     BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
@@ -286,9 +272,9 @@ object F_ubah_harga: TF_ubah_harga
     DisplayFormat = '###,###,##0;-###,###,##0;0'
   end
   object ed_harga2: TsCurrencyEdit
-    Left = 128
-    Top = 208
-    Width = 153
+    Left = 104
+    Top = 176
+    Width = 177
     Height = 24
     AutoSize = False
     Color = clWhite
@@ -298,7 +284,7 @@ object F_ubah_harga: TF_ubah_harga
     Font.Name = 'Rockwell'
     Font.Style = []
     ParentFont = False
-    TabOrder = 9
+    TabOrder = 8
     OnExit = ed_harga2Exit
     BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
@@ -317,9 +303,9 @@ object F_ubah_harga: TF_ubah_harga
     DisplayFormat = '###,###,##0;-###,###,##0;0'
   end
   object ed_harga3: TsCurrencyEdit
-    Left = 128
-    Top = 176
-    Width = 153
+    Left = 104
+    Top = 144
+    Width = 177
     Height = 24
     AutoSize = False
     Color = clWhite
@@ -329,7 +315,7 @@ object F_ubah_harga: TF_ubah_harga
     Font.Name = 'Rockwell'
     Font.Style = []
     ParentFont = False
-    TabOrder = 8
+    TabOrder = 7
     OnExit = ed_harga3Exit
     BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
@@ -349,7 +335,40 @@ object F_ubah_harga: TF_ubah_harga
   end
   object ed_qty1: TsCurrencyEdit
     Left = 352
-    Top = 240
+    Top = 208
+    Width = 33
+    Height = 24
+    AutoSize = False
+    Color = clWhite
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Rockwell'
+    Font.Style = []
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 10
+    BoundLabel.Indent = 0
+    BoundLabel.Font.Charset = DEFAULT_CHARSET
+    BoundLabel.Font.Color = clWindowText
+    BoundLabel.Font.Height = -11
+    BoundLabel.Font.Name = 'MS Sans Serif'
+    BoundLabel.Font.Style = []
+    BoundLabel.Layout = sclLeft
+    BoundLabel.MaxWidth = 0
+    BoundLabel.UseSkinColor = True
+    SkinData.CustomColor = True
+    SkinData.SkinSection = 'EDIT'
+    GlyphMode.Blend = 0
+    GlyphMode.Grayed = False
+    DecimalPlaces = 0
+    DisplayFormat = '0'
+    Value = 2.000000000000000000
+  end
+  object ed_qty2: TsCurrencyEdit
+    Left = 352
+    Top = 176
     Width = 33
     Height = 24
     AutoSize = False
@@ -380,9 +399,9 @@ object F_ubah_harga: TF_ubah_harga
     DisplayFormat = '0'
     Value = 2.000000000000000000
   end
-  object ed_qty2: TsCurrencyEdit
+  object sCurrencyEdit3: TsCurrencyEdit
     Left = 352
-    Top = 208
+    Top = 144
     Width = 33
     Height = 24
     AutoSize = False
@@ -411,14 +430,13 @@ object F_ubah_harga: TF_ubah_harga
     GlyphMode.Grayed = False
     DecimalPlaces = 0
     DisplayFormat = '0'
-    Value = 2.000000000000000000
+    Value = 1.000000000000000000
   end
-  object sCurrencyEdit3: TsCurrencyEdit
-    Left = 352
-    Top = 176
-    Width = 33
+  object Ed_sat1: TsEdit
+    Left = 288
+    Top = 208
+    Width = 57
     Height = 24
-    AutoSize = False
     Color = clWhite
     Enabled = False
     Font.Charset = DEFAULT_CHARSET
@@ -429,6 +447,9 @@ object F_ubah_harga: TF_ubah_harga
     ParentFont = False
     ReadOnly = True
     TabOrder = 13
+    Text = 'PCS'
+    SkinData.CustomColor = True
+    SkinData.SkinSection = 'EDIT'
     BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
     BoundLabel.Font.Color = clWindowText
@@ -438,18 +459,11 @@ object F_ubah_harga: TF_ubah_harga
     BoundLabel.Layout = sclLeft
     BoundLabel.MaxWidth = 0
     BoundLabel.UseSkinColor = True
-    SkinData.CustomColor = True
-    SkinData.SkinSection = 'EDIT'
-    GlyphMode.Blend = 0
-    GlyphMode.Grayed = False
-    DecimalPlaces = 0
-    DisplayFormat = '0'
-    Value = 1.000000000000000000
   end
-  object Ed_sat1: TsEdit
-    Left = 296
-    Top = 240
-    Width = 49
+  object Ed_sat2: TsEdit
+    Left = 288
+    Top = 176
+    Width = 57
     Height = 24
     Color = clWhite
     Enabled = False
@@ -474,10 +488,10 @@ object F_ubah_harga: TF_ubah_harga
     BoundLabel.MaxWidth = 0
     BoundLabel.UseSkinColor = True
   end
-  object Ed_sat2: TsEdit
-    Left = 296
-    Top = 208
-    Width = 49
+  object Ed_sat3: TsEdit
+    Left = 288
+    Top = 144
+    Width = 57
     Height = 24
     Color = clWhite
     Enabled = False
@@ -502,45 +516,17 @@ object F_ubah_harga: TF_ubah_harga
     BoundLabel.MaxWidth = 0
     BoundLabel.UseSkinColor = True
   end
-  object Ed_sat3: TsEdit
-    Left = 296
-    Top = 176
-    Width = 49
-    Height = 24
-    Color = clWhite
-    Enabled = False
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clBlack
-    Font.Height = -13
-    Font.Name = 'Rockwell'
-    Font.Style = []
-    ParentFont = False
-    ReadOnly = True
-    TabOrder = 16
-    Text = 'PCS'
-    SkinData.CustomColor = True
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Indent = 0
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
-  end
   object sb: TsStatusBar
     Left = 0
-    Top = 484
+    Top = 447
     Width = 398
     Height = 19
     Panels = <>
     SkinData.SkinSection = 'STATUSBAR'
   end
   object btn_simpan: TsBitBtn
-    Left = 184
-    Top = 440
+    Left = 208
+    Top = 408
     Width = 81
     Height = 33
     Caption = '&Simpan'
@@ -551,13 +537,13 @@ object F_ubah_harga: TF_ubah_harga
     Font.Style = []
     ModalResult = 1
     ParentFont = False
-    TabOrder = 18
+    TabOrder = 17
     OnClick = btn_simpanClick
     SkinData.SkinSection = 'BUTTON'
   end
   object sBitBtn2: TsBitBtn
     Left = 304
-    Top = 440
+    Top = 408
     Width = 81
     Height = 33
     Caption = '&Batal'
@@ -568,7 +554,7 @@ object F_ubah_harga: TF_ubah_harga
     Font.Style = []
     ModalResult = 2
     ParentFont = False
-    TabOrder = 19
+    TabOrder = 18
     SkinData.SkinSection = 'BUTTON'
   end
   object Ed_macam: TsEdit
@@ -630,29 +616,13 @@ object F_ubah_harga: TF_ubah_harga
       'HETK'
       'HGTK')
   end
-  object b_update: TsBitBtn
-    Left = 296
-    Top = 80
-    Width = 89
-    Height = 57
-    Caption = '&Update HPP'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'Rockwell'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 4
-    OnClick = b_updateClick
-    SkinData.SkinSection = 'BUTTON'
-  end
   object g_1: TsGroupBox
     Left = 8
-    Top = 272
+    Top = 240
     Width = 377
     Height = 161
     Caption = 'Diskon'
-    TabOrder = 17
+    TabOrder = 16
     SkinData.SkinSection = 'GROUPBOX'
     object l_1: TsLabel
       Left = 8
@@ -681,11 +651,11 @@ object F_ubah_harga: TF_ubah_harga
       Font.Style = []
     end
     object l_3: TsLabel
-      Left = 8
+      Left = 160
       Top = 88
-      Width = 82
+      Width = 16
       Height = 19
-      Caption = 'Diskon (%)'
+      Caption = '%'
       ParentFont = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
@@ -695,10 +665,10 @@ object F_ubah_harga: TF_ubah_harga
     end
     object l_4: TsLabel
       Left = 8
-      Top = 124
-      Width = 86
+      Top = 84
+      Width = 50
       Height = 19
-      Caption = 'Diskon (Rp)'
+      Caption = 'Diskon'
       ParentFont = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
@@ -772,10 +742,11 @@ object F_ubah_harga: TF_ubah_harga
     object ed_discP: TsCurrencyEdit
       Left = 103
       Top = 84
-      Width = 74
+      Width = 58
       Height = 24
       AutoSize = False
       Color = clWhite
+      Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
       Font.Height = -13
@@ -783,7 +754,6 @@ object F_ubah_harga: TF_ubah_harga
       Font.Style = []
       ParentFont = False
       TabOrder = 2
-      OnExit = ed_discPExit
       BoundLabel.Indent = 0
       BoundLabel.Font.Charset = DEFAULT_CHARSET
       BoundLabel.Font.Color = clWindowText
@@ -800,9 +770,9 @@ object F_ubah_harga: TF_ubah_harga
       DisplayFormat = '##0.00;##0.00;0.00'
     end
     object ed_discRp: TsCurrencyEdit
-      Left = 104
+      Left = 8
       Top = 121
-      Width = 73
+      Width = 169
       Height = 24
       AutoSize = False
       Color = clWhite
@@ -1011,7 +981,6 @@ object F_ubah_harga: TF_ubah_harga
         Font.Style = []
         ParentFont = False
         TabOrder = 3
-        OnExit = ed_pokokExit
         BoundLabel.Indent = 0
         BoundLabel.Font.Charset = DEFAULT_CHARSET
         BoundLabel.Font.Color = clWindowText
