@@ -621,13 +621,17 @@ begin
 
   dm.db_conn.StartTransaction;
   try
+    _sql := Format('INSERT INTO tb_receipt_global(kd_perusahaan, kd_receipt, tgl_receipt, '
       + 'kd_suplier, jatuh_tempo, tunai, plus_PPN, PPN, disk_rp, nilai_faktur, simpan_pada, '
+      + 'pengguna, keterangan) VALUES ("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", %s, "%s", "%s")',
       [dm.kd_perusahaan, ed_no_faktur.Text, formatdatetime('yyyy-MM-dd', ed_tgl.Date),
       ed_supplier.Text, ed_jatuh_tempo.Text, tunai, plus_PPN, floattostr(ce_PPN.value),
       ce_diskonrp.Text, ed_nilai_faktur.Text, 'now()', dm.kd_pengguna, mmKeterangan.Text]);
 
     fungsi.SQLExec(dm.Q_exe, _sql, false);
 
+    _sql := Format('INSERT INTO tb_receipt_rinci(kd_perusahaan,kd_receipt,tgl_receipt,'
+      + 'kd_barang,n_barang,qty_receipt,harga_pokok,diskon,tgl_simpan,barcode) VALUES %s',
       [isi_sql]);
 
     fungsi.SQLExec(dm.Q_exe, _sql , false);
@@ -641,6 +645,7 @@ begin
     fungsi.SQLExec(dm.Q_exe, _sql, false);
 
     _sql := Format('REPLACE tb_barang_supp(kd_perusahaan,kd_suplier,kd_barang,`update`) '
+      +'VALUES %s', [isi_sql2]);
 
     fungsi.SQLExec(dm.Q_exe, _sql, false);
 
