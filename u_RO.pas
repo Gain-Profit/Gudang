@@ -233,9 +233,7 @@ begin
   ed_tgl.Text := formatdatetime('dd/MM/yyyy', dm.Q_list_receipt.fieldbyname('tgl_receipt').AsDateTime);
   ed_jatuh_tempo.Value := DaySpan(dm.Q_list_receipt.fieldbyname('jatuh_tempo').AsDateTime,
   dm.Q_list_receipt.fieldbyname('tgl_receipt').AsDateTime);
-//ce_ppn.Value:= dm.Q_list_receipt.fieldbyname('PPN').AsFloat;
   ce_diskonrp.Text := dm.Q_list_receipt.fieldbyname('disk_rp').AsString;
-//ce_harga.Text:= dm.Q_list_receipt.fieldbyname('nilai_faktur').AsString;
 
   fungsi.SQLExec(dm.Q_temp,
     'select * from tb_receipt_global where kd_perusahaan="' + dm.Q_list_receipt.fieldbyname
@@ -763,9 +761,7 @@ begin
     end;
     CloseFile(F);
     fungsi.amankan(sd.FileName, sd.FileName, 456);
-//bersih;
   end;
-
 end;
 
 procedure Tf_RO.b_loadClick(Sender: TObject);
@@ -836,7 +832,6 @@ begin
       ShowMessage('proses load data gagal...');
     end
   end;
-
 end;
 
 procedure Tf_RO.FormShow(Sender: TObject);
@@ -864,13 +859,6 @@ var
   kode: string;
   b: Integer;
 begin
-{if not ((key>='0')and(key<='9')or(key=#8) or(key=#43) or(key=#45) or (Key=#46) or (Key=#47)) then
-begin
-key:=#0;
-Exit;
-end;
-}
-
   if TableView.DataController.RecordCount = 0 then
     Exit;
 
