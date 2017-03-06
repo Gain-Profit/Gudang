@@ -856,18 +856,18 @@ sg_update.Progress:=30;
 sg_update.Suffix:=' %(Menambah Harga Barang Baru)';
 
 fungsi.SQLExec(dm.Q_Exe,'INSERT IGNORE INTO tb_barang_harga(kd_perusahaan,kd_barang,kd_macam_harga, '+
-'laba,laba_P,harga_jual1,harga_jual2,harga_jual3,kode_user,`update`,awal,ahir,diskon,diskonP) '+
-'SELECT "'+dm.kd_perusahaan+'",kd_barang,kd_macam_harga,laba,laba_P,harga_jual1,harga_jual2,harga_jual3, '+
-'kode_user,`update`,awal,ahir,diskon,diskonP FROM tb_barang_harga WHERE kd_perusahaan = "'+SB.Panels[8].Text+'"',False);
+'laba,harga_jual1,harga_jual2,harga_jual3,kode_user,`update`,awal,ahir,diskon) '+
+'SELECT "'+dm.kd_perusahaan+'",kd_barang,kd_macam_harga,laba,harga_jual1,harga_jual2,harga_jual3, '+
+'kode_user,`update`,awal,ahir,diskon FROM tb_barang_harga WHERE kd_perusahaan = "'+SB.Panels[8].Text+'"',False);
 
 sg_update.Progress:=40;
 sg_update.Suffix:=' %(Memperbarui Harga Barang)';
 
 fungsi.SQLExec(dm.Q_Exe,'UPDATE tb_barang_harga H1,tb_barang_harga H2 SET '+
-'H1.laba=H2.laba,H1.laba_P=H2.laba_P, '+
-'H1.harga_jual1=H2.harga_jual1,H1.harga_jual2=H2.harga_jual2,H1.harga_jual3=H2.harga_jual3, '+
+'H1.laba=H2.laba,H1.harga_jual1=H2.harga_jual1, '+
+'H1.harga_jual2=H2.harga_jual2,H1.harga_jual3=H2.harga_jual3, '+
 'H1.kode_user=H2.kode_user,H1.`update`=H2.`update`,H1.awal=H2.awal,H1.ahir=H2.ahir,'+
-'H1.diskon =H2.diskon,H1.diskonP =H2.diskonP WHERE H1.kd_barang=H2.kd_barang AND '+
+'H1.diskon =H2.diskon WHERE H1.kd_barang=H2.kd_barang AND '+
 'H1.kd_macam_harga=H2.kd_macam_harga AND '+
 'H1.kd_perusahaan="'+dm.kd_perusahaan+'" AND H2.kd_perusahaan="'+SB.Panels[8].Text+'"',False);
 
