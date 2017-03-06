@@ -117,7 +117,7 @@ end;
 procedure TF_Edit_Harga.Ed_CariKeyDown(Sender: TObject; var Key: Word; Shift:
   TShiftState);
 var
-  LKode: string;
+  LKode, LSQL: string;
 begin
   if key = vk_down then
     grid.SetFocus;
@@ -126,14 +126,16 @@ begin
   begin
     LKode := Ed_Cari.Text;
     PeekMessage(Mgs, 0, WM_CHAR, WM_CHAR, PM_REMOVE);
-    if ed_cari.Text <> '' then
-      caption := 'Edit Harga - ' + ed_cari.Text
+    if LKode <> '' then
+      caption := 'Edit Harga - ' + LKode
     else
       caption := 'Edit Harga';
+      
+    LSQL := Format('%s WHERE ((br.kd_perusahaan = "%s") AND ' +
+      '(br.kd_barang LIKE "%%%s%%" or br.n_barang LIKE "%%%s%%" or br.barcode3 LIKE "%%%s%%"))',
+      [sHargaSQL, dm.kd_perusahaan, LKode, LKode, LKode]);
 
-    fungsi.SQLExecT(Q_harga, Format('%s WHERE ((br.kd_perusahaan = "%s") AND ' +
-      '(br.kd_barang LIKE "%%%s%%" or br.n_barang LIKE "%%%s%%" or barcode3 LIKE "%%%s%%")',
-      [sHargaSQL, dm.kd_perusahaan, LKode, LKode, LKode]), True);
+    fungsi.SQLExecT(Q_harga, LSQL, True);
 
     grid.SetFocus;
     ed_cari.SetFocus;
