@@ -299,8 +299,8 @@ object f_RO: Tf_RO
           Options.IncSearch = False
           Width = 83
         end
-        object t_view_hpp_aktif: TcxGridColumn
-          Caption = 'HPP Aktif'
+        object t_view_hpp_akhir: TcxGridColumn
+          Caption = 'HPP Akhir'
           DataBinding.ValueType = 'Integer'
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.Alignment.Horz = taRightJustify
