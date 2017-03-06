@@ -64,7 +64,6 @@ type
     ed_marginRpNew: TsCurrencyEdit;
     l_8: TsLabel;
     l_9: TsLabel;
-    procedure ubah;
     procedure btn_simpanClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure cb_macamChange(Sender: TObject);
@@ -73,15 +72,16 @@ type
     procedure ed_harga2Exit(Sender: TObject);
     procedure ed_marginRpExit(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure harga_baru;
     procedure Ed_harga1Exit(Sender: TObject);
     procedure de_ahirExit(Sender: TObject);
     procedure ed_discRpExit(Sender: TObject);
   private
     procedure ubahHarga(perusahaan: string);
     procedure UbahJenis(Jenis: Byte);
+    procedure harga_baru;
     { Private declarations }
   public
+    procedure ubah(APID, AJenis: string);
     { Public declarations }
   end;
 
@@ -114,29 +114,35 @@ begin
     ed_qty1.Value);
 end;
 
-procedure TF_ubah_harga.ubah;
+procedure TF_ubah_harga.ubah(APID, AJenis: string);
 var
   sat1, sat2, sat3: string;
 begin
-  cb_macam.ItemIndex := cb_macam.Items.IndexOf(dm.Q_harga.FieldByName('kd_macam_harga').AsString);
+  ed_plu.Text := APID;
+
+  fungsi.SQLExec(dm.Q_temp, Format('SELECT n_barang, Qty1, Qty2, kd_sat1, '
+    + 'kd_sat2, kd_sat3, hpp_ahir from tb_barang where kd_barang="%s" and '
+    +' kd_perusahaan="%s"', [Ed_Plu.Text, dm.kd_perusahaan]), true);
+  ed_pokok.Text := dm.Q_temp.fieldbyname('hpp_ahir').AsString;
+
+  cb_macam.ItemIndex := cb_macam.Items.IndexOf(AJenis);
 
   if cb_macam.ItemIndex = -1 then
     cb_macam.ItemIndex := 0;
 
-  ed_plu.Text := dm.Q_harga.FieldByName('kd_barang').AsString;
-  ed_DESKRIPSI.Text := dm.Q_harga.FieldByName('n_barang').AsString;
+  ed_DESKRIPSI.Text := dm.Q_temp.FieldByName('n_barang').AsString;
 
-  ed_qty1.Text := dm.Q_harga.FieldByName('Qty1').AsString;
-  ed_qty2.Text := dm.Q_harga.FieldByName('Qty2').AsString;
-  sat1 := dm.Q_harga.FieldByName('kd_sat1').AsString;
+  ed_qty1.Text := dm.Q_temp.FieldByName('Qty1').AsString;
+  ed_qty2.Text := dm.Q_temp.FieldByName('Qty2').AsString;
+  sat1 := dm.Q_temp.FieldByName('kd_sat1').AsString;
   fungsi.SQLExec(dm.Q_Exe, 'select * from tb_satuan where kd_satuan="' + sat1 +
     '"', true);
   ed_sat1.Text := dm.Q_Exe.FieldByName('n_singkat').AsString;
-  sat2 := dm.Q_harga.FieldByName('kd_sat2').AsString;
+  sat2 := dm.Q_temp.FieldByName('kd_sat2').AsString;
   fungsi.SQLExec(dm.Q_Exe, 'select * from tb_satuan where kd_satuan="' + sat2 +
     '"', true);
   ed_sat2.Text := dm.Q_Exe.FieldByName('n_singkat').AsString;
-  sat3 := dm.Q_harga.FieldByName('kd_sat3').AsString;
+  sat3 := dm.Q_temp.FieldByName('kd_sat3').AsString;
   fungsi.SQLExec(dm.Q_Exe, 'select * from tb_satuan where kd_satuan="' + sat3 +
     '"', true);
   ed_sat3.Text := dm.Q_Exe.FieldByName('n_singkat').AsString;
@@ -287,10 +293,6 @@ begin
     ed_macam.Text := 'HARGA GROSIR'
   else
     ed_macam.Text := 'HARGA ECERAN';
-
-  fungsi.SQLExec(dm.Q_temp, 'select hpp_ahir from tb_barang where kd_barang="'
-    + ed_plu.Text + '" and kd_perusahaan="' + dm.kd_perusahaan + '"', true);
-  ed_pokok.Text := dm.Q_temp.fieldbyname('hpp_ahir').AsString;
 
   fungsi.SQLExec(dm.Q_temp, 'select * from tb_barang_harga where kd_barang = "'
     + ed_plu.Text + '"and kd_macam_harga = "' + cb_macam.Text + '"', true);
