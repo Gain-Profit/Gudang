@@ -102,7 +102,7 @@ object F_Edit_Harga: TF_Edit_Harga
         OnKeyDown = t_dataKeyDown
         NavigatorButtons.ConfirmDelete = False
         OnCellDblClick = t_dataCellDblClick
-        DataController.DataSource = dm.ds_harga
+        DataController.DataSource = Ds_harga
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <
           item
@@ -128,20 +128,6 @@ object F_Edit_Harga: TF_Edit_Harga
           Properties.Alignment.Vert = taVCenter
           Width = 53
         end
-        object t_databarcode1: TcxGridDBColumn
-          Caption = 'Barcode 1'
-          DataBinding.FieldName = 'barcode1'
-          PropertiesClassName = 'TcxTextEditProperties'
-          Properties.Alignment.Vert = taVCenter
-          Visible = False
-        end
-        object t_databarcode2: TcxGridDBColumn
-          Caption = 'Barcode 2'
-          DataBinding.FieldName = 'barcode2'
-          PropertiesClassName = 'TcxTextEditProperties'
-          Properties.Alignment.Vert = taVCenter
-          Visible = False
-        end
         object t_databarcode3: TcxGridDBColumn
           Caption = 'Barcode'
           DataBinding.FieldName = 'barcode3'
@@ -158,7 +144,18 @@ object F_Edit_Harga: TF_Edit_Harga
         end
         object t_datan_macam_harga: TcxGridDBColumn
           Caption = 'Macam Harga'
-          DataBinding.FieldName = 'n_macam_harga'
+          DataBinding.FieldName = 'kd_macam_harga'
+          PropertiesClassName = 'TcxImageComboBoxProperties'
+          Properties.Items = <
+            item
+              Description = 'HARGA ECERAN'
+              ImageIndex = 0
+              Value = 'HETK'
+            end
+            item
+              Description = 'HARGA GROSIR'
+              Value = 'HGTK'
+            end>
           Width = 75
         end
         object t_dataHppNew: TcxGridDBColumn
@@ -282,5 +279,15 @@ object F_Edit_Harga: TF_Edit_Harga
     TitleButtons = <>
     Left = 16
     Top = 8
+  end
+  object Q_harga: TMyQuery
+    Connection = dm.db_conn
+    Left = 8
+    Top = 216
+  end
+  object Ds_harga: TDataSource
+    DataSet = Q_harga
+    Left = 72
+    Top = 216
   end
 end

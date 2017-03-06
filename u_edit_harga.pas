@@ -10,7 +10,7 @@ uses
   cxDBData, cxGridLevel, cxClasses, cxControls, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
   cxCheckBox, cxCurrencyEdit, cxTextEdit, cxImageComboBox, cxStyles,
-  sSpeedButton, cxFilter, cxData, StdCtrls;
+  sSpeedButton, cxFilter, cxData, StdCtrls, MemDS, DBAccess, MyAccess;
 
   const
   WM_AFTER_SHOW = WM_USER + 300; // custom message
@@ -33,12 +33,12 @@ type
     t_databarcode3: TcxGridDBColumn;
     t_datan_macam_harga: TcxGridDBColumn;
     t_dataHppNew: TcxGridDBColumn;
-    t_databarcode2: TcxGridDBColumn;
-    t_databarcode1: TcxGridDBColumn;
     t_datauser: TcxGridDBColumn;
     t_dataColumn1: TcxGridDBColumn;
     sb_2: TsSpeedButton;
     sb_1: TsSpeedButton;
+    Q_harga: TMyQuery;
+    Ds_harga: TDataSource;
     procedure WMMDIACTIVATE(var msg : TWMMDIACTIVATE) ; message WM_MDIACTIVATE;
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -92,7 +92,7 @@ end;
 
 procedure TF_Edit_Harga.WmAfterShow(var Msg: TMessage);
 begin
-fungsi.SQLExecT(dm.Q_harga,'select * from vw_harga_barang where kd_perusahaan="'+
+fungsi.SQLExecT(Q_harga,'select * from vw_harga_barang where kd_perusahaan="'+
 dm.kd_perusahaan+'"',true);
 t_data.DataController.FocusedRowIndex:=1;
 end;
@@ -123,7 +123,7 @@ begin
     caption:='Edit Harga - '+ed_cari.Text else
     caption:='Edit Harga';
 
-      fungsi.SQLExec(dm.Q_harga,'select * from vw_harga_barang where (kd_barang like "%'+
+      fungsi.SQLExec(Q_harga,'select * from vw_harga_barang where (kd_barang like "%'+
       ed_cari.Text+'%" or n_barang like "%'+ed_cari.Text+'%" or barcode3 like "%'+
       ed_cari.Text+'%" or barcode2 like "%'+ed_cari.Text+'%" or barcode1 like "%'+
       ed_cari.Text+'%") and (kd_perusahaan="'+
@@ -184,8 +184,8 @@ end;
 procedure TF_Edit_Harga.deleteHargaBarang(perusahaan:string);
 begin
     fungsi.SQLExec(dm.Q_Exe,'delete from tb_barang_harga where kd_perusahaan="'+perusahaan
-    +'" and kd_macam_harga="'+dm.Q_harga.fieldbyname('kd_macam_harga').AsString
-    +'" and kd_barang="'+dm.Q_harga.fieldbyname('kd_barang').AsString+'"',false);
+    +'" and kd_macam_harga="'+Q_harga.fieldbyname('kd_macam_harga').AsString
+    +'" and kd_barang="'+Q_harga.fieldbyname('kd_barang').AsString+'"',false);
 end;
 
 procedure TF_Edit_Harga.FormCreate(Sender: TObject);
@@ -197,11 +197,11 @@ procedure TF_Edit_Harga.sb_2Click(Sender: TObject);
 var posisi:integer;
 begin
 Screen.Cursor:= crHourGlass;
-posisi:= dm.Q_harga.RecNo;
-fungsi.SQLExec(dm.Q_harga,'select * from vw_harga_barang where kd_perusahaan="'+
+posisi:= Q_harga.RecNo;
+fungsi.SQLExec(Q_harga,'select * from vw_harga_barang where kd_perusahaan="'+
 dm.kd_perusahaan+'"',true);
 
-dm.Q_harga.RecNo:= posisi;
+Q_harga.RecNo:= posisi;
 Screen.Cursor:= crDefault;
 end;
 
@@ -213,7 +213,8 @@ end;
 procedure TF_Edit_Harga.LihatData;
 begin
   application.CreateForm(TF_ubah_harga,F_ubah_harga);
-  f_ubah_harga.ubah;
+  f_ubah_harga.ubah(Q_harga.FieldByName('kd_barang').AsString,
+    Q_harga.FieldByName('kd_macam_harga').AsString);
   F_ubah_harga.ShowModal;
 end;
 
