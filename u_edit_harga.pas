@@ -69,6 +69,14 @@ uses
 
 {$R *.dfm}
 
+const
+  sHargaSQL =
+    'SELECT br.kd_barang, br.barcode3, br.n_barang, brhg.kd_macam_harga, br.hpp_ahir, ' +
+    'br.hpp_aktif, brhg.harga_jual3, brhg.harga_jual2, brhg.harga_jual1, brhg.kode_user, ' +
+    'IF((br.hpp_aktif > br.hpp_ahir),-(1),IF((br.hpp_aktif < br.hpp_ahir),1,0)) AS `NATUR` ' +
+    'FROM (tb_barang br LEFT JOIN tb_barang_harga brhg ON(((br.kd_barang = brhg.kd_barang) ' +
+    'AND (brhg.kd_perusahaan = br.kd_perusahaan)))) ';
+
 procedure TF_Edit_Harga.WMMDIACTIVATE(var msg: TWMMDIACTIVATE);
 var
   active: TWinControl;
@@ -89,8 +97,8 @@ end;
 
 procedure TF_Edit_Harga.WmAfterShow(var Msg: TMessage);
 begin
-  fungsi.SQLExecT(Q_harga, 'select * from vw_harga_barang where kd_perusahaan="'
-    + dm.kd_perusahaan + '"', true);
+  fungsi.SQLExecT(Q_harga, Format('%s WHERE br.kd_perusahaan = "%s"', [sHargaSQL,
+    dm.kd_perusahaan]), True);
   t_data.DataController.FocusedRowIndex := 1;
 end;
 
@@ -108,24 +116,24 @@ end;
 
 procedure TF_Edit_Harga.Ed_CariKeyDown(Sender: TObject; var Key: Word; Shift:
   TShiftState);
+var
+  LKode: string;
 begin
   if key = vk_down then
     grid.SetFocus;
 
   if key = vk_return then
   begin
+    LKode := Ed_Cari.Text;
     PeekMessage(Mgs, 0, WM_CHAR, WM_CHAR, PM_REMOVE);
     if ed_cari.Text <> '' then
       caption := 'Edit Harga - ' + ed_cari.Text
     else
       caption := 'Edit Harga';
 
-    fungsi.SQLExec(Q_harga,
-      'select * from vw_harga_barang where (kd_barang like "%' + ed_cari.Text +
-      '%" or n_barang like "%' + ed_cari.Text + '%" or barcode3 like "%' +
-      ed_cari.Text + '%" or barcode2 like "%' + ed_cari.Text +
-      '%" or barcode1 like "%' + ed_cari.Text + '%") and (kd_perusahaan="' + dm.kd_perusahaan
-      + '")', true);
+    fungsi.SQLExecT(Q_harga, Format('%s WHERE ((br.kd_perusahaan = "%s") AND ' +
+      '(br.kd_barang LIKE "%%%s%%" or br.n_barang LIKE "%%%s%%" or barcode3 LIKE "%%%s%%")',
+      [sHargaSQL, dm.kd_perusahaan, LKode, LKode, LKode]), True);
 
     grid.SetFocus;
     ed_cari.SetFocus;
@@ -198,8 +206,8 @@ var
 begin
   Screen.Cursor := crHourGlass;
   posisi := Q_harga.RecNo;
-  fungsi.SQLExec(Q_harga, 'select * from vw_harga_barang where kd_perusahaan="'
-    + dm.kd_perusahaan + '"', true);
+  fungsi.SQLExec(Q_harga, Format('%s WHERE br.kd_perusahaan = "%s"', [sHargaSQL,
+    dm.kd_perusahaan]), true);
 
   Q_harga.RecNo := posisi;
   Screen.Cursor := crDefault;
