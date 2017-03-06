@@ -286,9 +286,9 @@ object F_Edit_Harga: TF_Edit_Harga
         TabOrder = 1
         object CkSemua: TCheckBox
           Left = 8
-          Top = 8
+          Top = 2
           Width = 225
-          Height = 17
+          Height = 29
           Caption = 'Tampilkan Semua Data'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
