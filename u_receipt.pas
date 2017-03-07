@@ -1,4 +1,4 @@
-unit u_RO;
+unit u_receipt;
 
 interface
 
@@ -232,7 +232,7 @@ begin
   ed_no_faktur.Text := dm.Q_list_receipt.fieldbyname('kd_receipt').AsString;
   ed_tgl.Text := formatdatetime('dd/MM/yyyy', dm.Q_list_receipt.fieldbyname('tgl_receipt').AsDateTime);
   ed_jatuh_tempo.Value := DaySpan(dm.Q_list_receipt.fieldbyname('jatuh_tempo').AsDateTime,
-  dm.Q_list_receipt.fieldbyname('tgl_receipt').AsDateTime);
+    dm.Q_list_receipt.fieldbyname('tgl_receipt').AsDateTime);
   ce_diskonrp.Text := dm.Q_list_receipt.fieldbyname('disk_rp').AsString;
 
   fungsi.SQLExec(dm.Q_temp,
@@ -590,14 +590,14 @@ begin
   for x := 0 to tableview.DataController.RecordCount - 1 do
   begin
     LHppAhir := TableView.DataController.GetValue(x, 6);
-    LQty := TableView.DataController.GetValue(x,2);
-    LKdBarang:= TableView.DataController.GetDisplayText(x, 0);
+    LQty := TableView.DataController.GetValue(x, 2);
+    LKdBarang := TableView.DataController.GetDisplayText(x, 0);
 
     isi_sql := isi_sql + '("' + dm.kd_perusahaan + '","' + ed_no_faktur.Text +
-      '","' + formatdatetime('yyyy-MM-dd', ed_tgl.Date) + '","' + LKdBarang + '","' +
-      TableView.DataController.GetDisplayText(x, 1) + '","' +
-      floattostr(LQty) + '","' + floattostr(TableView.DataController.GetValue
-      (x, 3)) + '","' + floattostr(TableView.DataController.GetValue(x, 4)) +
+      '","' + formatdatetime('yyyy-MM-dd', ed_tgl.Date) + '","' + LKdBarang +
+      '","' + TableView.DataController.GetDisplayText(x, 1) + '","' + floattostr
+      (LQty) + '","' + floattostr(TableView.DataController.GetValue(x, 3)) +
+      '","' + floattostr(TableView.DataController.GetValue(x, 4)) +
       '",date(now()),"' + TableView.DataController.GetDisplayText(x, 8) + '"), ';
 
     isi_sql2 := isi_sql2 + '("' + dm.kd_perusahaan + '","' + ed_supplier.Text +
@@ -608,7 +608,8 @@ begin
 
     LIsiHppAkhir := LIsiHppAkhir + Format('WHEN "%s" THEN (%d) ', [LKdBarang, LHppAhir]);
 
-    LIsiStokOH := LIsiStokOH + Format('WHEN "%s" THEN (stok_OH + %d) ', [LKdBarang, LQty]);
+    LIsiStokOH := LIsiStokOH + Format('WHEN "%s" THEN (stok_OH + %d) ', [LKdBarang,
+      LQty]);
 
     LKdBarangs := LKdBarangs + Format('"%s", ', [LKdBarang]);
   end;
@@ -626,7 +627,8 @@ begin
       + 'pengguna, keterangan) VALUES ("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", %s, "%s", "%s")',
       [dm.kd_perusahaan, ed_no_faktur.Text, formatdatetime('yyyy-MM-dd', ed_tgl.Date),
       ed_supplier.Text, ed_jatuh_tempo.Text, tunai, plus_PPN, floattostr(ce_PPN.value),
-      ce_diskonrp.Text, ed_nilai_faktur.Text, 'now()', dm.kd_pengguna, mmKeterangan.Text]);
+      ce_diskonrp.Text, ed_nilai_faktur.Text, 'now()', dm.kd_pengguna,
+      mmKeterangan.Text]);
 
     fungsi.SQLExec(dm.Q_exe, _sql, false);
 
@@ -634,18 +636,18 @@ begin
       + 'kd_barang,n_barang,qty_receipt,harga_pokok,diskon,tgl_simpan,barcode) VALUES %s',
       [isi_sql]);
 
-    fungsi.SQLExec(dm.Q_exe, _sql , false);
+    fungsi.SQLExec(dm.Q_exe, _sql, false);
 
     _sql := Format('UPDATE tb_barang SET hpp_aktif = (CASE kd_barang %s END), '
       + 'hpp_ahir = (CASE kd_barang %s END), stok_OH = (CASE kd_barang %s END), '
-      + 'Tr_Akhir = date(now()) '
-      + 'WHERE kd_perusahaan = "%s" AND kd_barang IN (%s)',
-      [LIsiHppAktif, LIsiHppAkhir, LIsiStokOH, dm.kd_perusahaan, LKdBarangs]);
+      + 'Tr_Akhir = date(now()) ' +
+      'WHERE kd_perusahaan = "%s" AND kd_barang IN (%s)', [LIsiHppAktif,
+      LIsiHppAkhir, LIsiStokOH, dm.kd_perusahaan, LKdBarangs]);
 
     fungsi.SQLExec(dm.Q_exe, _sql, false);
 
     _sql := Format('REPLACE tb_barang_supp(kd_perusahaan,kd_suplier,kd_barang,`update`) '
-      +'VALUES %s', [isi_sql2]);
+      + 'VALUES %s', [isi_sql2]);
 
     fungsi.SQLExec(dm.Q_exe, _sql, false);
 
