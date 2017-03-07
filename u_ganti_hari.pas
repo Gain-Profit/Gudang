@@ -1,4 +1,4 @@
-unit u_hari;
+unit u_ganti_hari;
 
 interface
 
@@ -25,8 +25,10 @@ implementation
 
 procedure Tf_hari.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-Action:= caFree;
-f_hari:= nil;
+  Action := caFree;
+  f_hari := nil;
 end;
 
 end.
+
+
