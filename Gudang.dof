@@ -127,12 +127,12 @@ Item17=u_emp.dfm
 Item18=u_list_purchase.dfm
 Item19=u_list_receipt.dfm
 Item20=u_list_return.dfm
-Item21=U_Login.dfm
+Item21=u_Login.dfm
 Item22=u_lap.dfm
 Item23=u_RO.dfm
 Item24=u_purchase.dfm
 Item25=u_return.dfm
-Item26=U_kirim.dfm
+Item26=u_kirim.dfm
 Item27=u_list_kirim.dfm
 Item28=u_kirim_data.dfm
 Item29=u_list_sales.dfm
@@ -167,12 +167,3 @@ OriginalFilename=
 ProductName=
 ProductVersion=1.0.0.0
 Comments=
-[HistoryLists\hlConditionals]
-Count=1
-Item0=madExcept
-[HistoryLists\hlUnitAliases]
-Count=1
-Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
-[HistoryLists\hlOutputDirectorry]
-Count=1
-Item0=..\GAIN PROFIT
