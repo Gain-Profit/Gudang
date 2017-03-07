@@ -240,6 +240,7 @@ begin
   tableview.DataController.ChangeFocusedRowIndex(baris_baru);
   mm_nama.Text := tableView.DataController.GetValue(baris_baru - 1, 1);
   ce_harga.Value := tableView.DataController.GetValue(baris_baru - 1, 3);
+  SbToko.Enabled:= False;
 end;
 
 procedure Tf_return_kirim.ed_codeKeyDown(Sender: TObject; var Key: Word; Shift:
@@ -296,6 +297,7 @@ procedure Tf_return_kirim.TableViewFocusedRecordChanged(Sender:
 begin
   if tableview.DataController.RecordCount = 0 then
   begin
+    SbToko.Enabled:= True;
     mm_nama.Clear;
     ce_harga.Clear;
     exit;
