@@ -533,9 +533,8 @@ begin
   application.CreateForm(tf_cari, f_cari);
   with F_cari do
   try
-    _SQLi :=
-      'select kd_barang, n_barang, hpp_ahir from tb_barang where kd_perusahaan="' +
-      dm.kd_perusahaan + '"';
+    _SQLi := 'select kd_barang, n_barang, hpp_ahir from tb_barang ' +
+      'where kd_perusahaan="' + dm.kd_perusahaan + '"';
     tblcap[0] := 'PID';
     tblCap[1] := 'Deskripsi Barang';
     tblCap[2] := 'HPP';
@@ -594,10 +593,9 @@ begin
     LKdBarang := TableView.DataController.GetDisplayText(x, 0);
 
     isi_sql := isi_sql + '("' + dm.kd_perusahaan + '","' + ed_no_faktur.Text +
-      '","' + formatdatetime('yyyy-MM-dd', ed_tgl.Date) + '","' + LKdBarang +
-      '","' + TableView.DataController.GetDisplayText(x, 1) + '","' + floattostr
-      (LQty) + '","' + floattostr(TableView.DataController.GetValue(x, 3)) +
-      '","' + floattostr(TableView.DataController.GetValue(x, 4)) +
+      '","' + LKdBarang + '","' + TableView.DataController.GetDisplayText(x, 1)
+      + '","' + floattostr(LQty) + '","' + floattostr(TableView.DataController.GetValue
+      (x, 3)) + '","' + floattostr(TableView.DataController.GetValue(x, 4)) +
       '",date(now()),"' + TableView.DataController.GetDisplayText(x, 8) + '"), ';
 
     isi_sql2 := isi_sql2 + '("' + dm.kd_perusahaan + '","' + ed_supplier.Text +
@@ -632,8 +630,8 @@ begin
 
     fungsi.SQLExec(dm.Q_exe, _sql, false);
 
-    _sql := Format('INSERT INTO tb_receipt_rinci(kd_perusahaan,kd_receipt,tgl_receipt,'
-      + 'kd_barang,n_barang,qty_receipt,harga_pokok,diskon,tgl_simpan,barcode) VALUES %s',
+    _sql := Format('INSERT INTO tb_receipt_rinci(kd_perusahaan,kd_receipt, ' +
+      'kd_barang,n_barang,qty_receipt,harga_pokok,diskon,tgl_simpan,barcode) VALUES %s',
       [isi_sql]);
 
     fungsi.SQLExec(dm.Q_exe, _sql, false);
