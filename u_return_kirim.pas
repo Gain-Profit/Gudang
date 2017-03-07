@@ -343,7 +343,8 @@ begin
   with F_cari do
   try
     _SQLi := 'select kd_pelanggan,n_pelanggan from ' +
-      'tb_pelanggan where kd_pelanggan IN (SELECT kd_perusahaan from tb_company) and kd_perusahaan="' +
+      'tb_pelanggan where kd_pelanggan IN (SELECT kd_perusahaan from tb_company '
+      + 'WHERE onserver="Y") and kd_perusahaan="' +
       dm.kd_perusahaan + '"';
     tblcap[0] := 'Kode';
     tblCap[1] := 'Nama Pelanggan';
