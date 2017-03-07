@@ -372,12 +372,19 @@ end;
 
 procedure Tf_return_kirim.sb_cariClick(Sender: TObject);
 begin
+  if EdToko.Text = '' then
+  begin
+    ShowMessage('data Toko harus diisi terlebih dahulu');
+    EdToko.SetFocus;
+    Exit;
+  end;
+
   ed_code.SetFocus;
   application.CreateForm(tf_cari, f_cari);
   with F_cari do
   try
     _SQLi := 'select kd_barang, n_barang from tb_barang where kd_perusahaan="' +
-      dm.kd_perusahaan + '"';
+      EdToko.Text + '"';
     tblcap[0] := 'PID';
     tblCap[1] := 'Deskripsi Barang';
     tampil_button(False, True);
