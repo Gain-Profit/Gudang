@@ -175,13 +175,13 @@ object f_return_kirim: Tf_return_kirim
         Font.Name = 'MS Sans Serif'
         Font.Style = []
       end
-      object sb_pelanggan: TsSpeedButton
+      object SbToko: TsSpeedButton
         Tag = 9
         Left = 252
         Top = 6
         Width = 24
         Height = 21
-        OnClick = sb_pelangganClick
+        OnClick = SbTokoClick
         SkinData.SkinSection = 'SPEEDBUTTON'
         ImageIndex = 0
         Images = dm.gambar
@@ -197,7 +197,7 @@ object f_return_kirim: Tf_return_kirim
         ImageIndex = 0
         Images = dm.gambar
       end
-      object l_toko: TsLabel
+      object LblToko: TsLabel
         Left = 280
         Top = 6
         Width = 56
@@ -281,7 +281,7 @@ object f_return_kirim: Tf_return_kirim
         GlyphMode.Grayed = False
         DefaultToday = True
       end
-      object ed_pelanggan: TsEdit
+      object EdToko: TsEdit
         Left = 80
         Top = 6
         Width = 169
@@ -295,8 +295,8 @@ object f_return_kirim: Tf_return_kirim
         ParentFont = False
         ReadOnly = True
         TabOrder = 0
-        OnChange = ed_pelangganChange
-        OnKeyDown = ed_pelangganKeyDown
+        OnChange = EdTokoChange
+        OnKeyDown = EdTokoKeyDown
         SkinData.CustomColor = True
         SkinData.SkinSection = 'EDIT'
         BoundLabel.Indent = 0
@@ -350,7 +350,6 @@ object f_return_kirim: Tf_return_kirim
         ParentFont = False
         TabOrder = 3
         OnChange = ed_fak_kirimChange
-        OnKeyPress = ed_fak_kirimKeyPress
         SkinData.CustomColor = True
         SkinData.SkinSection = 'EDIT'
         BoundLabel.Indent = 0

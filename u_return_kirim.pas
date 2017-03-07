@@ -23,13 +23,13 @@ type
     sLabel1: TsLabel;
     sLabel3: TsLabel;
     sLabel4: TsLabel;
-    sb_pelanggan: TsSpeedButton;
+    SbToko: TsSpeedButton;
     sb_cari: TsSpeedButton;
-    l_toko: TsLabel;
+    LblToko: TsLabel;
     sLabel5: TsLabel;
     ed_no_faktur: TsEdit;
     ed_tgl: TsDateEdit;
-    ed_pelanggan: TsEdit;
+    EdToko: TsEdit;
     ed_code: TsEdit;
     ed_fak_kirim: TsEdit;
     panel3: TsPanel;
@@ -73,8 +73,8 @@ type
       ANewItemRecordFocusingChanged: Boolean);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure b_newClick(Sender: TObject);
-    procedure sb_pelangganClick(Sender: TObject);
-    procedure ed_pelangganKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure SbTokoClick(Sender: TObject);
+    procedure EdTokoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure sb_cariClick(Sender: TObject);
     procedure
       TableViewTcxGridDataControllerTcxDataSummaryFooterSummaryItems4GetText(Sender:
@@ -89,8 +89,7 @@ type
     procedure b_loadClick(Sender: TObject);
     procedure ed_codeKeyPress(Sender: TObject; var Key: Char);
     procedure ed_no_fakturKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
-    procedure ed_fak_kirimKeyPress(Sender: TObject; var Key: Char);
-    procedure ed_pelangganChange(Sender: TObject);
+    procedure EdTokoChange(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure returnCabang;
   private
@@ -156,11 +155,11 @@ end;
 
 procedure Tf_return_kirim.bersih;
 begin
-  l_toko.Caption := '';
+  LblToko.Caption := '';
   ed_tgl.Date := now();
   mm_nama.Clear;
   ce_harga.Clear;
-  ed_pelanggan.Clear;
+  EdToko.Clear;
   ed_no_faktur.Clear;
   ed_fak_kirim.Clear;
   tableview.DataController.RecordCount := 0;
@@ -172,8 +171,8 @@ var
   h: Integer;
   x_hpp: Real;
 begin
-  ed_pelanggan.Text := dm.Q_list_return_kirim.fieldbyname('kd_pelanggan').AsString;
-  l_toko.Caption := dm.Q_list_return_kirim.fieldbyname('n_pelanggan').AsString;
+  EdToko.Text := dm.Q_list_return_kirim.fieldbyname('kd_pelanggan').AsString;
+  LblToko.Caption := dm.Q_list_return_kirim.fieldbyname('n_pelanggan').AsString;
   ed_no_faktur.Text := dm.Q_list_return_kirim.fieldbyname('kd_return_kirim').AsString;
   ed_fak_kirim.Text := dm.Q_list_return_kirim.fieldbyname('kd_kirim').AsString;
   ed_tgl.Text := formatdatetime('dd/MM/yyyy', dm.Q_list_return_kirim.fieldbyname
@@ -249,12 +248,19 @@ begin
   if key = vk_return then
   begin
     PeekMessage(Mgs, 0, WM_CHAR, WM_CHAR, PM_REMOVE);
+    if EdToko.Text = '' then
+    begin
+      ShowMessage('data Toko harus diisi terlebih dahulu');
+      EdToko.SetFocus;
+      Exit;
+    end;
+
     if ed_code.Text = '' then
       exit;
     fungsi.sqlExec(dm.Q_temp, 'SELECT kd_barang,n_barang,barcode3, ' +
       'hpp_aktif,kd_sat3 FROM tb_barang WHERE ((kd_barang = "' + ed_code.Text +
       '" OR barcode3 = "' + ed_code.Text + '" OR barcode2 = "' + ed_code.Text +
-      '" OR barcode1 = "' + ed_code.Text + '") AND kd_perusahaan="' + dm.kd_perusahaan
+      '" OR barcode1 = "' + ed_code.Text + '") AND kd_perusahaan="' + EdToko.Text
       + '")', true);
     if dm.Q_temp.RecordCount <> 0 then
     begin
@@ -314,7 +320,7 @@ begin
   if key = vk_f3 then
     grid.SetFocus;
   if key = vk_f4 then
-    sb_pelangganClick(Sender);
+    SbTokoClick(Sender);
   if key = vk_f5 then
     b_autoClick(Sender);
 end;
@@ -324,13 +330,13 @@ begin
   bersih;
 end;
 
-procedure Tf_return_kirim.sb_pelangganClick(Sender: TObject);
+procedure Tf_return_kirim.SbTokoClick(Sender: TObject);
 var
   sebelum: string;
 begin
-  sebelum := ed_pelanggan.Text;
+  sebelum := EdToko.Text;
 
-  ed_pelanggan.SetFocus;
+  EdToko.SetFocus;
   application.CreateForm(tf_cari, f_cari);
   with F_cari do
   try
@@ -343,24 +349,24 @@ begin
     tampil_button(False, True);
     if ShowModal = mrOk then
     begin
-      ed_pelanggan.Text := TblVal[0];
-      l_toko.Caption := tblval[1];
+      EdToko.Text := TblVal[0];
+      LblToko.Caption := tblval[1];
     end;
   finally
     close;
   end;
-  if CompareStr(ed_pelanggan.Text, sebelum) <> 0 then
+  if CompareStr(EdToko.Text, sebelum) <> 0 then
     ed_no_faktur.Clear;
 
 end;
 
-procedure Tf_return_kirim.ed_pelangganKeyDown(Sender: TObject; var Key: Word;
+procedure Tf_return_kirim.EdTokoKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  if (key = vk_return) and (sb_pelanggan.Enabled = True) then
+  if (key = vk_return) and (SbToko.Enabled = True) then
   begin
     PeekMessage(Mgs, 0, WM_CHAR, WM_CHAR, PM_REMOVE);
-    sb_pelangganClick(Sender);
+    SbTokoClick(Sender);
   end;
 end;
 
@@ -399,17 +405,17 @@ var
   w: Integer;
   x, sekarang: string;
 begin
-  if ed_pelanggan.Text = '' then
+  if EdToko.Text = '' then
   begin
     ShowMessage('untuk auto kode, data Toko harus diisi terlebih dahulu');
-    ed_pelanggan.SetFocus;
+    EdToko.SetFocus;
     Exit;
   end;
 
   sekarang := formatdatetime('yyyyMMdd', dm.waktu_sekarang);
 
   fungsi.SQLExec(dm.Q_temp, 'select Count(kd_return_kirim) as jumlah from ' +
-    'tb_return_kirim_global where kd_tk_return_kirim="' + ed_pelanggan.text +
+    'tb_return_kirim_global where kd_tk_return_kirim="' + EdToko.text +
     '" and kd_perusahaan = "' + dm.kd_perusahaan +
     '" and date(simpan_pada)=date(now())', true);
 
@@ -420,7 +426,7 @@ begin
   else if w < 100 then
     x := '' + inttostr(w);
 
-  ed_no_faktur.Text := 'RK-' + ed_pelanggan.text + '-' + sekarang + x;
+  ed_no_faktur.Text := 'RK-' + EdToko.text + '-' + sekarang + x;
 
 end;
 
@@ -452,7 +458,7 @@ begin
   end;
 
   b_auto.Enabled := not (urip);
-  sb_pelanggan.Enabled := not (urip);
+  SbToko.Enabled := not (urip);
   sb_cari.Enabled := not (urip);
   b_simpan.Enabled := not (urip);
   b_print.Enabled := urip;
@@ -477,13 +483,13 @@ var
   x, i: integer;
   isi_sql, kd_faktur: string;
 begin
-  if (ed_pelanggan.Text = dm.kd_perusahaan) then
+  if (EdToko.Text = dm.kd_perusahaan) then
   begin
     showmessage('data tidak dapat disimpan karena toko pegirim dan penerima sama...');
     exit;
   end;
 
-  if (ed_pelanggan.Text = '') or (ed_no_faktur.Text = '') or (ed_fak_kirim.Text = '') then
+  if (EdToko.Text = '') or (ed_no_faktur.Text = '') or (ed_fak_kirim.Text = '') then
   begin
     showmessage('Data Toko dan no faktur harus di isi terlebih dahulu...');
     exit;
@@ -525,7 +531,7 @@ begin
       'insert into tb_return_kirim_global(kd_perusahaan,kd_return_kirim, ' +
       'kd_kirim,tgl_return_kirim,kd_tk_return_kirim,nilai_faktur,pengguna,simpan_pada) values ("' +
       dm.kd_perusahaan + '","' + ed_no_faktur.Text + '","' + ed_fak_kirim.Text +
-      '","' + formatdatetime('yyyy-MM-dd', ed_tgl.Date) + '","' + ed_pelanggan.Text
+      '","' + formatdatetime('yyyy-MM-dd', ed_tgl.Date) + '","' + EdToko.Text
       + '","' + ed_nilai_faktur.Text + '","' + dm.kd_pengguna + '",now())', false);
 
     fungsi.SQLExec(dm.Q_exe,
@@ -535,7 +541,7 @@ begin
 
     for i := 0 to cabang.Count - 1 do
     begin
-      if (cabang[i] = ed_pelanggan.Text) then
+      if (cabang[i] = EdToko.Text) then
         returnCabang;
     end;
 
@@ -565,7 +571,7 @@ var
 begin
   for x := 0 to tableview.DataController.RecordCount - 1 do
   begin
-    isi_sql := isi_sql + '("' + ed_pelanggan.Text + '","' + ed_no_faktur.Text +
+    isi_sql := isi_sql + '("' + EdToko.Text + '","' + ed_no_faktur.Text +
       '","' + formatdatetime('yyyy-MM-dd', ed_tgl.Date) + '","' + TableView.DataController.GetDisplayText
       (x, 0) + '","' + TableView.DataController.GetDisplayText(x, 1) + '","' +
       floattostr(TableView.DataController.GetValue(x, 2)) + '","' + floattostr(TableView.DataController.GetValue
@@ -577,7 +583,7 @@ begin
   fungsi.SQLExec(dm.Q_exe,
     'insert into tb_return_global(kd_perusahaan,kd_return,tgl_return,' +
     'kd_suplier,disk_rp,nilai_faktur,pengguna,faktur_receipt,simpan_pada) values ("' +
-    ed_pelanggan.Text + '","' + ed_no_faktur.Text + '","' + formatdatetime('yyyy-MM-dd',
+    EdToko.Text + '","' + ed_no_faktur.Text + '","' + formatdatetime('yyyy-MM-dd',
     ed_tgl.Date) + '","' + dm.kd_perusahaan + '",0,"' + ed_nilai_faktur.Text +
     '","AUTO","' + ed_fak_kirim.Text + '",now())', false);
 
@@ -592,7 +598,7 @@ begin
   fungsi.SQLExec(dm.Q_temp,
     'select faktur from vw_piutang where `status`= "belum lunas" and faktur="' +
     ed_fak_kirim.Text + '" and kd_perusahaan="' + dm.kd_perusahaan +
-    '" and pelanggan = "' + ed_pelanggan.Text + '"', true);
+    '" and pelanggan = "' + EdToko.Text + '"', true);
   if dm.Q_temp.Eof then
     ed_fak_kirim.Color := clblue
   else
@@ -613,8 +619,8 @@ begin
     Rewrite(F);
     Writeln(F, ed_no_faktur.text);
     Writeln(F, ed_fak_kirim.text);
-    Writeln(F, ed_pelanggan.text);
-    Writeln(F, L_toko.caption);
+    Writeln(F, EdToko.text);
+    Writeln(F, LblToko.caption);
     Writeln(F, ed_tgl.text);
     Writeln(F, tableview.DataController.RecordCount);
     for x := 0 to tableview.DataController.RecordCount - 1 do
@@ -650,9 +656,9 @@ begin
         Readln(F, TmpStr);
         ed_fak_kirim.Text := TmpStr;
         Readln(F, TmpStr);
-        ed_pelanggan.Text := TmpStr;
+        EdToko.Text := TmpStr;
         Readln(F, TmpStr);
-        L_toko.Caption := TmpStr;
+        LblToko.Caption := TmpStr;
         Readln(F, TmpStr);
         ed_tgl.Text := TmpStr;
 
@@ -751,25 +757,14 @@ begin
   end;
 end;
 
-procedure Tf_return_kirim.ed_fak_kirimKeyPress(Sender: TObject; var Key: Char);
-begin
-  if ed_pelanggan.Text = '' then
-  begin
-    Key := #0;
-    ShowMessage('data Toko harus diisi terlebih dahulu');
-    ed_pelanggan.SetFocus;
-    Exit;
-  end;
-end;
-
-procedure Tf_return_kirim.ed_pelangganChange(Sender: TObject);
+procedure Tf_return_kirim.EdTokoChange(Sender: TObject);
 begin
   ed_fak_kirimChange(Self);
 end;
 
 procedure Tf_return_kirim.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
-  if (ed_pelanggan.Text = dm.kd_perusahaan) then
+  if (EdToko.Text = dm.kd_perusahaan) then
   begin
     CanClose := True;
     Exit;
