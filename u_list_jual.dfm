@@ -23,7 +23,7 @@ object f_list_sales: Tf_list_sales
     Left = 762
     Top = 0
     Width = 150
-    Height = 442
+    Height = 441
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 0
@@ -78,7 +78,7 @@ object f_list_sales: Tf_list_sales
     end
     object p1: TsPanel
       Left = 0
-      Top = 312
+      Top = 311
       Width = 150
       Height = 130
       Align = alBottom
@@ -162,7 +162,7 @@ object f_list_sales: Tf_list_sales
     Left = 0
     Top = 0
     Width = 762
-    Height = 442
+    Height = 441
     Align = alClient
     TabOrder = 1
     LookAndFeel.Kind = lfOffice11

@@ -1,17 +1,15 @@
-unit u_list_sales;
+unit u_list_jual;
 
 interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, cxStyles, cxGraphics, 
-  cxDataStorage, cxEdit, DB, cxDBData, cxCurrencyEdit, sSkinProvider,
-  cxGridLevel, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
-  cxClasses, cxControls, cxGridCustomView, cxGrid, Buttons,
-  ExtCtrls, sPanel,UFungsi,frxclass,uTerbilang, sSpeedButton,
-  sTooledit, sLabel, cxImageComboBox,
-  sButton, cxCustomData, cxFilter, cxData, StdCtrls, Mask, sMaskEdit,
-  sCustomComboEdit;
+  Dialogs, cxStyles, cxGraphics, cxDataStorage, cxEdit, DB, cxDBData,
+  cxCurrencyEdit, sSkinProvider, cxGridLevel, cxGridCustomTableView,
+  cxGridTableView, cxGridDBTableView, cxClasses, cxControls, cxGridCustomView,
+  cxGrid, Buttons, ExtCtrls, sPanel, UFungsi, frxclass, uTerbilang, sSpeedButton,
+  sTooledit, sLabel, cxImageComboBox, sButton, cxCustomData, cxFilter, cxData,
+  StdCtrls, Mask, sMaskEdit, sCustomComboEdit;
 
 type
   Tf_list_sales = class(TForm)
@@ -60,12 +58,12 @@ type
     dt__datavoid: TcxGridDBColumn;
     dt__datakomp: TcxGridDBColumn;
     b_cetak: TsButton;
-    procedure WMMDIACTIVATE(var msg : TWMMDIACTIVATE) ; message WM_MDIACTIVATE;
+    procedure WMMDIACTIVATE(var msg: TWMMDIACTIVATE); message WM_MDIACTIVATE;
     procedure segarkan;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure grid_dataCellDblClick(Sender: TcxCustomGridTableView;
-      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
-      AShift: TShiftState; var AHandled: Boolean);
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift:
+      TShiftState; var AHandled: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure sb_1Click(Sender: TObject);
     procedure sb_2Click(Sender: TObject);
@@ -79,9 +77,11 @@ type
 
 var
   f_list_sales: Tf_list_sales;
+
 implementation
 
-uses u_utama, u_dm;
+uses
+  u_utama, u_dm;
 
 {$R *.dfm}
 
@@ -90,72 +90,71 @@ var
   active: TWinControl;
   idx: Integer;
 begin
-  active := FindControl(msg.ActiveWnd) ;
-if not(dm.metu_kabeh) then
-begin
-  if Assigned(active) then
+  active := FindControl(msg.ActiveWnd);
+  if not (dm.metu_kabeh) then
   begin
-    idx := f_utama.tc_child.Tabs.IndexOfObject(TObject(msg.ActiveWnd));
-    f_utama.tc_child.Tag := -1;
-    f_utama.tc_child.TabIndex := idx;
-    f_utama.tc_child.Tag := 0;
+    if Assigned(active) then
+    begin
+      idx := f_utama.tc_child.Tabs.IndexOfObject(TObject(msg.ActiveWnd));
+      f_utama.tc_child.Tag := -1;
+      f_utama.tc_child.TabIndex := idx;
+      f_utama.tc_child.Tag := 0;
+    end;
   end;
 end;
-end;
 
-function FRObject(FastReport: TfrxReport; ObjectName: String): TObject;
+function FRObject(FastReport: TfrxReport; ObjectName: string): TObject;
 var
   i: Integer;
   AFound: Boolean;
 begin
-  AFound:=False;
+  AFound := False;
   for I := 0 to FastReport.ComponentCount - 1 do
   begin
     if LowerCase(FastReport.Components[i].Name) = LowerCase(ObjectName) then
     begin
-      Result:=TObject(FastReport.Components[i]);
-      AFound:=True;
+      Result := TObject(FastReport.Components[i]);
+      AFound := True;
       Break;
     end;
   end;
   if not AFound then
   begin
-    Result:=nil;
+    Result := nil;
   end;
 end;
 
-function FRMemo (FastReport: TfrxReport; ObjectName: String): TfrxMemoView;
+function FRMemo(FastReport: TfrxReport; ObjectName: string): TfrxMemoView;
 begin
   Result := TfrxMemoView(FRObject(FastReport, ObjectName));
 end;
 
 procedure Tf_list_sales.segarkan;
 begin
-fungsi.SQLExecT(dm.Q_list_sales,'select * from vw_list_sales where kd_perusahaan = '+
-QuotedStr(dm.kd_perusahaan)+' and tgl_transaksi >= '+
-quotedstr(FormatDateTime('yyyy-MM-dd',de_mulai.Date))+' and tgl_transaksi <= '+
-quotedstr(FormatDateTime('yyyy-MM-dd',de_sampai.Date))+'',true);
+  fungsi.SQLExecT(dm.Q_list_sales,
+    'select * from vw_list_sales where kd_perusahaan = ' + QuotedStr(dm.kd_perusahaan)
+    + ' and tgl_transaksi >= ' + quotedstr(FormatDateTime('yyyy-MM-dd', de_mulai.Date))
+    + ' and tgl_transaksi <= ' + quotedstr(FormatDateTime('yyyy-MM-dd',
+    de_sampai.Date)) + '', true);
 
-fungsi.SQLExecT(dm.Q_child_sales,'select * from tb_jual_rinci where kd_perusahaan = '+
-QuotedStr(dm.kd_perusahaan)+' and tgl >= '+
-quotedstr(FormatDateTime('yyyy-MM-dd',de_mulai.Date))+' and tgl <= '+
-quotedstr(FormatDateTime('yyyy-MM-dd',de_sampai.Date))+'',True);
+  fungsi.SQLExecT(dm.Q_child_sales,
+    'select * from tb_jual_rinci where kd_perusahaan = ' + QuotedStr(dm.kd_perusahaan)
+    + ' and tgl >= ' + quotedstr(FormatDateTime('yyyy-MM-dd', de_mulai.Date)) +
+    ' and tgl <= ' + quotedstr(FormatDateTime('yyyy-MM-dd', de_sampai.Date)) + '', True);
 end;
 
-procedure Tf_list_sales.FormClose(Sender: TObject;
-  var Action: TCloseAction);
+procedure Tf_list_sales.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-f_utama.MDIChildDestroyed(Self.Handle);
-action:=caFree;
-f_list_sales:=nil;
+  f_utama.MDIChildDestroyed(Self.Handle);
+  action := caFree;
+  f_list_sales := nil;
 end;
 
-procedure Tf_list_sales.grid_dataCellDblClick(
-  Sender: TcxCustomGridTableView;
-  ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
-  AShift: TShiftState; var AHandled: Boolean);
+procedure Tf_list_sales.grid_dataCellDblClick(Sender: TcxCustomGridTableView;
+  ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift:
+  TShiftState; var AHandled: Boolean);
 begin
-b_cetakClick(Self);
+  b_cetakClick(Self);
 end;
 
 procedure Tf_list_sales.FormCreate(Sender: TObject);
@@ -165,37 +164,42 @@ begin
 DecodeDate(Now, Year, Month, Day);
 de_mulai.Date:= EncodeDate(Year,Month,1);
 }
-begin                 
-de_mulai.Date:= Date();
-de_sampai.Date:= Date();
+begin
+  de_mulai.Date := Date();
+  de_sampai.Date := Date();
 
-f_utama.MDIChildCreated(self.Handle);
-segarkan;
+  f_utama.MDIChildCreated(self.Handle);
+  segarkan;
 end;
 
 procedure Tf_list_sales.sb_1Click(Sender: TObject);
 begin
-close;
+  close;
 end;
 
 procedure Tf_list_sales.sb_2Click(Sender: TObject);
 begin
-segarkan;
+  segarkan;
 end;
 
 procedure Tf_list_sales.de_sampaiChange(Sender: TObject);
 begin
-if de_sampai.Date<de_mulai.Date then
-   de_sampai.Date:= de_mulai.Date;
+  if de_sampai.Date < de_mulai.Date then
+    de_sampai.Date := de_mulai.Date;
 end;
 
 procedure Tf_list_sales.b_cetakClick(Sender: TObject);
 begin
-  fungsi.SQLExec(dm.Q_laporan,'select * from vw_jual_barang where no_transaksi="'+
-  dm.Q_list_sales.fieldbyname('kd_transaksi').AsString+'" and kd_perusahaan='+quotedstr(dm.kd_perusahaan)+'',true);
+  fungsi.SQLExec(dm.Q_laporan,
+    'select * from vw_jual_barang where no_transaksi="' + dm.Q_list_sales.fieldbyname
+    ('kd_transaksi').AsString + '" and kd_perusahaan=' + quotedstr(dm.kd_perusahaan)
+    + '', true);
   dm.laporan.LoadFromFile(dm.WPath + 'laporan/k_struk_retail.fr3');
-  FRMemo(dm.laporan, 'Memo9').Text := MyTerbilang(dm.Q_laporan.fieldbyname('grand_total').AsFloat)+'Rupiah';
+  FRMemo(dm.laporan, 'Memo9').Text := MyTerbilang(dm.Q_laporan.fieldbyname('grand_total').AsFloat)
+    + 'Rupiah';
   dm.laporan.ShowReport;
 end;
 
 end.
+
+
