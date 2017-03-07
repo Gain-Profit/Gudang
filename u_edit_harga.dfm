@@ -1,272 +1,893 @@
-object F_Edit_Harga: TF_Edit_Harga
-  Left = 309
-  Top = 165
-  Width = 930
-  Height = 485
-  Caption = 'Edit Harga'
+object F_ubah_harga: TF_ubah_harga
+  Left = 612
+  Top = 95
+  BorderStyle = bsDialog
+  Caption = 'Ubah Harga'
+  ClientHeight = 466
+  ClientWidth = 398
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  FormStyle = fsMDIChild
   KeyPreview = True
   OldCreateOrder = False
   Position = poScreenCenter
-  Visible = True
-  WindowState = wsMaximized
   OnClose = FormClose
-  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
-  OnShow = T
   PixelsPerInch = 96
   TextHeight = 13
-  object pnlSide: TsPanel
-    Left = 764
-    Top = 0
-    Width = 150
-    Height = 446
-    Align = alRight
-    BevelOuter = bvNone
-    TabOrder = 1
-    SkinData.SkinSection = 'PANEL'
-    object sb_2: TsSpeedButton
-      Left = 0
-      Top = 90
-      Width = 150
-      Height = 90
-      Cursor = crHandPoint
-      Caption = 'Refresh'
-      Flat = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Rockwell'
-      Font.Style = [fsBold]
-      Layout = blGlyphTop
-      ParentFont = False
-      Spacing = 0
-      OnClick = sb_2Click
-      Align = alTop
-      SkinData.SkinSection = 'TOOLBUTTON'
-      DisabledGlyphKind = []
-      ImageIndex = 8
-      Images = dm.image
-      Reflected = True
-    end
-    object sb_1: TsSpeedButton
-      Left = 0
-      Top = 0
-      Width = 150
-      Height = 90
-      Cursor = crHandPoint
-      Caption = 'Selesai'
-      Flat = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Rockwell'
-      Font.Style = [fsBold]
-      Layout = blGlyphTop
-      ParentFont = False
-      Spacing = 0
-      OnClick = sb_1Click
-      Align = alTop
-      SkinData.SkinSection = 'TOOLBUTTON'
-      DisabledGlyphKind = []
-      ImageIndex = 7
-      Images = dm.image
-      Reflected = True
-    end
+  object sLabel1: TsLabel
+    Left = 8
+    Top = 80
+    Width = 76
+    Height = 19
+    Caption = 'Harga Beli'
+    ParentFont = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -16
+    Font.Name = 'Rockwell'
+    Font.Style = []
   end
-  object pnlMain: TsPanel
-    Left = 0
-    Top = 0
-    Width = 764
-    Height = 446
-    Align = alClient
-    BevelOuter = bvNone
+  object sLabel3: TsLabel
+    Left = 8
+    Top = 208
+    Width = 59
+    Height = 19
+    Caption = 'Harga 1'
+    ParentFont = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -16
+    Font.Name = 'Rockwell'
+    Font.Style = []
+  end
+  object sLabel4: TsLabel
+    Left = 8
+    Top = 176
+    Width = 59
+    Height = 19
+    Caption = 'Harga 2'
+    ParentFont = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -16
+    Font.Name = 'Rockwell'
+    Font.Style = []
+  end
+  object sLabel5: TsLabel
+    Left = 8
+    Top = 144
+    Width = 59
+    Height = 19
+    Caption = 'Harga 3'
+    ParentFont = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -16
+    Font.Name = 'Rockwell'
+    Font.Style = []
+  end
+  object sLabel6: TsLabel
+    Left = 368
+    Top = 114
+    Width = 16
+    Height = 19
+    Caption = '%'
+    ParentFont = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -16
+    Font.Name = 'Rockwell'
+    Font.Style = []
+  end
+  object sLabel7: TsLabel
+    Left = 8
+    Top = 112
+    Width = 53
+    Height = 19
+    Caption = 'Margin'
+    ParentFont = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -16
+    Font.Name = 'Rockwell'
+    Font.Style = []
+  end
+  object Ed_Plu: TsEdit
+    Left = 8
+    Top = 8
+    Width = 89
+    Height = 24
+    Color = clWhite
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Rockwell'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 0
-    SkinData.SkinSection = 'CHECKBOX'
-    object grid: TcxGrid
-      Left = 0
-      Top = 33
-      Width = 764
-      Height = 413
-      Align = alClient
-      TabOrder = 0
-      LookAndFeel.Kind = lfOffice11
-      LookAndFeel.NativeStyle = False
-      object t_data: TcxGridDBTableView
-        OnKeyDown = t_dataKeyDown
-        NavigatorButtons.ConfirmDelete = False
-        OnCellDblClick = t_dataCellDblClick
-        DataController.DataSource = Ds_harga
-        DataController.Summary.DefaultGroupSummaryItems = <>
-        DataController.Summary.FooterSummaryItems = <
-          item
-            Format = '###,##0 Item'
-            Kind = skCount
-            Column = t_datan_barang
-          end>
-        DataController.Summary.SummaryGroups = <>
-        OptionsBehavior.CellHints = True
-        OptionsBehavior.IncSearch = True
-        OptionsCustomize.ColumnsQuickCustomization = True
-        OptionsData.Editing = False
-        OptionsData.Inserting = False
-        OptionsSelection.MultiSelect = True
-        OptionsView.NoDataToDisplayInfoText = '< TIDAK ADA DATA YANG DAPAT DITAMPILKAN>'
-        OptionsView.ColumnAutoWidth = True
-        OptionsView.Footer = True
-        OptionsView.GroupByBox = False
-        Styles.Inactive = dm.cxstyl1
-        Styles.Selection = dm.cxstyl1
-        object t_datakd_barang: TcxGridDBColumn
-          Caption = 'PID'
-          DataBinding.FieldName = 'kd_barang'
-          PropertiesClassName = 'TcxTextEditProperties'
-          Properties.Alignment.Vert = taVCenter
-          Width = 53
-        end
-        object t_databarcode3: TcxGridDBColumn
-          Caption = 'Barcode'
-          DataBinding.FieldName = 'barcode3'
-          PropertiesClassName = 'TcxTextEditProperties'
-          Properties.Alignment.Vert = taVCenter
-          Width = 57
-        end
-        object t_datan_barang: TcxGridDBColumn
-          Caption = 'Deskripsi Barang'
-          DataBinding.FieldName = 'n_barang'
-          SortIndex = 0
-          SortOrder = soAscending
-          Width = 175
-        end
-        object t_datan_macam_harga: TcxGridDBColumn
-          Caption = 'Macam Harga'
-          DataBinding.FieldName = 'kd_macam_harga'
-          PropertiesClassName = 'TcxImageComboBoxProperties'
-          Properties.Items = <
-            item
-              Description = 'HARGA ECERAN'
-              ImageIndex = 0
-              Value = 'HETK'
-            end
-            item
-              Description = 'HARGA GROSIR'
-              Value = 'HGTK'
-            end>
-          Width = 75
-        end
-        object t_dataHppNew: TcxGridDBColumn
-          Caption = 'HPP Baru'
-          DataBinding.FieldName = 'Hpp_ahir'
-          PropertiesClassName = 'TcxCurrencyEditProperties'
-          Properties.Alignment.Horz = taRightJustify
-          Properties.Alignment.Vert = taVCenter
-          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
-          HeaderAlignmentHorz = taRightJustify
-          Width = 59
-        end
-        object t_dataharga_pokok: TcxGridDBColumn
-          Caption = 'Harga Pokok'
-          DataBinding.FieldName = 'hpp_aktif'
-          PropertiesClassName = 'TcxCurrencyEditProperties'
-          Properties.Alignment.Horz = taRightJustify
-          Properties.Alignment.Vert = taVCenter
-          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
-          HeaderAlignmentHorz = taRightJustify
-          Width = 47
-        end
-        object t_dataharga_jual3: TcxGridDBColumn
-          Caption = 'Harga 3'
-          DataBinding.FieldName = 'harga_jual3'
-          PropertiesClassName = 'TcxCurrencyEditProperties'
-          Properties.Alignment.Horz = taRightJustify
-          Properties.Alignment.Vert = taVCenter
-          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
-          HeaderAlignmentHorz = taRightJustify
-          Width = 46
-        end
-        object t_dataharga_jual2: TcxGridDBColumn
-          Caption = 'Harga 2'
-          DataBinding.FieldName = 'harga_jual2'
-          PropertiesClassName = 'TcxCurrencyEditProperties'
-          Properties.Alignment.Horz = taRightJustify
-          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
-          HeaderAlignmentHorz = taRightJustify
-          Width = 55
-        end
-        object t_dataharga_jual1: TcxGridDBColumn
-          Caption = 'Harga 1'
-          DataBinding.FieldName = 'harga_jual1'
-          PropertiesClassName = 'TcxCurrencyEditProperties'
-          Properties.Alignment.Horz = taRightJustify
-          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
-          HeaderAlignmentHorz = taRightJustify
-          Width = 74
-        end
-        object t_datauser: TcxGridDBColumn
-          Caption = 'User'
-          DataBinding.FieldName = 'kode_user'
-          Width = 66
-        end
-        object t_dataColumn1: TcxGridDBColumn
-          Caption = 'Status'
-          DataBinding.FieldName = 'natur'
-          PropertiesClassName = 'TcxImageComboBoxProperties'
-          Properties.DefaultImageIndex = 0
-          Properties.Images = dm.gambar
-          Properties.Items = <
-            item
-              Description = 'Naik'
-              ImageIndex = 4
-              Value = 1
-            end
-            item
-              Description = 'Sama'
-              ImageIndex = 5
-              Value = 0
-            end
-            item
-              Description = 'Turun'
-              ImageIndex = 3
-              Value = -1
-            end>
-          Properties.ShowDescriptions = False
-          HeaderAlignmentHorz = taCenter
-          Width = 47
-        end
-      end
-      object l_data: TcxGridLevel
-        GridView = t_data
-      end
+    SkinData.CustomColor = True
+    SkinData.SkinSection = 'EDIT'
+    BoundLabel.Indent = 0
+    BoundLabel.Font.Charset = DEFAULT_CHARSET
+    BoundLabel.Font.Color = clWindowText
+    BoundLabel.Font.Height = -11
+    BoundLabel.Font.Name = 'MS Sans Serif'
+    BoundLabel.Font.Style = []
+    BoundLabel.Layout = sclLeft
+    BoundLabel.MaxWidth = 0
+    BoundLabel.UseSkinColor = True
+  end
+  object Ed_deskripsi: TsEdit
+    Left = 104
+    Top = 8
+    Width = 281
+    Height = 24
+    Color = clWhite
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Rockwell'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+    SkinData.CustomColor = True
+    SkinData.SkinSection = 'EDIT'
+    BoundLabel.Indent = 0
+    BoundLabel.Font.Charset = DEFAULT_CHARSET
+    BoundLabel.Font.Color = clWindowText
+    BoundLabel.Font.Height = -11
+    BoundLabel.Font.Name = 'MS Sans Serif'
+    BoundLabel.Font.Style = []
+    BoundLabel.Layout = sclLeft
+    BoundLabel.MaxWidth = 0
+    BoundLabel.UseSkinColor = True
+  end
+  object ed_pokok: TsCurrencyEdit
+    Left = 104
+    Top = 80
+    Width = 177
+    Height = 24
+    AutoSize = False
+    Color = clWhite
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Rockwell'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 4
+    BoundLabel.Indent = 0
+    BoundLabel.Font.Charset = DEFAULT_CHARSET
+    BoundLabel.Font.Color = clWindowText
+    BoundLabel.Font.Height = -11
+    BoundLabel.Font.Name = 'MS Sans Serif'
+    BoundLabel.Font.Style = []
+    BoundLabel.Layout = sclLeft
+    BoundLabel.MaxWidth = 0
+    BoundLabel.UseSkinColor = True
+    SkinData.CustomColor = True
+    SkinData.SkinSection = 'EDIT'
+    GlyphMode.Blend = 0
+    GlyphMode.Grayed = False
+    DecimalPlaces = 0
+    DisplayFormat = '###,###,##0;-###,###,##0;0'
+  end
+  object ed_marginP: TsCurrencyEdit
+    Left = 288
+    Top = 112
+    Width = 73
+    Height = 24
+    AutoSize = False
+    Color = clWhite
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Rockwell'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 6
+    BoundLabel.Indent = 0
+    BoundLabel.Font.Charset = DEFAULT_CHARSET
+    BoundLabel.Font.Color = clWindowText
+    BoundLabel.Font.Height = -11
+    BoundLabel.Font.Name = 'MS Sans Serif'
+    BoundLabel.Font.Style = []
+    BoundLabel.Layout = sclLeft
+    BoundLabel.MaxWidth = 0
+    BoundLabel.UseSkinColor = True
+    SkinData.CustomColor = True
+    SkinData.SkinSection = 'EDIT'
+    GlyphMode.Blend = 0
+    GlyphMode.Grayed = False
+    DisplayFormat = '##0.00;##0.00;0.00'
+  end
+  object ed_marginRp: TsCurrencyEdit
+    Left = 104
+    Top = 112
+    Width = 177
+    Height = 24
+    AutoSize = False
+    Color = clWhite
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Rockwell'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 5
+    OnExit = ed_marginRpExit
+    BoundLabel.Indent = 0
+    BoundLabel.Font.Charset = DEFAULT_CHARSET
+    BoundLabel.Font.Color = clWindowText
+    BoundLabel.Font.Height = -11
+    BoundLabel.Font.Name = 'MS Sans Serif'
+    BoundLabel.Font.Style = []
+    BoundLabel.Layout = sclLeft
+    BoundLabel.MaxWidth = 0
+    BoundLabel.UseSkinColor = True
+    SkinData.CustomColor = True
+    SkinData.SkinSection = 'EDIT'
+    GlyphMode.Blend = 0
+    GlyphMode.Grayed = False
+    DecimalPlaces = 0
+    DisplayFormat = '###,###,##0;-###,###,##0;0'
+  end
+  object Ed_harga1: TsCurrencyEdit
+    Left = 104
+    Top = 208
+    Width = 177
+    Height = 24
+    AutoSize = False
+    Color = clWhite
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Rockwell'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 9
+    OnExit = Ed_harga1Exit
+    BoundLabel.Indent = 0
+    BoundLabel.Font.Charset = DEFAULT_CHARSET
+    BoundLabel.Font.Color = clWindowText
+    BoundLabel.Font.Height = -11
+    BoundLabel.Font.Name = 'MS Sans Serif'
+    BoundLabel.Font.Style = []
+    BoundLabel.Layout = sclLeft
+    BoundLabel.MaxWidth = 0
+    BoundLabel.UseSkinColor = True
+    SkinData.CustomColor = True
+    SkinData.SkinSection = 'EDIT'
+    GlyphMode.Blend = 0
+    GlyphMode.Grayed = False
+    DecimalPlaces = 0
+    DisplayFormat = '###,###,##0;-###,###,##0;0'
+  end
+  object ed_harga2: TsCurrencyEdit
+    Left = 104
+    Top = 176
+    Width = 177
+    Height = 24
+    AutoSize = False
+    Color = clWhite
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Rockwell'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 8
+    OnExit = ed_harga2Exit
+    BoundLabel.Indent = 0
+    BoundLabel.Font.Charset = DEFAULT_CHARSET
+    BoundLabel.Font.Color = clWindowText
+    BoundLabel.Font.Height = -11
+    BoundLabel.Font.Name = 'MS Sans Serif'
+    BoundLabel.Font.Style = []
+    BoundLabel.Layout = sclLeft
+    BoundLabel.MaxWidth = 0
+    BoundLabel.UseSkinColor = True
+    SkinData.CustomColor = True
+    SkinData.SkinSection = 'EDIT'
+    GlyphMode.Blend = 0
+    GlyphMode.Grayed = False
+    DecimalPlaces = 0
+    DisplayFormat = '###,###,##0;-###,###,##0;0'
+  end
+  object ed_harga3: TsCurrencyEdit
+    Left = 104
+    Top = 144
+    Width = 177
+    Height = 24
+    AutoSize = False
+    Color = clWhite
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Rockwell'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 7
+    OnExit = ed_harga3Exit
+    BoundLabel.Indent = 0
+    BoundLabel.Font.Charset = DEFAULT_CHARSET
+    BoundLabel.Font.Color = clWindowText
+    BoundLabel.Font.Height = -11
+    BoundLabel.Font.Name = 'MS Sans Serif'
+    BoundLabel.Font.Style = []
+    BoundLabel.Layout = sclLeft
+    BoundLabel.MaxWidth = 0
+    BoundLabel.UseSkinColor = True
+    SkinData.CustomColor = True
+    SkinData.SkinSection = 'EDIT'
+    GlyphMode.Blend = 0
+    GlyphMode.Grayed = False
+    DecimalPlaces = 0
+    DisplayFormat = '###,###,##0;-###,###,##0;0'
+  end
+  object ed_qty1: TsCurrencyEdit
+    Left = 352
+    Top = 208
+    Width = 33
+    Height = 24
+    AutoSize = False
+    Color = clWhite
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Rockwell'
+    Font.Style = []
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 10
+    BoundLabel.Indent = 0
+    BoundLabel.Font.Charset = DEFAULT_CHARSET
+    BoundLabel.Font.Color = clWindowText
+    BoundLabel.Font.Height = -11
+    BoundLabel.Font.Name = 'MS Sans Serif'
+    BoundLabel.Font.Style = []
+    BoundLabel.Layout = sclLeft
+    BoundLabel.MaxWidth = 0
+    BoundLabel.UseSkinColor = True
+    SkinData.CustomColor = True
+    SkinData.SkinSection = 'EDIT'
+    GlyphMode.Blend = 0
+    GlyphMode.Grayed = False
+    DecimalPlaces = 0
+    DisplayFormat = '0'
+    Value = 2.000000000000000000
+  end
+  object ed_qty2: TsCurrencyEdit
+    Left = 352
+    Top = 176
+    Width = 33
+    Height = 24
+    AutoSize = False
+    Color = clWhite
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Rockwell'
+    Font.Style = []
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 11
+    BoundLabel.Indent = 0
+    BoundLabel.Font.Charset = DEFAULT_CHARSET
+    BoundLabel.Font.Color = clWindowText
+    BoundLabel.Font.Height = -11
+    BoundLabel.Font.Name = 'MS Sans Serif'
+    BoundLabel.Font.Style = []
+    BoundLabel.Layout = sclLeft
+    BoundLabel.MaxWidth = 0
+    BoundLabel.UseSkinColor = True
+    SkinData.CustomColor = True
+    SkinData.SkinSection = 'EDIT'
+    GlyphMode.Blend = 0
+    GlyphMode.Grayed = False
+    DecimalPlaces = 0
+    DisplayFormat = '0'
+    Value = 2.000000000000000000
+  end
+  object sCurrencyEdit3: TsCurrencyEdit
+    Left = 352
+    Top = 144
+    Width = 33
+    Height = 24
+    AutoSize = False
+    Color = clWhite
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Rockwell'
+    Font.Style = []
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 12
+    BoundLabel.Indent = 0
+    BoundLabel.Font.Charset = DEFAULT_CHARSET
+    BoundLabel.Font.Color = clWindowText
+    BoundLabel.Font.Height = -11
+    BoundLabel.Font.Name = 'MS Sans Serif'
+    BoundLabel.Font.Style = []
+    BoundLabel.Layout = sclLeft
+    BoundLabel.MaxWidth = 0
+    BoundLabel.UseSkinColor = True
+    SkinData.CustomColor = True
+    SkinData.SkinSection = 'EDIT'
+    GlyphMode.Blend = 0
+    GlyphMode.Grayed = False
+    DecimalPlaces = 0
+    DisplayFormat = '0'
+    Value = 1.000000000000000000
+  end
+  object Ed_sat1: TsEdit
+    Left = 288
+    Top = 208
+    Width = 57
+    Height = 24
+    Color = clWhite
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Rockwell'
+    Font.Style = []
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 13
+    Text = 'PCS'
+    SkinData.CustomColor = True
+    SkinData.SkinSection = 'EDIT'
+    BoundLabel.Indent = 0
+    BoundLabel.Font.Charset = DEFAULT_CHARSET
+    BoundLabel.Font.Color = clWindowText
+    BoundLabel.Font.Height = -11
+    BoundLabel.Font.Name = 'MS Sans Serif'
+    BoundLabel.Font.Style = []
+    BoundLabel.Layout = sclLeft
+    BoundLabel.MaxWidth = 0
+    BoundLabel.UseSkinColor = True
+  end
+  object Ed_sat2: TsEdit
+    Left = 288
+    Top = 176
+    Width = 57
+    Height = 24
+    Color = clWhite
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Rockwell'
+    Font.Style = []
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 14
+    Text = 'PCS'
+    SkinData.CustomColor = True
+    SkinData.SkinSection = 'EDIT'
+    BoundLabel.Indent = 0
+    BoundLabel.Font.Charset = DEFAULT_CHARSET
+    BoundLabel.Font.Color = clWindowText
+    BoundLabel.Font.Height = -11
+    BoundLabel.Font.Name = 'MS Sans Serif'
+    BoundLabel.Font.Style = []
+    BoundLabel.Layout = sclLeft
+    BoundLabel.MaxWidth = 0
+    BoundLabel.UseSkinColor = True
+  end
+  object Ed_sat3: TsEdit
+    Left = 288
+    Top = 144
+    Width = 57
+    Height = 24
+    Color = clWhite
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Rockwell'
+    Font.Style = []
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 15
+    Text = 'PCS'
+    SkinData.CustomColor = True
+    SkinData.SkinSection = 'EDIT'
+    BoundLabel.Indent = 0
+    BoundLabel.Font.Charset = DEFAULT_CHARSET
+    BoundLabel.Font.Color = clWindowText
+    BoundLabel.Font.Height = -11
+    BoundLabel.Font.Name = 'MS Sans Serif'
+    BoundLabel.Font.Style = []
+    BoundLabel.Layout = sclLeft
+    BoundLabel.MaxWidth = 0
+    BoundLabel.UseSkinColor = True
+  end
+  object sb: TsStatusBar
+    Left = 0
+    Top = 447
+    Width = 398
+    Height = 19
+    Panels = <>
+    SkinData.SkinSection = 'STATUSBAR'
+  end
+  object btn_simpan: TsBitBtn
+    Left = 208
+    Top = 408
+    Width = 81
+    Height = 33
+    Caption = '&Simpan'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Rockwell'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 17
+    OnClick = btn_simpanClick
+    SkinData.SkinSection = 'BUTTON'
+  end
+  object sBitBtn2: TsBitBtn
+    Left = 304
+    Top = 408
+    Width = 81
+    Height = 33
+    Caption = '&Batal'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Rockwell'
+    Font.Style = []
+    ModalResult = 2
+    ParentFont = False
+    TabOrder = 18
+    SkinData.SkinSection = 'BUTTON'
+  end
+  object Ed_macam: TsEdit
+    Left = 104
+    Top = 40
+    Width = 281
+    Height = 24
+    Color = clWhite
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Rockwell'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 3
+    SkinData.CustomColor = True
+    SkinData.SkinSection = 'EDIT'
+    BoundLabel.Indent = 0
+    BoundLabel.Font.Charset = DEFAULT_CHARSET
+    BoundLabel.Font.Color = clWindowText
+    BoundLabel.Font.Height = -11
+    BoundLabel.Font.Name = 'MS Sans Serif'
+    BoundLabel.Font.Style = []
+    BoundLabel.Layout = sclLeft
+    BoundLabel.MaxWidth = 0
+    BoundLabel.UseSkinColor = True
+  end
+  object cb_macam: TsComboBox
+    Left = 8
+    Top = 40
+    Width = 89
+    Height = 22
+    Alignment = taLeftJustify
+    BoundLabel.Indent = 0
+    BoundLabel.Font.Charset = DEFAULT_CHARSET
+    BoundLabel.Font.Color = clWindowText
+    BoundLabel.Font.Height = -11
+    BoundLabel.Font.Name = 'MS Sans Serif'
+    BoundLabel.Font.Style = []
+    BoundLabel.Layout = sclLeft
+    BoundLabel.MaxWidth = 0
+    BoundLabel.UseSkinColor = True
+    SkinData.CustomColor = True
+    SkinData.SkinSection = 'COMBOBOX'
+    Style = csDropDownList
+    Color = clWhite
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Rockwell'
+    Font.Style = []
+    ItemHeight = 16
+    ItemIndex = -1
+    ParentFont = False
+    TabOrder = 2
+    OnChange = cb_macamChange
+    Items.Strings = (
+      'HETK'
+      'HGTK')
+  end
+  object g_1: TsGroupBox
+    Left = 8
+    Top = 240
+    Width = 377
+    Height = 161
+    Caption = 'Diskon'
+    TabOrder = 16
+    SkinData.SkinSection = 'GROUPBOX'
+    object l_1: TsLabel
+      Left = 8
+      Top = 20
+      Width = 36
+      Height = 19
+      Caption = 'Awal'
+      ParentFont = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -16
+      Font.Name = 'Rockwell'
+      Font.Style = []
     end
-    object pnlheader: TPanel
-      Left = 0
-      Top = 0
-      Width = 764
-      Height = 33
-      Align = alTop
+    object l_2: TsLabel
+      Left = 8
+      Top = 54
+      Width = 31
+      Height = 19
+      Caption = 'Ahir'
+      ParentFont = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -16
+      Font.Name = 'Rockwell'
+      Font.Style = []
+    end
+    object l_3: TsLabel
+      Left = 160
+      Top = 88
+      Width = 16
+      Height = 19
+      Caption = '%'
+      ParentFont = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -16
+      Font.Name = 'Rockwell'
+      Font.Style = []
+    end
+    object l_4: TsLabel
+      Left = 8
+      Top = 84
+      Width = 50
+      Height = 19
+      Caption = 'Diskon'
+      ParentFont = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -16
+      Font.Name = 'Rockwell'
+      Font.Style = []
+    end
+    object de_awal: TsDateEdit
+      Left = 72
+      Top = 14
+      Width = 105
+      Height = 24
+      AutoSize = False
+      Color = clWhite
+      EditMask = '!99/99/9999;1; '
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Rockwell'
+      Font.Style = []
+      MaxLength = 10
+      ParentFont = False
+      TabOrder = 0
+      Text = '  /  /    '
+      BoundLabel.Indent = 0
+      BoundLabel.Font.Charset = DEFAULT_CHARSET
+      BoundLabel.Font.Color = clWindowText
+      BoundLabel.Font.Height = -11
+      BoundLabel.Font.Name = 'MS Sans Serif'
+      BoundLabel.Font.Style = []
+      BoundLabel.Layout = sclLeft
+      BoundLabel.MaxWidth = 0
+      BoundLabel.UseSkinColor = True
+      SkinData.CustomColor = True
+      SkinData.SkinSection = 'EDIT'
+      GlyphMode.Blend = 0
+      GlyphMode.Grayed = False
+    end
+    object de_ahir: TsDateEdit
+      Left = 71
+      Top = 49
+      Width = 105
+      Height = 24
+      AutoSize = False
+      Color = clWhite
+      EditMask = '!99/99/9999;1; '
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Rockwell'
+      Font.Style = []
+      MaxLength = 10
+      ParentFont = False
       TabOrder = 1
-      object Ed_Cari: TsEdit
-        Left = 81
-        Top = 1
-        Width = 447
-        Height = 31
+      Text = '  /  /    '
+      OnExit = de_ahirExit
+      BoundLabel.Indent = 0
+      BoundLabel.Font.Charset = DEFAULT_CHARSET
+      BoundLabel.Font.Color = clWindowText
+      BoundLabel.Font.Height = -11
+      BoundLabel.Font.Name = 'MS Sans Serif'
+      BoundLabel.Font.Style = []
+      BoundLabel.Layout = sclLeft
+      BoundLabel.MaxWidth = 0
+      BoundLabel.UseSkinColor = True
+      SkinData.CustomColor = True
+      SkinData.SkinSection = 'EDIT'
+      GlyphMode.Blend = 0
+      GlyphMode.Grayed = False
+    end
+    object ed_discP: TsCurrencyEdit
+      Left = 103
+      Top = 84
+      Width = 58
+      Height = 24
+      AutoSize = False
+      Color = clWhite
+      Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Rockwell'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+      BoundLabel.Indent = 0
+      BoundLabel.Font.Charset = DEFAULT_CHARSET
+      BoundLabel.Font.Color = clWindowText
+      BoundLabel.Font.Height = -11
+      BoundLabel.Font.Name = 'MS Sans Serif'
+      BoundLabel.Font.Style = []
+      BoundLabel.Layout = sclLeft
+      BoundLabel.MaxWidth = 0
+      BoundLabel.UseSkinColor = True
+      SkinData.CustomColor = True
+      SkinData.SkinSection = 'EDIT'
+      GlyphMode.Blend = 0
+      GlyphMode.Grayed = False
+      DisplayFormat = '##0.00;##0.00;0.00'
+    end
+    object ed_discRp: TsCurrencyEdit
+      Left = 8
+      Top = 121
+      Width = 169
+      Height = 24
+      AutoSize = False
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Rockwell'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 3
+      OnExit = ed_discRpExit
+      BoundLabel.Indent = 0
+      BoundLabel.Font.Charset = DEFAULT_CHARSET
+      BoundLabel.Font.Color = clWindowText
+      BoundLabel.Font.Height = -11
+      BoundLabel.Font.Name = 'MS Sans Serif'
+      BoundLabel.Font.Style = []
+      BoundLabel.Layout = sclLeft
+      BoundLabel.MaxWidth = 0
+      BoundLabel.UseSkinColor = True
+      SkinData.CustomColor = True
+      SkinData.SkinSection = 'EDIT'
+      GlyphMode.Blend = 0
+      GlyphMode.Grayed = False
+      DecimalPlaces = 0
+      DisplayFormat = '###,###,##0;-###,###,##0;0'
+    end
+    object g_2: TsGroupBox
+      Left = 184
+      Top = 8
+      Width = 185
+      Height = 145
+      Caption = 'Harga Baru'
+      Enabled = False
+      TabOrder = 4
+      SkinData.SkinSection = 'GROUPBOX'
+      object l_5: TsLabel
+        Left = 8
+        Top = 64
+        Width = 59
+        Height = 19
+        Caption = 'Harga 3'
+        ParentFont = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Rockwell'
+        Font.Style = []
+      end
+      object l_6: TsLabel
+        Left = 8
+        Top = 88
+        Width = 59
+        Height = 19
+        Caption = 'Harga 2'
+        ParentFont = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Rockwell'
+        Font.Style = []
+      end
+      object l_7: TsLabel
+        Left = 8
+        Top = 112
+        Width = 59
+        Height = 19
+        Caption = 'Harga 1'
+        ParentFont = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Rockwell'
+        Font.Style = []
+      end
+      object l_8: TsLabel
+        Left = 8
+        Top = 40
+        Width = 89
+        Height = 19
+        Caption = 'Margin (Rp)'
+        ParentFont = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Rockwell'
+        Font.Style = []
+      end
+      object l_9: TsLabel
+        Left = 8
+        Top = 16
+        Width = 85
+        Height = 19
+        Caption = 'Margin (%)'
+        ParentFont = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Rockwell'
+        Font.Style = []
+      end
+      object ed_harga3New: TsCurrencyEdit
+        Left = 104
+        Top = 65
+        Width = 73
+        Height = 24
+        AutoSize = False
         Color = clWhite
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
-        Font.Height = -19
+        Font.Height = -13
         Font.Name = 'Rockwell'
         Font.Style = []
         ParentFont = False
         TabOrder = 0
-        OnKeyDown = Ed_CariKeyDown
-        Align = alClient
-        SkinData.SkinSection = 'EDIT'
+        OnExit = ed_marginRpExit
         BoundLabel.Indent = 0
         BoundLabel.Font.Charset = DEFAULT_CHARSET
         BoundLabel.Font.Color = clWindowText
@@ -276,44 +897,134 @@ object F_Edit_Harga: TF_Edit_Harga
         BoundLabel.Layout = sclLeft
         BoundLabel.MaxWidth = 0
         BoundLabel.UseSkinColor = True
+        SkinData.CustomColor = True
+        SkinData.SkinSection = 'EDIT'
+        GlyphMode.Blend = 0
+        GlyphMode.Grayed = False
+        DecimalPlaces = 0
+        DisplayFormat = '###,###,##0;-###,###,##0;0'
       end
-      object pnlcheck: TPanel
-        Left = 528
-        Top = 1
-        Width = 235
-        Height = 31
-        Align = alRight
-        TabOrder = 1
-        object CkSemua: TCheckBox
-          Left = 8
-          Top = 2
-          Width = 225
-          Height = 29
-          Caption = 'Tampilkan Semua Data'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -19
-          Font.Name = 'Rockwell'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 0
-          OnClick = CkSemuaClick
-        end
-      end
-      object pnlFilter: TPanel
-        Left = 1
-        Top = 1
-        Width = 80
-        Height = 31
-        Align = alLeft
-        Caption = 'Filter'
+      object ed_harga2New: TsCurrencyEdit
+        Left = 104
+        Top = 89
+        Width = 73
+        Height = 24
+        AutoSize = False
+        Color = clWhite
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -19
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Rockwell'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 1
+        OnExit = ed_marginRpExit
+        BoundLabel.Indent = 0
+        BoundLabel.Font.Charset = DEFAULT_CHARSET
+        BoundLabel.Font.Color = clWindowText
+        BoundLabel.Font.Height = -11
+        BoundLabel.Font.Name = 'MS Sans Serif'
+        BoundLabel.Font.Style = []
+        BoundLabel.Layout = sclLeft
+        BoundLabel.MaxWidth = 0
+        BoundLabel.UseSkinColor = True
+        SkinData.CustomColor = True
+        SkinData.SkinSection = 'EDIT'
+        GlyphMode.Blend = 0
+        GlyphMode.Grayed = False
+        DecimalPlaces = 0
+        DisplayFormat = '###,###,##0;-###,###,##0;0'
+      end
+      object ed_harga1New: TsCurrencyEdit
+        Left = 104
+        Top = 112
+        Width = 73
+        Height = 24
+        AutoSize = False
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
         Font.Name = 'Rockwell'
         Font.Style = []
         ParentFont = False
         TabOrder = 2
+        OnExit = ed_marginRpExit
+        BoundLabel.Indent = 0
+        BoundLabel.Font.Charset = DEFAULT_CHARSET
+        BoundLabel.Font.Color = clWindowText
+        BoundLabel.Font.Height = -11
+        BoundLabel.Font.Name = 'MS Sans Serif'
+        BoundLabel.Font.Style = []
+        BoundLabel.Layout = sclLeft
+        BoundLabel.MaxWidth = 0
+        BoundLabel.UseSkinColor = True
+        SkinData.CustomColor = True
+        SkinData.SkinSection = 'EDIT'
+        GlyphMode.Blend = 0
+        GlyphMode.Grayed = False
+        DecimalPlaces = 0
+        DisplayFormat = '###,###,##0;-###,###,##0;0'
+      end
+      object ed_marginPNew: TsCurrencyEdit
+        Left = 104
+        Top = 16
+        Width = 73
+        Height = 24
+        AutoSize = False
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Rockwell'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 3
+        BoundLabel.Indent = 0
+        BoundLabel.Font.Charset = DEFAULT_CHARSET
+        BoundLabel.Font.Color = clWindowText
+        BoundLabel.Font.Height = -11
+        BoundLabel.Font.Name = 'MS Sans Serif'
+        BoundLabel.Font.Style = []
+        BoundLabel.Layout = sclLeft
+        BoundLabel.MaxWidth = 0
+        BoundLabel.UseSkinColor = True
+        SkinData.CustomColor = True
+        SkinData.SkinSection = 'EDIT'
+        GlyphMode.Blend = 0
+        GlyphMode.Grayed = False
+        DisplayFormat = '##0.00;##0.00;0.00'
+      end
+      object ed_marginRpNew: TsCurrencyEdit
+        Left = 104
+        Top = 41
+        Width = 73
+        Height = 24
+        AutoSize = False
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Rockwell'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 4
+        OnExit = ed_marginRpExit
+        BoundLabel.Indent = 0
+        BoundLabel.Font.Charset = DEFAULT_CHARSET
+        BoundLabel.Font.Color = clWindowText
+        BoundLabel.Font.Height = -11
+        BoundLabel.Font.Name = 'MS Sans Serif'
+        BoundLabel.Font.Style = []
+        BoundLabel.Layout = sclLeft
+        BoundLabel.MaxWidth = 0
+        BoundLabel.UseSkinColor = True
+        SkinData.CustomColor = True
+        SkinData.SkinSection = 'EDIT'
+        GlyphMode.Blend = 0
+        GlyphMode.Grayed = False
+        DecimalPlaces = 0
+        DisplayFormat = '###,###,##0;-###,###,##0;0'
       end
     end
   end
@@ -325,17 +1036,7 @@ object F_Edit_Harga: TF_Edit_Harga
     AddedTitle.Font.Style = []
     SkinData.SkinSection = 'FORM'
     TitleButtons = <>
-    Left = 8
-    Top = 56
-  end
-  object Q_harga: TMyQuery
-    Connection = dm.db_conn
-    Left = 8
-    Top = 216
-  end
-  object Ds_harga: TDataSource
-    DataSet = Q_harga
-    Left = 72
-    Top = 216
+    Left = 40
+    Top = 64
   end
 end
