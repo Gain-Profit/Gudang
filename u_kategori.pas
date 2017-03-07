@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, sButton, sEdit, sLabel,UFungsi, sSkinProvider;
+  Dialogs, StdCtrls, sButton, sEdit, sLabel, UFungsi, sSkinProvider;
 
 type
   TF_Kategori = class(TForm)
@@ -19,9 +19,8 @@ type
     procedure ubah;
     procedure B_newClick(Sender: TObject);
     procedure B_saveClick(Sender: TObject);
-
   private
-    kategori_baru:boolean;
+    kategori_baru: boolean;
     { Private declarations }
   public
     { Public declarations }
@@ -32,7 +31,8 @@ var
 
 implementation
 
-uses u_dm, u_cari;
+uses
+  u_dm, u_cari;
 
 {$R *.dfm}
 
@@ -41,48 +41,56 @@ begin
 {fungsi.SQLExec(dm.q_temp,'select * from tb_kategori',true);
 ed_kode.Text:= inttostr(dm.Q_temp.recordcount+1);
 }
-ed_kode.Clear;
-ed_kode.ReadOnly:= false;
+  ed_kode.Clear;
+  ed_kode.ReadOnly := false;
 
-ed_desc.Clear;
-kategori_baru:= true;
+  ed_desc.Clear;
+  kategori_baru := true;
 end;
 
 procedure TF_Kategori.ubah;
 begin
-ed_kode.Text:= f_cari.q_cari.FieldByName('tag').AsString;
-ed_desc.text:= f_cari.q_cari.FieldByName('n_kategori').AsString;
-kategori_baru:= false;
+  ed_kode.Text := f_cari.q_cari.FieldByName('tag').AsString;
+  ed_desc.text := f_cari.q_cari.FieldByName('n_kategori').AsString;
+  kategori_baru := false;
 end;
 
 procedure TF_Kategori.B_newClick(Sender: TObject);
 begin
-baru;
+  baru;
 end;
 
 procedure TF_Kategori.B_saveClick(Sender: TObject);
 begin
-dm.db_conn.StartTransaction;
-try
-if kategori_baru=true then
-fungsi.SQLExec(dm.Q_Exe,'insert into tb_kategori (tag,n_kategori,`update`)values ("'+
-ed_kode.Text+'","'+ed_desc.Text+'","'+formatdatetime('yyyy-MM-dd', date())+'")',false) else
-fungsi.SQLExec(dm.Q_Exe,'update tb_kategori set n_kategori="'+ed_desc.Text+'",`update`="'+
-formatdatetime('yyyy-MM-dd', date())+'" where tag="'+ed_kode.Text+'"',false);
+  dm.db_conn.StartTransaction;
+  try
+    if kategori_baru = true then
+      fungsi.SQLExec(dm.Q_Exe,
+        'insert into tb_kategori (tag,n_kategori,`update`)values ("' + ed_kode.Text
+        + '","' + ed_desc.Text + '","' + formatdatetime('yyyy-MM-dd', date()) +
+        '")', false)
+    else
+      fungsi.SQLExec(dm.Q_Exe, 'update tb_kategori set n_kategori="' + ed_desc.Text
+        + '",`update`="' + formatdatetime('yyyy-MM-dd', date()) +
+        '" where tag="' + ed_kode.Text + '"', false);
 
-dm.db_conn.Commit;
-showmessage('penyimpanan data sukses....');
-except on e:exception do begin
-  dm.db_conn.Rollback;
-  showmessage('penyimpanan data gagal '#10#13'' +e.Message);
+    dm.db_conn.Commit;
+    showmessage('penyimpanan data sukses....');
+  except
+    on e: exception do
+    begin
+      dm.db_conn.Rollback;
+      showmessage('penyimpanan data gagal '#10#13'' + e.Message);
+    end;
   end;
-end;
-f_cari.q_cari.Close;
-f_cari.q_cari.Open;
+  f_cari.q_cari.Close;
+  f_cari.q_cari.Open;
 
-f_cari.clm1.caption:='No';
-f_cari.clm2.caption:='Deskripsi';
-close;
+  f_cari.clm1.caption := 'No';
+  f_cari.clm2.caption := 'Deskripsi';
+  close;
 end;
 
 end.
+
+

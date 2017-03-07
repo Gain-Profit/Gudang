@@ -4,14 +4,11 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, cxGraphics, 
-  cxDataStorage, cxEdit, DB, cxDBData, sSkinProvider, Buttons,
-  ExtCtrls, sPanel, cxGridLevel, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxClasses, cxControls,
-  cxGridCustomView, cxGrid,UFungsi, cxCurrencyEdit, 
-  cxStyles, cxCalendar, sSpeedButton, 
-  sTooledit, sLabel, cxCustomData, cxFilter, cxData, StdCtrls, Mask,
-  sMaskEdit, sCustomComboEdit;
+  Dialogs, cxGraphics, cxDataStorage, cxEdit, DB, cxDBData, sSkinProvider,
+  Buttons, ExtCtrls, sPanel, cxGridLevel, cxGridCustomTableView, cxGridTableView,
+  cxGridDBTableView, cxClasses, cxControls, cxGridCustomView, cxGrid, UFungsi,
+  cxCurrencyEdit, cxStyles, cxCalendar, sSpeedButton, sTooledit, sLabel,
+  cxCustomData, cxFilter, cxData, StdCtrls, Mask, sMaskEdit, sCustomComboEdit;
 
 type
   Tf_list_receipt = class(TForm)
@@ -36,10 +33,10 @@ type
     l_2: TsLabel;
     de_mulai: TsDateEdit;
     de_sampai: TsDateEdit;
-    procedure WMMDIACTIVATE(var msg : TWMMDIACTIVATE) ; message WM_MDIACTIVATE;
-    procedure t_dataCellDblClick(Sender: TcxCustomGridTableView;
-      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
-      AShift: TShiftState; var AHandled: Boolean);
+    procedure WMMDIACTIVATE(var msg: TWMMDIACTIVATE); message WM_MDIACTIVATE;
+    procedure t_dataCellDblClick(Sender: TcxCustomGridTableView; ACellViewInfo:
+      TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState;
+      var AHandled: Boolean);
     procedure segarkan;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -56,7 +53,8 @@ var
 
 implementation
 
-uses u_dm, u_RO, u_utama;
+uses
+  u_dm, u_receipt, u_utama;
 
 {$R *.dfm}
 
@@ -65,66 +63,68 @@ var
   active: TWinControl;
   idx: Integer;
 begin
-  active := FindControl(msg.ActiveWnd) ;
-if not(dm.metu_kabeh) then
-begin
-  if Assigned(active) then
+  active := FindControl(msg.ActiveWnd);
+  if not (dm.metu_kabeh) then
   begin
-    idx := f_utama.tc_child.Tabs.IndexOfObject(TObject(msg.ActiveWnd));
-    f_utama.tc_child.Tag := -1;
-    f_utama.tc_child.TabIndex := idx;
-    f_utama.tc_child.Tag := 0;
+    if Assigned(active) then
+    begin
+      idx := f_utama.tc_child.Tabs.IndexOfObject(TObject(msg.ActiveWnd));
+      f_utama.tc_child.Tag := -1;
+      f_utama.tc_child.TabIndex := idx;
+      f_utama.tc_child.Tag := 0;
+    end;
   end;
-end;
 end;
 
 procedure Tf_list_receipt.segarkan;
 begin
-fungsi.SQLExecT(dm.q_list_receipt,'select * from vw_list_receipt where kd_perusahaan="'+dm.kd_perusahaan+'" and tgl_receipt >= '+
-quotedstr(FormatDateTime('yyyy-MM-dd',de_mulai.Date))+' and tgl_receipt <= '+
-quotedstr(FormatDateTime('yyyy-MM-dd',de_sampai.Date))+'',true);
+  fungsi.SQLExecT(dm.q_list_receipt,
+    'select * from vw_list_receipt where kd_perusahaan="' + dm.kd_perusahaan +
+    '" and tgl_receipt >= ' + quotedstr(FormatDateTime('yyyy-MM-dd', de_mulai.Date))
+    + ' and tgl_receipt <= ' + quotedstr(FormatDateTime('yyyy-MM-dd', de_sampai.Date))
+    + '', true);
 end;
 
-procedure Tf_list_receipt.t_dataCellDblClick(
-  Sender: TcxCustomGridTableView;
-  ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
-  AShift: TShiftState; var AHandled: Boolean);
+procedure Tf_list_receipt.t_dataCellDblClick(Sender: TcxCustomGridTableView;
+  ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift:
+  TShiftState; var AHandled: Boolean);
 begin
 //if f_ro = nil then
-application.CreateForm(tf_RO, f_RO);
+  application.CreateForm(tf_RO, f_RO);
 
-f_RO.Show;
-f_RO.tampil_data;
+  f_RO.Show;
+  f_RO.tampil_data;
 end;
 
-procedure Tf_list_receipt.FormClose(Sender: TObject;
-  var Action: TCloseAction);
+procedure Tf_list_receipt.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-f_utama.MDIChildDestroyed(Self.Handle);
-action:= cafree;
-f_list_receipt:= nil;
+  f_utama.MDIChildDestroyed(Self.Handle);
+  action := cafree;
+  f_list_receipt := nil;
 end;
 
 procedure Tf_list_receipt.FormCreate(Sender: TObject);
 var
   Year, Month, Day: Word;
 begin
-DecodeDate(Now, Year, Month, Day);
-de_mulai.Date:= EncodeDate(Year,Month,1);
-de_sampai.Date:= Date();
+  DecodeDate(Now, Year, Month, Day);
+  de_mulai.Date := EncodeDate(Year, Month, 1);
+  de_sampai.Date := Date();
 
-f_utama.MDIChildCreated(self.Handle);
-segarkan;
+  f_utama.MDIChildCreated(self.Handle);
+  segarkan;
 end;
 
 procedure Tf_list_receipt.sb_1Click(Sender: TObject);
 begin
-close;
+  close;
 end;
 
 procedure Tf_list_receipt.sb_2Click(Sender: TObject);
 begin
-segarkan;
+  segarkan;
 end;
 
 end.
+
+

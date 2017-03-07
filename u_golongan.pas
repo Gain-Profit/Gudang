@@ -4,8 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, sEdit, sLabel, sButton, Buttons, 
-  sComboBox, UFungsi, sSkinProvider, StdCtrls;
+  Dialogs, sEdit, sLabel, sButton, Buttons, sComboBox, UFungsi, sSkinProvider,
+  StdCtrls;
 
 type
   Tf_golongan = class(TForm)
@@ -26,7 +26,7 @@ type
     procedure B_newClick(Sender: TObject);
     procedure B_saveClick(Sender: TObject);
   private
-    gol_baru:boolean;
+    gol_baru: boolean;
     { Private declarations }
   public
     { Public declarations }
@@ -37,48 +37,52 @@ var
 
 implementation
 
-uses u_dm, u_cari;
+uses
+  u_dm, u_cari;
 
 {$R *.dfm}
 
 procedure Tf_golongan.baru;
 begin
-  ed_kode.Enabled:= True;
-  cb_jenis.Enabled:= True;
+  ed_kode.Enabled := True;
+  cb_jenis.Enabled := True;
 
-  cb_jenis.ItemIndex:= cb_1.Items.IndexOf(f_cari.q_cari.FieldByName('kd_jenis').AsString);
+  cb_jenis.ItemIndex := cb_1.Items.IndexOf(f_cari.q_cari.FieldByName('kd_jenis').AsString);
 
   ed_desk.Clear;
-  gol_baru:= true;
+  gol_baru := true;
 end;
 
 procedure Tf_golongan.ubah;
 begin
-  ed_kode.Enabled:= False;
-  cb_jenis.Enabled:= False;
+  ed_kode.Enabled := False;
+  cb_jenis.Enabled := False;
 
-  cb_jenis.ItemIndex:= cb_1.Items.IndexOf(f_cari.q_cari.FieldByName('kd_jenis').AsString);
-  ed_desk.text:= f_cari.q_cari.FieldByName('n_golbrg').AsString;
-  ed_kode.Text:= f_cari.q_cari.FieldByName('kd_golbrg').AsString;
-  gol_baru:= false;
+  cb_jenis.ItemIndex := cb_1.Items.IndexOf(f_cari.q_cari.FieldByName('kd_jenis').AsString);
+  ed_desk.text := f_cari.q_cari.FieldByName('n_golbrg').AsString;
+  ed_kode.Text := f_cari.q_cari.FieldByName('kd_golbrg').AsString;
+  gol_baru := false;
 end;
 
 procedure Tf_golongan.cb_jenisChange(Sender: TObject);
 begin
-  fungsi.SQLExec(dm.q_temp,'select * from tb_golongan where kd_jenis="'+cb_1.Items.Strings[cb_jenis.Itemindex]+'"',true);
-  if Length(IntToStr(dm.Q_temp.recordcount+1))<> 1 then
-  ed_kode.Text:= inttostr(dm.Q_temp.recordcount+1) else
-  ed_kode.Text:= '0'+inttostr(dm.Q_temp.recordcount+1);
+  fungsi.SQLExec(dm.q_temp, 'select * from tb_golongan where kd_jenis="' + cb_1.Items.Strings
+    [cb_jenis.Itemindex] + '"', true);
+  if Length(IntToStr(dm.Q_temp.recordcount + 1)) <> 1 then
+    ed_kode.Text := inttostr(dm.Q_temp.recordcount + 1)
+  else
+    ed_kode.Text := '0' + inttostr(dm.Q_temp.recordcount + 1);
 end;
 
 procedure Tf_golongan.FormCreate(Sender: TObject);
-var x: integer;
+var
+  x: integer;
 begin
-  fungsi.SQLExec(dm.Q_temp,'SELECT * from tb_jenis',true);
-  for x:= 1 to dm.Q_temp.RecordCount do
+  fungsi.SQLExec(dm.Q_temp, 'SELECT * from tb_jenis', true);
+  for x := 1 to dm.Q_temp.RecordCount do
   begin
-    cb_jenis.AddItem(dm.Q_temp.fieldbyname('n_jenis').AsString,sender);
-    cb_1.AddItem(dm.Q_temp.fieldbyname('kd_jenis').AsString,sender);
+    cb_jenis.AddItem(dm.Q_temp.fieldbyname('n_jenis').AsString, sender);
+    cb_1.AddItem(dm.Q_temp.fieldbyname('kd_jenis').AsString, sender);
     dm.Q_temp.Next;
   end;
 end;
@@ -90,15 +94,21 @@ end;
 
 procedure Tf_golongan.B_saveClick(Sender: TObject);
 begin
-  if ed_kode.Text = '' then Exit;
-  
+  if ed_kode.Text = '' then
+    Exit;
+
   dm.db_conn.StartTransaction;
   try
-    if gol_baru=true then
-      fungsi.SQLExec(dm.Q_Exe,'insert into tb_golongan (kd_jenis, kd_golbrg,n_golbrg,`update`)values ("'+
-      cb_1.Items.Strings[cb_jenis.Itemindex]+'","'+ed_kode.Text+'","'+ed_desk.Text+'","'+formatdatetime('yyyy-MM-dd', date())+'")',false) else
-      fungsi.SQLExec(dm.Q_Exe,'update tb_golongan set n_golbrg="'+ed_desk.Text+'",`update`="'+
-      formatdatetime('yyyy-MM-dd', date())+'" where kd_golbrg="'+ed_kode.Text+'" and kd_jenis="'+cb_1.Items.Strings[cb_jenis.Itemindex]+'"',false);
+    if gol_baru = true then
+      fungsi.SQLExec(dm.Q_Exe,
+        'insert into tb_golongan (kd_jenis, kd_golbrg,n_golbrg,`update`)values ("' +
+        cb_1.Items.Strings[cb_jenis.Itemindex] + '","' + ed_kode.Text + '","' +
+        ed_desk.Text + '","' + formatdatetime('yyyy-MM-dd', date()) + '")', false)
+    else
+      fungsi.SQLExec(dm.Q_Exe, 'update tb_golongan set n_golbrg="' + ed_desk.Text
+        + '",`update`="' + formatdatetime('yyyy-MM-dd', date()) +
+        '" where kd_golbrg="' + ed_kode.Text + '" and kd_jenis="' + cb_1.Items.Strings
+        [cb_jenis.Itemindex] + '"', false);
 
 {      fungsi.SQLExec(dm.Q_Exe,'insert into tb_golongan (kd_jenis, kd_golbrg,n_golbrg,`update`)values ("'+
       inttostr(cb_jenis.ItemIndex+1)+'","'+ed_kode.Text+'","'+ed_desk.Text+'","'+formatdatetime('yyyy-MM-dd', date())+'")',false) else
@@ -107,18 +117,22 @@ begin
 }
     dm.db_conn.Commit;
     showmessage('penyimpanan data sukses....');
-  except on e:exception do begin
-    dm.db_conn.Rollback;
-    showmessage('penyimpanan data gagal '#10#13'' +e.Message);
+  except
+    on e: exception do
+    begin
+      dm.db_conn.Rollback;
+      showmessage('penyimpanan data gagal '#10#13'' + e.Message);
     end;
   end;
-  
+
   f_cari.q_cari.Close;
   f_cari.q_cari.Open;
 
-  f_cari.clm1.caption:='No';
-  f_cari.clm2.caption:='Deskripsi';
+  f_cari.clm1.caption := 'No';
+  f_cari.clm2.caption := 'Deskripsi';
   close;
 end;
 
 end.
+
+

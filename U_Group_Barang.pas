@@ -1,15 +1,14 @@
-unit U_Group_Barang;
+unit u_Group_Barang;
 
 interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, sSkinProvider, cxStyles, cxGraphics, 
-  cxDataStorage, cxEdit, DB, cxDBData, cxCurrencyEdit, cxGridLevel,
-  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
-  cxControls, cxGridCustomView, cxGrid, Buttons, sSpeedButton, ExtCtrls, sPanel,
-  sButton, 
-  MyAccess, cxCustomData, cxFilter, cxData, MemDS, DBAccess, StdCtrls;
+  Dialogs, sSkinProvider, cxStyles, cxGraphics, cxDataStorage, cxEdit, DB,
+  cxDBData, cxCurrencyEdit, cxGridLevel, cxGridCustomTableView, cxGridTableView,
+  cxGridDBTableView, cxClasses, cxControls, cxGridCustomView, cxGrid, Buttons,
+  sSpeedButton, ExtCtrls, sPanel, sButton, MyAccess, cxCustomData, cxFilter,
+  cxData, MemDS, DBAccess, StdCtrls;
 
 type
   TFGroupBarang = class(TForm)
@@ -40,9 +39,9 @@ type
     procedure segarkan;
     procedure FormCreate(Sender: TObject);
     procedure btnEditClick(Sender: TObject);
-    procedure t_dataCellDblClick(Sender: TcxCustomGridTableView;
-      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
-      AShift: TShiftState; var AHandled: Boolean);
+    procedure t_dataCellDblClick(Sender: TcxCustomGridTableView; ACellViewInfo:
+      TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState;
+      var AHandled: Boolean);
     procedure btnBaruClick(Sender: TObject);
     procedure btnHapusClick(Sender: TObject);
   private
@@ -100,7 +99,7 @@ end;
 
 procedure TFGroupBarang.segarkan;
 begin
-    fungsi.SQLExecT(QGroupBarang,'select * from vw_group_barang',true);
+  fungsi.SQLExecT(QGroupBarang, 'select * from vw_group_barang', true);
 end;
 
 procedure TFGroupBarang.FormCreate(Sender: TObject);
@@ -115,18 +114,19 @@ begin
 end;
 
 procedure TFGroupBarang.t_dataCellDblClick(Sender: TcxCustomGridTableView;
-  ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
-  AShift: TShiftState; var AHandled: Boolean);
+  ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift:
+  TShiftState; var AHandled: Boolean);
 begin
   OpenGroupDetail(False);
 end;
 
 procedure TFGroupBarang.OpenGroupDetail(Baru: Boolean);
 begin
-  Application.CreateForm(TFGroupBarangDetail,FGroupBarangDetail);
+  Application.CreateForm(TFGroupBarangDetail, FGroupBarangDetail);
   if Baru then
-  FGroupBarangDetail.baru else
-  FGroupBarangDetail.edit(QGroupBarang.FieldByName('id_group').AsString);
+    FGroupBarangDetail.baru
+  else
+    FGroupBarangDetail.edit(QGroupBarang.FieldByName('id_group').AsString);
 
   FGroupBarangDetail.ShowModal;
 end;
@@ -138,18 +138,19 @@ end;
 
 procedure TFGroupBarang.btnHapusClick(Sender: TObject);
 var
-  GroupId: String;
+  GroupId: string;
 begin
-  if (MessageDlg('Yakinkah, Anda akan menghapus data ini???', mtConfirmation, [mbYes, mbNo], 0) = mrYes) then
+  if (MessageDlg('Yakinkah, Anda akan menghapus data ini???', mtConfirmation, [mbYes,
+    mbNo], 0) = mrYes) then
   begin
     GroupId := QGroupBarang.FieldByName('id_group').AsString;
     dm.db_conn.StartTransaction;
     try
-      fungsi.SQLExec(dm.Q_Exe,Format('DELETE FROM tb_barang_group_detail WHERE '+
-      'barang_group_id = "%s"',[GroupId]),False);
+      fungsi.SQLExec(dm.Q_Exe, Format('DELETE FROM tb_barang_group_detail WHERE '
+        + 'barang_group_id = "%s"', [GroupId]), False);
 
-      fungsi.SQLExec(dm.Q_Exe,Format('DELETE FROM tb_barang_group WHERE '+
-      'id_group = "%s"',[GroupId]),False);
+      fungsi.SQLExec(dm.Q_Exe, Format('DELETE FROM tb_barang_group WHERE ' +
+        'id_group = "%s"', [GroupId]), False);
 
       dm.db_conn.Commit;
 
@@ -157,14 +158,16 @@ begin
       segarkan;
 
     except
-      on E:exception do
+      on E: exception do
       begin
         dm.db_conn.Rollback;
-        messagedlg('proses Penghapusan Data gagal,ulangi lagi!!! '#10#13'' + e.Message, mterror, [mbOk],0);
+        messagedlg('proses Penghapusan Data gagal,ulangi lagi!!! '#10#13'' + e.Message,
+          mterror, [mbOk], 0);
       end;
     end;
   end;
 end;
 
 end.
+
 

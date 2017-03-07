@@ -4,18 +4,14 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, sButton,UFungsi,DB, sDialogs, 
-  ComCtrls, sListView, sLabel, acShellCtrls, 
-  sTooledit, sPageControl, 
-  AbZView,AbZipKit, AbView, AbBrowse, AbZipper,
-  ExtCtrls, sPanel, AbUnZper, sGauge, Menus,ShellAPI,ShlObj, sSpinEdit,
-  Buttons, sSpeedButton, cxStyles, cxGraphics, 
-  cxDataStorage, cxEdit, cxDBData, cxCurrencyEdit, cxGridLevel,
-  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
-  cxControls, cxGridCustomView, cxGrid, sComboBox,
-  
-  MyAccess, cxCustomData, cxFilter, cxData, MemDS, DBAccess, AbBase,
-  AbZBrows, StdCtrls, sEdit, Grids, Mask, sMaskEdit, sCustomComboEdit;
+  Dialogs, sButton, UFungsi, DB, sDialogs, ComCtrls, sListView, sLabel,
+  acShellCtrls, sTooledit, sPageControl, AbZView, AbZipKit, AbView, AbBrowse,
+  AbZipper, ExtCtrls, sPanel, AbUnZper, sGauge, Menus, ShellAPI, ShlObj,
+  sSpinEdit, Buttons, sSpeedButton, cxStyles, cxGraphics, cxDataStorage, cxEdit,
+  cxDBData, cxCurrencyEdit, cxGridLevel, cxGridCustomTableView, cxGridTableView,
+  cxGridDBTableView, cxClasses, cxControls, cxGridCustomView, cxGrid, sComboBox,
+  MyAccess, cxCustomData, cxFilter, cxData, MemDS, DBAccess, AbBase, AbZBrows,
+  StdCtrls, sEdit, Grids, Mask, sMaskEdit, sCustomComboEdit;
 
 type
   TF_kirim_data = class(TForm)
@@ -74,7 +70,7 @@ type
     procedure SbSegarkanClick(Sender: TObject);
     procedure cbJenisChange(Sender: TObject);
   private
-    dir_simpan,file_load,dir_load:string;
+    dir_simpan, file_load, dir_load: string;
     { Private declarations }
   public
     { Public declarations }
@@ -89,7 +85,8 @@ const
 
 implementation
 
-uses u_dm, u_utama;
+uses
+  u_dm, u_utama;
 
 {$R *.dfm}
 
@@ -98,10 +95,13 @@ uses u_dm, u_utama;
 function ILCreateFromPath(pszPath: PChar): PItemIDList stdcall; external shell32
   name 'ILCreateFromPathW';
 {$ELSE}
+
 function ILCreateFromPath(pszPath: PChar): PItemIDList stdcall; external shell32
   name 'ILCreateFromPathA';
 {$ENDIF}
+
 procedure ILFree(pidl: PItemIDList) stdcall; external shell32;
+
 function SHOpenFolderAndSelectItems(pidlFolder: PItemIDList; cidl: Cardinal;
   apidl: pointer; dwFlags: DWORD): HRESULT; stdcall; external shell32;
 
@@ -112,134 +112,153 @@ begin
   result := false;
   IIDL := ILCreateFromPath(PChar(FileName));
   if IIDL <> nil then
-    try
-      result := SHOpenFolderAndSelectItems(IIDL, 0, nil, 0) = S_OK;
-    finally
-      ILFree(IIDL);
-    end;
+  try
+    result := SHOpenFolderAndSelectItems(IIDL, 0, nil, 0) = S_OK;
+  finally
+    ILFree(IIDL);
+  end;
 end;
 
 procedure TF_kirim_data.cek_dir_kirim;
 begin
-if not DirectoryExists(dm.DocPath+'DATA_KIRIM') then
-  MkDir(dm.DocPath+'DATA_KIRIM');
+  if not DirectoryExists(dm.DocPath + 'DATA_KIRIM') then
+    MkDir(dm.DocPath + 'DATA_KIRIM');
 
-if not DirectoryExists(dm.DocPath+'\DATA_KIRIM\'+dm.kd_perusahaan+'_'+f_utama.sb.Panels[4].text) then
-  MkDir(dm.DocPath+'DATA_KIRIM\'+dm.kd_perusahaan+'_'+f_utama.sb.Panels[4].text);
+  if not DirectoryExists(dm.DocPath + '\DATA_KIRIM\' + dm.kd_perusahaan + '_' +
+    f_utama.sb.Panels[4].text) then
+    MkDir(dm.DocPath + 'DATA_KIRIM\' + dm.kd_perusahaan + '_' + f_utama.sb.Panels
+      [4].text);
 
-if not DirectoryExists(dm.DocPath+'\DATA_KIRIM\'+dm.kd_perusahaan+'_'+
-f_utama.sb.Panels[4].text+'\PC_'+dm.kd_perusahaan+'_'+formatdatetime('yyyy-MM-dd',edt_kirim.date)) then
-    MkDir(dm.DocPath+'DATA_KIRIM\'+dm.kd_perusahaan+'_'+
-    f_utama.sb.Panels[4].text+'\PC_'+dm.kd_perusahaan+'_'+formatdatetime('yyyy-MM-dd',edt_kirim.date));
+  if not DirectoryExists(dm.DocPath + '\DATA_KIRIM\' + dm.kd_perusahaan + '_' +
+    f_utama.sb.Panels[4].text + '\PC_' + dm.kd_perusahaan + '_' + formatdatetime
+    ('yyyy-MM-dd', edt_kirim.date)) then
+    MkDir(dm.DocPath + 'DATA_KIRIM\' + dm.kd_perusahaan + '_' + f_utama.sb.Panels
+      [4].text + '\PC_' + dm.kd_perusahaan + '_' + formatdatetime('yyyy-MM-dd',
+      edt_kirim.date));
 
-dir_simpan:=dm.DocPath+'DATA_KIRIM\'+dm.kd_perusahaan+'_'+
-            f_utama.sb.Panels[4].text+'\PC_'+dm.kd_perusahaan+'_'+formatdatetime('yyyy-MM-dd',edt_kirim.Date);
+  dir_simpan := dm.DocPath + 'DATA_KIRIM\' + dm.kd_perusahaan + '_' + f_utama.sb.Panels
+    [4].text + '\PC_' + dm.kd_perusahaan + '_' + formatdatetime('yyyy-MM-dd',
+    edt_kirim.Date);
 end;
 
 procedure TF_kirim_data.cek_dir_terima;
 begin
-if not DirectoryExists(dm.DocPath+'DATA_TERIMA') then
-  MkDir(dm.DocPath+'DATA_TERIMA');
+  if not DirectoryExists(dm.DocPath + 'DATA_TERIMA') then
+    MkDir(dm.DocPath + 'DATA_TERIMA');
 
-if not DirectoryExists(dm.DocPath+'DATA_TERIMA\'+dm.kd_perusahaan+'_'+f_utama.sb.Panels[4].text) then
-  MkDir(dm.DocPath+'DATA_TERIMA\'+dm.kd_perusahaan+'_'+f_utama.sb.Panels[4].text);
+  if not DirectoryExists(dm.DocPath + 'DATA_TERIMA\' + dm.kd_perusahaan + '_' +
+    f_utama.sb.Panels[4].text) then
+    MkDir(dm.DocPath + 'DATA_TERIMA\' + dm.kd_perusahaan + '_' + f_utama.sb.Panels
+      [4].text);
 
-dir_load:=dm.DocPath+'DATA_TERIMA\'+dm.kd_perusahaan+'_'+f_utama.sb.Panels[4].text+'\';
-file_load:=dm.DocPath+'DATA_TERIMA\'+dm.kd_perusahaan+'_'+f_utama.sb.Panels[4].text+'\CP_'+
-dm.kd_perusahaan+'_'+formatdatetime('yyyy-MM-dd',edt_terima.Date)+'.zip';
+  dir_load := dm.DocPath + 'DATA_TERIMA\' + dm.kd_perusahaan + '_' + f_utama.sb.Panels
+    [4].text + '\';
+  file_load := dm.DocPath + 'DATA_TERIMA\' + dm.kd_perusahaan + '_' + f_utama.sb.Panels
+    [4].text + '\CP_' + dm.kd_perusahaan + '_' + formatdatetime('yyyy-MM-dd',
+    edt_terima.Date) + '.zip';
 end;
 
 procedure TF_kirim_data.b_kirimClick(Sender: TObject);
-var Q:Integer;
-    namafile: string;
-    zipp:TAbZipper;
+var
+  Q: Integer;
+  namafile: string;
+  zipp: TAbZipper;
 begin
-cek_dir_kirim;
+  cek_dir_kirim;
 
-if FileExists(dir_simpan+'.zip') then
-DeleteFile(dir_simpan+'.zip');
+  if FileExists(dir_simpan + '.zip') then
+    DeleteFile(dir_simpan + '.zip');
 
-zipp:= TAbZipper.Create(Self);
-zipp.AutoSave:=True;
-zipp.BaseDirectory:= dm.DocPath+'DATA_KIRIM\'+dm.kd_perusahaan+'_'+
-          f_utama.sb.Panels[4].text+'\';
+  zipp := TAbZipper.Create(Self);
+  zipp.AutoSave := True;
+  zipp.BaseDirectory := dm.DocPath + 'DATA_KIRIM\' + dm.kd_perusahaan + '_' +
+    f_utama.sb.Panels[4].text + '\';
 
-zipp.FileName:=dir_simpan+'.zip';
+  zipp.FileName := dir_simpan + '.zip';
 
- try
-  for Q:=0 to lv_data_awal.Items.Count-1 do
-  begin
-    if lv_data_awal.Items.Item[Q].Checked then
+  try
+    for Q := 0 to lv_data_awal.Items.Count - 1 do
     begin
-      namafile:= dir_simpan+'\'+lv_data_awal.Items.Item[Q].Caption+'.cbQ';
-      fungsi.savetofile(dm.Q_Exe,'select * from '+lv_data_awal.Items.Item[Q].Caption,namafile);
-      zipp.AddFiles('PC_'+dm.kd_perusahaan+'_'+formatdatetime('yyyy-MM-dd',edt_kirim.Date)+'\'+lv_data_awal.Items.Item[Q].Caption+'.cbQ', 0);
+      if lv_data_awal.Items.Item[Q].Checked then
+      begin
+        namafile := dir_simpan + '\' + lv_data_awal.Items.Item[Q].Caption + '.cbQ';
+        fungsi.savetofile(dm.Q_Exe, 'select * from ' + lv_data_awal.Items.Item[Q].Caption,
+          namafile);
+        zipp.AddFiles('PC_' + dm.kd_perusahaan + '_' + formatdatetime('yyyy-MM-dd',
+          edt_kirim.Date) + '\' + lv_data_awal.Items.Item[Q].Caption + '.cbQ', 0);
+      end;
     end;
-  end;
 
-  for Q:=0 to lv_harian.Items.Count-1 do
-  begin
-    if lv_harian.Items.Item[Q].Checked then
+    for Q := 0 to lv_harian.Items.Count - 1 do
     begin
-      namafile:= dir_simpan+'\'+lv_harian.Items.Item[Q].Caption+'.cbQ';
-      fungsi.savetofile(dm.Q_Exe,'select * from '+lv_harian.Items.Item[Q].Caption+' where kd_perusahaan="'+
-      dm.kd_perusahaan+'"',namafile);
-      zipp.AddFiles('PC_'+dm.kd_perusahaan+'_'+formatdatetime('yyyy-MM-dd',edt_kirim.Date)+'\'+lv_harian.Items.Item[Q].Caption+'.cbQ', 0);
+      if lv_harian.Items.Item[Q].Checked then
+      begin
+        namafile := dir_simpan + '\' + lv_harian.Items.Item[Q].Caption + '.cbQ';
+        fungsi.savetofile(dm.Q_Exe, 'select * from ' + lv_harian.Items.Item[Q].Caption
+          + ' where kd_perusahaan="' + dm.kd_perusahaan + '"', namafile);
+        zipp.AddFiles('PC_' + dm.kd_perusahaan + '_' + formatdatetime('yyyy-MM-dd',
+          edt_kirim.Date) + '\' + lv_harian.Items.Item[Q].Caption + '.cbQ', 0);
+      end;
     end;
-  end;
 
-  if DirectoryExists(dir_simpan) then
-  fungsi.hapusdir(dir_simpan);
-
-  fungsi.SQLExec(dm.Q_Exe,'replace into tb_export_import(kd_perusahaan, data, ket, tanggal) values ("'+
-  dm.kd_perusahaan+'","'+ExtractFileName(zipp.FileName)+'","kirim",now())',False);
-
-  ShowMessage('penyimpanan data sukses...');
-  pilih_data(dir_simpan+'.zip');
-  
- except
-  on E:exception do
-  begin
     if DirectoryExists(dir_simpan) then
-    fungsi.hapusdir(dir_simpan);
-    messagedlg('proses penyimpanan gagal,ulangi lagi!!! '#10#13'' + e.Message, mterror, [mbOk],0);
+      fungsi.hapusdir(dir_simpan);
+
+    fungsi.SQLExec(dm.Q_Exe,
+      'replace into tb_export_import(kd_perusahaan, data, ket, tanggal) values ("' +
+      dm.kd_perusahaan + '","' + ExtractFileName(zipp.FileName) +
+      '","kirim",now())', False);
+
+    ShowMessage('penyimpanan data sukses...');
+    pilih_data(dir_simpan + '.zip');
+
+  except
+    on E: exception do
+    begin
+      if DirectoryExists(dir_simpan) then
+        fungsi.hapusdir(dir_simpan);
+      messagedlg('proses penyimpanan gagal,ulangi lagi!!! '#10#13'' + e.Message,
+        mterror, [mbOk], 0);
+    end;
   end;
- end;
-zipp.Free; 
+  zipp.Free;
 end;
 
 procedure TF_kirim_data.FormShow(Sender: TObject);
-var Q:Integer;
+var
+  Q: Integer;
 begin
-pc_1.ActivePage:=ts_1;
+  pc_1.ActivePage := ts_1;
 
-edt_kirim.date:=Date() + 1;
-edt_terima.Date:=Date();
+  edt_kirim.date := Date() + 1;
+  edt_terima.Date := Date();
 
   lv_harian.DoubleBuffered := not lv_harian.DoubleBuffered;
   lv_harian.Items.BeginUpdate;
-  for Q:=0 to lv_harian.Items.Count-1 do
+  for Q := 0 to lv_harian.Items.Count - 1 do
   begin
-    fungsi.SQLExec(dm.Q_temp,'select count(*) as jumlah_data from '+lv_harian.Items[Q].Caption+' where `update`=date(now())',True);
-    if dm.Q_temp.FieldByName('jumlah_data').AsInteger<>0 then
+    fungsi.SQLExec(dm.Q_temp, 'select count(*) as jumlah_data from ' + lv_harian.Items
+      [Q].Caption + ' where `update`=date(now())', True);
+    if dm.Q_temp.FieldByName('jumlah_data').AsInteger <> 0 then
     begin
-    lv_harian.Items[Q].SubItems[1]:='updated';
+      lv_harian.Items[Q].SubItems[1] := 'updated';
     end;
   end;
   lv_harian.Items.EndUpdate;
 
   lv_data_awal.DoubleBuffered := not lv_data_awal.DoubleBuffered;
   lv_data_awal.Items.BeginUpdate;
-  for Q:=0 to lv_data_awal.Items.Count-1 do
+  for Q := 0 to lv_data_awal.Items.Count - 1 do
   begin
-   try
-    fungsi.SQLExec(dm.Q_temp,'select count(*) as jumlah_data from '+lv_data_awal.Items[Q].Caption+' where `update`=date(now())',True);
-    if dm.Q_temp.FieldByName('jumlah_data').AsInteger<>0 then
-    begin
-    lv_data_awal.Items[Q].SubItems[1]:='updated';
+    try
+      fungsi.SQLExec(dm.Q_temp, 'select count(*) as jumlah_data from ' +
+        lv_data_awal.Items[Q].Caption + ' where `update`=date(now())', True);
+      if dm.Q_temp.FieldByName('jumlah_data').AsInteger <> 0 then
+      begin
+        lv_data_awal.Items[Q].SubItems[1] := 'updated';
+      end;
+    except
     end;
-   except
-   end;
   end;
   lv_data_awal.Items.EndUpdate;
 
@@ -248,183 +267,200 @@ end;
 
 procedure TF_kirim_data.sButton1Click(Sender: TObject);
 begin
-cek_dir_terima;
-zv_load.BeginUpdate;
+  cek_dir_terima;
+  zv_load.BeginUpdate;
 
-if FileExists(file_load) then
-begin
-zk_load.FileName:=file_load;
-spnl_load.Caption:=file_load +
-      '   (' + IntToStr(zv_load.Count) + ' Items)';
-end else
-begin
-spnl_load.Caption:='Data untuk Tanggal, '+formatdatetime('dd mmmm YYYY',edt_terima.Date)+ ' Tidak Ada';
-end;
+  if FileExists(file_load) then
+  begin
+    zk_load.FileName := file_load;
+    spnl_load.Caption := file_load + '   (' + IntToStr(zv_load.Count) + ' Items)';
+  end
+  else
+  begin
+    spnl_load.Caption := 'Data untuk Tanggal, ' + formatdatetime('dd mmmm YYYY',
+      edt_terima.Date) + ' Tidak Ada';
+  end;
 
-zv_load.EndUpdate;
+  zv_load.EndUpdate;
 //l_terima.Items.Clear;
 //GetFileList(l_terima.Items,dir_load,'*.cbT');
 end;
 
 procedure TF_kirim_data.sButton2Click(Sender: TObject);
 begin
-  if od_load.Execute then begin
+  if od_load.Execute then
+  begin
     zv_load.BeginUpdate;
     zk_load.Filename := od_load.Filename;
-    spnl_load.Caption := zk_load.Filename +
-      '   ' + IntToStr(zv_load.Count) + ' items';
+    spnl_load.Caption := zk_load.Filename + '   ' + IntToStr(zv_load.Count) + ' items';
     zv_load.EndUpdate;
   end;
 end;
 
 procedure TF_kirim_data.sButton3Click(Sender: TObject);
-var i: Integer;
-uz: TAbUnZipper;
-nm_tabel,nm_file:string;
+var
+  i: Integer;
+  uz: TAbUnZipper;
+  nm_tabel, nm_file: string;
 begin
-cek_dir_terima;
+  cek_dir_terima;
 
-if zk_load.FileName = '' then
-begin
-  ShowMessage('belum ada data yang diload....');
-  exit;
-end;  
-
-  fungsi.SQLExec(dm.Q_temp,'select * from tb_export_import where kd_perusahaan = "'+
-  dm.kd_perusahaan+'" and data = "'+ExtractFileName(zk_load.FileName)+'" and ket = "terima"',True);
-
-  if not(dm.Q_temp.Eof) then
+  if zk_load.FileName = '' then
   begin
-    if (MessageBox(0, 'Data ini Sudah Pernah di load ke dalam data base...'+#13+#10+'Apakah '+
-    'anda akan meLoad data ini lagi???', 'Load again', MB_ICONEXCLAMATION or MB_YESNO) = idNo) then
-    Exit;
+    ShowMessage('belum ada data yang diload....');
+    exit;
   end;
 
-uz:= TabUnzipper.Create(Self);
+  fungsi.SQLExec(dm.Q_temp,
+    'select * from tb_export_import where kd_perusahaan = "' + dm.kd_perusahaan +
+    '" and data = "' + ExtractFileName(zk_load.FileName) + '" and ket = "terima"', True);
 
-with uz do
+  if not (dm.Q_temp.Eof) then
   begin
-   FileName := zk_load.FileName;
-   BaseDirectory := ExtractFilePath(zk_load.FileName);
-   ExtractFiles( '*.*' );
-  end;
- uz.Free;
-
- dm.db_conn.StartTransaction;
-try
-  sg_load.Visible:=True;
-  sg_load.MaxValue:= zk_load.Count-1;
-  for i:=0 to zk_load.Count-1 do
-  begin
-    nm_file:= zk_load.Items[i].FileName;
-    Delete(nm_file,1,Length(zk_load.Items[i].StoredPath));
-    nm_tabel:= nm_file;
-    Delete(nm_tabel,Length(nm_tabel)-3,4);
-
-    sg_load.Suffix:=' % ('+nm_file+')';
-
-    fungsi.amankan(dir_load+nm_file,dir_load+nm_file,9966);
-
-    fungsi.SQLExec(dm.Q_Exe,'LOAD DATA LOCAL INFILE "'+StringReplace(dir_load+nm_file,'\','/',[rfReplaceAll])+'" REPLACE INTO '+
-    'TABLE '+nm_tabel+' FIELDS TERMINATED BY ''&'' OPTIONALLY ENCLOSED BY ''#'' LINES '+
-    'STARTING BY ''<'' TERMINATED BY ''>'' ',false);
-
-    fungsi.amankan(dir_load+nm_file,dir_load+nm_file,9966);
-
-    DeleteFile(dir_load+nm_file);
-
-    sg_load.Progress:=i;
+    if (MessageBox(0, 'Data ini Sudah Pernah di load ke dalam data base...' +
+      #13 + #10 + 'Apakah ' + 'anda akan meLoad data ini lagi???', 'Load again',
+      MB_ICONEXCLAMATION or MB_YESNO) = idNo) then
+      Exit;
   end;
 
-  fungsi.SQLExec(dm.Q_Exe,'insert ignore into tb_export_import(kd_perusahaan, data, ket, tanggal) values ("'+
-  dm.kd_perusahaan+'","'+ExtractFileName(zk_load.FileName)+'","terima",now())',False);
+  uz := TabUnzipper.Create(Self);
 
-  fungsi.SQLExec(dm.Q_Exe,'insert ignore into tb_mutasi_bulan(kd_perusahaan, tgl) values ("'+
-  dm.kd_perusahaan+'","'+FormatDateTime('yyyy-MM-dd',edt_terima.Date)+'")',False);
+  with uz do
+  begin
+    FileName := zk_load.FileName;
+    BaseDirectory := ExtractFilePath(zk_load.FileName);
+    ExtractFiles('*.*');
+  end;
+  uz.Free;
 
-  fungsi.SQLExec(dm.Q_Exe,'update tb_company set update_mutasi="YA" where kd_perusahaan="'+
-  dm.kd_perusahaan+'"',False);
+  dm.db_conn.StartTransaction;
+  try
+    sg_load.Visible := True;
+    sg_load.MaxValue := zk_load.Count - 1;
+    for i := 0 to zk_load.Count - 1 do
+    begin
+      nm_file := zk_load.Items[i].FileName;
+      Delete(nm_file, 1, Length(zk_load.Items[i].StoredPath));
+      nm_tabel := nm_file;
+      Delete(nm_tabel, Length(nm_tabel) - 3, 4);
 
+      sg_load.Suffix := ' % (' + nm_file + ')';
 
- dm.db_conn.Commit;
+      fungsi.amankan(dir_load + nm_file, dir_load + nm_file, 9966);
 
-  nm_file:= zk_load.FileName;
+      fungsi.SQLExec(dm.Q_Exe, 'LOAD DATA LOCAL INFILE "' + StringReplace(dir_load
+        + nm_file, '\', '/', [rfReplaceAll]) + '" REPLACE INTO ' + 'TABLE ' +
+        nm_tabel + ' FIELDS TERMINATED BY ''&'' OPTIONALLY ENCLOSED BY ''#'' LINES '
+        + 'STARTING BY ''<'' TERMINATED BY ''>'' ', false);
 
- zv_load.BeginUpdate;
- zk_load.FileName:= '';
- zv_load.EndUpdate;
+      fungsi.amankan(dir_load + nm_file, dir_load + nm_file, 9966);
+
+      DeleteFile(dir_load + nm_file);
+
+      sg_load.Progress := i;
+    end;
+
+    fungsi.SQLExec(dm.Q_Exe,
+      'insert ignore into tb_export_import(kd_perusahaan, data, ket, tanggal) values ("' +
+      dm.kd_perusahaan + '","' + ExtractFileName(zk_load.FileName) +
+      '","terima",now())', False);
+
+    fungsi.SQLExec(dm.Q_Exe,
+      'insert ignore into tb_mutasi_bulan(kd_perusahaan, tgl) values ("' + dm.kd_perusahaan
+      + '","' + FormatDateTime('yyyy-MM-dd', edt_terima.Date) + '")', False);
+
+    fungsi.SQLExec(dm.Q_Exe,
+      'update tb_company set update_mutasi="YA" where kd_perusahaan="' + dm.kd_perusahaan
+      + '"', False);
+
+    dm.db_conn.Commit;
+
+    nm_file := zk_load.FileName;
+
+    zv_load.BeginUpdate;
+    zk_load.FileName := '';
+    zv_load.EndUpdate;
 
     if FileExists(nm_file) then
-    DeleteFile(nm_file);
- 
- sg_load.Visible:=False;
- spnl_load.Caption:='';
- ShowMessage('load data berhasil...');
-except
- on E:exception do
- begin
-  dm.db_conn.Rollback;
-  sg_load.Visible:=False;
+      DeleteFile(nm_file);
 
-  for i:=0 to zk_load.Count-1 do
-  begin
-    nm_file:= zk_load.Items[i].FileName;
-    Delete(nm_file,1,Length(zk_load.Items[i].StoredPath));
+    sg_load.Visible := False;
+    spnl_load.Caption := '';
+    ShowMessage('load data berhasil...');
+  except
+    on E: exception do
+    begin
+      dm.db_conn.Rollback;
+      sg_load.Visible := False;
 
-    if FileExists(dir_load+nm_file) then
-    DeleteFile(dir_load+nm_file);
+      for i := 0 to zk_load.Count - 1 do
+      begin
+        nm_file := zk_load.Items[i].FileName;
+        Delete(nm_file, 1, Length(zk_load.Items[i].StoredPath));
+
+        if FileExists(dir_load + nm_file) then
+          DeleteFile(dir_load + nm_file);
+      end;
+
+      messagedlg('proses load data gagal, '#10#13'Hal ini ' +
+        'mungkin terjadi karena data sudah pernah di LOAD... '#10#13'' + e.Message,
+        mterror, [mbOk], 0);
+    end;
   end;
-
-  messagedlg('proses load data gagal, '#10#13'Hal ini '+
-  'mungkin terjadi karena data sudah pernah di LOAD... '#10#13'' + e.Message, mterror, [mbOk],0);
- end;
-end;
 end;
 
 procedure TF_kirim_data.N5Click(Sender: TObject);
-var x: Integer;
+var
+  x: Integer;
 begin
-  for x:= 0 to lv_data_awal.Items.Count - 1 do
-    lv_data_awal.Items.Item[X].Checked:= True;
+  for x := 0 to lv_data_awal.Items.Count - 1 do
+    lv_data_awal.Items.Item[X].Checked := True;
 end;
 
 procedure TF_kirim_data.MenuItem4Click(Sender: TObject);
-var x: Integer;
+var
+  x: Integer;
 begin
-  for x:= 0 to lv_harian.Items.Count - 1 do
-    lv_harian.Items.Item[X].Checked:= True;
+  for x := 0 to lv_harian.Items.Count - 1 do
+    lv_harian.Items.Item[X].Checked := True;
 end;
 
 procedure TF_kirim_data.utupSemuaKecualiini1Click(Sender: TObject);
-var x: Integer;
+var
+  x: Integer;
 begin
-  for x:= 0 to lv_data_awal.Items.Count - 1 do
-    lv_data_awal.Items.Item[X].Checked:= False;
+  for x := 0 to lv_data_awal.Items.Count - 1 do
+    lv_data_awal.Items.Item[X].Checked := False;
 end;
 
 procedure TF_kirim_data.MenuItem5Click(Sender: TObject);
-var x: Integer;
+var
+  x: Integer;
 begin
-  for x:= 0 to lv_harian.Items.Count - 1 do
-    lv_harian.Items.Item[X].Checked:= False;
+  for x := 0 to lv_harian.Items.Count - 1 do
+    lv_harian.Items.Item[X].Checked := False;
 end;
 
 procedure TF_kirim_data.SbSegarkanClick(Sender: TObject);
-var data: string;
+var
+  data: string;
 begin
-if cbJenis.ItemIndex = 0 then
-data := 'PC_'+ dm.kd_perusahaan +'_'
-else
-data := 'CP_'+ dm.kd_perusahaan +'_';
+  if cbJenis.ItemIndex = 0 then
+    data := 'PC_' + dm.kd_perusahaan + '_'
+  else
+    data := 'CP_' + dm.kd_perusahaan + '_';
 
-fungsi.SQLExec(Q_export,'select * from tb_export_import where kd_perusahaan = "'+
-dm.kd_perusahaan+'" and `data` LIKE "'+data+'%" '+
-'ORDER BY `data` DESC, tanggal DESC LIMIT '+ edtHari.Text,True);
+  fungsi.SQLExec(Q_export,
+    'select * from tb_export_import where kd_perusahaan = "' + dm.kd_perusahaan +
+    '" and `data` LIKE "' + data + '%" ' +
+    'ORDER BY `data` DESC, tanggal DESC LIMIT ' + edtHari.Text, True);
 end;
 
 procedure TF_kirim_data.cbJenisChange(Sender: TObject);
 begin
-SbSegarkanClick(Self);
+  SbSegarkanClick(Self);
 end;
 
 end.
+
+

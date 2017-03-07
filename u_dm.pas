@@ -3,9 +3,9 @@ unit u_dm;
 interface
 
 uses
-  SysUtils, Classes, DB, sSkinManager, dialogs, forms, ImgList,
-  Controls, acAlphaImageList, frxClass, frxDBSet, inifiles, frxDesgn, frxBarcode,
-  cxStyles, Windows, frxExportXML, SHFolder, DBAccess, MyAccess, MemDS;
+  SysUtils, Classes, DB, sSkinManager, dialogs, forms, ImgList, Controls,
+  acAlphaImageList, frxClass, frxDBSet, inifiles, frxDesgn, frxBarcode, cxStyles,
+  Windows, frxExportXML, SHFolder, DBAccess, MyAccess, MemDS;
 
 type
   Tdm = class(TDataModule)
@@ -197,4 +197,5 @@ finalization
   cabang.Free;
 
 end.
+
 
