@@ -235,12 +235,12 @@ begin
   TableView.DataController.SetValue(baris_baru - 1, 0, dm.Q_temp.fieldbyname('kd_barang').AsString);
   TableView.DataController.SetValue(baris_baru - 1, 1, dm.Q_temp.fieldbyname('n_barang').AsString);
   TableView.DataController.SetValue(baris_baru - 1, 2, 1);
-  TableView.DataController.SetValue(baris_baru - 1, 3, dm.Q_temp.fieldbyname('hpp_aktif').AsString);
-  TableView.DataController.SetValue(baris_baru - 1, 4, dm.Q_temp.fieldbyname('hpp_aktif').AsString);
+  TableView.DataController.SetValue(baris_baru - 1, 3, dm.Q_temp.fieldbyname('hpp_aktif').AsCurrency);
+  TableView.DataController.SetValue(baris_baru - 1, 4, dm.Q_temp.fieldbyname('hpp_aktif').AsCurrency);
   TableView.DataController.SetValue(baris_baru - 1, 5, dm.Q_temp.fieldbyname('barcode3').AsString);
   tableview.DataController.ChangeFocusedRowIndex(baris_baru);
   mm_nama.Text := tableView.DataController.GetValue(baris_baru - 1, 1);
-  ce_harga.Text := tableView.DataController.GetValue(baris_baru - 1, 3);
+  ce_harga.Value := tableView.DataController.GetValue(baris_baru - 1, 3);
 end;
 
 procedure Tf_return_kirim.ed_codeKeyDown(Sender: TObject; var Key: Word; Shift:
@@ -297,7 +297,7 @@ begin
 
   try
     mm_nama.Text := AfocusedRecord.Values[1];
-    ce_harga.Value := StrToIntDef(AfocusedRecord.Values[3], 0);
+    ce_harga.Value := AfocusedRecord.Values[3];
   except
   end;
 end;
