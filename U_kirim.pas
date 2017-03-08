@@ -516,7 +516,7 @@ begin
   for x := 0 to tableview.DataController.RecordCount - 1 do
   begin
     isi_sql := isi_sql + '("' + dm.kd_perusahaan + '","' + ed_no_faktur.Text +
-      '","' + formatdatetime('yyyy-MM-dd', ed_tgl.Date) + '","' + TableView.DataController.GetDisplayText
+      '","' + TableView.DataController.GetDisplayText
       (x, 0) + '","' + TableView.DataController.GetDisplayText(x, 1) + '","' +
       floattostr(TableView.DataController.GetValue(x, 2)) + '","' + floattostr(TableView.DataController.GetValue
       (x, 4)) + '","' + TableView.DataController.GetDisplayText(x, 5) + '",date(now())),';
@@ -533,7 +533,7 @@ begin
       + dm.kd_pengguna + '","' + ed_jatuh_tempo.Text + '",now())', false);
 
     fungsi.SQLExec(dm.Q_exe,
-      'insert into tb_kirim_rinci(kd_perusahaan,kd_kirim,tgl_kirim,' +
+      'insert into tb_kirim_rinci(kd_perusahaan,kd_kirim, ' +
       'kd_barang,n_barang,qty_kirim,harga_pokok,barcode,tgl_simpan) values  ' +
       isi_sql, false);
 
@@ -581,8 +581,8 @@ begin
   for x := 0 to tableview.DataController.RecordCount - 1 do
   begin
     isi_sql_receipt := isi_sql_receipt + '("' + ed_toko.Text + '","' +
-      ed_no_faktur.Text + '","' + formatdatetime('yyyy-MM-dd', ed_tgl.Date) +
-      '","' + TableView.DataController.GetDisplayText(x, 0) + '","' + TableView.DataController.GetDisplayText
+      ed_no_faktur.Text + '","' + TableView.DataController.GetDisplayText(x, 0)
+      + '","' + TableView.DataController.GetDisplayText
       (x, 1) + '","' + floattostr(TableView.DataController.GetValue(x, 2)) +
       '","' + floattostr(TableView.DataController.GetValue(x, 4)) + '",0,"' +
       TableView.DataController.GetDisplayText(x, 5) + '",date(now())),';
@@ -601,7 +601,7 @@ begin
     + '",0,0,"' + ed_nilai_faktur.Text + '","AUTO",now())', false);
 
   fungsi.SQLExec(dm.Q_exe,
-    'insert into tb_receipt_rinci(kd_perusahaan,kd_receipt,tgl_receipt,' +
+    'insert into tb_receipt_rinci(kd_perusahaan,kd_receipt, ' +
     'kd_barang,n_barang,qty_receipt,harga_pokok,diskon,barcode,tgl_simpan) values ' +
     isi_sql_receipt, false);
 end;
