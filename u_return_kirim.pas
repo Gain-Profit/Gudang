@@ -532,16 +532,15 @@ begin
     LQty := TableView.DataController.GetValue(x, 2);
     LKdBarang := TableView.DataController.GetDisplayText(x, 0);
 
-    isi_sql := isi_sql + '("' + dm.kd_perusahaan + '","' + kd_faktur +
-      '","' + LKdBarang + '","' + TableView.DataController.GetDisplayText(x, 1) + '","' +
-      floattostr(TableView.DataController.GetValue(x, 2)) + '","' + floattostr(TableView.DataController.GetValue
-      (x, 4)) + '","' + TableView.DataController.GetDisplayText(x, 5) + '",date(now())), ';
+    isi_sql := isi_sql + Format('("%s", "%s", "%s", "%s", "%d", "%g", "%s", date(now())), ',
+      [dm.kd_perusahaan, kd_faktur, LKdBarang, TableView.DataController.GetDisplayText(x, 1),
+      Integer(TableView.DataController.GetValue(x, 2)), Double(TableView.DataController.GetValue(x, 4)),
+      TableView.DataController.GetDisplayText(x, 5)]);
 
-    isi_sql2 := isi_sql2 + '("' + EdToko.Text + '","' + kd_faktur +
-      '","' + LKdBarang + '","' + TableView.DataController.GetDisplayText(x, 1) + '","' +
-      floattostr(TableView.DataController.GetValue(x, 2)) + '","' + floattostr(TableView.DataController.GetValue
-      (x, 4)) + '",0,"' + TableView.DataController.GetDisplayText(x, 5) +
-      '",date(now())), ';
+    isi_sql2 := isi_sql2 + Format('("%s", "%s", "%s", "%s", "%d", "%g", 0, "%s", date(now())), ',
+      [EdToko.Text, kd_faktur, LKdBarang, TableView.DataController.GetDisplayText(x, 1),
+      Integer(TableView.DataController.GetValue(x, 2)), Double(TableView.DataController.GetValue(x, 4)),
+      TableView.DataController.GetDisplayText(x, 5)]);
 
     LIsiHppAktif := LIsiHppAktif + Format('WHEN "%s" THEN (((hpp_aktif * stok_OH) + (%d * %d))/(stok_OH + %d)) ',
       [LKdBarang, LHppAktif, LQty, LQty]);
@@ -565,9 +564,9 @@ begin
     LSQL := Format('INSERT INTO tb_return_kirim_global(kd_perusahaan, '+
       'kd_return_kirim, kd_kirim, tgl_return_kirim, kd_tk_return_kirim, '+
       'nilai_faktur, pengguna, simpan_pada) VALUES '+
-      '("%s", "%s", "%s", "%s", "%s", "%s", "%s", now())',
+      '("%s", "%s", "%s", "%s", "%s", "%g", "%s", now())',
       [dm.kd_perusahaan, kd_faktur, ed_fak_kirim.Text, MyDate(ed_tgl.Date),
-      EdToko.Text, ed_nilai_faktur.Text, dm.kd_pengguna]);
+      EdToko.Text, ed_nilai_faktur.Value, dm.kd_pengguna]);
 
     fungsi.SQLExec(dm.Q_exe, LSQL, false);
 
@@ -586,8 +585,8 @@ begin
 
     LSQL := Format('INSERT INTO tb_return_global(kd_perusahaan,kd_return,tgl_return,' +
     'kd_suplier,disk_rp,nilai_faktur,pengguna,faktur_receipt,simpan_pada) ' +
-    'VALUES ("%s", "%s", "%s", "%s", 0,"%s", "AUTO", "%s", now())', [EdToko.Text,
-    ed_no_faktur.Text, MyDate(ed_tgl.Date), dm.kd_perusahaan, ed_nilai_faktur.Text,
+    'VALUES ("%s", "%s", "%s", "%s", 0, "%g", "AUTO", "%s", now())', [EdToko.Text,
+    ed_no_faktur.Text, MyDate(ed_tgl.Date), dm.kd_perusahaan, ed_nilai_faktur.Value,
     ed_fak_kirim.Text]);
 
     fungsi.SQLExec(dm.Q_exe, LSQL, false);
@@ -600,7 +599,7 @@ begin
 
     LSQL := Format('UPDATE tb_barang SET stok_OH = (CASE kd_barang %s END), '+
     'Tr_Akhir = CURDATE() WHERE kd_perusahaan = "%s" AND kd_barang IN (%s)',
-    [LIsiStokOHMin, dm.kd_perusahaan, LKdBarangs]);
+    [LIsiStokOHMin, EdToko.Text, LKdBarangs]);
 
     fungsi.SQLExec(dm.Q_exe, LSQL, false);
 
