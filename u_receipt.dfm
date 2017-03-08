@@ -220,13 +220,13 @@ object f_RO: Tf_RO
             Column = t_view_Qty
           end
           item
-            Format = '###,###,##0;(###,###,##0);0'
+            Format = '###,###,##0.00;(###,###,##0.00);0.00'
             Kind = skSum
             OnGetText = TableViewTcxGridDataControllerTcxDataSummaryFooterSummaryItems3GetText
             Column = t_view_harga
           end
           item
-            Format = '###,###,##0;(###,###,##0);0'
+            Format = '###,###,##0.00;(###,###,##0.00);0.00'
             Kind = skSum
             OnGetText = TableViewTcxGridDataControllerTcxDataSummaryFooterSummaryItems4GetText
             Column = t_view_diskon
@@ -277,11 +277,11 @@ object f_RO: Tf_RO
         end
         object t_view_harga: TcxGridColumn
           Caption = 'Total Harga'
-          DataBinding.ValueType = 'Integer'
+          DataBinding.ValueType = 'Currency'
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.Alignment.Horz = taRightJustify
-          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
-          Properties.EditFormat = '###,###,##0;(###,###,##0);0'
+          Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
+          Properties.EditFormat = '###,###,##0.00;(###,###,##0.00);0.00'
           GroupSummaryAlignment = taRightJustify
           HeaderAlignmentHorz = taRightJustify
           Options.IncSearch = False
@@ -289,11 +289,11 @@ object f_RO: Tf_RO
         end
         object t_view_diskon: TcxGridColumn
           Caption = 'Diskon'
-          DataBinding.ValueType = 'Integer'
+          DataBinding.ValueType = 'Currency'
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.Alignment.Horz = taRightJustify
-          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
-          Properties.EditFormat = '###,###,##0;(###,###,##0);0'
+          Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
+          Properties.EditFormat = '###,###,##0.00;(###,###,##0.00);0.00'
           GroupSummaryAlignment = taRightJustify
           HeaderAlignmentHorz = taRightJustify
           Options.IncSearch = False
@@ -301,22 +301,22 @@ object f_RO: Tf_RO
         end
         object t_view_hpp_akhir: TcxGridColumn
           Caption = 'HPP Akhir'
-          DataBinding.ValueType = 'Integer'
+          DataBinding.ValueType = 'Currency'
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.Alignment.Horz = taRightJustify
-          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
-          Properties.EditFormat = '###,###,##0;(###,###,##0);0'
+          Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
+          Properties.EditFormat = '###,###,##0.00;(###,###,##0.00);0.00'
           HeaderAlignmentHorz = taRightJustify
           Options.Editing = False
           Width = 80
         end
         object t_view_HPP: TcxGridColumn
           Caption = 'HPP Baru'
-          DataBinding.ValueType = 'Integer'
+          DataBinding.ValueType = 'Currency'
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.Alignment.Horz = taRightJustify
-          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
-          Properties.EditFormat = '###,###,##0;(###,###,##0);0'
+          Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
+          Properties.EditFormat = '###,###,##0.00;(###,###,##0.00);0.00'
           GroupSummaryAlignment = taRightJustify
           HeaderAlignmentHorz = taRightJustify
           Options.Editing = False
@@ -430,8 +430,8 @@ object f_RO: Tf_RO
         SkinData.SkinSection = 'PANEL'
         GlyphMode.Blend = 0
         GlyphMode.Grayed = False
-        DecimalPlaces = 0
-        DisplayFormat = '###,###,##0;-###,###,##0;0'
+        DecimalPlaces = 3
+        DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
       end
     end
     object panel2: TsPanel
@@ -856,7 +856,8 @@ object f_RO: Tf_RO
         SkinData.SkinSection = 'EDIT'
         GlyphMode.Blend = 0
         GlyphMode.Grayed = False
-        DisplayFormat = '###,###,##0;(###,###,##0);0'
+        DecimalPlaces = 3
+        DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
       end
       object ce_diskonpr: TsCurrencyEdit
         Left = 72
@@ -917,7 +918,8 @@ object f_RO: Tf_RO
         SkinData.SkinSection = 'EDIT'
         GlyphMode.Blend = 0
         GlyphMode.Grayed = False
-        DisplayFormat = '###,###,##0;-###,###,##0;0'
+        DecimalPlaces = 3
+        DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
       end
       object ce_PPN: TsCurrencyEdit
         Left = 72
@@ -948,8 +950,8 @@ object f_RO: Tf_RO
         SkinData.SkinSection = 'EDIT'
         GlyphMode.Blend = 0
         GlyphMode.Grayed = False
-        DecimalPlaces = 0
-        DisplayFormat = '###,###,##0;-###,###,##0;0'
+        DecimalPlaces = 3
+        DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
       end
       object ed_nilai_faktur: TsCurrencyEdit
         Left = 464
@@ -984,8 +986,8 @@ object f_RO: Tf_RO
         SkinData.SkinSection = 'PANEL'
         GlyphMode.Blend = 0
         GlyphMode.Grayed = False
-        DecimalPlaces = 0
-        DisplayFormat = '###,###,##0;-###,###,##0;0'
+        DecimalPlaces = 3
+        DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
       end
     end
   end

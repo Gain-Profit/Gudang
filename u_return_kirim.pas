@@ -190,7 +190,7 @@ begin
       TableView.DataController.SetValue(h, 0, dm.Q_temp.FieldByName('kd_barang').AsString);
       TableView.DataController.SetValue(h, 1, dm.Q_temp.fieldbyname('n_barang').AsString);
       TableView.DataController.SetValue(h, 2, dm.Q_temp.FieldByName('qty_return_kirim').AsString);
-      TableView.DataController.SetValue(h, 4, dm.Q_temp.fieldbyname('harga_pokok').AsString);
+      TableView.DataController.SetValue(h, 4, dm.Q_temp.fieldbyname('harga_pokok').AsCurrency);
       TableView.DataController.SetValue(h, 5, dm.Q_temp.fieldbyname('barcode').AsString);
       x_hpp := dm.Q_temp.fieldbyname('harga_pokok').AsFloat / dm.Q_temp.FieldByName
         ('qty_return_kirim').AsFloat;

@@ -101,7 +101,7 @@ object f_return_kirim: Tf_return_kirim
         SkinData.SkinSection = 'PANEL'
         GlyphMode.Blend = 0
         GlyphMode.Grayed = False
-        DecimalPlaces = 4
+        DecimalPlaces = 3
         DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
       end
     end
@@ -442,7 +442,7 @@ object f_return_kirim: Tf_return_kirim
         SkinData.SkinSection = 'PANEL'
         GlyphMode.Blend = 0
         GlyphMode.Grayed = False
-        DecimalPlaces = 4
+        DecimalPlaces = 3
         DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
       end
     end
@@ -477,12 +477,12 @@ object f_return_kirim: Tf_return_kirim
             Column = t_view_Qty
           end
           item
-            Format = '###,###,##0;(###,###,##0);0'
+            Format = '###,###,##0.00;(###,###,##0.00);0.00'
             Kind = skSum
             Column = t_view_harga
           end
           item
-            Format = '###,###,##0;(###,###,##0);0'
+            Format = '###,###,##0.00;(###,###,##0.00);0.00'
             Kind = skSum
             OnGetText = TableViewTcxGridDataControllerTcxDataSummaryFooterSummaryItems4GetText
             Column = t_view_total

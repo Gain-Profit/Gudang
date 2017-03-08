@@ -119,7 +119,7 @@ type
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure btnUpdateKeteranganClick(Sender: TObject);
   private
-    sub_sub_total, diskon: integer;
+    sub_sub_total, diskon: Double;
     { Private declarations }
   public
     { Public declarations }
@@ -195,7 +195,7 @@ begin
       TableView.DataController.SetValue(h, 0, dm.Q_temp.FieldByName('kd_barang').AsString);
       TableView.DataController.SetValue(h, 1, dm.Q_temp.fieldbyname('n_barang').AsString);
       TableView.DataController.SetValue(h, 2, dm.Q_temp.FieldByName('qty_purchase').AsString);
-      TableView.DataController.SetValue(h, 3, dm.Q_temp.fieldbyname('harga_pokok').AsString);
+      TableView.DataController.SetValue(h, 3, dm.Q_temp.fieldbyname('harga_pokok').AsCurrency);
       TableView.DataController.SetValue(h, 4, 0);
       x_hpp := dm.Q_temp.fieldbyname('harga_pokok').AsFloat / dm.Q_temp.FieldByName
         ('qty_purchase').AsFloat;
@@ -233,7 +233,7 @@ begin
   ed_tgl.Text := formatdatetime('dd/MM/yyyy', dm.Q_list_receipt.fieldbyname('tgl_receipt').AsDateTime);
   ed_jatuh_tempo.Value := DaySpan(dm.Q_list_receipt.fieldbyname('jatuh_tempo').AsDateTime,
     dm.Q_list_receipt.fieldbyname('tgl_receipt').AsDateTime);
-  ce_diskonrp.Text := dm.Q_list_receipt.fieldbyname('disk_rp').AsString;
+  ce_diskonrp.Value := dm.Q_list_receipt.fieldbyname('disk_rp').AsCurrency;
 
   fungsi.SQLExec(dm.Q_temp,
     'select * from tb_receipt_global where kd_perusahaan="' + dm.Q_list_receipt.fieldbyname
@@ -255,8 +255,8 @@ begin
       TableView.DataController.SetValue(h, 0, dm.Q_temp.FieldByName('kd_barang').AsString);
       TableView.DataController.SetValue(h, 1, dm.Q_temp.fieldbyname('n_barang').AsString);
       TableView.DataController.SetValue(h, 2, dm.Q_temp.FieldByName('qty_receipt').AsString);
-      TableView.DataController.SetValue(h, 3, dm.Q_temp.fieldbyname('harga_pokok').AsString);
-      TableView.DataController.SetValue(h, 4, dm.Q_temp.fieldbyname('diskon').AsString);
+      TableView.DataController.SetValue(h, 3, dm.Q_temp.fieldbyname('harga_pokok').AsCurrency);
+      TableView.DataController.SetValue(h, 4, dm.Q_temp.fieldbyname('diskon').AsCurrency);
       x_hpp := (dm.Q_temp.fieldbyname('harga_pokok').AsFloat - dm.Q_temp.fieldbyname
         ('diskon').AsFloat) / dm.Q_temp.FieldByName('qty_receipt').AsFloat;
       TableView.DataController.SetValue(h, 5, x_hpp);
@@ -323,7 +323,7 @@ begin
           (f, 2) + 1);
         TableView.DataController.SetValue(f, 3, TableView.DataController.GetValue
           (f, 6) * StrToFloatdef(TableView.DataController.GetValue(f, 2), 0)); //total harga
-        TableView.DataController.SetValue(f, 5, dm.Q_temp.fieldbyname('hpp_ahir').AsString);
+        TableView.DataController.SetValue(f, 5, dm.Q_temp.fieldbyname('hpp_ahir').AsCurrency);
         TableView.DataController.SetValue(f, 8, dm.Q_temp.fieldbyname('barcode3').AsString);
         refresh_HPP;
         exit;
@@ -336,13 +336,13 @@ begin
   TableView.DataController.SetValue(baris_baru - 1, 0, dm.Q_temp.fieldbyname('kd_barang').AsString);
   TableView.DataController.SetValue(baris_baru - 1, 1, dm.Q_temp.fieldbyname('n_barang').AsString);
   TableView.DataController.SetValue(baris_baru - 1, 2, 1);
-  TableView.DataController.SetValue(baris_baru - 1, 3, dm.Q_temp.fieldbyname('hpp_ahir').AsString);
+  TableView.DataController.SetValue(baris_baru - 1, 3, dm.Q_temp.fieldbyname('hpp_ahir').AsCurrency);
   TableView.DataController.SetValue(baris_baru - 1, 4, 0);
-  TableView.DataController.SetValue(baris_baru - 1, 5, dm.Q_temp.fieldbyname('hpp_ahir').AsString);
+  TableView.DataController.SetValue(baris_baru - 1, 5, dm.Q_temp.fieldbyname('hpp_ahir').AsCurrency);
   TableView.DataController.SetValue(baris_baru - 1, 8, dm.Q_temp.fieldbyname('barcode3').AsString);
   tableview.DataController.ChangeFocusedRowIndex(baris_baru);
   mm_nama.Text := tableView.DataController.GetValue(baris_baru - 1, 1);
-  ce_harga.Text := tableView.DataController.GetValue(baris_baru - 1, 3);
+  ce_harga.Value := tableView.DataController.GetValue(baris_baru - 1, 3);
   refresh_HPP;
 end;
 
@@ -439,7 +439,7 @@ begin
 
   try
     mm_nama.Text := AfocusedRecord.Values[1];
-    ce_harga.Value := StrToIntDef(AfocusedRecord.Values[3], 0);
+    ce_harga.Value := AfocusedRecord.Values[3];
   except
   end;
 end;
@@ -886,7 +886,7 @@ begin
     if (Length(kode) = 0) then
       Exit;
 
-    TableView.DataController.SetValue(b, 4, kode); //diskon RP
+    TableView.DataController.SetValue(b, 4, StrToFloat(kode)); //diskon RP
     refresh_HPP;
   end;
 
@@ -896,11 +896,11 @@ begin
     ed_code.Clear;
     key := #0;
 
-    if (StrToIntDef(kode, 0) = 0) or (Length(kode) = 0) then
+    if (StrToIntDef(kode, 0) = 0) then
       Exit;
 
-    TableView.DataController.SetValue(b, 2, kode); //Qty
-    TableView.DataController.SetValue(b, 3, harga * StrToFloatdef(kode, 0)); //total harga
+    TableView.DataController.SetValue(b, 2, StrToInt(kode)); //Qty
+    TableView.DataController.SetValue(b, 3, harga * StrToInt(kode)); //total harga
     refresh_HPP;
   end;
 
@@ -913,7 +913,7 @@ begin
     if (Length(kode) = 0) then
       Exit;
 
-    TableView.DataController.SetValue(b, 3, kode); //harga baru
+    TableView.DataController.SetValue(b, 3, StrToFloat(kode)); //harga baru
     refresh_HPP;
   end;
 end;
