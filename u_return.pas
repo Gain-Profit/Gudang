@@ -437,7 +437,7 @@ begin
   for x := 0 to tableview.DataController.RecordCount - 1 do
   begin
     isi_sql := isi_sql + '("' + dm.kd_perusahaan + '","' + ed_no_faktur.Text +
-      '","' + formatdatetime('yyyy-MM-dd', ed_tgl.Date) + '","' + TableView.DataController.GetDisplayText
+      '","' + TableView.DataController.GetDisplayText
       (x, 0) + '","' + TableView.DataController.GetDisplayText(x, 1) + '","' +
       floattostr(TableView.DataController.GetValue(x, 2)) + '","' + floattostr(TableView.DataController.GetValue
       (x, 4)) + '","' + floattostr(TableView.DataController.GetValue(x, 5)) +
@@ -457,7 +457,7 @@ begin
       + '",now())', false);
 
     fungsi.SQLExec(dm.Q_exe,
-      'insert into tb_return_rinci(kd_perusahaan,kd_return,tgl_return,' +
+      'insert into tb_return_rinci(kd_perusahaan,kd_return, ' +
       'kd_barang,n_barang,qty_return,harga_pokok,diskon,barcode,tgl_simpan) values  ' +
       isi_sql, false);
 
