@@ -749,11 +749,11 @@ begin
     ed_code.Clear;
     key := #0;
 
-    if (StrToIntDef(kode, 0) = 0) or (Length(kode) = 0) then
+    if (StrToIntDef(kode, 0) = 0) then
       Exit;
 
-    TableView.DataController.SetValue(b, 2, kode); //Qty
-    TableView.DataController.SetValue(b, 4, harga * StrToFloatdef(kode, 0)); //total harga
+    TableView.DataController.SetValue(b, 2, StrToInt(kode)); //Qty
+    TableView.DataController.SetValue(b, 4, harga * StrToInt(kode)); //total harga
   end;
 
   if Key = #47 then //tanda (/)  ubah harga
@@ -765,8 +765,8 @@ begin
     if (Length(kode) = 0) then
       Exit;
 
-    TableView.DataController.SetValue(b, 3, kode); //harga baru
-    TableView.DataController.SetValue(b, 4, Qty * StrToFloatdef(kode, 0)); //total harga
+    TableView.DataController.SetValue(b, 3, StrToFloat(kode)); //harga baru
+    TableView.DataController.SetValue(b, 4, Qty * StrToFloat(kode)); //total harga
   end;
 
 end;
