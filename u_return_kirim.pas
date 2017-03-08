@@ -533,14 +533,12 @@ begin
     LKdBarang := TableView.DataController.GetDisplayText(x, 0);
 
     isi_sql := isi_sql + '("' + dm.kd_perusahaan + '","' + kd_faktur +
-      '","' + formatdatetime('yyyy-MM-dd', ed_tgl.Date) + '","' + LKdBarang
-      + '","' + TableView.DataController.GetDisplayText(x, 1) + '","' +
+      '","' + LKdBarang + '","' + TableView.DataController.GetDisplayText(x, 1) + '","' +
       floattostr(TableView.DataController.GetValue(x, 2)) + '","' + floattostr(TableView.DataController.GetValue
       (x, 4)) + '","' + TableView.DataController.GetDisplayText(x, 5) + '",date(now())), ';
 
     isi_sql2 := isi_sql2 + '("' + EdToko.Text + '","' + kd_faktur +
-      '","' + formatdatetime('yyyy-MM-dd', ed_tgl.Date) + '","' + LKdBarang
-      + '","' + TableView.DataController.GetDisplayText(x, 1) + '","' +
+      '","' + LKdBarang + '","' + TableView.DataController.GetDisplayText(x, 1) + '","' +
       floattostr(TableView.DataController.GetValue(x, 2)) + '","' + floattostr(TableView.DataController.GetValue
       (x, 4)) + '",0,"' + TableView.DataController.GetDisplayText(x, 5) +
       '",date(now())), ';
@@ -573,7 +571,7 @@ begin
 
     fungsi.SQLExec(dm.Q_exe, LSQL, false);
 
-    LSQL := Format('INSERT INTO tb_return_kirim_rinci(kd_perusahaan,kd_return_kirim,tgl_return_kirim,' +
+    LSQL := Format('INSERT INTO tb_return_kirim_rinci(kd_perusahaan,kd_return_kirim, ' +
       'kd_barang,n_barang,qty_return_kirim,harga_pokok,barcode,tgl_simpan) VALUES  %s',
       [isi_sql]);
 
@@ -594,7 +592,7 @@ begin
 
     fungsi.SQLExec(dm.Q_exe, LSQL, false);
 
-    LSQL := Format('INSERT INTO tb_return_rinci(kd_perusahaan,kd_return,tgl_return,' +
+    LSQL := Format('INSERT INTO tb_return_rinci(kd_perusahaan,kd_return,' +
     'kd_barang,n_barang,qty_return,harga_pokok,diskon,barcode,tgl_simpan) VALUES %s',
     [isi_sql2]);
 
