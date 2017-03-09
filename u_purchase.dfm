@@ -275,7 +275,7 @@ object f_purchase: Tf_purchase
       object Mm_nama: TsMemo
         Left = 1
         Top = 1
-        Width = 555
+        Width = 455
         Height = 71
         Align = alClient
         Alignment = taCenter
@@ -302,9 +302,9 @@ object f_purchase: Tf_purchase
         SkinData.SkinSection = 'PANEL'
       end
       object ce_harga: TsCurrencyEdit
-        Left = 556
+        Left = 456
         Top = 1
-        Width = 280
+        Width = 380
         Height = 71
         AutoSize = False
         BevelInner = bvNone
@@ -607,9 +607,9 @@ object f_purchase: Tf_purchase
         Caption = 'Hapus Baris -> Ctrl + Delete'
       end
       object ed_nilai_faktur: TsCurrencyEdit
-        Left = 460
+        Left = 416
         Top = 1
-        Width = 376
+        Width = 420
         Height = 70
         AutoSize = False
         BevelInner = bvLowered

@@ -43,7 +43,7 @@ object F_kirim: TF_kirim
       object Mm_nama: TsMemo
         Left = 1
         Top = 1
-        Width = 478
+        Width = 378
         Height = 71
         Align = alClient
         Alignment = taCenter
@@ -70,9 +70,9 @@ object F_kirim: TF_kirim
         SkinData.SkinSection = 'PANEL'
       end
       object ce_harga: TsCurrencyEdit
-        Left = 479
+        Left = 379
         Top = 1
-        Width = 280
+        Width = 380
         Height = 71
         AutoSize = False
         BevelInner = bvNone
@@ -431,9 +431,9 @@ object F_kirim: TF_kirim
         Caption = 'Hapus Baris -> Ctrl + Delete'
       end
       object ed_nilai_faktur: TsCurrencyEdit
-        Left = 383
+        Left = 339
         Top = 1
-        Width = 376
+        Width = 420
         Height = 70
         AutoSize = False
         BevelInner = bvLowered
