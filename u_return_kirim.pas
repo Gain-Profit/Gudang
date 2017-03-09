@@ -238,7 +238,7 @@ begin
   TableView.DataController.SetValue(baris_baru - 1, 5, dm.Q_temp.fieldbyname('barcode3').AsString);
   tableview.DataController.ChangeFocusedRowIndex(baris_baru);
   mm_nama.Text := tableView.DataController.GetValue(baris_baru - 1, 1);
-  ce_harga.Value := tableView.DataController.GetValue(baris_baru - 1, 3);
+  ce_harga.Value := dm.Q_temp.fieldbyname('hpp_aktif').AsCurrency;
   SbToko.Enabled:= False;
 end;
 
