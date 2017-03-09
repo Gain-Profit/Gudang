@@ -259,7 +259,7 @@ begin
       TableView.DataController.SetValue(h, 0, dm.Q_temp.FieldByName('kd_barang').AsString);
       TableView.DataController.SetValue(h, 1, dm.Q_temp.fieldbyname('n_barang').AsString);
       TableView.DataController.SetValue(h, 2, dm.Q_temp.FieldByName('qty_kirim').AsString);
-      TableView.DataController.SetValue(h, 4, dm.Q_temp.fieldbyname('harga_pokok').AsString);
+      TableView.DataController.SetValue(h, 4, dm.Q_temp.fieldbyname('harga_pokok').AsCurrency);
       TableView.DataController.SetValue(h, 5, dm.Q_temp.fieldbyname('barcode').AsString);
       x_hpp := dm.Q_temp.fieldbyname('harga_pokok').AsFloat / dm.Q_temp.FieldByName
         ('qty_kirim').AsFloat;
@@ -301,8 +301,8 @@ begin
   TableView.DataController.SetValue(baris_baru - 1, 0, dm.Q_temp.fieldbyname('kd_barang').AsString);
   TableView.DataController.SetValue(baris_baru - 1, 1, dm.Q_temp.fieldbyname('n_barang').AsString);
   TableView.DataController.SetValue(baris_baru - 1, 2, 1);
-  TableView.DataController.SetValue(baris_baru - 1, 3, dm.Q_temp.fieldbyname('hpp_aktif').AsString);
-  TableView.DataController.SetValue(baris_baru - 1, 4, dm.Q_temp.fieldbyname('hpp_aktif').AsString);
+  TableView.DataController.SetValue(baris_baru - 1, 3, dm.Q_temp.fieldbyname('hpp_aktif').AsCurrency);
+  TableView.DataController.SetValue(baris_baru - 1, 4, dm.Q_temp.fieldbyname('hpp_aktif').AsCurrency);
   TableView.DataController.SetValue(baris_baru - 1, 5, dm.Q_temp.fieldbyname('barcode3').AsString);
   tableview.DataController.ChangeFocusedRowIndex(baris_baru);
   mm_nama.Text := tableView.DataController.GetValue(baris_baru - 1, 1);
@@ -383,7 +383,7 @@ begin
 
   try
     mm_nama.Text := AfocusedRecord.Values[1];
-    ce_harga.Value := StrToIntDef(AfocusedRecord.Values[3], 0);
+    ce_harga.Value := AfocusedRecord.Values[3];
   except
   end;
 end;
@@ -752,11 +752,11 @@ end;
     ed_code.Clear;
     key := #0;
 
-    if (StrToIntDef(kode, 0) = 0) or (Length(kode) = 0) then
+    if (StrToIntDef(kode, 0) = 0) then
       Exit;
 
-    TableView.DataController.SetValue(b, 2, kode); //Qty
-    TableView.DataController.SetValue(b, 4, harga * StrToFloatdef(kode, 0)); //total harga
+    TableView.DataController.SetValue(b, 2, StrToInt(kode)); //Qty
+    TableView.DataController.SetValue(b, 4, harga * StrToInt(kode)); //total harga
   end;
 
   if Key = #47 then //tanda (/)  ubah harga
@@ -768,8 +768,8 @@ end;
     if (Length(kode) = 0) then
       Exit;
 
-    TableView.DataController.SetValue(b, 3, kode); //harga baru
-    TableView.DataController.SetValue(b, 4, Qty * StrToFloatdef(kode, 0)); //total harga
+    TableView.DataController.SetValue(b, 3, StrToFloat(kode)); //harga baru
+    TableView.DataController.SetValue(b, 4, Qty * StrToFloat(kode)); //total harga
   end;
 
 end;

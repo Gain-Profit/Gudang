@@ -101,8 +101,8 @@ object F_kirim: TF_kirim
         SkinData.SkinSection = 'PANEL'
         GlyphMode.Blend = 0
         GlyphMode.Grayed = False
-        DecimalPlaces = 0
-        DisplayFormat = '###,###,##0;-###,###,##0;0'
+        DecimalPlaces = 3
+        DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
       end
     end
     object panel2: TsPanel
@@ -462,8 +462,8 @@ object F_kirim: TF_kirim
         SkinData.SkinSection = 'PANEL'
         GlyphMode.Blend = 0
         GlyphMode.Grayed = False
-        DecimalPlaces = 0
-        DisplayFormat = '###,###,##0;-###,###,##0;0'
+        DecimalPlaces = 3
+        DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
       end
     end
     object Grid: TcxGrid
@@ -497,12 +497,12 @@ object F_kirim: TF_kirim
             Column = t_view_Qty
           end
           item
-            Format = '###,###,##0;(###,###,##0);0'
+            Format = '###,###,##0.00;(###,###,##0.00);0.00'
             Kind = skSum
             Column = t_view_harga
           end
           item
-            Format = '###,###,##0;(###,###,##0);0'
+            Format = '###,###,##0.00;(###,###,##0.00);0.00'
             Kind = skSum
             OnGetText = TableViewTcxGridDataControllerTcxDataSummaryFooterSummaryItems4GetText
             Column = t_view_total
@@ -546,6 +546,7 @@ object F_kirim: TF_kirim
           Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
           Properties.EditFormat = '###,###,##0;(###,###,##0);0'
           Properties.MinValue = 1.000000000000000000
+          FooterAlignmentHorz = taCenter
           GroupSummaryAlignment = taCenter
           HeaderAlignmentHorz = taCenter
           Options.IncSearch = False
@@ -553,11 +554,13 @@ object F_kirim: TF_kirim
         end
         object t_view_harga: TcxGridColumn
           Caption = 'Harga'
-          DataBinding.ValueType = 'Integer'
+          DataBinding.ValueType = 'Currency'
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.Alignment.Horz = taRightJustify
-          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
+          Properties.DecimalPlaces = 3
+          Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
           Properties.EditFormat = '###,###,##0;(###,###,##0);0'
+          FooterAlignmentHorz = taRightJustify
           GroupSummaryAlignment = taRightJustify
           HeaderAlignmentHorz = taRightJustify
           Options.Editing = False
@@ -565,11 +568,13 @@ object F_kirim: TF_kirim
         end
         object t_view_total: TcxGridColumn
           Caption = 'Total Harga'
-          DataBinding.ValueType = 'Integer'
+          DataBinding.ValueType = 'Currency'
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.Alignment.Horz = taRightJustify
-          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
+          Properties.DecimalPlaces = 3
+          Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
           Properties.EditFormat = '###,###,##0;(###,###,##0);0'
+          FooterAlignmentHorz = taRightJustify
           GroupSummaryAlignment = taRightJustify
           HeaderAlignmentHorz = taRightJustify
           Options.Editing = False
