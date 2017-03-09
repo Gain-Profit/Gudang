@@ -485,7 +485,7 @@ end;
 procedure TF_kirim.b_simpanClick(Sender: TObject);
 var
   x, i: integer;
-  LKirimRinci, kd_faktur: string;
+  LSQL, LKirimRinci, kd_faktur: string;
 begin
   kd_faktur := ed_no_faktur.Text;
 
@@ -515,34 +515,35 @@ begin
 
   for x := 0 to tableview.DataController.RecordCount - 1 do
   begin
-    LKirimRinci := LKirimRinci + '("' + dm.kd_perusahaan + '","' + ed_no_faktur.Text +
-      '","' + TableView.DataController.GetDisplayText
-      (x, 0) + '","' + TableView.DataController.GetDisplayText(x, 1) + '","' +
-      floattostr(TableView.DataController.GetValue(x, 2)) + '","' + floattostr(TableView.DataController.GetValue
-      (x, 4)) + '","' + TableView.DataController.GetDisplayText(x, 5) + '",date(now())), ';
+    LKirimRinci := LKirimRinci + Format('("%s", "%s", "%s", "%s", "%s", "%s", "%s", date(now())), ',
+      [dm.kd_perusahaan, ed_no_faktur.Text, TableView.DataController.GetDisplayText(x, 0),
+      TableView.DataController.GetDisplayText(x, 1), floattostr(TableView.DataController.GetValue(x, 2)),
+      floattostr(TableView.DataController.GetValue(x, 4)), TableView.DataController.GetDisplayText(x, 5)]);
   end;
   SetLength(LKirimRinci, length(LKirimRinci) - 2);
 
   dm.db_conn.StartTransaction;
   try
-    fungsi.SQLExec(dm.Q_exe,
-      'insert into tb_kirim_global(kd_perusahaan,kd_kirim,tgl_kirim,' +
-      'kd_tk_kirim,nilai_faktur,pengguna,jatuh_tempo,simpan_pada) values ("' +
-      dm.kd_perusahaan + '","' + ed_no_faktur.Text + '","' + formatdatetime('yyyy-MM-dd',
-      ed_tgl.Date) + '","' + ed_toko.Text + '","' + ed_nilai_faktur.Text + '","'
-      + dm.kd_pengguna + '","' + ed_jatuh_tempo.Text + '",now())', false);
+    LSQL := Format('INSERT INTO tb_kirim_global(kd_perusahaan, kd_kirim, tgl_kirim, ' +
+      'kd_tk_kirim, nilai_faktur, pengguna, jatuh_tempo, simpan_pada) VALUES '
+      + '("%s", "%s", "%s", "%s", "%g", "%s", "%s", now())',
+      [dm.kd_perusahaan, ed_no_faktur.Text, MyDate(ed_tgl.Date), ed_toko.Text,
+      ed_nilai_faktur.Value, dm.kd_pengguna, ed_jatuh_tempo.Text]);
 
-    fungsi.SQLExec(dm.Q_exe,
-      'insert into tb_kirim_rinci(kd_perusahaan,kd_kirim, ' +
-      'kd_barang,n_barang,qty_kirim,harga_pokok,barcode,tgl_simpan) values  ' +
-      LKirimRinci, false);
+    fungsi.SQLExec(dm.Q_exe, LSQL, false);
 
-    fungsi.SQLExec(dm.Q_exe,
-      'INSERT tb_piutang (kd_perusahaan,faktur,tanggal,pelanggan, ' +
-      'piutang_awal,`user`,jatuh_tempo,`update`)VALUES("' + dm.kd_perusahaan +
-      '","' + ed_no_faktur.Text + '","' + formatdatetime('yyyy-MM-dd', ed_tgl.Date)
-      + '","' + ed_toko.Text + '","' + ed_nilai_faktur.Text + '","' + dm.kd_pengguna
-      + '","' + ed_jatuh_tempo.Text + '",DATE(NOW()))', False);
+    LSQL := 'INSERT INTO tb_kirim_rinci(kd_perusahaan, kd_kirim, ' +
+      'kd_barang, n_barang, qty_kirim, harga_pokok, barcode, tgl_simpan) VALUES %s',
+      [LKirimRinci]);
+
+    fungsi.SQLExec(dm.Q_exe, LSQL, false);
+
+    LSQL := Format('INSERT INTO tb_piutang (kd_perusahaan, faktur, tanggal, pelanggan, ' +
+      'piutang_awal, `user`, jatuh_tempo, `update`) VALUES ("%s", "%s", "%s", "%s", "%g", '+
+      '"%s", "%s", date(now()))', [dm.kd_perusahaan, ed_no_faktur.Text, MyDate(ed_tgl.Date),
+      ed_toko.Text, ed_nilai_faktur.Text, dm.kd_pengguna, ed_jatuh_tempo.Text]);
+
+    fungsi.SQLExec(dm.Q_exe, LSQL, false);
 
     for i := 0 to cabang.Count - 1 do
     begin
