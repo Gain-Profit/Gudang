@@ -200,12 +200,12 @@ begin
   TableView.DataController.SetValue(baris_baru - 1, 0, dm.Q_temp.fieldbyname('kd_barang').AsString);
   TableView.DataController.SetValue(baris_baru - 1, 1, dm.Q_temp.fieldbyname('n_barang').AsString);
   TableView.DataController.SetValue(baris_baru - 1, 2, 1);
-  TableView.DataController.SetValue(baris_baru - 1, 3, dm.Q_temp.fieldbyname('hpp_aktif').AsCurrency);
-  TableView.DataController.SetValue(baris_baru - 1, 4, dm.Q_temp.fieldbyname('hpp_aktif').AsCurrency);
+  TableView.DataController.SetValue(baris_baru - 1, 3, dm.Q_temp.fieldbyname('hpp_ahir').AsCurrency);
+  TableView.DataController.SetValue(baris_baru - 1, 4, dm.Q_temp.fieldbyname('hpp_ahir').AsCurrency);
   TableView.DataController.SetValue(baris_baru - 1, 5, dm.Q_temp.fieldbyname('barcode3').AsString);
   tableview.DataController.ChangeFocusedRowIndex(baris_baru);
   mm_nama.Text := tableView.DataController.GetValue(baris_baru - 1, 1);
-  ce_harga.Value := dm.Q_temp.fieldbyname('hpp_aktif').AsCurrency;
+  ce_harga.Value := dm.Q_temp.fieldbyname('hpp_ahir').AsCurrency;
 end;
 
 procedure Tf_purchase.ed_codeKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -216,7 +216,7 @@ begin
     if ed_code.Text = '' then
       exit;
     fungsi.sqlExec(dm.Q_temp, 'SELECT kd_barang,n_barang,barcode3, ' +
-      'hpp_aktif,kd_sat3 FROM tb_barang WHERE ((kd_barang = "' + ed_code.Text +
+      'hpp_ahir,kd_sat3 FROM tb_barang WHERE ((kd_barang = "' + ed_code.Text +
       '" OR barcode3 = "' + ed_code.Text + '" OR barcode2 = "' + ed_code.Text +
       '" OR barcode1 = "' + ed_code.Text + '") AND kd_perusahaan="' + dm.kd_perusahaan
       + '")', true);
@@ -308,7 +308,7 @@ begin
   application.CreateForm(tf_cari, f_cari);
   with F_cari do
   try
-    _SQLi := 'select kd_barang, n_barang from tb_barang where kd_perusahaan="' +
+    _SQLi := 'select kd_barang, n_barang, hpp_ahir from tb_barang where kd_perusahaan="' +
       dm.kd_perusahaan + '"';
     tblcap[0] := 'PID';
     tblCap[1] := 'Deskripsi Barang';
