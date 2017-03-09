@@ -500,7 +500,6 @@ begin
     end;
     CloseFile(F);
     fungsi.amankan(sd.FileName, sd.FileName, 123);
-//  bersih;
   end;
 
 end;
@@ -607,12 +606,6 @@ var
   b: Integer;
   Qty, harga: real;
 begin
-{if not ((key>='0')and(key<='9')or(key=#8) or(key=#43) or (Key=#47)) then
-begin
-key:=#0;
-Exit;
-end;
-}
   if TableView.DataController.RecordCount = 0 then
     Exit;
 
