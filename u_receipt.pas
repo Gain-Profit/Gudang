@@ -831,7 +831,7 @@ begin
       tableview.DataController.ChangeFocusedRowIndex(tableview.DataController.RecordCount);
       mm_nama.Text := tableView.DataController.GetValue(tableview.DataController.RecordCount
         - 1, 1);
-      ce_harga.Text := tableView.DataController.GetValue(tableview.DataController.RecordCount
+      ce_harga.Value := tableView.DataController.GetValue(tableview.DataController.RecordCount
         - 1, 3);
       refresh_HPP;
       fungsi.amankan(od.FileName, od.FileName, 456);
