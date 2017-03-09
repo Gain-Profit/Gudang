@@ -622,7 +622,7 @@ begin
     _sql := Format('INSERT INTO tb_receipt_global(kd_perusahaan, kd_receipt, tgl_receipt, '
       + 'kd_suplier, jatuh_tempo, tunai, plus_PPN, PPN, disk_rp, nilai_faktur, simpan_pada, '
       + 'pengguna, keterangan) VALUES ("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%g", "%g", "%g", now(), "%s", "%s")',
-      [dm.kd_perusahaan, ed_no_faktur.Text, formatdatetime('yyyy-MM-dd', ed_tgl.Date),
+      [dm.kd_perusahaan, ed_no_faktur.Text, MyDate(ed_tgl.Date),
       ed_supplier.Text, ed_jatuh_tempo.Text, tunai, plus_PPN, ce_PPN.value,
       ce_diskonrp.Value, ed_nilai_faktur.Value, dm.kd_pengguna, mmKeterangan.Text]);
 
@@ -633,6 +633,16 @@ begin
       [isi_sql]);
 
     fungsi.SQLExec(dm.Q_exe, _sql, false);
+
+    if cb_tunai.Checked = False then
+    begin
+      _sql := Format('INSERT INTO tb_hutang(kd_perusahaan, faktur, tanggal, jatuh_tempo, '+
+      'supplier, hutang_awal,`user`,`update`) VALUES ("%s", "%s", "%s", "%s", "%s", "%g","%s", date(now()))',
+      [dm.kd_perusahaan, ed_no_faktur.Text, MyDate(ed_tgl.Date), ed_jatuh_tempo.Text,
+      ed_supplier.Text, ed_nilai_faktur.Value, dm.kd_pengguna]);
+
+      fungsi.SQLExec(dm.Q_exe, _sql, false);
+    end;
 
     _sql := Format('UPDATE tb_barang SET hpp_aktif = (CASE kd_barang %s END), '
       + 'hpp_ahir = (CASE kd_barang %s END), stok_OH = (CASE kd_barang %s END), '
