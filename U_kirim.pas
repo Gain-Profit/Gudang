@@ -468,7 +468,7 @@ begin
   application.CreateForm(tf_cari, f_cari);
   with F_cari do
   try
-    _SQLi := 'select kd_barang, n_barang from tb_barang where kd_perusahaan="' +
+    _SQLi := 'select kd_barang, n_barang, hpp_aktif from tb_barang where kd_perusahaan="' +
       dm.kd_perusahaan + '"';
     tblcap[0] := 'PID';
     tblCap[1] := 'Deskripsi Barang';
