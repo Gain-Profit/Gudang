@@ -554,8 +554,6 @@ begin
 
     showmessage('penyimpanan data berhasil...');
 
-//b_simpanClick(Self);
-
     ed_no_faktur.Clear;
     ed_no_faktur.Text := kd_faktur;
     b_print.SetFocus;
@@ -728,12 +726,6 @@ var
   kode: string;
   b: Integer;
 begin
-{if not ((key>='0')and(key<='9')or(key=#8) or(key=#43)) then
-begin
-key:=#0;
-Exit;
-end;
-}
   if TableView.DataController.RecordCount = 0 then
     Exit;
 
