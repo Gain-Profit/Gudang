@@ -534,12 +534,12 @@ begin
 
     isi_sql := isi_sql + Format('("%s", "%s", "%s", "%s", "%d", "%g", "%s", date(now())), ',
       [dm.kd_perusahaan, kd_faktur, LKdBarang, TableView.DataController.GetDisplayText(x, 1),
-      Integer(TableView.DataController.GetValue(x, 2)), Double(TableView.DataController.GetValue(x, 4)),
+      LQty, Double(TableView.DataController.GetValue(x, 4)),
       TableView.DataController.GetDisplayText(x, 5)]);
 
     isi_sql2 := isi_sql2 + Format('("%s", "%s", "%s", "%s", "%d", "%g", 0, "%s", date(now())), ',
       [EdToko.Text, kd_faktur, LKdBarang, TableView.DataController.GetDisplayText(x, 1),
-      Integer(TableView.DataController.GetValue(x, 2)), Double(TableView.DataController.GetValue(x, 4)),
+      LQty, Double(TableView.DataController.GetValue(x, 4)),
       TableView.DataController.GetDisplayText(x, 5)]);
 
     LIsiHppAktif := LIsiHppAktif + Format('WHEN "%s" THEN (((hpp_aktif * stok_OH) + (%d * %d))/(stok_OH + %d)) ',
