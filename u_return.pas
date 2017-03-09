@@ -107,7 +107,7 @@ type
     procedure ed_supplierChange(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
   private
-    sub_sub_total, diskon: integer;
+    sub_sub_total, diskon: Double;
     { Private declarations }
   public
     { Public declarations }
@@ -183,8 +183,8 @@ begin
       TableView.DataController.SetValue(h, 2, dm.Q_temp.FieldByName('qty_return').AsString);
       TableView.DataController.SetValue(h, 3, dm.Q_temp.fieldbyname('harga_pokok').AsFloat
         / dm.Q_temp.FieldByName('qty_return').AsFloat);
-      TableView.DataController.SetValue(h, 4, dm.Q_temp.fieldbyname('harga_pokok').AsString);
-      TableView.DataController.SetValue(h, 5, dm.Q_temp.fieldbyname('diskon').AsString);
+      TableView.DataController.SetValue(h, 4, dm.Q_temp.fieldbyname('harga_pokok').AsCurrency);
+      TableView.DataController.SetValue(h, 5, dm.Q_temp.fieldbyname('diskon').AsCurrency);
       TableView.DataController.SetValue(h, 6, dm.Q_temp.fieldbyname('barcode').AsString);
       dm.Q_temp.Next;
     end;
@@ -223,13 +223,13 @@ begin
   TableView.DataController.SetValue(baris_baru - 1, 0, dm.Q_temp.fieldbyname('kd_barang').AsString);
   TableView.DataController.SetValue(baris_baru - 1, 1, dm.Q_temp.fieldbyname('n_barang').AsString);
   TableView.DataController.SetValue(baris_baru - 1, 2, 1);
-  TableView.DataController.SetValue(baris_baru - 1, 3, dm.Q_temp.fieldbyname('hpp_aktif').AsString);
-  TableView.DataController.SetValue(baris_baru - 1, 4, dm.Q_temp.fieldbyname('hpp_aktif').AsString);
+  TableView.DataController.SetValue(baris_baru - 1, 3, dm.Q_temp.fieldbyname('hpp_aktif').AsCurrency);
+  TableView.DataController.SetValue(baris_baru - 1, 4, dm.Q_temp.fieldbyname('hpp_aktif').AsCurrency);
   TableView.DataController.SetValue(baris_baru - 1, 5, 0);
   TableView.DataController.SetValue(baris_baru - 1, 6, dm.Q_temp.fieldbyname('barcode3').AsString);
   tableview.DataController.ChangeFocusedRowIndex(baris_baru);
   mm_nama.Text := tableView.DataController.GetValue(baris_baru - 1, 1);
-  ce_harga.Text := tableView.DataController.GetValue(baris_baru - 1, 3);
+  ce_harga.Value := dm.Q_temp.fieldbyname('hpp_aktif').AsCurrency;
 end;
 
 procedure Tf_return.ed_codeKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -388,7 +388,7 @@ begin
   application.CreateForm(tf_cari, f_cari);
   with F_cari do
   try
-    _SQLi := 'select kd_barang, n_barang from tb_barang where kd_perusahaan="' +
+    _SQLi := 'select kd_barang, n_barang, hpp_aktif from tb_barang where kd_perusahaan="' +
       dm.kd_perusahaan + '"';
     tblcap[0] := 'PID';
     tblCap[1] := 'Deskripsi Barang';
@@ -577,9 +577,7 @@ begin
     end;
     CloseFile(F);
     fungsi.amankan(sd.FileName, sd.FileName, 789);
-  //bersih;
   end;
-
 end;
 
 procedure Tf_return.b_loadClick(Sender: TObject);
@@ -669,12 +667,6 @@ var
   kode: string;
   b: integer;
 begin
-{if not ((key>='0') and (key<='9') or (key=#8) or(key=#43) or(key=#45) or (Key=#46) or (Key=#47)) then
-begin
-key:=#0;
-Exit;
-end;
-}
   if TableView.DataController.RecordCount = 0 then
     Exit;
 
@@ -703,10 +695,10 @@ end;
     ed_code.Clear;
     key := #0;
 
-    if (StrToIntDef(kode, 0) = 0) or (Length(kode) = 0) then
+    if (StrToIntDef(kode, 0) = 0) then
       Exit;
 
-    TableView.DataController.SetValue(b, 2, kode); //Qty
+    TableView.DataController.SetValue(b, 2, StrToInt(kode)); //Qty
     TableView.DataController.SetValue(b, 4, StrToInt(kode) * harga); //Qty
   end;
 
@@ -716,11 +708,11 @@ end;
     ed_code.Clear;
     key := #0;
 
-    if (StrToIntDef(kode, 0) = 0) or (Length(kode) = 0) then
+    if (Length(kode) = 0) then
       Exit;
 
-    TableView.DataController.SetValue(b, 3, kode); //harga baru
-    TableView.DataController.SetValue(b, 4, StrToInt(kode) * Qty); //Qty
+    TableView.DataController.SetValue(b, 3, StrToFloat(kode)); //harga baru
+    TableView.DataController.SetValue(b, 4, StrToFloat(kode) * Qty); //Qty
   end;
 end;
 

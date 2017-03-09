@@ -166,19 +166,19 @@ object f_return: Tf_return
             Column = t_view_Qty
           end
           item
-            Format = '###,###,##0;(###,###,##0);0'
+            Format = '###,###,##0.00;(###,###,##0.00);0.00'
             Kind = skSum
             OnGetText = TableViewTcxGridDataControllerTcxDataSummaryFooterSummaryItems3GetText
             Column = view_total_harga
           end
           item
-            Format = '###,###,##0;(###,###,##0);0'
+            Format = '###,###,##0.00;(###,###,##0.00);0.00'
             Kind = skSum
             OnGetText = TableViewTcxGridDataControllerTcxDataSummaryFooterSummaryItems4GetText
             Column = t_view_diskon
           end
           item
-            Format = '###,###,##0;(###,###,##0);0'
+            Format = '###,###,##0.00;(###,###,##0.00);0.00'
             Kind = skSum
             Column = view_harga
           end>
@@ -228,20 +228,22 @@ object f_return: Tf_return
         end
         object view_harga: TcxGridColumn
           Caption = 'Harga'
-          DataBinding.ValueType = 'Integer'
+          DataBinding.ValueType = 'Currency'
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.Alignment.Horz = taRightJustify
-          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
+          Properties.DecimalPlaces = 3
+          Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
           Properties.EditFormat = '###,###,##0;(###,###,##0);0'
           GroupSummaryAlignment = taRightJustify
           HeaderAlignmentHorz = taRightJustify
         end
         object view_total_harga: TcxGridColumn
           Caption = 'Total Harga'
-          DataBinding.ValueType = 'Integer'
+          DataBinding.ValueType = 'Currency'
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.Alignment.Horz = taRightJustify
-          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
+          Properties.DecimalPlaces = 3
+          Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
           Properties.EditFormat = '###,###,##0;(###,###,##0);0'
           GroupSummaryAlignment = taRightJustify
           HeaderAlignmentHorz = taRightJustify
@@ -250,10 +252,11 @@ object f_return: Tf_return
         end
         object t_view_diskon: TcxGridColumn
           Caption = 'Diskon'
-          DataBinding.ValueType = 'Integer'
+          DataBinding.ValueType = 'Currency'
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.Alignment.Horz = taRightJustify
-          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
+          Properties.DecimalPlaces = 3
+          Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
           Properties.EditFormat = '###,###,##0;(###,###,##0);0'
           GroupSummaryAlignment = taRightJustify
           HeaderAlignmentHorz = taRightJustify
@@ -340,8 +343,8 @@ object f_return: Tf_return
         SkinData.SkinSection = 'PANEL'
         GlyphMode.Blend = 0
         GlyphMode.Grayed = False
-        DecimalPlaces = 0
-        DisplayFormat = '###,###,##0;-###,###,##0;0'
+        DecimalPlaces = 3
+        DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
       end
     end
     object panel2: TsPanel
@@ -729,7 +732,8 @@ object f_return: Tf_return
         SkinData.SkinSection = 'EDIT'
         GlyphMode.Blend = 0
         GlyphMode.Grayed = False
-        DisplayFormat = '###,###,##0;(###,###,##0);0'
+        DecimalPlaces = 3
+        DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
       end
       object ce_diskonpr: TsCurrencyEdit
         Left = 72
@@ -790,7 +794,8 @@ object f_return: Tf_return
         SkinData.SkinSection = 'EDIT'
         GlyphMode.Blend = 0
         GlyphMode.Grayed = False
-        DisplayFormat = '###,###,##0;-###,###,##0;0'
+        DecimalPlaces = 3
+        DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
       end
       object ed_nilai_faktur: TsCurrencyEdit
         Left = 416
@@ -825,8 +830,8 @@ object f_return: Tf_return
         SkinData.SkinSection = 'PANEL'
         GlyphMode.Blend = 0
         GlyphMode.Grayed = False
-        DecimalPlaces = 0
-        DisplayFormat = '###,###,##0;-###,###,##0;0'
+        DecimalPlaces = 3
+        DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
       end
     end
   end
