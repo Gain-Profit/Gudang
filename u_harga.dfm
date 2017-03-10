@@ -166,7 +166,7 @@ object F_Edit_Harga: TF_Edit_Harga
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.Alignment.Horz = taRightJustify
           Properties.Alignment.Vert = taVCenter
-          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
+          Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
           HeaderAlignmentHorz = taRightJustify
           Width = 59
         end
@@ -176,7 +176,7 @@ object F_Edit_Harga: TF_Edit_Harga
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.Alignment.Horz = taRightJustify
           Properties.Alignment.Vert = taVCenter
-          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
+          Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
           HeaderAlignmentHorz = taRightJustify
           Width = 47
         end
@@ -186,7 +186,7 @@ object F_Edit_Harga: TF_Edit_Harga
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.Alignment.Horz = taRightJustify
           Properties.Alignment.Vert = taVCenter
-          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
+          Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
           HeaderAlignmentHorz = taRightJustify
           Width = 46
         end
@@ -195,7 +195,7 @@ object F_Edit_Harga: TF_Edit_Harga
           DataBinding.FieldName = 'harga_jual2'
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.Alignment.Horz = taRightJustify
-          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
+          Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
           HeaderAlignmentHorz = taRightJustify
           Width = 55
         end
@@ -204,7 +204,7 @@ object F_Edit_Harga: TF_Edit_Harga
           DataBinding.FieldName = 'harga_jual1'
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.Alignment.Horz = taRightJustify
-          Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
+          Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
           HeaderAlignmentHorz = taRightJustify
           Width = 74
         end
