@@ -554,7 +554,8 @@ var
   LIsiHppAktif, LIsiHppAkhir, LIsiStokOH: string;
   tunai, plus_PPN, kd_faktur: string;
   LKdBarang, LKdBarangs: string;
-  x, LQty, LHppAhir: integer;
+  x, LQty: integer;
+  LHppAhir: Double;
 begin
   refresh_HPP;
   if (ed_supplier.Text = '') or (ed_no_faktur.Text = '') then
@@ -600,10 +601,10 @@ begin
     isi_sql2 := isi_sql2 + Format('("%s", "%s", "%s", date(now())), ', [dm.kd_perusahaan,
       ed_supplier.Text, LKdBarang]);
 
-    LIsiHppAktif := LIsiHppAktif + Format('WHEN "%s" THEN (((hpp_aktif * stok_OH) + (%d * %d))/(stok_OH + %d)) ',
+    LIsiHppAktif := LIsiHppAktif + Format('WHEN "%s" THEN (((hpp_aktif * stok_OH) + (%g * %d))/(stok_OH + %d)) ',
       [LKdBarang, LHppAhir, LQty, LQty]);
 
-    LIsiHppAkhir := LIsiHppAkhir + Format('WHEN "%s" THEN (%d) ', [LKdBarang, LHppAhir]);
+    LIsiHppAkhir := LIsiHppAkhir + Format('WHEN "%s" THEN (%g) ', [LKdBarang, LHppAhir]);
 
     LIsiStokOH := LIsiStokOH + Format('WHEN "%s" THEN (stok_OH + %d) ', [LKdBarang,
       LQty]);
