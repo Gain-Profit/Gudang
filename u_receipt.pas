@@ -601,7 +601,7 @@ begin
     isi_sql2 := isi_sql2 + Format('("%s", "%s", "%s", date(now())), ', [dm.kd_perusahaan,
       ed_supplier.Text, LKdBarang]);
 
-    LIsiHppAktif := LIsiHppAktif + Format('WHEN "%s" THEN (((hpp_aktif * stok_OH) + (%g * %d))/(stok_OH + %d)) ',
+    LIsiHppAktif := LIsiHppAktif + Format('WHEN "%s" THEN (IFNULL(((hpp_aktif * stok_OH) + (%g * %d))/(stok_OH + %d),0)) ',
       [LKdBarang, LHppAhir, LQty, LQty]);
 
     LIsiHppAkhir := LIsiHppAkhir + Format('WHEN "%s" THEN (%g) ', [LKdBarang, LHppAhir]);

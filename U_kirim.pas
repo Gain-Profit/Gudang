@@ -530,7 +530,7 @@ begin
       [ed_toko.Text, ed_no_faktur.Text, LKdBarang, LNamaBarang,
       LQty, (LHpp * LQty), TableView.DataController.GetDisplayText(x, 5)]);
 
-    LIsiHppAktif := LIsiHppAktif + Format('WHEN "%s" THEN (((hpp_aktif * stok_OH) + (%g * %d))/(stok_OH + %d)) ',
+    LIsiHppAktif := LIsiHppAktif + Format('WHEN "%s" THEN (IFNULL(((hpp_aktif * stok_OH) + (%g * %d))/(stok_OH + %d),0)) ',
       [LKdBarang, LHpp, LQty, LQty]);
 
     LIsiHppAkhir := LIsiHppAkhir + Format('WHEN "%s" THEN (%g) ', [LKdBarang, LHpp]);
