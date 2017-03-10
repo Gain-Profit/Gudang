@@ -2,7 +2,7 @@ object f_realCard: Tf_realCard
   Left = 336
   Top = 208
   BorderStyle = bsDialog
-  Caption = 'Cetak Real Card'
+  Caption = 'Cetak Currency Card'
   ClientHeight = 383
   ClientWidth = 540
   Color = clBtnFace
@@ -47,7 +47,7 @@ object f_realCard: Tf_realCard
     Top = 8
     Width = 153
     Height = 97
-    Caption = '&Real Card'
+    Caption = '&Currency Card'
     TabOrder = 0
     OnClick = btnRealCardClick
     SkinData.SkinSection = 'BUTTON'

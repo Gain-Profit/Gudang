@@ -168,7 +168,7 @@ end;
 procedure Tf_return_kirim.tampil_data;
 var
   h: Integer;
-  x_hpp: Real;
+  x_hpp: Currency;
 begin
   EdToko.Text := dm.Q_list_return_kirim.fieldbyname('kd_pelanggan').AsString;
   LblToko.Caption := dm.Q_list_return_kirim.fieldbyname('n_pelanggan').AsString;
@@ -737,7 +737,7 @@ end;
 
 procedure Tf_return_kirim.ed_codeKeyPress(Sender: TObject; var Key: Char);
 var
-  harga, qty: real;
+  harga, qty: Currency;
   kode: string;
   b: Integer;
 begin

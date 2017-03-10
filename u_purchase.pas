@@ -138,7 +138,7 @@ end;
 procedure Tf_purchase.tampil_data;
 var
   h: Integer;
-  x_hpp: real;
+  x_hpp: Currency;
 begin
   ed_supplier.Text := dm.Q_list_purchase.fieldbyname('kd_suplier').AsString;
   l_supp.Caption := dm.Q_list_purchase.fieldbyname('n_supp').AsString;
@@ -604,7 +604,7 @@ procedure Tf_purchase.ed_codeKeyPress(Sender: TObject; var Key: Char);
 var
   kode: string;
   b: Integer;
-  Qty, harga: real;
+  Qty, harga: Currency;
 begin
   if TableView.DataController.RecordCount = 0 then
     Exit;

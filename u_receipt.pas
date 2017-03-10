@@ -175,7 +175,7 @@ end;
 procedure Tf_RO.tampil_purchase;
 var
   h: Integer;
-  x_hpp: real;
+  x_hpp: Currency;
 begin
   ed_tgl.Date := now();
 
@@ -213,7 +213,7 @@ procedure Tf_RO.tampil_data;
 var
   h: Integer;
   tunai, plus_PPN: string;
-  x_hpp: real;
+  x_hpp: Currency;
 begin
   tunai := dm.Q_list_receipt.fieldbyname('tunai').AsString;
   if tunai = 'Y' then
@@ -274,7 +274,7 @@ end;
 
 procedure Tf_RO.refresh_HPP;
 var
-  Qty, harga, diskon, per_barang, hpp_ahir: real;
+  Qty, harga, diskon, per_barang, hpp_ahir: Currency;
   X: integer;
 begin
   for X := 0 to tableview.DataController.RecordCount - 1 do
@@ -873,7 +873,7 @@ end;
 
 procedure Tf_RO.ed_codeKeyPress(Sender: TObject; var Key: Char);
 var
-  harga: real;
+  harga: Currency;
   kode: string;
   b: Integer;
 begin

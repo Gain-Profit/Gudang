@@ -686,7 +686,7 @@ end;
 
 procedure Tf_return.ed_codeKeyPress(Sender: TObject; var Key: Char);
 var
-  harga, qty: Real;
+  harga, qty: Currency;
   kode: string;
   b: integer;
 begin

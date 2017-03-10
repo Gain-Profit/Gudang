@@ -148,7 +148,7 @@ var
   tempat, nama_file: string;
   y: Integer;
   F: TextFile;
-  qty, hpp, tot: Real;
+  qty, hpp, tot: Currency;
 begin
   if SelectDirectory('Pilih Folder', ExtractFileDrive(dm.DocPath), tempat) then
   begin

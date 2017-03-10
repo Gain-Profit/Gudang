@@ -49,7 +49,7 @@ type
     function FRObject(FastReport: TfrxReport; ObjectName: string): TObject;
     { Private declarations }
   public
-    PPN: real;
+    PPN: Currency;
     CanLogin, metu_kabeh: boolean;
     waktu_sekarang: TDateTime;
     kd_perusahaan, kd_pengguna, WPath, AppPath, DocPath: string;

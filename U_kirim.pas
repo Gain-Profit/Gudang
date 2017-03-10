@@ -239,7 +239,7 @@ end;
 procedure TF_kirim.tampil_data;
 var
   h: Integer;
-  x_hpp: real;
+  x_hpp: Currency;
 begin
   ed_toko.Text := dm.Q_list_kirim.fieldbyname('kd_tk_kirim').AsString;
   l_toko.Caption := dm.Q_list_kirim.fieldbyname('n_pelanggan').AsString;
@@ -747,7 +747,7 @@ end;
 
 procedure TF_kirim.ed_codeKeyPress(Sender: TObject; var Key: Char);
 var
-  harga, qty: real;
+  harga, qty: Currency;
   kode: string;
   b: Integer;
 begin
