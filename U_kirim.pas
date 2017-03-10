@@ -483,7 +483,7 @@ end;
 
 procedure TF_kirim.b_simpanClick(Sender: TObject);
 var
-  LHpp : Double;
+  LHpp : Currency;
   x, LQty : integer;
   LKdBarangs, LKdBarang, LNamaBarang: string;
   LSQL, LKirimRinci, LReceiptRinci, LIsiHppAktif, LIsiHppAkhir, LIsiStokOH, LIsiStokOHMin: string;

@@ -10,9 +10,9 @@ uses
 
 type
   THarga = record
-    Harga3: Extended;
-    Harga2: Extended;
-    Harga1: Extended;
+    Harga3: Currency;
+    Harga2: Currency;
+    Harga1: Currency;
     Awal: TDateTime;
     Ahir: TDateTime;
   end;

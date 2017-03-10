@@ -107,7 +107,7 @@ type
     procedure ed_supplierChange(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
   private
-    sub_sub_total, diskon: Double;
+    sub_sub_total, diskon: Currency;
     { Private declarations }
   public
     { Public declarations }
@@ -443,7 +443,7 @@ begin
     isi_sql := isi_sql + Format('("%s", "%s", "%s", "%s", "%d", "%g", "%g", "%s", date(now())), ',
       [dm.kd_perusahaan, ed_no_faktur.Text, LKdBarang,
       TableView.DataController.GetDisplayText(x, 1), LQty,
-      Double(TableView.DataController.GetValue(x, 4)), Double(TableView.DataController.GetValue(x, 5)),
+      Currency(TableView.DataController.GetValue(x, 4)), Currency(TableView.DataController.GetValue(x, 5)),
       TableView.DataController.GetDisplayText(x, 6)]);
 
     LIsiStokOHMin := LIsiStokOHMin + Format('WHEN "%s" THEN (stok_OH - %d) ', [LKdBarang,

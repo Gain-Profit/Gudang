@@ -493,7 +493,7 @@ var
   LReturnKirimRinci, LReturnRinci, LIsiHppAktif, LIsiStokOH, LIsiStokOHMin: string;
   LKdBarang, LKdBarangs: string;
   x, LQty: integer;
-  LHppAktif : Double;
+  LHppAktif : Currency;
 begin
   if (EdToko.Text = dm.kd_perusahaan) then
   begin
@@ -535,12 +535,12 @@ begin
 
     LReturnKirimRinci := LReturnKirimRinci + Format('("%s", "%s", "%s", "%s", "%d", "%g", "%s", date(now())), ',
       [dm.kd_perusahaan, kd_faktur, LKdBarang, TableView.DataController.GetDisplayText(x, 1),
-      LQty, Double(TableView.DataController.GetValue(x, 4)),
+      LQty, Currency(TableView.DataController.GetValue(x, 4)),
       TableView.DataController.GetDisplayText(x, 5)]);
 
     LReturnRinci := LReturnRinci + Format('("%s", "%s", "%s", "%s", "%d", "%g", 0, "%s", date(now())), ',
       [EdToko.Text, kd_faktur, LKdBarang, TableView.DataController.GetDisplayText(x, 1),
-      LQty, Double(TableView.DataController.GetValue(x, 4)),
+      LQty, Currency(TableView.DataController.GetValue(x, 4)),
       TableView.DataController.GetDisplayText(x, 5)]);
 
     LIsiHppAktif := LIsiHppAktif + Format('WHEN "%s" THEN (IFNULL(((hpp_aktif * stok_OH) + (%g * %d))/(stok_OH + %d),0)) ',

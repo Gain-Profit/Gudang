@@ -119,7 +119,7 @@ type
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure btnUpdateKeteranganClick(Sender: TObject);
   private
-    sub_sub_total, diskon: Double;
+    sub_sub_total, diskon: Currency;
     { Private declarations }
   public
     { Public declarations }
@@ -555,7 +555,7 @@ var
   tunai, plus_PPN, kd_faktur: string;
   LKdBarang, LKdBarangs: string;
   x, LQty: integer;
-  LHppAhir: Double;
+  LHppAhir: Currency;
 begin
   refresh_HPP;
   if (ed_supplier.Text = '') or (ed_no_faktur.Text = '') then
@@ -595,7 +595,7 @@ begin
 
     isi_sql := isi_sql + Format('("%s", "%s", "%s", "%s", "%d", "%g", "%g", date(now()), "%s"), ',
       [dm.kd_perusahaan, ed_no_faktur.Text, LKdBarang, TableView.DataController.GetDisplayText(x, 1),
-      LQty, Double(TableView.DataController.GetValue(x, 3)), Double(TableView.DataController.GetValue(x, 4)),
+      LQty, Currency(TableView.DataController.GetValue(x, 3)), Currency(TableView.DataController.GetValue(x, 4)),
       TableView.DataController.GetDisplayText(x, 8)]);
 
     isi_sql2 := isi_sql2 + Format('("%s", "%s", "%s", date(now())), ', [dm.kd_perusahaan,

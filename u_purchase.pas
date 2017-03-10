@@ -352,7 +352,7 @@ begin
     isi_sql := isi_sql + Format('("%s", "%s", "%s", "%s", "%d", "%g", "%s", date(now())), ',
       [dm.kd_perusahaan, ed_no_faktur.Text, TableView.DataController.GetDisplayText(x, 0),
       TableView.DataController.GetDisplayText(x, 1),Integer(TableView.DataController.GetValue(x, 2)),
-      Double(TableView.DataController.GetValue(x, 4)), TableView.DataController.GetDisplayText(x, 5)]);
+      Currency(TableView.DataController.GetValue(x, 4)), TableView.DataController.GetDisplayText(x, 5)]);
   end;
   SetLength(isi_sql, length(isi_sql) - 2);
 
