@@ -304,7 +304,7 @@ begin
 
   try
     mm_nama.Text := AfocusedRecord.Values[1];
-    ce_harga.Value := AfocusedRecord.Values[3];
+    ce_harga.Value := AfocusedRecord.Values[4];
   except
   end;
 end;
@@ -726,7 +726,7 @@ begin
       mm_nama.Text := tableView.DataController.GetValue(tableview.DataController.RecordCount
         - 1, 1);
       ce_harga.Text := tableView.DataController.GetValue(tableview.DataController.RecordCount
-        - 1, 3);
+        - 1, 4);
       fungsi.amankan(od.FileName, od.FileName, 159);
 
     except

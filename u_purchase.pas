@@ -548,7 +548,7 @@ begin
       mm_nama.Text := tableView.DataController.GetValue(tableview.DataController.RecordCount
         - 1, 1);
       ce_harga.Value := tableView.DataController.GetValue(tableview.DataController.RecordCount
-        - 1, 3);
+        - 1, 4);
 
       fungsi.amankan(od.FileName, od.FileName, 123);
     except
@@ -667,7 +667,7 @@ begin
   end;
   try
     mm_nama.Text := AFocusedRecord.DisplayTexts[1];
-    ce_harga.Value := AFocusedRecord.Values[3];
+    ce_harga.Value := AFocusedRecord.Values[4];
   except
   end;
 end;
