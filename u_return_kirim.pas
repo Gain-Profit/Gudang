@@ -492,7 +492,8 @@ var
   LSQL, kd_faktur: string;
   LReturnKirimRinci, LReturnRinci, LIsiHppAktif, LIsiStokOH, LIsiStokOHMin: string;
   LKdBarang, LKdBarangs: string;
-  x, LQty, LHppAktif: integer;
+  x, LQty: integer;
+  LHppAktif : Double;
 begin
   if (EdToko.Text = dm.kd_perusahaan) then
   begin
@@ -542,7 +543,7 @@ begin
       LQty, Double(TableView.DataController.GetValue(x, 4)),
       TableView.DataController.GetDisplayText(x, 5)]);
 
-    LIsiHppAktif := LIsiHppAktif + Format('WHEN "%s" THEN (((hpp_aktif * stok_OH) + (%d * %d))/(stok_OH + %d)) ',
+    LIsiHppAktif := LIsiHppAktif + Format('WHEN "%s" THEN (IFNULL(((hpp_aktif * stok_OH) + (%g * %d))/(stok_OH + %d),0)) ',
       [LKdBarang, LHppAktif, LQty, LQty]);
 
     LIsiStokOH := LIsiStokOH + Format('WHEN "%s" THEN (stok_OH + %d) ', [LKdBarang,
@@ -576,6 +577,12 @@ begin
 
     fungsi.SQLExec(dm.Q_exe, LSQL, false);
 
+    LSQL := Format('UPDATE tb_piutang SET return_jual = return_jual + %g, `update`=date(now()) '
+      + 'WHERE kd_perusahaan = "%s" and faktur = "%s"', [ed_nilai_faktur.Value,
+      dm.kd_perusahaan, ed_fak_kirim.Text]);
+
+    fungsi.SQLExec(dm.Q_exe, LSQL, false);
+
     LSQL := Format('UPDATE tb_barang SET hpp_aktif = (CASE kd_barang %s END), '
       + 'stok_OH = (CASE kd_barang %s END), Tr_Akhir = CURDATE() ' +
       'WHERE kd_perusahaan = "%s" AND kd_barang IN (%s)', [LIsiHppAktif,
@@ -594,6 +601,12 @@ begin
     LSQL := Format('INSERT INTO tb_return_rinci(kd_perusahaan,kd_return,' +
     'kd_barang,n_barang,qty_return,harga_pokok,diskon,barcode,tgl_simpan) VALUES %s',
     [LReturnRinci]);
+
+    fungsi.SQLExec(dm.Q_exe, LSQL, false);
+
+    LSQL := Format('UPDATE tb_hutang SET return_beli = return_beli + %g, `update`=date(now()) '
+      + 'WHERE kd_perusahaan = "%s" and faktur = "%s"', [ed_nilai_faktur.Value,
+      EdToko.Text, ed_fak_kirim.Text]);
 
     fungsi.SQLExec(dm.Q_exe, LSQL, false);
 
