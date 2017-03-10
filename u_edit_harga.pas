@@ -204,18 +204,18 @@ begin
   if dm.q_temp.FieldByName('jumlah').AsInteger = 0 then
   begin
     fungsi.SQLExec(dm.Q_Exe,
-      'insert into tb_barang_harga(kd_perusahaan,kd_macam_harga,kd_barang,laba,harga_jual1, ' +
+      'insert into tb_barang_harga(kd_perusahaan,kd_macam_harga,kd_barang,harga_jual1, ' +
       'harga_jual2,harga_jual3,kode_user,awal,ahir,`update`,diskon) values ("' +
       perusahaan + '","' + cb_macam.Text + '","' + ed_plu.Text + '","' +
-      ed_marginrp.Text + '","' + ed_harga1.Text + '","' + ed_harga2.Text + '","'
+      ed_harga1.Text + '","' + ed_harga2.Text + '","'
       + ed_harga3.Text + '","' + dm.kd_pengguna + '","' + formatdatetime('yyyy-MM-dd',
       de_awal.date) + '","' + formatdatetime('yyyy-MM-dd', de_ahir.Date) +
       '",CURRENT_TIMESTAMP,"' + ed_discRp.Text + '")', false)
   end
   else
   begin
-    fungsi.SQLExec(dm.Q_Exe, 'update tb_barang_harga set laba="' + ed_marginRP.Text
-      + '",harga_jual1="' + ed_harga1.Text + '",harga_jual2="' + ed_harga2.Text
+    fungsi.SQLExec(dm.Q_Exe, 'update tb_barang_harga set harga_jual1="' +
+      ed_harga1.Text + '",harga_jual2="' + ed_harga2.Text
       + '",harga_jual3="' + ed_harga3.Text + '",kode_user="' + dm.kd_pengguna +
       '",`update`=CURRENT_TIMESTAMP,awal="' + formatdatetime('yyyy-MM-dd',
       de_awal.Date) + '",ahir="' + formatdatetime('yyyy-MM-dd', de_ahir.Date) +
