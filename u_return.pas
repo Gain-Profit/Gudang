@@ -181,7 +181,7 @@ begin
       TableView.DataController.SetValue(h, 0, dm.Q_temp.FieldByName('kd_barang').AsString);
       TableView.DataController.SetValue(h, 1, dm.Q_temp.fieldbyname('n_barang').AsString);
       TableView.DataController.SetValue(h, 2, dm.Q_temp.FieldByName('qty_return').AsString);
-      TableView.DataController.SetValue(h, 3, dm.Q_temp.fieldbyname('harga_pokok').AsFloat
+      TableView.DataController.SetValue(h, 3, dm.Q_temp.fieldbyname('harga_pokok').AsCurrency
         / dm.Q_temp.FieldByName('qty_return').AsFloat);
       TableView.DataController.SetValue(h, 4, dm.Q_temp.fieldbyname('harga_pokok').AsCurrency);
       TableView.DataController.SetValue(h, 5, dm.Q_temp.fieldbyname('diskon').AsCurrency);
@@ -508,7 +508,7 @@ begin
     'select * from vw_cetak_return where kd_perusahaan="' + dm.kd_perusahaan +
     '" and kd_return="' + ed_no_faktur.Text + '"', true);
   dm.laporan.LoadFromFile(dm.WPath + 'laporan\gp_return_rinci.fr3');
-  dm.FRMemo(dm.laporan, 'Memo9').Text := MyTerbilang(dm.Q_laporan.fieldbyname('nilai_faktur').AsFloat)
+  dm.FRMemo(dm.laporan, 'Memo9').Text := MyTerbilang(dm.Q_laporan.fieldbyname('nilai_faktur').AsCurrency)
     + 'Rupiah';
   dm.laporan.ShowReport;
 end;

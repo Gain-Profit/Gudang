@@ -178,7 +178,7 @@ begin
         for y := 0 to dm.Q_temp.RecordCount - 1 do
         begin
           qty := dm.Q_temp.FieldByName('qty_return_kirim').AsFloat;
-          hpp := dm.Q_temp.fieldbyname('harga_pokok').AsFloat;
+          hpp := dm.Q_temp.fieldbyname('harga_pokok').AsCurrency;
           tot := hpp / qty;
 
           Writeln(F, dm.Q_temp.FieldByName('kd_barang').AsString);

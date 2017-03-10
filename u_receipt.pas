@@ -197,7 +197,7 @@ begin
       TableView.DataController.SetValue(h, 2, dm.Q_temp.FieldByName('qty_purchase').AsString);
       TableView.DataController.SetValue(h, 3, dm.Q_temp.fieldbyname('harga_pokok').AsCurrency);
       TableView.DataController.SetValue(h, 4, 0);
-      x_hpp := dm.Q_temp.fieldbyname('harga_pokok').AsFloat / dm.Q_temp.FieldByName
+      x_hpp := dm.Q_temp.fieldbyname('harga_pokok').AsCurrency / dm.Q_temp.FieldByName
         ('qty_purchase').AsFloat;
       TableView.DataController.SetValue(h, 5, x_hpp);
       TableView.DataController.SetValue(h, 8, dm.Q_temp.fieldbyname('barcode').AsString);
@@ -257,8 +257,8 @@ begin
       TableView.DataController.SetValue(h, 2, dm.Q_temp.FieldByName('qty_receipt').AsString);
       TableView.DataController.SetValue(h, 3, dm.Q_temp.fieldbyname('harga_pokok').AsCurrency);
       TableView.DataController.SetValue(h, 4, dm.Q_temp.fieldbyname('diskon').AsCurrency);
-      x_hpp := (dm.Q_temp.fieldbyname('harga_pokok').AsFloat - dm.Q_temp.fieldbyname
-        ('diskon').AsFloat) / dm.Q_temp.FieldByName('qty_receipt').AsFloat;
+      x_hpp := (dm.Q_temp.fieldbyname('harga_pokok').AsCurrency - dm.Q_temp.fieldbyname
+        ('diskon').AsCurrency) / dm.Q_temp.FieldByName('qty_receipt').AsFloat;
       TableView.DataController.SetValue(h, 5, x_hpp);
       TableView.DataController.SetValue(h, 8, dm.Q_temp.fieldbyname('barcode').AsString);
       dm.Q_temp.Next;
@@ -683,7 +683,7 @@ begin
     'select * from vw_cetak_receipt where kd_perusahaan="' + dm.kd_perusahaan +
     '" and kd_receipt="' + ed_no_faktur.Text + '"', true);
   dm.laporan.LoadFromFile(dm.WPath + 'laporan\gp_receipt_rinci.fr3');
-  dm.FRMemo(dm.laporan, 'Memo9').Text := MyTerbilang(dm.Q_laporan.fieldbyname('nilai_faktur').AsFloat)
+  dm.FRMemo(dm.laporan, 'Memo9').Text := MyTerbilang(dm.Q_laporan.fieldbyname('nilai_faktur').AsCurrency)
     + 'Rupiah';
   dm.laporan.ShowReport;
 end;

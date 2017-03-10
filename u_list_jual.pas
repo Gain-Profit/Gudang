@@ -195,7 +195,7 @@ begin
     ('kd_transaksi').AsString + '" and kd_perusahaan=' + quotedstr(dm.kd_perusahaan)
     + '', true);
   dm.laporan.LoadFromFile(dm.WPath + 'laporan/k_struk_retail.fr3');
-  FRMemo(dm.laporan, 'Memo9').Text := MyTerbilang(dm.Q_laporan.fieldbyname('grand_total').AsFloat)
+  FRMemo(dm.laporan, 'Memo9').Text := MyTerbilang(dm.Q_laporan.fieldbyname('grand_total').AsCurrency)
     + 'Rupiah';
   dm.laporan.ShowReport;
 end;

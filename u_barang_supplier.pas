@@ -223,7 +223,7 @@ procedure Tf_barang_supp.btnPrintClick(Sender: TObject);
 begin
   fungsi.SQLExec(dm.Q_laporan, Q_supp.SQL.Text, true);
   dm.laporan.LoadFromFile(dm.WPath + 'laporan\gp_barang_supplier.fr3');
-//dm.FRMemo(dm.laporan, 'Memo9').Text := MyTerbilang(dm.Q_laporan.fieldbyname('nilai_faktur').AsFloat)+'Rupiah';
+//dm.FRMemo(dm.laporan, 'Memo9').Text := MyTerbilang(dm.Q_laporan.fieldbyname('nilai_faktur').AsCurrency)+'Rupiah';
   dm.laporan.ShowReport;
 end;
 

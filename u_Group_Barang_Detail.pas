@@ -88,7 +88,7 @@ begin
   fungsi.SQLExec(dm.Q_temp, 'select * from tb_barang_group where id_group="' +
     GroupId + '"', true);
   edDeskripsiGroup.Text := dm.Q_temp.FieldByName('deskripsi').AsString;
-  edDiskon.Value := dm.Q_temp.FieldByName('diskon').AsFloat;
+  edDiskon.Value := dm.Q_temp.FieldByName('diskon').AsCurrency;
   jenis := dm.Q_temp.FieldByName('jenis').AsString;
   if jenis = '%' then
   begin

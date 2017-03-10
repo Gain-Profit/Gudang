@@ -152,7 +152,7 @@ begin
     + '"', true);
 
   dm.laporan.LoadFromFile(dm.WPath + 'laporan\gp_return_jual_rinci.fr3');
-  dm.FRMemo(dm.laporan, 'Memo9').Text := MyTerbilang(dm.Q_laporan.fieldbyname('nilai_faktur').AsFloat)
+  dm.FRMemo(dm.laporan, 'Memo9').Text := MyTerbilang(dm.Q_laporan.fieldbyname('nilai_faktur').AsCurrency)
     + 'Rupiah';
   dm.laporan.ShowReport;
 end;
