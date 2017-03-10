@@ -161,7 +161,7 @@ begin
       TableView.DataController.SetValue(h, 4, dm.Q_temp.fieldbyname('harga_pokok').AsCurrency);
       TableView.DataController.SetValue(h, 5, dm.Q_temp.fieldbyname('barcode').AsString);
       x_hpp := dm.Q_temp.fieldbyname('harga_pokok').AsCurrency / dm.Q_temp.FieldByName
-        ('qty_purchase').AsFloat;
+        ('qty_purchase').AsInteger;
       TableView.DataController.SetValue(h, 3, x_hpp);
       dm.Q_temp.Next;
     end;

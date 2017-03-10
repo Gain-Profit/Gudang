@@ -182,7 +182,7 @@ begin
       TableView.DataController.SetValue(h, 1, dm.Q_temp.fieldbyname('n_barang').AsString);
       TableView.DataController.SetValue(h, 2, dm.Q_temp.FieldByName('qty_return').AsString);
       TableView.DataController.SetValue(h, 3, dm.Q_temp.fieldbyname('harga_pokok').AsCurrency
-        / dm.Q_temp.FieldByName('qty_return').AsFloat);
+        / dm.Q_temp.FieldByName('qty_return').AsInteger);
       TableView.DataController.SetValue(h, 4, dm.Q_temp.fieldbyname('harga_pokok').AsCurrency);
       TableView.DataController.SetValue(h, 5, dm.Q_temp.fieldbyname('diskon').AsCurrency);
       TableView.DataController.SetValue(h, 6, dm.Q_temp.fieldbyname('barcode').AsString);

@@ -198,7 +198,7 @@ begin
       TableView.DataController.SetValue(h, 3, dm.Q_temp.fieldbyname('harga_pokok').AsCurrency);
       TableView.DataController.SetValue(h, 4, 0);
       x_hpp := dm.Q_temp.fieldbyname('harga_pokok').AsCurrency / dm.Q_temp.FieldByName
-        ('qty_purchase').AsFloat;
+        ('qty_purchase').AsInteger;
       TableView.DataController.SetValue(h, 5, x_hpp);
       TableView.DataController.SetValue(h, 8, dm.Q_temp.fieldbyname('barcode').AsString);
       dm.Q_temp.Next;
@@ -258,7 +258,7 @@ begin
       TableView.DataController.SetValue(h, 3, dm.Q_temp.fieldbyname('harga_pokok').AsCurrency);
       TableView.DataController.SetValue(h, 4, dm.Q_temp.fieldbyname('diskon').AsCurrency);
       x_hpp := (dm.Q_temp.fieldbyname('harga_pokok').AsCurrency - dm.Q_temp.fieldbyname
-        ('diskon').AsCurrency) / dm.Q_temp.FieldByName('qty_receipt').AsFloat;
+        ('diskon').AsCurrency) / dm.Q_temp.FieldByName('qty_receipt').AsInteger;
       TableView.DataController.SetValue(h, 5, x_hpp);
       TableView.DataController.SetValue(h, 8, dm.Q_temp.fieldbyname('barcode').AsString);
       dm.Q_temp.Next;
