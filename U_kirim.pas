@@ -532,7 +532,7 @@ begin
 
     fungsi.SQLExec(dm.Q_exe, LSQL, false);
 
-    LSQL := 'INSERT INTO tb_kirim_rinci(kd_perusahaan, kd_kirim, ' +
+    LSQL := Format('INSERT INTO tb_kirim_rinci(kd_perusahaan, kd_kirim, ' +
       'kd_barang, n_barang, qty_kirim, harga_pokok, barcode, tgl_simpan) VALUES %s',
       [LKirimRinci]);
 
