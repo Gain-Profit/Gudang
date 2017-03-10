@@ -92,7 +92,6 @@ type
     procedure ed_no_fakturKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure ed_codeKeyPress(Sender: TObject; var Key: Char);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-    procedure receiptCabang();
   private
     { Private declarations }
   public
@@ -484,8 +483,11 @@ end;
 
 procedure TF_kirim.b_simpanClick(Sender: TObject);
 var
-  x, i: integer;
-  LSQL, LKirimRinci, kd_faktur: string;
+  LHpp : Double;
+  x, LQty : integer;
+  LKdBarangs, LKdBarang, LNamaBarang: string;
+  LSQL, LKirimRinci, LReceiptRinci, LIsiHppAktif, LIsiHppAkhir, LIsiStokOH, LIsiStokOHMin: string;
+  kd_faktur: string;
 begin
   kd_faktur := ed_no_faktur.Text;
 
@@ -515,41 +517,99 @@ begin
 
   for x := 0 to tableview.DataController.RecordCount - 1 do
   begin
-    LKirimRinci := LKirimRinci + Format('("%s", "%s", "%s", "%s", "%s", "%s", "%s", date(now())), ',
-      [dm.kd_perusahaan, ed_no_faktur.Text, TableView.DataController.GetDisplayText(x, 0),
-      TableView.DataController.GetDisplayText(x, 1), floattostr(TableView.DataController.GetValue(x, 2)),
-      floattostr(TableView.DataController.GetValue(x, 4)), TableView.DataController.GetDisplayText(x, 5)]);
+    LKdBarang := TableView.DataController.GetDisplayText(x, 0);
+    LNamaBarang := TableView.DataController.GetDisplayText(x, 1);
+    LQty := TableView.DataController.GetValue(x, 2);
+    LHpp := TableView.DataController.GetValue(x, 3);
+
+    LKirimRinci := LKirimRinci + Format('("%s", "%s", "%s", "%s", "%d", "%g", "%s"), ',
+      [dm.kd_perusahaan, ed_no_faktur.Text, LKdBarang, LNamaBarang,
+      LQty, (LHpp * LQty), TableView.DataController.GetDisplayText(x, 5)]);
+
+    LReceiptRinci := LReceiptRinci + Format('("%s", "%s", "%s", "%s", "%d", "%g", "%s"), ',
+      [ed_toko.Text, ed_no_faktur.Text, LKdBarang, LNamaBarang,
+      LQty, (LHpp * LQty), TableView.DataController.GetDisplayText(x, 5)]);
+
+    LIsiHppAktif := LIsiHppAktif + Format('WHEN "%s" THEN (((hpp_aktif * stok_OH) + (%g * %d))/(stok_OH + %d)) ',
+      [LKdBarang, LHpp, LQty, LQty]);
+
+    LIsiHppAkhir := LIsiHppAkhir + Format('WHEN "%s" THEN (%g) ', [LKdBarang, LHpp]);
+
+    LIsiStokOHMin := LIsiStokOHMin + Format('WHEN "%s" THEN (stok_OH - %d) ', [LKdBarang,
+      LQty]);
+
+    LIsiStokOH := LIsiStokOH + Format('WHEN "%s" THEN (stok_OH + %d) ', [LKdBarang,
+      LQty]);
+
+    LKdBarangs := LKdBarangs + Format('"%s", ', [LKdBarang]);
   end;
   SetLength(LKirimRinci, length(LKirimRinci) - 2);
+  SetLength(LReceiptRinci, length(LReceiptRinci) - 2);
+  SetLength(LIsiHppAktif, Length(LIsiHppAktif) - 1);
+  SetLength(LIsiHppAkhir, Length(LIsiHppAkhir) - 1);
+  SetLength(LIsiStokOH, Length(LIsiStokOH) - 1);
+  SetLength(LIsiStokOHMin, Length(LIsiStokOHMin) - 1);
+  SetLength(LKdBarangs, Length(LKdBarangs) - 2);
 
   dm.db_conn.StartTransaction;
   try
-    LSQL := Format('INSERT INTO tb_kirim_global(kd_perusahaan, kd_kirim, tgl_kirim, ' +
-      'kd_tk_kirim, nilai_faktur, pengguna, jatuh_tempo, simpan_pada) VALUES '
-      + '("%s", "%s", "%s", "%s", "%g", "%s", "%s", now())',
+    LSQL := Format('INSERT INTO tb_kirim_global (kd_perusahaan, kd_kirim, tgl_kirim, ' +
+      'kd_tk_kirim, nilai_faktur, pengguna, jatuh_tempo) VALUES '
+      + '("%s", "%s", "%s", "%s", "%g", "%s", "%s")',
       [dm.kd_perusahaan, ed_no_faktur.Text, MyDate(ed_tgl.Date), ed_toko.Text,
       ed_nilai_faktur.Value, dm.kd_pengguna, ed_jatuh_tempo.Text]);
 
     fungsi.SQLExec(dm.Q_exe, LSQL, false);
 
-    LSQL := Format('INSERT INTO tb_kirim_rinci(kd_perusahaan, kd_kirim, ' +
-      'kd_barang, n_barang, qty_kirim, harga_pokok, barcode, tgl_simpan) VALUES %s',
+    LSQL := Format('INSERT INTO tb_kirim_rinci (kd_perusahaan, kd_kirim, ' +
+      'kd_barang, n_barang, qty_kirim, harga_pokok, barcode) VALUES %s',
       [LKirimRinci]);
+
+    fungsi.SQLExec(dm.Q_exe, LSQL, false);
+
+    LSQL := Format('UPDATE tb_barang SET stok_OH = (CASE kd_barang %s END), '
+      + 'Tr_Akhir = date(now()) ' +
+      'WHERE kd_perusahaan = "%s" AND kd_barang IN (%s)', [LIsiStokOHMin,
+      dm.kd_perusahaan, LKdBarangs]);
 
     fungsi.SQLExec(dm.Q_exe, LSQL, false);
 
     LSQL := Format('INSERT INTO tb_piutang (kd_perusahaan, faktur, tanggal, pelanggan, ' +
       'piutang_awal, `user`, jatuh_tempo, `update`) VALUES ("%s", "%s", "%s", "%s", "%g", '+
       '"%s", "%s", date(now()))', [dm.kd_perusahaan, ed_no_faktur.Text, MyDate(ed_tgl.Date),
-      ed_toko.Text, ed_nilai_faktur.Text, dm.kd_pengguna, ed_jatuh_tempo.Text]);
+      ed_toko.Text, ed_nilai_faktur.Value, dm.kd_pengguna, ed_jatuh_tempo.Text]);
 
     fungsi.SQLExec(dm.Q_exe, LSQL, false);
 
-    for i := 0 to cabang.Count - 1 do
-    begin
-      if (cabang[i] = ed_toko.Text) then
-        receiptCabang;
-    end;
+
+    LSQL := Format('INSERT INTO tb_receipt_global(kd_perusahaan, kd_receipt, tgl_receipt, '
+      + 'kd_suplier, jatuh_tempo, nilai_faktur, pengguna) '+
+      'VALUES ("%s", "%s", "%s", "%s", "%s", "%g", "AUTO")',
+      [ed_toko.Text, ed_no_faktur.Text, MyDate(ed_tgl.Date),
+      dm.kd_perusahaan, ed_jatuh_tempo.Text, ed_nilai_faktur.Value]);
+
+    fungsi.SQLExec(dm.Q_exe, LSQL, false);
+
+    LSQL := Format('INSERT INTO tb_receipt_rinci(kd_perusahaan,kd_receipt, ' +
+      'kd_barang,n_barang,qty_receipt,harga_pokok,barcode) VALUES %s',
+      [LReceiptRinci]);
+
+    fungsi.SQLExec(dm.Q_exe, LSQL, false);
+
+    LSQL := Format('INSERT INTO tb_hutang(kd_perusahaan, faktur, tanggal, jatuh_tempo, '+
+    'supplier, hutang_awal,`update`) VALUES ("%s", "%s", "%s", "%s", "%s", "%g", date(now()))',
+    [ed_toko.Text, ed_no_faktur.Text, MyDate(ed_tgl.Date), ed_jatuh_tempo.Text,
+    dm.kd_perusahaan, ed_nilai_faktur.Value]);
+
+    fungsi.SQLExec(dm.Q_exe, LSQL, false);
+
+    LSQL := Format('UPDATE tb_barang SET hpp_aktif = (CASE kd_barang %s END), '
+      + 'hpp_ahir = (CASE kd_barang %s END), stok_OH = (CASE kd_barang %s END), '
+      + 'Tr_Akhir = date(now()) ' +
+      'WHERE kd_perusahaan = "%s" AND kd_barang IN (%s)', [LIsiHppAktif,
+      LIsiHppAkhir, LIsiStokOH, ed_toko.Text, LKdBarangs]);
+
+    fungsi.SQLExec(dm.Q_exe, LSQL, false);
 
     dm.db_conn.Commit;
 
@@ -567,42 +627,6 @@ begin
         mterror, [mbOk], 0);
     end;
   end;
-end;
-
-procedure TF_kirim.receiptCabang();
-var
-  x: Integer;
-  isi_sql_receipt, tunai, plus_PPN: string;
-begin
-  tunai := 'N';
-  plus_PPN := 'Y';
-
-  for x := 0 to tableview.DataController.RecordCount - 1 do
-  begin
-    isi_sql_receipt := isi_sql_receipt + '("' + ed_toko.Text + '","' +
-      ed_no_faktur.Text + '","' + TableView.DataController.GetDisplayText(x, 0)
-      + '","' + TableView.DataController.GetDisplayText
-      (x, 1) + '","' + floattostr(TableView.DataController.GetValue(x, 2)) +
-      '","' + floattostr(TableView.DataController.GetValue(x, 4)) + '",0,"' +
-      TableView.DataController.GetDisplayText(x, 5) + '",date(now())),';
-
-    fungsi.SQLExec(dm.Q_exe, 'update tb_barang set hpp_ahir= "' + floattostr(TableView.DataController.GetValue
-      (x, 3)) + '" where kd_perusahaan= "' + ed_toko.Text + '" and kd_barang="'
-      + inttostr(TableView.DataController.GetValue(x, 0)) + '"', false);
-  end;
-  delete(isi_sql_receipt, length(isi_sql_receipt), 1);
-
-  fungsi.SQLExec(dm.Q_exe,
-    'insert into tb_receipt_global(kd_perusahaan,kd_receipt,tgl_receipt,' +
-    'kd_suplier,jatuh_tempo,tunai,plus_PPN,PPN,disk_rp,nilai_faktur,pengguna,simpan_pada) values ("' +
-    ed_toko.Text + '","' + ed_no_faktur.Text + '","' + formatdatetime('yyyy-MM-dd',
-    ed_tgl.Date) + '","' + dm.kd_perusahaan + '",7,"' + tunai + '","' + plus_PPN
-    + '",0,0,"' + ed_nilai_faktur.Text + '","AUTO",now())', false);
-
-  fungsi.SQLExec(dm.Q_exe,
-    'insert into tb_receipt_rinci(kd_perusahaan,kd_receipt, ' +
-    'kd_barang,n_barang,qty_receipt,harga_pokok,diskon,barcode,tgl_simpan) values ' +
-    isi_sql_receipt, false);
 end;
 
 procedure TF_kirim.b_printClick(Sender: TObject);
