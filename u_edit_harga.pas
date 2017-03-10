@@ -125,7 +125,7 @@ begin
   fungsi.SQLExec(dm.Q_temp, Format('SELECT n_barang, Qty1, Qty2, kd_sat1, ' +
     'kd_sat2, kd_sat3, hpp_ahir from tb_barang where kd_barang="%s" and ' +
     ' kd_perusahaan="%s"', [Ed_Plu.Text, dm.kd_perusahaan]), true);
-  ed_pokok.Text := dm.Q_temp.fieldbyname('hpp_ahir').AsString;
+  ed_pokok.Value := dm.Q_temp.fieldbyname('hpp_ahir').AsCurrency;
 
   cb_macam.ItemIndex := cb_macam.Items.IndexOf(AJenis);
 
@@ -303,10 +303,10 @@ begin
   fungsi.SQLExec(dm.Q_temp, 'select * from tb_barang_harga where kd_barang = "'
     + ed_plu.Text + '"and kd_macam_harga = "' + cb_macam.Text + '"', true);
 
-  ed_harga1.Text := dm.Q_temp.FieldByName('harga_jual1').AsString;
-  ed_harga2.Text := dm.Q_temp.FieldByName('harga_jual2').AsString;
-  ed_harga3.Text := dm.Q_temp.FieldByName('harga_jual3').AsString;
-  ed_marginRp.Text := dm.Q_temp.FieldByName('laba').AsString;
+  ed_harga1.Value := dm.Q_temp.FieldByName('harga_jual1').AsCurrency;
+  ed_harga2.Value := dm.Q_temp.FieldByName('harga_jual2').AsCurrency;
+  ed_harga3.Value := dm.Q_temp.FieldByName('harga_jual3').AsCurrency;
+  ed_marginRp.Value := ed_harga3.Value - ed_pokok.Value;
 
   if ed_pokok.Value <> 0 then
     ed_marginP.Value := (ed_marginrp.Value / ed_pokok.Value) * 100
@@ -315,7 +315,7 @@ begin
 
   de_awal.date := dm.Q_temp.FieldByName('awal').AsDateTime;
   de_ahir.date := dm.Q_temp.FieldByName('ahir').AsDateTime;
-  ed_discRp.Text := dm.Q_temp.FieldByName('diskon').AsString;
+  ed_discRp.Value := dm.Q_temp.FieldByName('diskon').AsCurrency;
 
   sb.SimpleText := 'Updated at: ' + dm.Q_temp.FieldByName('update').AsString +
     ' by: ' + dm.Q_temp.FieldByName('kode_user').AsString;
