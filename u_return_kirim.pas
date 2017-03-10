@@ -489,8 +489,8 @@ end;
 
 procedure Tf_return_kirim.b_simpanClick(Sender: TObject);
 var
-  LSQL, isi_sql, isi_sql2, kd_faktur: string;
-  LIsiHppAktif, LIsiStokOH, LIsiStokOHMin: string;
+  LSQL, kd_faktur: string;
+  LReturnKirimRinci, LReturnRinci, LIsiHppAktif, LIsiStokOH, LIsiStokOHMin: string;
   LKdBarang, LKdBarangs: string;
   x, LQty, LHppAktif: integer;
 begin
@@ -532,12 +532,12 @@ begin
     LQty := TableView.DataController.GetValue(x, 2);
     LKdBarang := TableView.DataController.GetDisplayText(x, 0);
 
-    isi_sql := isi_sql + Format('("%s", "%s", "%s", "%s", "%d", "%g", "%s", date(now())), ',
+    LReturnKirimRinci := LReturnKirimRinci + Format('("%s", "%s", "%s", "%s", "%d", "%g", "%s", date(now())), ',
       [dm.kd_perusahaan, kd_faktur, LKdBarang, TableView.DataController.GetDisplayText(x, 1),
       LQty, Double(TableView.DataController.GetValue(x, 4)),
       TableView.DataController.GetDisplayText(x, 5)]);
 
-    isi_sql2 := isi_sql2 + Format('("%s", "%s", "%s", "%s", "%d", "%g", 0, "%s", date(now())), ',
+    LReturnRinci := LReturnRinci + Format('("%s", "%s", "%s", "%s", "%d", "%g", 0, "%s", date(now())), ',
       [EdToko.Text, kd_faktur, LKdBarang, TableView.DataController.GetDisplayText(x, 1),
       LQty, Double(TableView.DataController.GetValue(x, 4)),
       TableView.DataController.GetDisplayText(x, 5)]);
@@ -553,12 +553,12 @@ begin
 
     LKdBarangs := LKdBarangs + Format('"%s", ', [LKdBarang]);
   end;
-  SetLength(isi_sql, length(isi_sql) - 2);
-  SetLength(isi_sql2, length(isi_sql2) - 2);
+  SetLength(LReturnKirimRinci, length(LReturnKirimRinci) - 2);
+  SetLength(LReturnRinci, length(LReturnRinci) - 2);
   SetLength(LIsiHppAktif, Length(LIsiHppAktif) - 1);
   SetLength(LIsiStokOH, Length(LIsiStokOH) - 1);
   SetLength(LKdBarangs, Length(LKdBarangs) - 2);
-  
+
   dm.db_conn.StartTransaction;
   try
     LSQL := Format('INSERT INTO tb_return_kirim_global(kd_perusahaan, '+
@@ -572,7 +572,7 @@ begin
 
     LSQL := Format('INSERT INTO tb_return_kirim_rinci(kd_perusahaan,kd_return_kirim, ' +
       'kd_barang,n_barang,qty_return_kirim,harga_pokok,barcode,tgl_simpan) VALUES  %s',
-      [isi_sql]);
+      [LReturnKirimRinci]);
 
     fungsi.SQLExec(dm.Q_exe, LSQL, false);
 
@@ -593,7 +593,7 @@ begin
 
     LSQL := Format('INSERT INTO tb_return_rinci(kd_perusahaan,kd_return,' +
     'kd_barang,n_barang,qty_return,harga_pokok,diskon,barcode,tgl_simpan) VALUES %s',
-    [isi_sql2]);
+    [LReturnRinci]);
 
     fungsi.SQLExec(dm.Q_exe, LSQL, false);
 
