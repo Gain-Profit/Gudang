@@ -477,10 +477,6 @@ object f_emp: Tf_emp
       end
     end
   end
-  object t_upd: TmySQLUpdateSQL
-    Left = 400
-    Top = 176
-  end
   object sSkinProvider1: TsSkinProvider
     AddedTitle.Font.Charset = DEFAULT_CHARSET
     AddedTitle.Font.Color = clNone

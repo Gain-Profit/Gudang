@@ -5,13 +5,12 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, sButton, sLabel, Buttons, UFungsi, sEdit, sCheckBox,
-  cxControls, cxContainer, cxEdit, cxImage, sDialogs, mySQLDbTables, db,
+  cxControls, cxContainer, cxEdit, cxImage, sDialogs, db,
   sSkinProvider, ExtCtrls, sPanel, cxPC, sGroupBox, ComCtrls, sPageControl,
   Menus;
 
 type
   Tf_emp = class(TForm)
-    t_upd: TmySQLUpdateSQL;
     sSkinProvider1: TsSkinProvider;
     pUser: TsPanel;
     B_save: TsButton;
