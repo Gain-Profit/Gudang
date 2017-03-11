@@ -160,7 +160,7 @@ begin
   if not (DirectoryExists(DocPath)) then
     CreateDir(DocPath);
 
-  sm.SkinDirectory := AppPath + 'skins';
+  sm.SkinDirectory := WPath + 'tools\skins';
   appINI := TIniFile.Create(AppPath + 'gain.ini');
   try
     kd_perusahaan := appINI.ReadString('gudang', 'kd_perusahaan', '');
