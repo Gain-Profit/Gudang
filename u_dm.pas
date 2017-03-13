@@ -4,7 +4,7 @@ interface
 
 uses
   SysUtils, Classes, DB, sSkinManager, dialogs, forms, ImgList, Controls,
-  acAlphaImageList, frxClass, frxDBSet, inifiles, frxDesgn, frxBarcode, cxStyles,
+  acAlphaImageList, frxClass, frxDBSet, inifiles, frxBarcode, cxStyles,
   Windows, frxExportXML, SHFolder, DBAccess, MyAccess, MemDS;
 
 type
@@ -33,13 +33,11 @@ type
     Q_List_SO: TMyQuery;
     ds_list_return_kirim: TDataSource;
     Q_list_return_kirim: TMyQuery;
-    frxdsgnr1: TfrxDesigner;
     frxbrcdbjct1: TfrxBarCodeObject;
     stl_focus: TcxStyleRepository;
     cxstyl1: TcxStyle;
     ds_child_sales: TDataSource;
     Q_child_sales: TMyQuery;
-    frxmlxprt1: TfrxXMLExport;
     ds_list_return_jual: TDataSource;
     Q_list_return_jual: TMyQuery;
     procedure DataModuleCreate(Sender: TObject);

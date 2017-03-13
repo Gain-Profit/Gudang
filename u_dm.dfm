@@ -20,7 +20,6 @@ object dm: Tdm
     Top = 56
   end
   object sm: TsSkinManager
-    ExtendedBorders = True
     AnimEffects.BlendOnMoving.Active = True
     AnimEffects.DialogShow.Time = 100
     AnimEffects.FormShow.Time = 100
@@ -29,13 +28,8 @@ object dm: Tdm
     AnimEffects.PageChange.Time = 60
     AnimEffects.SkinChanging.Time = 200
     Active = False
+    ExtendedBorders = True
     InternalSkins = <>
-    MenuSupport.IcoLineSkin = 'ICOLINE'
-    MenuSupport.ExtraLineFont.Charset = DEFAULT_CHARSET
-    MenuSupport.ExtraLineFont.Color = clWindowText
-    MenuSupport.ExtraLineFont.Height = -11
-    MenuSupport.ExtraLineFont.Name = 'MS Sans Serif'
-    MenuSupport.ExtraLineFont.Style = []
     SkinDirectory = 'c:\Skins'
     SkinName = 'Air (internal)'
     SkinInfo = 'N/A'
@@ -60,6 +54,11 @@ object dm: Tdm
     ThirdParty.ThirdToolBar = 'TToolBar'#13#10
     ThirdParty.ThirdStatusBar = 'TStatusBar'#13#10
     ThirdParty.ThirdSpeedButton = 'TSpeedButton'#13#10'TNavButton'#13#10
+    ThirdParty.ThirdScrollControl = ' '
+    ThirdParty.ThirdUpDown = ' '
+    ThirdParty.ThirdScrollBar = ' '
+    ThirdParty.ThirdStaticText = ' '
+    ThirdParty.ThirdNativePaint = ' '
     OnAfterChange = smAfterChange
     Left = 592
     Top = 128
@@ -20679,26 +20678,6 @@ object dm: Tdm
     Left = 136
     Top = 368
   end
-  object frxdsgnr1: TfrxDesigner
-    DefaultScriptLanguage = 'PascalScript'
-    DefaultFont.Charset = DEFAULT_CHARSET
-    DefaultFont.Color = clWindowText
-    DefaultFont.Height = -13
-    DefaultFont.Name = 'Arial'
-    DefaultFont.Style = []
-    DefaultLeftMargin = 10.000000000000000000
-    DefaultRightMargin = 10.000000000000000000
-    DefaultTopMargin = 10.000000000000000000
-    DefaultBottomMargin = 10.000000000000000000
-    DefaultPaperSize = 9
-    DefaultOrientation = poPortrait
-    TemplatesExt = 'fr3'
-    Restrictions = []
-    RTLLanguage = False
-    MemoParentFont = False
-    Left = 504
-    Top = 8
-  end
   object frxbrcdbjct1: TfrxBarCodeObject
     Left = 560
     Top = 8
@@ -20721,20 +20700,6 @@ object dm: Tdm
     Connection = db_conn
     Left = 296
     Top = 272
-  end
-  object frxmlxprt1: TfrxXMLExport
-    UseFileCache = True
-    ShowProgress = True
-    OverwritePrompt = False
-    OpenExcelAfterExport = True
-    Background = True
-    Creator = 'FastReport'
-    EmptyLines = True
-    SuppressPageHeadersFooters = False
-    RowsCount = 0
-    Split = ssNotSplit
-    Left = 560
-    Top = 56
   end
   object ds_list_return_jual: TDataSource
     DataSet = Q_list_return_jual
