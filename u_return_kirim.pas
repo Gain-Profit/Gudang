@@ -543,7 +543,7 @@ begin
       LQty, Currency(TableView.DataController.GetValue(x, 4)),
       TableView.DataController.GetDisplayText(x, 5)]);
 
-    LIsiHppAktif := LIsiHppAktif + Format('WHEN "%s" THEN (IFNULL(((hpp_aktif * stok_OH) + (%g * %d))/(stok_OH + %d),0)) ',
+    LIsiHppAktif := LIsiHppAktif + Format('WHEN "%s" THEN (IFNULL(((hpp_aktif * stok_OH) + (%g * %d))/(stok_OH + %d), hpp_aktif)) ',
       [LKdBarang, LHppAktif, LQty, LQty]);
 
     LIsiStokOH := LIsiStokOH + Format('WHEN "%s" THEN (stok_OH + %d) ', [LKdBarang,
