@@ -83,7 +83,7 @@ begin
   btnSimpan.Enabled := False;
   if not (cb_belum.Checked) then
   begin
-    fungsi.SQLExecT(dm.Q_list_return_kirim,
+    fungsi.SQLExec(dm.Q_list_return_kirim,
       'select * from vw_list_return_kirim  where kd_perusahaan="' + dm.kd_perusahaan
       + '" and tgl_return_kirim >= ' + quotedstr(FormatDateTime('yyyy-MM-dd',
       de_mulai.Date)) + ' and tgl_return_kirim <= ' + quotedstr(FormatDateTime('yyyy-MM-dd',
@@ -91,7 +91,7 @@ begin
   end
   else
   begin
-    fungsi.SQLExecT(dm.Q_list_return_kirim, 'call sp_belum_return_kirim("' +
+    fungsi.SQLExec(dm.Q_list_return_kirim, 'call sp_belum_return_kirim("' +
       cbCabang.Text + '")', True);
     btnSimpan.Enabled := True;
   end;

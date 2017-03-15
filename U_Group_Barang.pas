@@ -99,7 +99,7 @@ end;
 
 procedure TFGroupBarang.segarkan;
 begin
-  fungsi.SQLExecT(QGroupBarang, 'select * from vw_group_barang', true);
+  fungsi.SQLExec(QGroupBarang, 'select * from vw_group_barang', true);
 end;
 
 procedure TFGroupBarang.FormCreate(Sender: TObject);

@@ -111,10 +111,10 @@ begin
 
   refresh_mutasi;
 
-  fungsi.SQLExecT(Q_plano, 'select * from tb_planogram where kd_barang="' + FPid
+  fungsi.SQLExec(Q_plano, 'select * from tb_planogram where kd_barang="' + FPid
     + '" and kd_perusahaan="' + dm.kd_perusahaan + '"', true);
 
-  fungsi.SQLExecT(q_supp, 'select * from vw_supplier where kd_barang="' + FPid +
+  fungsi.SQLExec(q_supp, 'select * from vw_supplier where kd_barang="' + FPid +
     '" and kd_perusahaan="' + dm.kd_perusahaan + '"', true);
 
 end;
@@ -125,7 +125,7 @@ begin
   bulan := Copy(periode, 6, 2);
   tahun := Copy(periode, 1, 4);
 
-  fungsi.SQLExecT(Q_mutasi, 'select * from tb_mutasi WHERE bulan="' + bulan +
+  fungsi.SQLExec(Q_mutasi, 'select * from tb_mutasi WHERE bulan="' + bulan +
     '" and tahun ="' + tahun + '" and kd_barang="' + FPid +
     '" and kd_perusahaan="' + dm.kd_perusahaan + '"', true);
 end;

@@ -108,7 +108,7 @@ end;
 
 procedure TF_barang.WmAfterShow(var Msg: TMessage);
 begin
-  fungsi.SQLExecT(Q_barang, 'SELECT kd_perusahaan,kd_barang,n_barang,kd_jenis, '
+  fungsi.SQLExec(Q_barang, 'SELECT kd_perusahaan,kd_barang,n_barang,kd_jenis, '
     + 'kd_kategori,kd_golbrg,kd_merk,kd_sat1,kd_sat2,kd_sat3,barcode3,minstok,maxstok, '
     + 'leadtime,aktif,minor,barcode1,barcode2,Qty1,Qty2,N_golbrg,N_merk,N_Jenis, '
     + 'n_kategori,stok_OH,hpp_aktif,hpp_ahir,tot_HPP ' +

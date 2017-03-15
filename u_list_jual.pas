@@ -131,13 +131,13 @@ end;
 
 procedure Tf_list_sales.segarkan;
 begin
-  fungsi.SQLExecT(dm.Q_list_sales,
+  fungsi.SQLExec(dm.Q_list_sales,
     'select * from vw_list_sales where kd_perusahaan = ' + QuotedStr(dm.kd_perusahaan)
     + ' and tgl_transaksi >= ' + quotedstr(FormatDateTime('yyyy-MM-dd', de_mulai.Date))
     + ' and tgl_transaksi <= ' + quotedstr(FormatDateTime('yyyy-MM-dd',
     de_sampai.Date)) + '', true);
 
-  fungsi.SQLExecT(dm.Q_child_sales,
+  fungsi.SQLExec(dm.Q_child_sales,
     'select * from tb_jual_rinci where kd_perusahaan = ' + QuotedStr(dm.kd_perusahaan)
     + ' and tgl >= ' + quotedstr(FormatDateTime('yyyy-MM-dd', de_mulai.Date)) +
     ' and tgl <= ' + quotedstr(FormatDateTime('yyyy-MM-dd', de_sampai.Date)) + '', True);

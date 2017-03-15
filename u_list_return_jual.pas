@@ -95,7 +95,7 @@ end;
 
 procedure Tf_list_return_jual.segarkan;
 begin
-  fungsi.SQLExecT(dm.Q_list_return_jual,
+  fungsi.SQLExec(dm.Q_list_return_jual,
     'select * from vw_list_return_jual where kd_perusahaan = ' + QuotedStr(dm.kd_perusahaan)
     + ' and tgl_return_jual >= ' + quotedstr(FormatDateTime('yyyy-MM-dd',
     de_mulai.Date)) + ' and tgl_return_jual <= ' + quotedstr(FormatDateTime('yyyy-MM-dd',

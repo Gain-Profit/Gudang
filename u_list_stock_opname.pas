@@ -75,7 +75,7 @@ end;
 
 procedure Tf_list_SO.segarkan;
 begin
-  fungsi.SQLExecT(dm.Q_List_SO,
+  fungsi.SQLExec(dm.Q_List_SO,
     'select * from tb_koreksi_global where kd_perusahaan="' + dm.kd_perusahaan +
     '" and tgl_koreksi >= ' + quotedstr(FormatDateTime('yyyy-MM-dd', de_mulai.Date))
     + ' and tgl_koreksi <= ' + quotedstr(FormatDateTime('yyyy-MM-dd', de_sampai.Date))
