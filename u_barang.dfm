@@ -33,11 +33,11 @@ object F_barang: TF_barang
     SkinData.SkinSection = 'CHECKBOX'
     object grid: TcxGrid
       Left = 0
-      Top = 21
+      Top = 33
       Width = 723
-      Height = 507
+      Height = 495
       Align = alClient
-      TabOrder = 1
+      TabOrder = 0
       LookAndFeel.Kind = lfOffice11
       object TvData: TcxGridDBTableView
         OnKeyDown = TvDataKeyDown
@@ -185,31 +185,67 @@ object F_barang: TF_barang
         GridView = TvData
       end
     end
-    object Ed_Cari: TsEdit
+    object pnlheader: TPanel
       Left = 0
       Top = 0
       Width = 723
-      Height = 21
-      Color = clWhite
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlack
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 0
-      OnKeyDown = Ed_CariKeyDown
+      Height = 33
       Align = alTop
-      SkinData.SkinSection = 'EDIT'
-      BoundLabel.Indent = 0
-      BoundLabel.Font.Charset = DEFAULT_CHARSET
-      BoundLabel.Font.Color = clWindowText
-      BoundLabel.Font.Height = -11
-      BoundLabel.Font.Name = 'MS Sans Serif'
-      BoundLabel.Font.Style = []
-      BoundLabel.Layout = sclLeft
-      BoundLabel.MaxWidth = 0
-      BoundLabel.UseSkinColor = True
+      TabOrder = 1
+      object EdCari: TsEdit
+        Left = 81
+        Top = 1
+        Width = 406
+        Height = 31
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -19
+        Font.Name = 'Rockwell'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        OnKeyDown = Ed_CariKeyDown
+        Align = alClient
+        SkinData.SkinSection = 'EDIT'
+      end
+      object pnlcheck: TPanel
+        Left = 487
+        Top = 1
+        Width = 235
+        Height = 31
+        Align = alRight
+        TabOrder = 1
+        object CkSemua: TCheckBox
+          Left = 8
+          Top = 2
+          Width = 225
+          Height = 29
+          Caption = 'Tampilkan Semua Data'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -19
+          Font.Name = 'Rockwell'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+        end
+      end
+      object pnlFilter: TPanel
+        Left = 1
+        Top = 1
+        Width = 80
+        Height = 31
+        Align = alLeft
+        Caption = 'Filter'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'Rockwell'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 2
+      end
     end
   end
   object sPanel1: TsPanel
@@ -240,9 +276,8 @@ object F_barang: TF_barang
       OnClick = sb_2Click
       Align = alTop
       SkinData.SkinSection = 'TOOLBUTTON'
-      DisabledGlyphKind = []
-      ImageIndex = 8
       Images = dm.image
+      ImageIndex = 8
       Reflected = True
     end
     object sb_1: TsSpeedButton
@@ -264,9 +299,8 @@ object F_barang: TF_barang
       OnClick = sb_1Click
       Align = alTop
       SkinData.SkinSection = 'TOOLBUTTON'
-      DisabledGlyphKind = []
-      ImageIndex = 7
       Images = dm.image
+      ImageIndex = 7
       Reflected = True
     end
     object spnl1: TsPanel
@@ -350,11 +384,6 @@ object F_barang: TF_barang
     end
   end
   object sSkinProvider1: TsSkinProvider
-    AddedTitle.Font.Charset = DEFAULT_CHARSET
-    AddedTitle.Font.Color = clNone
-    AddedTitle.Font.Height = -11
-    AddedTitle.Font.Name = 'MS Sans Serif'
-    AddedTitle.Font.Style = []
     SkinData.SkinSection = 'FORM'
     TitleButtons = <>
     Left = 8

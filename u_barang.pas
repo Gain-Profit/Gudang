@@ -19,7 +19,6 @@ type
 
   TF_barang = class(TForm)
     sPanel2: TsPanel;
-    Ed_Cari: TsEdit;
     sPanel1: TsPanel;
     TvData: TcxGridDBTableView;
     lvData: TcxGridLevel;
@@ -53,6 +52,11 @@ type
     tDataColumn5: TcxGridDBColumn;
     ds_barang: TDataSource;
     Q_barang: TMyQuery;
+    pnlheader: TPanel;
+    EdCari: TsEdit;
+    pnlcheck: TPanel;
+    CkSemua: TCheckBox;
+    pnlFilter: TPanel;
     procedure WMMDIACTIVATE(var msg: TWMMDIACTIVATE); message WM_MDIACTIVATE;
     procedure FormShow(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
