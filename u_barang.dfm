@@ -192,7 +192,7 @@ object F_barang: TF_barang
       Height = 33
       Align = alTop
       TabOrder = 1
-      object EdCari: TsEdit
+      object Ed_Cari: TsEdit
         Left = 81
         Top = 1
         Width = 406
@@ -229,6 +229,7 @@ object F_barang: TF_barang
           Font.Style = []
           ParentFont = False
           TabOrder = 0
+          OnClick = CkSemuaClick
         end
       end
       object pnlFilter: TPanel

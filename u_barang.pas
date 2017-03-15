@@ -53,7 +53,7 @@ type
     ds_barang: TDataSource;
     Q_barang: TMyQuery;
     pnlheader: TPanel;
-    EdCari: TsEdit;
+    Ed_Cari: TsEdit;
     pnlcheck: TPanel;
     CkSemua: TCheckBox;
     pnlFilter: TPanel;
@@ -75,8 +75,10 @@ type
     procedure sb_1Click(Sender: TObject);
     procedure B_propertyClick(Sender: TObject);
     procedure HapusBarang(perusahaan: string);
+    procedure CkSemuaClick(Sender: TObject);
   private
     procedure WmAfterShow(var Msg: TMessage); message WM_AFTER_SHOW;
+    procedure Segarkan(ASemua: Boolean);
     { Private declarations }
   public
     { Public declarations }
@@ -91,6 +93,12 @@ uses
   u_dm, u_barang_detail, u_utama, u_barang_property;
 
 {$R *.dfm}
+
+const
+  sBarangSQL = 'SELECT kd_perusahaan, kd_barang, n_barang, kd_jenis, kd_kategori, ' +
+    'kd_golbrg, kd_merk, kd_sat1, kd_sat2, kd_sat3, barcode3, minstok, maxstok, ' +
+    'leadtime, aktif, minor, barcode1, barcode2, Qty1, Qty2, N_golbrg, N_merk, N_Jenis, ' +
+    'n_kategori, stok_OH, hpp_aktif, hpp_ahir, tot_HPP FROM vw_daftar_barang';
 
 procedure TF_barang.WMMDIACTIVATE(var msg: TWMMDIACTIVATE);
 var
@@ -112,23 +120,12 @@ end;
 
 procedure TF_barang.WmAfterShow(var Msg: TMessage);
 begin
-  fungsi.SQLExec(Q_barang, 'SELECT kd_perusahaan,kd_barang,n_barang,kd_jenis, '
-    + 'kd_kategori,kd_golbrg,kd_merk,kd_sat1,kd_sat2,kd_sat3,barcode3,minstok,maxstok, '
-    + 'leadtime,aktif,minor,barcode1,barcode2,Qty1,Qty2,N_golbrg,N_merk,N_Jenis, '
-    + 'n_kategori,stok_OH,hpp_aktif,hpp_ahir,tot_HPP ' +
-    ' from vw_daftar_barang where kd_perusahaan="' + dm.kd_perusahaan + '"', true);
-//limit '+inttostr(br_awal)+','+inttostr(limit)+'',true);
+  Segarkan(CkSemua.Checked);
   tvdata.DataController.FocusedRowIndex := 1;
 end;
 
 procedure TF_barang.FormShow(Sender: TObject);
 begin
-{limit:=100;
-hal:=1;
-if hal<=1 then
-br_awal:= 0 else
-br_awal:= (hal-1)*100;
-}
   if f_utama.sb.Panels[8].Text = 'PUSAT' then
   begin
     B_tambah.Enabled := True;
@@ -183,8 +180,8 @@ begin
         end;
       end;
 
-      sb_2Click(Sender);
       dm.db_conn.Commit;
+      Segarkan(CkSemua.Checked);
       showmessage('Penghapusan data sukses...');
     except
       on e: exception do
@@ -241,14 +238,7 @@ begin
   if key = vk_return then
   begin
     PeekMessage(Mgs, 0, WM_CHAR, WM_CHAR, PM_REMOVE);
-    fungsi.SQLExec(Q_barang,
-      'SELECT kd_perusahaan,kd_barang,n_barang,kd_jenis, ' + 'kd_kategori,kd_golbrg,kd_merk,kd_sat1,kd_sat2,kd_sat3,barcode3,minstok,maxstok, '
-      + 'leadtime,aktif,minor,barcode1,barcode2,Qty1,Qty2,N_golbrg,N_merk,N_Jenis,n_kategori,stok_OH '
-      + 'from vw_daftar_barang where (kd_barang like "%' + ed_cari.Text +
-      '%" or n_barang like "%' + ed_cari.Text + '%" or barcode3 like "%' +
-      ed_cari.Text + '%" or barcode2 like "%' + ed_cari.Text +
-      '%" or barcode1 like "%' + ed_cari.Text + '%") and (kd_perusahaan="' + dm.kd_perusahaan
-      + '")', true);
+    Segarkan(CkSemua.Checked);
     grid.SetFocus;
     ed_cari.SetFocus;
   end;
@@ -278,15 +268,8 @@ begin
 end;
 
 procedure TF_barang.sb_2Click(Sender: TObject);
-var
-  posisi: integer;
 begin
-  Screen.Cursor := crHourGlass;
-  posisi := tvdata.DataController.DataSource.DataSet.RecNo;
-  tvdata.DataController.DataSource.DataSet.Close;
-  tvdata.DataController.DataSource.DataSet.Open;
-  tvdata.DataController.DataSource.DataSet.RecNo := posisi;
-  Screen.Cursor := crDefault;
+  Segarkan(CkSemua.Checked);
 end;
 
 procedure TF_barang.sb_1Click(Sender: TObject);
@@ -300,6 +283,40 @@ begin
   F_barang_property.tampil(Q_barang.FieldByName('kd_barang').AsString, Q_barang.FieldByName
     ('n_barang').AsString);
   F_barang_property.ShowModal;
+end;
+
+procedure TF_barang.Segarkan(ASemua: Boolean);
+var
+  LKode, LSQL: string;
+  posisi: integer;
+begin
+  if CkSemua.Checked then
+  begin
+    LSQL := Format('%s WHERE kd_perusahaan = "%s"', [sBarangSQL, dm.kd_perusahaan]);
+  end
+  else
+  begin
+    LKode := Ed_Cari.Text;
+    if LKode = '' then
+      LSQL := Format('%s WHERE kd_perusahaan = "%s" LIMIT 50', [sBarangSQL, dm.kd_perusahaan])
+    else
+      LSQL := Format('%s WHERE ((kd_perusahaan = "%s") AND ' +
+        '(kd_barang LIKE "%%%s%%" or n_barang LIKE "%%%s%%" or barcode3 LIKE "%%%s%%"))',
+        [sBarangSQL, dm.kd_perusahaan, LKode, LKode, LKode]);
+  end;
+
+  Screen.Cursor := crHourGlass;
+  posisi := Q_barang.RecNo;
+  fungsi.SQLExec(Q_barang, LSQL, True);
+  Q_barang.RecNo := posisi;
+  Screen.Cursor := crDefault;
+end;
+
+procedure TF_barang.CkSemuaClick(Sender: TObject);
+begin
+  Segarkan(CkSemua.Checked);
+  Ed_Cari.Enabled := not CkSemua.Checked;
+  Ed_Cari.Clear;
 end;
 
 end.
