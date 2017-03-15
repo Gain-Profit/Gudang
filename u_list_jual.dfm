@@ -47,9 +47,8 @@ object f_list_sales: Tf_list_sales
       OnClick = sb_2Click
       Align = alTop
       SkinData.SkinSection = 'TOOLBUTTON'
-      DisabledGlyphKind = []
-      ImageIndex = 8
       Images = dm.image
+      ImageIndex = 8
       Reflected = True
     end
     object sb_1: TsSpeedButton
@@ -71,9 +70,8 @@ object f_list_sales: Tf_list_sales
       OnClick = sb_1Click
       Align = alTop
       SkinData.SkinSection = 'TOOLBUTTON'
-      DisabledGlyphKind = []
-      ImageIndex = 7
       Images = dm.image
+      ImageIndex = 7
       Reflected = True
     end
     object p1: TsPanel
@@ -109,15 +107,6 @@ object f_list_sales: Tf_list_sales
         TabOrder = 0
         Text = '  /  /    '
         OnChange = de_sampaiChange
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
         SkinData.SkinSection = 'EDIT'
         GlyphMode.Blend = 0
         GlyphMode.Grayed = False
@@ -133,15 +122,6 @@ object f_list_sales: Tf_list_sales
         TabOrder = 1
         Text = '  /  /    '
         OnChange = de_sampaiChange
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
         SkinData.SkinSection = 'EDIT'
         GlyphMode.Blend = 0
         GlyphMode.Grayed = False
@@ -356,23 +336,12 @@ object f_list_sales: Tf_list_sales
         HeaderAlignmentHorz = taCenter
         Width = 49
       end
-      object dt__child1hpp: TcxGridDBColumn
-        Caption = 'hpp/qty'
-        DataBinding.FieldName = 'hpp'
-        PropertiesClassName = 'TcxCurrencyEditProperties'
-        Properties.Alignment.Horz = taRightJustify
-        Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
-        Visible = False
-        FooterAlignmentHorz = taRightJustify
-        GroupSummaryAlignment = taRightJustify
-        HeaderAlignmentHorz = taRightJustify
-        Width = 23
-      end
       object dt__child1harga_pokok: TcxGridDBColumn
         Caption = 'Harga Pokok'
         DataBinding.FieldName = 'harga_pokok'
         PropertiesClassName = 'TcxCurrencyEditProperties'
         Properties.Alignment.Horz = taRightJustify
+        Properties.DecimalPlaces = 2
         Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
         Visible = False
         FooterAlignmentHorz = taRightJustify
@@ -394,6 +363,8 @@ object f_list_sales: Tf_list_sales
       object dt__child1discountP: TcxGridDBColumn
         Caption = 'Diskon (%)'
         DataBinding.FieldName = 'discountP'
+        PropertiesClassName = 'TcxCurrencyEditProperties'
+        Properties.DisplayFormat = '##0.00;(##0.00);0.00'
         Visible = False
         FooterAlignmentHorz = taRightJustify
         GroupSummaryAlignment = taRightJustify
@@ -432,17 +403,6 @@ object f_list_sales: Tf_list_sales
         HeaderAlignmentHorz = taRightJustify
         Width = 47
       end
-      object dt__child1laba: TcxGridDBColumn
-        Caption = 'Laba'
-        DataBinding.FieldName = 'laba'
-        PropertiesClassName = 'TcxCurrencyEditProperties'
-        Properties.Alignment.Horz = taRightJustify
-        Properties.DisplayFormat = '###,###,##0;(###,###,##0);0'
-        FooterAlignmentHorz = taRightJustify
-        GroupSummaryAlignment = taRightJustify
-        HeaderAlignmentHorz = taRightJustify
-        Width = 49
-      end
       object dt__child1void_barang: TcxGridDBColumn
         Caption = 'Void'
         DataBinding.FieldName = 'void_barang'
@@ -466,11 +426,6 @@ object f_list_sales: Tf_list_sales
     end
   end
   object sSkinProvider1: TsSkinProvider
-    AddedTitle.Font.Charset = DEFAULT_CHARSET
-    AddedTitle.Font.Color = clNone
-    AddedTitle.Font.Height = -11
-    AddedTitle.Font.Name = 'MS Sans Serif'
-    AddedTitle.Font.Style = []
     SkinData.SkinSection = 'FORM'
     TitleButtons = <>
     Left = 16

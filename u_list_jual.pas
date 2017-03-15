@@ -40,14 +40,12 @@ type
     dt__child1kd_barang: TcxGridDBColumn;
     dt__child1n_barang: TcxGridDBColumn;
     dt__child1Qty: TcxGridDBColumn;
-    dt__child1hpp: TcxGridDBColumn;
     dt__child1harga_pokok: TcxGridDBColumn;
     dt__child1harga_jual: TcxGridDBColumn;
     dt__child1discountP: TcxGridDBColumn;
     dt__child1discountRp: TcxGridDBColumn;
     dt__child1harga_netto: TcxGridDBColumn;
     dt__child1total_harga: TcxGridDBColumn;
-    dt__child1laba: TcxGridDBColumn;
     dt__child1void_barang: TcxGridDBColumn;
     dt__child1ket: TcxGridDBColumn;
     dt__datatunai: TcxGridDBColumn;
@@ -137,10 +135,12 @@ begin
     + ' and tgl_transaksi <= ' + quotedstr(FormatDateTime('yyyy-MM-dd',
     de_sampai.Date)) + '', true);
 
-  fungsi.SQLExec(dm.Q_child_sales,
-    'select * from tb_jual_rinci where kd_perusahaan = ' + QuotedStr(dm.kd_perusahaan)
-    + ' and tgl >= ' + quotedstr(FormatDateTime('yyyy-MM-dd', de_mulai.Date)) +
-    ' and tgl <= ' + quotedstr(FormatDateTime('yyyy-MM-dd', de_sampai.Date)) + '', True);
+  fungsi.SQLExec(dm.Q_child_sales, 'select *, ifnull(((`discountRp` * 100) / `harga_jual`), 0) '+
+    'AS `discountP`, (`harga_jual` - `discountRp`) AS `harga_netto`, '+
+    '((`harga_jual` - `discountRp`) * `Qty`) AS `total_harga` '+
+    'from tb_jual_rinci where kd_perusahaan = ' + QuotedStr(dm.kd_perusahaan)
+    + ' and date(tgl_simpan) BETWEEN ' + quotedstr(FormatDateTime('yyyy-MM-dd', de_mulai.Date)) +
+    ' AND ' + quotedstr(FormatDateTime('yyyy-MM-dd', de_sampai.Date)) + '', True);
 end;
 
 procedure Tf_list_sales.FormClose(Sender: TObject; var Action: TCloseAction);
