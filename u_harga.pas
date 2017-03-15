@@ -171,6 +171,8 @@ begin
       end;
 
       dm.db_conn.Commit;
+      Segarkan(CkSemua.Checked);
+      showmessage('penghapusan data harga barang Berhasil');
     except
       on e: exception do
       begin
@@ -229,11 +231,12 @@ begin
   else
   begin
     LKode := Ed_Cari.Text;
-    LSQL := Format('%s WHERE ((br.kd_perusahaan = "%s") AND ' +
-      '(br.kd_barang LIKE "%%%s%%" or br.n_barang LIKE "%%%s%%" or br.barcode3 LIKE "%%%s%%"))',
-      [sHargaSQL, dm.kd_perusahaan, LKode, LKode, LKode]);
     if LKode = '' then
-      LSQL := LSQL + ' LIMIT 50';
+      LSQL := Format('%s WHERE br.kd_perusahaan = "%s" LIMIT 50', [sHargaSQL, dm.kd_perusahaan])
+    else
+      LSQL := Format('%s WHERE ((br.kd_perusahaan = "%s") AND ' +
+        '(br.kd_barang LIKE "%%%s%%" or br.n_barang LIKE "%%%s%%" or br.barcode3 LIKE "%%%s%%"))',
+        [sHargaSQL, dm.kd_perusahaan, LKode, LKode, LKode]);
   end;
 
   Screen.Cursor := crHourGlass;
