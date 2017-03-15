@@ -144,8 +144,8 @@ object F_barang_det: TF_barang_det
     Height = 24
     OnClick = sb_jenisClick
     SkinData.SkinSection = 'SPEEDBUTTON'
-    ImageIndex = 0
     Images = dm.gambar
+    ImageIndex = 0
   end
   object sb_gol: TsSpeedButton
     Tag = 2
@@ -155,8 +155,8 @@ object F_barang_det: TF_barang_det
     Height = 24
     OnClick = sb_golClick
     SkinData.SkinSection = 'SPEEDBUTTON'
-    ImageIndex = 0
     Images = dm.gambar
+    ImageIndex = 0
   end
   object sb_merk: TsSpeedButton
     Tag = 3
@@ -166,8 +166,8 @@ object F_barang_det: TF_barang_det
     Height = 24
     OnClick = sb_merkClick
     SkinData.SkinSection = 'SPEEDBUTTON'
-    ImageIndex = 0
     Images = dm.gambar
+    ImageIndex = 0
   end
   object sb_tag: TsSpeedButton
     Tag = 4
@@ -177,8 +177,8 @@ object F_barang_det: TF_barang_det
     Height = 24
     OnClick = sb_tagClick
     SkinData.SkinSection = 'SPEEDBUTTON'
-    ImageIndex = 0
     Images = dm.gambar
+    ImageIndex = 0
   end
   object ed_nama: TsEdit
     Left = 96
@@ -195,15 +195,6 @@ object F_barang_det: TF_barang_det
     TabOrder = 0
     SkinData.CustomColor = True
     SkinData.SkinSection = 'EDIT'
-    BoundLabel.Indent = 0
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
   end
   object ed_pid: TsEdit
     Left = 96
@@ -221,15 +212,6 @@ object F_barang_det: TF_barang_det
     OnExit = ed_pidExit
     SkinData.CustomColor = True
     SkinData.SkinSection = 'EDIT'
-    BoundLabel.Indent = 0
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
   end
   object sGroupBox4: TsGroupBox
     Left = 272
@@ -263,15 +245,6 @@ object F_barang_det: TF_barang_det
       SkinData.CustomColor = True
       SkinData.CustomFont = True
       SkinData.SkinSection = 'EDIT'
-      BoundLabel.Indent = 0
-      BoundLabel.Font.Charset = DEFAULT_CHARSET
-      BoundLabel.Font.Color = clWindowText
-      BoundLabel.Font.Height = -11
-      BoundLabel.Font.Name = 'MS Sans Serif'
-      BoundLabel.Font.Style = []
-      BoundLabel.Layout = sclLeft
-      BoundLabel.MaxWidth = 0
-      BoundLabel.UseSkinColor = True
     end
     object ed_bar2: TsEdit
       Left = 8
@@ -291,15 +264,6 @@ object F_barang_det: TF_barang_det
       SkinData.CustomColor = True
       SkinData.CustomFont = True
       SkinData.SkinSection = 'EDIT'
-      BoundLabel.Indent = 0
-      BoundLabel.Font.Charset = DEFAULT_CHARSET
-      BoundLabel.Font.Color = clWindowText
-      BoundLabel.Font.Height = -11
-      BoundLabel.Font.Name = 'MS Sans Serif'
-      BoundLabel.Font.Style = []
-      BoundLabel.Layout = sclLeft
-      BoundLabel.MaxWidth = 0
-      BoundLabel.UseSkinColor = True
     end
     object ed_bar3: TsEdit
       Left = 8
@@ -319,15 +283,6 @@ object F_barang_det: TF_barang_det
       SkinData.CustomColor = True
       SkinData.CustomFont = True
       SkinData.SkinSection = 'EDIT'
-      BoundLabel.Indent = 0
-      BoundLabel.Font.Charset = DEFAULT_CHARSET
-      BoundLabel.Font.Color = clWindowText
-      BoundLabel.Font.Height = -11
-      BoundLabel.Font.Name = 'MS Sans Serif'
-      BoundLabel.Font.Style = []
-      BoundLabel.Layout = sclLeft
-      BoundLabel.MaxWidth = 0
-      BoundLabel.UseSkinColor = True
     end
   end
   object sGroupBox3: TsGroupBox
@@ -352,8 +307,8 @@ object F_barang_det: TF_barang_det
       Height = 24
       OnClick = sb_sat1Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 0
       Images = dm.gambar
+      ImageIndex = 0
     end
     object sb_sat2: TsSpeedButton
       Tag = 6
@@ -363,8 +318,8 @@ object F_barang_det: TF_barang_det
       Height = 24
       OnClick = sb_sat1Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 0
       Images = dm.gambar
+      ImageIndex = 0
     end
     object sb_sat3: TsSpeedButton
       Tag = 7
@@ -374,8 +329,8 @@ object F_barang_det: TF_barang_det
       Height = 24
       OnClick = sb_sat1Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 0
       Images = dm.gambar
+      ImageIndex = 0
     end
     object ed_sat1: TsEdit
       Left = 8
@@ -393,15 +348,6 @@ object F_barang_det: TF_barang_det
       TabOrder = 0
       SkinData.CustomColor = True
       SkinData.SkinSection = 'EDIT'
-      BoundLabel.Indent = 0
-      BoundLabel.Font.Charset = DEFAULT_CHARSET
-      BoundLabel.Font.Color = clWindowText
-      BoundLabel.Font.Height = -11
-      BoundLabel.Font.Name = 'MS Sans Serif'
-      BoundLabel.Font.Style = []
-      BoundLabel.Layout = sclLeft
-      BoundLabel.MaxWidth = 0
-      BoundLabel.UseSkinColor = True
     end
     object ed_sat2: TsEdit
       Left = 8
@@ -419,15 +365,6 @@ object F_barang_det: TF_barang_det
       TabOrder = 1
       SkinData.CustomColor = True
       SkinData.SkinSection = 'EDIT'
-      BoundLabel.Indent = 0
-      BoundLabel.Font.Charset = DEFAULT_CHARSET
-      BoundLabel.Font.Color = clWindowText
-      BoundLabel.Font.Height = -11
-      BoundLabel.Font.Name = 'MS Sans Serif'
-      BoundLabel.Font.Style = []
-      BoundLabel.Layout = sclLeft
-      BoundLabel.MaxWidth = 0
-      BoundLabel.UseSkinColor = True
     end
     object ed_sat3: TsEdit
       Left = 8
@@ -445,15 +382,6 @@ object F_barang_det: TF_barang_det
       TabOrder = 2
       SkinData.CustomColor = True
       SkinData.SkinSection = 'EDIT'
-      BoundLabel.Indent = 0
-      BoundLabel.Font.Charset = DEFAULT_CHARSET
-      BoundLabel.Font.Color = clWindowText
-      BoundLabel.Font.Height = -11
-      BoundLabel.Font.Name = 'MS Sans Serif'
-      BoundLabel.Font.Style = []
-      BoundLabel.Layout = sclLeft
-      BoundLabel.MaxWidth = 0
-      BoundLabel.UseSkinColor = True
     end
     object ed_qty1: TsCurrencyEdit
       Left = 161
@@ -469,15 +397,6 @@ object F_barang_det: TF_barang_det
       Font.Style = []
       ParentFont = False
       TabOrder = 3
-      BoundLabel.Indent = 0
-      BoundLabel.Font.Charset = DEFAULT_CHARSET
-      BoundLabel.Font.Color = clWindowText
-      BoundLabel.Font.Height = -11
-      BoundLabel.Font.Name = 'MS Sans Serif'
-      BoundLabel.Font.Style = []
-      BoundLabel.Layout = sclLeft
-      BoundLabel.MaxWidth = 0
-      BoundLabel.UseSkinColor = True
       SkinData.CustomColor = True
       SkinData.SkinSection = 'EDIT'
       GlyphMode.Blend = 0
@@ -500,15 +419,6 @@ object F_barang_det: TF_barang_det
       Font.Style = []
       ParentFont = False
       TabOrder = 4
-      BoundLabel.Indent = 0
-      BoundLabel.Font.Charset = DEFAULT_CHARSET
-      BoundLabel.Font.Color = clWindowText
-      BoundLabel.Font.Height = -11
-      BoundLabel.Font.Name = 'MS Sans Serif'
-      BoundLabel.Font.Style = []
-      BoundLabel.Layout = sclLeft
-      BoundLabel.MaxWidth = 0
-      BoundLabel.UseSkinColor = True
       SkinData.CustomColor = True
       SkinData.SkinSection = 'EDIT'
       GlyphMode.Blend = 0
@@ -598,15 +508,6 @@ object F_barang_det: TF_barang_det
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      BoundLabel.Indent = 0
-      BoundLabel.Font.Charset = DEFAULT_CHARSET
-      BoundLabel.Font.Color = clWindowText
-      BoundLabel.Font.Height = -11
-      BoundLabel.Font.Name = 'MS Sans Serif'
-      BoundLabel.Font.Style = []
-      BoundLabel.Layout = sclLeft
-      BoundLabel.MaxWidth = 0
-      BoundLabel.UseSkinColor = True
       SkinData.CustomColor = True
       SkinData.SkinSection = 'EDIT'
       GlyphMode.Blend = 0
@@ -627,15 +528,6 @@ object F_barang_det: TF_barang_det
       Font.Style = []
       ParentFont = False
       TabOrder = 1
-      BoundLabel.Indent = 0
-      BoundLabel.Font.Charset = DEFAULT_CHARSET
-      BoundLabel.Font.Color = clWindowText
-      BoundLabel.Font.Height = -11
-      BoundLabel.Font.Name = 'MS Sans Serif'
-      BoundLabel.Font.Style = []
-      BoundLabel.Layout = sclLeft
-      BoundLabel.MaxWidth = 0
-      BoundLabel.UseSkinColor = True
       SkinData.CustomColor = True
       SkinData.SkinSection = 'EDIT'
       GlyphMode.Blend = 0
@@ -656,15 +548,6 @@ object F_barang_det: TF_barang_det
       Font.Style = []
       ParentFont = False
       TabOrder = 2
-      BoundLabel.Indent = 0
-      BoundLabel.Font.Charset = DEFAULT_CHARSET
-      BoundLabel.Font.Color = clWindowText
-      BoundLabel.Font.Height = -11
-      BoundLabel.Font.Name = 'MS Sans Serif'
-      BoundLabel.Font.Style = []
-      BoundLabel.Layout = sclLeft
-      BoundLabel.MaxWidth = 0
-      BoundLabel.UseSkinColor = True
       SkinData.CustomColor = True
       SkinData.SkinSection = 'EDIT'
       GlyphMode.Blend = 0
@@ -685,15 +568,6 @@ object F_barang_det: TF_barang_det
       Font.Style = []
       ParentFont = False
       TabOrder = 3
-      BoundLabel.Indent = 0
-      BoundLabel.Font.Charset = DEFAULT_CHARSET
-      BoundLabel.Font.Color = clWindowText
-      BoundLabel.Font.Height = -11
-      BoundLabel.Font.Name = 'MS Sans Serif'
-      BoundLabel.Font.Style = []
-      BoundLabel.Layout = sclLeft
-      BoundLabel.MaxWidth = 0
-      BoundLabel.UseSkinColor = True
       SkinData.CustomColor = True
       SkinData.SkinSection = 'EDIT'
       GlyphMode.Blend = 0
@@ -734,15 +608,6 @@ object F_barang_det: TF_barang_det
     TabOrder = 1
     SkinData.CustomColor = True
     SkinData.SkinSection = 'EDIT'
-    BoundLabel.Indent = 0
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
   end
   object Ed_Kategori: TsEdit
     Left = 96
@@ -760,15 +625,6 @@ object F_barang_det: TF_barang_det
     TabOrder = 4
     SkinData.CustomColor = True
     SkinData.SkinSection = 'EDIT'
-    BoundLabel.Indent = 0
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
   end
   object Ed_Merk: TsEdit
     Left = 96
@@ -786,15 +642,6 @@ object F_barang_det: TF_barang_det
     TabOrder = 3
     SkinData.CustomColor = True
     SkinData.SkinSection = 'EDIT'
-    BoundLabel.Indent = 0
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
   end
   object Ed_golongan: TsEdit
     Left = 96
@@ -812,15 +659,6 @@ object F_barang_det: TF_barang_det
     TabOrder = 2
     SkinData.CustomColor = True
     SkinData.SkinSection = 'EDIT'
-    BoundLabel.Indent = 0
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
   end
   object b_new: TsButton
     Left = 360
@@ -871,11 +709,6 @@ object F_barang_det: TF_barang_det
     SkinData.SkinSection = 'BUTTON'
   end
   object sSkinProvider1: TsSkinProvider
-    AddedTitle.Font.Charset = DEFAULT_CHARSET
-    AddedTitle.Font.Color = clNone
-    AddedTitle.Font.Height = -11
-    AddedTitle.Font.Name = 'MS Sans Serif'
-    AddedTitle.Font.Style = []
     SkinData.SkinSection = 'FORM'
     TitleButtons = <>
     Left = 392

@@ -9,7 +9,7 @@ uses
   sSkinProvider, sDialogs, cxStyles, cxGraphics, cxDataStorage, cxEdit, DB,
   cxDBData, cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
   cxControls, cxGridCustomView, cxGrid, cxCurrencyEdit, Mask, sMaskEdit,
-  sCustomComboEdit;
+  sCustomComboEdit, u_barang;
 
 type
   TF_barang_det = class(TForm)
@@ -74,15 +74,16 @@ type
     procedure FormCreate(Sender: TObject);
     procedure ed_pidExit(Sender: TObject);
   private
+    FBarang : TF_barang;
     kd_jenis, kd_merk, kd_gol, kd_tag: string;
     kd_sat: array[1..3] of string;
     status_simpan: boolean;
     procedure LoadData(PID: string);
     procedure SimpanDatabase(perusahaan: string; b_aktif: string; status_simpan: Boolean);
   public
-    procedure baru;
-    procedure tampil(PID: string);
-    procedure duplikat(PID: string);
+    procedure baru(ABarang: TF_barang);
+    procedure tampil(ABarang: TF_barang; PID: string);
+    procedure duplikat(ABarang: TF_barang; PID: string);
   end;
 
 var
@@ -95,8 +96,9 @@ uses
 
 {$R *.dfm}
 
-procedure TF_barang_det.baru;
+procedure TF_barang_det.baru(ABarang: TF_barang);
 begin
+  F_barang := ABarang;
   ed_pid.ReadOnly := False;
 
   b_auto.Enabled := true;
@@ -108,8 +110,9 @@ begin
   Caption := 'Inventory Barang - Barang Baru';
 end;
 
-procedure TF_barang_det.tampil(PID: string);
+procedure TF_barang_det.tampil(ABarang: TF_barang; PID: string);
 begin
+  F_barang := ABarang;
   status_simpan := false;
 
   ed_pid.ReadOnly := True;
@@ -121,8 +124,9 @@ begin
   Caption := 'Inventory Barang - Edit Barang';
 end;
 
-procedure TF_barang_det.duplikat(PID: string);
+procedure TF_barang_det.duplikat(ABarang: TF_barang; PID: string);
 begin
+  F_barang := ABarang;
   status_simpan := True;
 
   b_auto.Enabled := True;
@@ -137,7 +141,7 @@ end;
 
 procedure TF_barang_det.b_newClick(Sender: TObject);
 begin
-  baru;
+  baru(FBarang);
 end;
 
 procedure TF_barang_det.b_autoClick(Sender: TObject);
@@ -341,6 +345,7 @@ begin
     Caption := 'Inventory Barang - Edit Barang';
 
     dm.db_conn.Commit;
+    F_barang.sb_2Click(Sender);
     showmessage('penyimpanan data sukses....');
   except
     on e: exception do
@@ -410,7 +415,7 @@ begin
     b_autoClick(Sender);
 // control+b Baru
   if (shift = [ssctrl]) and (key = 66) then
-    baru;
+    baru(FBarang);
 // control+S simpan
   if (shift = [ssctrl]) and (key = 83) then
     b_saveClick(Sender);

@@ -151,14 +151,14 @@ end;
 procedure TF_barang.b_editClick(Sender: TObject);
 begin
   application.CreateForm(TF_barang_det, F_barang_det);
-  f_barang_det.tampil(Q_barang.FieldByName('kd_barang').AsString);
+  f_barang_det.tampil(Self, Q_barang.FieldByName('kd_barang').AsString);
   f_barang_det.ShowModal;
 end;
 
 procedure TF_barang.B_tambahClick(Sender: TObject);
 begin
   application.CreateForm(TF_barang_det, F_barang_det);
-  f_barang_det.baru;
+  f_barang_det.baru(Self);
   f_barang_det.ShowModal;
 end;
 
@@ -263,7 +263,7 @@ end;
 procedure TF_barang.b_duplikatClick(Sender: TObject);
 begin
   application.CreateForm(TF_barang_det, F_barang_det);
-  f_barang_det.duplikat(Q_barang.FieldByName('kd_barang').AsString);
+  f_barang_det.duplikat(Self, Q_barang.FieldByName('kd_barang').AsString);
   f_barang_det.ShowModal;
 end;
 
