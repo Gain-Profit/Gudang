@@ -422,6 +422,7 @@ object F_kirim_data: TF_kirim_data
         Align = alClient
         TabOrder = 1
         LookAndFeel.Kind = lfOffice11
+        LookAndFeel.NativeStyle = False
         object grid_data: TcxGridDBTableView
           NavigatorButtons.ConfirmDelete = False
           DataController.DataSource = dsExport

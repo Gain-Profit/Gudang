@@ -238,6 +238,7 @@ object FGroupBarangDetail: TFGroupBarangDetail
     Align = alClient
     TabOrder = 2
     LookAndFeel.Kind = lfOffice11
+    LookAndFeel.NativeStyle = False
     object TableView: TcxGridTableView
       NavigatorButtons.ConfirmDelete = False
       NavigatorButtons.Append.Visible = False

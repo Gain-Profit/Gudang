@@ -454,6 +454,7 @@ object f_return_kirim: Tf_return_kirim
       Align = alClient
       TabOrder = 1
       LookAndFeel.Kind = lfOffice11
+      LookAndFeel.NativeStyle = False
       object TableView: TcxGridTableView
         NavigatorButtons.ConfirmDelete = False
         NavigatorButtons.Append.Visible = False

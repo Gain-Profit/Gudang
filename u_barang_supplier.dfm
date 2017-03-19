@@ -36,6 +36,7 @@ object f_barang_supp: Tf_barang_supp
     Height = 417
     TabOrder = 1
     LookAndFeel.Kind = lfOffice11
+    LookAndFeel.NativeStyle = False
     object cxGridDBTableView1: TcxGridDBTableView
       OnKeyDown = cxGridDBTableView1KeyDown
       NavigatorButtons.ConfirmDelete = False

@@ -209,6 +209,7 @@ object F_list_kirim: TF_list_kirim
     Align = alClient
     TabOrder = 1
     LookAndFeel.Kind = lfOffice11
+    LookAndFeel.NativeStyle = False
     object t_data: TcxGridDBTableView
       NavigatorButtons.ConfirmDelete = False
       OnCellDblClick = t_dataCellDblClick

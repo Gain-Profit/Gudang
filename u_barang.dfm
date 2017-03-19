@@ -39,6 +39,7 @@ object F_barang: TF_barang
       Align = alClient
       TabOrder = 0
       LookAndFeel.Kind = lfOffice11
+      LookAndFeel.NativeStyle = False
       object TvData: TcxGridDBTableView
         OnKeyDown = TvDataKeyDown
         NavigatorButtons.ConfirmDelete = False

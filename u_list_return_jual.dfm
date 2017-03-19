@@ -166,6 +166,7 @@ object f_list_return_jual: Tf_list_return_jual
     Align = alClient
     TabOrder = 1
     LookAndFeel.Kind = lfOffice11
+    LookAndFeel.NativeStyle = False
     object grid_data: TcxGridDBTableView
       NavigatorButtons.ConfirmDelete = False
       OnCellDblClick = grid_dataCellDblClick

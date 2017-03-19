@@ -52,6 +52,7 @@ object f_planogram: Tf_planogram
         Height = 377
         TabOrder = 0
         LookAndFeel.Kind = lfOffice11
+        LookAndFeel.NativeStyle = False
         object t_data_plano: TcxGridDBTableView
           OnKeyDown = t_data_planoKeyDown
           NavigatorButtons.ConfirmDelete = False
@@ -389,6 +390,7 @@ object f_planogram: Tf_planogram
         Height = 449
         TabOrder = 0
         LookAndFeel.Kind = lfOffice11
+        LookAndFeel.NativeStyle = False
         object TvPlanoBarang: TcxGridDBTableView
           OnKeyDown = TvPlanoBarangKeyDown
           NavigatorButtons.ConfirmDelete = False
@@ -503,6 +505,7 @@ object f_planogram: Tf_planogram
         Align = alClient
         TabOrder = 0
         LookAndFeel.Kind = lfOffice11
+        LookAndFeel.NativeStyle = False
         object t_BarangD: TcxGridDBTableView
           OnKeyDown = t_data_planoKeyDown
           NavigatorButtons.ConfirmDelete = False
@@ -577,6 +580,7 @@ object f_planogram: Tf_planogram
         Align = alBottom
         TabOrder = 1
         LookAndFeel.Kind = lfOffice11
+        LookAndFeel.NativeStyle = False
         object t_PlanoD: TcxGridDBTableView
           OnKeyDown = t_PlanoDKeyDown
           NavigatorButtons.ConfirmDelete = False

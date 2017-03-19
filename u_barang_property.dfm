@@ -45,6 +45,7 @@ object F_barang_property: TF_barang_property
       LevelTabs.CaptionAlignment = taLeftJustify
       LevelTabs.Style = 10
       LookAndFeel.Kind = lfOffice11
+      LookAndFeel.NativeStyle = False
       RootLevelOptions.DetailTabsPosition = dtpTop
       object t_data_plano: TcxGridDBTableView
         OnKeyDown = t_data_planoKeyDown

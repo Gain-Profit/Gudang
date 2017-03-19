@@ -124,6 +124,7 @@ object FGroupBarang: TFGroupBarang
     Align = alClient
     TabOrder = 1
     LookAndFeel.Kind = lfOffice11
+    LookAndFeel.NativeStyle = False
     object t_data: TcxGridDBTableView
       NavigatorButtons.ConfirmDelete = False
       OnCellDblClick = t_dataCellDblClick
