@@ -9,7 +9,9 @@ uses
   sMemo, cxCustomData, cxGraphics, cxDataStorage, cxEdit, cxGridLevel, cxClasses,
   cxControls, cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGrid,
   cxCurrencyEdit, UFungsi, sBevel, ComCtrls, sSkinProvider, cxImageComboBox,
-  cxStyles, uTerbilang, sDialogs, DateUtils, cxFilter, cxData, sMaskEdit;
+  cxStyles, uTerbilang, sDialogs, DateUtils, cxFilter, cxData, sMaskEdit,
+  cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore,
+  dxSkinsDefaultPainters, dxSkinscxPCPainter, cxNavigator;
 
 type
   Tf_RO = class(TForm)

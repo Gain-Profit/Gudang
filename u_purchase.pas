@@ -9,7 +9,9 @@ uses
   cxCustomData, cxGraphics, cxDataStorage, cxEdit, cxGridLevel, cxClasses,
   cxControls, cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGrid,
   cxCurrencyEdit, UFungsi, sBevel, ComCtrls, sSkinProvider, cxImageComboBox,
-  cxStyles, sDialogs, uTerbilang, cxFilter, cxData, sMaskEdit;
+  cxStyles, sDialogs, uTerbilang, cxFilter, cxData, sMaskEdit,
+  cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore,
+  dxSkinsDefaultPainters, dxSkinscxPCPainter, cxNavigator;
 
 type
   Tf_purchase = class(TForm)

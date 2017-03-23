@@ -32,8 +32,6 @@ object f_planogram: Tf_planogram
     OnPageChanging = pc_planoPageChanging
     object ts_rak: TsTabSheet
       Caption = 'Berdasar Rak'
-      SkinData.CustomColor = False
-      SkinData.CustomFont = False
       object sb_cari: TsSpeedButton
         Tag = 9
         Left = 776
@@ -42,8 +40,8 @@ object f_planogram: Tf_planogram
         Height = 21
         OnClick = sb_cariClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 0
         Images = dm.gambar
+        ImageIndex = 0
       end
       object grid_plano: TcxGrid
         Left = 8
@@ -55,7 +53,7 @@ object f_planogram: Tf_planogram
         LookAndFeel.NativeStyle = False
         object t_data_plano: TcxGridDBTableView
           OnKeyDown = t_data_planoKeyDown
-          NavigatorButtons.ConfirmDelete = False
+          Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = ds_planoRak
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <
@@ -157,15 +155,6 @@ object f_planogram: Tf_planogram
         OnKeyDown = ed_masukKeyDown
         OnKeyPress = ed_masukKeyPress
         SkinData.SkinSection = 'EDIT'
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
       end
       object p1: TsPanel
         Left = 0
@@ -245,18 +234,7 @@ object f_planogram: Tf_planogram
           Text = '0'
           OnChange = se_rakChange
           SkinData.SkinSection = 'EDIT'
-          BoundLabel.Indent = 0
-          BoundLabel.Font.Charset = DEFAULT_CHARSET
-          BoundLabel.Font.Color = clWindowText
-          BoundLabel.Font.Height = -11
-          BoundLabel.Font.Name = 'MS Sans Serif'
-          BoundLabel.Font.Style = []
-          BoundLabel.Layout = sclLeft
-          BoundLabel.MaxWidth = 0
-          BoundLabel.UseSkinColor = True
-          MaxValue = 0
-          MinValue = 0
-          Value = 0
+          Increment = 1
         end
         object se_shelving: TsSpinEdit
           Left = 56
@@ -275,18 +253,7 @@ object f_planogram: Tf_planogram
           Text = '0'
           OnChange = se_shelvingChange
           SkinData.SkinSection = 'EDIT'
-          BoundLabel.Indent = 0
-          BoundLabel.Font.Charset = DEFAULT_CHARSET
-          BoundLabel.Font.Color = clWindowText
-          BoundLabel.Font.Height = -11
-          BoundLabel.Font.Name = 'MS Sans Serif'
-          BoundLabel.Font.Style = []
-          BoundLabel.Layout = sclLeft
-          BoundLabel.MaxWidth = 0
-          BoundLabel.UseSkinColor = True
-          MaxValue = 0
-          MinValue = 0
-          Value = 0
+          Increment = 1
         end
         object b_cetak: TsButton
           Left = 136
@@ -323,15 +290,6 @@ object f_planogram: Tf_planogram
           Font.Style = []
           ParentFont = False
           TabOrder = 4
-          BoundLabel.Indent = 0
-          BoundLabel.Font.Charset = DEFAULT_CHARSET
-          BoundLabel.Font.Color = clWindowText
-          BoundLabel.Font.Height = -11
-          BoundLabel.Font.Name = 'MS Sans Serif'
-          BoundLabel.Font.Style = []
-          BoundLabel.Layout = sclLeft
-          BoundLabel.MaxWidth = 0
-          BoundLabel.UseSkinColor = True
           SkinData.SkinSection = 'EDIT'
           GlyphMode.Blend = 0
           GlyphMode.Grayed = False
@@ -352,15 +310,6 @@ object f_planogram: Tf_planogram
           Font.Style = []
           ParentFont = False
           TabOrder = 5
-          BoundLabel.Indent = 0
-          BoundLabel.Font.Charset = DEFAULT_CHARSET
-          BoundLabel.Font.Color = clWindowText
-          BoundLabel.Font.Height = -11
-          BoundLabel.Font.Name = 'MS Sans Serif'
-          BoundLabel.Font.Style = []
-          BoundLabel.Layout = sclLeft
-          BoundLabel.MaxWidth = 0
-          BoundLabel.UseSkinColor = True
           SkinData.SkinSection = 'EDIT'
           GlyphMode.Blend = 0
           GlyphMode.Grayed = False
@@ -370,8 +319,6 @@ object f_planogram: Tf_planogram
     end
     object ts_barang: TsTabSheet
       Caption = 'Berdasar Barang'
-      SkinData.CustomColor = False
-      SkinData.CustomFont = False
       object SbBarang: TsSpeedButton
         Tag = 9
         Left = 776
@@ -380,8 +327,8 @@ object f_planogram: Tf_planogram
         Height = 21
         OnClick = sb_cariClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 0
         Images = dm.gambar
+        ImageIndex = 0
       end
       object cxGrid: TcxGrid
         Left = 8
@@ -393,7 +340,7 @@ object f_planogram: Tf_planogram
         LookAndFeel.NativeStyle = False
         object TvPlanoBarang: TcxGridDBTableView
           OnKeyDown = TvPlanoBarangKeyDown
-          NavigatorButtons.ConfirmDelete = False
+          Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = ds_plano
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <
@@ -473,21 +420,10 @@ object f_planogram: Tf_planogram
         OnKeyDown = edBarangKeyDown
         OnKeyPress = edBarangKeyPress
         SkinData.SkinSection = 'EDIT'
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
       end
     end
     object ts_Double: TsTabSheet
       Caption = 'Plano Double'
-      SkinData.CustomColor = False
-      SkinData.CustomFont = False
       object spltrD1: TsSplitter
         Left = 0
         Top = 261
@@ -508,7 +444,7 @@ object f_planogram: Tf_planogram
         LookAndFeel.NativeStyle = False
         object t_BarangD: TcxGridDBTableView
           OnKeyDown = t_data_planoKeyDown
-          NavigatorButtons.ConfirmDelete = False
+          Navigator.Buttons.CustomButtons = <>
           OnFocusedRecordChanged = t_BarangDFocusedRecordChanged
           DataController.DataSource = ds_BarangD
           DataController.Summary.DefaultGroupSummaryItems = <>
@@ -583,7 +519,7 @@ object f_planogram: Tf_planogram
         LookAndFeel.NativeStyle = False
         object t_PlanoD: TcxGridDBTableView
           OnKeyDown = t_PlanoDKeyDown
-          NavigatorButtons.ConfirmDelete = False
+          Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = ds_PlanoD
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
@@ -698,11 +634,6 @@ object f_planogram: Tf_planogram
     end
   end
   object sSkinProvider1: TsSkinProvider
-    AddedTitle.Font.Charset = DEFAULT_CHARSET
-    AddedTitle.Font.Color = clNone
-    AddedTitle.Font.Height = -11
-    AddedTitle.Font.Name = 'MS Sans Serif'
-    AddedTitle.Font.Style = []
     SkinData.SkinSection = 'FORM'
     TitleButtons = <>
     Left = 832

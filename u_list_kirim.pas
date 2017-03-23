@@ -9,7 +9,9 @@ uses
   cxGridDBTableView, cxClasses, cxControls, cxGridCustomView, cxGrid, Buttons,
   ExtCtrls, sPanel, UFungsi, sSpeedButton, cxCurrencyEdit, sTooledit, sLabel,
   sCheckBox, sComboBox, sButton, sDialogs, FileCtrl, cxCustomData, cxFilter,
-  cxData, StdCtrls, Mask, sMaskEdit, sCustomComboEdit;
+  cxData, StdCtrls, Mask, sMaskEdit, sCustomComboEdit, cxLookAndFeels,
+  cxLookAndFeelPainters, dxSkinsCore, dxSkinsDefaultPainters,
+  dxSkinscxPCPainter, cxNavigator;
 
 type
   TF_list_kirim = class(TForm)

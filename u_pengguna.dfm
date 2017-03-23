@@ -47,8 +47,6 @@ object f_emp: Tf_emp
     SkinData.SkinSection = 'PAGECONTROL'
     object ts_general: TsTabSheet
       Caption = 'General'
-      SkinData.CustomColor = False
-      SkinData.CustomFont = False
       object sLabel4: TsLabel
         Left = 8
         Top = 92
@@ -111,7 +109,7 @@ object f_emp: Tf_emp
       object gambar: TcxImage
         Left = 304
         Top = 8
-        Properties.Stretch = True
+        Properties.FitMode = ifmProportionalStretch
         TabOrder = 9
         Height = 150
         Width = 150
@@ -131,15 +129,6 @@ object f_emp: Tf_emp
         PasswordChar = '*'
         TabOrder = 3
         SkinData.SkinSection = 'EDIT'
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
       end
       object ed_pass: TsEdit
         Left = 120
@@ -156,15 +145,6 @@ object f_emp: Tf_emp
         PasswordChar = '*'
         TabOrder = 2
         SkinData.SkinSection = 'EDIT'
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
       end
       object ed_nama: TsEdit
         Left = 120
@@ -180,15 +160,6 @@ object f_emp: Tf_emp
         ParentFont = False
         TabOrder = 1
         SkinData.SkinSection = 'EDIT'
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
       end
       object ed_kode: TsEdit
         Left = 120
@@ -204,15 +175,6 @@ object f_emp: Tf_emp
         ParentFont = False
         TabOrder = 0
         SkinData.SkinSection = 'EDIT'
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
       end
       object cb_server: TsCheckBox
         Left = 120
@@ -285,8 +247,6 @@ object f_emp: Tf_emp
     object ts_gudang: TsTabSheet
       Caption = 'Hak Akses Gudang'
       PopupMenu = pmUser
-      SkinData.CustomColor = False
-      SkinData.CustomFont = False
       object gb_master: TsGroupBox
         Left = 0
         Top = 0
@@ -452,8 +412,6 @@ object f_emp: Tf_emp
     end
     object ts_server: TsTabSheet
       Caption = 'Hak Akses Server POS '
-      SkinData.CustomColor = False
-      SkinData.CustomFont = False
       object gb_md: TsGroupBox
         Left = 0
         Top = 0
@@ -478,11 +436,6 @@ object f_emp: Tf_emp
     end
   end
   object sSkinProvider1: TsSkinProvider
-    AddedTitle.Font.Charset = DEFAULT_CHARSET
-    AddedTitle.Font.Color = clNone
-    AddedTitle.Font.Height = -11
-    AddedTitle.Font.Name = 'MS Sans Serif'
-    AddedTitle.Font.Style = []
     SkinData.SkinSection = 'FORM'
     TitleButtons = <>
     Left = 368

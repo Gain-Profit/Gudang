@@ -11,7 +11,9 @@ uses
   cxDBData, cxCurrencyEdit, cxGridLevel, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxClasses, cxControls, cxGridCustomView, cxGrid, sComboBox,
   MyAccess, cxCustomData, cxFilter, cxData, MemDS, DBAccess, AbBase, AbZBrows,
-  StdCtrls, sEdit, Grids, Mask, sMaskEdit, sCustomComboEdit;
+  StdCtrls, sEdit, Grids, Mask, sMaskEdit, sCustomComboEdit,
+  cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore,
+  dxSkinsDefaultPainters, dxSkinscxPCPainter, cxNavigator;
 
 type
   TF_kirim_data = class(TForm)

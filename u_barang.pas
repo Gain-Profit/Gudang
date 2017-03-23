@@ -9,7 +9,9 @@ uses
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGridLevel,
   cxClasses, cxControls, cxGridCustomView, cxGrid, cxSpinEdit,
   cxGridCustomPopupMenu, sButton, sSkinProvider, cxStyles, cxTextEdit,
-  sSpeedButton, MyAccess, cxFilter, cxData, MemDS, DBAccess, StdCtrls;
+  sSpeedButton, MyAccess, cxFilter, cxData, MemDS, DBAccess, StdCtrls,
+  cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore,
+  dxSkinsDefaultPainters, dxSkinscxPCPainter, cxNavigator;
 
 const
   WM_AFTER_SHOW = WM_USER + 300; // custom message

@@ -7,7 +7,9 @@ uses
   Dialogs, sButton, sLabel, UFungsi, ComCtrls, sEdit, sSkinProvider, Buttons,
   sSpeedButton, Menus, cxStyles, cxCustomData, cxGraphics, cxDataStorage, cxEdit,
   cxCurrencyEdit, cxGridLevel, cxGridCustomTableView, cxGridTableView, cxClasses,
-  cxControls, cxGridCustomView, cxGrid, frxClass, cxFilter, cxData, StdCtrls;
+  cxControls, cxGridCustomView, cxGrid, frxClass, cxFilter, cxData, StdCtrls,
+  cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore,
+  dxSkinsDefaultPainters, dxSkinscxPCPainter, cxNavigator;
 
 type
   Tf_Barcode = class(TForm)

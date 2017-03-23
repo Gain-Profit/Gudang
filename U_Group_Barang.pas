@@ -8,7 +8,8 @@ uses
   cxDBData, cxCurrencyEdit, cxGridLevel, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxClasses, cxControls, cxGridCustomView, cxGrid, Buttons,
   sSpeedButton, ExtCtrls, sPanel, sButton, MyAccess, cxCustomData, cxFilter,
-  cxData, MemDS, DBAccess, StdCtrls;
+  cxData, MemDS, DBAccess, StdCtrls, cxLookAndFeels, cxLookAndFeelPainters,
+  dxSkinsCore, dxSkinsDefaultPainters, dxSkinscxPCPainter, cxNavigator;
 
 type
   TFGroupBarang = class(TForm)

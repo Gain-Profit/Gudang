@@ -10,7 +10,8 @@ uses
   cxClasses, cxControls, cxGridCustomView, cxGrid, sCurrEdit, cxCustomData,
   sCurrencyEdit, sSpeedButton, ExtCtrls, sPanel, DBCtrls, ComCtrls, sPageControl,
   sSplitter, MyAccess, cxFilter, cxData, MemDS, DBAccess, Mask, sMaskEdit,
-  sCustomComboEdit, StdCtrls;
+  sCustomComboEdit, StdCtrls, cxLookAndFeels, cxLookAndFeelPainters,
+  dxSkinsCore, dxSkinsDefaultPainters, dxSkinscxPCPainter, cxNavigator;
 
 type
   Tf_planogram = class(TForm)

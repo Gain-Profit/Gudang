@@ -25,7 +25,7 @@ object F_kirim_data: TF_kirim_data
     Visible = False
     SkinData.SkinSection = 'GAUGE'
     ForeColor = clBlack
-    Progress = 0
+    MaxValue = 100
     Suffix = '%'
   end
   object pc_1: TsPageControl
@@ -39,8 +39,6 @@ object F_kirim_data: TF_kirim_data
     SkinData.SkinSection = 'PAGECONTROL'
     object ts_1: TsTabSheet
       Caption = 'Kirim Data'
-      SkinData.CustomColor = False
-      SkinData.CustomFont = False
       object l_1: TsLabel
         Left = 8
         Top = 8
@@ -65,15 +63,12 @@ object F_kirim_data: TF_kirim_data
         Top = 24
         Width = 451
         Height = 113
-        BoundLabel.Indent = 0
         BoundLabel.Font.Charset = DEFAULT_CHARSET
         BoundLabel.Font.Color = clWindowText
         BoundLabel.Font.Height = -11
         BoundLabel.Font.Name = 'Tahoma'
         BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
+        BoundLabel.ParentFont = False
         SkinData.SkinSection = 'EDIT'
         Checkboxes = True
         Columns = <
@@ -113,15 +108,12 @@ object F_kirim_data: TF_kirim_data
         Top = 160
         Width = 449
         Height = 177
-        BoundLabel.Indent = 0
         BoundLabel.Font.Charset = DEFAULT_CHARSET
         BoundLabel.Font.Color = clWindowText
         BoundLabel.Font.Height = -11
         BoundLabel.Font.Name = 'Tahoma'
         BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
+        BoundLabel.ParentFont = False
         SkinData.SkinSection = 'EDIT'
         Checkboxes = True
         Columns = <
@@ -189,15 +181,6 @@ object F_kirim_data: TF_kirim_data
           MaxLength = 10
           TabOrder = 0
           Text = '  /  /    '
-          BoundLabel.Indent = 0
-          BoundLabel.Font.Charset = DEFAULT_CHARSET
-          BoundLabel.Font.Color = clWindowText
-          BoundLabel.Font.Height = -11
-          BoundLabel.Font.Name = 'MS Sans Serif'
-          BoundLabel.Font.Style = []
-          BoundLabel.Layout = sclLeft
-          BoundLabel.MaxWidth = 0
-          BoundLabel.UseSkinColor = True
           SkinData.SkinSection = 'EDIT'
           GlyphMode.Blend = 0
           GlyphMode.Grayed = False
@@ -216,8 +199,6 @@ object F_kirim_data: TF_kirim_data
     end
     object ts_2: TsTabSheet
       Caption = 'Terima Data'
-      SkinData.CustomColor = False
-      SkinData.CustomFont = False
       object edt_terima: TsDateEdit
         Left = 8
         Top = 320
@@ -228,15 +209,6 @@ object F_kirim_data: TF_kirim_data
         MaxLength = 10
         TabOrder = 0
         Text = '  /  /    '
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
         SkinData.SkinSection = 'EDIT'
         GlyphMode.Blend = 0
         GlyphMode.Grayed = False
@@ -336,8 +308,6 @@ object F_kirim_data: TF_kirim_data
     end
     object ts_dafta: TsTabSheet
       Caption = 'Daftar Export Import'
-      SkinData.CustomColor = False
-      SkinData.CustomFont = False
       object panel: TsPanel
         Left = 0
         Top = 346
@@ -363,8 +333,8 @@ object F_kirim_data: TF_kirim_data
           ShowHint = True
           OnClick = SbSegarkanClick
           SkinData.SkinSection = 'SPEEDBUTTON'
-          ImageIndex = 6
           Images = dm.gambar
+          ImageIndex = 6
         end
         object edtHari: TsDecimalSpinEdit
           Left = 40
@@ -374,15 +344,6 @@ object F_kirim_data: TF_kirim_data
           TabOrder = 0
           Text = '10'
           SkinData.SkinSection = 'EDIT'
-          BoundLabel.Indent = 0
-          BoundLabel.Font.Charset = DEFAULT_CHARSET
-          BoundLabel.Font.Color = clWindowText
-          BoundLabel.Font.Height = -11
-          BoundLabel.Font.Name = 'MS Sans Serif'
-          BoundLabel.Font.Style = []
-          BoundLabel.Layout = sclLeft
-          BoundLabel.MaxWidth = 0
-          BoundLabel.UseSkinColor = True
           Increment = 1.000000000000000000
           Value = 10.000000000000000000
           DecimalPlaces = 0
@@ -391,20 +352,12 @@ object F_kirim_data: TF_kirim_data
           Left = 304
           Top = 8
           Width = 145
-          Height = 22
+          Height = 21
           Alignment = taLeftJustify
-          BoundLabel.Indent = 0
-          BoundLabel.Font.Charset = DEFAULT_CHARSET
-          BoundLabel.Font.Color = clWindowText
-          BoundLabel.Font.Height = -11
-          BoundLabel.Font.Name = 'MS Sans Serif'
-          BoundLabel.Font.Style = []
-          BoundLabel.Layout = sclLeft
-          BoundLabel.MaxWidth = 0
-          BoundLabel.UseSkinColor = True
           SkinData.SkinSection = 'COMBOBOX'
+          VerticalAlignment = taAlignTop
           Style = csDropDownList
-          ItemHeight = 16
+          ItemHeight = 13
           ItemIndex = 0
           TabOrder = 1
           Text = 'Gudang ke Toko'
@@ -424,7 +377,7 @@ object F_kirim_data: TF_kirim_data
         LookAndFeel.Kind = lfOffice11
         LookAndFeel.NativeStyle = False
         object grid_data: TcxGridDBTableView
-          NavigatorButtons.ConfirmDelete = False
+          Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = dsExport
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <

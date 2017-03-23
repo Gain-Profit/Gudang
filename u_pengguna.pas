@@ -7,7 +7,8 @@ uses
   Dialogs, StdCtrls, sButton, sLabel, Buttons, UFungsi, sEdit, sCheckBox,
   cxControls, cxContainer, cxEdit, cxImage, sDialogs, db,
   sSkinProvider, ExtCtrls, sPanel, cxPC, sGroupBox, ComCtrls, sPageControl,
-  Menus;
+  Menus, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore,
+  dxSkinsDefaultPainters;
 
 type
   Tf_emp = class(TForm)

@@ -56,15 +56,6 @@ object f_return_kirim: Tf_return_kirim
         ParentFont = False
         ReadOnly = True
         TabOrder = 0
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
         SkinData.CustomColor = True
         SkinData.CustomFont = True
         SkinData.SkinSection = 'PANEL'
@@ -87,15 +78,6 @@ object f_return_kirim: Tf_return_kirim
         ReadOnly = True
         TabOrder = 1
         Align = alRight
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
         SkinData.CustomColor = True
         SkinData.CustomFont = True
         SkinData.SkinSection = 'PANEL'
@@ -183,8 +165,8 @@ object f_return_kirim: Tf_return_kirim
         Height = 21
         OnClick = SbTokoClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 0
         Images = dm.gambar
+        ImageIndex = 0
       end
       object sb_cari: TsSpeedButton
         Tag = 9
@@ -194,8 +176,8 @@ object f_return_kirim: Tf_return_kirim
         Height = 21
         OnClick = sb_cariClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 0
         Images = dm.gambar
+        ImageIndex = 0
       end
       object LblToko: TsLabel
         Left = 280
@@ -240,15 +222,6 @@ object f_return_kirim: Tf_return_kirim
         OnKeyDown = ed_no_fakturKeyDown
         SkinData.CustomColor = True
         SkinData.SkinSection = 'EDIT'
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
       end
       object ed_tgl: TsDateEdit
         Left = 56
@@ -266,15 +239,6 @@ object f_return_kirim: Tf_return_kirim
         MaxLength = 10
         ParentFont = False
         TabOrder = 4
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
         SkinData.CustomColor = True
         SkinData.SkinSection = 'EDIT'
         GlyphMode.Blend = 0
@@ -299,15 +263,6 @@ object f_return_kirim: Tf_return_kirim
         OnKeyDown = EdTokoKeyDown
         SkinData.CustomColor = True
         SkinData.SkinSection = 'EDIT'
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
       end
       object ed_code: TsEdit
         Left = 256
@@ -326,15 +281,6 @@ object f_return_kirim: Tf_return_kirim
         OnKeyPress = ed_codeKeyPress
         SkinData.CustomColor = True
         SkinData.SkinSection = 'EDIT'
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
       end
       object ed_fak_kirim: TsEdit
         Left = 80
@@ -352,15 +298,6 @@ object f_return_kirim: Tf_return_kirim
         OnChange = ed_fak_kirimChange
         SkinData.CustomColor = True
         SkinData.SkinSection = 'EDIT'
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
       end
       object b_auto: TsButton
         Left = 252
@@ -428,15 +365,6 @@ object f_return_kirim: Tf_return_kirim
         ReadOnly = True
         TabOrder = 0
         Align = alRight
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
         SkinData.CustomColor = True
         SkinData.CustomFont = True
         SkinData.SkinSection = 'PANEL'
@@ -456,8 +384,8 @@ object f_return_kirim: Tf_return_kirim
       LookAndFeel.Kind = lfOffice11
       LookAndFeel.NativeStyle = False
       object TableView: TcxGridTableView
-        NavigatorButtons.ConfirmDelete = False
-        NavigatorButtons.Append.Visible = False
+        Navigator.Buttons.CustomButtons = <>
+        Navigator.Buttons.Append.Visible = False
         OnFocusedRecordChanged = TableViewFocusedRecordChanged
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <
@@ -595,9 +523,8 @@ object f_return_kirim: Tf_return_kirim
       OnClick = sSpeedButton18Click
       Align = alTop
       SkinData.SkinSection = 'TOOLBUTTON'
-      DisabledGlyphKind = []
-      ImageIndex = 7
       Images = dm.image
+      ImageIndex = 7
       Reflected = True
     end
     object sPanel2: TsPanel
@@ -683,11 +610,6 @@ object f_return_kirim: Tf_return_kirim
     Top = 240
   end
   object sSkinProvider1: TsSkinProvider
-    AddedTitle.Font.Charset = DEFAULT_CHARSET
-    AddedTitle.Font.Color = clNone
-    AddedTitle.Font.Height = -11
-    AddedTitle.Font.Name = 'MS Sans Serif'
-    AddedTitle.Font.Style = []
     SkinData.SkinSection = 'FORM'
     TitleButtons = <>
     Left = 8

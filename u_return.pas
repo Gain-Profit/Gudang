@@ -9,7 +9,9 @@ uses
   cxCustomData, cxGraphics, cxDataStorage, cxEdit, cxGridLevel, cxClasses,
   cxControls, cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGrid,
   cxCurrencyEdit, UFungsi, sBevel, ComCtrls, sSkinProvider, cxImageComboBox,
-  cxStyles, uTerbilang, sDialogs, cxFilter, cxData, sMaskEdit;
+  cxStyles, uTerbilang, sDialogs, cxFilter, cxData, sMaskEdit,
+  cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore,
+  dxSkinsDefaultPainters, dxSkinscxPCPainter, cxNavigator;
 
 type
   Tf_return = class(TForm)

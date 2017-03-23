@@ -47,9 +47,8 @@ object FGroupBarang: TFGroupBarang
       OnClick = sb_2Click
       Align = alTop
       SkinData.SkinSection = 'TOOLBUTTON'
-      DisabledGlyphKind = []
-      ImageIndex = 8
       Images = dm.image
+      ImageIndex = 8
       Reflected = True
     end
     object sb_1: TsSpeedButton
@@ -71,9 +70,8 @@ object FGroupBarang: TFGroupBarang
       OnClick = sb_1Click
       Align = alTop
       SkinData.SkinSection = 'TOOLBUTTON'
-      DisabledGlyphKind = []
-      ImageIndex = 7
       Images = dm.image
+      ImageIndex = 7
       Reflected = True
     end
     object p1: TsPanel
@@ -126,7 +124,7 @@ object FGroupBarang: TFGroupBarang
     LookAndFeel.Kind = lfOffice11
     LookAndFeel.NativeStyle = False
     object t_data: TcxGridDBTableView
-      NavigatorButtons.ConfirmDelete = False
+      Navigator.Buttons.CustomButtons = <>
       OnCellDblClick = t_dataCellDblClick
       DataController.DataSource = dsGroupBarang
       DataController.Summary.DefaultGroupSummaryItems = <>
@@ -175,11 +173,6 @@ object FGroupBarang: TFGroupBarang
     end
   end
   object sSkinProvider1: TsSkinProvider
-    AddedTitle.Font.Charset = DEFAULT_CHARSET
-    AddedTitle.Font.Color = clNone
-    AddedTitle.Font.Height = -11
-    AddedTitle.Font.Name = 'MS Sans Serif'
-    AddedTitle.Font.Style = []
     SkinData.SkinSection = 'FORM'
     TitleButtons = <>
     Left = 16

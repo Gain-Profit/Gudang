@@ -9,7 +9,9 @@ uses
   cxGridTableView, cxGridDBTableView, cxClasses, cxControls, cxGridCustomView,
   cxGrid, Buttons, ExtCtrls, sPanel, UFungsi, frxclass, uTerbilang, sSpeedButton,
   sTooledit, sLabel, cxImageComboBox, sButton, cxCustomData, cxFilter, cxData,
-  StdCtrls, Mask, sMaskEdit, sCustomComboEdit;
+  StdCtrls, Mask, sMaskEdit, sCustomComboEdit, cxLookAndFeels,
+  cxLookAndFeelPainters, dxSkinsCore, dxSkinsDefaultPainters,
+  dxSkinscxPCPainter, cxNavigator;
 
 type
   Tf_list_return_jual = class(TForm)

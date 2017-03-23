@@ -9,7 +9,9 @@ uses
   ExtCtrls, sBevel, sLabel, Mask, sCustomComboEdit, sCurrEdit, sCurrencyEdit,
   sMemo, cxGridLevel, cxGridCustomTableView, cxGridTableView, cxClasses,
   cxControls, cxGridCustomView, cxGrid, sPanel, sSkinProvider, sDialogs,
-  uTerbilang, cxFilter, cxData, sMaskEdit;
+  uTerbilang, cxFilter, cxData, sMaskEdit, cxLookAndFeels,
+  cxLookAndFeelPainters, dxSkinsCore, dxSkinsDefaultPainters,
+  dxSkinscxPCPainter, cxNavigator;
 
 type
   TF_kirim = class(TForm)

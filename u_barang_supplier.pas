@@ -8,7 +8,9 @@ uses
   cxDataStorage, cxEdit, DB, cxDBData, cxGridLevel, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxClasses, cxControls, cxGridCustomView,
   cxGrid, sSkinProvider, cxStyles, ExtCtrls, sPanel, sButton, DBAccess, MyAccess,
-  cxCustomData, cxFilter, cxData, MemDS, StdCtrls;
+  cxCustomData, cxFilter, cxData, MemDS, StdCtrls, cxLookAndFeels,
+  cxLookAndFeelPainters, dxSkinsCore, dxSkinsDefaultPainters,
+  dxSkinscxPCPainter, cxNavigator;
 
 type
   Tf_barang_supp = class(TForm)

@@ -8,7 +8,8 @@ uses
   cxCurrencyEdit, sComboBox, cxGridLevel, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxClasses, cxControls, cxGridCustomView, cxGrid, sButton,
   sGroupBox, UFungsi, ExtCtrls, sPanel, MyAccess, cxCustomData, cxFilter, cxData,
-  MemDS, DBAccess, StdCtrls;
+  MemDS, DBAccess, StdCtrls, cxLookAndFeels, cxLookAndFeelPainters,
+  dxSkinsCore, dxSkinsDefaultPainters, dxSkinscxPCPainter, cxNavigator;
 
 type
   TF_barang_property = class(TForm)

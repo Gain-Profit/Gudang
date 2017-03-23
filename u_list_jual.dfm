@@ -148,7 +148,7 @@ object f_list_sales: Tf_list_sales
     LookAndFeel.Kind = lfOffice11
     LookAndFeel.NativeStyle = False
     object grid_data: TcxGridDBTableView
-      NavigatorButtons.ConfirmDelete = False
+      Navigator.Buttons.CustomButtons = <>
       OnCellDblClick = grid_dataCellDblClick
       DataController.DataSource = dm.ds_list_sales
       DataController.Summary.DefaultGroupSummaryItems = <>
@@ -298,7 +298,7 @@ object f_list_sales: Tf_list_sales
       end
     end
     object t_child: TcxGridDBTableView
-      NavigatorButtons.ConfirmDelete = False
+      Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = dm.ds_child_sales
       DataController.DetailKeyFieldNames = 'no_transaksi'
       DataController.KeyFieldNames = 'no_transaksi'

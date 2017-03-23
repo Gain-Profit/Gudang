@@ -98,7 +98,7 @@ object F_Edit_Harga: TF_Edit_Harga
       LookAndFeel.NativeStyle = False
       object t_data: TcxGridDBTableView
         OnKeyDown = t_dataKeyDown
-        NavigatorButtons.ConfirmDelete = False
+        Navigator.Buttons.CustomButtons = <>
         OnCellDblClick = t_dataCellDblClick
         DataController.DataSource = Ds_harga
         DataController.Summary.DefaultGroupSummaryItems = <>
@@ -125,14 +125,12 @@ object F_Edit_Harga: TF_Edit_Harga
           Caption = 'PID'
           DataBinding.FieldName = 'kd_barang'
           PropertiesClassName = 'TcxTextEditProperties'
-          Properties.Alignment.Vert = taVCenter
           Width = 53
         end
         object t_databarcode3: TcxGridDBColumn
           Caption = 'Barcode'
           DataBinding.FieldName = 'barcode3'
           PropertiesClassName = 'TcxTextEditProperties'
-          Properties.Alignment.Vert = taVCenter
           Width = 57
         end
         object t_datan_barang: TcxGridDBColumn
@@ -163,7 +161,6 @@ object F_Edit_Harga: TF_Edit_Harga
           DataBinding.FieldName = 'Hpp_ahir'
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.Alignment.Horz = taRightJustify
-          Properties.Alignment.Vert = taVCenter
           Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
           HeaderAlignmentHorz = taRightJustify
           Width = 59
@@ -173,7 +170,6 @@ object F_Edit_Harga: TF_Edit_Harga
           DataBinding.FieldName = 'hpp_aktif'
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.Alignment.Horz = taRightJustify
-          Properties.Alignment.Vert = taVCenter
           Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
           HeaderAlignmentHorz = taRightJustify
           Width = 47
@@ -183,7 +179,6 @@ object F_Edit_Harga: TF_Edit_Harga
           DataBinding.FieldName = 'harga_jual3'
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.Alignment.Horz = taRightJustify
-          Properties.Alignment.Vert = taVCenter
           Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
           HeaderAlignmentHorz = taRightJustify
           Width = 46

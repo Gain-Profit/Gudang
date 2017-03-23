@@ -59,8 +59,8 @@ object FGroupBarangDetail: TFGroupBarangDetail
       Anchors = [akLeft, akRight, akBottom]
       OnClick = sb_cariClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 0
       Images = dm.gambar
+      ImageIndex = 0
     end
     object lblDiskon: TsLabel
       Left = 8
@@ -76,15 +76,6 @@ object FGroupBarangDetail: TFGroupBarangDetail
       Height = 21
       TabOrder = 0
       SkinData.SkinSection = 'EDIT'
-      BoundLabel.Indent = 0
-      BoundLabel.Font.Charset = DEFAULT_CHARSET
-      BoundLabel.Font.Color = clWindowText
-      BoundLabel.Font.Height = -11
-      BoundLabel.Font.Name = 'MS Sans Serif'
-      BoundLabel.Font.Style = []
-      BoundLabel.Layout = sclLeft
-      BoundLabel.MaxWidth = 0
-      BoundLabel.UseSkinColor = True
     end
     object edDeskripsiGroup: TsEdit
       Left = 96
@@ -93,15 +84,6 @@ object FGroupBarangDetail: TFGroupBarangDetail
       Height = 21
       TabOrder = 1
       SkinData.SkinSection = 'EDIT'
-      BoundLabel.Indent = 0
-      BoundLabel.Font.Charset = DEFAULT_CHARSET
-      BoundLabel.Font.Color = clWindowText
-      BoundLabel.Font.Height = -11
-      BoundLabel.Font.Name = 'MS Sans Serif'
-      BoundLabel.Font.Style = []
-      BoundLabel.Layout = sclLeft
-      BoundLabel.MaxWidth = 0
-      BoundLabel.UseSkinColor = True
     end
     object ed_code: TsEdit
       Left = 8
@@ -121,15 +103,6 @@ object FGroupBarangDetail: TFGroupBarangDetail
       OnKeyPress = ed_codeKeyPress
       SkinData.CustomColor = True
       SkinData.SkinSection = 'EDIT'
-      BoundLabel.Indent = 0
-      BoundLabel.Font.Charset = DEFAULT_CHARSET
-      BoundLabel.Font.Color = clWindowText
-      BoundLabel.Font.Height = -11
-      BoundLabel.Font.Name = 'MS Sans Serif'
-      BoundLabel.Font.Style = []
-      BoundLabel.Layout = sclLeft
-      BoundLabel.MaxWidth = 0
-      BoundLabel.UseSkinColor = True
     end
     object edDiskon: TsCurrencyEdit
       Left = 96
@@ -145,15 +118,6 @@ object FGroupBarangDetail: TFGroupBarangDetail
       Font.Style = []
       ParentFont = False
       TabOrder = 3
-      BoundLabel.Indent = 0
-      BoundLabel.Font.Charset = DEFAULT_CHARSET
-      BoundLabel.Font.Color = clWindowText
-      BoundLabel.Font.Height = -11
-      BoundLabel.Font.Name = 'MS Sans Serif'
-      BoundLabel.Font.Style = []
-      BoundLabel.Layout = sclLeft
-      BoundLabel.MaxWidth = 0
-      BoundLabel.UseSkinColor = True
       SkinData.CustomColor = True
       SkinData.SkinSection = 'EDIT'
       GlyphMode.Blend = 0
@@ -240,8 +204,8 @@ object FGroupBarangDetail: TFGroupBarangDetail
     LookAndFeel.Kind = lfOffice11
     LookAndFeel.NativeStyle = False
     object TableView: TcxGridTableView
-      NavigatorButtons.ConfirmDelete = False
-      NavigatorButtons.Append.Visible = False
+      Navigator.Buttons.CustomButtons = <>
+      Navigator.Buttons.Append.Visible = False
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <
         item
@@ -315,11 +279,6 @@ object FGroupBarangDetail: TFGroupBarangDetail
     end
   end
   object sSkinProvider1: TsSkinProvider
-    AddedTitle.Font.Charset = DEFAULT_CHARSET
-    AddedTitle.Font.Color = clNone
-    AddedTitle.Font.Height = -11
-    AddedTitle.Font.Name = 'MS Sans Serif'
-    AddedTitle.Font.Style = []
     SkinData.SkinSection = 'FORM'
     TitleButtons = <>
     Left = 8

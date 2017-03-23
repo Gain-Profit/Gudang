@@ -9,7 +9,8 @@ uses
   cxGridDBTableView, cxClasses, cxControls, cxGridCustomView, cxGrid, ExtCtrls,
   sPanel, StdCtrls, sButton, sEdit, sLabel, Buttons, sSpeedButton, sBevel,
   cxCurrencyEdit, sCurrEdit, sCurrencyEdit, cxFilter, cxData, Mask, sMaskEdit,
-  sCustomComboEdit;
+  sCustomComboEdit, cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore,
+  dxSkinsDefaultPainters, dxSkinscxPCPainter, cxNavigator;
 
 type
   TFGroupBarangDetail = class(TForm)

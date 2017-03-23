@@ -8,7 +8,9 @@ uses
   cxCurrencyEdit, sSkinProvider, Buttons, ExtCtrls, sPanel, cxGridLevel,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
   cxControls, cxGridCustomView, cxGrid, sSpeedButton, sTooledit, sLabel,
-  cxCustomData, cxFilter, cxData, StdCtrls, Mask, sMaskEdit, sCustomComboEdit;
+  cxCustomData, cxFilter, cxData, StdCtrls, Mask, sMaskEdit, sCustomComboEdit,
+  cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore,
+  dxSkinsDefaultPainters, dxSkinscxPCPainter, cxNavigator;
 
 type
   Tf_list_SO = class(TForm)

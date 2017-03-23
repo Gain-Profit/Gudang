@@ -9,7 +9,9 @@ uses
   Buttons, sSpeedButton, ExtCtrls, sBevel, sLabel, Mask, sCustomComboEdit,
   sCurrEdit, sCurrencyEdit, sMemo, cxGridLevel, cxGridCustomTableView,
   cxGridTableView, cxClasses, uTerbilang, cxControls, cxGridCustomView, cxGrid,
-  sPanel, UFungsi, cxFilter, cxData, sMaskEdit;
+  sPanel, UFungsi, cxFilter, cxData, sMaskEdit, cxLookAndFeels,
+  cxLookAndFeelPainters, dxSkinsCore, dxSkinsDefaultPainters,
+  dxSkinscxPCPainter, cxNavigator;
 
 type
   Tf_return_kirim = class(TForm)

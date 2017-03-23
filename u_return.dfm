@@ -52,9 +52,8 @@ object f_return: Tf_return
       OnClick = sSpeedButton18Click
       Align = alTop
       SkinData.SkinSection = 'TOOLBUTTON'
-      DisabledGlyphKind = []
-      ImageIndex = 7
       Images = dm.image
+      ImageIndex = 7
       Reflected = True
     end
     object sPanel2: TsPanel
@@ -145,8 +144,8 @@ object f_return: Tf_return
       LookAndFeel.Kind = lfOffice11
       LookAndFeel.NativeStyle = False
       object TableView: TcxGridTableView
-        NavigatorButtons.ConfirmDelete = False
-        NavigatorButtons.Append.Visible = False
+        Navigator.Buttons.CustomButtons = <>
+        Navigator.Buttons.Append.Visible = False
         OnFocusedRecordChanged = TableViewFocusedRecordChanged
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <
@@ -299,15 +298,6 @@ object f_return: Tf_return
         ParentFont = False
         ReadOnly = True
         TabOrder = 0
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
         SkinData.CustomColor = True
         SkinData.CustomFont = True
         SkinData.SkinSection = 'PANEL'
@@ -330,15 +320,6 @@ object f_return: Tf_return
         ReadOnly = True
         TabOrder = 1
         Align = alRight
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
         SkinData.CustomColor = True
         SkinData.CustomFont = True
         SkinData.SkinSection = 'PANEL'
@@ -429,8 +410,8 @@ object f_return: Tf_return
         Height = 21
         OnClick = sb_supplierClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 0
         Images = dm.gambar
+        ImageIndex = 0
       end
       object sb_cari: TsSpeedButton
         Tag = 9
@@ -440,8 +421,8 @@ object f_return: Tf_return
         Height = 21
         OnClick = sb_cariClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 0
         Images = dm.gambar
+        ImageIndex = 0
       end
       object L_supp: TsLabel
         Left = 56
@@ -486,15 +467,6 @@ object f_return: Tf_return
         OnKeyDown = ed_no_fakturKeyDown
         SkinData.CustomColor = True
         SkinData.SkinSection = 'EDIT'
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
       end
       object ed_tgl: TsDateEdit
         Left = 56
@@ -512,15 +484,6 @@ object f_return: Tf_return
         MaxLength = 10
         ParentFont = False
         TabOrder = 4
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
         SkinData.CustomColor = True
         SkinData.SkinSection = 'EDIT'
         GlyphMode.Blend = 0
@@ -545,15 +508,6 @@ object f_return: Tf_return
         OnKeyDown = ed_supplierKeyDown
         SkinData.CustomColor = True
         SkinData.SkinSection = 'EDIT'
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
       end
       object ed_code: TsEdit
         Left = 256
@@ -573,15 +527,6 @@ object f_return: Tf_return
         OnKeyPress = ed_codeKeyPress
         SkinData.CustomColor = True
         SkinData.SkinSection = 'EDIT'
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
       end
       object ed_fak_receipt: TsEdit
         Left = 312
@@ -600,15 +545,6 @@ object f_return: Tf_return
         OnKeyPress = ed_fak_receiptKeyPress
         SkinData.CustomColor = True
         SkinData.SkinSection = 'EDIT'
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
       end
       object b_auto: TsButton
         Left = 488
@@ -720,15 +656,6 @@ object f_return: Tf_return
         ReadOnly = True
         TabOrder = 0
         OnChange = ed_sub_totalChange
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
         SkinData.CustomColor = True
         SkinData.SkinSection = 'EDIT'
         GlyphMode.Blend = 0
@@ -752,15 +679,6 @@ object f_return: Tf_return
         ParentFont = False
         TabOrder = 1
         OnExit = ce_diskonprExit
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
         SkinData.CustomColor = True
         SkinData.SkinSection = 'EDIT'
         GlyphMode.Blend = 0
@@ -782,15 +700,6 @@ object f_return: Tf_return
         ParentFont = False
         TabOrder = 2
         OnExit = ce_diskonrpExit
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
         SkinData.CustomColor = True
         SkinData.SkinSection = 'EDIT'
         GlyphMode.Blend = 0
@@ -817,15 +726,6 @@ object f_return: Tf_return
         ReadOnly = True
         TabOrder = 3
         Align = alRight
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
         SkinData.CustomColor = True
         SkinData.CustomFont = True
         SkinData.SkinSection = 'PANEL'
@@ -837,11 +737,6 @@ object f_return: Tf_return
     end
   end
   object sSkinProvider1: TsSkinProvider
-    AddedTitle.Font.Charset = DEFAULT_CHARSET
-    AddedTitle.Font.Color = clNone
-    AddedTitle.Font.Height = -11
-    AddedTitle.Font.Name = 'MS Sans Serif'
-    AddedTitle.Font.Style = []
     SkinData.SkinSection = 'FORM'
     TitleButtons = <>
     Left = 8

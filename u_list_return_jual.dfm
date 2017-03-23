@@ -47,9 +47,8 @@ object f_list_return_jual: Tf_list_return_jual
       OnClick = sb_2Click
       Align = alTop
       SkinData.SkinSection = 'TOOLBUTTON'
-      DisabledGlyphKind = []
-      ImageIndex = 8
       Images = dm.image
+      ImageIndex = 8
       Reflected = True
     end
     object sb_1: TsSpeedButton
@@ -71,9 +70,8 @@ object f_list_return_jual: Tf_list_return_jual
       OnClick = sb_1Click
       Align = alTop
       SkinData.SkinSection = 'TOOLBUTTON'
-      DisabledGlyphKind = []
-      ImageIndex = 7
       Images = dm.image
+      ImageIndex = 7
       Reflected = True
     end
     object p1: TsPanel
@@ -109,15 +107,6 @@ object f_list_return_jual: Tf_list_return_jual
         TabOrder = 0
         Text = '  /  /    '
         OnChange = de_sampaiChange
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
         SkinData.SkinSection = 'EDIT'
         GlyphMode.Blend = 0
         GlyphMode.Grayed = False
@@ -133,15 +122,6 @@ object f_list_return_jual: Tf_list_return_jual
         TabOrder = 1
         Text = '  /  /    '
         OnChange = de_sampaiChange
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
         SkinData.SkinSection = 'EDIT'
         GlyphMode.Blend = 0
         GlyphMode.Grayed = False
@@ -168,7 +148,7 @@ object f_list_return_jual: Tf_list_return_jual
     LookAndFeel.Kind = lfOffice11
     LookAndFeel.NativeStyle = False
     object grid_data: TcxGridDBTableView
-      NavigatorButtons.ConfirmDelete = False
+      Navigator.Buttons.CustomButtons = <>
       OnCellDblClick = grid_dataCellDblClick
       DataController.DataSource = dm.ds_list_return_jual
       DataController.Summary.DefaultGroupSummaryItems = <>
@@ -236,7 +216,7 @@ object f_list_return_jual: Tf_list_return_jual
       end
     end
     object t_child: TcxGridDBTableView
-      NavigatorButtons.ConfirmDelete = False
+      Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = dm.ds_child_sales
       DataController.DetailKeyFieldNames = 'no_transaksi'
       DataController.KeyFieldNames = 'no_transaksi'
@@ -382,11 +362,6 @@ object f_list_return_jual: Tf_list_return_jual
     end
   end
   object sSkinProvider1: TsSkinProvider
-    AddedTitle.Font.Charset = DEFAULT_CHARSET
-    AddedTitle.Font.Color = clNone
-    AddedTitle.Font.Height = -11
-    AddedTitle.Font.Name = 'MS Sans Serif'
-    AddedTitle.Font.Style = []
     SkinData.SkinSection = 'FORM'
     TitleButtons = <>
     Left = 16

@@ -42,7 +42,7 @@ object F_barang: TF_barang
       LookAndFeel.NativeStyle = False
       object TvData: TcxGridDBTableView
         OnKeyDown = TvDataKeyDown
-        NavigatorButtons.ConfirmDelete = False
+        Navigator.Buttons.CustomButtons = <>
         OnCellDblClick = TvDataCellDblClick
         DataController.DataSource = ds_barang
         DataController.Summary.DefaultGroupSummaryItems = <
@@ -116,26 +116,22 @@ object F_barang: TF_barang
           Caption = 'Jenis'
           DataBinding.FieldName = 'N_Jenis'
           PropertiesClassName = 'TcxTextEditProperties'
-          Properties.Alignment.Vert = taVCenter
         end
         object TvDataN_golbrg: TcxGridDBColumn
           Caption = 'Golongan'
           DataBinding.FieldName = 'N_golbrg'
           PropertiesClassName = 'TcxTextEditProperties'
-          Properties.Alignment.Vert = taVCenter
         end
         object TvDataN_merk: TcxGridDBColumn
           Caption = 'Merk'
           DataBinding.FieldName = 'N_merk'
           PropertiesClassName = 'TcxTextEditProperties'
-          Properties.Alignment.Vert = taVCenter
           Width = 101
         end
         object TvDatan_kategori: TcxGridDBColumn
           Caption = 'TAG'
           DataBinding.FieldName = 'kd_kategori'
           PropertiesClassName = 'TcxTextEditProperties'
-          Properties.Alignment.Vert = taVCenter
           Width = 46
         end
         object TvDataminstok: TcxGridDBColumn

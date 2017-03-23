@@ -31,9 +31,9 @@ object F_barang_property: TF_barang_property
     SkinData.SkinSection = 'GROUPBOX'
     object grid: TcxGrid
       Left = 2
-      Top = 21
+      Top = 20
       Width = 756
-      Height = 320
+      Height = 321
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -49,7 +49,7 @@ object F_barang_property: TF_barang_property
       RootLevelOptions.DetailTabsPosition = dtpTop
       object t_data_plano: TcxGridDBTableView
         OnKeyDown = t_data_planoKeyDown
-        NavigatorButtons.ConfirmDelete = False
+        Navigator.Buttons.CustomButtons = <>
         DataController.DataSource = ds_plano
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <>
@@ -111,7 +111,7 @@ object F_barang_property: TF_barang_property
         end
       end
       object t_supplier: TcxGridDBTableView
-        NavigatorButtons.ConfirmDelete = False
+        Navigator.Buttons.CustomButtons = <>
         DataController.DataSource = ds_supp
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <>
@@ -149,7 +149,7 @@ object F_barang_property: TF_barang_property
         end
       end
       object t_mutasi_barang: TcxGridDBTableView
-        NavigatorButtons.ConfirmDelete = False
+        Navigator.Buttons.CustomButtons = <>
         DataController.DataSource = ds_mutasi
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <>
@@ -222,7 +222,7 @@ object F_barang_property: TF_barang_property
         end
       end
       object t_mutasi_harga: TcxGridDBTableView
-        NavigatorButtons.ConfirmDelete = False
+        Navigator.Buttons.CustomButtons = <>
         DataController.DataSource = ds_mutasi
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <>
@@ -342,25 +342,17 @@ object F_barang_property: TF_barang_property
       Left = 616
       Top = 20
       Width = 137
-      Height = 22
+      Height = 21
       Alignment = taLeftJustify
-      BoundLabel.Indent = 0
-      BoundLabel.Font.Charset = DEFAULT_CHARSET
-      BoundLabel.Font.Color = clWindowText
-      BoundLabel.Font.Height = -11
-      BoundLabel.Font.Name = 'MS Sans Serif'
-      BoundLabel.Font.Style = []
-      BoundLabel.Layout = sclLeft
-      BoundLabel.MaxWidth = 0
-      BoundLabel.UseSkinColor = True
       SkinData.SkinSection = 'COMBOBOX'
+      VerticalAlignment = taAlignTop
       Style = csDropDownList
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
       Font.Name = 'MS SANS SERIF'
       Font.Style = []
-      ItemHeight = 16
+      ItemHeight = 13
       ItemIndex = -1
       ParentFont = False
       TabOrder = 1

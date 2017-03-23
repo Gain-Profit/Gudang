@@ -26,8 +26,8 @@ object f_Barcode: Tf_Barcode
     Height = 21
     OnClick = sb_cariClick
     SkinData.SkinSection = 'SPEEDBUTTON'
-    ImageIndex = 0
     Images = dm.gambar
+    ImageIndex = 0
   end
   object l_4: TsLabel
     Left = 8
@@ -52,15 +52,6 @@ object f_Barcode: Tf_Barcode
     OnKeyDown = ed_PIDKeyDown
     OnKeyPress = ed_PIDKeyPress
     SkinData.SkinSection = 'EDIT'
-    BoundLabel.Indent = 0
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
   end
   object btnBarcode: TsButton
     Left = 384
@@ -82,8 +73,8 @@ object f_Barcode: Tf_Barcode
     LookAndFeel.Kind = lfOffice11
     LookAndFeel.NativeStyle = False
     object TableView: TcxGridTableView
-      NavigatorButtons.ConfirmDelete = False
-      NavigatorButtons.Append.Visible = False
+      Navigator.Buttons.CustomButtons = <>
+      Navigator.Buttons.Append.Visible = False
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <
         item
@@ -159,11 +150,6 @@ object f_Barcode: Tf_Barcode
     end
   end
   object sSkinProvider1: TsSkinProvider
-    AddedTitle.Font.Charset = DEFAULT_CHARSET
-    AddedTitle.Font.Color = clNone
-    AddedTitle.Font.Height = -11
-    AddedTitle.Font.Name = 'MS Sans Serif'
-    AddedTitle.Font.Style = []
     SkinData.SkinSection = 'FORM'
     TitleButtons = <>
     Left = 8
