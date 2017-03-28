@@ -53,11 +53,13 @@ object f_list_SO: Tf_list_SO
       DataController.Summary.SummaryGroups = <>
       OptionsBehavior.CellHints = True
       OptionsBehavior.IncSearch = True
+      OptionsCustomize.ColumnsQuickCustomization = True
       OptionsData.Editing = False
       OptionsData.Inserting = False
       OptionsView.ColumnAutoWidth = True
       OptionsView.Footer = True
       OptionsView.GroupByBox = False
+      OptionsView.Indicator = True
       object clmn_dataColumn1: TcxGridDBColumn
         Caption = 'Kode Koreksi'
         DataBinding.FieldName = 'kd_koreksi'

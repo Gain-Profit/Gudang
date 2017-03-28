@@ -52,11 +52,13 @@ object f_list_return: Tf_list_return
       DataController.Summary.SummaryGroups = <>
       OptionsBehavior.CellHints = True
       OptionsBehavior.IncSearch = True
+      OptionsCustomize.ColumnsQuickCustomization = True
       OptionsData.Editing = False
       OptionsData.Inserting = False
       OptionsView.ColumnAutoWidth = True
       OptionsView.Footer = True
       OptionsView.GroupByBox = False
+      OptionsView.Indicator = True
       object t_datan_supp: TcxGridDBColumn
         Caption = 'Supplier'
         DataBinding.FieldName = 'n_supp'

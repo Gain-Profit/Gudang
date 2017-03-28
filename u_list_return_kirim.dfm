@@ -200,11 +200,13 @@ object f_list_return_kirim: Tf_list_return_kirim
       DataController.Summary.SummaryGroups = <>
       OptionsBehavior.CellHints = True
       OptionsBehavior.IncSearch = True
+      OptionsCustomize.ColumnsQuickCustomization = True
       OptionsData.Editing = False
       OptionsData.Inserting = False
       OptionsView.ColumnAutoWidth = True
       OptionsView.Footer = True
       OptionsView.GroupByBox = False
+      OptionsView.Indicator = True
       object t_datan_supp: TcxGridDBColumn
         Caption = 'Nama Toko'
         DataBinding.FieldName = 'n_pelanggan'

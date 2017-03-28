@@ -182,6 +182,7 @@ object f_list_sales: Tf_list_sales
       OptionsView.ColumnAutoWidth = True
       OptionsView.Footer = True
       OptionsView.GroupByBox = False
+      OptionsView.Indicator = True
       object clmn_dataColumn1: TcxGridDBColumn
         Caption = 'Kode Transaksi'
         DataBinding.FieldName = 'kd_transaksi'

@@ -48,11 +48,13 @@ object f_List_purchase: Tf_List_purchase
       DataController.Summary.SummaryGroups = <>
       OptionsBehavior.CellHints = True
       OptionsBehavior.IncSearch = True
+      OptionsCustomize.ColumnsQuickCustomization = True
       OptionsData.Editing = False
       OptionsData.Inserting = False
       OptionsView.ColumnAutoWidth = True
       OptionsView.Footer = True
       OptionsView.GroupByBox = False
+      OptionsView.Indicator = True
       object t_datan_supp: TcxGridDBColumn
         Caption = 'Supplier'
         DataBinding.FieldName = 'n_supp'
