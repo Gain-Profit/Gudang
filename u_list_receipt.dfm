@@ -57,11 +57,13 @@ object f_list_receipt: Tf_list_receipt
       DataController.Summary.SummaryGroups = <>
       OptionsBehavior.CellHints = True
       OptionsBehavior.IncSearch = True
+      OptionsCustomize.ColumnsQuickCustomization = True
       OptionsData.Editing = False
       OptionsData.Inserting = False
       OptionsView.ColumnAutoWidth = True
       OptionsView.Footer = True
       OptionsView.GroupByBox = False
+      OptionsView.Indicator = True
       object t_datan_supp: TcxGridDBColumn
         Caption = 'Supplier'
         DataBinding.FieldName = 'n_supp'
@@ -77,6 +79,11 @@ object f_list_receipt: Tf_list_receipt
         DataBinding.FieldName = 'tgl_receipt'
         PropertiesClassName = 'TcxDateEditProperties'
         Width = 73
+      end
+      object t_data_simpan_pada: TcxGridDBColumn
+        Caption = 'Simpan Pada'
+        DataBinding.FieldName = 'simpan_pada'
+        Visible = False
       end
       object t_datanilai_faktur: TcxGridDBColumn
         Caption = 'Nilai Faktur'

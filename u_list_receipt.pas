@@ -35,6 +35,7 @@ type
     l_2: TsLabel;
     de_mulai: TsDateEdit;
     de_sampai: TsDateEdit;
+    t_data_simpan_pada: TcxGridDBColumn;
     procedure WMMDIACTIVATE(var msg: TWMMDIACTIVATE); message WM_MDIACTIVATE;
     procedure t_dataCellDblClick(Sender: TcxCustomGridTableView; ACellViewInfo:
       TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState;
