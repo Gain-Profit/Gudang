@@ -297,6 +297,11 @@ object f_list_sales: Tf_list_sales
         DataBinding.FieldName = 'komp'
         Visible = False
       end
+      object t_data_simpan_pada: TcxGridDBColumn
+        Caption = 'Simpan Pada'
+        DataBinding.FieldName = 'simpan_pada'
+        Visible = False
+      end
     end
     object t_child: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>

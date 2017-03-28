@@ -36,6 +36,7 @@ type
     cb_belum: TsCheckBox;
     cbCabang: TsComboBox;
     btnSimpan: TsButton;
+    t_data_simpan_pada: TcxGridDBColumn;
     procedure WMMDIACTIVATE(var msg: TWMMDIACTIVATE); message WM_MDIACTIVATE;
     procedure segarkan;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

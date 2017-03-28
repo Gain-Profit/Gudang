@@ -85,6 +85,11 @@ object f_list_SO: Tf_list_SO
         Caption = 'User'
         DataBinding.FieldName = 'user'
       end
+      object t_data_simpan_pada: TcxGridDBColumn
+        Caption = 'Simpan Pada'
+        DataBinding.FieldName = 'simpan_pada'
+        Visible = False
+      end
     end
     object l_data: TcxGridLevel
       GridView = grid_data

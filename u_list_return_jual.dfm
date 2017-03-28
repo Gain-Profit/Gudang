@@ -214,6 +214,11 @@ object f_list_return_jual: Tf_list_return_jual
         DataBinding.FieldName = 'simpan_pada'
         Options.Editing = False
       end
+      object t_data_simpan_pada: TcxGridDBColumn
+        Caption = 'Simpan Pada'
+        DataBinding.FieldName = 'simpan_pada'
+        Visible = False
+      end
     end
     object t_child: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>

@@ -236,6 +236,11 @@ object F_list_kirim: TF_list_kirim
         Caption = 'User'
         DataBinding.FieldName = 'pengguna'
       end
+      object t_data_simpan_pada: TcxGridDBColumn
+        Caption = 'Simpan Pada'
+        DataBinding.FieldName = 'simpan_pada'
+        Visible = False
+      end
     end
     object l_data: TcxGridLevel
       GridView = t_data
