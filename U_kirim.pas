@@ -312,7 +312,7 @@ end;
 
 procedure TF_kirim.ed_codeKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 var
-  KodeCari: string;
+  KodeCari, LSql: string;
 begin
   if key = vk_return then
   begin
@@ -326,12 +326,24 @@ begin
       KodeCari := ed_code.Text;
 
     fungsi.sqlExec(dm.Q_temp, 'SELECT kd_barang,n_barang,barcode3, ' +
-      'hpp_aktif,kd_sat3 FROM tb_barang WHERE ((kd_barang = "' + KodeCari +
+      'hpp_aktif,kd_sat3, stok_OH FROM tb_barang WHERE ((kd_barang = "' + KodeCari +
       '" OR barcode3 = "' + KodeCari + '" OR barcode2 = "' + KodeCari +
       '" OR barcode1 = "' + KodeCari + '") AND kd_perusahaan="' + dm.kd_perusahaan
       + '")', true);
     if dm.Q_temp.RecordCount <> 0 then
     begin
+      LSql := 'SELECT `nilai` FROM `tb_settings` WHERE `parameter`="canoutonstockout"';
+      fungsi.SQLExec(DM.Q_Exe, LSql, true);
+      if not(dm.Q_Exe.FieldByName('nilai').AsBoolean) then
+      begin
+        if (dm.Q_temp.FieldByName('stok_OH').AsInteger <= 0) then
+        begin
+          messagedlg('Barang Tidak Dapat Ditransaksikan '#10#13'Stok Tidak Mencukupi',
+            mtError, [mbOk], 0);
+          Exit;
+        end;
+      end;
+
       fungsi.SQLExec(dm.Q_Exe,
         'select kd_barang from tb_barang_harga where kd_perusahaan="' + dm.kd_perusahaan
         + '" and kd_barang="' + dm.Q_temp.fieldbyname('kd_barang').AsString + '"', True);
