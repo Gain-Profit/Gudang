@@ -647,9 +647,9 @@ begin
       fungsi.SQLExec(dm.Q_exe, _sql, false);
     end;
 
-    _sql := Format('UPDATE tb_barang SET hpp_aktif = (CASE kd_barang %s END), '
-      + 'hpp_ahir = (CASE kd_barang %s END), stok_OH = (CASE kd_barang %s END), '
-      + 'Tr_Akhir = date(now()) ' +
+    _sql := Format('UPDATE tb_barang SET hpp_lama = hpp_ahir, '
+      + 'hpp_aktif = (CASE kd_barang %s END), hpp_ahir = (CASE kd_barang %s END), '
+      + 'stok_OH = (CASE kd_barang %s END), Tr_Akhir = date(now()) ' +
       'WHERE kd_perusahaan = "%s" AND kd_barang IN (%s)', [LIsiHppAktif,
       LIsiHppAkhir, LIsiStokOH, dm.kd_perusahaan, LKdBarangs]);
 

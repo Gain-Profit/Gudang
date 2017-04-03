@@ -605,9 +605,9 @@ begin
 
     fungsi.SQLExec(dm.Q_exe, LSQL, false);
 
-    LSQL := Format('UPDATE tb_barang SET hpp_aktif = (CASE kd_barang %s END), '
-      + 'hpp_ahir = (CASE kd_barang %s END), stok_OH = (CASE kd_barang %s END), '
-      + 'Tr_Akhir = date(now()) ' +
+    LSQL := Format('UPDATE tb_barang SET hpp_lama = hpp_ahir, '
+      + 'hpp_aktif = (CASE kd_barang %s END), hpp_ahir = (CASE kd_barang %s END), '
+      + 'stok_OH = (CASE kd_barang %s END), Tr_Akhir = date(now()) ' +
       'WHERE kd_perusahaan = "%s" AND kd_barang IN (%s)', [LIsiHppAktif,
       LIsiHppAkhir, LIsiStokOH, ed_toko.Text, LKdBarangs]);
 
