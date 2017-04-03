@@ -192,12 +192,21 @@ object F_Edit_Harga: TF_Edit_Harga
           HeaderAlignmentHorz = taRightJustify
           Width = 46
         end
+        object t_datalaba: TcxGridDBColumn
+          Caption = 'Laba'
+          DataBinding.FieldName = 'laba'
+          PropertiesClassName = 'TcxCurrencyEditProperties'
+          Properties.Alignment.Horz = taRightJustify
+          Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
+          HeaderAlignmentHorz = taRightJustify
+        end
         object t_dataharga_jual2: TcxGridDBColumn
           Caption = 'Harga 2'
           DataBinding.FieldName = 'harga_jual2'
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.Alignment.Horz = taRightJustify
           Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
+          Visible = False
           HeaderAlignmentHorz = taRightJustify
           Width = 55
         end
@@ -207,6 +216,7 @@ object F_Edit_Harga: TF_Edit_Harga
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.Alignment.Horz = taRightJustify
           Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
+          Visible = False
           HeaderAlignmentHorz = taRightJustify
           Width = 74
         end
