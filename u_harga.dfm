@@ -156,6 +156,14 @@ object F_Edit_Harga: TF_Edit_Harga
             end>
           Width = 75
         end
+        object t_dataHppLama: TcxGridDBColumn
+          Caption = 'Hpp Lama'
+          DataBinding.FieldName = 'hpp_lama'
+          PropertiesClassName = 'TcxCurrencyEditProperties'
+          Properties.Alignment.Horz = taRightJustify
+          Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
+          HeaderAlignmentHorz = taRightJustify
+        end
         object t_dataHppNew: TcxGridDBColumn
           Caption = 'HPP Baru'
           DataBinding.FieldName = 'Hpp_ahir'
@@ -171,6 +179,7 @@ object F_Edit_Harga: TF_Edit_Harga
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.Alignment.Horz = taRightJustify
           Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
+          Visible = False
           HeaderAlignmentHorz = taRightJustify
           Width = 47
         end
