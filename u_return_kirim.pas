@@ -246,6 +246,8 @@ end;
 
 procedure Tf_return_kirim.ed_codeKeyDown(Sender: TObject; var Key: Word; Shift:
   TShiftState);
+var
+  LSql : string;
 begin
   if key = vk_return then
   begin
@@ -260,12 +262,24 @@ begin
     if ed_code.Text = '' then
       exit;
     fungsi.sqlExec(dm.Q_temp, 'SELECT kd_barang,n_barang,barcode3, ' +
-      'hpp_aktif,kd_sat3 FROM tb_barang WHERE ((kd_barang = "' + ed_code.Text +
+      'hpp_aktif,kd_sat3, stok_OH FROM tb_barang WHERE ((kd_barang = "' + ed_code.Text +
       '" OR barcode3 = "' + ed_code.Text + '" OR barcode2 = "' + ed_code.Text +
       '" OR barcode1 = "' + ed_code.Text + '") AND kd_perusahaan="' + EdToko.Text
       + '")', true);
     if dm.Q_temp.RecordCount <> 0 then
     begin
+      LSql := 'SELECT `nilai` FROM `tb_settings` WHERE `parameter`="canoutonstockout"';
+      fungsi.SQLExec(DM.Q_Exe, LSql, true);
+      if not(dm.Q_Exe.FieldByName('nilai').AsBoolean) then
+      begin
+        if (dm.Q_temp.FieldByName('stok_OH').AsInteger <= 0) then
+        begin
+          messagedlg('Barang Tidak Dapat Ditransaksikan '#10#13'Stok Tidak Mencukupi',
+            mtError, [mbOk], 0);
+          Exit;
+        end;
+      end;
+
       createrows;
     end
     else
