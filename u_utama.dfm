@@ -31,7 +31,6 @@ object f_utama: Tf_utama
     SkinData.SkinSection = 'GAUGE'
     ForeColor = clBlack
     MaxValue = 70
-    Progress = 0
     Suffix = ' %'
   end
   object sb: TsStatusBar
@@ -108,12 +107,10 @@ object f_utama: Tf_utama
     ParentBiDiMode = False
     ParentFont = False
     TabOrder = 1
-    SkinData.SkinSection = 'TABRIGHT'
     TabPadding = 12
+    SkinData.SkinSection = 'TABRIGHT'
     object ts_master: TsTabSheet
       Caption = 'Inventory'
-      SkinData.CustomColor = False
-      SkinData.CustomFont = False
       object sPanel2: TsPanel
         Left = 0
         Top = 0
@@ -143,9 +140,8 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alRight
           SkinData.SkinSection = 'TOOLBUTTON'
-          DisabledGlyphKind = []
-          ImageIndex = 6
           Images = dm.image
+          ImageIndex = 6
           Reflected = True
         end
         object sSpeedButton13: TsSpeedButton
@@ -166,8 +162,8 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
-          ImageIndex = 14
           Images = dm.image
+          ImageIndex = 14
           Reflected = True
         end
         object sSpeedButton14: TsSpeedButton
@@ -188,8 +184,8 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
-          ImageIndex = 16
           Images = dm.image
+          ImageIndex = 16
           Reflected = True
         end
         object sSpeedButton15: TsSpeedButton
@@ -210,8 +206,8 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
-          ImageIndex = 15
           Images = dm.image
+          ImageIndex = 15
           Reflected = True
         end
         object sb_kirim_data: TsSpeedButton
@@ -232,8 +228,8 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
-          ImageIndex = 2
           Images = dm.image
+          ImageIndex = 2
           Reflected = True
         end
         object sSpeedButton2: TsSpeedButton
@@ -254,8 +250,8 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
-          ImageIndex = 4
           Images = dm.image
+          ImageIndex = 4
           Reflected = True
         end
         object sb_lap: TsSpeedButton
@@ -276,8 +272,8 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
-          ImageIndex = 12
           Images = dm.image
+          ImageIndex = 12
           Reflected = True
         end
         object sb_update_barang_harga: TsSpeedButton
@@ -298,16 +294,14 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
-          ImageIndex = 0
           Images = dm.image
+          ImageIndex = 0
           Reflected = True
         end
       end
     end
     object ts_transaksi: TsTabSheet
       Caption = 'Transaksi'
-      SkinData.CustomColor = False
-      SkinData.CustomFont = False
       object sPanel3: TsPanel
         Left = 0
         Top = 0
@@ -337,9 +331,8 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alRight
           SkinData.SkinSection = 'TOOLBUTTON'
-          DisabledGlyphKind = []
-          ImageIndex = 6
           Images = dm.image
+          ImageIndex = 6
           Reflected = True
         end
         object sSpeedButton19: TsSpeedButton
@@ -360,8 +353,8 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
-          ImageIndex = 17
           Images = dm.image
+          ImageIndex = 17
           Reflected = True
         end
         object sb_return_kirim: TsSpeedButton
@@ -382,8 +375,8 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
-          ImageIndex = 20
           Images = dm.image
+          ImageIndex = 20
           Reflected = True
         end
         object spdbtnac_return: TsSpeedButton
@@ -404,8 +397,8 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
-          ImageIndex = 19
           Images = dm.image
+          ImageIndex = 19
           Reflected = True
         end
         object spdbtnkirim: TsSpeedButton
@@ -426,8 +419,8 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
-          ImageIndex = 8
           Images = dm.image
+          ImageIndex = 8
           Reflected = True
         end
         object sb_receipt: TsSpeedButton
@@ -448,8 +441,8 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
-          ImageIndex = 18
           Images = dm.image
+          ImageIndex = 18
           Reflected = True
         end
         object sb_realCard: TsSpeedButton
@@ -470,8 +463,8 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
-          ImageIndex = 10
           Images = dm.image
+          ImageIndex = 10
           Reflected = True
         end
         object sb_Barcode: TsSpeedButton
@@ -492,16 +485,14 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
-          ImageIndex = 15
           Images = dm.image
+          ImageIndex = 15
           Reflected = True
         end
       end
     end
     object ts_1: TsTabSheet
       Caption = 'Daftar Transaksi'
-      SkinData.CustomColor = False
-      SkinData.CustomFont = False
       object spnl1: TsPanel
         Left = 0
         Top = 0
@@ -552,9 +543,8 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alRight
           SkinData.SkinSection = 'TOOLBUTTON'
-          DisabledGlyphKind = []
-          ImageIndex = 6
           Images = dm.image
+          ImageIndex = 6
           Reflected = True
         end
         object sb_list_purchase: TsSpeedButton
@@ -708,8 +698,6 @@ object f_utama: Tf_utama
     end
     object sTabSheet2: TsTabSheet
       Caption = 'Master Data'
-      SkinData.CustomColor = False
-      SkinData.CustomFont = False
       object sCoolBar1: TsPanel
         Left = 0
         Top = 0
@@ -739,15 +727,14 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alRight
           SkinData.SkinSection = 'TOOLBUTTON'
-          DisabledGlyphKind = []
-          ImageIndex = 6
           Images = dm.image
+          ImageIndex = 6
           Reflected = True
         end
         object sSpeedButton1: TsSpeedButton
           Left = 6
           Top = 6
-          Width = 123
+          Width = 100
           Height = 69
           Cursor = crHandPoint
           Action = ac_company
@@ -762,14 +749,14 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
-          ImageIndex = 3
           Images = dm.image
+          ImageIndex = 3
           Reflected = True
         end
         object sSpeedButton3: TsSpeedButton
-          Left = 129
+          Left = 106
           Top = 6
-          Width = 112
+          Width = 100
           Height = 69
           Cursor = crHandPoint
           Action = Ac_supplier
@@ -784,14 +771,14 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
-          ImageIndex = 1
           Images = dm.image
+          ImageIndex = 1
           Reflected = True
         end
         object sSpeedButton4: TsSpeedButton
-          Left = 241
+          Left = 206
           Top = 6
-          Width = 114
+          Width = 100
           Height = 69
           Cursor = crHandPoint
           Action = ac_cust
@@ -806,14 +793,14 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
-          ImageIndex = 4
           Images = dm.image
+          ImageIndex = 4
           Reflected = True
         end
         object sSpeedButton23: TsSpeedButton
-          Left = 355
+          Left = 306
           Top = 6
-          Width = 142
+          Width = 100
           Height = 69
           Cursor = crHandPoint
           Action = ac_user
@@ -828,12 +815,12 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
-          ImageIndex = 5
           Images = dm.image
+          ImageIndex = 5
           Reflected = True
         end
         object SbubahPassword: TsSpeedButton
-          Left = 497
+          Left = 406
           Top = 6
           Width = 142
           Height = 69
@@ -851,12 +838,12 @@ object f_utama: Tf_utama
           OnClick = SbubahPasswordClick
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
-          ImageIndex = 5
           Images = dm.image
+          ImageIndex = 5
           Reflected = True
         end
         object SbGroupBarang: TsSpeedButton
-          Left = 639
+          Left = 548
           Top = 6
           Width = 142
           Height = 69
@@ -874,16 +861,14 @@ object f_utama: Tf_utama
           OnClick = SbGroupBarangClick
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
-          ImageIndex = 9
           Images = dm.image
+          ImageIndex = 9
           Reflected = True
         end
       end
     end
     object ts_set_inv: TsTabSheet
       Caption = 'Setting Inventory'
-      SkinData.CustomColor = False
-      SkinData.CustomFont = False
       object sPanel1: TsPanel
         Left = 0
         Top = 0
@@ -913,8 +898,8 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
-          ImageIndex = 13
           Images = dm.image
+          ImageIndex = 13
           Reflected = True
         end
         object sSpeedButton6: TsSpeedButton
@@ -935,9 +920,8 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alRight
           SkinData.SkinSection = 'TOOLBUTTON'
-          DisabledGlyphKind = []
-          ImageIndex = 6
           Images = dm.image
+          ImageIndex = 6
           Reflected = True
         end
         object sSpeedButton7: TsSpeedButton
@@ -958,8 +942,8 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
-          ImageIndex = 9
           Images = dm.image
+          ImageIndex = 9
           Reflected = True
         end
         object sSpeedButton8: TsSpeedButton
@@ -980,8 +964,8 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
-          ImageIndex = 11
           Images = dm.image
+          ImageIndex = 11
           Reflected = True
         end
         object sSpeedButton9: TsSpeedButton
@@ -1002,8 +986,8 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
-          ImageIndex = 10
           Images = dm.image
+          ImageIndex = 10
           Reflected = True
         end
         object sSpeedButton10: TsSpeedButton
@@ -1024,8 +1008,8 @@ object f_utama: Tf_utama
           Spacing = 0
           Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
-          ImageIndex = 12
           Images = dm.image
+          ImageIndex = 12
           Reflected = True
         end
       end
@@ -1045,11 +1029,6 @@ object f_utama: Tf_utama
     SkinData.SkinSection = 'PAGECONTROL'
   end
   object sSkinProvider1: TsSkinProvider
-    AddedTitle.Font.Charset = DEFAULT_CHARSET
-    AddedTitle.Font.Color = clNone
-    AddedTitle.Font.Height = -11
-    AddedTitle.Font.Name = 'MS Sans Serif'
-    AddedTitle.Font.Style = []
     SkinData.SkinSection = 'FORM'
     TitleButtons = <>
     Left = 8
@@ -1245,7 +1224,7 @@ object f_utama: Tf_utama
     end
     object ac_company: TAction
       Tag = 8
-      Caption = 'Company'
+      Caption = 'Perusahaan'
       ImageIndex = 3
       OnExecute = ac_companyExecute
     end
