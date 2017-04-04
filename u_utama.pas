@@ -1135,7 +1135,12 @@ end;
 
 procedure Tf_utama.ac_settingExecute(Sender: TObject);
 begin
-  //
+  if not (HakAkses('admin')) then
+  begin
+    messagedlg('Anda tidak mempunyai hak untuk ' + #13#10 +
+      'melanjutkan AKSES ke dalam MENU ini...', mtWarning, [mbOk], 0);
+    Exit;
+  end;
 end;
 
 end.
