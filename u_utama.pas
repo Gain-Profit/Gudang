@@ -227,7 +227,7 @@ uses
   acselectskin, u_receipt, u_kirim, u_list_kirim, u_kirim_data, u_list_jual,
   u_list_stock_opname, u_return_kirim, u_list_return_kirim, u_laporan,
   u_ganti_hari, u_ubah_password, u_list_return_jual, u_barcode, u_real_card,
-  u_Group_Barang;
+  u_Group_Barang, u_settings;
 
 {$R *.dfm}
 
@@ -1141,6 +1141,9 @@ begin
       'melanjutkan AKSES ke dalam MENU ini...', mtWarning, [mbOk], 0);
     Exit;
   end;
+
+  Application.CreateForm(TFrmSetting, FrmSetting);
+  FrmSetting.ShowModal;
 end;
 
 end.

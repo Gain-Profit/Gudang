@@ -43,7 +43,8 @@ uses
   u_ganti_hari in 'u_ganti_hari.pas' {f_hari},
   u_ubah_password in 'u_ubah_password.pas' {F_ubahPassword},
   u_barcode in 'u_barcode.pas' {f_Barcode},
-  u_real_card in 'u_real_card.pas' {f_realCard};
+  u_real_card in 'u_real_card.pas' {f_realCard},
+  u_settings in 'u_settings.pas' {FrmSetting};
 
 {$R *.res}
 
