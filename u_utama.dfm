@@ -95,7 +95,7 @@ object f_utama: Tf_utama
     Top = 0
     Width = 1003
     Height = 113
-    ActivePage = ts_1
+    ActivePage = sTabSheet2
     Align = alTop
     BiDiMode = bdLeftToRight
     Font.Charset = DEFAULT_CHARSET
@@ -754,7 +754,7 @@ object f_utama: Tf_utama
           Reflected = True
         end
         object sSpeedButton3: TsSpeedButton
-          Left = 106
+          Left = 206
           Top = 6
           Width = 100
           Height = 69
@@ -776,7 +776,7 @@ object f_utama: Tf_utama
           Reflected = True
         end
         object sSpeedButton4: TsSpeedButton
-          Left = 206
+          Left = 306
           Top = 6
           Width = 100
           Height = 69
@@ -798,7 +798,7 @@ object f_utama: Tf_utama
           Reflected = True
         end
         object sSpeedButton23: TsSpeedButton
-          Left = 306
+          Left = 406
           Top = 6
           Width = 100
           Height = 69
@@ -820,7 +820,7 @@ object f_utama: Tf_utama
           Reflected = True
         end
         object SbubahPassword: TsSpeedButton
-          Left = 406
+          Left = 506
           Top = 6
           Width = 142
           Height = 69
@@ -843,7 +843,7 @@ object f_utama: Tf_utama
           Reflected = True
         end
         object SbGroupBarang: TsSpeedButton
-          Left = 548
+          Left = 648
           Top = 6
           Width = 142
           Height = 69
@@ -863,6 +863,28 @@ object f_utama: Tf_utama
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 9
+          Reflected = True
+        end
+        object sSpeedButton11: TsSpeedButton
+          Left = 106
+          Top = 6
+          Width = 100
+          Height = 69
+          Cursor = crHandPoint
+          Action = ac_setting
+          Flat = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Rockwell'
+          Font.Style = [fsBold]
+          Layout = blGlyphTop
+          ParentFont = False
+          Spacing = 0
+          Align = alLeft
+          SkinData.SkinSection = 'TOOLBUTTON'
+          Images = dm.image
+          ImageIndex = 13
           Reflected = True
         end
       end
@@ -1361,6 +1383,11 @@ object f_utama: Tf_utama
     object ac_list_return_jual: TAction
       Caption = 'Daftar Return'#13#10'Penjualan'
       OnExecute = ac_list_return_jualExecute
+    end
+    object ac_setting: TAction
+      Caption = 'Setting'
+      ImageIndex = 13
+      OnExecute = ac_settingExecute
     end
   end
   object Timer1: TTimer

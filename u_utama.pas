@@ -153,6 +153,8 @@ type
     sb_realCard: TsSpeedButton;
     sb_Barcode: TsSpeedButton;
     SbGroupBarang: TsSpeedButton;
+    ac_setting: TAction;
+    sSpeedButton11: TsSpeedButton;
     procedure ac_barangExecute(Sender: TObject);
     procedure ac_hargaExecute(Sender: TObject);
     procedure ac_receiptExecute(Sender: TObject);
@@ -204,6 +206,7 @@ type
     procedure cek_update;
     procedure ac_barcodeExecute(Sender: TObject);
     procedure SbGroupBarangClick(Sender: TObject);
+    procedure ac_settingExecute(Sender: TObject);
   private
     procedure WmAfterShow(var Msg: TMessage); message WM_AFTER_SHOW;
     { Private declarations }
@@ -1128,6 +1131,11 @@ begin
     application.CreateForm(TFGroupBarang, FGroupBarang);
 
   FGroupBarang.Show;
+end;
+
+procedure Tf_utama.ac_settingExecute(Sender: TObject);
+begin
+  //
 end;
 
 end.
