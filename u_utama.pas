@@ -1101,25 +1101,22 @@ end;
 
 procedure Tf_utama.cek_update;
 var
-  versiDB, versiAPP, URLDownload: string;
-  fileName, UrlDownloadLocal: string;
+  LVersiDB, LVersiAPP: TVersion;
+  LSql :string;
 begin
-  versiAPP := FVersion.AsString;
+  LVersiAPP := FVersion;
+  LSql := 'SELECT versi_terbaru FROM app_versi WHERE kode="gudang.exe"';
+  fungsi.SQLExec(dm.Q_Show, LSql, true);
+  LVersiDB := TVersion.Create(dm.Q_Show.FieldByName('versi_terbaru').AsString);
 
-  fungsi.SQLExec(dm.Q_Show,
-    'select versi_terbaru, URLdownload from  app_versi where kode="gudang.exe"', true);
-  versiDB := dm.Q_Show.FieldByName('versi_terbaru').AsString;
-  URLDownload := dm.Q_Show.FieldByName('URLdownload').AsString;
-  fileName := Copy(URLDownload, LastDelimiter('/', URLDownload) + 1, Length(URLDownload));
-  UrlDownloadLocal := 'http://' + dm.db_conn.Server + '/GainProfit/' + fileName;
-
-  if versiAPP < versiDB then
+  if CompareVersion(LVersiDB, LVersiAPP) = vHigher then
   begin
     ShowMessage('APLIKASI GUDANG TIDAK DAPAT DIJALANKAN' + #13#10 +
-      'aplikasi terbaru dengan versi : ' + versiDB + #13#10 + 'SUDAH DIRILIS...');
+      'aplikasi terbaru dengan versi : ' + LVersiDB.AsString + #13#10 + 'SUDAH DIRILIS...');
 
     Application.Terminate;
   end;
+  LVersiDB.Free;
 end;
 
 procedure Tf_utama.ac_barcodeExecute(Sender: TObject);
