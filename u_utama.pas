@@ -207,7 +207,9 @@ type
     procedure ac_barcodeExecute(Sender: TObject);
     procedure SbGroupBarangClick(Sender: TObject);
     procedure ac_settingExecute(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
+    FVersion : TVersion;
     procedure WmAfterShow(var Msg: TMessage); message WM_AFTER_SHOW;
     { Private declarations }
   public
@@ -535,7 +537,7 @@ end;
 procedure Tf_utama.FormShow(Sender: TObject);
 begin
   cek_update;
-  sb.Panels[9].Text := 'Versi: ' + fungsi.GetVersiApp;
+  sb.Panels[9].Text := 'Versi: ' + FVersion.AsString;
   pc.ActivePage := ts_master;
 
   dm.metu_kabeh := False;
@@ -750,6 +752,7 @@ begin
   ThousandSeparator := ',';
   ShortDateFormat := 'dd/mm/yyyy';
   ShortTimeFormat := 'hh:nn:ss';
+  FVersion := TAppVersion.Create(Application.ExeName);
 end;
 
 procedure Tf_utama.CentralofProfitHelp1Click(Sender: TObject);
@@ -1101,7 +1104,7 @@ var
   versiDB, versiAPP, URLDownload: string;
   fileName, UrlDownloadLocal: string;
 begin
-  versiAPP := fungsi.GetVersiApp;
+  versiAPP := FVersion.AsString;
 
   fungsi.SQLExec(dm.Q_Show,
     'select versi_terbaru, URLdownload from  app_versi where kode="gudang.exe"', true);
@@ -1144,6 +1147,11 @@ begin
 
   Application.CreateForm(TFrmSetting, FrmSetting);
   FrmSetting.ShowModal;
+end;
+
+procedure Tf_utama.FormDestroy(Sender: TObject);
+begin
+  FVersion.Free;
 end;
 
 end.
