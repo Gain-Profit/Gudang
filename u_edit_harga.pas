@@ -223,6 +223,10 @@ begin
       '" and kd_macam_harga="' + cb_macam.Text + '" and kd_perusahaan="' +
       perusahaan + '"', false);
   end;
+
+  fungsi.SQLExec(dm.Q_Exe, 'update tb_barang set hpp_lama = hpp_ahir ' +
+    'WHERE kd_barang="' + ed_plu.Text + '" and kd_perusahaan="' +
+    perusahaan + '"', false);
 end;
 
 procedure TF_ubah_harga.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
