@@ -112,37 +112,37 @@
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="..\src\u_cari.pas">
-            <Form>f_cari</Form>
+            <Form>F_cari</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_login.pas">
             <Form>F_Login</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_utama.pas">
-            <Form>f_utama</Form>
+            <Form>F_utama</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_company.pas">
-            <Form>f_comp</Form>
+            <Form>F_comp</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_pengguna.pas">
-            <Form>f_emp</Form>
+            <Form>F_emp</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_supplier.pas">
-            <Form>f_supplier</Form>
+            <Form>F_supplier</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_pelanggan.pas">
-            <Form>f_cust</Form>
+            <Form>F_cust</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_jenis.pas">
-            <Form>f_jenis</Form>
+            <Form>F_jenis</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_golongan.pas">
-            <Form>f_golongan</Form>
+            <Form>F_golongan</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_kategori.pas">
             <Form>F_Kategori</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_merk.pas">
-            <Form>f_merk</Form>
+            <Form>F_merk</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_satuan.pas">
             <Form>F_satuan</Form>
@@ -157,7 +157,7 @@
             <Form>F_barang_property</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_barang_supplier.pas">
-            <Form>f_barang_supp</Form>
+            <Form>F_barang_supp</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_group_barang.pas">
             <Form>FGroupBarang</Form>
@@ -166,7 +166,7 @@
             <Form>FGroupBarangDetail</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_planogram.pas">
-            <Form>f_planogram</Form>
+            <Form>F_planogram</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_harga.pas">
             <Form>F_ubah_harga</Form>
@@ -175,43 +175,43 @@
             <Form>F_Edit_Harga</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_purchase.pas">
-            <Form>f_purchase</Form>
+            <Form>F_purchase</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_receipt.pas">
-            <Form>f_RO</Form>
+            <Form>F_RO</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_return.pas">
-            <Form>f_return</Form>
+            <Form>F_return</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_kirim.pas">
             <Form>F_kirim</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_return_kirim.pas">
-            <Form>f_return_kirim</Form>
+            <Form>F_return_kirim</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_list_purchase.pas">
-            <Form>f_List_purchase</Form>
+            <Form>F_List_purchase</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_list_receipt.pas">
-            <Form>f_list_receipt</Form>
+            <Form>F_list_receipt</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_list_return.pas">
-            <Form>f_list_return</Form>
+            <Form>F_list_return</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_list_kirim.pas">
             <Form>F_list_kirim</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_list_return_kirim.pas">
-            <Form>f_list_return_kirim</Form>
+            <Form>F_list_return_kirim</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_list_jual.pas">
-            <Form>f_list_sales</Form>
+            <Form>F_list_sales</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_list_return_jual.pas">
-            <Form>f_list_return_jual</Form>
+            <Form>F_list_return_jual</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_list_stock_opname.pas">
-            <Form>f_list_SO</Form>
+            <Form>F_list_SO</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_kirim_data.pas">
             <Form>F_kirim_data</Form>
@@ -220,16 +220,16 @@
             <Form>F_toko</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_ganti_hari.pas">
-            <Form>f_hari</Form>
+            <Form>F_hari</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_ubah_password.pas">
             <Form>F_ubahPassword</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_barcode.pas">
-            <Form>f_Barcode</Form>
+            <Form>F_Barcode</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_real_card.pas">
-            <Form>f_realCard</Form>
+            <Form>F_realCard</Form>
         </DCCReference>
         <DCCReference Include="..\src\u_settings.pas">
             <Form>FrmSetting</Form>

@@ -14,7 +14,7 @@ uses
   dxSkinscxPCPainter, cxNavigator;
 
 type
-  Tf_return_kirim = class(TForm)
+  TF_return_kirim = class(TForm)
     sPanel1: TsPanel;
     panel1: TsPanel;
     Mm_nama: TsMemo;
@@ -100,7 +100,7 @@ type
   end;
 
 var
-  f_return_kirim: Tf_return_kirim;
+  F_return_kirim: TF_return_kirim;
 
 implementation
 
@@ -109,7 +109,7 @@ uses
 
 {$R *.dfm}
 
-procedure Tf_return_kirim.WMMDIACTIVATE(var msg: TWMMDIACTIVATE);
+procedure TF_return_kirim.WMMDIACTIVATE(var msg: TWMMDIACTIVATE);
 var
   active: TWinControl;
   idx: Integer;
@@ -119,30 +119,30 @@ begin
   begin
     if Assigned(active) then
     begin
-      idx := f_utama.tc_child.Tabs.IndexOfObject(TObject(msg.ActiveWnd));
-      f_utama.tc_child.Tag := -1;
-      f_utama.tc_child.TabIndex := idx;
-      f_utama.tc_child.Tag := 0;
+      idx := F_utama.tc_child.Tabs.IndexOfObject(TObject(msg.ActiveWnd));
+      F_utama.tc_child.Tag := -1;
+      F_utama.tc_child.TabIndex := idx;
+      F_utama.tc_child.Tag := 0;
     end;
   end;
 end;
 
-procedure Tf_return_kirim.FormCreate(Sender: TObject);
+procedure TF_return_kirim.FormCreate(Sender: TObject);
 begin
-  f_utama.MDIChildCreated(self.Handle);
+  F_utama.MDIChildCreated(self.Handle);
   ed_code.width := panel2.width - 260;
 end;
 
-procedure Tf_return_kirim.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TF_return_kirim.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  f_utama.MDIChildDestroyed(Self.Handle);
+  F_utama.MDIChildDestroyed(Self.Handle);
   Action := cafree;
-  f_return_kirim := nil;
+  F_return_kirim := nil;
 end;
 
-procedure Tf_return_kirim.FormShow(Sender: TObject);
+procedure TF_return_kirim.FormShow(Sender: TObject);
 begin
-  if (f_utama.sb.Panels[8].Text = 'PUSAT') and (f_utama.HakAkses('gdTrReturnKirim')) then
+  if (F_utama.sb.Panels[8].Text = 'PUSAT') and (F_utama.HakAkses('gdTrReturnKirim')) then
   begin
     b_new.Enabled := True;
     ed_no_faktur.Enabled := True;
@@ -154,7 +154,7 @@ begin
   end;
 end;
 
-procedure Tf_return_kirim.bersih;
+procedure TF_return_kirim.bersih;
 begin
   LblToko.Caption := '';
   ed_tgl.Date := now();
@@ -167,7 +167,7 @@ begin
   ed_nilai_faktur.Clear;
 end;
 
-procedure Tf_return_kirim.tampil_data;
+procedure TF_return_kirim.tampil_data;
 var
   h: Integer;
   x_hpp: Currency;
@@ -205,7 +205,7 @@ begin
 
 end;
 
-procedure Tf_return_kirim.CreateRows;
+procedure TF_return_kirim.CreateRows;
 var
   baris_baru: integer;
   f: integer;
@@ -244,7 +244,7 @@ begin
   SbToko.Enabled:= False;
 end;
 
-procedure Tf_return_kirim.ed_codeKeyDown(Sender: TObject; var Key: Word; Shift:
+procedure TF_return_kirim.ed_codeKeyDown(Sender: TObject; var Key: Word; Shift:
   TShiftState);
 var
   LSql : string;
@@ -306,7 +306,7 @@ begin
 
 end;
 
-procedure Tf_return_kirim.TableViewFocusedRecordChanged(Sender:
+procedure TF_return_kirim.TableViewFocusedRecordChanged(Sender:
   TcxCustomGridTableView; APrevFocusedRecord, AFocusedRecord:
   TcxCustomGridRecord; ANewItemRecordFocusingChanged: Boolean);
 begin
@@ -325,7 +325,7 @@ begin
   end;
 end;
 
-procedure Tf_return_kirim.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TF_return_kirim.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   if (Shift = [ssctrl]) and (Key = vk_delete) then
     if (MessageDlg('Yakinkah, Anda akan menghapus data ini???', mtConfirmation,
@@ -342,19 +342,19 @@ begin
     b_autoClick(Sender);
 end;
 
-procedure Tf_return_kirim.b_newClick(Sender: TObject);
+procedure TF_return_kirim.b_newClick(Sender: TObject);
 begin
   bersih;
 end;
 
-procedure Tf_return_kirim.SbTokoClick(Sender: TObject);
+procedure TF_return_kirim.SbTokoClick(Sender: TObject);
 var
   sebelum: string;
 begin
   sebelum := EdToko.Text;
 
   EdToko.SetFocus;
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi := 'select kd_pelanggan,n_pelanggan from ' +
@@ -378,7 +378,7 @@ begin
 
 end;
 
-procedure Tf_return_kirim.EdTokoKeyDown(Sender: TObject; var Key: Word;
+procedure TF_return_kirim.EdTokoKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   if (key = vk_return) and (SbToko.Enabled = True) then
@@ -388,7 +388,7 @@ begin
   end;
 end;
 
-procedure Tf_return_kirim.sb_cariClick(Sender: TObject);
+procedure TF_return_kirim.sb_cariClick(Sender: TObject);
 begin
   if EdToko.Text = '' then
   begin
@@ -398,7 +398,7 @@ begin
   end;
 
   ed_code.SetFocus;
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi := 'select kd_barang, n_barang, hpp_aktif from tb_barang where kd_perusahaan="' +
@@ -415,7 +415,7 @@ begin
   end;
 end;
 
-procedure Tf_return_kirim.TableViewTcxGridDataControllerTcxDataSummaryFooterSummaryItems4GetText
+procedure TF_return_kirim.TableViewTcxGridDataControllerTcxDataSummaryFooterSummaryItems4GetText
   (Sender: TcxDataSummaryItem; const AValue: Variant; AIsFooter: Boolean; var
   AText: string);
 begin
@@ -425,7 +425,7 @@ begin
     ed_nilai_faktur.Clear;
 end;
 
-procedure Tf_return_kirim.b_autoClick(Sender: TObject);
+procedure TF_return_kirim.b_autoClick(Sender: TObject);
 var
   w: Integer;
   x, sekarang: string;
@@ -455,12 +455,12 @@ begin
 
 end;
 
-procedure Tf_return_kirim.sSpeedButton18Click(Sender: TObject);
+procedure TF_return_kirim.sSpeedButton18Click(Sender: TObject);
 begin
   close;
 end;
 
-procedure Tf_return_kirim.ed_no_fakturChange(Sender: TObject);
+procedure TF_return_kirim.ed_no_fakturChange(Sender: TObject);
 var
   urip: Boolean;
 begin
@@ -471,14 +471,14 @@ begin
   begin
     ed_no_faktur.Color := clblue;
     Caption := 'R. Kirim (' + ed_no_faktur.Text + ')';
-    f_utama.tc_child.Tabs.Strings[f_utama.tc_child.TabIndex] := Caption;
+    F_utama.tc_child.Tabs.Strings[F_utama.tc_child.TabIndex] := Caption;
     urip := True;
   end
   else
   begin
     ed_no_faktur.Color := clwhite;
     Caption := 'R. Kirim (New)';
-    f_utama.tc_child.Tabs.Strings[f_utama.tc_child.TabIndex] := Caption;
+    F_utama.tc_child.Tabs.Strings[F_utama.tc_child.TabIndex] := Caption;
     urip := False;
   end;
 
@@ -492,7 +492,7 @@ begin
   ed_code.ReadOnly := urip;
 end;
 
-procedure Tf_return_kirim.b_printClick(Sender: TObject);
+procedure TF_return_kirim.b_printClick(Sender: TObject);
 begin
   fungsi.SQLExec(dm.Q_laporan,
     'select * from vw_cetak_return_kirim where kd_perusahaan="' + dm.kd_perusahaan
@@ -503,7 +503,7 @@ begin
   dm.laporan.ShowReport;
 end;
 
-procedure Tf_return_kirim.b_simpanClick(Sender: TObject);
+procedure TF_return_kirim.b_simpanClick(Sender: TObject);
 var
   LSQL, kd_faktur: string;
   LReturnKirimRinci, LReturnRinci, LIsiHppAktif, LIsiStokOH, LIsiStokOHMin: string;
@@ -649,7 +649,7 @@ begin
   end;
 end;
 
-procedure Tf_return_kirim.ed_fak_kirimChange(Sender: TObject);
+procedure TF_return_kirim.ed_fak_kirimChange(Sender: TObject);
 begin
   fungsi.SQLExec(dm.Q_temp,
     'select faktur from vw_piutang where `status`= "belum lunas" and faktur="' +
@@ -661,7 +661,7 @@ begin
     ed_fak_kirim.Color := clwhite;
 end;
 
-procedure Tf_return_kirim.b_simpan_fileClick(Sender: TObject);
+procedure TF_return_kirim.b_simpan_fileClick(Sender: TObject);
 var
   F: TextFile;
   x: Integer;
@@ -693,7 +693,7 @@ begin
   end;
 end;
 
-procedure Tf_return_kirim.b_loadClick(Sender: TObject);
+procedure TF_return_kirim.b_loadClick(Sender: TObject);
 var
   F: TextFile;
   Tmp, x: Integer;
@@ -751,7 +751,7 @@ begin
   end;
 end;
 
-procedure Tf_return_kirim.ed_codeKeyPress(Sender: TObject; var Key: Char);
+procedure TF_return_kirim.ed_codeKeyPress(Sender: TObject; var Key: Char);
 var
   harga, qty: Currency;
   kode: string;
@@ -797,7 +797,7 @@ begin
 
 end;
 
-procedure Tf_return_kirim.ed_no_fakturKeyDown(Sender: TObject; var Key: Word;
+procedure TF_return_kirim.ed_no_fakturKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   if (Key = vk_return) and (b_auto.Enabled = True) then
@@ -807,12 +807,12 @@ begin
   end;
 end;
 
-procedure Tf_return_kirim.EdTokoChange(Sender: TObject);
+procedure TF_return_kirim.EdTokoChange(Sender: TObject);
 begin
   ed_fak_kirimChange(Self);
 end;
 
-procedure Tf_return_kirim.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+procedure TF_return_kirim.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
   if (EdToko.Text = dm.kd_perusahaan) then
   begin

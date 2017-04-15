@@ -7,7 +7,7 @@ uses
   Dialogs, sLabel, StdCtrls;
 
 type
-  Tf_hari = class(TForm)
+  TF_hari = class(TForm)
     l_1: TsLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
@@ -17,16 +17,16 @@ type
   end;
 
 var
-  f_hari: Tf_hari;
+  F_hari: TF_hari;
 
 implementation
 
 {$R *.dfm}
 
-procedure Tf_hari.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TF_hari.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := caFree;
-  f_hari := nil;
+  F_hari := nil;
 end;
 
 end.

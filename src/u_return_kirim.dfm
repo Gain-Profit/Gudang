@@ -1,4 +1,4 @@
-object f_return_kirim: Tf_return_kirim
+object F_return_kirim: TF_return_kirim
   Left = 51
   Top = 180
   Width = 1024

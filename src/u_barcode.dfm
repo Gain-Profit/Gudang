@@ -1,4 +1,4 @@
-object f_Barcode: Tf_Barcode
+object F_Barcode: TF_Barcode
   Left = 344
   Top = 139
   BorderStyle = bsDialog

@@ -1,4 +1,4 @@
-object f_jenis: Tf_jenis
+object F_jenis: TF_jenis
   Left = 486
   Top = 228
   BorderStyle = bsDialog

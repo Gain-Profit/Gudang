@@ -1,4 +1,4 @@
-object f_realCard: Tf_realCard
+object F_realCard: TF_realCard
   Left = 336
   Top = 208
   BorderStyle = bsDialog

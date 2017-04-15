@@ -1,4 +1,4 @@
-object f_RO: Tf_RO
+object F_RO: TF_RO
   Left = 312
   Top = 132
   Width = 1009

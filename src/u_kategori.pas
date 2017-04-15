@@ -50,8 +50,8 @@ end;
 
 procedure TF_Kategori.ubah;
 begin
-  ed_kode.Text := f_cari.q_cari.FieldByName('tag').AsString;
-  ed_desc.text := f_cari.q_cari.FieldByName('n_kategori').AsString;
+  ed_kode.Text := F_cari.q_cari.FieldByName('tag').AsString;
+  ed_desc.text := F_cari.q_cari.FieldByName('n_kategori').AsString;
   kategori_baru := false;
 end;
 
@@ -83,11 +83,11 @@ begin
       showmessage('penyimpanan data gagal '#10#13'' + e.Message);
     end;
   end;
-  f_cari.q_cari.Close;
-  f_cari.q_cari.Open;
+  F_cari.q_cari.Close;
+  F_cari.q_cari.Open;
 
-  f_cari.clm1.caption := 'No';
-  f_cari.clm2.caption := 'Deskripsi';
+  F_cari.clm1.caption := 'No';
+  F_cari.clm2.caption := 'Deskripsi';
   close;
 end;
 

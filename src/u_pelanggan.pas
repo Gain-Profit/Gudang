@@ -8,7 +8,7 @@ uses
   sCurrEdit, sCurrencyEdit, Mask, sMaskEdit, sCustomComboEdit;
 
 type
-  Tf_cust = class(TForm)
+  TF_cust = class(TForm)
     sLabel2: TsLabel;
     sLabel1: TsLabel;
     sLabel3: TsLabel;
@@ -41,7 +41,7 @@ type
   end;
 
 var
-  f_cust: Tf_cust;
+  F_cust: TF_cust;
 
 implementation
 
@@ -50,7 +50,7 @@ uses
 
 {$R *.dfm}
 
-procedure Tf_cust.baru;
+procedure TF_cust.baru;
 begin
   ed_kode.Clear;
   ed_alamat.Clear;
@@ -63,12 +63,12 @@ begin
   supp_baru := true;
 end;
 
-procedure Tf_cust.ubah;
+procedure TF_cust.ubah;
 begin
   ed_kode.ReadOnly := true;
   b_auto.Enabled := False;
 
-  ed_kode.Text := f_cari.q_cari.FieldByName('kd_pelanggan').AsString;
+  ed_kode.Text := F_cari.q_cari.FieldByName('kd_pelanggan').AsString;
   fungsi.SQLExec(dm.Q_temp, 'select * from tb_pelanggan where kd_pelanggan="' +
     ed_kode.Text + '" and kd_perusahaan="' + dm.kd_perusahaan + '"', true);
   ed_alamat.Text := dm.Q_temp.FieldByName('alamat').AsString;
@@ -81,12 +81,12 @@ begin
   supp_baru := false;
 end;
 
-procedure Tf_cust.B_newClick(Sender: TObject);
+procedure TF_cust.B_newClick(Sender: TObject);
 begin
   baru;
 end;
 
-procedure Tf_cust.B_saveClick(Sender: TObject);
+procedure TF_cust.B_saveClick(Sender: TObject);
 begin
   if ed_kode.Text = '' then
   begin
@@ -126,13 +126,13 @@ begin
   close;
 end;
 
-procedure Tf_cust.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TF_cust.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  f_cari.q_cari.Close;
-  f_cari.q_cari.Open;
+  F_cari.q_cari.Close;
+  F_cari.q_cari.Open;
 end;
 
-procedure Tf_cust.b_autoClick(Sender: TObject);
+procedure TF_cust.b_autoClick(Sender: TObject);
 begin
   fungsi.SQLExec(dm.Q_temp, Format('SELECT CONCAT("CU-",LPAD(IFNULL(max(right(kd_pelanggan,4)),0)+1, 4, "0")) '
     + 'as new_id FROM tb_pelanggan WHERE kd_perusahaan= "%s"  AND kd_pelanggan like "CU-%%"',

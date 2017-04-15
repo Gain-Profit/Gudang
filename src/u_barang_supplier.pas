@@ -13,7 +13,7 @@ uses
   dxSkinscxPCPainter, cxNavigator;
 
 type
-  Tf_barang_supp = class(TForm)
+  TF_barang_supp = class(TForm)
     cxGrid1: TcxGrid;
     cxGridDBTableView1: TcxGridDBTableView;
     cxGridDBColumn1: TcxGridDBColumn;
@@ -52,7 +52,7 @@ type
   end;
 
 var
-  f_barang_supp: Tf_barang_supp;
+  F_barang_supp: TF_barang_supp;
 
 implementation
 
@@ -61,9 +61,9 @@ uses
 
 {$R *.dfm}
 
-procedure Tf_barang_supp.sb_suppClick(Sender: TObject);
+procedure TF_barang_supp.sb_suppClick(Sender: TObject);
 begin
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi := 'select kode,n_supp from tb_supp where kd_perusahaan="' + dm.kd_perusahaan
@@ -82,19 +82,19 @@ begin
   end;
 end;
 
-procedure Tf_barang_supp.ed_suppChange(Sender: TObject);
+procedure TF_barang_supp.ed_suppChange(Sender: TObject);
 begin
   fungsi.SQLExec(q_supp, 'select * from vw_supp_barang where kd_perusahaan="' +
     dm.kd_perusahaan + '" and kd_suplier="' + ed_supp.Text + '"', true);
 end;
 
-procedure Tf_barang_supp.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TF_barang_supp.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   q_supp.Close;
   action := cafree;
 end;
 
-procedure Tf_barang_supp.cxGridDBTableView1KeyDown(Sender: TObject; var Key:
+procedure TF_barang_supp.cxGridDBTableView1KeyDown(Sender: TObject; var Key:
   Word; Shift: TShiftState);
 begin
   if (key = vk_delete) and (MessageDlg('Yakinkah, akan menghapus data ini?...',
@@ -123,7 +123,7 @@ begin
   end;
 end;
 
-procedure Tf_barang_supp.ed_suppKeyDown(Sender: TObject; var Key: Word; Shift:
+procedure TF_barang_supp.ed_suppKeyDown(Sender: TObject; var Key: Word; Shift:
   TShiftState);
 begin
   if key = vk_return then
@@ -133,7 +133,7 @@ begin
   end;
 end;
 
-procedure Tf_barang_supp.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TF_barang_supp.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   if key = vk_escape then
     close;
@@ -143,7 +143,7 @@ begin
     sb_suppClick(Sender);
 end;
 
-procedure Tf_barang_supp.ed_kodeKeyDown(Sender: TObject; var Key: Word; Shift:
+procedure TF_barang_supp.ed_kodeKeyDown(Sender: TObject; var Key: Word; Shift:
   TShiftState);
 begin
   if Key = vk_f2 then
@@ -201,10 +201,10 @@ begin
   end;
 end;
 
-procedure Tf_barang_supp.sb_cariClick(Sender: TObject);
+procedure TF_barang_supp.sb_cariClick(Sender: TObject);
 begin
   ed_kode.SetFocus;
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi := 'select kd_barang, n_barang from tb_barang where kd_perusahaan="' +
@@ -221,7 +221,7 @@ begin
   end;
 end;
 
-procedure Tf_barang_supp.btnPrintClick(Sender: TObject);
+procedure TF_barang_supp.btnPrintClick(Sender: TObject);
 begin
   fungsi.SQLExec(dm.Q_laporan, Q_supp.SQL.Text, true);
   dm.laporan.LoadFromFile(dm.WPath + 'laporan\gp_barang_supplier.fr3');

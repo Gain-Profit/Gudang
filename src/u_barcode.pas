@@ -12,7 +12,7 @@ uses
   dxSkinsDefaultPainters, dxSkinscxPCPainter, cxNavigator;
 
 type
-  Tf_Barcode = class(TForm)
+  TF_Barcode = class(TForm)
     ed_PID: TsEdit;
     btnBarcode: TsButton;
     sSkinProvider1: TsSkinProvider;
@@ -47,7 +47,7 @@ type
   end;
 
 var
-  f_Barcode: Tf_Barcode;
+  F_Barcode: TF_Barcode;
 
 implementation
 
@@ -56,7 +56,7 @@ uses
 
 {$R *.dfm}
 
-procedure Tf_Barcode.createRows;
+procedure TF_Barcode.createRows;
 var
   baris_baru: integer;
   f: integer;
@@ -88,7 +88,7 @@ begin
     btnBarcode.Enabled := True;
 end;
 
-procedure Tf_Barcode.ed_PIDKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TF_Barcode.ed_PIDKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   if key = vk_f2 then
     sb_cari.Click;
@@ -130,7 +130,7 @@ begin
 
 end;
 
-procedure Tf_Barcode.btnBarcodeClick(Sender: TObject);
+procedure TF_Barcode.btnBarcodeClick(Sender: TObject);
 begin
   UDLaporan.RangeEnd := reCount;
   UDLaporan.RangeEndCount := jumlahLabel;
@@ -141,10 +141,10 @@ begin
   laporan.ShowReport;
 end;
 
-procedure Tf_Barcode.sb_cariClick(Sender: TObject);
+procedure TF_Barcode.sb_cariClick(Sender: TObject);
 begin
   ed_PID.SetFocus;
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi := 'select kd_barang, n_barang from tb_barang where kd_perusahaan="' +
@@ -161,7 +161,7 @@ begin
   end;
 end;
 
-procedure Tf_Barcode.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TF_Barcode.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   if Key = vk_f2 then
     ed_PID.SetFocus;
@@ -177,12 +177,12 @@ begin
       TableView.DataController.RecordCount := 0;
 end;
 
-procedure Tf_Barcode.FormCreate(Sender: TObject);
+procedure TF_Barcode.FormCreate(Sender: TObject);
 begin
   kd_perusahaan := dm.kd_perusahaan;
 end;
 
-procedure Tf_Barcode.ed_PIDKeyPress(Sender: TObject; var Key: Char);
+procedure TF_Barcode.ed_PIDKeyPress(Sender: TObject; var Key: Char);
 var
   kode: string;
   b: Integer;
@@ -210,7 +210,7 @@ begin
   end;
 end;
 
-procedure Tf_Barcode.laporanGetValue(const VarName: string; var Value: Variant);
+procedure TF_Barcode.laporanGetValue(const VarName: string; var Value: Variant);
 begin
   if (hitung = TableView.DataController.GetValue(baris, 3) * 4) then
   begin
@@ -231,7 +231,7 @@ begin
     hitung := hitung + 1;
 end;
 
-procedure Tf_Barcode.TableViewTcxGridDataControllerTcxDataSummaryFooterSummaryItems2GetText
+procedure TF_Barcode.TableViewTcxGridDataControllerTcxDataSummaryFooterSummaryItems2GetText
   (Sender: TcxDataSummaryItem; const AValue: Variant; AIsFooter: Boolean; var
   AText: string);
 begin

@@ -13,7 +13,7 @@ uses
   dxSkinsDefaultPainters, dxSkinscxPCPainter, cxNavigator;
 
 type
-  Tf_list_receipt = class(TForm)
+  TF_list_receipt = class(TForm)
     grid: TcxGrid;
     t_data: TcxGridDBTableView;
     l_data: TcxGridLevel;
@@ -52,7 +52,7 @@ type
   end;
 
 var
-  f_list_receipt: Tf_list_receipt;
+  F_list_receipt: TF_list_receipt;
 
 implementation
 
@@ -61,7 +61,7 @@ uses
 
 {$R *.dfm}
 
-procedure Tf_list_receipt.WMMDIACTIVATE(var msg: TWMMDIACTIVATE);
+procedure TF_list_receipt.WMMDIACTIVATE(var msg: TWMMDIACTIVATE);
 var
   active: TWinControl;
   idx: Integer;
@@ -71,15 +71,15 @@ begin
   begin
     if Assigned(active) then
     begin
-      idx := f_utama.tc_child.Tabs.IndexOfObject(TObject(msg.ActiveWnd));
-      f_utama.tc_child.Tag := -1;
-      f_utama.tc_child.TabIndex := idx;
-      f_utama.tc_child.Tag := 0;
+      idx := F_utama.tc_child.Tabs.IndexOfObject(TObject(msg.ActiveWnd));
+      F_utama.tc_child.Tag := -1;
+      F_utama.tc_child.TabIndex := idx;
+      F_utama.tc_child.Tag := 0;
     end;
   end;
 end;
 
-procedure Tf_list_receipt.segarkan;
+procedure TF_list_receipt.segarkan;
 begin
   fungsi.SQLExec(dm.q_list_receipt,
     'select * from vw_list_receipt where kd_perusahaan="' + dm.kd_perusahaan +
@@ -88,25 +88,25 @@ begin
     + '', true);
 end;
 
-procedure Tf_list_receipt.t_dataCellDblClick(Sender: TcxCustomGridTableView;
+procedure TF_list_receipt.t_dataCellDblClick(Sender: TcxCustomGridTableView;
   ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift:
   TShiftState; var AHandled: Boolean);
 begin
-//if f_ro = nil then
-  application.CreateForm(tf_RO, f_RO);
+//if F_ro = nil then
+  application.CreateForm(TF_RO, F_RO);
 
-  f_RO.Show;
-  f_RO.tampil_data;
+  F_RO.Show;
+  F_RO.tampil_data;
 end;
 
-procedure Tf_list_receipt.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TF_list_receipt.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  f_utama.MDIChildDestroyed(Self.Handle);
+  F_utama.MDIChildDestroyed(Self.Handle);
   action := cafree;
-  f_list_receipt := nil;
+  F_list_receipt := nil;
 end;
 
-procedure Tf_list_receipt.FormCreate(Sender: TObject);
+procedure TF_list_receipt.FormCreate(Sender: TObject);
 var
   Year, Month, Day: Word;
 begin
@@ -114,16 +114,16 @@ begin
   de_mulai.Date := EncodeDate(Year, Month, 1);
   de_sampai.Date := Date();
 
-  f_utama.MDIChildCreated(self.Handle);
+  F_utama.MDIChildCreated(self.Handle);
   segarkan;
 end;
 
-procedure Tf_list_receipt.sb_1Click(Sender: TObject);
+procedure TF_list_receipt.sb_1Click(Sender: TObject);
 begin
   close;
 end;
 
-procedure Tf_list_receipt.sb_2Click(Sender: TObject);
+procedure TF_list_receipt.sb_2Click(Sender: TObject);
 begin
   segarkan;
 end;

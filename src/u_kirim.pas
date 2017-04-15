@@ -120,10 +120,10 @@ begin
   begin
     if Assigned(active) then
     begin
-      idx := f_utama.tc_child.Tabs.IndexOfObject(TObject(msg.ActiveWnd));
-      f_utama.tc_child.Tag := -1;
-      f_utama.tc_child.TabIndex := idx;
-      f_utama.tc_child.Tag := 0;
+      idx := F_utama.tc_child.Tabs.IndexOfObject(TObject(msg.ActiveWnd));
+      F_utama.tc_child.Tag := -1;
+      F_utama.tc_child.TabIndex := idx;
+      F_utama.tc_child.Tag := 0;
     end;
   end;
 end;
@@ -221,7 +221,7 @@ end;
 
 procedure TF_kirim.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  f_utama.MDIChildDestroyed(Self.Handle);
+  F_utama.MDIChildDestroyed(Self.Handle);
   Action := cafree;
   F_kirim := nil;
 end;
@@ -383,7 +383,7 @@ begin
       + 1;
 end;
 
-procedure Tf_kirim.TableViewFocusedRecordChanged(Sender: TcxCustomGridTableView;
+procedure TF_kirim.TableViewFocusedRecordChanged(Sender: TcxCustomGridTableView;
   APrevFocusedRecord, AFocusedRecord: TcxCustomGridRecord;
   ANewItemRecordFocusingChanged: Boolean);
 begin
@@ -443,7 +443,7 @@ begin
   sebelum := ed_toko.Text;
 
   ed_toko.SetFocus;
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi := 'select kd_pelanggan,n_pelanggan from ' +
@@ -478,7 +478,7 @@ end;
 procedure TF_kirim.sb_cariClick(Sender: TObject);
 begin
   ed_code.SetFocus;
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi := 'select kd_barang, n_barang, hpp_aktif from tb_barang where kd_perusahaan="' +
@@ -665,14 +665,14 @@ begin
   begin
     ed_no_faktur.Color := clblue;
     Caption := 'Kirim (' + ed_no_faktur.Text + ')';
-    f_utama.tc_child.Tabs.Strings[f_utama.tc_child.TabIndex] := Caption;
+    F_utama.tc_child.Tabs.Strings[F_utama.tc_child.TabIndex] := Caption;
     urip := True;
   end
   else
   begin
     ed_no_faktur.Color := clwhite;
     Caption := 'Kirim (New)';
-    f_utama.tc_child.Tabs.Strings[f_utama.tc_child.TabIndex] := Caption;
+    F_utama.tc_child.Tabs.Strings[F_utama.tc_child.TabIndex] := Caption;
     urip := False;
   end;
 
@@ -731,7 +731,7 @@ end;
 
 procedure TF_kirim.FormShow(Sender: TObject);
 begin
-  if (f_utama.sb.Panels[8].Text = 'PUSAT') and (f_utama.HakAkses('gdTrKirim')) then
+  if (F_utama.sb.Panels[8].Text = 'PUSAT') and (F_utama.HakAkses('gdTrKirim')) then
   begin
     b_new.Enabled := True;
     ed_no_faktur.Enabled := True;
@@ -745,7 +745,7 @@ end;
 
 procedure TF_kirim.FormCreate(Sender: TObject);
 begin
-  f_utama.MDIChildCreated(self.Handle);
+  F_utama.MDIChildCreated(self.Handle);
   ed_code.Width := panel2.Width - 268;
 end;
 

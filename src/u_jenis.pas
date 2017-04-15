@@ -7,7 +7,7 @@ uses
   Dialogs, sLabel, sEdit, sButton, UFungsi, sSkinProvider, StdCtrls;
 
 type
-  Tf_jenis = class(TForm)
+  TF_jenis = class(TForm)
     B_new: TsButton;
     ed_kode: TsEdit;
     sLabel1: TsLabel;
@@ -27,7 +27,7 @@ type
   end;
 
 var
-  f_jenis: Tf_jenis;
+  F_jenis: TF_jenis;
 
 implementation
 
@@ -36,7 +36,7 @@ uses
 
 {$R *.dfm}
 
-procedure Tf_jenis.baru;
+procedure TF_jenis.baru;
 begin
   ed_kode.Enabled := True;
   fungsi.SQLExec(dm.q_temp, 'select * from tb_jenis', true);
@@ -50,20 +50,20 @@ begin
   jenis_baru := true;
 end;
 
-procedure Tf_jenis.ubah;
+procedure TF_jenis.ubah;
 begin
   ed_kode.Enabled := False;
-  ed_kode.Text := f_cari.q_cari.FieldByName('kd_jenis').AsString;
-  ed_desc.text := f_cari.q_cari.FieldByName('n_jenis').AsString;
+  ed_kode.Text := F_cari.q_cari.FieldByName('kd_jenis').AsString;
+  ed_desc.text := F_cari.q_cari.FieldByName('n_jenis').AsString;
   jenis_baru := false;
 end;
 
-procedure Tf_jenis.B_newClick(Sender: TObject);
+procedure TF_jenis.B_newClick(Sender: TObject);
 begin
   baru;
 end;
 
-procedure Tf_jenis.B_saveClick(Sender: TObject);
+procedure TF_jenis.B_saveClick(Sender: TObject);
 begin
   dm.db_conn.StartTransaction;
   try
@@ -86,11 +86,11 @@ begin
       showmessage('penyimpanan data gagal '#10#13'' + e.Message);
     end;
   end;
-  f_cari.q_cari.Close;
-  f_cari.q_cari.Open;
+  F_cari.q_cari.Close;
+  F_cari.q_cari.Open;
 
-  f_cari.clm1.Caption := 'No';
-  f_cari.clm2.caption := 'Deskripsi';
+  F_cari.clm1.Caption := 'No';
+  F_cari.clm2.caption := 'Deskripsi';
   close;
 end;
 

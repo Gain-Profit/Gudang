@@ -1,4 +1,4 @@
-object f_golongan: Tf_golongan
+object F_golongan: TF_golongan
   Left = 799
   Top = 286
   BorderStyle = bsDialog

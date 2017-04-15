@@ -49,9 +49,9 @@ end;
 
 procedure TF_satuan.ubah;
 begin
-  ed_nomer.Text := f_cari.q_cari.FieldByName('kd_satuan').AsString;
-  ed_desk.text := f_cari.q_cari.FieldByName('n_satuan').AsString;
-  ed_singkat.text := f_cari.q_cari.FieldByName('n_singkat').AsString;
+  ed_nomer.Text := F_cari.q_cari.FieldByName('kd_satuan').AsString;
+  ed_desk.text := F_cari.q_cari.FieldByName('n_satuan').AsString;
+  ed_singkat.text := F_cari.q_cari.FieldByName('n_singkat').AsString;
   satuan_baru := false;
 end;
 
@@ -84,12 +84,12 @@ begin
       showmessage('penyimpanan data gagal '#10#13'' + e.Message);
     end;
   end;
-  f_cari.q_cari.Close;
-  f_cari.q_cari.Open;
+  F_cari.q_cari.Close;
+  F_cari.q_cari.Open;
 
-  f_cari.clm1.caption := 'No';
-  f_cari.clm2.caption := 'Deskripsi';
-  f_cari.clm3.caption := 'Singkatan';
+  F_cari.clm1.caption := 'No';
+  F_cari.clm2.caption := 'Deskripsi';
+  F_cari.clm3.caption := 'Singkatan';
   close;
 end;
 

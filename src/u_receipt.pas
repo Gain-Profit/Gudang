@@ -14,7 +14,7 @@ uses
   dxSkinsDefaultPainters, dxSkinscxPCPainter, cxNavigator;
 
 type
-  Tf_RO = class(TForm)
+  TF_RO = class(TForm)
     panel4: TsPanel;
     sPanel1: TsPanel;
     Grid: TcxGrid;
@@ -128,7 +128,7 @@ type
   end;
 
 var
-  f_RO: Tf_RO;
+  F_RO: TF_RO;
 
 implementation
 
@@ -137,7 +137,7 @@ uses
 
 {$R *.dfm}
 
-procedure Tf_RO.WMMDIACTIVATE(var msg: TWMMDIACTIVATE);
+procedure TF_RO.WMMDIACTIVATE(var msg: TWMMDIACTIVATE);
 var
   active: TWinControl;
   idx: Integer;
@@ -147,15 +147,15 @@ begin
   begin
     if Assigned(active) then
     begin
-      idx := f_utama.tc_child.Tabs.IndexOfObject(TObject(msg.ActiveWnd));
-      f_utama.tc_child.Tag := -1;
-      f_utama.tc_child.TabIndex := idx;
-      f_utama.tc_child.Tag := 0;
+      idx := F_utama.tc_child.Tabs.IndexOfObject(TObject(msg.ActiveWnd));
+      F_utama.tc_child.Tag := -1;
+      F_utama.tc_child.TabIndex := idx;
+      F_utama.tc_child.Tag := 0;
     end;
   end;
 end;
 
-procedure Tf_RO.bersih;
+procedure TF_RO.bersih;
 begin
   l_supp.Caption := '';
   ed_tgl.Date := now();
@@ -174,7 +174,7 @@ begin
   pnlKeterangan.Visible := False;
 end;
 
-procedure Tf_RO.tampil_purchase;
+procedure TF_RO.tampil_purchase;
 var
   h: Integer;
   x_hpp: Currency;
@@ -211,7 +211,7 @@ begin
   end;
 end;
 
-procedure Tf_RO.tampil_data;
+procedure TF_RO.tampil_data;
 var
   h: Integer;
   tunai, plus_PPN: string;
@@ -274,7 +274,7 @@ begin
   mmKeterangan.Enabled := False;
 end;
 
-procedure Tf_RO.refresh_HPP;
+procedure TF_RO.refresh_HPP;
 var
   Qty, harga, diskon, per_barang, hpp_ahir: Currency;
   X: integer;
@@ -306,7 +306,7 @@ begin
   end;
 end;
 
-procedure Tf_RO.CreateRows;
+procedure TF_RO.CreateRows;
 var
   baris_baru: integer;
   f: integer;
@@ -348,7 +348,7 @@ begin
   refresh_HPP;
 end;
 
-procedure Tf_RO.ed_codeKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TF_RO.ed_codeKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   if key = vk_return then
   begin
@@ -388,7 +388,7 @@ begin
 
 end;
 
-procedure Tf_RO.TableViewTcxGridDataControllerTcxDataSummaryFooterSummaryItems3GetText
+procedure TF_RO.TableViewTcxGridDataControllerTcxDataSummaryFooterSummaryItems3GetText
   (Sender: TcxDataSummaryItem; const AValue: Variant; AIsFooter: Boolean; var
   AText: string);
 begin
@@ -403,7 +403,7 @@ begin
 
 end;
 
-procedure Tf_RO.TableViewTcxGridDataControllerTcxDataSummaryFooterSummaryItems4GetText
+procedure TF_RO.TableViewTcxGridDataControllerTcxDataSummaryFooterSummaryItems4GetText
   (Sender: TcxDataSummaryItem; const AValue: Variant; AIsFooter: Boolean; var
   AText: string);
 begin
@@ -426,7 +426,7 @@ begin
 
 end;
 
-procedure Tf_RO.TableViewFocusedRecordChanged(Sender: TcxCustomGridTableView;
+procedure TF_RO.TableViewFocusedRecordChanged(Sender: TcxCustomGridTableView;
   APrevFocusedRecord, AFocusedRecord: TcxCustomGridRecord;
   ANewItemRecordFocusingChanged: Boolean);
 begin
@@ -446,7 +446,7 @@ begin
   end;
 end;
 
-procedure Tf_RO.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TF_RO.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   if (Shift = [ssctrl]) and (Key = vk_delete) then
     if (MessageDlg('Yakinkah, Anda akan menghapus data ini???', mtConfirmation,
@@ -461,7 +461,7 @@ begin
     sb_supplierClick(Sender);
 end;
 
-procedure Tf_RO.cb_tunaiClick(Sender: TObject);
+procedure TF_RO.cb_tunaiClick(Sender: TObject);
 begin
   s1.Visible := not (cb_tunai.Checked);
   ed_jatuh_tempo.Visible := not (cb_tunai.Checked);
@@ -473,7 +473,7 @@ begin
     ed_jatuh_tempo.SetFocus;
 end;
 
-procedure Tf_RO.cb_PPNClick(Sender: TObject);
+procedure TF_RO.cb_PPNClick(Sender: TObject);
 begin
   if (cb_ppn.Checked = false) then
     Ce_PPN.Value := (ed_sub_total.Value - ce_diskonrp.Value) / dm.PPN
@@ -485,7 +485,7 @@ begin
   refresh_HPP;
 end;
 
-procedure Tf_RO.ed_sub_totalChange(Sender: TObject);
+procedure TF_RO.ed_sub_totalChange(Sender: TObject);
 begin
   try
     ce_diskonpr.Value := (ce_diskonrp.Value / ed_sub_total.Value) * 100;
@@ -493,15 +493,15 @@ begin
   end;
 end;
 
-procedure Tf_RO.b_newClick(Sender: TObject);
+procedure TF_RO.b_newClick(Sender: TObject);
 begin
   bersih;
 end;
 
-procedure Tf_RO.sb_supplierClick(Sender: TObject);
+procedure TF_RO.sb_supplierClick(Sender: TObject);
 begin
   ed_supplier.SetFocus;
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi := 'select kode,n_supp from tb_supp where kd_perusahaan="' + dm.kd_perusahaan
@@ -520,7 +520,7 @@ begin
   end;
 end;
 
-procedure Tf_RO.ed_supplierKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TF_RO.ed_supplierKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   if (key = vk_return) and (sb_supplier.Enabled = True) then
   begin
@@ -529,10 +529,10 @@ begin
   end;
 end;
 
-procedure Tf_RO.sb_cariClick(Sender: TObject);
+procedure TF_RO.sb_cariClick(Sender: TObject);
 begin
   ed_code.SetFocus;
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi := 'select kd_barang, n_barang, hpp_ahir from tb_barang ' +
@@ -550,7 +550,7 @@ begin
   end;
 end;
 
-procedure Tf_RO.b_simpanClick(Sender: TObject);
+procedure TF_RO.b_simpanClick(Sender: TObject);
 var
   _sql, isi_sql, isi_sql2: string;
   LIsiHppAktif, LIsiHppAkhir, LIsiStokOH: string;
@@ -679,7 +679,7 @@ begin
   mmKeterangan.Enabled := False;
 end;
 
-procedure Tf_RO.b_printClick(Sender: TObject);
+procedure TF_RO.b_printClick(Sender: TObject);
 begin
   fungsi.SQLExec(dm.Q_laporan,
     'select * from vw_cetak_receipt where kd_perusahaan="' + dm.kd_perusahaan +
@@ -690,14 +690,14 @@ begin
   dm.laporan.ShowReport;
 end;
 
-procedure Tf_RO.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TF_RO.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  f_utama.MDIChildDestroyed(Self.Handle);
+  F_utama.MDIChildDestroyed(Self.Handle);
   Action := cafree;
-  f_RO := nil;
+  F_RO := nil;
 end;
 
-procedure Tf_RO.ed_no_fakturChange(Sender: TObject);
+procedure TF_RO.ed_no_fakturChange(Sender: TObject);
 var
   urip: Boolean;
 begin
@@ -708,14 +708,14 @@ begin
   begin
     urip := True;
     Caption := 'RO (' + ed_no_faktur.Text + ')';
-    f_utama.tc_child.Tabs.Strings[f_utama.tc_child.TabIndex] := Caption;
+    F_utama.tc_child.Tabs.Strings[F_utama.tc_child.TabIndex] := Caption;
     ed_no_faktur.Color := clblue;
   end
   else
   begin
     ed_no_faktur.Color := clwhite;
     Caption := 'RO (New)';
-    f_utama.tc_child.Tabs.Strings[f_utama.tc_child.TabIndex] := Caption;
+    F_utama.tc_child.Tabs.Strings[F_utama.tc_child.TabIndex] := Caption;
     urip := False;
   end;
 
@@ -736,12 +736,12 @@ begin
     btnUpdateKeterangan.Caption := 'Simpan Keterangan';
 end;
 
-procedure Tf_RO.sSpeedButton18Click(Sender: TObject);
+procedure TF_RO.sSpeedButton18Click(Sender: TObject);
 begin
   close;
 end;
 
-procedure Tf_RO.b_simpan_fileClick(Sender: TObject);
+procedure TF_RO.b_simpan_fileClick(Sender: TObject);
 var
   F: TextFile;
   x, tunai, ppn: Integer;
@@ -784,7 +784,7 @@ begin
   end;
 end;
 
-procedure Tf_RO.b_loadClick(Sender: TObject);
+procedure TF_RO.b_loadClick(Sender: TObject);
 var
   F: TextFile;
   Tmp, x: Integer;
@@ -854,9 +854,9 @@ begin
   end;
 end;
 
-procedure Tf_RO.FormShow(Sender: TObject);
+procedure TF_RO.FormShow(Sender: TObject);
 begin
-  if (f_utama.sb.Panels[8].Text = 'PUSAT') and (f_utama.HakAkses('gdTrRO')) then
+  if (F_utama.sb.Panels[8].Text = 'PUSAT') and (F_utama.HakAkses('gdTrRO')) then
   begin
     b_new.Enabled := True;
     ed_no_faktur.Enabled := True;
@@ -868,12 +868,12 @@ begin
   end;
 end;
 
-procedure Tf_RO.FormCreate(Sender: TObject);
+procedure TF_RO.FormCreate(Sender: TObject);
 begin
-  f_utama.MDIChildCreated(self.Handle);
+  F_utama.MDIChildCreated(self.Handle);
 end;
 
-procedure Tf_RO.ed_codeKeyPress(Sender: TObject; var Key: Char);
+procedure TF_RO.ed_codeKeyPress(Sender: TObject; var Key: Char);
 var
   harga: Currency;
   kode: string;
@@ -929,7 +929,7 @@ begin
   end;
 end;
 
-procedure Tf_RO.ce_diskonprExit(Sender: TObject);
+procedure TF_RO.ce_diskonprExit(Sender: TObject);
 begin
   if ed_sub_total.Value <> 0 then
     ce_diskonrp.Value := (ce_diskonpr.Value / 100) * ed_sub_total.Value;
@@ -944,7 +944,7 @@ begin
   refresh_HPP;
 end;
 
-procedure Tf_RO.ce_diskonrpExit(Sender: TObject);
+procedure TF_RO.ce_diskonrpExit(Sender: TObject);
 begin
   if (cb_ppn.Checked = false) then
     Ce_PPN.Value := (ed_sub_total.Value - ce_diskonrp.Value) / dm.PPN
@@ -959,7 +959,7 @@ begin
   refresh_HPP;
 end;
 
-procedure Tf_RO.b_autoClick(Sender: TObject);
+procedure TF_RO.b_autoClick(Sender: TObject);
 begin
   fungsi.SQLExec(dm.Q_temp, Format('SELECT CONCAT("RO", DATE_FORMAT(NOW(), "%%Y%%m%%d"), '
     + 'LPAD(COUNT(kd_receipt) + 1, 4, "0")) AS new_id FROM tb_receipt_global ' +
@@ -969,7 +969,7 @@ begin
   ed_no_faktur.Text := dm.Q_temp.fieldbyname('new_id').AsString;
 end;
 
-procedure Tf_RO.ed_no_fakturKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TF_RO.ed_no_fakturKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   if (Key = vk_return) and (b_auto.Enabled = True) then
   begin
@@ -978,7 +978,7 @@ begin
   end;
 end;
 
-procedure Tf_RO.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+procedure TF_RO.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
   if (ed_no_faktur.Color <> clblue) and (tableview.DataController.RecordCount >= 1) then
   begin
@@ -1003,7 +1003,7 @@ begin
 
 end;
 
-procedure Tf_RO.btnUpdateKeteranganClick(Sender: TObject);
+procedure TF_RO.btnUpdateKeteranganClick(Sender: TObject);
 var
   _sql: string;
 begin

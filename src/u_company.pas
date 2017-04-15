@@ -7,7 +7,7 @@ uses
   Dialogs, sEdit, sLabel, sButton, sMemo, UFungsi, sSkinProvider, StdCtrls;
 
 type
-  Tf_comp = class(TForm)
+  TF_comp = class(TForm)
     sLabel1: TsLabel;
     ed_kode: TsEdit;
     sLabel2: TsLabel;
@@ -33,7 +33,7 @@ type
   end;
 
 var
-  f_comp: Tf_comp;
+  F_comp: TF_comp;
 
 implementation
 
@@ -42,7 +42,7 @@ uses
 
 {$R *.dfm}
 
-procedure tf_comp.baru;
+procedure TF_comp.baru;
 begin
   ed_kode.clear;
   ed_desk.Clear;
@@ -53,10 +53,10 @@ begin
   comp_baru := true;
 end;
 
-procedure tf_comp.ubah;
+procedure TF_comp.ubah;
 begin
   ed_kode.Enabled := false;
-  ed_kode.Text := f_cari.q_cari.FieldByName('kd_perusahaan').AsString;
+  ed_kode.Text := F_cari.q_cari.FieldByName('kd_perusahaan').AsString;
   fungsi.SQLExec(dm.Q_temp, 'select * from tb_company where kd_perusahaan="' +
     ed_kode.Text + '"', true);
   ed_desk.text := dm.Q_temp.FieldByName('n_perusahaan').AsString;
@@ -70,12 +70,12 @@ begin
   comp_baru := false;
 end;
 
-procedure Tf_comp.B_newClick(Sender: TObject);
+procedure TF_comp.B_newClick(Sender: TObject);
 begin
   baru;
 end;
 
-procedure Tf_comp.B_saveClick(Sender: TObject);
+procedure TF_comp.B_saveClick(Sender: TObject);
 begin
   dm.db_conn.StartTransaction;
   try
@@ -99,11 +99,11 @@ begin
       showmessage('penyimpanan data gagal '#10#13'' + e.Message);
     end;
   end;
-  f_cari.q_cari.Close;
-  f_cari.q_cari.Open;
+  F_cari.q_cari.Close;
+  F_cari.q_cari.Open;
 
-  f_cari.clm1.caption := 'Kode';
-  f_cari.clm2.caption := 'Nama Perusahaan';
+  F_cari.clm1.caption := 'Kode';
+  F_cari.clm2.caption := 'Nama Perusahaan';
   close;
 end;
 

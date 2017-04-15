@@ -1,4 +1,4 @@
-object f_list_receipt: Tf_list_receipt
+object F_list_receipt: TF_list_receipt
   Left = 195
   Top = 152
   Width = 928

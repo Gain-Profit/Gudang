@@ -98,10 +98,10 @@ begin
   begin
     if Assigned(active) then
     begin
-      idx := f_utama.tc_child.Tabs.IndexOfObject(TObject(msg.ActiveWnd));
-      f_utama.tc_child.Tag := -1;
-      f_utama.tc_child.TabIndex := idx;
-      f_utama.tc_child.Tag := 0;
+      idx := F_utama.tc_child.Tabs.IndexOfObject(TObject(msg.ActiveWnd));
+      F_utama.tc_child.Tag := -1;
+      F_utama.tc_child.TabIndex := idx;
+      F_utama.tc_child.Tag := 0;
     end;
   end;
 end;
@@ -145,9 +145,9 @@ end;
 
 procedure TF_Edit_Harga.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  f_utama.MDIChildDestroyed(Self.Handle);
+  F_utama.MDIChildDestroyed(Self.Handle);
   action := cafree;
-  f_edit_harga := nil;
+  F_edit_harga := nil;
 end;
 
 procedure TF_Edit_Harga.t_dataCellDblClick(Sender: TcxCustomGridTableView;
@@ -202,7 +202,7 @@ end;
 
 procedure TF_Edit_Harga.FormCreate(Sender: TObject);
 begin
-  f_utama.MDIChildCreated(self.Handle);
+  F_utama.MDIChildCreated(self.Handle);
 end;
 
 procedure TF_Edit_Harga.sb_2Click(Sender: TObject);
@@ -218,7 +218,7 @@ end;
 procedure TF_Edit_Harga.LihatData;
 begin
   application.CreateForm(TF_ubah_harga, F_ubah_harga);
-  f_ubah_harga.ubah(Q_harga.FieldByName('kd_barang').AsString, Q_harga.FieldByName
+  F_ubah_harga.ubah(Q_harga.FieldByName('kd_barang').AsString, Q_harga.FieldByName
     ('kd_macam_harga').AsString);
   if F_ubah_harga.ShowModal = mrOk then
     Segarkan(CkSemua.Checked);

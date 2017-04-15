@@ -1,8 +1,8 @@
-object f_koneksi: Tf_koneksi
+object F_koneksi: TF_koneksi
   Left = 326
   Top = 132
   BorderStyle = bsDialog
-  Caption = 'f_koneksi'
+  Caption = 'F_koneksi'
   ClientHeight = 220
   ClientWidth = 627
   Color = clBtnFace

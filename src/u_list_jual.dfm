@@ -1,4 +1,4 @@
-object f_list_sales: Tf_list_sales
+object F_list_sales: TF_list_sales
   Left = 191
   Top = 124
   Width = 928

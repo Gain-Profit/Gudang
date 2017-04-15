@@ -13,7 +13,7 @@ uses
   dxSkinsDefaultPainters, dxSkinscxPCPainter, cxNavigator;
 
 type
-  Tf_List_purchase = class(TForm)
+  TF_List_purchase = class(TForm)
     sSkinProvider1: TsSkinProvider;
     sPanel1: TsPanel;
     grid: TcxGrid;
@@ -52,7 +52,7 @@ type
   end;
 
 var
-  f_List_purchase: Tf_List_purchase;
+  F_List_purchase: TF_List_purchase;
 
 implementation
 
@@ -61,7 +61,7 @@ uses
 
 {$R *.dfm}
 
-procedure Tf_List_purchase.WMMDIACTIVATE(var msg: TWMMDIACTIVATE);
+procedure TF_List_purchase.WMMDIACTIVATE(var msg: TWMMDIACTIVATE);
 var
   active: TWinControl;
   idx: Integer;
@@ -71,15 +71,15 @@ begin
   begin
     if Assigned(active) then
     begin
-      idx := f_utama.tc_child.Tabs.IndexOfObject(TObject(msg.ActiveWnd));
-      f_utama.tc_child.Tag := -1;
-      f_utama.tc_child.TabIndex := idx;
-      f_utama.tc_child.Tag := 0;
+      idx := F_utama.tc_child.Tabs.IndexOfObject(TObject(msg.ActiveWnd));
+      F_utama.tc_child.Tag := -1;
+      F_utama.tc_child.TabIndex := idx;
+      F_utama.tc_child.Tag := 0;
     end;
   end;
 end;
 
-procedure Tf_List_purchase.segarkan;
+procedure TF_List_purchase.segarkan;
 begin
   fungsi.SQLExec(dm.q_list_purchase,
     'select * from vw_list_purchase  where kd_perusahaan="' + dm.kd_perusahaan +
@@ -88,40 +88,40 @@ begin
     + '', true);
 end;
 
-procedure Tf_List_purchase.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TF_List_purchase.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  f_utama.MDIChildDestroyed(Self.Handle);
+  F_utama.MDIChildDestroyed(Self.Handle);
   action := cafree;
-  f_list_purchase := nil;
+  F_list_purchase := nil;
 end;
 
-procedure Tf_List_purchase.t_dataCellDblClick(Sender: TcxCustomGridTableView;
+procedure TF_List_purchase.t_dataCellDblClick(Sender: TcxCustomGridTableView;
   ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift:
   TShiftState; var AHandled: Boolean);
 begin
-//if f_purchase = nil then
-  application.CreateForm(tf_purchase, f_purchase);
+//if F_purchase = nil then
+  application.CreateForm(TF_purchase, F_purchase);
 
-  f_purchase.Show;
-  f_purchase.tampil_data;
+  F_purchase.Show;
+  F_purchase.tampil_data;
 end;
 
-procedure Tf_List_purchase.b_receiptClick(Sender: TObject);
+procedure TF_List_purchase.b_receiptClick(Sender: TObject);
 begin
-  application.CreateForm(tf_RO, f_RO);
-  f_RO.Show;
-  f_ro.tampil_purchase;
+  application.CreateForm(TF_RO, F_RO);
+  F_RO.Show;
+  F_ro.tampil_purchase;
 end;
 
-procedure Tf_List_purchase.FormShow(Sender: TObject);
+procedure TF_List_purchase.FormShow(Sender: TObject);
 begin
-  if (f_utama.sb.Panels[8].Text = 'PUSAT') and (f_utama.HakAkses('gdTrRO')) then
+  if (F_utama.sb.Panels[8].Text = 'PUSAT') and (F_utama.HakAkses('gdTrRO')) then
     b_receipt.Enabled := True
   else
     b_receipt.Enabled := false;
 end;
 
-procedure Tf_List_purchase.FormCreate(Sender: TObject);
+procedure TF_List_purchase.FormCreate(Sender: TObject);
 var
   Year, Month, Day: Word;
 begin
@@ -129,16 +129,16 @@ begin
   de_mulai.Date := EncodeDate(Year, Month, 1);
   de_sampai.Date := Date();
 
-  f_utama.MDIChildCreated(self.Handle);
+  F_utama.MDIChildCreated(self.Handle);
   segarkan;
 end;
 
-procedure Tf_List_purchase.sb_1Click(Sender: TObject);
+procedure TF_List_purchase.sb_1Click(Sender: TObject);
 begin
   close;
 end;
 
-procedure Tf_List_purchase.sb_2Click(Sender: TObject);
+procedure TF_List_purchase.sb_2Click(Sender: TObject);
 begin
   segarkan;
 end;

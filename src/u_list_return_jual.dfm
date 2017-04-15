@@ -1,4 +1,4 @@
-object f_list_return_jual: Tf_list_return_jual
+object F_list_return_jual: TF_list_return_jual
   Left = 191
   Top = 124
   Width = 928

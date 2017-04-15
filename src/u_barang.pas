@@ -112,10 +112,10 @@ begin
   begin
     if Assigned(active) then
     begin
-      idx := f_utama.tc_child.Tabs.IndexOfObject(TObject(msg.ActiveWnd));
-      f_utama.tc_child.Tag := -1;
-      f_utama.tc_child.TabIndex := idx;
-      f_utama.tc_child.Tag := 0;
+      idx := F_utama.tc_child.Tabs.IndexOfObject(TObject(msg.ActiveWnd));
+      F_utama.tc_child.Tag := -1;
+      F_utama.tc_child.TabIndex := idx;
+      F_utama.tc_child.Tag := 0;
     end;
   end;
 end;
@@ -128,7 +128,7 @@ end;
 
 procedure TF_barang.FormShow(Sender: TObject);
 begin
-  if f_utama.sb.Panels[8].Text = 'PUSAT' then
+  if F_utama.sb.Panels[8].Text = 'PUSAT' then
   begin
     B_tambah.Enabled := True;
     b_hapus.Enabled := True;
@@ -153,15 +153,15 @@ end;
 procedure TF_barang.b_editClick(Sender: TObject);
 begin
   application.CreateForm(TF_barang_det, F_barang_det);
-  f_barang_det.tampil(Self, Q_barang.FieldByName('kd_barang').AsString);
-  f_barang_det.ShowModal;
+  F_barang_det.tampil(Self, Q_barang.FieldByName('kd_barang').AsString);
+  F_barang_det.ShowModal;
 end;
 
 procedure TF_barang.B_tambahClick(Sender: TObject);
 begin
   application.CreateForm(TF_barang_det, F_barang_det);
-  f_barang_det.baru(Self);
-  f_barang_det.ShowModal;
+  F_barang_det.baru(Self);
+  F_barang_det.ShowModal;
 end;
 
 procedure TF_barang.b_hapusClick(Sender: TObject);
@@ -220,9 +220,9 @@ end;
 
 procedure TF_barang.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  f_utama.MDIChildDestroyed(Self.Handle);
+  F_utama.MDIChildDestroyed(Self.Handle);
   action := cafree;
-  f_barang := nil;
+  F_barang := nil;
 end;
 
 procedure TF_barang.TvDataCellDblClick(Sender: TcxCustomGridTableView;
@@ -259,14 +259,14 @@ end;
 
 procedure TF_barang.FormCreate(Sender: TObject);
 begin
-  f_utama.MDIChildCreated(self.Handle);
+  F_utama.MDIChildCreated(self.Handle);
 end;
 
 procedure TF_barang.b_duplikatClick(Sender: TObject);
 begin
   application.CreateForm(TF_barang_det, F_barang_det);
-  f_barang_det.duplikat(Self, Q_barang.FieldByName('kd_barang').AsString);
-  f_barang_det.ShowModal;
+  F_barang_det.duplikat(Self, Q_barang.FieldByName('kd_barang').AsString);
+  F_barang_det.ShowModal;
 end;
 
 procedure TF_barang.sb_2Click(Sender: TObject);

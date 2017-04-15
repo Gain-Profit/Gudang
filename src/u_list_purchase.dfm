@@ -1,4 +1,4 @@
-object f_List_purchase: Tf_List_purchase
+object F_List_purchase: TF_List_purchase
   Left = 192
   Top = 107
   Width = 928

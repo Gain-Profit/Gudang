@@ -1,4 +1,4 @@
-object f_emp: Tf_emp
+object F_emp: TF_emp
   Left = 420
   Top = 166
   BorderStyle = bsDialog

@@ -14,7 +14,7 @@ uses
 type
   NewControl = class(TControl);
 
-  Tf_cari = class(TForm)
+  TF_cari = class(TForm)
     b_baru: TsButton;
     b_ubah: TsButton;
     b_hapus: TsButton;
@@ -93,38 +93,38 @@ begin
   result := sql;
 end;
 
-procedure Tf_cari.b_baruClick(Sender: TObject);
+procedure TF_cari.b_baruClick(Sender: TObject);
 begin
   case CariT of
     1: //jenis barang_det
       begin
         application.CreateForm(TF_jenis, F_Jenis);
-        f_jenis.baru;
-        f_jenis.ShowModal;
+        F_jenis.baru;
+        F_jenis.ShowModal;
       end;
     2: //golongan barang_det
       begin
         application.CreateForm(TF_Golongan, F_Golongan);
-        f_golongan.baru;
-        f_Golongan.ShowModal;
+        F_golongan.baru;
+        F_Golongan.ShowModal;
       end;
     3: //merk barang_det
       begin
         application.CreateForm(TF_merk, F_merk);
-        f_merk.baru;
-        f_merk.ShowModal;
+        F_merk.baru;
+        F_merk.ShowModal;
       end;
     4: //kategori barang_det
       begin
         application.CreateForm(TF_kategori, F_kategori);
-        f_kategori.baru;
-        f_kategori.ShowModal;
+        F_kategori.baru;
+        F_kategori.ShowModal;
       end;
     8: //perusahaan
       begin
         application.CreateForm(TF_comp, F_comp);
-        f_comp.baru;
-        f_comp.ShowModal;
+        F_comp.baru;
+        F_comp.ShowModal;
       end;
     9: //supplier
       begin
@@ -153,7 +153,7 @@ begin
   end;
 end;
 
-procedure Tf_cari.b_ubahClick(Sender: TObject);
+procedure TF_cari.b_ubahClick(Sender: TObject);
 begin
   case CariT of
     1: //jenis barang_det
@@ -165,26 +165,26 @@ begin
     2: //golongan barang_det
       begin
         application.CreateForm(TF_Golongan, F_Golongan);
-        f_golongan.ubah;
-        f_Golongan.ShowModal;
+        F_golongan.ubah;
+        F_Golongan.ShowModal;
       end;
     3: //merk barang_det
       begin
         application.CreateForm(TF_merk, F_merk);
-        f_merk.ubah;
-        f_merk.ShowModal;
+        F_merk.ubah;
+        F_merk.ShowModal;
       end;
     4: //kategori barang_det
       begin
         application.CreateForm(TF_kategori, F_kategori);
-        f_kategori.ubah;
-        f_kategori.ShowModal;
+        F_kategori.ubah;
+        F_kategori.ShowModal;
       end;
     8: //perusahaan
       begin
         application.CreateForm(TF_comp, F_comp);
-        f_comp.ubah;
-        f_comp.ShowModal;
+        F_comp.ubah;
+        F_comp.ShowModal;
       end;
     9: //supplier
       begin
@@ -225,7 +225,7 @@ begin
   end;
 end;
 
-procedure Tf_cari.b_hapusClick(Sender: TObject);
+procedure TF_cari.b_hapusClick(Sender: TObject);
 begin
   if MessageDlg('Yakinkah, akan menghapus data ini?...', mtConfirmation, [mbYes,
     mbNo], 0) = mrYes then
@@ -308,9 +308,9 @@ begin
 
   if (CariT = 5) or (CariT = 6) or (CariT = 7) then
   begin
-    f_cari.clm1.caption := 'No';
-    f_cari.clm2.caption := 'Deskripsi';
-    f_cari.clm3.caption := 'Singkatan';
+    F_cari.clm1.caption := 'No';
+    F_cari.clm2.caption := 'Deskripsi';
+    F_cari.clm3.caption := 'Singkatan';
   end
   else
   begin
@@ -319,7 +319,7 @@ begin
   end;
 end;
 
-procedure Tf_cari.Ed_cariChange(Sender: TObject);
+procedure TF_cari.Ed_cariChange(Sender: TObject);
 var
   saringan: string;
   x: Integer;
@@ -334,7 +334,7 @@ begin
     ' where ' + kondisi + '(' + saringan + ') limit 0,100', true);
 end;
 
-procedure Tf_cari.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TF_cari.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   if key = vk_escape then
     close;
@@ -356,7 +356,7 @@ begin
   end;
 end;
 
-procedure Tf_cari.tampil_button(lihatA, lihatB: boolean);
+procedure TF_cari.tampil_button(lihatA, lihatB: boolean);
 begin
   b_baru.Visible := lihatA;
   b_ubah.Visible := lihatA;
@@ -365,7 +365,7 @@ begin
   B_Ambil.Visible := lihatB;
 end;
 
-procedure Tf_cari.FormShow(Sender: TObject);
+procedure TF_cari.FormShow(Sender: TObject);
 var
   x: Integer;
 begin
@@ -394,12 +394,12 @@ begin
   end;
 end;
 
-procedure Tf_cari.t_dataDblClick(Sender: TObject);
+procedure TF_cari.t_dataDblClick(Sender: TObject);
 begin
   B_AmbilClick(Sender);
 end;
 
-procedure Tf_cari.Ed_cariKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TF_cari.Ed_cariKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   if key = vk_return then
   begin
@@ -408,13 +408,13 @@ begin
   end;
 end;
 
-procedure Tf_cari.t_dataKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TF_cari.t_dataKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   if key = vk_return then
     B_AmbilClick(Sender);
 end;
 
-procedure Tf_cari.B_AmbilClick(Sender: TObject);
+procedure TF_cari.B_AmbilClick(Sender: TObject);
 var
   x: Integer;
 begin
@@ -426,7 +426,7 @@ begin
   ModalResult := mrOk;
 end;
 
-procedure Tf_cari.refresh;
+procedure TF_cari.refresh;
 var
   posisi: integer;
 begin

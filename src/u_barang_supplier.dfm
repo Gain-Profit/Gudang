@@ -1,4 +1,4 @@
-object f_barang_supp: Tf_barang_supp
+object F_barang_supp: TF_barang_supp
   Left = 233
   Top = 118
   BorderStyle = bsDialog

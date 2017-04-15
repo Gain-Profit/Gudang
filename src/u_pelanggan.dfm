@@ -1,4 +1,4 @@
-object f_cust: Tf_cust
+object F_cust: TF_cust
   Left = 418
   Top = 261
   BorderStyle = bsDialog

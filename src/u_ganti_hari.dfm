@@ -1,8 +1,8 @@
-object f_hari: Tf_hari
+object F_hari: TF_hari
   Left = 316
   Top = 304
   BorderStyle = bsNone
-  Caption = 'f_hari'
+  Caption = 'F_hari'
   ClientHeight = 93
   ClientWidth = 771
   Color = clBtnFace
