@@ -9,6 +9,9 @@ uses
   ExtCtrls, sPanel, inifiles, shellapi, DB, sGauge, sTabControl, cxStyles,
   cxGraphics, cxDataStorage, cxEdit, cxDBData, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxControls, cxGridCustomView, cxClasses,
+  {$IFDEF VER240}
+  System.Actions,
+  {$ENDIF}
   cxGrid, MemDS, DBAccess, MyAccess;
 
 const
@@ -748,10 +751,18 @@ end;
 
 procedure Tf_utama.FormCreate(Sender: TObject);
 begin
-  DecimalSeparator := '.';
-  ThousandSeparator := ',';
-  ShortDateFormat := 'dd/mm/yyyy';
-  ShortTimeFormat := 'hh:nn:ss';
+  {$IFDEF VER150}
+    DecimalSeparator := '.';
+    ThousandSeparator := ',';
+    ShortDateFormat := 'dd/mm/yyyy';
+    ShortTimeFormat := 'hh:nn:ss';
+  {$ELSE}
+    FormatSettings.DecimalSeparator := '.';
+    FormatSettings.ThousandSeparator := ',';
+    FormatSettings.ShortDateFormat := 'dd/mm/yyyy';
+    FormatSettings.ShortTimeFormat := 'hh:nn:ss';
+  {$ENDIF}
+  
   FVersion := TAppVersion.Create(Application.ExeName);
 end;
 
