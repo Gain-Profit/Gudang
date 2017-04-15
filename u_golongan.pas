@@ -48,7 +48,7 @@ begin
   cb_jenis.Enabled := True;
 
   cb_jenis.ItemIndex := cb_1.Items.IndexOf(f_cari.q_cari.FieldByName('kd_jenis').AsString);
-
+  cb_jenisChange(Self);
   ed_desk.Clear;
   gol_baru := true;
 end;

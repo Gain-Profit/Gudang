@@ -217,16 +217,17 @@ begin
   application.CreateForm(tf_cari, f_cari);
   with F_cari do
   try
-    _SQLi := 'select kd_golbrg, n_golbrg from tb_golongan where kd_jenis="' +
+    _SQLi := 'select kd_jenis, kd_golbrg, n_golbrg from tb_golongan where kd_jenis="' +
       kd_jenis + '"';
-    tblcap[0] := 'Kd Gol';
-    tblCap[1] := 'Deskripsi';
+    tblcap[0] := 'Kd Jenis';
+    tblcap[1] := 'Kd Gol';
+    tblCap[2] := 'Deskripsi';
     cariT := 2;
     tampil_button(true, True);
     if ShowModal = mrOk then
     begin
-      kd_gol := TblVal[0];
-      Ed_golongan.Text := TblVal[1];
+      kd_gol := TblVal[1];
+      Ed_golongan.Text := TblVal[2];
     end;
   finally
     close;
