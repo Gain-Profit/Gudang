@@ -1,4 +1,4 @@
-object f_supplier: Tf_supplier
+object F_supplier: TF_supplier
   Left = 386
   Top = 122
   BorderStyle = bsDialog

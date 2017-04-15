@@ -132,7 +132,7 @@ end;
 procedure TFGroupBarangDetail.sb_cariClick(Sender: TObject);
 begin
   ed_code.SetFocus;
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi := 'select kd_barang, n_barang from tb_barang where kd_perusahaan="' +

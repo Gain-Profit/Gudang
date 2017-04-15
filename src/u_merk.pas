@@ -7,7 +7,7 @@ uses
   Dialogs, StdCtrls, sButton, sEdit, sLabel, UFungsi, sSkinProvider;
 
 type
-  Tf_merk = class(TForm)
+  TF_merk = class(TForm)
     sLabel2: TsLabel;
     sLabel1: TsLabel;
     ed_kode: TsEdit;
@@ -27,7 +27,7 @@ type
   end;
 
 var
-  f_merk: Tf_merk;
+  F_merk: TF_merk;
 
 implementation
 
@@ -36,7 +36,7 @@ uses
 
 {$R *.dfm}
 
-procedure Tf_merk.baru;
+procedure TF_merk.baru;
 begin
 {fungsi.SQLExec(dm.q_temp,'select * from tb_merk',true);
 ed_kode.Text:= inttostr(dm.Q_temp.recordcount+1);
@@ -47,19 +47,19 @@ ed_kode.Text:= inttostr(dm.Q_temp.recordcount+1);
   merk_baru := true;
 end;
 
-procedure Tf_merk.ubah;
+procedure TF_merk.ubah;
 begin
-  ed_kode.Text := f_cari.q_cari.FieldByName('kd_merk').AsString;
-  ed_desc.text := f_cari.q_cari.FieldByName('n_merk').AsString;
+  ed_kode.Text := F_cari.q_cari.FieldByName('kd_merk').AsString;
+  ed_desc.text := F_cari.q_cari.FieldByName('n_merk').AsString;
   merk_baru := false;
 end;
 
-procedure Tf_merk.B_newClick(Sender: TObject);
+procedure TF_merk.B_newClick(Sender: TObject);
 begin
   baru;
 end;
 
-procedure Tf_merk.B_saveClick(Sender: TObject);
+procedure TF_merk.B_saveClick(Sender: TObject);
 begin
   dm.db_conn.StartTransaction;
   try
@@ -82,11 +82,11 @@ begin
       showmessage('penyimpanan data gagal '#10#13'' + e.Message);
     end;
   end;
-  f_cari.q_cari.Close;
-  f_cari.q_cari.Open;
+  F_cari.q_cari.Close;
+  F_cari.q_cari.Open;
 
-  f_cari.clm1.caption := 'No';
-  f_cari.clm2.caption := 'Deskripsi';
+  F_cari.clm1.caption := 'No';
+  F_cari.clm2.caption := 'Deskripsi';
   close;
 end;
 

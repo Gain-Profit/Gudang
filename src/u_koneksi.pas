@@ -7,7 +7,7 @@ uses
   Dialogs, ExtCtrls, StdCtrls, sLabel, sSkinProvider, sButton;
 
 type
-  Tf_koneksi = class(TForm)
+  TF_koneksi = class(TForm)
     l_1: TsLabel;
     sknprvdr1: TsSkinProvider;
     l_2: TsLabel;
@@ -21,7 +21,7 @@ type
   end;
 
 var
-  f_koneksi: Tf_koneksi;
+  F_koneksi: TF_koneksi;
 
 implementation
 
@@ -29,17 +29,17 @@ uses u_dm;
 
 {$R *.dfm}
 
-procedure Tf_koneksi.CreateParams(var Params: TCreateParams);
+procedure TF_koneksi.CreateParams(var Params: TCreateParams);
 begin
    inherited CreateParams(Params);
    with Params do
       Style := (Style or WS_POPUP) and (not WS_DLGFRAME);
 end;
 
-procedure Tf_koneksi.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TF_koneksi.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 Action:= caFree;
-f_koneksi:= nil;
+F_koneksi:= nil;
 end;
 
 end.

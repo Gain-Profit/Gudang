@@ -171,7 +171,7 @@ begin
   TsEdit(FindComponent(StringReplace(TsSpeedButton(Sender).Name, 'sb_sat',
     'ed_sat', []))).SetFocus;
 
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   F_cari._SQLi := 'select kd_satuan,n_satuan,n_singkat from tb_satuan';
   F_cari.tblcap[0] := 'No';
   F_cari.tblCap[1] := 'Deskripsi';
@@ -190,7 +190,7 @@ procedure TF_barang_det.sb_jenisClick(Sender: TObject);
 begin
   Ed_Jenis.SetFocus;
 
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi := 'select kd_jenis,n_jenis from tb_jenis';
@@ -214,7 +214,7 @@ procedure TF_barang_det.sb_golClick(Sender: TObject);
 begin
   Ed_golongan.SetFocus;
 
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi := 'select kd_jenis, kd_golbrg, n_golbrg from tb_golongan where kd_jenis="' +
@@ -238,7 +238,7 @@ procedure TF_barang_det.sb_merkClick(Sender: TObject);
 begin
   Ed_Merk.SetFocus;
 
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi := 'select kd_merk,n_merk from tb_merk';
@@ -260,7 +260,7 @@ procedure TF_barang_det.sb_tagClick(Sender: TObject);
 begin
   Ed_Kategori.SetFocus;
 
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi := 'select tag,n_kategori from tb_kategori';
@@ -506,7 +506,7 @@ procedure TF_barang_det.FormCreate(Sender: TObject);
 var
   pusat: Boolean;
 begin
-  pusat := (f_utama.sb.Panels[8].Text = 'PUSAT');
+  pusat := (F_utama.sb.Panels[8].Text = 'PUSAT');
 
   b_auto.Enabled := pusat;
   ed_nama.Enabled := pusat;

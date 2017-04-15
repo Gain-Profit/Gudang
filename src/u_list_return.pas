@@ -13,7 +13,7 @@ uses
   dxSkinsDefaultPainters, dxSkinscxPCPainter, cxNavigator;
 
 type
-  Tf_list_return = class(TForm)
+  TF_list_return = class(TForm)
     grid: TcxGrid;
     t_data: TcxGridDBTableView;
     l_data: TcxGridLevel;
@@ -50,7 +50,7 @@ type
   end;
 
 var
-  f_list_return: Tf_list_return;
+  F_list_return: TF_list_return;
 
 implementation
 
@@ -59,7 +59,7 @@ uses
 
 {$R *.dfm}
 
-procedure Tf_list_return.WMMDIACTIVATE(var msg: TWMMDIACTIVATE);
+procedure TF_list_return.WMMDIACTIVATE(var msg: TWMMDIACTIVATE);
 var
   active: TWinControl;
   idx: Integer;
@@ -69,15 +69,15 @@ begin
   begin
     if Assigned(active) then
     begin
-      idx := f_utama.tc_child.Tabs.IndexOfObject(TObject(msg.ActiveWnd));
-      f_utama.tc_child.Tag := -1;
-      f_utama.tc_child.TabIndex := idx;
-      f_utama.tc_child.Tag := 0;
+      idx := F_utama.tc_child.Tabs.IndexOfObject(TObject(msg.ActiveWnd));
+      F_utama.tc_child.Tag := -1;
+      F_utama.tc_child.TabIndex := idx;
+      F_utama.tc_child.Tag := 0;
     end;
   end;
 end;
 
-procedure Tf_list_return.segarkan;
+procedure TF_list_return.segarkan;
 begin
   fungsi.SQLExec(dm.q_list_return,
     'select * from vw_list_return  where kd_perusahaan="' + dm.kd_perusahaan +
@@ -86,25 +86,25 @@ begin
     + '', true);
 end;
 
-procedure Tf_list_return.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TF_list_return.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  f_utama.MDIChildDestroyed(Self.Handle);
+  F_utama.MDIChildDestroyed(Self.Handle);
   action := cafree;
-  f_list_return := nil;
+  F_list_return := nil;
 end;
 
-procedure Tf_list_return.t_dataCellDblClick(Sender: TcxCustomGridTableView;
+procedure TF_list_return.t_dataCellDblClick(Sender: TcxCustomGridTableView;
   ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift:
   TShiftState; var AHandled: Boolean);
 begin
-//if f_return = nil then
-  application.CreateForm(tf_return, f_return);
+//if F_return = nil then
+  application.CreateForm(TF_return, F_return);
 
-  f_return.Show;
-  f_return.tampil_data;
+  F_return.Show;
+  F_return.tampil_data;
 end;
 
-procedure Tf_list_return.FormCreate(Sender: TObject);
+procedure TF_list_return.FormCreate(Sender: TObject);
 var
   Year, Month, Day: Word;
 begin
@@ -112,16 +112,16 @@ begin
   de_mulai.Date := EncodeDate(Year, Month, 1);
   de_sampai.Date := Date();
 
-  f_utama.MDIChildCreated(self.Handle);
+  F_utama.MDIChildCreated(self.Handle);
   segarkan;
 end;
 
-procedure Tf_list_return.sb_1Click(Sender: TObject);
+procedure TF_list_return.sb_1Click(Sender: TObject);
 begin
   close;
 end;
 
-procedure Tf_list_return.sb_2Click(Sender: TObject);
+procedure TF_list_return.sb_2Click(Sender: TObject);
 begin
   segarkan;
 end;

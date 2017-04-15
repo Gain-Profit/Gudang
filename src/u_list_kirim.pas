@@ -73,10 +73,10 @@ begin
   begin
     if Assigned(active) then
     begin
-      idx := f_utama.tc_child.Tabs.IndexOfObject(TObject(msg.ActiveWnd));
-      f_utama.tc_child.Tag := -1;
-      f_utama.tc_child.TabIndex := idx;
-      f_utama.tc_child.Tag := 0;
+      idx := F_utama.tc_child.Tabs.IndexOfObject(TObject(msg.ActiveWnd));
+      F_utama.tc_child.Tag := -1;
+      F_utama.tc_child.TabIndex := idx;
+      F_utama.tc_child.Tag := 0;
     end;
   end;
 end;
@@ -102,7 +102,7 @@ end;
 
 procedure TF_list_kirim.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  f_utama.MDIChildDestroyed(Self.Handle);
+  F_utama.MDIChildDestroyed(Self.Handle);
   action := cafree;
   F_list_kirim := nil;
 end;
@@ -111,7 +111,7 @@ procedure TF_list_kirim.t_dataCellDblClick(Sender: TcxCustomGridTableView;
   ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift:
   TShiftState; var AHandled: Boolean);
 begin
-  application.CreateForm(tF_kirim, F_kirim);
+  application.CreateForm(TF_kirim, F_kirim);
 
   F_kirim.Show;
   F_kirim.tampil_data;
@@ -125,7 +125,7 @@ begin
   de_mulai.Date := EncodeDate(Year, Month, 1);
   de_sampai.Date := Date();
 
-  f_utama.MDIChildCreated(self.Handle);
+  F_utama.MDIChildCreated(self.Handle);
   segarkan;
 end;
 

@@ -1,4 +1,4 @@
-object f_comp: Tf_comp
+object F_comp: TF_comp
   Left = 419
   Top = 160
   BorderStyle = bsDialog

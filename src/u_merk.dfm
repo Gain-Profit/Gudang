@@ -1,4 +1,4 @@
-object f_merk: Tf_merk
+object F_merk: TF_merk
   Left = 584
   Top = 385
   Width = 316

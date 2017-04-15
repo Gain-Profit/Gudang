@@ -8,7 +8,7 @@ uses
   StdCtrls;
 
 type
-  Tf_golongan = class(TForm)
+  TF_golongan = class(TForm)
     sLabel1: TsLabel;
     ed_kode: TsEdit;
     sLabel2: TsLabel;
@@ -33,7 +33,7 @@ type
   end;
 
 var
-  f_golongan: Tf_golongan;
+  F_golongan: TF_golongan;
 
 implementation
 
@@ -42,29 +42,29 @@ uses
 
 {$R *.dfm}
 
-procedure Tf_golongan.baru;
+procedure TF_golongan.baru;
 begin
   ed_kode.Enabled := True;
   cb_jenis.Enabled := True;
 
-  cb_jenis.ItemIndex := cb_1.Items.IndexOf(f_cari.q_cari.FieldByName('kd_jenis').AsString);
+  cb_jenis.ItemIndex := cb_1.Items.IndexOf(F_cari.q_cari.FieldByName('kd_jenis').AsString);
   cb_jenisChange(Self);
   ed_desk.Clear;
   gol_baru := true;
 end;
 
-procedure Tf_golongan.ubah;
+procedure TF_golongan.ubah;
 begin
   ed_kode.Enabled := False;
   cb_jenis.Enabled := False;
 
-  cb_jenis.ItemIndex := cb_1.Items.IndexOf(f_cari.q_cari.FieldByName('kd_jenis').AsString);
-  ed_desk.text := f_cari.q_cari.FieldByName('n_golbrg').AsString;
-  ed_kode.Text := f_cari.q_cari.FieldByName('kd_golbrg').AsString;
+  cb_jenis.ItemIndex := cb_1.Items.IndexOf(F_cari.q_cari.FieldByName('kd_jenis').AsString);
+  ed_desk.text := F_cari.q_cari.FieldByName('n_golbrg').AsString;
+  ed_kode.Text := F_cari.q_cari.FieldByName('kd_golbrg').AsString;
   gol_baru := false;
 end;
 
-procedure Tf_golongan.cb_jenisChange(Sender: TObject);
+procedure TF_golongan.cb_jenisChange(Sender: TObject);
 begin
   fungsi.SQLExec(dm.q_temp, 'select * from tb_golongan where kd_jenis="' + cb_1.Items.Strings
     [cb_jenis.Itemindex] + '"', true);
@@ -74,7 +74,7 @@ begin
     ed_kode.Text := '0' + inttostr(dm.Q_temp.recordcount + 1);
 end;
 
-procedure Tf_golongan.FormCreate(Sender: TObject);
+procedure TF_golongan.FormCreate(Sender: TObject);
 var
   x: integer;
 begin
@@ -87,12 +87,12 @@ begin
   end;
 end;
 
-procedure Tf_golongan.B_newClick(Sender: TObject);
+procedure TF_golongan.B_newClick(Sender: TObject);
 begin
   baru;
 end;
 
-procedure Tf_golongan.B_saveClick(Sender: TObject);
+procedure TF_golongan.B_saveClick(Sender: TObject);
 begin
   if ed_kode.Text = '' then
     Exit;
@@ -125,11 +125,11 @@ begin
     end;
   end;
 
-  f_cari.q_cari.Close;
-  f_cari.q_cari.Open;
+  F_cari.q_cari.Close;
+  F_cari.q_cari.Open;
 
-  f_cari.clm1.caption := 'No';
-  f_cari.clm2.caption := 'Deskripsi';
+  F_cari.clm1.caption := 'No';
+  F_cari.clm2.caption := 'Deskripsi';
   close;
 end;
 

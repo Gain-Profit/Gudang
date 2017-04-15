@@ -9,7 +9,7 @@ uses
   sRadioButton, sCurrEdit, sCurrencyEdit, Mask, sMaskEdit, sCustomComboEdit;
 
 type
-  Tf_realCard = class(TForm)
+  TF_realCard = class(TForm)
     btnRealCard: TsButton;
     ed_PID: TsEdit;
     lv_data: TListView;
@@ -52,7 +52,7 @@ type
   end;
 
 var
-  f_realCard: Tf_realCard;
+  F_realCard: TF_realCard;
 
 implementation
 
@@ -61,7 +61,7 @@ uses
 
 {$R *.dfm}
 
-procedure Tf_realCard.btnRealCardClick(Sender: TObject);
+procedure TF_realCard.btnRealCardClick(Sender: TObject);
 begin
   if cb_karep.Checked = true then
   begin
@@ -90,7 +90,7 @@ begin
   dm.laporan.ShowReport;
 end;
 
-procedure Tf_realCard.ed_PIDKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TF_realCard.ed_PIDKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 var
   ItemBaru: TListItem;
 begin
@@ -123,7 +123,7 @@ begin
   end;
 end;
 
-procedure Tf_realCard.lv_dataKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TF_realCard.lv_dataKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   if key = vk_delete then
   begin
@@ -132,22 +132,22 @@ begin
   end;
 end;
 
-procedure Tf_realCard.cb_karepClick(Sender: TObject);
+procedure TF_realCard.cb_karepClick(Sender: TObject);
 begin
   gb_tgl.Enabled := not (cb_karep.Checked);
   gb_Rak.Enabled := not (cb_karep.Checked);
 end;
 
-procedure Tf_realCard.de_sampaiChange(Sender: TObject);
+procedure TF_realCard.de_sampaiChange(Sender: TObject);
 begin
   if de_sampai.Date < de_mulai.Date then
     de_sampai.Date := de_mulai.Date;
 end;
 
-procedure Tf_realCard.sb_cariClick(Sender: TObject);
+procedure TF_realCard.sb_cariClick(Sender: TObject);
 begin
   ed_PID.SetFocus;
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi := 'select kd_barang, n_barang from tb_barang where kd_perusahaan="' +
@@ -164,24 +164,24 @@ begin
   end;
 end;
 
-procedure Tf_realCard.BukaDataBarang1Click(Sender: TObject);
+procedure TF_realCard.BukaDataBarang1Click(Sender: TObject);
 begin
   sb_cariClick(Sender);
 end;
 
-procedure Tf_realCard.HapusBarangini1Click(Sender: TObject);
+procedure TF_realCard.HapusBarangini1Click(Sender: TObject);
 begin
   lb_data.Items.Delete(lv_data.ItemIndex);
   lv_data.DeleteSelected;
 end;
 
-procedure Tf_realCard.HapusSemuaBarang1Click(Sender: TObject);
+procedure TF_realCard.HapusSemuaBarang1Click(Sender: TObject);
 begin
   lb_data.Clear;
   lv_data.Clear;
 end;
 
-procedure Tf_realCard.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+procedure TF_realCard.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
   if lv_data.Items.Count > 0 then
   begin
@@ -191,7 +191,7 @@ begin
 
 end;
 
-procedure Tf_realCard.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TF_realCard.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   if Key = vk_f2 then
     ed_PID.SetFocus;

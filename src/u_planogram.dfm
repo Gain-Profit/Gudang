@@ -1,4 +1,4 @@
-object f_planogram: Tf_planogram
+object F_planogram: TF_planogram
   Left = 229
   Top = 91
   BorderStyle = bsDialog

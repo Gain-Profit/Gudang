@@ -7,7 +7,7 @@ uses
   Dialogs, StdCtrls, sButton, sLabel, sEdit, UFungsi, Buttons, sSkinProvider;
 
 type
-  Tf_supplier = class(TForm)
+  TF_supplier = class(TForm)
     sLabel2: TsLabel;
     ed_nama: TsEdit;
     sLabel1: TsLabel;
@@ -41,7 +41,7 @@ type
   end;
 
 var
-  f_supplier: Tf_supplier;
+  F_supplier: TF_supplier;
 
 implementation
 
@@ -50,7 +50,7 @@ uses
 
 {$R *.dfm}
 
-procedure Tf_supplier.baru;
+procedure TF_supplier.baru;
 begin
   ed_kode.Clear;
   ed_kode.ReadOnly := false;
@@ -65,12 +65,12 @@ begin
   supp_baru := true;
 end;
 
-procedure Tf_supplier.ubah;
+procedure TF_supplier.ubah;
 begin
   ed_kode.ReadOnly := true;
   b_auto.Enabled := False;
 
-  ed_kode.Text := f_cari.q_cari.FieldByName('kode').AsString;
+  ed_kode.Text := F_cari.q_cari.FieldByName('kode').AsString;
   fungsi.SQLExec(dm.Q_temp, 'select * from tb_supp where kode="' + ed_kode.Text
     + '" and kd_perusahaan="' + dm.kd_perusahaan + '"', true);
   ed_alamat.Text := dm.Q_temp.FieldByName('alamat').AsString;
@@ -84,12 +84,12 @@ begin
   supp_baru := false;
 end;
 
-procedure Tf_supplier.B_newClick(Sender: TObject);
+procedure TF_supplier.B_newClick(Sender: TObject);
 begin
   baru;
 end;
 
-procedure Tf_supplier.B_saveClick(Sender: TObject);
+procedure TF_supplier.B_saveClick(Sender: TObject);
 begin
   if ed_kode.Text = '' then
   begin
@@ -124,16 +124,16 @@ begin
       showmessage('penyimpanan data gagal '#10#13'' + e.Message);
     end;
   end;
-  f_cari.q_cari.Close;
-  f_cari.q_cari.Open;
+  F_cari.q_cari.Close;
+  F_cari.q_cari.Open;
 
-  f_cari.clm1.caption := 'kode';
-  f_cari.clm2.caption := 'Nama Supplier';
+  F_cari.clm1.caption := 'kode';
+  F_cari.clm2.caption := 'Nama Supplier';
   close;
 
 end;
 
-procedure Tf_supplier.b_autoClick(Sender: TObject);
+procedure TF_supplier.b_autoClick(Sender: TObject);
 begin
   fungsi.SQLExec(dm.Q_temp, Format('SELECT CONCAT("SU-",LPAD(IFNULL(max(right(kode,4)),0)+1, 4, "0")) '
     + 'as new_id FROM tb_supp WHERE kd_perusahaan= "%s"  AND kode like "SU-%%"',

@@ -14,7 +14,7 @@ uses
   dxSkinscxPCPainter, cxNavigator;
 
 type
-  Tf_list_return_kirim = class(TForm)
+  TF_list_return_kirim = class(TForm)
     sSkinProvider1: TsSkinProvider;
     sPanel1: TsPanel;
     grid: TcxGrid;
@@ -55,7 +55,7 @@ type
   end;
 
 var
-  f_list_return_kirim: Tf_list_return_kirim;
+  F_list_return_kirim: TF_list_return_kirim;
 
 implementation
 
@@ -63,7 +63,7 @@ uses
   u_dm, u_utama, u_return_kirim;
 {$R *.dfm}
 
-procedure Tf_list_return_kirim.WMMDIACTIVATE(var msg: TWMMDIACTIVATE);
+procedure TF_list_return_kirim.WMMDIACTIVATE(var msg: TWMMDIACTIVATE);
 var
   active: TWinControl;
   idx: Integer;
@@ -73,15 +73,15 @@ begin
   begin
     if Assigned(active) then
     begin
-      idx := f_utama.tc_child.Tabs.IndexOfObject(TObject(msg.ActiveWnd));
-      f_utama.tc_child.Tag := -1;
-      f_utama.tc_child.TabIndex := idx;
-      f_utama.tc_child.Tag := 0;
+      idx := F_utama.tc_child.Tabs.IndexOfObject(TObject(msg.ActiveWnd));
+      F_utama.tc_child.Tag := -1;
+      F_utama.tc_child.TabIndex := idx;
+      F_utama.tc_child.Tag := 0;
     end;
   end;
 end;
 
-procedure Tf_list_return_kirim.segarkan;
+procedure TF_list_return_kirim.segarkan;
 begin
   btnSimpan.Enabled := False;
   if not (cb_belum.Checked) then
@@ -100,25 +100,25 @@ begin
   end;
 end;
 
-procedure Tf_list_return_kirim.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TF_list_return_kirim.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  f_utama.MDIChildDestroyed(Self.Handle);
+  F_utama.MDIChildDestroyed(Self.Handle);
   action := cafree;
-  f_list_return_kirim := nil;
+  F_list_return_kirim := nil;
 end;
 
-procedure Tf_list_return_kirim.t_dataCellDblClick(Sender: TcxCustomGridTableView;
+procedure TF_list_return_kirim.t_dataCellDblClick(Sender: TcxCustomGridTableView;
   ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift:
   TShiftState; var AHandled: Boolean);
 begin
-//if f_return_kirim = nil then
-  application.CreateForm(tf_return_kirim, f_return_kirim);
+//if F_return_kirim = nil then
+  application.CreateForm(TF_return_kirim, F_return_kirim);
 
-  f_return_kirim.Show;
-  f_return_kirim.tampil_data;
+  F_return_kirim.Show;
+  F_return_kirim.tampil_data;
 end;
 
-procedure Tf_list_return_kirim.FormCreate(Sender: TObject);
+procedure TF_list_return_kirim.FormCreate(Sender: TObject);
 var
   Year, Month, Day: Word;
 begin
@@ -126,27 +126,27 @@ begin
   de_mulai.Date := EncodeDate(Year, Month, 1);
   de_sampai.Date := Date();
 
-  f_utama.MDIChildCreated(self.Handle);
+  F_utama.MDIChildCreated(self.Handle);
   segarkan;
 end;
 
-procedure Tf_list_return_kirim.sb_1Click(Sender: TObject);
+procedure TF_list_return_kirim.sb_1Click(Sender: TObject);
 begin
   close;
 end;
 
-procedure Tf_list_return_kirim.sb_2Click(Sender: TObject);
+procedure TF_list_return_kirim.sb_2Click(Sender: TObject);
 begin
   segarkan;
 end;
 
-procedure Tf_list_return_kirim.cb_belumClick(Sender: TObject);
+procedure TF_list_return_kirim.cb_belumClick(Sender: TObject);
 begin
   cbCabang.Visible := cb_belum.Checked;
   btnSimpan.Visible := cbCabang.Visible;
 end;
 
-procedure Tf_list_return_kirim.btnSimpanClick(Sender: TObject);
+procedure TF_list_return_kirim.btnSimpanClick(Sender: TObject);
 var
   tempat, nama_file: string;
   y: Integer;

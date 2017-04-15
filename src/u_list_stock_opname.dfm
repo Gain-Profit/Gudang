@@ -1,4 +1,4 @@
-object f_list_SO: Tf_list_SO
+object F_list_SO: TF_list_SO
   Left = 192
   Top = 116
   Width = 928

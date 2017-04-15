@@ -1,4 +1,4 @@
-object f_utama: Tf_utama
+object F_utama: TF_utama
   Left = 16
   Top = 123
   Width = 1019

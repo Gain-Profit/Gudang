@@ -1,4 +1,4 @@
-object f_cari: Tf_cari
+object F_cari: TF_cari
   Left = 306
   Top = 134
   BorderStyle = bsDialog

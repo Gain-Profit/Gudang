@@ -11,7 +11,7 @@ uses
   dxSkinsDefaultPainters;
 
 type
-  Tf_emp = class(TForm)
+  TF_emp = class(TForm)
     sSkinProvider1: TsSkinProvider;
     pUser: TsPanel;
     B_save: TsButton;
@@ -78,7 +78,7 @@ type
   end;
 
 var
-  f_emp: Tf_emp;
+  F_emp: TF_emp;
 
 implementation
 
@@ -87,7 +87,7 @@ uses
 
 {$R *.dfm}
 
-procedure Tf_emp.baru;
+procedure TF_emp.baru;
 begin
   btnpass.Visible := False;
   ts_gudang.tabVisible := False;
@@ -106,9 +106,9 @@ begin
   user_baru := true;
 end;
 
-procedure Tf_emp.ubah;
+procedure TF_emp.ubah;
 begin
-  f_emp.Width := 483;
+  F_emp.Width := 483;
   ed_kode.ReadOnly := true;
   btnpass.Visible := True;
   kdUser := ed_kode.Text;
@@ -150,7 +150,7 @@ begin
   user_baru := false;
 end;
 
-function Tf_emp.ubahCB(checkbox: TsCheckBox): string;
+function TF_emp.ubahCB(checkbox: TsCheckBox): string;
 begin
   if checkbox.Checked = true then
     result := 'Y'
@@ -158,7 +158,7 @@ begin
     result := 'N';
 end;
 
-procedure Tf_emp.B_saveClick(Sender: TObject);
+procedure TF_emp.B_saveClick(Sender: TObject);
 begin
   dm.db_conn.StartTransaction;
   try
@@ -202,22 +202,22 @@ begin
   end;
 end;
 
-procedure Tf_emp.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TF_emp.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  f_cari.refresh;
+  F_cari.refresh;
 end;
 
-procedure Tf_emp.FormShow(Sender: TObject);
+procedure TF_emp.FormShow(Sender: TObject);
 begin
   pc_user.ActivePage := ts_general;
 end;
 
-procedure Tf_emp.cb_gudangClick(Sender: TObject);
+procedure TF_emp.cb_gudangClick(Sender: TObject);
 begin
   ts_gudang.tabVisible := cb_gudang.Checked;
 end;
 
-procedure Tf_emp.btnpassClick(Sender: TObject);
+procedure TF_emp.btnpassClick(Sender: TObject);
 begin
   if (ed_pass.Text = '') or (ed_pass2.Text = '') then
   begin
@@ -237,7 +237,7 @@ begin
   showmessage('Proses Pengubahan Password sukses....');
 end;
 
-procedure Tf_emp.updateprivasi;
+procedure TF_emp.updateprivasi;
 var
   sql: string;
 begin
@@ -262,17 +262,17 @@ begin
   fungsi.SQLExec(dm.Q_Exe, sql, False);
 end;
 
-procedure Tf_emp.mniallClick(Sender: TObject);
+procedure TF_emp.mniallClick(Sender: TObject);
 begin
   hakgudang(True);
 end;
 
-procedure Tf_emp.mniNotAllClick(Sender: TObject);
+procedure TF_emp.mniNotAllClick(Sender: TObject);
 begin
   hakgudang(False);
 end;
 
-procedure Tf_emp.hakgudang(boleh: Boolean);
+procedure TF_emp.hakgudang(boleh: Boolean);
 var
   i: integer;
 begin
@@ -284,12 +284,12 @@ begin
   end;
 end;
 
-procedure Tf_emp.cb_serverClick(Sender: TObject);
+procedure TF_emp.cb_serverClick(Sender: TObject);
 begin
   ts_server.TabVisible := cb_server.Checked;
 end;
 
-procedure Tf_emp.hakToko(boleh: Boolean);
+procedure TF_emp.hakToko(boleh: Boolean);
 var
   i: integer;
 begin

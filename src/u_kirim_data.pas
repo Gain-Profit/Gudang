@@ -127,18 +127,18 @@ begin
     MkDir(dm.DocPath + 'DATA_KIRIM');
 
   if not DirectoryExists(dm.DocPath + '\DATA_KIRIM\' + dm.kd_perusahaan + '_' +
-    f_utama.sb.Panels[4].text) then
-    MkDir(dm.DocPath + 'DATA_KIRIM\' + dm.kd_perusahaan + '_' + f_utama.sb.Panels
+    F_utama.sb.Panels[4].text) then
+    MkDir(dm.DocPath + 'DATA_KIRIM\' + dm.kd_perusahaan + '_' + F_utama.sb.Panels
       [4].text);
 
   if not DirectoryExists(dm.DocPath + '\DATA_KIRIM\' + dm.kd_perusahaan + '_' +
-    f_utama.sb.Panels[4].text + '\PC_' + dm.kd_perusahaan + '_' + formatdatetime
+    F_utama.sb.Panels[4].text + '\PC_' + dm.kd_perusahaan + '_' + formatdatetime
     ('yyyy-MM-dd', edt_kirim.date)) then
-    MkDir(dm.DocPath + 'DATA_KIRIM\' + dm.kd_perusahaan + '_' + f_utama.sb.Panels
+    MkDir(dm.DocPath + 'DATA_KIRIM\' + dm.kd_perusahaan + '_' + F_utama.sb.Panels
       [4].text + '\PC_' + dm.kd_perusahaan + '_' + formatdatetime('yyyy-MM-dd',
       edt_kirim.date));
 
-  dir_simpan := dm.DocPath + 'DATA_KIRIM\' + dm.kd_perusahaan + '_' + f_utama.sb.Panels
+  dir_simpan := dm.DocPath + 'DATA_KIRIM\' + dm.kd_perusahaan + '_' + F_utama.sb.Panels
     [4].text + '\PC_' + dm.kd_perusahaan + '_' + formatdatetime('yyyy-MM-dd',
     edt_kirim.Date);
 end;
@@ -149,13 +149,13 @@ begin
     MkDir(dm.DocPath + 'DATA_TERIMA');
 
   if not DirectoryExists(dm.DocPath + 'DATA_TERIMA\' + dm.kd_perusahaan + '_' +
-    f_utama.sb.Panels[4].text) then
-    MkDir(dm.DocPath + 'DATA_TERIMA\' + dm.kd_perusahaan + '_' + f_utama.sb.Panels
+    F_utama.sb.Panels[4].text) then
+    MkDir(dm.DocPath + 'DATA_TERIMA\' + dm.kd_perusahaan + '_' + F_utama.sb.Panels
       [4].text);
 
-  dir_load := dm.DocPath + 'DATA_TERIMA\' + dm.kd_perusahaan + '_' + f_utama.sb.Panels
+  dir_load := dm.DocPath + 'DATA_TERIMA\' + dm.kd_perusahaan + '_' + F_utama.sb.Panels
     [4].text + '\';
-  file_load := dm.DocPath + 'DATA_TERIMA\' + dm.kd_perusahaan + '_' + f_utama.sb.Panels
+  file_load := dm.DocPath + 'DATA_TERIMA\' + dm.kd_perusahaan + '_' + F_utama.sb.Panels
     [4].text + '\CP_' + dm.kd_perusahaan + '_' + formatdatetime('yyyy-MM-dd',
     edt_terima.Date) + '.zip';
 end;
@@ -174,7 +174,7 @@ begin
   zipp := TAbZipper.Create(Self);
   zipp.AutoSave := True;
   zipp.BaseDirectory := dm.DocPath + 'DATA_KIRIM\' + dm.kd_perusahaan + '_' +
-    f_utama.sb.Panels[4].text + '\';
+    F_utama.sb.Panels[4].text + '\';
 
   zipp.FileName := dir_simpan + '.zip';
 

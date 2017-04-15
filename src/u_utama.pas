@@ -18,7 +18,7 @@ const
   WM_AFTER_SHOW = WM_USER + 300; // custom message
 
 type
-  Tf_utama = class(TForm)
+  TF_utama = class(TForm)
     sSkinProvider1: TsSkinProvider;
     sb: TsStatusBar;
     MainMenu1: TMainMenu;
@@ -222,7 +222,7 @@ type
   end;
 
 var
-  f_utama: Tf_utama;
+  F_utama: TF_utama;
 
 implementation
 
@@ -237,42 +237,42 @@ uses
 {$R *.dfm}
 
 //add a tab for an MDI child
-procedure tf_utama.MDIChildCreated(const childHandle: THandle);
+procedure TF_utama.MDIChildCreated(const childHandle: THandle);
 begin
   tc_child.Tabs.AddObject(TForm(FindControl(childHandle)).Caption, TObject(childHandle));
   tc_child.TabIndex := -1 + tc_child.Tabs.Count;
 
-  if f_utama.MDIChildCount > 1 then
+  if F_utama.MDIChildCount > 1 then
   begin
     tc_child.Visible := True;
   end;
 end;
 
 //remove a tab for this MDI child
-procedure tf_utama.MDIChildDestroyed(const childHandle: THandle);
+procedure TF_utama.MDIChildDestroyed(const childHandle: THandle);
 var
   idx: Integer;
 begin
   idx := tc_child.Tabs.IndexOfObject(TObject(childHandle));
   tc_child.Tabs.Delete(idx);
 
-  if f_utama.MDIChildCount = 2 then
+  if F_utama.MDIChildCount = 2 then
     tc_child.Visible := False;
 end;
 
-procedure Tf_utama.WmAfterShow(var Msg: TMessage);
+procedure TF_utama.WmAfterShow(var Msg: TMessage);
 begin
   dm.sm.Active := true;
 
-  application.CreateForm(tF_login, f_login);
-  f_login.sb.Panels[0].Text := dm.kd_perusahaan;
-  f_login.sb.Panels[1].Text := sb.Panels[4].Text;
-  f_login.ShowModal;
+  application.CreateForm(TF_login, F_login);
+  F_login.sb.Panels[0].Text := dm.kd_perusahaan;
+  F_login.sb.Panels[1].Text := sb.Panels[4].Text;
+  F_login.ShowModal;
   if not (dm.CanLogin) then
     Close;
 end;
 
-procedure Tf_utama.ac_barangExecute(Sender: TObject);
+procedure TF_utama.ac_barangExecute(Sender: TObject);
 begin
   if not (HakAkses('gdInvBarang')) then
   begin
@@ -281,13 +281,13 @@ begin
     Exit;
   end;
 
-  if f_barang = nil then
-    application.CreateForm(tf_barang, f_barang);
+  if F_barang = nil then
+    application.CreateForm(TF_barang, F_barang);
 
-  f_barang.Show;
+  F_barang.Show;
 end;
 
-procedure Tf_utama.ac_hargaExecute(Sender: TObject);
+procedure TF_utama.ac_hargaExecute(Sender: TObject);
 begin
   if not (HakAkses('gdInvHarga')) then
   begin
@@ -296,13 +296,13 @@ begin
     Exit;
   end;
 
-  if f_edit_harga = nil then
-    application.CreateForm(tf_edit_harga, f_edit_harga);
+  if F_edit_harga = nil then
+    application.CreateForm(TF_edit_harga, F_edit_harga);
 
-  f_edit_harga.Show;
+  F_edit_harga.Show;
 end;
 
-procedure Tf_utama.ac_receiptExecute(Sender: TObject);
+procedure TF_utama.ac_receiptExecute(Sender: TObject);
 begin
   if not (HakAkses('gdTrRO')) then
   begin
@@ -311,11 +311,11 @@ begin
     Exit;
   end;
 
-  application.CreateForm(tf_RO, f_RO);
-  f_RO.Show;
+  application.CreateForm(TF_RO, F_RO);
+  F_RO.Show;
 end;
 
-procedure Tf_utama.ac_returnExecute(Sender: TObject);
+procedure TF_utama.ac_returnExecute(Sender: TObject);
 begin
   if not (HakAkses('gdTrReturn')) then
   begin
@@ -324,11 +324,11 @@ begin
     Exit;
   end;
 
-  application.CreateForm(tf_return, f_return);
-  f_return.Show;
+  application.CreateForm(TF_return, F_return);
+  F_return.Show;
 end;
 
-procedure Tf_utama.ac_companyExecute(Sender: TObject);
+procedure TF_utama.ac_companyExecute(Sender: TObject);
 begin
   if not (HakAkses('gdMaster')) then
   begin
@@ -337,7 +337,7 @@ begin
     Exit;
   end;
 
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi := 'select kd_perusahaan, n_perusahaan from tb_company';
@@ -352,7 +352,7 @@ begin
   end;
 end;
 
-procedure Tf_utama.ac_jenisExecute(Sender: TObject);
+procedure TF_utama.ac_jenisExecute(Sender: TObject);
 begin
   if not (HakAkses('gdSetting')) then
   begin
@@ -361,7 +361,7 @@ begin
     Exit;
   end;
 
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi := 'select kd_jenis,n_jenis from tb_jenis';
@@ -376,7 +376,7 @@ begin
   end;
 end;
 
-procedure Tf_utama.ac_golonganExecute(Sender: TObject);
+procedure TF_utama.ac_golonganExecute(Sender: TObject);
 begin
   if not (HakAkses('gdSetting')) then
   begin
@@ -385,7 +385,7 @@ begin
     Exit;
   end;
 
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi := 'select kd_jenis, kd_golbrg, n_golbrg from tb_golongan';
@@ -401,7 +401,7 @@ begin
   end;
 end;
 
-procedure Tf_utama.ac_kategoriExecute(Sender: TObject);
+procedure TF_utama.ac_kategoriExecute(Sender: TObject);
 begin
   if not (HakAkses('gdSetting')) then
   begin
@@ -410,7 +410,7 @@ begin
     Exit;
   end;
 
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi := 'select tag,n_kategori from tb_kategori';
@@ -425,7 +425,7 @@ begin
   end;
 end;
 
-procedure Tf_utama.ac_merkExecute(Sender: TObject);
+procedure TF_utama.ac_merkExecute(Sender: TObject);
 begin
   if not (HakAkses('gdSetting')) then
   begin
@@ -434,7 +434,7 @@ begin
     Exit;
   end;
 
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi := 'select kd_merk,n_merk from tb_merk';
@@ -449,7 +449,7 @@ begin
   end;
 end;
 
-procedure Tf_utama.Ac_supplierExecute(Sender: TObject);
+procedure TF_utama.Ac_supplierExecute(Sender: TObject);
 begin
   if not (HakAkses('gdMaster')) then
   begin
@@ -458,7 +458,7 @@ begin
     Exit;
   end;
 
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi := 'select kode,n_supp from tb_supp where kd_perusahaan = "' + dm.kd_perusahaan
@@ -474,7 +474,7 @@ begin
   end;
 end;
 
-procedure Tf_utama.Ac_satuanExecute(Sender: TObject);
+procedure TF_utama.Ac_satuanExecute(Sender: TObject);
 begin
   if not (HakAkses('gdSetting')) then
   begin
@@ -483,7 +483,7 @@ begin
     Exit;
   end;
 
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi := 'select kd_satuan,n_satuan,n_singkat from tb_satuan';
@@ -498,7 +498,7 @@ begin
   end;
 end;
 
-procedure Tf_utama.ac_purchaseExecute(Sender: TObject);
+procedure TF_utama.ac_purchaseExecute(Sender: TObject);
 begin
   if not (HakAkses('gdTrPO')) then
   begin
@@ -507,11 +507,11 @@ begin
     Exit;
   end;
 
-  application.CreateForm(tf_purchase, f_purchase);
-  f_purchase.Show;
+  application.CreateForm(TF_purchase, F_purchase);
+  F_purchase.Show;
 end;
 
-procedure Tf_utama.ac_barang_suppExecute(Sender: TObject);
+procedure TF_utama.ac_barang_suppExecute(Sender: TObject);
 begin
   if not (HakAkses('gdInvBrgSupp')) then
   begin
@@ -520,11 +520,11 @@ begin
     Exit;
   end;
 
-  application.CreateForm(tf_barang_supp, f_barang_supp);
-  f_barang_supp.ShowModal;
+  application.CreateForm(TF_barang_supp, F_barang_supp);
+  F_barang_supp.ShowModal;
 end;
 
-procedure Tf_utama.ac_planogramExecute(Sender: TObject);
+procedure TF_utama.ac_planogramExecute(Sender: TObject);
 begin
   if not (HakAkses('gdInvPlano')) then
   begin
@@ -533,11 +533,11 @@ begin
     Exit;
   end;
 
-  application.CreateForm(tf_planogram, f_planogram);
-  f_planogram.ShowModal;
+  application.CreateForm(TF_planogram, F_planogram);
+  F_planogram.ShowModal;
 end;
 
-procedure Tf_utama.FormShow(Sender: TObject);
+procedure TF_utama.FormShow(Sender: TObject);
 begin
   cek_update;
   sb.Panels[9].Text := 'Versi: ' + FVersion.AsString;
@@ -556,7 +556,7 @@ begin
   PostMessage(Self.Handle, WM_AFTER_SHOW, 0, 0);
 end;
 
-procedure Tf_utama.ac_custExecute(Sender: TObject);
+procedure TF_utama.ac_custExecute(Sender: TObject);
 begin
   if not (HakAkses('gdMaster')) then
   begin
@@ -565,7 +565,7 @@ begin
     Exit;
   end;
 
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi :=
@@ -582,7 +582,7 @@ begin
   end;
 end;
 
-procedure Tf_utama.ac_userExecute(Sender: TObject);
+procedure TF_utama.ac_userExecute(Sender: TObject);
 begin
   if not (HakAkses('admin')) then
   begin
@@ -591,7 +591,7 @@ begin
     Exit;
   end;
 
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi := 'SELECT kd_user, n_user FROM tb_user where aktif ="Y"';
@@ -608,31 +608,31 @@ begin
 
 end;
 
-procedure Tf_utama.ac_list_purchaseExecute(Sender: TObject);
+procedure TF_utama.ac_list_purchaseExecute(Sender: TObject);
 begin
-  if f_List_purchase = nil then
-    application.CreateForm(tf_list_purchase, f_list_purchase);
+  if F_List_purchase = nil then
+    application.CreateForm(TF_list_purchase, F_list_purchase);
 
-  f_list_purchase.Show;
+  F_list_purchase.Show;
 end;
 
-procedure Tf_utama.ac_list_receiptExecute(Sender: TObject);
+procedure TF_utama.ac_list_receiptExecute(Sender: TObject);
 begin
-  if f_list_receipt = nil then
-    application.CreateForm(tf_list_receipt, f_list_receipt);
+  if F_list_receipt = nil then
+    application.CreateForm(TF_list_receipt, F_list_receipt);
 
-  f_list_receipt.Show;
+  F_list_receipt.Show;
 end;
 
-procedure Tf_utama.ac_list_returnExecute(Sender: TObject);
+procedure TF_utama.ac_list_returnExecute(Sender: TObject);
 begin
-  if f_list_return = nil then
-    application.CreateForm(tf_list_return, f_list_return);
+  if F_list_return = nil then
+    application.CreateForm(TF_list_return, F_list_return);
 
-  f_list_return.Show;
+  F_list_return.Show;
 end;
 
-procedure Tf_utama.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TF_utama.FormClose(Sender: TObject; var Action: TCloseAction);
 var
   appINI: TIniFile;
 begin
@@ -644,21 +644,21 @@ begin
   dm.db_conn.Connected := false;
 
   action := cafree;
-  f_utama := nil;
+  F_utama := nil;
 end;
 
-procedure Tf_utama.Action1Execute(Sender: TObject);
+procedure TF_utama.Action1Execute(Sender: TObject);
 begin
   close;
 end;
 
-procedure Tf_utama.ac_lapExecute(Sender: TObject);
+procedure TF_utama.ac_lapExecute(Sender: TObject);
 begin
   Application.CreateForm(TF_toko, F_toko);
   F_toko.ShowModal;
 end;
 
-procedure Tf_utama.Timer1Timer(Sender: TObject);
+procedure TF_utama.Timer1Timer(Sender: TObject);
 var
   days: array[1..7] of string;
 begin
@@ -695,21 +695,21 @@ begin
 
   if sb.Panels[7].Text >= '23:59:00' then
   begin
-    if f_hari = nil then
+    if F_hari = nil then
     begin
-      Application.CreateForm(Tf_hari, f_hari);
-      f_hari.ShowModal;
+      Application.CreateForm(TF_hari, F_hari);
+      F_hari.ShowModal;
     end;
   end
   else
   begin
-    if f_hari <> nil then
-      f_hari.Close;
+    if F_hari <> nil then
+      F_hari.Close;
   end;
 
 end;
 
-procedure Tf_utama.HidePanelControl1Click(Sender: TObject);
+procedure TF_utama.HidePanelControl1Click(Sender: TObject);
 begin
   if (hidepanelcontrol1.Checked = true) then
   begin
@@ -723,14 +723,14 @@ begin
   end;
 end;
 
-procedure Tf_utama.UbahSkin1Click(Sender: TObject);
+procedure TF_utama.UbahSkin1Click(Sender: TObject);
 begin
   selectskin(dm.sm);
 end;
 
-procedure Tf_utama.LogOut1Click(Sender: TObject);
+procedure TF_utama.LogOut1Click(Sender: TObject);
 begin
-  if f_utama.MDIChildCount <> 0 then
+  if F_utama.MDIChildCount <> 0 then
   begin
     showmessage('tutup dulu semua windows...');
     exit;
@@ -741,15 +741,15 @@ begin
   sb.Panels[1].Text := 'NAMA USER';
   dm.CanLogin := False;
 
-  application.CreateForm(tF_login, f_login);
-  f_login.sb.Panels[0].Text := dm.kd_perusahaan;
-  f_login.sb.Panels[1].Text := sb.Panels[4].Text;
-  f_login.ShowModal;
+  application.CreateForm(TF_login, F_login);
+  F_login.sb.Panels[0].Text := dm.kd_perusahaan;
+  F_login.sb.Panels[1].Text := sb.Panels[4].Text;
+  F_login.ShowModal;
   if not (dm.CanLogin) then
     Close;
 end;
 
-procedure Tf_utama.FormCreate(Sender: TObject);
+procedure TF_utama.FormCreate(Sender: TObject);
 begin
   {$IFDEF VER150}
     DecimalSeparator := '.';
@@ -766,13 +766,13 @@ begin
   FVersion := TAppVersion.Create(Application.ExeName);
 end;
 
-procedure Tf_utama.CentralofProfitHelp1Click(Sender: TObject);
+procedure TF_utama.CentralofProfitHelp1Click(Sender: TObject);
 begin
   ShellExecute(Handle, 'open', PChar('hh.exe'), PChar(dm.wpath +
-    'tools/bantuan.chm::/Central_of_Profit.htm'), nil, SW_SHOW);
+    'tools/bantuan.chm::/Central_oF_Profit.htm'), nil, SW_SHOW);
 end;
 
-procedure Tf_utama.ac_kirimExecute(Sender: TObject);
+procedure TF_utama.ac_kirimExecute(Sender: TObject);
 begin
   if not (HakAkses('gdTrKirim')) then
   begin
@@ -781,19 +781,19 @@ begin
     Exit;
   end;
 
-  application.CreateForm(tF_kirim, F_kirim);
+  application.CreateForm(TF_kirim, F_kirim);
   F_kirim.Show;
 end;
 
-procedure Tf_utama.ac_list_kirimExecute(Sender: TObject);
+procedure TF_utama.ac_list_kirimExecute(Sender: TObject);
 begin
-  if f_List_kirim = nil then
-    application.CreateForm(tf_List_kirim, f_List_kirim);
+  if F_List_kirim = nil then
+    application.CreateForm(TF_List_kirim, F_List_kirim);
 
-  f_List_kirim.Show;
+  F_List_kirim.Show;
 end;
 
-procedure Tf_utama.ac_kirim_dataExecute(Sender: TObject);
+procedure TF_utama.ac_kirim_dataExecute(Sender: TObject);
 begin
   if not (HakAkses('gdInvBrgUpdate')) then
   begin
@@ -805,7 +805,7 @@ begin
   F_kirim_data.ShowModal;
 end;
 
-procedure Tf_utama.ac_updateExecute(Sender: TObject);
+procedure TF_utama.ac_updateExecute(Sender: TObject);
 var
   W: Integer;
 begin
@@ -954,23 +954,23 @@ begin
   end;
 end;
 
-procedure Tf_utama.ac_list_salesExecute(Sender: TObject);
+procedure TF_utama.ac_list_salesExecute(Sender: TObject);
 begin
-  if f_List_sales = nil then
-    application.CreateForm(tf_List_sales, f_List_sales);
+  if F_List_sales = nil then
+    application.CreateForm(TF_List_sales, F_List_sales);
 
-  f_List_sales.Show;
+  F_List_sales.Show;
 end;
 
-procedure Tf_utama.ac_list_soExecute(Sender: TObject);
+procedure TF_utama.ac_list_soExecute(Sender: TObject);
 begin
-  if f_list_SO = nil then
-    application.CreateForm(tf_list_SO, f_list_SO);
+  if F_list_SO = nil then
+    application.CreateForm(TF_list_SO, F_list_SO);
 
-  f_list_SO.Show;
+  F_list_SO.Show;
 end;
 
-procedure Tf_utama.tc_childChange(Sender: TObject);
+procedure TF_utama.tc_childChange(Sender: TObject);
 var
   cHandle: Integer;
   k: Integer;
@@ -990,18 +990,18 @@ begin
   end;
 end;
 
-procedure Tf_utama.utupSemua1Click(Sender: TObject);
+procedure TF_utama.utupSemua1Click(Sender: TObject);
 var
   h: Integer;
 begin
-  for h := 0 to f_utama.MDIChildCount - 1 do
+  for h := 0 to F_utama.MDIChildCount - 1 do
   begin
-    f_utama.MDIChildren[h].Close;
+    F_utama.MDIChildren[h].Close;
   end;
   tc_child.Visible := False;
 end;
 
-procedure Tf_utama.utup1Click(Sender: TObject);
+procedure TF_utama.utup1Click(Sender: TObject);
 var
   cHandle: Integer;
   k: Integer;
@@ -1021,7 +1021,7 @@ begin
   end;
 end;
 
-procedure Tf_utama.utupSemuaKecualiini1Click(Sender: TObject);
+procedure TF_utama.utupSemuaKecualiini1Click(Sender: TObject);
 var
   cHandle: Integer;
   k: Integer;
@@ -1041,7 +1041,7 @@ begin
   tc_child.Visible := False;
 end;
 
-procedure Tf_utama.ac_return_kirimExecute(Sender: TObject);
+procedure TF_utama.ac_return_kirimExecute(Sender: TObject);
 begin
   if not (HakAkses('gdTrReturnKirim')) then
   begin
@@ -1050,19 +1050,19 @@ begin
     Exit;
   end;
 
-  application.CreateForm(tf_return_kirim, f_return_kirim);
-  f_return_kirim.Show;
+  application.CreateForm(TF_return_kirim, F_return_kirim);
+  F_return_kirim.Show;
 end;
 
-procedure Tf_utama.ac_list_return_kirimExecute(Sender: TObject);
+procedure TF_utama.ac_list_return_kirimExecute(Sender: TObject);
 begin
-  if f_list_return_kirim = nil then
-    application.CreateForm(tf_list_return_kirim, f_list_return_kirim);
+  if F_list_return_kirim = nil then
+    application.CreateForm(TF_list_return_kirim, F_list_return_kirim);
 
-  f_list_return_kirim.Show;
+  F_list_return_kirim.Show;
 end;
 
-procedure Tf_utama.panel_auto_width;
+procedure TF_utama.panel_auto_width;
 var
   x: integer;
   y: string;
@@ -1074,13 +1074,13 @@ begin
   end;
 end;
 
-procedure Tf_utama.ac_realcardExecute(Sender: TObject);
+procedure TF_utama.ac_realcardExecute(Sender: TObject);
 begin
   application.CreateForm(TF_realCard, F_realCard);
-  f_realCard.ShowModal;
+  F_realCard.ShowModal;
 end;
 
-function Tf_utama.HakAkses(kunci: string): Boolean;
+function TF_utama.HakAkses(kunci: string): Boolean;
 var
   sql: string;
 begin
@@ -1091,26 +1091,26 @@ begin
   Result := dm.Q_temp.FieldByName(kunci).AsBoolean;
 end;
 
-procedure Tf_utama.SbubahPasswordClick(Sender: TObject);
+procedure TF_utama.SbubahPasswordClick(Sender: TObject);
 begin
   Application.CreateForm(TF_ubahPassword, F_ubahPassword);
   F_ubahPassword.ShowModal;
 end;
 
-procedure Tf_utama.ac_cekUpdateExecute(Sender: TObject);
+procedure TF_utama.ac_cekUpdateExecute(Sender: TObject);
 begin
   cek_update;
 end;
 
-procedure Tf_utama.ac_list_return_jualExecute(Sender: TObject);
+procedure TF_utama.ac_list_return_jualExecute(Sender: TObject);
 begin
-  if f_list_return_jual = nil then
-    application.CreateForm(Tf_list_return_jual, f_list_return_jual);
+  if F_list_return_jual = nil then
+    application.CreateForm(TF_list_return_jual, F_list_return_jual);
 
-  f_list_return_jual.Show;
+  F_list_return_jual.Show;
 end;
 
-procedure Tf_utama.cek_update;
+procedure TF_utama.cek_update;
 var
   LVersiDB, LVersiAPP: TVersion;
   LSql :string;
@@ -1130,13 +1130,13 @@ begin
   LVersiDB.Free;
 end;
 
-procedure Tf_utama.ac_barcodeExecute(Sender: TObject);
+procedure TF_utama.ac_barcodeExecute(Sender: TObject);
 begin
-  application.CreateForm(Tf_Barcode, f_Barcode);
-  f_Barcode.ShowModal;
+  application.CreateForm(TF_Barcode, F_Barcode);
+  F_Barcode.ShowModal;
 end;
 
-procedure Tf_utama.SbGroupBarangClick(Sender: TObject);
+procedure TF_utama.SbGroupBarangClick(Sender: TObject);
 begin
   if FGroupBarang = nil then
     application.CreateForm(TFGroupBarang, FGroupBarang);
@@ -1144,7 +1144,7 @@ begin
   FGroupBarang.Show;
 end;
 
-procedure Tf_utama.ac_settingExecute(Sender: TObject);
+procedure TF_utama.ac_settingExecute(Sender: TObject);
 begin
   if not (HakAkses('admin')) then
   begin
@@ -1157,7 +1157,7 @@ begin
   FrmSetting.ShowModal;
 end;
 
-procedure Tf_utama.FormDestroy(Sender: TObject);
+procedure TF_utama.FormDestroy(Sender: TObject);
 begin
   FVersion.Free;
 end;

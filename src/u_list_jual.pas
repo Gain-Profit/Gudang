@@ -14,7 +14,7 @@ uses
   dxSkinscxPCPainter, cxNavigator;
 
 type
-  Tf_list_sales = class(TForm)
+  TF_list_sales = class(TForm)
     sPanel1: TsPanel;
     grid: TcxGrid;
     grid_data: TcxGridDBTableView;
@@ -77,7 +77,7 @@ type
   end;
 
 var
-  f_list_sales: Tf_list_sales;
+  F_list_sales: TF_list_sales;
 
 implementation
 
@@ -86,7 +86,7 @@ uses
 
 {$R *.dfm}
 
-procedure Tf_list_sales.WMMDIACTIVATE(var msg: TWMMDIACTIVATE);
+procedure TF_list_sales.WMMDIACTIVATE(var msg: TWMMDIACTIVATE);
 var
   active: TWinControl;
   idx: Integer;
@@ -96,10 +96,10 @@ begin
   begin
     if Assigned(active) then
     begin
-      idx := f_utama.tc_child.Tabs.IndexOfObject(TObject(msg.ActiveWnd));
-      f_utama.tc_child.Tag := -1;
-      f_utama.tc_child.TabIndex := idx;
-      f_utama.tc_child.Tag := 0;
+      idx := F_utama.tc_child.Tabs.IndexOfObject(TObject(msg.ActiveWnd));
+      F_utama.tc_child.Tag := -1;
+      F_utama.tc_child.TabIndex := idx;
+      F_utama.tc_child.Tag := 0;
     end;
   end;
 end;
@@ -130,7 +130,7 @@ begin
   Result := TfrxMemoView(FRObject(FastReport, ObjectName));
 end;
 
-procedure Tf_list_sales.segarkan;
+procedure TF_list_sales.segarkan;
 begin
   fungsi.SQLExec(dm.Q_list_sales,
     'select * from vw_list_sales where kd_perusahaan = ' + QuotedStr(dm.kd_perusahaan)
@@ -146,21 +146,21 @@ begin
     ' AND ' + quotedstr(FormatDateTime('yyyy-MM-dd', de_sampai.Date)) + '', True);
 end;
 
-procedure Tf_list_sales.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TF_list_sales.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  f_utama.MDIChildDestroyed(Self.Handle);
+  F_utama.MDIChildDestroyed(Self.Handle);
   action := caFree;
-  f_list_sales := nil;
+  F_list_sales := nil;
 end;
 
-procedure Tf_list_sales.grid_dataCellDblClick(Sender: TcxCustomGridTableView;
+procedure TF_list_sales.grid_dataCellDblClick(Sender: TcxCustomGridTableView;
   ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift:
   TShiftState; var AHandled: Boolean);
 begin
   b_cetakClick(Self);
 end;
 
-procedure Tf_list_sales.FormCreate(Sender: TObject);
+procedure TF_list_sales.FormCreate(Sender: TObject);
 {var
   Year, Month, Day: Word;
 begin
@@ -171,27 +171,27 @@ begin
   de_mulai.Date := Date();
   de_sampai.Date := Date();
 
-  f_utama.MDIChildCreated(self.Handle);
+  F_utama.MDIChildCreated(self.Handle);
   segarkan;
 end;
 
-procedure Tf_list_sales.sb_1Click(Sender: TObject);
+procedure TF_list_sales.sb_1Click(Sender: TObject);
 begin
   close;
 end;
 
-procedure Tf_list_sales.sb_2Click(Sender: TObject);
+procedure TF_list_sales.sb_2Click(Sender: TObject);
 begin
   segarkan;
 end;
 
-procedure Tf_list_sales.de_sampaiChange(Sender: TObject);
+procedure TF_list_sales.de_sampaiChange(Sender: TObject);
 begin
   if de_sampai.Date < de_mulai.Date then
     de_sampai.Date := de_mulai.Date;
 end;
 
-procedure Tf_list_sales.b_cetakClick(Sender: TObject);
+procedure TF_list_sales.b_cetakClick(Sender: TObject);
 begin
   fungsi.SQLExec(dm.Q_laporan,
     'select * from vw_jual_barang where no_transaksi="' + dm.Q_list_sales.fieldbyname

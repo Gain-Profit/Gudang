@@ -1,4 +1,4 @@
-object f_list_return_kirim: Tf_list_return_kirim
+object F_list_return_kirim: TF_list_return_kirim
   Left = 193
   Top = 116
   Width = 928

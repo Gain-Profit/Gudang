@@ -146,7 +146,7 @@ begin
         F_utama.ac_kirim_data.Visible := False;
         F_utama.ac_update.Visible := False;
 
-        f_utama.ac_company.Visible := True;
+        F_utama.ac_company.Visible := True;
 
         F_utama.ts_transaksi.TabVisible := True;
         F_utama.ts_set_inv.TabVisible := True;
@@ -154,7 +154,7 @@ begin
         F_utama.ac_receipt.Enabled := True;
         F_utama.ac_return.Enabled := True;
         F_utama.ac_purchase.Enabled := True;
-        f_utama.ac_kirim.Enabled := True;
+        F_utama.ac_kirim.Enabled := True;
 
         fungsi.SQLExec(dm.Q_temp,
           'select kd_perusahaan from tb_company where ket = "' + dm.kd_perusahaan
@@ -172,7 +172,7 @@ begin
         F_utama.ac_kirim_data.Visible := True;
         F_utama.ac_update.Visible := True;
 
-        f_utama.ac_company.Visible := False;
+        F_utama.ac_company.Visible := False;
 
         F_utama.ts_transaksi.TabVisible := False;
         F_utama.ts_set_inv.TabVisible := False;
@@ -180,7 +180,7 @@ begin
         F_utama.ac_receipt.Enabled := False;
         F_utama.ac_return.Enabled := False;
         F_utama.ac_purchase.Enabled := False;
-        f_utama.ac_kirim.Enabled := false;
+        F_utama.ac_kirim.Enabled := false;
 
         if (onServer = 'Y') then
         begin
@@ -189,7 +189,7 @@ begin
         end;
       end;
 
-      f_utama.panel_auto_width;
+      F_utama.panel_auto_width;
       dm.CanLogin := True;
       close;
     end;
@@ -232,7 +232,7 @@ end;
 
 procedure TF_Login.sbClick(Sender: TObject);
 begin
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi := 'select kd_perusahaan, n_perusahaan from tb_company';

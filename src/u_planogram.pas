@@ -14,7 +14,7 @@ uses
   dxSkinsCore, dxSkinsDefaultPainters, dxSkinscxPCPainter, cxNavigator;
 
 type
-  Tf_planogram = class(TForm)
+  TF_planogram = class(TForm)
     pc_plano: TsPageControl;
     ts_rak: TsTabSheet;
     ts_barang: TsTabSheet;
@@ -129,7 +129,7 @@ type
   end;
 
 var
-  f_planogram: Tf_planogram;
+  F_planogram: TF_planogram;
 
 implementation
 
@@ -138,7 +138,7 @@ uses
 
 {$R *.dfm}
 
-procedure Tf_planogram.se_rakChange(Sender: TObject);
+procedure TF_planogram.se_rakChange(Sender: TObject);
 begin
 {if se_rak.Value>0 then
 begin
@@ -156,7 +156,7 @@ end else  se_shelving.Enabled:= false;
   se_shelving.Value := 0;
 end;
 
-procedure Tf_planogram.se_shelvingChange(Sender: TObject);
+procedure TF_planogram.se_shelvingChange(Sender: TObject);
 begin
   if se_shelving.Value > 0 then
   begin
@@ -171,13 +171,13 @@ begin
   end;
 end;
 
-procedure Tf_planogram.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TF_planogram.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Q_planoRak.Close;
   action := cafree;
 end;
 
-procedure Tf_planogram.t_data_planoKeyDown(Sender: TObject; var Key: Word; Shift:
+procedure TF_planogram.t_data_planoKeyDown(Sender: TObject; var Key: Word; Shift:
   TShiftState);
 begin
   if (key = vk_delete) then
@@ -193,13 +193,13 @@ begin
   end;
 end;
 
-procedure Tf_planogram.FormShow(Sender: TObject);
+procedure TF_planogram.FormShow(Sender: TObject);
 begin
   segarkan;
   pc_plano.ActivePage := ts_rak;
 end;
 
-procedure Tf_planogram.b_cetakClick(Sender: TObject);
+procedure TF_planogram.b_cetakClick(Sender: TObject);
 begin
   fungsi.SQLExec(dm.Q_laporan, 'select * from vw_planogram_set where ' +
     'kd_perusahaan="' + dm.kd_perusahaan + '" ORDER BY no_rak, no_shelving', true);
@@ -207,7 +207,7 @@ begin
   dm.laporan.ShowReport;
 end;
 
-procedure Tf_planogram.ed_masukKeyDown(Sender: TObject; var Key: Word; Shift:
+procedure TF_planogram.ed_masukKeyDown(Sender: TObject; var Key: Word; Shift:
   TShiftState);
 begin
   if key = vk_f2 then
@@ -289,7 +289,7 @@ begin
 
 end;
 
-procedure Tf_planogram.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TF_planogram.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   if key = vk_escape then
     close;
@@ -304,7 +304,7 @@ begin
     grid_plano.SetFocus;
 end;
 
-procedure Tf_planogram.sButton1Click(Sender: TObject);
+procedure TF_planogram.sButton1Click(Sender: TObject);
 begin
   fungsi.SQLExec(dm.Q_laporan,
     'select * from vw_planogram_set where kd_perusahaan="' + dm.kd_perusahaan +
@@ -313,7 +313,7 @@ begin
   dm.laporan.ShowReport;
 end;
 
-procedure Tf_planogram.segarkan;
+procedure TF_planogram.segarkan;
 var
   all_brg: integer;
 begin
@@ -330,14 +330,14 @@ begin
   ce_notset.Value := all_brg - ce_set.Value;
 end;
 
-procedure Tf_planogram.sb_cariClick(Sender: TObject);
+procedure TF_planogram.sb_cariClick(Sender: TObject);
 begin
   if pc_plano.ActivePage = ts_rak then
     ed_masuk.SetFocus
   else
     edBarang.SetFocus;
 
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi := 'select kd_barang, n_barang from tb_barang where kd_perusahaan="' +
@@ -357,9 +357,9 @@ begin
   end;
 end;
 
-procedure Tf_planogram.l_setClick(Sender: TObject);
+procedure TF_planogram.l_setClick(Sender: TObject);
 begin
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi := 'select kd_barang, n_barang from tb_barang where kd_perusahaan="' +
@@ -376,9 +376,9 @@ begin
 
 end;
 
-procedure Tf_planogram.l_notsetClick(Sender: TObject);
+procedure TF_planogram.l_notsetClick(Sender: TObject);
 begin
-  application.CreateForm(tf_cari, f_cari);
+  application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
     _SQLi := 'select kd_barang, n_barang from tb_barang where kd_perusahaan="' +
@@ -394,7 +394,7 @@ begin
   end;
 end;
 
-procedure Tf_planogram.l_setMouseEnter(Sender: TObject);
+procedure TF_planogram.l_setMouseEnter(Sender: TObject);
 begin
   with TsLabel(Sender).Font do
   begin
@@ -402,7 +402,7 @@ begin
   end;
 end;
 
-procedure Tf_planogram.l_setMouseLeave(Sender: TObject);
+procedure TF_planogram.l_setMouseLeave(Sender: TObject);
 begin
   with TsLabel(Sender).Font do
   begin
@@ -410,7 +410,7 @@ begin
   end;
 end;
 
-procedure Tf_planogram.ed_masukKeyPress(Sender: TObject; var Key: Char);
+procedure TF_planogram.ed_masukKeyPress(Sender: TObject; var Key: Char);
 var
   kode: string;
 begin
@@ -458,21 +458,21 @@ begin
   end;
 end;
 
-procedure Tf_planogram.segarkan_barang;
+procedure TF_planogram.segarkan_barang;
 begin
 //untuk me refresh barang
   fungsi.SQLExec(Q_plano, 'select * from vw_planogram_set where kd_perusahaan="'
     + dm.kd_perusahaan + '" and (no_rak=0 or no_shelving=0 or no_urut=0)', true);
 end;
 
-procedure Tf_planogram.pc_planoPageChanging(Sender: TObject; NewPage: TsTabSheet;
+procedure TF_planogram.pc_planoPageChanging(Sender: TObject; NewPage: TsTabSheet;
   var AllowChange: Boolean);
 begin
   if (NewPage = ts_barang) then
     segarkan_barang;
 end;
 
-procedure Tf_planogram.edBarangKeyPress(Sender: TObject; var Key: Char);
+procedure TF_planogram.edBarangKeyPress(Sender: TObject; var Key: Char);
 var
   kode: string;
 begin
@@ -530,7 +530,7 @@ begin
   end;
 end;
 
-procedure Tf_planogram.edBarangKeyDown(Sender: TObject; var Key: Word; Shift:
+procedure TF_planogram.edBarangKeyDown(Sender: TObject; var Key: Word; Shift:
   TShiftState);
 begin
   if key = vk_f2 then
@@ -598,7 +598,7 @@ begin
   end;
 end;
 
-procedure Tf_planogram.hapusPlanogram(aQuery: TMyQuery);
+procedure TF_planogram.hapusPlanogram(aQuery: TMyQuery);
 begin
   if MessageDlg('Yakinkah, akan menghapus data ini?...', mtConfirmation, [mbYes,
     mbNo], 0) = mrYes then
@@ -622,7 +622,7 @@ begin
   end;
 end;
 
-procedure Tf_planogram.TvPlanoBarangKeyDown(Sender: TObject; var Key: Word;
+procedure TF_planogram.TvPlanoBarangKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   if (key = vk_delete) then
@@ -633,7 +633,7 @@ begin
   end;
 end;
 
-procedure Tf_planogram.plano_double;
+procedure TF_planogram.plano_double;
 begin
   fungsi.SQLExec(Q_barangD,
     'select * from vw_planogram_double where kd_perusahaan = "' + dm.kd_perusahaan
@@ -643,7 +643,7 @@ begin
     + '"', True);
 end;
 
-procedure Tf_planogram.t_BarangDFocusedRecordChanged(Sender:
+procedure TF_planogram.t_BarangDFocusedRecordChanged(Sender:
   TcxCustomGridTableView; APrevFocusedRecord, AFocusedRecord:
   TcxCustomGridRecord; ANewItemRecordFocusingChanged: Boolean);
 begin
@@ -652,25 +652,25 @@ begin
     + '"', True);
 end;
 
-procedure Tf_planogram.pc_planoChange(Sender: TObject);
+procedure TF_planogram.pc_planoChange(Sender: TObject);
 begin
   if pc_plano.ActivePage = ts_Double then
     if Q_barangD.IsEmpty then
       plano_double;
 end;
 
-procedure Tf_planogram.btnRefreshClick(Sender: TObject);
+procedure TF_planogram.btnRefreshClick(Sender: TObject);
 begin
   plano_double;
 end;
 
-procedure Tf_planogram.btnHapusClick(Sender: TObject);
+procedure TF_planogram.btnHapusClick(Sender: TObject);
 begin
   hapusPlanogram(Q_PlanoD);
   plano_double;
 end;
 
-procedure Tf_planogram.t_PlanoDKeyDown(Sender: TObject; var Key: Word; Shift:
+procedure TF_planogram.t_PlanoDKeyDown(Sender: TObject; var Key: Word; Shift:
   TShiftState);
 begin
   if (key = vk_delete) then
