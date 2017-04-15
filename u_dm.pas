@@ -5,7 +5,7 @@ interface
 uses
   SysUtils, Classes, DB, sSkinManager, dialogs, forms, ImgList, Controls,
   acAlphaImageList, frxClass, frxDBSet, inifiles, frxBarcode, cxStyles,
-  Windows, frxExportXML, SHFolder, DBAccess, MyAccess, MemDS, cxClasses;
+  Windows, SHFolder, DBAccess, MyAccess, MemDS, cxClasses;
 
 type
   Tdm = class(TDataModule)
