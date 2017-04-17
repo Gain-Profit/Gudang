@@ -96,7 +96,7 @@ object F_ubah_harga: TF_ubah_harga
     Font.Name = 'Rockwell'
     Font.Style = []
   end
-  object Ed_Plu: TsEdit
+  object Ed_Plu: TEdit
     Left = 8
     Top = 8
     Width = 89
@@ -110,16 +110,8 @@ object F_ubah_harga: TF_ubah_harga
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    SkinData.CustomColor = True
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
-  object Ed_deskripsi: TsEdit
+  object Ed_deskripsi: TEdit
     Left = 104
     Top = 8
     Width = 281
@@ -133,14 +125,6 @@ object F_ubah_harga: TF_ubah_harga
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    SkinData.CustomColor = True
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
   object ed_pokok: TsCurrencyEdit
     Left = 104
@@ -399,7 +383,7 @@ object F_ubah_harga: TF_ubah_harga
     DisplayFormat = '0'
     Value = 1.000000000000000000
   end
-  object Ed_sat1: TsEdit
+  object Ed_sat1: TEdit
     Left = 288
     Top = 208
     Width = 57
@@ -415,16 +399,8 @@ object F_ubah_harga: TF_ubah_harga
     ReadOnly = True
     TabOrder = 13
     Text = 'PCS'
-    SkinData.CustomColor = True
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
-  object Ed_sat2: TsEdit
+  object Ed_sat2: TEdit
     Left = 288
     Top = 176
     Width = 57
@@ -440,16 +416,8 @@ object F_ubah_harga: TF_ubah_harga
     ReadOnly = True
     TabOrder = 14
     Text = 'PCS'
-    SkinData.CustomColor = True
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
-  object Ed_sat3: TsEdit
+  object Ed_sat3: TEdit
     Left = 288
     Top = 144
     Width = 57
@@ -465,14 +433,6 @@ object F_ubah_harga: TF_ubah_harga
     ReadOnly = True
     TabOrder = 15
     Text = 'PCS'
-    SkinData.CustomColor = True
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
   object sb: TsStatusBar
     Left = 0
@@ -514,7 +474,7 @@ object F_ubah_harga: TF_ubah_harga
     TabOrder = 18
     SkinData.SkinSection = 'BUTTON'
   end
-  object Ed_macam: TsEdit
+  object Ed_macam: TEdit
     Left = 104
     Top = 40
     Width = 281
@@ -528,14 +488,6 @@ object F_ubah_harga: TF_ubah_harga
     Font.Style = []
     ParentFont = False
     TabOrder = 3
-    SkinData.CustomColor = True
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
   object cb_macam: TsComboBox
     Left = 8

@@ -10,8 +10,8 @@ type
   TF_Kategori = class(TForm)
     sLabel2: TsLabel;
     sLabel1: TsLabel;
-    ed_kode: TsEdit;
-    ed_desc: TsEdit;
+    ed_kode: TEdit;
+    ed_desc: TEdit;
     B_save: TsButton;
     B_new: TsButton;
     sSkinProvider1: TsSkinProvider;

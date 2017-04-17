@@ -31,8 +31,6 @@ object F_Edit_Harga: TF_Edit_Harga
     BevelOuter = bvNone
     TabOrder = 1
     SkinData.SkinSection = 'PANEL'
-    ExplicitLeft = -30
-    ExplicitHeight = 0
     object sb_2: TsSpeedButton
       Left = 0
       Top = 90
@@ -89,8 +87,6 @@ object F_Edit_Harga: TF_Edit_Harga
     BevelOuter = bvNone
     TabOrder = 0
     SkinData.SkinSection = 'CHECKBOX'
-    ExplicitWidth = 764
-    ExplicitHeight = 0
     object grid: TcxGrid
       Left = 0
       Top = 33
@@ -100,8 +96,6 @@ object F_Edit_Harga: TF_Edit_Harga
       TabOrder = 0
       LookAndFeel.Kind = lfOffice11
       LookAndFeel.NativeStyle = False
-      ExplicitWidth = 764
-      ExplicitHeight = 413
       object t_data: TcxGridDBTableView
         OnKeyDown = t_dataKeyDown
         Navigator.Buttons.CustomButtons = <>
@@ -269,8 +263,7 @@ object F_Edit_Harga: TF_Edit_Harga
       Height = 33
       Align = alTop
       TabOrder = 1
-      ExplicitWidth = 764
-      object Ed_Cari: TsEdit
+      object Ed_Cari: TEdit
         Left = 81
         Top = 1
         Width = 405
@@ -285,8 +278,6 @@ object F_Edit_Harga: TF_Edit_Harga
         ParentFont = False
         TabOrder = 0
         OnKeyDown = Ed_CariKeyDown
-        SkinData.SkinSection = 'EDIT'
-        ExplicitWidth = 447
         ExplicitHeight = 29
       end
       object pnlcheck: TPanel
@@ -296,7 +287,6 @@ object F_Edit_Harga: TF_Edit_Harga
         Height = 31
         Align = alRight
         TabOrder = 1
-        ExplicitLeft = 528
         object CkSemua: TCheckBox
           Left = 8
           Top = 2

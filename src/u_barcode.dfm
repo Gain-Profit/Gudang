@@ -36,7 +36,7 @@ object F_Barcode: TF_Barcode
     Height = 13
     Caption = 'Hapus Baris -> Ctrl + Delete'
   end
-  object ed_PID: TsEdit
+  object ed_PID: TEdit
     Left = 8
     Top = 8
     Width = 497
@@ -51,7 +51,6 @@ object F_Barcode: TF_Barcode
     TabOrder = 0
     OnKeyDown = ed_PIDKeyDown
     OnKeyPress = ed_PIDKeyPress
-    SkinData.SkinSection = 'EDIT'
   end
   object btnBarcode: TsButton
     Left = 384

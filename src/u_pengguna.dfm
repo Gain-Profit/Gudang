@@ -114,7 +114,7 @@ object F_emp: TF_emp
         Height = 150
         Width = 150
       end
-      object ed_pass2: TsEdit
+      object ed_pass2: TEdit
         Left = 120
         Top = 92
         Width = 177
@@ -128,9 +128,8 @@ object F_emp: TF_emp
         ParentFont = False
         PasswordChar = '*'
         TabOrder = 3
-        SkinData.SkinSection = 'EDIT'
       end
-      object ed_pass: TsEdit
+      object ed_pass: TEdit
         Left = 120
         Top = 65
         Width = 177
@@ -144,9 +143,8 @@ object F_emp: TF_emp
         ParentFont = False
         PasswordChar = '*'
         TabOrder = 2
-        SkinData.SkinSection = 'EDIT'
       end
-      object ed_nama: TsEdit
+      object ed_nama: TEdit
         Left = 120
         Top = 38
         Width = 177
@@ -159,9 +157,8 @@ object F_emp: TF_emp
         Font.Style = []
         ParentFont = False
         TabOrder = 1
-        SkinData.SkinSection = 'EDIT'
       end
-      object ed_kode: TsEdit
+      object ed_kode: TEdit
         Left = 120
         Top = 11
         Width = 177
@@ -174,7 +171,6 @@ object F_emp: TF_emp
         Font.Style = []
         ParentFont = False
         TabOrder = 0
-        SkinData.SkinSection = 'EDIT'
       end
       object cb_server: TsCheckBox
         Left = 120

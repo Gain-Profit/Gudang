@@ -28,10 +28,10 @@ type
     sb_cari: TsSpeedButton;
     p1: TsPanel;
     l_1: TsLabel;
-    ed_supp: TsEdit;
+    ed_supp: TEdit;
     sb_supp: TsSpeedButton;
     l_supp: TsLabel;
-    ed_kode: TsEdit;
+    ed_kode: TEdit;
     btnPrint: TsButton;
     Q_supp: TMyQuery;
     ds_supp: TDataSource;

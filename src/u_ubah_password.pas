@@ -11,9 +11,9 @@ type
     l_1: TsLabel;
     l_2: TsLabel;
     l_3: TsLabel;
-    ed_pass2: TsEdit;
-    ed_pass: TsEdit;
-    edpassLama: TsEdit;
+    ed_pass2: TEdit;
+    ed_pass: TEdit;
+    edpassLama: TEdit;
     btnpass: TsButton;
     procedure btnpassClick(Sender: TObject);
   private

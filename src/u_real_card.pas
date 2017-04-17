@@ -11,7 +11,7 @@ uses
 type
   TF_realCard = class(TForm)
     btnRealCard: TsButton;
-    ed_PID: TsEdit;
+    ed_PID: TEdit;
     lv_data: TListView;
     lb_data: TListBox;
     cb_karep: TsCheckBox;

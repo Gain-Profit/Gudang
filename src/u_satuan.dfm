@@ -74,7 +74,7 @@ object F_satuan: TF_satuan
     OnClick = b_saveClick
     SkinData.SkinSection = 'BUTTON'
   end
-  object ed_nomer: TsEdit
+  object ed_nomer: TEdit
     Left = 64
     Top = 8
     Width = 193
@@ -88,15 +88,8 @@ object F_satuan: TF_satuan
     ParentFont = False
     ReadOnly = True
     TabOrder = 2
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
-  object ed_desk: TsEdit
+  object ed_desk: TEdit
     Left = 64
     Top = 32
     Width = 193
@@ -109,15 +102,8 @@ object F_satuan: TF_satuan
     Font.Style = []
     ParentFont = False
     TabOrder = 3
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
-  object ed_singkat: TsEdit
+  object ed_singkat: TEdit
     Left = 64
     Top = 56
     Width = 193
@@ -130,13 +116,6 @@ object F_satuan: TF_satuan
     Font.Style = []
     ParentFont = False
     TabOrder = 4
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
   object sSkinProvider1: TsSkinProvider
     AddedTitle.Font.Charset = DEFAULT_CHARSET

@@ -69,23 +69,21 @@ object FGroupBarangDetail: TFGroupBarangDetail
       Height = 13
       Caption = 'Diskon'
     end
-    object edKodeGroup: TsEdit
+    object edKodeGroup: TEdit
       Left = 96
       Top = 8
       Width = 193
       Height = 21
       TabOrder = 0
-      SkinData.SkinSection = 'EDIT'
     end
-    object edDeskripsiGroup: TsEdit
+    object edDeskripsiGroup: TEdit
       Left = 96
       Top = 32
       Width = 577
       Height = 21
       TabOrder = 1
-      SkinData.SkinSection = 'EDIT'
     end
-    object ed_code: TsEdit
+    object ed_code: TEdit
       Left = 8
       Top = 94
       Width = 640
@@ -101,8 +99,6 @@ object FGroupBarangDetail: TFGroupBarangDetail
       TabOrder = 4
       OnKeyDown = ed_codeKeyDown
       OnKeyPress = ed_codeKeyPress
-      SkinData.CustomColor = True
-      SkinData.SkinSection = 'EDIT'
     end
     object edDiskon: TsCurrencyEdit
       Left = 96

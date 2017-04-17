@@ -38,10 +38,10 @@ type
     S1: TsLabel;
     sb_cari: TsSpeedButton;
     L_supp: TsLabel;
-    ed_no_faktur: TsEdit;
+    ed_no_faktur: TEdit;
     ed_tgl: TsDateEdit;
-    ed_supplier: TsEdit;
-    ed_code: TsEdit;
+    ed_supplier: TEdit;
+    ed_code: TEdit;
     cb_tunai: TsCheckBox;
     ed_jatuh_tempo: TsCurrencyEdit;
     cb_PPN: TsCheckBox;

@@ -40,7 +40,7 @@ type
     Q_harga: TMyQuery;
     Ds_harga: TDataSource;
     pnlheader: TPanel;
-    Ed_Cari: TsEdit;
+    Ed_Cari: TEdit;
     pnlcheck: TPanel;
     CkSemua: TCheckBox;
     pnlFilter: TPanel;

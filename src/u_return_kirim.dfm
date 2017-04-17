@@ -31,8 +31,6 @@ object F_return_kirim: TF_return_kirim
     Align = alClient
     TabOrder = 0
     SkinData.SkinSection = 'PANEL'
-    ExplicitWidth = 858
-    ExplicitHeight = 0
     object panel1: TsPanel
       Left = 1
       Top = 1
@@ -42,7 +40,6 @@ object F_return_kirim: TF_return_kirim
       Enabled = False
       TabOrder = 3
       SkinData.SkinSection = 'PANEL'
-      ExplicitWidth = 856
       object Mm_nama: TsMemo
         Left = 1
         Top = 1
@@ -62,7 +59,6 @@ object F_return_kirim: TF_return_kirim
         SkinData.CustomColor = True
         SkinData.CustomFont = True
         SkinData.SkinSection = 'PANEL'
-        ExplicitWidth = 474
       end
       object ce_harga: TsCurrencyEdit
         Left = 384
@@ -89,7 +85,6 @@ object F_return_kirim: TF_return_kirim
         GlyphMode.Grayed = False
         DecimalPlaces = 3
         DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
-        ExplicitLeft = 475
       end
     end
     object panel2: TsPanel
@@ -100,7 +95,6 @@ object F_return_kirim: TF_return_kirim
       Align = alTop
       TabOrder = 0
       SkinData.SkinSection = 'PANEL'
-      ExplicitWidth = 856
       object sLabel6: TsLabel
         Left = 383
         Top = 1
@@ -116,7 +110,6 @@ object F_return_kirim: TF_return_kirim
         Font.Height = -53
         Font.Name = 'ARIAL'
         Font.Style = []
-        ExplicitLeft = 474
         ExplicitHeight = 60
       end
       object sBevel1: TsBevel
@@ -214,7 +207,7 @@ object F_return_kirim: TF_return_kirim
         Font.Name = 'MS Sans Serif'
         Font.Style = []
       end
-      object ed_no_faktur: TsEdit
+      object ed_no_faktur: TEdit
         Left = 80
         Top = 32
         Width = 169
@@ -229,8 +222,6 @@ object F_return_kirim: TF_return_kirim
         TabOrder = 1
         OnChange = ed_no_fakturChange
         OnKeyDown = ed_no_fakturKeyDown
-        SkinData.CustomColor = True
-        SkinData.SkinSection = 'EDIT'
       end
       object ed_tgl: TsDateEdit
         Left = 56
@@ -254,7 +245,7 @@ object F_return_kirim: TF_return_kirim
         GlyphMode.Grayed = False
         DefaultToday = True
       end
-      object EdToko: TsEdit
+      object EdToko: TEdit
         Left = 80
         Top = 6
         Width = 169
@@ -270,10 +261,8 @@ object F_return_kirim: TF_return_kirim
         TabOrder = 0
         OnChange = EdTokoChange
         OnKeyDown = EdTokoKeyDown
-        SkinData.CustomColor = True
-        SkinData.SkinSection = 'EDIT'
       end
-      object ed_code: TsEdit
+      object ed_code: TEdit
         Left = 256
         Top = 86
         Width = 593
@@ -288,10 +277,8 @@ object F_return_kirim: TF_return_kirim
         TabOrder = 5
         OnKeyDown = ed_codeKeyDown
         OnKeyPress = ed_codeKeyPress
-        SkinData.CustomColor = True
-        SkinData.SkinSection = 'EDIT'
       end
-      object ed_fak_kirim: TsEdit
+      object ed_fak_kirim: TEdit
         Left = 80
         Top = 56
         Width = 169
@@ -305,8 +292,6 @@ object F_return_kirim: TF_return_kirim
         ParentFont = False
         TabOrder = 3
         OnChange = ed_fak_kirimChange
-        SkinData.CustomColor = True
-        SkinData.SkinSection = 'EDIT'
       end
       object b_auto: TsButton
         Left = 252
@@ -328,8 +313,6 @@ object F_return_kirim: TF_return_kirim
       Enabled = False
       TabOrder = 2
       SkinData.SkinSection = 'PANEL'
-      ExplicitTop = -73
-      ExplicitWidth = 856
       object l_1: TsLabel
         Left = 8
         Top = 4
@@ -383,7 +366,6 @@ object F_return_kirim: TF_return_kirim
         GlyphMode.Grayed = False
         DecimalPlaces = 3
         DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
-        ExplicitLeft = 435
       end
     end
     object Grid: TcxGrid
@@ -395,8 +377,6 @@ object F_return_kirim: TF_return_kirim
       TabOrder = 1
       LookAndFeel.Kind = lfOffice11
       LookAndFeel.NativeStyle = False
-      ExplicitWidth = 856
-      ExplicitHeight = 183
       object TableView: TcxGridTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.Append.Visible = False
@@ -518,8 +498,6 @@ object F_return_kirim: TF_return_kirim
     Align = alRight
     TabOrder = 1
     SkinData.SkinSection = 'PANEL'
-    ExplicitLeft = -30
-    ExplicitHeight = 0
     object sSpeedButton18: TsSpeedButton
       Left = 1
       Top = 1
@@ -551,7 +529,6 @@ object F_return_kirim: TF_return_kirim
       Align = alBottom
       TabOrder = 1
       SkinData.SkinSection = 'PANEL'
-      ExplicitTop = -75
       object b_simpan_file: TsButton
         Left = 8
         Top = 9

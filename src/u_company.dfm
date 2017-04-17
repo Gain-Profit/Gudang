@@ -80,7 +80,7 @@ object F_comp: TF_comp
     Font.Name = 'MS Sans Serif'
     Font.Style = []
   end
-  object ed_kode: TsEdit
+  object ed_kode: TEdit
     Left = 104
     Top = 8
     Width = 113
@@ -93,15 +93,8 @@ object F_comp: TF_comp
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
-  object ed_desk: TsEdit
+  object ed_desk: TEdit
     Left = 104
     Top = 32
     Width = 257
@@ -114,15 +107,8 @@ object F_comp: TF_comp
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
-  object ed_telp: TsEdit
+  object ed_telp: TEdit
     Left = 104
     Top = 120
     Width = 169
@@ -135,15 +121,8 @@ object F_comp: TF_comp
     Font.Style = []
     ParentFont = False
     TabOrder = 3
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
-  object ed_mail: TsEdit
+  object ed_mail: TEdit
     Left = 104
     Top = 144
     Width = 169
@@ -156,13 +135,6 @@ object F_comp: TF_comp
     Font.Style = []
     ParentFont = False
     TabOrder = 4
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
   object mm_alamat: TsMemo
     Left = 104

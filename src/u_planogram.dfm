@@ -139,7 +139,7 @@ object F_planogram: TF_planogram
           GridView = t_data_plano
         end
       end
-      object ed_masuk: TsEdit
+      object ed_masuk: TEdit
         Left = 9
         Top = 80
         Width = 760
@@ -154,7 +154,6 @@ object F_planogram: TF_planogram
         TabOrder = 1
         OnKeyDown = ed_masukKeyDown
         OnKeyPress = ed_masukKeyPress
-        SkinData.SkinSection = 'EDIT'
       end
       object p1: TsPanel
         Left = 0
@@ -412,7 +411,7 @@ object F_planogram: TF_planogram
           GridView = TvPlanoBarang
         end
       end
-      object edBarang: TsEdit
+      object edBarang: TEdit
         Left = 9
         Top = 8
         Width = 760
@@ -427,7 +426,6 @@ object F_planogram: TF_planogram
         TabOrder = 1
         OnKeyDown = edBarangKeyDown
         OnKeyPress = edBarangKeyPress
-        SkinData.SkinSection = 'EDIT'
       end
     end
     object ts_Double: TsTabSheet

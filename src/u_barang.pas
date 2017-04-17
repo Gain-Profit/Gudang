@@ -55,7 +55,7 @@ type
     ds_barang: TDataSource;
     Q_barang: TMyQuery;
     pnlheader: TPanel;
-    Ed_Cari: TsEdit;
+    Ed_Cari: TEdit;
     pnlcheck: TPanel;
     CkSemua: TCheckBox;
     pnlFilter: TPanel;

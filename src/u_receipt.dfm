@@ -431,7 +431,7 @@ object F_RO: TF_RO
         Font.Height = -53
         Font.Name = 'ARIAL'
         Font.Style = []
-        ExplicitLeft = 611
+        ExplicitLeft = 392
         ExplicitHeight = 60
       end
       object sBevel1: TsBevel
@@ -529,7 +529,7 @@ object F_RO: TF_RO
         Font.Name = 'MS Sans Serif'
         Font.Style = []
       end
-      object ed_no_faktur: TsEdit
+      object ed_no_faktur: TEdit
         Left = 320
         Top = 8
         Width = 153
@@ -544,8 +544,6 @@ object F_RO: TF_RO
         TabOrder = 1
         OnChange = ed_no_fakturChange
         OnKeyDown = ed_no_fakturKeyDown
-        SkinData.CustomColor = True
-        SkinData.SkinSection = 'EDIT'
       end
       object ed_tgl: TsDateEdit
         Left = 320
@@ -569,7 +567,7 @@ object F_RO: TF_RO
         GlyphMode.Grayed = False
         DefaultToday = True
       end
-      object ed_supplier: TsEdit
+      object ed_supplier: TEdit
         Left = 72
         Top = 8
         Width = 153
@@ -584,10 +582,8 @@ object F_RO: TF_RO
         ReadOnly = True
         TabOrder = 0
         OnKeyDown = ed_supplierKeyDown
-        SkinData.CustomColor = True
-        SkinData.SkinSection = 'EDIT'
       end
-      object ed_code: TsEdit
+      object ed_code: TEdit
         Left = 8
         Top = 70
         Width = 217
@@ -602,8 +598,6 @@ object F_RO: TF_RO
         TabOrder = 7
         OnKeyDown = ed_codeKeyDown
         OnKeyPress = ed_codeKeyPress
-        SkinData.CustomColor = True
-        SkinData.SkinSection = 'EDIT'
       end
       object cb_tunai: TsCheckBox
         Left = 400

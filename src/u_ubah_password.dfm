@@ -36,7 +36,7 @@ object F_ubahPassword: TF_ubahPassword
     Height = 13
     Caption = 'Konfirmasi Password'
   end
-  object ed_pass2: TsEdit
+  object ed_pass2: TEdit
     Left = 128
     Top = 76
     Width = 241
@@ -50,15 +50,8 @@ object F_ubahPassword: TF_ubahPassword
     ParentFont = False
     PasswordChar = '*'
     TabOrder = 2
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
-  object ed_pass: TsEdit
+  object ed_pass: TEdit
     Left = 128
     Top = 49
     Width = 241
@@ -72,15 +65,8 @@ object F_ubahPassword: TF_ubahPassword
     ParentFont = False
     PasswordChar = '*'
     TabOrder = 1
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
-  object edpassLama: TsEdit
+  object edpassLama: TEdit
     Left = 128
     Top = 9
     Width = 241
@@ -94,13 +80,6 @@ object F_ubahPassword: TF_ubahPassword
     ParentFont = False
     PasswordChar = '*'
     TabOrder = 0
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
   object btnpass: TsButton
     Left = 248

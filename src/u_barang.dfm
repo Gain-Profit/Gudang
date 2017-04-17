@@ -31,8 +31,6 @@ object F_barang: TF_barang
     BevelOuter = bvNone
     TabOrder = 0
     SkinData.SkinSection = 'CHECKBOX'
-    ExplicitWidth = 723
-    ExplicitHeight = 0
     object grid: TcxGrid
       Left = 0
       Top = 33
@@ -42,8 +40,6 @@ object F_barang: TF_barang
       TabOrder = 0
       LookAndFeel.Kind = lfOffice11
       LookAndFeel.NativeStyle = False
-      ExplicitWidth = 723
-      ExplicitHeight = 495
       object TvData: TcxGridDBTableView
         OnKeyDown = TvDataKeyDown
         Navigator.Buttons.CustomButtons = <>
@@ -193,8 +189,7 @@ object F_barang: TF_barang
       Height = 33
       Align = alTop
       TabOrder = 1
-      ExplicitWidth = 723
-      object Ed_Cari: TsEdit
+      object Ed_Cari: TEdit
         Left = 81
         Top = 1
         Width = 303
@@ -209,8 +204,6 @@ object F_barang: TF_barang
         ParentFont = False
         TabOrder = 0
         OnKeyDown = Ed_CariKeyDown
-        SkinData.SkinSection = 'EDIT'
-        ExplicitWidth = 406
         ExplicitHeight = 29
       end
       object pnlcheck: TPanel
@@ -220,7 +213,6 @@ object F_barang: TF_barang
         Height = 31
         Align = alRight
         TabOrder = 1
-        ExplicitLeft = 487
         object CkSemua: TCheckBox
           Left = 8
           Top = 2
@@ -263,8 +255,6 @@ object F_barang: TF_barang
     BevelOuter = bvNone
     TabOrder = 1
     SkinData.SkinSection = 'PANEL'
-    ExplicitLeft = -30
-    ExplicitHeight = 0
     object sb_2: TsSpeedButton
       Left = 0
       Top = 90
@@ -319,7 +309,6 @@ object F_barang: TF_barang
       Align = alBottom
       TabOrder = 0
       SkinData.SkinSection = 'PANEL'
-      ExplicitTop = -177
       DesignSize = (
         150
         137)
@@ -376,7 +365,6 @@ object F_barang: TF_barang
       Align = alBottom
       TabOrder = 1
       SkinData.SkinSection = 'PANEL'
-      ExplicitTop = -40
       DesignSize = (
         150
         40)

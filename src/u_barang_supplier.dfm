@@ -141,7 +141,7 @@ object F_barang_supp: TF_barang_supp
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
     end
-    object ed_supp: TsEdit
+    object ed_supp: TEdit
       Left = 56
       Top = 8
       Width = 185
@@ -157,7 +157,6 @@ object F_barang_supp: TF_barang_supp
       TabOrder = 0
       OnChange = ed_suppChange
       OnKeyDown = ed_suppKeyDown
-      SkinData.SkinSection = 'EDIT'
     end
     object btnPrint: TsButton
       Left = 744
@@ -170,14 +169,13 @@ object F_barang_supp: TF_barang_supp
       SkinData.SkinSection = 'BUTTON'
     end
   end
-  object ed_kode: TsEdit
+  object ed_kode: TEdit
     Left = 8
     Top = 50
     Width = 817
     Height = 21
     TabOrder = 2
     OnKeyDown = ed_kodeKeyDown
-    SkinData.SkinSection = 'EDIT'
   end
   object sSkinProvider1: TsSkinProvider
     SkinData.SkinSection = 'FORM'

@@ -13,9 +13,9 @@ type
     sLabel3: TsLabel;
     b_new: TsButton;
     b_save: TsButton;
-    ed_nomer: TsEdit;
-    ed_desk: TsEdit;
-    ed_singkat: TsEdit;
+    ed_nomer: TEdit;
+    ed_desk: TEdit;
+    ed_singkat: TEdit;
     sSkinProvider1: TsSkinProvider;
     procedure baru;
     procedure ubah;

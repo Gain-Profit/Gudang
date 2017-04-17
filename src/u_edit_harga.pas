@@ -19,8 +19,8 @@ type
 
   TF_ubah_harga = class(TForm)
     sSkinProvider1: TsSkinProvider;
-    Ed_Plu: TsEdit;
-    Ed_deskripsi: TsEdit;
+    Ed_Plu: TEdit;
+    Ed_deskripsi: TEdit;
     ed_pokok: TsCurrencyEdit;
     ed_marginP: TsCurrencyEdit;
     ed_marginRp: TsCurrencyEdit;
@@ -35,13 +35,13 @@ type
     ed_qty1: TsCurrencyEdit;
     ed_qty2: TsCurrencyEdit;
     sCurrencyEdit3: TsCurrencyEdit;
-    Ed_sat1: TsEdit;
-    Ed_sat2: TsEdit;
-    Ed_sat3: TsEdit;
+    Ed_sat1: TEdit;
+    Ed_sat2: TEdit;
+    Ed_sat3: TEdit;
     sb: TsStatusBar;
     btn_simpan: TsBitBtn;
     sBitBtn2: TsBitBtn;
-    Ed_macam: TsEdit;
+    Ed_macam: TEdit;
     cb_macam: TsComboBox;
     sLabel7: TsLabel;
     g_1: TsGroupBox;

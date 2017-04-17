@@ -51,7 +51,7 @@ object F_jenis: TF_jenis
     OnClick = B_newClick
     SkinData.SkinSection = 'BUTTON_BIG'
   end
-  object ed_kode: TsEdit
+  object ed_kode: TEdit
     Left = 56
     Top = 8
     Width = 233
@@ -65,15 +65,8 @@ object F_jenis: TF_jenis
     MaxLength = 2
     ParentFont = False
     TabOrder = 3
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
-  object ed_desc: TsEdit
+  object ed_desc: TEdit
     Left = 56
     Top = 40
     Width = 233
@@ -86,13 +79,6 @@ object F_jenis: TF_jenis
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
   object B_save: TsButton
     Left = 216

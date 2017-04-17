@@ -20,12 +20,12 @@ type
     btnSimpan: TsButton;
     btnKeluar: TsButton;
     sLabel1: TsLabel;
-    edKodeGroup: TsEdit;
+    edKodeGroup: TEdit;
     sLabel2: TsLabel;
-    edDeskripsiGroup: TsEdit;
+    edDeskripsiGroup: TEdit;
     sBevel1: TsBevel;
     sb_cari: TsSpeedButton;
-    ed_code: TsEdit;
+    ed_code: TEdit;
     btnBaru: TButton;
     Grid: TcxGrid;
     TableView: TcxGridTableView;

@@ -81,7 +81,7 @@ object F_golongan: TF_golongan
     TabOrder = 4
     OnChange = cb_jenisChange
   end
-  object ed_kode: TsEdit
+  object ed_kode: TEdit
     Left = 80
     Top = 8
     Width = 169
@@ -95,15 +95,8 @@ object F_golongan: TF_golongan
     MaxLength = 2
     ParentFont = False
     TabOrder = 0
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
-  object ed_desk: TsEdit
+  object ed_desk: TEdit
     Left = 80
     Top = 56
     Width = 297
@@ -116,13 +109,6 @@ object F_golongan: TF_golongan
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
   object B_new: TsButton
     Left = 208
