@@ -434,13 +434,12 @@ object F_ubah_harga: TF_ubah_harga
     TabOrder = 15
     Text = 'PCS'
   end
-  object sb: TsStatusBar
+  object sb: TStatusBar
     Left = 0
     Top = 447
     Width = 398
     Height = 19
     Panels = <>
-    SkinData.SkinSection = 'STATUSBAR'
   end
   object btn_simpan: TsBitBtn
     Left = 208

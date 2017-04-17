@@ -37,7 +37,7 @@ object F_utama: TF_utama
     ExplicitTop = 366
     ExplicitWidth = 1003
   end
-  object sb: TsStatusBar
+  object sb: TStatusBar
     Left = 0
     Top = 447
     Width = 968
@@ -92,7 +92,6 @@ object F_utama: TF_utama
         Text = 'versi'
         Width = 50
       end>
-    SkinData.SkinSection = 'STATUSBAR'
     ExplicitTop = -25
     ExplicitWidth = 120
   end
