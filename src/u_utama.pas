@@ -9,10 +9,7 @@ uses
   ExtCtrls, sPanel, inifiles, shellapi, DB, sGauge, sTabControl, cxStyles,
   cxGraphics, cxDataStorage, cxEdit, cxDBData, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxControls, cxGridCustomView, cxClasses,
-  {$IFDEF VER240}
-  System.Actions,
-  {$ENDIF}
-  cxGrid, MemDS, DBAccess, MyAccess;
+  System.Actions, cxGrid, MemDS, DBAccess, MyAccess;
 
 const
   WM_AFTER_SHOW = WM_USER + 300; // custom message
