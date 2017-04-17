@@ -1,6 +1,6 @@
 object F_cari: TF_cari
-  Left = 306
-  Top = 134
+  Left = 0
+  Top = 0
   BorderStyle = bsDialog
   Caption = 'Pencarian'
   ClientHeight = 455
@@ -13,7 +13,7 @@ object F_cari: TF_cari
   Font.Style = []
   KeyPreview = True
   OldCreateOrder = False
-  Position = poOwnerFormCenter
+  Position = poScreenCenter
   OnKeyDown = FormKeyDown
   OnShow = FormShow
   PixelsPerInch = 96

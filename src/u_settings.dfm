@@ -1,10 +1,10 @@
 object FrmSetting: TFrmSetting
-  Left = 359
-  Top = 125
-  Width = 400
-  Height = 327
+  Left = 0
+  Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'Setting'
+  ClientHeight = 288
+  ClientWidth = 384
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

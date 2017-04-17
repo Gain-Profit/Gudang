@@ -1,6 +1,6 @@
 object F_barang_property: TF_barang_property
-  Left = 195
-  Top = 159
+  Left = 0
+  Top = 0
   BorderStyle = bsDialog
   Caption = 'Property Barang'
   ClientHeight = 454
@@ -12,7 +12,7 @@ object F_barang_property: TF_barang_property
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
-  Position = poOwnerFormCenter
+  Position = poScreenCenter
   PixelsPerInch = 96
   TextHeight = 13
   object gb_detail: TsGroupBox
@@ -31,9 +31,9 @@ object F_barang_property: TF_barang_property
     SkinData.SkinSection = 'GROUPBOX'
     object grid: TcxGrid
       Left = 2
-      Top = 20
+      Top = 21
       Width = 756
-      Height = 321
+      Height = 320
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -352,7 +352,6 @@ object F_barang_property: TF_barang_property
       Font.Height = -11
       Font.Name = 'MS SANS SERIF'
       Font.Style = []
-      ItemHeight = 13
       ItemIndex = -1
       ParentFont = False
       TabOrder = 1

@@ -1,6 +1,6 @@
 object F_realCard: TF_realCard
-  Left = 336
-  Top = 208
+  Left = 0
+  Top = 0
   BorderStyle = bsDialog
   Caption = 'Cetak Real Card'
   ClientHeight = 383
@@ -39,8 +39,8 @@ object F_realCard: TF_realCard
     Height = 21
     OnClick = sb_cariClick
     SkinData.SkinSection = 'SPEEDBUTTON'
-    ImageIndex = 0
     Images = dm.gambar
+    ImageIndex = 0
   end
   object btnRealCard: TsButton
     Left = 376
@@ -67,15 +67,12 @@ object F_realCard: TF_realCard
     TabOrder = 1
     OnKeyDown = ed_PIDKeyDown
     SkinData.SkinSection = 'EDIT'
-    BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
     BoundLabel.Font.Color = clWindowText
     BoundLabel.Font.Height = -11
     BoundLabel.Font.Name = 'MS Sans Serif'
     BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
+    BoundLabel.ParentFont = False
   end
   object lv_data: TListView
     Left = 8
@@ -176,15 +173,12 @@ object F_realCard: TF_realCard
       TabOrder = 0
       Text = '  /  /    '
       OnChange = de_sampaiChange
-      BoundLabel.Indent = 0
       BoundLabel.Font.Charset = DEFAULT_CHARSET
       BoundLabel.Font.Color = clWindowText
       BoundLabel.Font.Height = -11
       BoundLabel.Font.Name = 'MS Sans Serif'
       BoundLabel.Font.Style = []
-      BoundLabel.Layout = sclLeft
-      BoundLabel.MaxWidth = 0
-      BoundLabel.UseSkinColor = True
+      BoundLabel.ParentFont = False
       SkinData.SkinSection = 'EDIT'
       GlyphMode.Blend = 0
       GlyphMode.Grayed = False
@@ -207,15 +201,12 @@ object F_realCard: TF_realCard
       TabOrder = 1
       Text = '  /  /    '
       OnChange = de_sampaiChange
-      BoundLabel.Indent = 0
       BoundLabel.Font.Charset = DEFAULT_CHARSET
       BoundLabel.Font.Color = clWindowText
       BoundLabel.Font.Height = -11
       BoundLabel.Font.Name = 'MS Sans Serif'
       BoundLabel.Font.Style = []
-      BoundLabel.Layout = sclLeft
-      BoundLabel.MaxWidth = 0
-      BoundLabel.UseSkinColor = True
+      BoundLabel.ParentFont = False
       SkinData.SkinSection = 'EDIT'
       GlyphMode.Blend = 0
       GlyphMode.Grayed = False
@@ -225,18 +216,16 @@ object F_realCard: TF_realCard
     Left = 416
     Top = 352
     Width = 121
-    Height = 22
+    Height = 24
     Alignment = taLeftJustify
-    BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
     BoundLabel.Font.Color = clWindowText
     BoundLabel.Font.Height = -11
     BoundLabel.Font.Name = 'MS Sans Serif'
     BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
+    BoundLabel.ParentFont = False
     SkinData.SkinSection = 'COMBOBOX'
+    VerticalAlignment = taAlignTop
     Style = csDropDownList
     Color = clWhite
     Font.Charset = DEFAULT_CHARSET
@@ -244,7 +233,6 @@ object F_realCard: TF_realCard
     Font.Height = -13
     Font.Name = 'Rockwell'
     Font.Style = []
-    ItemHeight = 16
     ItemIndex = 0
     ParentFont = False
     TabOrder = 6
@@ -295,15 +283,12 @@ object F_realCard: TF_realCard
       Height = 21
       AutoSize = False
       TabOrder = 0
-      BoundLabel.Indent = 0
       BoundLabel.Font.Charset = DEFAULT_CHARSET
       BoundLabel.Font.Color = clWindowText
       BoundLabel.Font.Height = -11
       BoundLabel.Font.Name = 'MS Sans Serif'
       BoundLabel.Font.Style = []
-      BoundLabel.Layout = sclLeft
-      BoundLabel.MaxWidth = 0
-      BoundLabel.UseSkinColor = True
+      BoundLabel.ParentFont = False
       SkinData.SkinSection = 'EDIT'
       GlyphMode.Blend = 0
       GlyphMode.Grayed = False

@@ -1,9 +1,9 @@
 object F_list_receipt: TF_list_receipt
-  Left = 195
-  Top = 152
-  Width = 928
-  Height = 480
+  Left = 0
+  Top = 0
   Caption = 'Daftar RO'
+  ClientHeight = 423
+  ClientWidth = 927
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,7 +12,7 @@ object F_list_receipt: TF_list_receipt
   Font.Style = []
   FormStyle = fsMDIChild
   OldCreateOrder = False
-  Position = poMainFormCenter
+  Position = poScreenCenter
   Visible = True
   WindowState = wsMaximized
   OnClose = FormClose
@@ -22,12 +22,14 @@ object F_list_receipt: TF_list_receipt
   object grid: TcxGrid
     Left = 0
     Top = 0
-    Width = 762
-    Height = 441
+    Width = 777
+    Height = 423
     Align = alClient
     TabOrder = 0
     LookAndFeel.Kind = lfOffice11
     LookAndFeel.NativeStyle = False
+    ExplicitWidth = 762
+    ExplicitHeight = 0
     object t_data: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       OnCellDblClick = t_dataCellDblClick
@@ -127,20 +129,23 @@ object F_list_receipt: TF_list_receipt
     end
   end
   object sPanel1: TsPanel
-    Left = 762
+    Left = 777
     Top = 0
     Width = 150
-    Height = 441
+    Height = 423
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 1
     SkinData.SkinSection = 'PANEL'
+    ExplicitLeft = -30
+    ExplicitHeight = 0
     object sb_2: TsSpeedButton
       Left = 0
       Top = 90
       Width = 150
       Height = 90
       Cursor = crHandPoint
+      Align = alTop
       Caption = 'Refresh'
       Flat = True
       Font.Charset = DEFAULT_CHARSET
@@ -152,7 +157,6 @@ object F_list_receipt: TF_list_receipt
       ParentFont = False
       Spacing = 0
       OnClick = sb_2Click
-      Align = alTop
       SkinData.SkinSection = 'TOOLBUTTON'
       Images = dm.image
       ImageIndex = 8
@@ -164,6 +168,7 @@ object F_list_receipt: TF_list_receipt
       Width = 150
       Height = 90
       Cursor = crHandPoint
+      Align = alTop
       Caption = 'Selesai'
       Flat = True
       Font.Charset = DEFAULT_CHARSET
@@ -175,7 +180,6 @@ object F_list_receipt: TF_list_receipt
       ParentFont = False
       Spacing = 0
       OnClick = sb_1Click
-      Align = alTop
       SkinData.SkinSection = 'TOOLBUTTON'
       Images = dm.image
       ImageIndex = 7
@@ -183,12 +187,13 @@ object F_list_receipt: TF_list_receipt
     end
     object p1: TsPanel
       Left = 0
-      Top = 351
+      Top = 333
       Width = 150
       Height = 90
       Align = alBottom
       TabOrder = 0
       SkinData.SkinSection = 'PANEL'
+      ExplicitTop = -90
       object l_1: TsLabel
         Left = 4
         Top = 5

@@ -1,9 +1,9 @@
 object FGroupBarang: TFGroupBarang
-  Left = 192
-  Top = 124
-  Width = 696
-  Height = 480
+  Left = 0
+  Top = 0
   Caption = 'Group Barang'
+  ClientHeight = 425
+  ClientWidth = 741
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,7 +12,7 @@ object FGroupBarang: TFGroupBarang
   Font.Style = []
   FormStyle = fsMDIChild
   OldCreateOrder = False
-  Position = poDefault
+  Position = poScreenCenter
   Visible = True
   WindowState = wsMaximized
   OnClose = FormClose
@@ -20,20 +20,23 @@ object FGroupBarang: TFGroupBarang
   PixelsPerInch = 96
   TextHeight = 13
   object sPanel1: TsPanel
-    Left = 530
+    Left = 591
     Top = 0
     Width = 150
-    Height = 441
+    Height = 425
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 0
     SkinData.SkinSection = 'PANEL'
+    ExplicitLeft = -30
+    ExplicitHeight = 0
     object sb_2: TsSpeedButton
       Left = 0
       Top = 90
       Width = 150
       Height = 90
       Cursor = crHandPoint
+      Align = alTop
       Caption = 'Refresh'
       Flat = True
       Font.Charset = DEFAULT_CHARSET
@@ -45,7 +48,6 @@ object FGroupBarang: TFGroupBarang
       ParentFont = False
       Spacing = 0
       OnClick = sb_2Click
-      Align = alTop
       SkinData.SkinSection = 'TOOLBUTTON'
       Images = dm.image
       ImageIndex = 8
@@ -57,6 +59,7 @@ object FGroupBarang: TFGroupBarang
       Width = 150
       Height = 90
       Cursor = crHandPoint
+      Align = alTop
       Caption = 'Selesai'
       Flat = True
       Font.Charset = DEFAULT_CHARSET
@@ -68,7 +71,6 @@ object FGroupBarang: TFGroupBarang
       ParentFont = False
       Spacing = 0
       OnClick = sb_1Click
-      Align = alTop
       SkinData.SkinSection = 'TOOLBUTTON'
       Images = dm.image
       ImageIndex = 7
@@ -76,12 +78,13 @@ object FGroupBarang: TFGroupBarang
     end
     object p1: TsPanel
       Left = 0
-      Top = 327
+      Top = 311
       Width = 150
       Height = 114
       Align = alBottom
       TabOrder = 0
       SkinData.SkinSection = 'PANEL'
+      ExplicitTop = -114
       object btnBaru: TsButton
         Left = 8
         Top = 8
@@ -117,12 +120,14 @@ object FGroupBarang: TFGroupBarang
   object grid: TcxGrid
     Left = 0
     Top = 0
-    Width = 530
-    Height = 441
+    Width = 591
+    Height = 425
     Align = alClient
     TabOrder = 1
     LookAndFeel.Kind = lfOffice11
     LookAndFeel.NativeStyle = False
+    ExplicitWidth = 530
+    ExplicitHeight = 0
     object t_data: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       OnCellDblClick = t_dataCellDblClick

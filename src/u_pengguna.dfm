@@ -1,6 +1,6 @@
 object F_emp: TF_emp
-  Left = 420
-  Top = 166
+  Left = 0
+  Top = 0
   BorderStyle = bsDialog
   Caption = 'Set Up User'
   ClientHeight = 255
@@ -247,6 +247,10 @@ object F_emp: TF_emp
     object ts_gudang: TsTabSheet
       Caption = 'Hak Akses Gudang'
       PopupMenu = pmUser
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object gb_master: TsGroupBox
         Left = 0
         Top = 0
@@ -412,6 +416,10 @@ object F_emp: TF_emp
     end
     object ts_server: TsTabSheet
       Caption = 'Hak Akses Server POS '
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object gb_md: TsGroupBox
         Left = 0
         Top = 0

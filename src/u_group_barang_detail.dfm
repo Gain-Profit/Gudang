@@ -1,6 +1,6 @@
 object FGroupBarangDetail: TFGroupBarangDetail
-  Left = 192
-  Top = 124
+  Left = 0
+  Top = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
   Caption = 'Detail Group Barang'

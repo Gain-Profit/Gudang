@@ -1,6 +1,6 @@
 object F_ubahPassword: TF_ubahPassword
-  Left = 528
-  Top = 256
+  Left = 0
+  Top = 0
   BorderStyle = bsDialog
   Caption = 'Ubah Password'
   ClientHeight = 147
@@ -51,15 +51,12 @@ object F_ubahPassword: TF_ubahPassword
     PasswordChar = '*'
     TabOrder = 2
     SkinData.SkinSection = 'EDIT'
-    BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
     BoundLabel.Font.Color = clWindowText
     BoundLabel.Font.Height = -11
     BoundLabel.Font.Name = 'MS Sans Serif'
     BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
+    BoundLabel.ParentFont = False
   end
   object ed_pass: TsEdit
     Left = 128
@@ -76,15 +73,12 @@ object F_ubahPassword: TF_ubahPassword
     PasswordChar = '*'
     TabOrder = 1
     SkinData.SkinSection = 'EDIT'
-    BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
     BoundLabel.Font.Color = clWindowText
     BoundLabel.Font.Height = -11
     BoundLabel.Font.Name = 'MS Sans Serif'
     BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
+    BoundLabel.ParentFont = False
   end
   object edpassLama: TsEdit
     Left = 128
@@ -101,15 +95,12 @@ object F_ubahPassword: TF_ubahPassword
     PasswordChar = '*'
     TabOrder = 0
     SkinData.SkinSection = 'EDIT'
-    BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
     BoundLabel.Font.Color = clWindowText
     BoundLabel.Font.Height = -11
     BoundLabel.Font.Name = 'MS Sans Serif'
     BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
+    BoundLabel.ParentFont = False
   end
   object btnpass: TsButton
     Left = 248

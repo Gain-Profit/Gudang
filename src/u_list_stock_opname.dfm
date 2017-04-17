@@ -1,9 +1,9 @@
 object F_list_SO: TF_list_SO
-  Left = 192
-  Top = 116
-  Width = 928
-  Height = 480
+  Left = 0
+  Top = 0
   Caption = 'Dafta Stok Opname'
+  ClientHeight = 409
+  ClientWidth = 901
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -23,12 +23,14 @@ object F_list_SO: TF_list_SO
   object grid: TcxGrid
     Left = 0
     Top = 0
-    Width = 762
-    Height = 441
+    Width = 751
+    Height = 409
     Align = alClient
     TabOrder = 0
     LookAndFeel.Kind = lfOffice11
     LookAndFeel.NativeStyle = False
+    ExplicitWidth = 762
+    ExplicitHeight = 0
     object grid_data: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       OnCellDblClick = t_dataCellDblClick
@@ -96,20 +98,23 @@ object F_list_SO: TF_list_SO
     end
   end
   object sPanel1: TsPanel
-    Left = 762
+    Left = 751
     Top = 0
     Width = 150
-    Height = 441
+    Height = 409
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 1
     SkinData.SkinSection = 'PANEL'
+    ExplicitLeft = -30
+    ExplicitHeight = 0
     object sb_1: TsSpeedButton
       Left = 0
       Top = 0
       Width = 150
       Height = 90
       Cursor = crHandPoint
+      Align = alTop
       Caption = 'Selesai'
       Flat = True
       Font.Charset = DEFAULT_CHARSET
@@ -121,7 +126,6 @@ object F_list_SO: TF_list_SO
       ParentFont = False
       Spacing = 0
       OnClick = sb_1Click
-      Align = alTop
       SkinData.SkinSection = 'TOOLBUTTON'
       Images = dm.image
       ImageIndex = 7
@@ -133,6 +137,7 @@ object F_list_SO: TF_list_SO
       Width = 150
       Height = 90
       Cursor = crHandPoint
+      Align = alTop
       Caption = 'Refresh'
       Flat = True
       Font.Charset = DEFAULT_CHARSET
@@ -144,7 +149,6 @@ object F_list_SO: TF_list_SO
       ParentFont = False
       Spacing = 0
       OnClick = sb_2Click
-      Align = alTop
       SkinData.SkinSection = 'TOOLBUTTON'
       Images = dm.image
       ImageIndex = 8
@@ -152,12 +156,13 @@ object F_list_SO: TF_list_SO
     end
     object p1: TsPanel
       Left = 0
-      Top = 351
+      Top = 319
       Width = 150
       Height = 90
       Align = alBottom
       TabOrder = 0
       SkinData.SkinSection = 'PANEL'
+      ExplicitTop = -90
       object l_1: TsLabel
         Left = 4
         Top = 5

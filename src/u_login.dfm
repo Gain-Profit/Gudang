@@ -1,6 +1,6 @@
 object F_Login: TF_Login
-  Left = 411
-  Top = 163
+  Left = 0
+  Top = 0
   BorderStyle = bsDialog
   Caption = 'Login'
   ClientHeight = 275
@@ -119,10 +119,10 @@ object F_Login: TF_Login
       Font.Name = 'Rockwell'
       Font.Style = []
       ModalResult = 2
+      NumGlyphs = 2
       ParentFont = False
       TabOrder = 4
       OnClick = BtnCloseClick
-      NumGlyphs = 2
     end
     object BtnLogin: TButton
       Left = 208

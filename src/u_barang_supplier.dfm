@@ -1,6 +1,6 @@
 object F_barang_supp: TF_barang_supp
-  Left = 233
-  Top = 118
+  Left = 0
+  Top = 0
   BorderStyle = bsDialog
   Caption = 'Barang Supplier'
   ClientHeight = 503

@@ -1,8 +1,6 @@
 object dm: Tdm
   OldCreateOrder = False
   OnCreate = DataModuleCreate
-  Left = 395
-  Top = 149
   Height = 518
   Width = 764
   object db_conn: TMyConnection
@@ -19106,10 +19104,15 @@ object dm: Tdm
       end>
     Left = 632
     Top = 176
-    Bitmap = {}
+    Bitmap = {
+      494C010100000800080001000100FFFFFFFF0400FFFFFFFFFFFFFFFF424D7600
+      0000000000007600000028000000040000000100000001000400000000000400
+      0000000000000000000000000000000000000000000000008000008000000080
+      8000800000008000800080800000C0C0C000808080000000FF0000FF000000FF
+      FF00FF000000FF00FF00FFFF0000FFFFFF0000000000}
   end
   object Laporan: TfrxReport
-    Version = '4.9.35'
+    Version = '5.3.14'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -19142,17 +19145,20 @@ object dm: Tdm
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
       end
       object MasterData1: TfrxMasterData
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 102.047310000000000000
         Width = 718.110700000000000000
         RowCount = 0
       end
       object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 185.196970000000000000
         Width = 718.110700000000000000
@@ -19160,9 +19166,8 @@ object dm: Tdm
           Left = 642.520100000000000000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           HAlign = haRight
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[Page#]')
         end
       end
@@ -20636,7 +20641,12 @@ object dm: Tdm
       end>
     Left = 632
     Top = 128
-    Bitmap = {}
+    Bitmap = {
+      494C010100000800080001000100FFFFFFFF0400FFFFFFFFFFFFFFFF424D7600
+      0000000000007600000028000000040000000100000001000400000000000400
+      0000000000000000000000000000000000000000000000008000008000000080
+      8000800000008000800080800000C0C0C000808080000000FF0000FF000000FF
+      FF00FF000000FF00FF00FFFF0000FFFFFF0000000000}
   end
   object ds_list_kirim: TDataSource
     DataSet = Q_list_kirim

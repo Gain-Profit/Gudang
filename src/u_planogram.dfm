@@ -1,6 +1,6 @@
 object F_planogram: TF_planogram
-  Left = 229
-  Top = 91
+  Left = 0
+  Top = 0
   BorderStyle = bsDialog
   Caption = 'Set Up Planogram'
   ClientHeight = 512
@@ -75,8 +75,8 @@ object F_planogram: TF_planogram
           OptionsView.ColumnAutoWidth = True
           OptionsView.Footer = True
           OptionsView.GroupByBox = False
-          Styles.Inactive = dm.cxstyl1
           Styles.IncSearch = dm.cxstyl1
+          Styles.Inactive = dm.cxstyl1
           Styles.Selection = dm.cxstyl1
           object dt_No: TcxGridDBColumn
             Caption = 'No'
@@ -234,7 +234,9 @@ object F_planogram: TF_planogram
           Text = '0'
           OnChange = se_rakChange
           SkinData.SkinSection = 'EDIT'
-          Increment = 1
+          MaxValue = 0
+          MinValue = 0
+          Value = 0
         end
         object se_shelving: TsSpinEdit
           Left = 56
@@ -253,7 +255,9 @@ object F_planogram: TF_planogram
           Text = '0'
           OnChange = se_shelvingChange
           SkinData.SkinSection = 'EDIT'
-          Increment = 1
+          MaxValue = 0
+          MinValue = 0
+          Value = 0
         end
         object b_cetak: TsButton
           Left = 136
@@ -319,6 +323,10 @@ object F_planogram: TF_planogram
     end
     object ts_barang: TsTabSheet
       Caption = 'Berdasar Barang'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object SbBarang: TsSpeedButton
         Tag = 9
         Left = 776
@@ -362,8 +370,8 @@ object F_planogram: TF_planogram
           OptionsView.ColumnAutoWidth = True
           OptionsView.Footer = True
           OptionsView.GroupByBox = False
-          Styles.Inactive = dm.cxstyl1
           Styles.IncSearch = dm.cxstyl1
+          Styles.Inactive = dm.cxstyl1
           Styles.Selection = dm.cxstyl1
           object tPlanoBarangColumn1: TcxGridDBColumn
             Caption = 'Rak'
@@ -424,6 +432,10 @@ object F_planogram: TF_planogram
     end
     object ts_Double: TsTabSheet
       Caption = 'Plano Double'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object spltrD1: TsSplitter
         Left = 0
         Top = 261
@@ -468,8 +480,8 @@ object F_planogram: TF_planogram
           OptionsView.ColumnAutoWidth = True
           OptionsView.Footer = True
           OptionsView.GroupByBox = False
-          Styles.Inactive = dm.cxstyl1
           Styles.IncSearch = dm.cxstyl1
+          Styles.Inactive = dm.cxstyl1
           Styles.Selection = dm.cxstyl1
           object cxGridDBColumn6: TcxGridDBColumn
             Caption = 'PID'
@@ -537,8 +549,8 @@ object F_planogram: TF_planogram
           OptionsSelection.CellSelect = False
           OptionsView.ColumnAutoWidth = True
           OptionsView.GroupByBox = False
-          Styles.Inactive = dm.cxstyl1
           Styles.IncSearch = dm.cxstyl1
+          Styles.Inactive = dm.cxstyl1
           Styles.Selection = dm.cxstyl1
           object cxGridDBColumn15: TcxGridDBColumn
             Caption = 'Rak'

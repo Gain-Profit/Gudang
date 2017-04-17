@@ -1,6 +1,6 @@
 object F_barang_det: TF_barang_det
-  Left = 330
-  Top = 111
+  Left = 0
+  Top = 0
   BorderStyle = bsDialog
   Caption = 'Inventory Barang'
   ClientHeight = 465
