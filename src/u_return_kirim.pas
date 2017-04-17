@@ -29,11 +29,11 @@ type
     sb_cari: TsSpeedButton;
     LblToko: TsLabel;
     sLabel5: TsLabel;
-    ed_no_faktur: TsEdit;
+    ed_no_faktur: TEdit;
     ed_tgl: TsDateEdit;
-    EdToko: TsEdit;
-    ed_code: TsEdit;
-    ed_fak_kirim: TsEdit;
+    EdToko: TEdit;
+    ed_code: TEdit;
+    ed_fak_kirim: TEdit;
     panel3: TsPanel;
     ed_nilai_faktur: TsCurrencyEdit;
     panel4: TsPanel;

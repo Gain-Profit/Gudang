@@ -107,7 +107,7 @@ object F_cust: TF_cust
     Font.Name = 'MS Sans Serif'
     Font.Style = []
   end
-  object ed_kode: TsEdit
+  object ed_kode: TEdit
     Left = 120
     Top = 3
     Width = 129
@@ -120,15 +120,8 @@ object F_cust: TF_cust
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
-  object ed_nama: TsEdit
+  object ed_nama: TEdit
     Left = 120
     Top = 30
     Width = 177
@@ -141,15 +134,8 @@ object F_cust: TF_cust
     Font.Style = []
     ParentFont = False
     TabOrder = 2
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
-  object ed_rekening: TsEdit
+  object ed_rekening: TEdit
     Left = 120
     Top = 57
     Width = 297
@@ -162,15 +148,8 @@ object F_cust: TF_cust
     Font.Style = []
     ParentFont = False
     TabOrder = 3
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
-  object ed_alamat: TsEdit
+  object ed_alamat: TEdit
     Left = 120
     Top = 84
     Width = 297
@@ -183,15 +162,8 @@ object F_cust: TF_cust
     Font.Style = []
     ParentFont = False
     TabOrder = 4
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
-  object ed_alamat_kirim: TsEdit
+  object ed_alamat_kirim: TEdit
     Left = 120
     Top = 111
     Width = 297
@@ -204,13 +176,6 @@ object F_cust: TF_cust
     Font.Style = []
     ParentFont = False
     TabOrder = 5
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
   object B_new: TsButton
     Left = 256
@@ -232,7 +197,7 @@ object F_cust: TF_cust
     OnClick = B_saveClick
     SkinData.SkinSection = 'BUTTON_BIG'
   end
-  object ed_telp: TsEdit
+  object ed_telp: TEdit
     Left = 120
     Top = 138
     Width = 249
@@ -245,13 +210,6 @@ object F_cust: TF_cust
     Font.Style = []
     ParentFont = False
     TabOrder = 6
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
   object ED_LIMIT: TsCurrencyEdit
     Left = 120

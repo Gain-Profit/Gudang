@@ -23,10 +23,10 @@ type
     sLabel1: TsLabel;
     l_1: TsLabel;
     gambar: TcxImage;
-    ed_pass2: TsEdit;
-    ed_pass: TsEdit;
-    ed_nama: TsEdit;
-    ed_kode: TsEdit;
+    ed_pass2: TEdit;
+    ed_pass: TEdit;
+    ed_nama: TEdit;
+    ed_kode: TEdit;
     cb_server: TsCheckBox;
     cb_kasir: TsCheckBox;
     cb_gudang: TsCheckBox;

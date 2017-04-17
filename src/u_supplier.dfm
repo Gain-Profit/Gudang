@@ -119,7 +119,7 @@ object F_supplier: TF_supplier
     Font.Name = 'MS Sans Serif'
     Font.Style = []
   end
-  object ed_nama: TsEdit
+  object ed_nama: TEdit
     Left = 120
     Top = 34
     Width = 177
@@ -132,15 +132,8 @@ object F_supplier: TF_supplier
     Font.Style = []
     ParentFont = False
     TabOrder = 2
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
-  object ed_alamat: TsEdit
+  object ed_alamat: TEdit
     Left = 120
     Top = 60
     Width = 297
@@ -153,15 +146,8 @@ object F_supplier: TF_supplier
     Font.Style = []
     ParentFont = False
     TabOrder = 3
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
-  object ed_kota: TsEdit
+  object ed_kota: TEdit
     Left = 120
     Top = 86
     Width = 129
@@ -174,15 +160,8 @@ object F_supplier: TF_supplier
     Font.Style = []
     ParentFont = False
     TabOrder = 4
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
-  object ed_telp: TsEdit
+  object ed_telp: TEdit
     Left = 120
     Top = 113
     Width = 129
@@ -195,15 +174,8 @@ object F_supplier: TF_supplier
     Font.Style = []
     ParentFont = False
     TabOrder = 5
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
-  object ed_kontak: TsEdit
+  object ed_kontak: TEdit
     Left = 120
     Top = 139
     Width = 249
@@ -216,15 +188,8 @@ object F_supplier: TF_supplier
     Font.Style = []
     ParentFont = False
     TabOrder = 6
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
-  object ed_web: TsEdit
+  object ed_web: TEdit
     Left = 120
     Top = 165
     Width = 249
@@ -237,15 +202,8 @@ object F_supplier: TF_supplier
     Font.Style = []
     ParentFont = False
     TabOrder = 7
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
-  object ed_mail: TsEdit
+  object ed_mail: TEdit
     Left = 120
     Top = 192
     Width = 249
@@ -258,13 +216,6 @@ object F_supplier: TF_supplier
     Font.Style = []
     ParentFont = False
     TabOrder = 8
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
   object B_new: TsButton
     Left = 248
@@ -286,7 +237,7 @@ object F_supplier: TF_supplier
     OnClick = B_saveClick
     SkinData.SkinSection = 'BUTTON_BIG'
   end
-  object ed_kode: TsEdit
+  object ed_kode: TEdit
     Left = 120
     Top = 8
     Width = 129
@@ -299,13 +250,6 @@ object F_supplier: TF_supplier
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
   object b_auto: TsButton
     Left = 256

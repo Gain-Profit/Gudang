@@ -13,25 +13,25 @@ uses
 
 type
   TF_barang_det = class(TForm)
-    ed_nama: TsEdit;
-    ed_pid: TsEdit;
+    ed_nama: TEdit;
+    ed_pid: TEdit;
     sGroupBox4: TsGroupBox;
-    ed_bar1: TsEdit;
-    ed_bar2: TsEdit;
-    ed_bar3: TsEdit;
+    ed_bar1: TEdit;
+    ed_bar2: TEdit;
+    ed_bar3: TEdit;
     sGroupBox3: TsGroupBox;
-    ed_sat1: TsEdit;
-    ed_sat2: TsEdit;
-    ed_sat3: TsEdit;
+    ed_sat1: TEdit;
+    ed_sat2: TEdit;
+    ed_sat3: TEdit;
     gb_stok: TsGroupBox;
     sLabel6: TsLabel;
     sLabel9: TsLabel;
     sLabel8: TsLabel;
     sLabel7: TsLabel;
-    Ed_Jenis: TsEdit;
-    Ed_Kategori: TsEdit;
-    Ed_Merk: TsEdit;
-    Ed_golongan: TsEdit;
+    Ed_Jenis: TEdit;
+    Ed_Kategori: TEdit;
+    Ed_Merk: TEdit;
+    Ed_golongan: TEdit;
     sLabel16: TsLabel;
     sLabel15: TsLabel;
     sLabel14: TsLabel;
@@ -168,7 +168,7 @@ end;
 
 procedure TF_barang_det.sb_sat1Click(Sender: TObject);
 begin
-  TsEdit(FindComponent(StringReplace(TsSpeedButton(Sender).Name, 'sb_sat',
+  TEdit(FindComponent(StringReplace(TsSpeedButton(Sender).Name, 'sb_sat',
     'ed_sat', []))).SetFocus;
 
   application.CreateForm(TF_cari, F_cari);
@@ -181,7 +181,7 @@ begin
   begin
     kd_sat[strtoint(StringReplace(TsSpeedButton(Sender).Name, 'sb_sat', '', []))]
       := F_cari.TblVal[0];
-    TsEdit(FindComponent(StringReplace(TsSpeedButton(Sender).Name, 'sb_sat',
+    TEdit(FindComponent(StringReplace(TsSpeedButton(Sender).Name, 'sb_sat',
       'ed_sat', []))).Text := F_cari.Tblval[1];
   end;
 end;
@@ -432,25 +432,25 @@ begin
   begin
     fungsi.SQLExec(dm.Q_temp,
       'select kd_barang, n_barang, barcode1,barcode2,barcode3 from tb_barang where kd_perusahaan = "' +
-      dm.kd_perusahaan + '" and barcode3="' + TsEdit(sender).Text +
-      '" or barcode2="' + TsEdit(sender).Text + '" or barcode1="' + TsEdit(sender).Text
+      dm.kd_perusahaan + '" and barcode3="' + TEdit(sender).Text +
+      '" or barcode2="' + TEdit(sender).Text + '" or barcode1="' + TEdit(sender).Text
       + '"', true);
-    if (dm.Q_temp.RecordCount > 0) and (TsEdit(sender).Text <> '') then
-      TsEdit(sender).Color := clblue
+    if (dm.Q_temp.RecordCount > 0) and (TEdit(sender).Text <> '') then
+      TEdit(sender).Color := clblue
     else
-      TsEdit(sender).Color := clwhite;
+      TEdit(sender).Color := clwhite;
   end
   else
   begin
     fungsi.SQLExec(dm.Q_temp,
       'select kd_barang, n_barang, barcode1,barcode2,barcode3 from tb_barang where  kd_perusahaan = "' +
       dm.kd_perusahaan + '" and kd_barang<>"' + ed_pid.Text +
-      '" and (barcode3="' + TsEdit(sender).Text + '" or barcode2="' + TsEdit(sender).Text
-      + '" or barcode1="' + TsEdit(sender).Text + '")', true);
-    if (dm.Q_temp.RecordCount > 0) and (TsEdit(sender).Text <> '') then
-      TsEdit(sender).Color := clblue
+      '" and (barcode3="' + TEdit(sender).Text + '" or barcode2="' + TEdit(sender).Text
+      + '" or barcode1="' + TEdit(sender).Text + '")', true);
+    if (dm.Q_temp.RecordCount > 0) and (TEdit(sender).Text <> '') then
+      TEdit(sender).Color := clblue
     else
-      TsEdit(sender).Color := clwhite;
+      TEdit(sender).Color := clwhite;
   end;
 end;
 

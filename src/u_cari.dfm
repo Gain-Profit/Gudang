@@ -48,7 +48,7 @@ object F_cari: TF_cari
     OnClick = b_hapusClick
     SkinData.SkinSection = 'BUTTON'
   end
-  object Ed_cari: TsEdit
+  object Ed_cari: TEdit
     Left = 4
     Top = 8
     Width = 573
@@ -63,8 +63,6 @@ object F_cari: TF_cari
     TabOrder = 0
     OnChange = Ed_cariChange
     OnKeyDown = Ed_cariKeyDown
-    SkinData.CustomColor = True
-    SkinData.SkinSection = 'EDIT'
   end
   object grid: TcxGrid
     Left = 4

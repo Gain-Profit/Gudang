@@ -180,7 +180,7 @@ object F_barang_det: TF_barang_det
     Images = dm.gambar
     ImageIndex = 0
   end
-  object ed_nama: TsEdit
+  object ed_nama: TEdit
     Left = 96
     Top = 40
     Width = 337
@@ -193,10 +193,8 @@ object F_barang_det: TF_barang_det
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    SkinData.CustomColor = True
-    SkinData.SkinSection = 'EDIT'
   end
-  object ed_pid: TsEdit
+  object ed_pid: TEdit
     Left = 96
     Top = 8
     Width = 241
@@ -210,8 +208,6 @@ object F_barang_det: TF_barang_det
     ParentFont = False
     TabOrder = 10
     OnExit = ed_pidExit
-    SkinData.CustomColor = True
-    SkinData.SkinSection = 'EDIT'
   end
   object sGroupBox4: TsGroupBox
     Left = 272
@@ -227,7 +223,7 @@ object F_barang_det: TF_barang_det
     ParentFont = False
     TabOrder = 6
     SkinData.SkinSection = 'GROUPBOX'
-    object ed_bar1: TsEdit
+    object ed_bar1: TEdit
       Left = 8
       Top = 24
       Width = 145
@@ -242,11 +238,8 @@ object F_barang_det: TF_barang_det
       TabOrder = 0
       OnChange = ed_bar1Change
       OnExit = ed_bar1Exit
-      SkinData.CustomColor = True
-      SkinData.CustomFont = True
-      SkinData.SkinSection = 'EDIT'
     end
-    object ed_bar2: TsEdit
+    object ed_bar2: TEdit
       Left = 8
       Top = 56
       Width = 145
@@ -261,11 +254,8 @@ object F_barang_det: TF_barang_det
       TabOrder = 1
       OnChange = ed_bar1Change
       OnExit = ed_bar1Exit
-      SkinData.CustomColor = True
-      SkinData.CustomFont = True
-      SkinData.SkinSection = 'EDIT'
     end
-    object ed_bar3: TsEdit
+    object ed_bar3: TEdit
       Left = 8
       Top = 88
       Width = 145
@@ -280,9 +270,6 @@ object F_barang_det: TF_barang_det
       TabOrder = 2
       OnChange = ed_bar1Change
       OnExit = ed_bar1Exit
-      SkinData.CustomColor = True
-      SkinData.CustomFont = True
-      SkinData.SkinSection = 'EDIT'
     end
   end
   object sGroupBox3: TsGroupBox
@@ -332,7 +319,7 @@ object F_barang_det: TF_barang_det
       Images = dm.gambar
       ImageIndex = 0
     end
-    object ed_sat1: TsEdit
+    object ed_sat1: TEdit
       Left = 8
       Top = 24
       Width = 105
@@ -346,10 +333,8 @@ object F_barang_det: TF_barang_det
       ParentFont = False
       ReadOnly = True
       TabOrder = 0
-      SkinData.CustomColor = True
-      SkinData.SkinSection = 'EDIT'
     end
-    object ed_sat2: TsEdit
+    object ed_sat2: TEdit
       Left = 8
       Top = 56
       Width = 105
@@ -363,10 +348,8 @@ object F_barang_det: TF_barang_det
       ParentFont = False
       ReadOnly = True
       TabOrder = 1
-      SkinData.CustomColor = True
-      SkinData.SkinSection = 'EDIT'
     end
-    object ed_sat3: TsEdit
+    object ed_sat3: TEdit
       Left = 8
       Top = 88
       Width = 105
@@ -380,8 +363,6 @@ object F_barang_det: TF_barang_det
       ParentFont = False
       ReadOnly = True
       TabOrder = 2
-      SkinData.CustomColor = True
-      SkinData.SkinSection = 'EDIT'
     end
     object ed_qty1: TsCurrencyEdit
       Left = 161
@@ -592,7 +573,7 @@ object F_barang_det: TF_barang_det
       ImgUnchecked = 0
     end
   end
-  object Ed_Jenis: TsEdit
+  object Ed_Jenis: TEdit
     Left = 96
     Top = 72
     Width = 297
@@ -606,10 +587,8 @@ object F_barang_det: TF_barang_det
     ParentFont = False
     ReadOnly = True
     TabOrder = 1
-    SkinData.CustomColor = True
-    SkinData.SkinSection = 'EDIT'
   end
-  object Ed_Kategori: TsEdit
+  object Ed_Kategori: TEdit
     Left = 96
     Top = 168
     Width = 297
@@ -623,10 +602,8 @@ object F_barang_det: TF_barang_det
     ParentFont = False
     ReadOnly = True
     TabOrder = 4
-    SkinData.CustomColor = True
-    SkinData.SkinSection = 'EDIT'
   end
-  object Ed_Merk: TsEdit
+  object Ed_Merk: TEdit
     Left = 96
     Top = 136
     Width = 297
@@ -640,10 +617,8 @@ object F_barang_det: TF_barang_det
     ParentFont = False
     ReadOnly = True
     TabOrder = 3
-    SkinData.CustomColor = True
-    SkinData.SkinSection = 'EDIT'
   end
-  object Ed_golongan: TsEdit
+  object Ed_golongan: TEdit
     Left = 96
     Top = 104
     Width = 297
@@ -657,8 +632,6 @@ object F_barang_det: TF_barang_det
     ParentFont = False
     ReadOnly = True
     TabOrder = 2
-    SkinData.CustomColor = True
-    SkinData.SkinSection = 'EDIT'
   end
   object b_new: TsButton
     Left = 360

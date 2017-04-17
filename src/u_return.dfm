@@ -355,7 +355,6 @@ object F_return: TF_return
         Font.Height = -53
         Font.Name = 'ARIAL'
         Font.Style = []
-        ExplicitLeft = 616
         ExplicitHeight = 60
       end
       object sBevel1: TsBevel
@@ -453,7 +452,7 @@ object F_return: TF_return
         Font.Name = 'MS Sans Serif'
         Font.Style = []
       end
-      object ed_no_faktur: TsEdit
+      object ed_no_faktur: TEdit
         Left = 312
         Top = 8
         Width = 169
@@ -468,8 +467,6 @@ object F_return: TF_return
         TabOrder = 1
         OnChange = ed_no_fakturChange
         OnKeyDown = ed_no_fakturKeyDown
-        SkinData.CustomColor = True
-        SkinData.SkinSection = 'EDIT'
       end
       object ed_tgl: TsDateEdit
         Left = 56
@@ -493,7 +490,7 @@ object F_return: TF_return
         GlyphMode.Grayed = False
         DefaultToday = True
       end
-      object ed_supplier: TsEdit
+      object ed_supplier: TEdit
         Left = 56
         Top = 6
         Width = 137
@@ -509,10 +506,8 @@ object F_return: TF_return
         TabOrder = 0
         OnChange = ed_supplierChange
         OnKeyDown = ed_supplierKeyDown
-        SkinData.CustomColor = True
-        SkinData.SkinSection = 'EDIT'
       end
-      object ed_code: TsEdit
+      object ed_code: TEdit
         Left = 256
         Top = 62
         Width = 442
@@ -528,10 +523,8 @@ object F_return: TF_return
         TabOrder = 5
         OnKeyDown = ed_codeKeyDown
         OnKeyPress = ed_codeKeyPress
-        SkinData.CustomColor = True
-        SkinData.SkinSection = 'EDIT'
       end
-      object ed_fak_receipt: TsEdit
+      object ed_fak_receipt: TEdit
         Left = 312
         Top = 32
         Width = 169
@@ -546,8 +539,6 @@ object F_return: TF_return
         TabOrder = 3
         OnChange = ed_fak_receiptChange
         OnKeyPress = ed_fak_receiptKeyPress
-        SkinData.CustomColor = True
-        SkinData.SkinSection = 'EDIT'
       end
       object b_auto: TsButton
         Left = 488

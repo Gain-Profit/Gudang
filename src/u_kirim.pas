@@ -31,10 +31,10 @@ type
     sb_pelanggan: TsSpeedButton;
     sb_cari: TsSpeedButton;
     l_toko: TsLabel;
-    ed_no_faktur: TsEdit;
+    ed_no_faktur: TEdit;
     ed_tgl: TsDateEdit;
-    ed_toko: TsEdit;
-    ed_code: TsEdit;
+    ed_toko: TEdit;
+    ed_code: TEdit;
     panel3: TsPanel;
     ed_nilai_faktur: TsCurrencyEdit;
     panel4: TsPanel;

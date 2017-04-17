@@ -9,23 +9,23 @@ uses
 type
   TF_supplier = class(TForm)
     sLabel2: TsLabel;
-    ed_nama: TsEdit;
+    ed_nama: TEdit;
     sLabel1: TsLabel;
-    ed_alamat: TsEdit;
+    ed_alamat: TEdit;
     sLabel3: TsLabel;
-    ed_kota: TsEdit;
+    ed_kota: TEdit;
     sLabel4: TsLabel;
-    ed_telp: TsEdit;
+    ed_telp: TEdit;
     sLabel5: TsLabel;
-    ed_kontak: TsEdit;
+    ed_kontak: TEdit;
     sLabel6: TsLabel;
-    ed_web: TsEdit;
+    ed_web: TEdit;
     sLabel7: TsLabel;
-    ed_mail: TsEdit;
+    ed_mail: TEdit;
     sLabel8: TsLabel;
     B_new: TsButton;
     B_save: TsButton;
-    ed_kode: TsEdit;
+    ed_kode: TEdit;
     sSkinProvider1: TsSkinProvider;
     b_auto: TsButton;
     procedure baru;

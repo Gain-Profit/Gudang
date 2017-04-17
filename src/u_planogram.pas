@@ -31,7 +31,7 @@ type
     dt_kap: TcxGridDBColumn;
     dt_display: TcxGridDBColumn;
     l_data_plano: TcxGridLevel;
-    ed_masuk: TsEdit;
+    ed_masuk: TEdit;
     p1: TsPanel;
     l_1: TsLabel;
     l_2: TsLabel;
@@ -53,7 +53,7 @@ type
     cxGridDBColumn3: TcxGridDBColumn;
     cxGridDBColumn4: TcxGridDBColumn;
     LvPlanoBarang: TcxGridLevel;
-    edBarang: TsEdit;
+    edBarang: TEdit;
     SbBarang: TsSpeedButton;
     ds_plano: TDataSource;
     Q_plano: TMyQuery;

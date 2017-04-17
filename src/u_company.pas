@@ -9,13 +9,13 @@ uses
 type
   TF_comp = class(TForm)
     sLabel1: TsLabel;
-    ed_kode: TsEdit;
+    ed_kode: TEdit;
     sLabel2: TsLabel;
-    ed_desk: TsEdit;
+    ed_desk: TEdit;
     sLabel3: TsLabel;
-    ed_telp: TsEdit;
+    ed_telp: TEdit;
     sLabel4: TsLabel;
-    ed_mail: TsEdit;
+    ed_mail: TEdit;
     sLabel5: TsLabel;
     mm_alamat: TsMemo;
     B_new: TsButton;

@@ -9,10 +9,10 @@ uses
 type
   TF_jenis = class(TForm)
     B_new: TsButton;
-    ed_kode: TsEdit;
+    ed_kode: TEdit;
     sLabel1: TsLabel;
     sLabel2: TsLabel;
-    ed_desc: TsEdit;
+    ed_desc: TEdit;
     B_save: TsButton;
     sSkinProvider1: TsSkinProvider;
     procedure baru;

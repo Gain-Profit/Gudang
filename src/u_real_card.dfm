@@ -52,7 +52,7 @@ object F_realCard: TF_realCard
     OnClick = btnRealCardClick
     SkinData.SkinSection = 'BUTTON'
   end
-  object ed_PID: TsEdit
+  object ed_PID: TEdit
     Left = 8
     Top = 112
     Width = 497
@@ -66,13 +66,6 @@ object F_realCard: TF_realCard
     ParentFont = False
     TabOrder = 1
     OnKeyDown = ed_PIDKeyDown
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
   object lv_data: TListView
     Left = 8

@@ -31,8 +31,6 @@ object F_kirim: TF_kirim
     Align = alClient
     TabOrder = 0
     SkinData.SkinSection = 'PANEL'
-    ExplicitWidth = 762
-    ExplicitHeight = 0
     object panel1: TsPanel
       Left = 1
       Top = 1
@@ -42,7 +40,6 @@ object F_kirim: TF_kirim
       Enabled = False
       TabOrder = 2
       SkinData.SkinSection = 'PANEL'
-      ExplicitWidth = 760
       object Mm_nama: TsMemo
         Left = 1
         Top = 1
@@ -62,7 +59,6 @@ object F_kirim: TF_kirim
         SkinData.CustomColor = True
         SkinData.CustomFont = True
         SkinData.SkinSection = 'PANEL'
-        ExplicitWidth = 378
       end
       object ce_harga: TsCurrencyEdit
         Left = 340
@@ -89,7 +85,6 @@ object F_kirim: TF_kirim
         GlyphMode.Grayed = False
         DecimalPlaces = 3
         DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
-        ExplicitLeft = 379
       end
     end
     object panel2: TsPanel
@@ -100,7 +95,6 @@ object F_kirim: TF_kirim
       Align = alTop
       TabOrder = 0
       SkinData.SkinSection = 'PANEL'
-      ExplicitWidth = 760
       object sLabel5: TsLabel
         Left = 500
         Top = 1
@@ -116,7 +110,7 @@ object F_kirim: TF_kirim
         Font.Height = -53
         Font.Name = 'ARIAL'
         Font.Style = []
-        ExplicitLeft = 613
+        ExplicitLeft = 574
         ExplicitHeight = 60
       end
       object sBevel1: TsBevel
@@ -241,7 +235,7 @@ object F_kirim: TF_kirim
         Font.Name = 'MS Sans Serif'
         Font.Style = []
       end
-      object ed_no_faktur: TsEdit
+      object ed_no_faktur: TEdit
         Left = 80
         Top = 30
         Width = 145
@@ -256,8 +250,6 @@ object F_kirim: TF_kirim
         TabOrder = 1
         OnChange = ed_no_fakturChange
         OnKeyDown = ed_no_fakturKeyDown
-        SkinData.CustomColor = True
-        SkinData.SkinSection = 'EDIT'
       end
       object ed_tgl: TsDateEdit
         Left = 80
@@ -281,7 +273,7 @@ object F_kirim: TF_kirim
         GlyphMode.Grayed = False
         DefaultToday = True
       end
-      object ed_toko: TsEdit
+      object ed_toko: TEdit
         Left = 80
         Top = 8
         Width = 121
@@ -296,10 +288,8 @@ object F_kirim: TF_kirim
         ReadOnly = True
         TabOrder = 0
         OnKeyDown = ed_tokoKeyDown
-        SkinData.CustomColor = True
-        SkinData.SkinSection = 'EDIT'
       end
-      object ed_code: TsEdit
+      object ed_code: TEdit
         Left = 264
         Top = 86
         Width = 489
@@ -314,8 +304,6 @@ object F_kirim: TF_kirim
         TabOrder = 4
         OnKeyDown = ed_codeKeyDown
         OnKeyPress = ed_codeKeyPress
-        SkinData.CustomColor = True
-        SkinData.SkinSection = 'EDIT'
       end
       object ed_jatuh_tempo: TsCurrencyEdit
         Left = 80
@@ -348,8 +336,6 @@ object F_kirim: TF_kirim
       Enabled = False
       TabOrder = 1
       SkinData.SkinSection = 'PANEL'
-      ExplicitTop = -73
-      ExplicitWidth = 760
       object l_1: TsLabel
         Left = 8
         Top = 4
@@ -403,7 +389,6 @@ object F_kirim: TF_kirim
         GlyphMode.Grayed = False
         DecimalPlaces = 3
         DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
-        ExplicitLeft = 339
       end
     end
     object Grid: TcxGrid
@@ -415,8 +400,6 @@ object F_kirim: TF_kirim
       TabOrder = 3
       LookAndFeel.Kind = lfOffice11
       LookAndFeel.NativeStyle = False
-      ExplicitWidth = 760
-      ExplicitHeight = 183
       object TableView: TcxGridTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.Append.Visible = False
@@ -541,8 +524,6 @@ object F_kirim: TF_kirim
     Align = alRight
     TabOrder = 1
     SkinData.SkinSection = 'PANEL'
-    ExplicitLeft = -30
-    ExplicitHeight = 0
     object sSpeedButton18: TsSpeedButton
       Left = 1
       Top = 1
@@ -574,7 +555,6 @@ object F_kirim: TF_kirim
       Align = alBottom
       TabOrder = 1
       SkinData.SkinSection = 'PANEL'
-      ExplicitTop = -75
       object b_simpan_file: TsButton
         Left = 8
         Top = 9

@@ -40,7 +40,7 @@ object F_merk: TF_merk
     Font.Name = 'MS Sans Serif'
     Font.Style = []
   end
-  object ed_kode: TsEdit
+  object ed_kode: TEdit
     Left = 56
     Top = 8
     Width = 233
@@ -55,15 +55,8 @@ object F_merk: TF_merk
     ParentFont = False
     ReadOnly = True
     TabOrder = 0
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
-  object ed_desc: TsEdit
+  object ed_desc: TEdit
     Left = 56
     Top = 40
     Width = 233
@@ -77,13 +70,6 @@ object F_merk: TF_merk
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'MS Sans Serif'
-    BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
   end
   object B_save: TsButton
     Left = 216

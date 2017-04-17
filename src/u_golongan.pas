@@ -10,9 +10,9 @@ uses
 type
   TF_golongan = class(TForm)
     sLabel1: TsLabel;
-    ed_kode: TsEdit;
+    ed_kode: TEdit;
     sLabel2: TsLabel;
-    ed_desk: TsEdit;
+    ed_desk: TEdit;
     sLabel3: TsLabel;
     B_new: TsButton;
     B_save: TsButton;

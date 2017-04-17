@@ -19,7 +19,7 @@ type
     b_ubah: TsButton;
     b_hapus: TsButton;
     sSkinProvider1: TsSkinProvider;
-    Ed_cari: TsEdit;
+    Ed_cari: TEdit;
     grid: TcxGrid;
     t_data: TcxGridDBTableView;
     clm1: TcxGridDBColumn;

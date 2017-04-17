@@ -348,7 +348,6 @@ object F_purchase: TF_purchase
         Font.Height = -53
         Font.Name = 'ARIAL'
         Font.Style = []
-        ExplicitLeft = 544
         ExplicitHeight = 60
       end
       object sBevel1: TsBevel
@@ -433,7 +432,7 @@ object F_purchase: TF_purchase
         Font.Name = 'MS Sans Serif'
         Font.Style = []
       end
-      object ed_no_faktur: TsEdit
+      object ed_no_faktur: TEdit
         Left = 80
         Top = 32
         Width = 145
@@ -448,8 +447,6 @@ object F_purchase: TF_purchase
         TabOrder = 1
         OnChange = ed_no_fakturChange
         OnKeyDown = ed_no_fakturKeyDown
-        SkinData.CustomColor = True
-        SkinData.SkinSection = 'EDIT'
       end
       object ed_tgl: TsDateEdit
         Left = 80
@@ -473,7 +470,7 @@ object F_purchase: TF_purchase
         GlyphMode.Grayed = False
         DefaultToday = True
       end
-      object ed_supplier: TsEdit
+      object ed_supplier: TEdit
         Left = 80
         Top = 8
         Width = 145
@@ -488,10 +485,8 @@ object F_purchase: TF_purchase
         ReadOnly = True
         TabOrder = 0
         OnKeyDown = ed_supplierKeyDown
-        SkinData.CustomColor = True
-        SkinData.SkinSection = 'EDIT'
       end
-      object ed_code: TsEdit
+      object ed_code: TEdit
         Left = 264
         Top = 70
         Width = 354
@@ -507,8 +502,6 @@ object F_purchase: TF_purchase
         TabOrder = 4
         OnKeyDown = ed_codeKeyDown
         OnKeyPress = ed_codeKeyPress
-        SkinData.CustomColor = True
-        SkinData.SkinSection = 'EDIT'
       end
       object b_auto: TsButton
         Left = 232
