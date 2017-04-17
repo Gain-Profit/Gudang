@@ -1,6 +1,6 @@
 object F_golongan: TF_golongan
-  Left = 799
-  Top = 286
+  Left = 0
+  Top = 0
   BorderStyle = bsDialog
   Caption = 'Golongan Barang'
   ClientHeight = 124
@@ -59,18 +59,16 @@ object F_golongan: TF_golongan
     Left = 80
     Top = 32
     Width = 297
-    Height = 22
+    Height = 21
     Alignment = taLeftJustify
-    BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
     BoundLabel.Font.Color = clWindowText
     BoundLabel.Font.Height = -11
     BoundLabel.Font.Name = 'MS Sans Serif'
     BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
+    BoundLabel.ParentFont = False
     SkinData.SkinSection = 'COMBOBOX'
+    VerticalAlignment = taAlignTop
     Style = csDropDownList
     Color = clWhite
     Font.Charset = DEFAULT_CHARSET
@@ -78,7 +76,6 @@ object F_golongan: TF_golongan
     Font.Height = -11
     Font.Name = 'MS Sans Serif'
     Font.Style = []
-    ItemHeight = 16
     ItemIndex = -1
     ParentFont = False
     TabOrder = 4
@@ -99,15 +96,12 @@ object F_golongan: TF_golongan
     ParentFont = False
     TabOrder = 0
     SkinData.SkinSection = 'EDIT'
-    BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
     BoundLabel.Font.Color = clWindowText
     BoundLabel.Font.Height = -11
     BoundLabel.Font.Name = 'MS Sans Serif'
     BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
+    BoundLabel.ParentFont = False
   end
   object ed_desk: TsEdit
     Left = 80
@@ -123,15 +117,12 @@ object F_golongan: TF_golongan
     ParentFont = False
     TabOrder = 1
     SkinData.SkinSection = 'EDIT'
-    BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
     BoundLabel.Font.Color = clWindowText
     BoundLabel.Font.Height = -11
     BoundLabel.Font.Name = 'MS Sans Serif'
     BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
+    BoundLabel.ParentFont = False
   end
   object B_new: TsButton
     Left = 208
@@ -157,25 +148,22 @@ object F_golongan: TF_golongan
     Left = 56
     Top = 88
     Width = 81
-    Height = 22
+    Height = 21
     Alignment = taLeftJustify
-    BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
     BoundLabel.Font.Color = clWindowText
     BoundLabel.Font.Height = -11
     BoundLabel.Font.Name = 'MS Sans Serif'
     BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
+    BoundLabel.ParentFont = False
     SkinData.SkinSection = 'COMBOBOX'
+    VerticalAlignment = taAlignTop
     Color = clWhite
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
     Font.Height = -11
     Font.Name = 'MS Sans Serif'
     Font.Style = []
-    ItemHeight = 16
     ItemIndex = -1
     ParentFont = False
     TabOrder = 5

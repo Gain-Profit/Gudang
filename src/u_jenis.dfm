@@ -1,6 +1,6 @@
 object F_jenis: TF_jenis
-  Left = 486
-  Top = 228
+  Left = 0
+  Top = 0
   BorderStyle = bsDialog
   Caption = 'Jenis Barang'
   ClientHeight = 116
@@ -66,15 +66,12 @@ object F_jenis: TF_jenis
     ParentFont = False
     TabOrder = 3
     SkinData.SkinSection = 'EDIT'
-    BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
     BoundLabel.Font.Color = clWindowText
     BoundLabel.Font.Height = -11
     BoundLabel.Font.Name = 'MS Sans Serif'
     BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
+    BoundLabel.ParentFont = False
   end
   object ed_desc: TsEdit
     Left = 56
@@ -90,15 +87,12 @@ object F_jenis: TF_jenis
     ParentFont = False
     TabOrder = 0
     SkinData.SkinSection = 'EDIT'
-    BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
     BoundLabel.Font.Color = clWindowText
     BoundLabel.Font.Height = -11
     BoundLabel.Font.Name = 'MS Sans Serif'
     BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
+    BoundLabel.ParentFont = False
   end
   object B_save: TsButton
     Left = 216

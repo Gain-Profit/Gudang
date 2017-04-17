@@ -1,6 +1,6 @@
 object F_hari: TF_hari
-  Left = 316
-  Top = 304
+  Left = 0
+  Top = 0
   BorderStyle = bsNone
   Caption = 'F_hari'
   ClientHeight = 93
@@ -30,5 +30,7 @@ object F_hari: TF_hari
     Font.Height = -33
     Font.Name = 'Arial'
     Font.Style = [fsBold]
+    ExplicitWidth = 636
+    ExplicitHeight = 114
   end
 end

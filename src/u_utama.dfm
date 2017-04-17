@@ -1,10 +1,10 @@
 object F_utama: TF_utama
-  Left = 16
-  Top = 123
-  Width = 1019
-  Height = 480
+  Left = 0
+  Top = 0
   AlphaBlend = True
   Caption = 'Central of Profit'
+  ClientHeight = 472
+  ClientWidth = 968
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -24,20 +24,23 @@ object F_utama: TF_utama
   TextHeight = 13
   object sg_update: TsGauge
     Left = 0
-    Top = 366
-    Width = 1003
+    Top = 417
+    Width = 968
     Height = 30
     Align = alBottom
     Visible = False
     SkinData.SkinSection = 'GAUGE'
     ForeColor = clBlack
     MaxValue = 70
+    Progress = 0
     Suffix = ' %'
+    ExplicitTop = 366
+    ExplicitWidth = 1003
   end
   object sb: TsStatusBar
     Left = 0
-    Top = 396
-    Width = 1003
+    Top = 447
+    Width = 968
     Height = 25
     Panels = <
       item
@@ -90,13 +93,15 @@ object F_utama: TF_utama
         Width = 50
       end>
     SkinData.SkinSection = 'STATUSBAR'
+    ExplicitTop = -25
+    ExplicitWidth = 120
   end
   object pc: TsPageControl
     Left = 0
     Top = 0
-    Width = 1003
+    Width = 968
     Height = 113
-    ActivePage = sTabSheet2
+    ActivePage = ts_master
     Align = alTop
     BiDiMode = bdLeftToRight
     Font.Charset = DEFAULT_CHARSET
@@ -110,26 +115,27 @@ object F_utama: TF_utama
     TabOrder = 1
     TabPadding = 12
     SkinData.SkinSection = 'TABRIGHT'
+    ExplicitWidth = 120
     object ts_master: TsTabSheet
       Caption = 'Inventory'
       object sPanel2: TsPanel
         Left = 0
         Top = 0
-        Width = 995
+        Width = 960
         Height = 81
         Align = alTop
         BorderWidth = 5
-        ParentBackground = True
         ParentColor = True
         TabOrder = 0
         SkinData.SkinSection = 'TOOLBAR'
         object sSpeedButton12: TsSpeedButton
-          Left = 843
+          Left = 808
           Top = 6
           Width = 146
           Height = 69
           Cursor = crHandPoint
           Action = Action1
+          Align = alRight
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -139,11 +145,11 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alRight
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 6
           Reflected = True
+          ExplicitLeft = 843
         end
         object sSpeedButton13: TsSpeedButton
           Left = 6
@@ -152,6 +158,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_barang
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -161,7 +168,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 14
@@ -174,6 +180,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_harga
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -183,7 +190,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 16
@@ -196,6 +202,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_planogram
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -205,7 +212,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 15
@@ -218,6 +224,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_kirim_data
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -227,7 +234,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 2
@@ -240,6 +246,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_barang_supp
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -249,7 +256,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 4
@@ -262,6 +268,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_lap
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -271,7 +278,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 12
@@ -284,6 +290,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_update
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -293,7 +300,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 0
@@ -306,21 +312,21 @@ object F_utama: TF_utama
       object sPanel3: TsPanel
         Left = 0
         Top = 0
-        Width = 995
+        Width = 960
         Height = 81
         Align = alTop
         BorderWidth = 5
-        ParentBackground = True
         ParentColor = True
         TabOrder = 0
         SkinData.SkinSection = 'TOOLBAR'
         object sSpeedButton18: TsSpeedButton
-          Left = 843
+          Left = 808
           Top = 6
           Width = 146
           Height = 69
           Cursor = crHandPoint
           Action = Action1
+          Align = alRight
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -330,11 +336,11 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alRight
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 6
           Reflected = True
+          ExplicitLeft = 843
         end
         object sSpeedButton19: TsSpeedButton
           Left = 6
@@ -343,6 +349,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_purchase
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -352,7 +359,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 17
@@ -365,6 +371,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_return_kirim
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -374,7 +381,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 20
@@ -387,6 +393,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_return
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -396,7 +403,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 19
@@ -409,6 +415,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_kirim
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -418,7 +425,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 8
@@ -431,6 +437,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_receipt
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -440,7 +447,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 18
@@ -453,6 +459,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_realcard
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -462,7 +469,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 10
@@ -475,6 +481,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_barcode
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -484,7 +491,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 15
@@ -497,11 +503,10 @@ object F_utama: TF_utama
       object spnl1: TsPanel
         Left = 0
         Top = 0
-        Width = 995
+        Width = 960
         Height = 81
         Align = alTop
         BorderWidth = 5
-        ParentBackground = True
         ParentColor = True
         TabOrder = 0
         SkinData.SkinSection = 'TOOLBAR'
@@ -512,6 +517,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_list_receipt
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -521,18 +527,18 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           Reflected = True
         end
         object sb_Action1: TsSpeedButton
-          Left = 843
+          Left = 808
           Top = 6
           Width = 146
           Height = 69
           Cursor = crHandPoint
           Action = Action1
+          Align = alRight
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -542,11 +548,11 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alRight
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 6
           Reflected = True
+          ExplicitLeft = 843
         end
         object sb_list_purchase: TsSpeedButton
           Left = 6
@@ -555,6 +561,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_list_purchase
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -564,7 +571,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           Reflected = True
@@ -576,6 +582,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_list_return
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -585,7 +592,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           Reflected = True
@@ -597,6 +603,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_list_so
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -606,7 +613,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           Reflected = True
@@ -618,6 +624,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_list_kirim
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -627,7 +634,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           Reflected = True
@@ -639,6 +645,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_list_return_kirim
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -648,7 +655,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           Reflected = True
@@ -660,6 +666,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_list_sales
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -669,7 +676,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           Reflected = True
@@ -681,6 +687,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_list_return_jual
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -690,7 +697,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           Reflected = True
@@ -699,24 +705,28 @@ object F_utama: TF_utama
     end
     object sTabSheet2: TsTabSheet
       Caption = 'Master Data'
+      ExplicitTop = 111
+      ExplicitWidth = 112
+      ExplicitHeight = 103
       object sCoolBar1: TsPanel
         Left = 0
         Top = 0
-        Width = 995
+        Width = 960
         Height = 81
         Align = alTop
         BorderWidth = 5
-        ParentBackground = True
         ParentColor = True
         TabOrder = 0
         SkinData.SkinSection = 'TOOLBAR'
+        ExplicitWidth = 112
         object sBitBtn1: TsSpeedButton
-          Left = 843
+          Left = 808
           Top = 6
           Width = 146
           Height = 69
           Cursor = crHandPoint
           Action = Action1
+          Align = alRight
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -726,11 +736,11 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alRight
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 6
           Reflected = True
+          ExplicitLeft = 843
         end
         object sSpeedButton1: TsSpeedButton
           Left = 6
@@ -739,6 +749,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_company
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -748,7 +759,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 3
@@ -761,6 +771,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = Ac_supplier
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -770,7 +781,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 1
@@ -783,6 +793,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_cust
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -792,7 +803,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 4
@@ -805,6 +815,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_user
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -814,7 +825,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 5
@@ -826,6 +836,7 @@ object F_utama: TF_utama
           Width = 142
           Height = 69
           Cursor = crHandPoint
+          Align = alLeft
           Caption = 'Ubah Password'
           Flat = True
           Font.Charset = DEFAULT_CHARSET
@@ -837,7 +848,6 @@ object F_utama: TF_utama
           ParentFont = False
           Spacing = 0
           OnClick = SbubahPasswordClick
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 5
@@ -849,6 +859,7 @@ object F_utama: TF_utama
           Width = 142
           Height = 69
           Cursor = crHandPoint
+          Align = alLeft
           Caption = 'Group Barang'
           Flat = True
           Font.Charset = DEFAULT_CHARSET
@@ -860,7 +871,6 @@ object F_utama: TF_utama
           ParentFont = False
           Spacing = 0
           OnClick = SbGroupBarangClick
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 9
@@ -873,6 +883,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_setting
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -882,7 +893,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 13
@@ -895,11 +905,10 @@ object F_utama: TF_utama
       object sPanel1: TsPanel
         Left = 0
         Top = 0
-        Width = 995
+        Width = 960
         Height = 81
         Align = alTop
         BorderWidth = 5
-        ParentBackground = True
         ParentColor = True
         TabOrder = 0
         SkinData.SkinSection = 'TOOLBAR'
@@ -910,6 +919,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = Ac_satuan
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -919,19 +929,19 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 13
           Reflected = True
         end
         object sSpeedButton6: TsSpeedButton
-          Left = 843
+          Left = 808
           Top = 6
           Width = 146
           Height = 69
           Cursor = crHandPoint
           Action = Action1
+          Align = alRight
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -941,11 +951,11 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alRight
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 6
           Reflected = True
+          ExplicitLeft = 843
         end
         object sSpeedButton7: TsSpeedButton
           Left = 6
@@ -954,6 +964,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_jenis
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -963,7 +974,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 9
@@ -976,6 +986,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_kategori
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -985,7 +996,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 11
@@ -998,6 +1008,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_golongan
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1007,7 +1018,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 10
@@ -1020,6 +1030,7 @@ object F_utama: TF_utama
           Height = 69
           Cursor = crHandPoint
           Action = ac_merk
+          Align = alLeft
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1029,7 +1040,6 @@ object F_utama: TF_utama
           Layout = blGlyphTop
           ParentFont = False
           Spacing = 0
-          Align = alLeft
           SkinData.SkinSection = 'TOOLBUTTON'
           Images = dm.image
           ImageIndex = 12
@@ -1041,7 +1051,7 @@ object F_utama: TF_utama
   object tc_child: TsTabControl
     Left = 0
     Top = 113
-    Width = 1003
+    Width = 968
     Height = 24
     Cursor = crHandPoint
     Align = alTop
@@ -1050,6 +1060,7 @@ object F_utama: TF_utama
     Visible = False
     OnChange = tc_childChange
     SkinData.SkinSection = 'PAGECONTROL'
+    ExplicitWidth = 120
   end
   object sSkinProvider1: TsSkinProvider
     SkinData.SkinSection = 'FORM'

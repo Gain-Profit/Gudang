@@ -1,9 +1,9 @@
 object F_kirim: TF_kirim
-  Left = 54
-  Top = 102
-  Width = 928
-  Height = 480
+  Left = 0
+  Top = 0
   Caption = 'Kirim (New)'
+  ClientHeight = 425
+  ClientWidth = 873
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -26,24 +26,27 @@ object F_kirim: TF_kirim
   object sPanel1: TsPanel
     Left = 0
     Top = 0
-    Width = 762
-    Height = 441
+    Width = 723
+    Height = 425
     Align = alClient
     TabOrder = 0
     SkinData.SkinSection = 'PANEL'
+    ExplicitWidth = 762
+    ExplicitHeight = 0
     object panel1: TsPanel
       Left = 1
       Top = 1
-      Width = 760
+      Width = 721
       Height = 73
       Align = alTop
       Enabled = False
       TabOrder = 2
       SkinData.SkinSection = 'PANEL'
+      ExplicitWidth = 760
       object Mm_nama: TsMemo
         Left = 1
         Top = 1
-        Width = 378
+        Width = 339
         Height = 71
         Align = alClient
         Alignment = taCenter
@@ -59,12 +62,14 @@ object F_kirim: TF_kirim
         SkinData.CustomColor = True
         SkinData.CustomFont = True
         SkinData.SkinSection = 'PANEL'
+        ExplicitWidth = 378
       end
       object ce_harga: TsCurrencyEdit
-        Left = 379
+        Left = 340
         Top = 1
         Width = 380
         Height = 71
+        Align = alRight
         AutoSize = False
         BevelInner = bvNone
         BevelOuter = bvNone
@@ -77,7 +82,6 @@ object F_kirim: TF_kirim
         ParentFont = False
         ReadOnly = True
         TabOrder = 1
-        Align = alRight
         SkinData.CustomColor = True
         SkinData.CustomFont = True
         SkinData.SkinSection = 'PANEL'
@@ -85,18 +89,20 @@ object F_kirim: TF_kirim
         GlyphMode.Grayed = False
         DecimalPlaces = 3
         DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
+        ExplicitLeft = 379
       end
     end
     object panel2: TsPanel
       Left = 1
       Top = 74
-      Width = 760
+      Width = 721
       Height = 111
       Align = alTop
       TabOrder = 0
       SkinData.SkinSection = 'PANEL'
+      ExplicitWidth = 760
       object sLabel5: TsLabel
-        Left = 539
+        Left = 500
         Top = 1
         Width = 220
         Height = 78
@@ -110,13 +116,16 @@ object F_kirim: TF_kirim
         Font.Height = -53
         Font.Name = 'ARIAL'
         Font.Style = []
+        ExplicitLeft = 613
+        ExplicitHeight = 60
       end
       object sBevel1: TsBevel
         Left = 1
         Top = 79
-        Width = 758
+        Width = 719
         Height = 31
         Align = alBottom
+        ExplicitWidth = 758
       end
       object sLabel1: TsLabel
         Left = 8
@@ -332,13 +341,15 @@ object F_kirim: TF_kirim
     end
     object panel3: TsPanel
       Left = 1
-      Top = 368
-      Width = 760
+      Top = 352
+      Width = 721
       Height = 72
       Align = alBottom
       Enabled = False
       TabOrder = 1
       SkinData.SkinSection = 'PANEL'
+      ExplicitTop = -73
+      ExplicitWidth = 760
       object l_1: TsLabel
         Left = 8
         Top = 4
@@ -368,10 +379,11 @@ object F_kirim: TF_kirim
         Caption = 'Hapus Baris -> Ctrl + Delete'
       end
       object ed_nilai_faktur: TsCurrencyEdit
-        Left = 339
+        Left = 300
         Top = 1
         Width = 420
         Height = 70
+        Align = alRight
         AutoSize = False
         BevelInner = bvLowered
         BevelKind = bkFlat
@@ -384,7 +396,6 @@ object F_kirim: TF_kirim
         ParentFont = False
         ReadOnly = True
         TabOrder = 0
-        Align = alRight
         SkinData.CustomColor = True
         SkinData.CustomFont = True
         SkinData.SkinSection = 'PANEL'
@@ -392,17 +403,20 @@ object F_kirim: TF_kirim
         GlyphMode.Grayed = False
         DecimalPlaces = 3
         DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
+        ExplicitLeft = 339
       end
     end
     object Grid: TcxGrid
       Left = 1
       Top = 185
-      Width = 760
-      Height = 183
+      Width = 721
+      Height = 167
       Align = alClient
       TabOrder = 3
       LookAndFeel.Kind = lfOffice11
       LookAndFeel.NativeStyle = False
+      ExplicitWidth = 760
+      ExplicitHeight = 183
       object TableView: TcxGridTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.Append.Visible = False
@@ -520,19 +534,22 @@ object F_kirim: TF_kirim
     end
   end
   object panel4: TsPanel
-    Left = 762
+    Left = 723
     Top = 0
     Width = 150
-    Height = 441
+    Height = 425
     Align = alRight
     TabOrder = 1
     SkinData.SkinSection = 'PANEL'
+    ExplicitLeft = -30
+    ExplicitHeight = 0
     object sSpeedButton18: TsSpeedButton
       Left = 1
       Top = 1
       Width = 148
       Height = 90
       Cursor = crHandPoint
+      Align = alTop
       Caption = 'Selesai'
       Flat = True
       Font.Charset = DEFAULT_CHARSET
@@ -544,7 +561,6 @@ object F_kirim: TF_kirim
       ParentFont = False
       Spacing = 0
       OnClick = sSpeedButton18Click
-      Align = alTop
       SkinData.SkinSection = 'TOOLBUTTON'
       Images = dm.image
       ImageIndex = 7
@@ -552,12 +568,13 @@ object F_kirim: TF_kirim
     end
     object sPanel2: TsPanel
       Left = 1
-      Top = 366
+      Top = 350
       Width = 148
       Height = 74
       Align = alBottom
       TabOrder = 1
       SkinData.SkinSection = 'PANEL'
+      ExplicitTop = -75
       object b_simpan_file: TsButton
         Left = 8
         Top = 9

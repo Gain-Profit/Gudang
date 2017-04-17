@@ -1,6 +1,6 @@
 object F_comp: TF_comp
-  Left = 419
-  Top = 160
+  Left = 0
+  Top = 0
   BorderStyle = bsDialog
   Caption = 'Perusahaan'
   ClientHeight = 235
@@ -94,15 +94,12 @@ object F_comp: TF_comp
     ParentFont = False
     TabOrder = 0
     SkinData.SkinSection = 'EDIT'
-    BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
     BoundLabel.Font.Color = clWindowText
     BoundLabel.Font.Height = -11
     BoundLabel.Font.Name = 'MS Sans Serif'
     BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
+    BoundLabel.ParentFont = False
   end
   object ed_desk: TsEdit
     Left = 104
@@ -118,15 +115,12 @@ object F_comp: TF_comp
     ParentFont = False
     TabOrder = 1
     SkinData.SkinSection = 'EDIT'
-    BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
     BoundLabel.Font.Color = clWindowText
     BoundLabel.Font.Height = -11
     BoundLabel.Font.Name = 'MS Sans Serif'
     BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
+    BoundLabel.ParentFont = False
   end
   object ed_telp: TsEdit
     Left = 104
@@ -142,15 +136,12 @@ object F_comp: TF_comp
     ParentFont = False
     TabOrder = 3
     SkinData.SkinSection = 'EDIT'
-    BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
     BoundLabel.Font.Color = clWindowText
     BoundLabel.Font.Height = -11
     BoundLabel.Font.Name = 'MS Sans Serif'
     BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
+    BoundLabel.ParentFont = False
   end
   object ed_mail: TsEdit
     Left = 104
@@ -166,15 +157,12 @@ object F_comp: TF_comp
     ParentFont = False
     TabOrder = 4
     SkinData.SkinSection = 'EDIT'
-    BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
     BoundLabel.Font.Color = clWindowText
     BoundLabel.Font.Height = -11
     BoundLabel.Font.Name = 'MS Sans Serif'
     BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
+    BoundLabel.ParentFont = False
   end
   object mm_alamat: TsMemo
     Left = 104
@@ -189,15 +177,12 @@ object F_comp: TF_comp
     Font.Style = []
     ParentFont = False
     TabOrder = 2
-    BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
     BoundLabel.Font.Color = clWindowText
     BoundLabel.Font.Height = -11
     BoundLabel.Font.Name = 'MS Sans Serif'
     BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
+    BoundLabel.ParentFont = False
     SkinData.SkinSection = 'EDIT'
   end
   object B_new: TsButton

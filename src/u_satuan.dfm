@@ -1,6 +1,6 @@
 object F_satuan: TF_satuan
-  Left = 497
-  Top = 233
+  Left = 0
+  Top = 0
   BorderStyle = bsDialog
   Caption = 'Set Up Satuan'
   ClientHeight = 124
@@ -89,15 +89,12 @@ object F_satuan: TF_satuan
     ReadOnly = True
     TabOrder = 2
     SkinData.SkinSection = 'EDIT'
-    BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
     BoundLabel.Font.Color = clWindowText
     BoundLabel.Font.Height = -11
     BoundLabel.Font.Name = 'MS Sans Serif'
     BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
+    BoundLabel.ParentFont = False
   end
   object ed_desk: TsEdit
     Left = 64
@@ -113,15 +110,12 @@ object F_satuan: TF_satuan
     ParentFont = False
     TabOrder = 3
     SkinData.SkinSection = 'EDIT'
-    BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
     BoundLabel.Font.Color = clWindowText
     BoundLabel.Font.Height = -11
     BoundLabel.Font.Name = 'MS Sans Serif'
     BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
+    BoundLabel.ParentFont = False
   end
   object ed_singkat: TsEdit
     Left = 64
@@ -137,15 +131,12 @@ object F_satuan: TF_satuan
     ParentFont = False
     TabOrder = 4
     SkinData.SkinSection = 'EDIT'
-    BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
     BoundLabel.Font.Color = clWindowText
     BoundLabel.Font.Height = -11
     BoundLabel.Font.Name = 'MS Sans Serif'
     BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
+    BoundLabel.ParentFont = False
   end
   object sSkinProvider1: TsSkinProvider
     AddedTitle.Font.Charset = DEFAULT_CHARSET

@@ -1,9 +1,9 @@
 object F_merk: TF_merk
-  Left = 584
-  Top = 385
-  Width = 316
-  Height = 153
+  Left = 0
+  Top = 0
   Caption = 'Merk Barang'
+  ClientHeight = 114
+  ClientWidth = 300
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,6 +11,7 @@ object F_merk: TF_merk
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
   PixelsPerInch = 96
   TextHeight = 13
   object sLabel2: TsLabel
@@ -55,15 +56,12 @@ object F_merk: TF_merk
     ReadOnly = True
     TabOrder = 0
     SkinData.SkinSection = 'EDIT'
-    BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
     BoundLabel.Font.Color = clWindowText
     BoundLabel.Font.Height = -11
     BoundLabel.Font.Name = 'MS Sans Serif'
     BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
+    BoundLabel.ParentFont = False
   end
   object ed_desc: TsEdit
     Left = 56
@@ -80,15 +78,12 @@ object F_merk: TF_merk
     ParentFont = False
     TabOrder = 1
     SkinData.SkinSection = 'EDIT'
-    BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
     BoundLabel.Font.Color = clWindowText
     BoundLabel.Font.Height = -11
     BoundLabel.Font.Name = 'MS Sans Serif'
     BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
+    BoundLabel.ParentFont = False
   end
   object B_save: TsButton
     Left = 216

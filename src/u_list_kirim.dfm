@@ -1,9 +1,9 @@
 object F_list_kirim: TF_list_kirim
-  Left = 17
-  Top = 145
-  Width = 928
-  Height = 480
+  Left = 0
+  Top = 0
   Caption = 'Daftar Kirim'
+  ClientHeight = 421
+  ClientWidth = 913
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,20 +21,23 @@ object F_list_kirim: TF_list_kirim
   PixelsPerInch = 96
   TextHeight = 13
   object sPanel1: TsPanel
-    Left = 762
+    Left = 763
     Top = 0
     Width = 150
-    Height = 441
+    Height = 421
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 0
     SkinData.SkinSection = 'PANEL'
+    ExplicitLeft = -30
+    ExplicitHeight = 0
     object sb_2: TsSpeedButton
       Left = 0
       Top = 90
       Width = 150
       Height = 90
       Cursor = crHandPoint
+      Align = alTop
       Caption = '&Refresh'
       Flat = True
       Font.Charset = DEFAULT_CHARSET
@@ -46,7 +49,6 @@ object F_list_kirim: TF_list_kirim
       ParentFont = False
       Spacing = 0
       OnClick = sb_2Click
-      Align = alTop
       SkinData.SkinSection = 'TOOLBUTTON'
       Images = dm.image
       ImageIndex = 8
@@ -58,6 +60,7 @@ object F_list_kirim: TF_list_kirim
       Width = 150
       Height = 90
       Cursor = crHandPoint
+      Align = alTop
       Caption = 'Selesai'
       Flat = True
       Font.Charset = DEFAULT_CHARSET
@@ -69,7 +72,6 @@ object F_list_kirim: TF_list_kirim
       ParentFont = False
       Spacing = 0
       OnClick = sb_1Click
-      Align = alTop
       SkinData.SkinSection = 'TOOLBUTTON'
       Images = dm.image
       ImageIndex = 7
@@ -77,12 +79,13 @@ object F_list_kirim: TF_list_kirim
     end
     object p1: TsPanel
       Left = 0
-      Top = 351
+      Top = 331
       Width = 150
       Height = 90
       Align = alBottom
       TabOrder = 0
       SkinData.SkinSection = 'PANEL'
+      ExplicitTop = -90
       object l_1: TsLabel
         Left = 4
         Top = 5
@@ -147,7 +150,6 @@ object F_list_kirim: TF_list_kirim
       SkinData.SkinSection = 'COMBOBOX'
       VerticalAlignment = taAlignTop
       Style = csDropDownList
-      ItemHeight = 13
       ItemIndex = 0
       TabOrder = 2
       Text = 'BR001'
@@ -176,12 +178,14 @@ object F_list_kirim: TF_list_kirim
   object grid: TcxGrid
     Left = 0
     Top = 0
-    Width = 762
-    Height = 441
+    Width = 763
+    Height = 421
     Align = alClient
     TabOrder = 1
     LookAndFeel.Kind = lfOffice11
     LookAndFeel.NativeStyle = False
+    ExplicitWidth = 762
+    ExplicitHeight = 0
     object t_data: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       OnCellDblClick = t_dataCellDblClick

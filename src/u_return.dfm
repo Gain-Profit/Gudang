@@ -1,9 +1,9 @@
 object F_return: TF_return
-  Left = 207
-  Top = 106
-  Width = 1005
-  Height = 520
+  Left = 0
+  Top = 0
   Caption = 'Return (New)'
+  ClientHeight = 411
+  ClientWidth = 854
   Color = clBtnFace
   Constraints.MinHeight = 450
   Constraints.MinWidth = 870
@@ -26,10 +26,10 @@ object F_return: TF_return
   PixelsPerInch = 96
   TextHeight = 13
   object panel4: TsPanel
-    Left = 839
+    Left = 704
     Top = 0
     Width = 150
-    Height = 481
+    Height = 411
     Align = alRight
     TabOrder = 1
     SkinData.SkinSection = 'PANEL'
@@ -39,6 +39,7 @@ object F_return: TF_return
       Width = 148
       Height = 90
       Cursor = crHandPoint
+      Align = alTop
       Caption = 'Selesai'
       Flat = True
       Font.Charset = DEFAULT_CHARSET
@@ -50,7 +51,6 @@ object F_return: TF_return
       ParentFont = False
       Spacing = 0
       OnClick = sSpeedButton18Click
-      Align = alTop
       SkinData.SkinSection = 'TOOLBUTTON'
       Images = dm.image
       ImageIndex = 7
@@ -58,7 +58,7 @@ object F_return: TF_return
     end
     object sPanel2: TsPanel
       Left = 1
-      Top = 406
+      Top = 336
       Width = 148
       Height = 74
       Align = alBottom
@@ -129,16 +129,16 @@ object F_return: TF_return
   object sPanel1: TsPanel
     Left = 0
     Top = 0
-    Width = 839
-    Height = 481
+    Width = 704
+    Height = 411
     Align = alClient
     TabOrder = 0
     SkinData.SkinSection = 'PANEL'
     object Grid: TcxGrid
       Left = 1
       Top = 161
-      Width = 837
-      Height = 247
+      Width = 702
+      Height = 177
       Align = alClient
       TabOrder = 1
       LookAndFeel.Kind = lfOffice11
@@ -276,7 +276,7 @@ object F_return: TF_return
     object panel1: TsPanel
       Left = 1
       Top = 1
-      Width = 837
+      Width = 702
       Height = 73
       Align = alTop
       Enabled = False
@@ -285,7 +285,7 @@ object F_return: TF_return
       object Mm_nama: TsMemo
         Left = 1
         Top = 1
-        Width = 455
+        Width = 320
         Height = 71
         Align = alClient
         Alignment = taCenter
@@ -303,10 +303,11 @@ object F_return: TF_return
         SkinData.SkinSection = 'PANEL'
       end
       object ce_harga: TsCurrencyEdit
-        Left = 456
+        Left = 321
         Top = 1
         Width = 380
         Height = 71
+        Align = alRight
         AutoSize = False
         BevelInner = bvNone
         BevelOuter = bvNone
@@ -319,7 +320,6 @@ object F_return: TF_return
         ParentFont = False
         ReadOnly = True
         TabOrder = 1
-        Align = alRight
         SkinData.CustomColor = True
         SkinData.CustomFont = True
         SkinData.SkinSection = 'PANEL'
@@ -332,16 +332,16 @@ object F_return: TF_return
     object panel2: TsPanel
       Left = 1
       Top = 74
-      Width = 837
+      Width = 702
       Height = 87
       Align = alTop
       TabOrder = 0
       SkinData.SkinSection = 'PANEL'
       DesignSize = (
-        837
+        702
         87)
       object sLabel6: TsLabel
-        Left = 616
+        Left = 481
         Top = 1
         Width = 220
         Height = 54
@@ -355,13 +355,16 @@ object F_return: TF_return
         Font.Height = -53
         Font.Name = 'ARIAL'
         Font.Style = []
+        ExplicitLeft = 616
+        ExplicitHeight = 60
       end
       object sBevel1: TsBevel
         Left = 1
         Top = 55
-        Width = 835
+        Width = 700
         Height = 31
         Align = alBottom
+        ExplicitWidth = 835
       end
       object sLabel1: TsLabel
         Left = 232
@@ -512,7 +515,7 @@ object F_return: TF_return
       object ed_code: TsEdit
         Left = 256
         Top = 62
-        Width = 577
+        Width = 442
         Height = 21
         Anchors = [akLeft, akTop, akRight]
         Color = clWhite
@@ -559,8 +562,8 @@ object F_return: TF_return
     end
     object panel3: TsPanel
       Left = 1
-      Top = 408
-      Width = 837
+      Top = 338
+      Width = 702
       Height = 72
       Align = alBottom
       TabOrder = 2
@@ -708,10 +711,11 @@ object F_return: TF_return
         DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
       end
       object ed_nilai_faktur: TsCurrencyEdit
-        Left = 416
+        Left = 281
         Top = 1
         Width = 420
         Height = 70
+        Align = alRight
         AutoSize = False
         BevelInner = bvLowered
         BevelKind = bkFlat
@@ -725,7 +729,6 @@ object F_return: TF_return
         ParentFont = False
         ReadOnly = True
         TabOrder = 3
-        Align = alRight
         SkinData.CustomColor = True
         SkinData.CustomFont = True
         SkinData.SkinSection = 'PANEL'

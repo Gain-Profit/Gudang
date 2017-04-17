@@ -1,9 +1,9 @@
 object F_list_sales: TF_list_sales
-  Left = 191
-  Top = 124
-  Width = 928
-  Height = 480
+  Left = 0
+  Top = 0
   Caption = 'Daftar Penjualan'
+  ClientHeight = 394
+  ClientWidth = 936
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,20 +20,23 @@ object F_list_sales: TF_list_sales
   PixelsPerInch = 96
   TextHeight = 13
   object sPanel1: TsPanel
-    Left = 762
+    Left = 786
     Top = 0
     Width = 150
-    Height = 441
+    Height = 394
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 0
     SkinData.SkinSection = 'PANEL'
+    ExplicitLeft = -30
+    ExplicitHeight = 0
     object sb_2: TsSpeedButton
       Left = 0
       Top = 90
       Width = 150
       Height = 90
       Cursor = crHandPoint
+      Align = alTop
       Caption = 'Refresh'
       Flat = True
       Font.Charset = DEFAULT_CHARSET
@@ -45,7 +48,6 @@ object F_list_sales: TF_list_sales
       ParentFont = False
       Spacing = 0
       OnClick = sb_2Click
-      Align = alTop
       SkinData.SkinSection = 'TOOLBUTTON'
       Images = dm.image
       ImageIndex = 8
@@ -57,6 +59,7 @@ object F_list_sales: TF_list_sales
       Width = 150
       Height = 90
       Cursor = crHandPoint
+      Align = alTop
       Caption = 'Selesai'
       Flat = True
       Font.Charset = DEFAULT_CHARSET
@@ -68,7 +71,6 @@ object F_list_sales: TF_list_sales
       ParentFont = False
       Spacing = 0
       OnClick = sb_1Click
-      Align = alTop
       SkinData.SkinSection = 'TOOLBUTTON'
       Images = dm.image
       ImageIndex = 7
@@ -76,12 +78,13 @@ object F_list_sales: TF_list_sales
     end
     object p1: TsPanel
       Left = 0
-      Top = 311
+      Top = 264
       Width = 150
       Height = 130
       Align = alBottom
       TabOrder = 0
       SkinData.SkinSection = 'PANEL'
+      ExplicitTop = -130
       object l_1: TsLabel
         Left = 4
         Top = 45
@@ -141,12 +144,14 @@ object F_list_sales: TF_list_sales
   object grid: TcxGrid
     Left = 0
     Top = 0
-    Width = 762
-    Height = 441
+    Width = 786
+    Height = 394
     Align = alClient
     TabOrder = 1
     LookAndFeel.Kind = lfOffice11
     LookAndFeel.NativeStyle = False
+    ExplicitWidth = 762
+    ExplicitHeight = 0
     object grid_data: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       OnCellDblClick = grid_dataCellDblClick
