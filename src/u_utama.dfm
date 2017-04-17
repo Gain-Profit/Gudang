@@ -115,9 +115,12 @@ object F_utama: TF_utama
     TabOrder = 1
     TabPadding = 12
     SkinData.SkinSection = 'TABRIGHT'
-    ExplicitWidth = 120
     object ts_master: TsTabSheet
       Caption = 'Inventory'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object sPanel2: TsPanel
         Left = 0
         Top = 0
@@ -309,6 +312,10 @@ object F_utama: TF_utama
     end
     object ts_transaksi: TsTabSheet
       Caption = 'Transaksi'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object sPanel3: TsPanel
         Left = 0
         Top = 0
@@ -500,6 +507,10 @@ object F_utama: TF_utama
     end
     object ts_1: TsTabSheet
       Caption = 'Daftar Transaksi'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object spnl1: TsPanel
         Left = 0
         Top = 0
@@ -705,6 +716,7 @@ object F_utama: TF_utama
     end
     object sTabSheet2: TsTabSheet
       Caption = 'Master Data'
+      ExplicitLeft = 0
       ExplicitTop = 111
       ExplicitWidth = 112
       ExplicitHeight = 103
@@ -902,6 +914,10 @@ object F_utama: TF_utama
     end
     object ts_set_inv: TsTabSheet
       Caption = 'Setting Inventory'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object sPanel1: TsPanel
         Left = 0
         Top = 0
@@ -1060,7 +1076,6 @@ object F_utama: TF_utama
     Visible = False
     OnChange = tc_childChange
     SkinData.SkinSection = 'PAGECONTROL'
-    ExplicitWidth = 120
   end
   object sSkinProvider1: TsSkinProvider
     SkinData.SkinSection = 'FORM'
