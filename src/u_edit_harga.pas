@@ -38,7 +38,7 @@ type
     Ed_sat1: TEdit;
     Ed_sat2: TEdit;
     Ed_sat3: TEdit;
-    sb: TsStatusBar;
+    sb: TStatusBar;
     btn_simpan: TsBitBtn;
     sBitBtn2: TsBitBtn;
     Ed_macam: TEdit;

@@ -17,7 +17,7 @@ const
 type
   TF_utama = class(TForm)
     sSkinProvider1: TsSkinProvider;
-    sb: TsStatusBar;
+    sb: TStatusBar;
     MainMenu1: TMainMenu;
     AL: TActionList;
     ac_barang: TAction;
