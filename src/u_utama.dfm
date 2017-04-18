@@ -92,8 +92,6 @@ object F_utama: TF_utama
         Text = 'versi'
         Width = 50
       end>
-    ExplicitTop = -25
-    ExplicitWidth = 120
   end
   object pc: TsPageControl
     Left = 0
@@ -116,10 +114,6 @@ object F_utama: TF_utama
     SkinData.SkinSection = 'TABRIGHT'
     object ts_master: TsTabSheet
       Caption = 'Inventory'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object sPanel2: TsPanel
         Left = 0
         Top = 0
@@ -311,10 +305,6 @@ object F_utama: TF_utama
     end
     object ts_transaksi: TsTabSheet
       Caption = 'Transaksi'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object sPanel3: TsPanel
         Left = 0
         Top = 0
@@ -506,10 +496,6 @@ object F_utama: TF_utama
     end
     object ts_1: TsTabSheet
       Caption = 'Daftar Transaksi'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object spnl1: TsPanel
         Left = 0
         Top = 0
@@ -715,10 +701,6 @@ object F_utama: TF_utama
     end
     object sTabSheet2: TsTabSheet
       Caption = 'Master Data'
-      ExplicitLeft = 0
-      ExplicitTop = 111
-      ExplicitWidth = 112
-      ExplicitHeight = 103
       object sCoolBar1: TsPanel
         Left = 0
         Top = 0
@@ -729,7 +711,6 @@ object F_utama: TF_utama
         ParentColor = True
         TabOrder = 0
         SkinData.SkinSection = 'TOOLBAR'
-        ExplicitWidth = 112
         object sBitBtn1: TsSpeedButton
           Left = 808
           Top = 6
@@ -913,10 +894,6 @@ object F_utama: TF_utama
     end
     object ts_set_inv: TsTabSheet
       Caption = 'Setting Inventory'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object sPanel1: TsPanel
         Left = 0
         Top = 0
@@ -1227,14 +1204,6 @@ object F_utama: TF_utama
     end
     object Pertolongan1: TMenuItem
       Caption = 'Pertolongan'
-      object CentralofProfitHelp1: TMenuItem
-        Caption = 'Central of Profit Help'
-        ShortCut = 112
-        OnClick = CentralofProfitHelp1Click
-      end
-      object mniN6: TMenuItem
-        Caption = '-'
-      end
       object mniCekUpdateProgram1: TMenuItem
         Action = ac_cekUpdate
         ShortCut = 16496
