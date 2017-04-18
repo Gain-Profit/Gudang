@@ -102,7 +102,6 @@ type
     sSpeedButton9: TsSpeedButton;
     sSpeedButton10: TsSpeedButton;
     Pertolongan1: TMenuItem;
-    CentralofProfitHelp1: TMenuItem;
     spdbtnac_return: TsSpeedButton;
     ac_kirim: TAction;
     spdbtnkirim: TsSpeedButton;
@@ -139,7 +138,6 @@ type
     ac_realcard: TAction;
     Q_time: TMyQuery;
     SbubahPassword: TsSpeedButton;
-    mniN6: TMenuItem;
     mniCekUpdateProgram1: TMenuItem;
     ac_cekUpdate: TAction;
     ReturnKirim1: TMenuItem;
@@ -183,7 +181,6 @@ type
     procedure UbahSkin1Click(Sender: TObject);
     procedure LogOut1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure CentralofProfitHelp1Click(Sender: TObject);
     procedure ac_kirimExecute(Sender: TObject);
     procedure ac_list_kirimExecute(Sender: TObject);
     procedure ac_kirim_dataExecute(Sender: TObject);
@@ -761,12 +758,6 @@ begin
   {$ENDIF}
   
   FVersion := TAppVersion.Create(Application.ExeName);
-end;
-
-procedure TF_utama.CentralofProfitHelp1Click(Sender: TObject);
-begin
-  ShellExecute(Handle, 'open', PChar('hh.exe'), PChar(dm.wpath +
-    'tools/bantuan.chm::/Central_oF_Profit.htm'), nil, SW_SHOW);
 end;
 
 procedure TF_utama.ac_kirimExecute(Sender: TObject);
