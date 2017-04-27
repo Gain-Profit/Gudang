@@ -28,8 +28,6 @@ object F_list_sales: TF_list_sales
     BevelOuter = bvNone
     TabOrder = 0
     SkinData.SkinSection = 'PANEL'
-    ExplicitLeft = -30
-    ExplicitHeight = 0
     object sb_2: TsSpeedButton
       Left = 0
       Top = 90
@@ -84,7 +82,6 @@ object F_list_sales: TF_list_sales
       Align = alBottom
       TabOrder = 0
       SkinData.SkinSection = 'PANEL'
-      ExplicitTop = -130
       object l_1: TsLabel
         Left = 4
         Top = 45
@@ -150,8 +147,6 @@ object F_list_sales: TF_list_sales
     TabOrder = 1
     LookAndFeel.Kind = lfOffice11
     LookAndFeel.NativeStyle = False
-    ExplicitWidth = 762
-    ExplicitHeight = 0
     object grid_data: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       OnCellDblClick = grid_dataCellDblClick
@@ -274,17 +269,6 @@ object F_list_sales: TF_list_sales
       object dt__datatunai: TcxGridDBColumn
         Caption = 'Tunai'
         DataBinding.FieldName = 'tunai'
-        PropertiesClassName = 'TcxImageComboBoxProperties'
-        Properties.Items = <
-          item
-            Description = 'Y'
-            ImageIndex = 0
-            Value = 1
-          end
-          item
-            Description = 'N'
-            Value = 0
-          end>
         Visible = False
       end
       object dt__datajatuh_tempo: TcxGridDBColumn
