@@ -305,6 +305,10 @@ object F_utama: TF_utama
     end
     object ts_transaksi: TsTabSheet
       Caption = 'Transaksi'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object sPanel3: TsPanel
         Left = 0
         Top = 0
@@ -496,6 +500,10 @@ object F_utama: TF_utama
     end
     object ts_1: TsTabSheet
       Caption = 'Daftar Transaksi'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object spnl1: TsPanel
         Left = 0
         Top = 0
@@ -701,6 +709,10 @@ object F_utama: TF_utama
     end
     object sTabSheet2: TsTabSheet
       Caption = 'Master Data'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object sCoolBar1: TsPanel
         Left = 0
         Top = 0
@@ -894,6 +906,10 @@ object F_utama: TF_utama
     end
     object ts_set_inv: TsTabSheet
       Caption = 'Setting Inventory'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object sPanel1: TsPanel
         Left = 0
         Top = 0

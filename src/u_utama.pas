@@ -745,18 +745,11 @@ end;
 
 procedure TF_utama.FormCreate(Sender: TObject);
 begin
-  {$IFDEF VER150}
-    DecimalSeparator := '.';
-    ThousandSeparator := ',';
-    ShortDateFormat := 'dd/mm/yyyy';
-    ShortTimeFormat := 'hh:nn:ss';
-  {$ELSE}
-    FormatSettings.DecimalSeparator := '.';
-    FormatSettings.ThousandSeparator := ',';
-    FormatSettings.ShortDateFormat := 'dd/mm/yyyy';
-    FormatSettings.ShortTimeFormat := 'hh:nn:ss';
-  {$ENDIF}
-  
+  FormatSettings.DecimalSeparator := '.';
+  FormatSettings.ThousandSeparator := ',';
+  FormatSettings.ShortDateFormat := 'dd/mm/yyyy';
+  FormatSettings.ShortTimeFormat := 'hh:nn:ss';
+
   FVersion := TAppVersion.Create(Application.ExeName);
 end;
 

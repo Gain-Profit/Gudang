@@ -3,9 +3,6 @@ unit u_dm;
 interface
 
 uses
-  {$IFDEF VER240}
-  System.ImageList,
-  {$ENDIF}
   SysUtils, Classes, DB, sSkinManager, dialogs, forms, ImgList, Controls,
   acAlphaImageList, frxClass, frxDBSet, inifiles, frxBarcode, cxStyles,
   Windows, SHFolder, DBAccess, MyAccess, MemDS, cxClasses, System.ImageList;
