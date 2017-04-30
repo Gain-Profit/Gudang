@@ -75,6 +75,8 @@ type
     procedure Ed_harga1Exit(Sender: TObject);
     procedure de_ahirExit(Sender: TObject);
     procedure ed_discRpExit(Sender: TObject);
+    procedure ed_marginPExit(Sender: TObject);
+    procedure ed_discPExit(Sender: TObject);
   private
     procedure ubahHarga(perusahaan: string);
     procedure UbahJenis(Jenis: Byte);
@@ -267,6 +269,16 @@ begin
   harga_baru;
 end;
 
+procedure TF_ubah_harga.ed_marginPExit(Sender: TObject);
+begin
+  ed_marginRp.Value := (ed_marginp.Value / 100) * ed_pokok.Value;
+
+  ed_harga3.Value := ed_pokok.Value + ed_marginrp.Value;
+  ed_harga2.Value := ed_harga3.Value * ed_qty2.Value;
+  ed_harga1.Value := ed_harga2.Value * ed_qty1.Value;
+  harga_baru;
+end;
+
 procedure TF_ubah_harga.ed_marginRpExit(Sender: TObject);
 begin
   if ed_pokok.Value <> 0 then
@@ -331,6 +343,11 @@ begin
   HargaAsli.Harga1 := ed_harga1New.Value;
   HargaAsli.Awal := de_awal.Date;
   HargaAsli.Ahir := de_ahir.Date;
+end;
+
+procedure TF_ubah_harga.ed_discPExit(Sender: TObject);
+begin
+  ed_discRp.Value := (ed_discP.Value / 100) * ed_harga3.Value;
 end;
 
 procedure TF_ubah_harga.ed_discRpExit(Sender: TObject);
