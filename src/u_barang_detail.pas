@@ -105,6 +105,9 @@ begin
 
   ed_pid.Clear;
   ed_nama.Clear;
+  ed_bar1.Clear;
+  ed_bar2.Clear;
+  ed_bar3.Clear;
 
   status_simpan := true;
   Caption := 'Inventory Barang - Barang Baru';
@@ -135,6 +138,9 @@ begin
   LoadData(PID);
   ed_pid.Clear;
   ed_nama.Clear;
+  ed_bar1.Clear;
+  ed_bar2.Clear;
+  ed_bar3.Clear;
 
   cb_aktif.Checked := true;
 end;
