@@ -32,9 +32,9 @@ object dm: Tdm
     SkinName = 'Air (internal)'
     SkinInfo = 'N/A'
     ThirdParty.ThirdEdits = 
-      'TEdit'#13#10'TMemo'#13#10'TMaskEdit'#13#10'TLabeledEdit'#13#10'THotKey'#13#10'TListBox'#13#10'TCheck' +
-      'ListBox'#13#10'TRichEdit'#13#10'TDateTimePicker'#13#10'TDBListBox'#13#10'TDBMemo'#13#10'TDBLoo' +
-      'kupListBox'#13#10'TDBRichEdit'#13#10'TDBCtrlGrid'#13#10'TDBEdit'#13#10
+      'TMemo'#13#10'TMaskEdit'#13#10'TLabeledEdit'#13#10'THotKey'#13#10'TListBox'#13#10'TCheckListBox' +
+      #13#10'TRichEdit'#13#10'TDateTimePicker'#13#10'TDBListBox'#13#10'TDBMemo'#13#10'TDBLookupList' +
+      'Box'#13#10'TDBRichEdit'#13#10'TDBCtrlGrid'#13#10'TDBEdit'#13#10
     ThirdParty.ThirdButtons = 'TButton'#13#10
     ThirdParty.ThirdBitBtns = 'TBitBtn'#13#10
     ThirdParty.ThirdCheckBoxes = 'TCheckBox'#13#10'TRadioButton'#13#10'TGroupButton'#13#10'TDBCheckBox'#13#10
@@ -52,11 +52,11 @@ object dm: Tdm
     ThirdParty.ThirdToolBar = 'TToolBar'#13#10
     ThirdParty.ThirdStatusBar = 'TStatusBar'#13#10
     ThirdParty.ThirdSpeedButton = 'TSpeedButton'#13#10'TNavButton'#13#10
-    ThirdParty.ThirdScrollControl = ' '
-    ThirdParty.ThirdUpDown = ' '
-    ThirdParty.ThirdScrollBar = ' '
-    ThirdParty.ThirdStaticText = ' '
-    ThirdParty.ThirdNativePaint = ' '
+    ThirdParty.ThirdScrollControl = ' '#13#10
+    ThirdParty.ThirdUpDown = ' '#13#10
+    ThirdParty.ThirdScrollBar = ' '#13#10
+    ThirdParty.ThirdStaticText = ' '#13#10
+    ThirdParty.ThirdNativePaint = ' '#13#10
     OnAfterChange = smAfterChange
     Left = 592
     Top = 128
