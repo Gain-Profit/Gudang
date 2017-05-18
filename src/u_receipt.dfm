@@ -89,11 +89,6 @@ object F_RO: TF_RO
         TabOrder = 0
         OnClick = b_simpan_fileClick
         SkinData.SkinSection = 'BUTTON'
-        CommandLinkFont.Charset = DEFAULT_CHARSET
-        CommandLinkFont.Color = clWindowText
-        CommandLinkFont.Height = -11
-        CommandLinkFont.Name = 'Tahoma'
-        CommandLinkFont.Style = []
       end
       object b_load: TsButton
         Left = 8
@@ -104,11 +99,6 @@ object F_RO: TF_RO
         TabOrder = 1
         OnClick = b_loadClick
         SkinData.SkinSection = 'BUTTON'
-        CommandLinkFont.Charset = DEFAULT_CHARSET
-        CommandLinkFont.Color = clWindowText
-        CommandLinkFont.Height = -11
-        CommandLinkFont.Name = 'Tahoma'
-        CommandLinkFont.Style = []
       end
     end
     object spnl1: TsPanel
@@ -128,11 +118,6 @@ object F_RO: TF_RO
         TabOrder = 0
         OnClick = b_simpanClick
         SkinData.SkinSection = 'BUTTON'
-        CommandLinkFont.Charset = DEFAULT_CHARSET
-        CommandLinkFont.Color = clWindowText
-        CommandLinkFont.Height = -11
-        CommandLinkFont.Name = 'Tahoma'
-        CommandLinkFont.Style = []
       end
       object b_new: TsButton
         Left = 8
@@ -143,11 +128,6 @@ object F_RO: TF_RO
         TabOrder = 1
         OnClick = b_newClick
         SkinData.SkinSection = 'BUTTON'
-        CommandLinkFont.Charset = DEFAULT_CHARSET
-        CommandLinkFont.Color = clWindowText
-        CommandLinkFont.Height = -11
-        CommandLinkFont.Name = 'Tahoma'
-        CommandLinkFont.Style = []
       end
       object b_print: TsButton
         Left = 8
@@ -159,11 +139,6 @@ object F_RO: TF_RO
         TabOrder = 2
         OnClick = b_printClick
         SkinData.SkinSection = 'BUTTON'
-        CommandLinkFont.Charset = DEFAULT_CHARSET
-        CommandLinkFont.Color = clWindowText
-        CommandLinkFont.Height = -11
-        CommandLinkFont.Name = 'Tahoma'
-        CommandLinkFont.Style = []
       end
     end
     object pnlKeterangan: TsPanel
@@ -184,11 +159,6 @@ object F_RO: TF_RO
         TabOrder = 0
         OnClick = btnUpdateKeteranganClick
         SkinData.SkinSection = 'BUTTON'
-        CommandLinkFont.Charset = DEFAULT_CHARSET
-        CommandLinkFont.Color = clWindowText
-        CommandLinkFont.Height = -11
-        CommandLinkFont.Name = 'Tahoma'
-        CommandLinkFont.Style = []
       end
     end
     object mmKeterangan: TsMemo
@@ -632,8 +602,8 @@ object F_RO: TF_RO
       object cb_tunai: TsCheckBox
         Left = 400
         Top = 70
-        Width = 61
-        Height = 17
+        Width = 53
+        Height = 20
         Caption = '&Tunai'
         TabOrder = 4
         OnClick = cb_tunaiClick
@@ -665,8 +635,8 @@ object F_RO: TF_RO
       object cb_PPN: TsCheckBox
         Left = 264
         Top = 70
-        Width = 138
-        Height = 17
+        Width = 130
+        Height = 20
         Caption = '&Harga Termasuk PPN'
         Checked = True
         State = cbChecked
@@ -685,11 +655,6 @@ object F_RO: TF_RO
         TabOrder = 2
         OnClick = b_autoClick
         SkinData.SkinSection = 'BUTTON'
-        CommandLinkFont.Charset = DEFAULT_CHARSET
-        CommandLinkFont.Color = clWindowText
-        CommandLinkFont.Height = -11
-        CommandLinkFont.Name = 'Tahoma'
-        CommandLinkFont.Style = []
       end
     end
     object panel3: TsPanel

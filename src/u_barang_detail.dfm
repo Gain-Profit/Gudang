@@ -558,7 +558,7 @@ object F_barang_det: TF_barang_det
     object cb_aktif: TsCheckBox
       Left = 305
       Top = 34
-      Width = 123
+      Width = 115
       Height = 36
       Caption = 'AKTI&F'
       Font.Charset = DEFAULT_CHARSET
@@ -648,11 +648,6 @@ object F_barang_det: TF_barang_det
     TabOrder = 9
     OnClick = b_newClick
     SkinData.SkinSection = 'BUTTON'
-    CommandLinkFont.Charset = DEFAULT_CHARSET
-    CommandLinkFont.Color = clWindowText
-    CommandLinkFont.Height = -11
-    CommandLinkFont.Name = 'Tahoma'
-    CommandLinkFont.Style = []
   end
   object b_save: TsButton
     Left = 272
@@ -669,11 +664,6 @@ object F_barang_det: TF_barang_det
     TabOrder = 8
     OnClick = b_saveClick
     SkinData.SkinSection = 'BUTTON'
-    CommandLinkFont.Charset = DEFAULT_CHARSET
-    CommandLinkFont.Color = clWindowText
-    CommandLinkFont.Height = -11
-    CommandLinkFont.Name = 'Tahoma'
-    CommandLinkFont.Style = []
   end
   object b_auto: TsButton
     Left = 344
@@ -690,11 +680,6 @@ object F_barang_det: TF_barang_det
     TabOrder = 11
     OnClick = b_autoClick
     SkinData.SkinSection = 'BUTTON'
-    CommandLinkFont.Charset = DEFAULT_CHARSET
-    CommandLinkFont.Color = clWindowText
-    CommandLinkFont.Height = -11
-    CommandLinkFont.Name = 'Tahoma'
-    CommandLinkFont.Style = []
   end
   object sSkinProvider1: TsSkinProvider
     SkinData.SkinSection = 'FORM'
