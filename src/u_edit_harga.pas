@@ -125,9 +125,9 @@ begin
   ed_plu.Text := APID;
 
   fungsi.SQLExec(dm.Q_temp, Format('SELECT n_barang, Qty1, Qty2, kd_sat1, ' +
-    'kd_sat2, kd_sat3, hpp_ahir from tb_barang where kd_barang="%s" and ' +
+    'kd_sat2, kd_sat3, hpp_aktif from tb_barang where kd_barang="%s" and ' +
     ' kd_perusahaan="%s"', [Ed_Plu.Text, dm.kd_perusahaan]), true);
-  ed_pokok.Value := dm.Q_temp.fieldbyname('hpp_ahir').AsCurrency;
+  ed_pokok.Value := dm.Q_temp.fieldbyname('hpp_aktif').AsCurrency;
 
   cb_macam.ItemIndex := cb_macam.Items.IndexOf(AJenis);
 
