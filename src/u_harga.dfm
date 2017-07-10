@@ -157,31 +157,31 @@ object F_Edit_Harga: TF_Edit_Harga
           Width = 75
         end
         object t_dataHppLama: TcxGridDBColumn
-          Caption = 'Hpp Lama'
+          Caption = 'Hpp (Beli) Lama'
           DataBinding.FieldName = 'hpp_lama'
-          PropertiesClassName = 'TcxCurrencyEditProperties'
-          Properties.Alignment.Horz = taRightJustify
-          Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
-          HeaderAlignmentHorz = taRightJustify
-        end
-        object t_dataHppNew: TcxGridDBColumn
-          Caption = 'HPP Baru'
-          DataBinding.FieldName = 'Hpp_ahir'
-          PropertiesClassName = 'TcxCurrencyEditProperties'
-          Properties.Alignment.Horz = taRightJustify
-          Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
-          HeaderAlignmentHorz = taRightJustify
-          Width = 59
-        end
-        object t_dataharga_pokok: TcxGridDBColumn
-          Caption = 'Harga Pokok'
-          DataBinding.FieldName = 'hpp_aktif'
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.Alignment.Horz = taRightJustify
           Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
           Visible = False
           HeaderAlignmentHorz = taRightJustify
-          Width = 47
+        end
+        object t_dataHppNew: TcxGridDBColumn
+          Caption = 'Hpp (Beli)'
+          DataBinding.FieldName = 'Hpp_ahir'
+          PropertiesClassName = 'TcxCurrencyEditProperties'
+          Properties.Alignment.Horz = taRightJustify
+          Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
+          HeaderAlignmentHorz = taRightJustify
+          Width = 64
+        end
+        object t_dataharga_pokok: TcxGridDBColumn
+          Caption = 'Hpp (Jual)'
+          DataBinding.FieldName = 'hpp_aktif'
+          PropertiesClassName = 'TcxCurrencyEditProperties'
+          Properties.Alignment.Horz = taRightJustify
+          Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
+          HeaderAlignmentHorz = taRightJustify
+          Width = 64
         end
         object t_dataharga_jual3: TcxGridDBColumn
           Caption = 'Harga 3'
@@ -190,7 +190,7 @@ object F_Edit_Harga: TF_Edit_Harga
           Properties.Alignment.Horz = taRightJustify
           Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
           HeaderAlignmentHorz = taRightJustify
-          Width = 46
+          Width = 64
         end
         object t_datalaba: TcxGridDBColumn
           Caption = 'Laba'
@@ -223,6 +223,7 @@ object F_Edit_Harga: TF_Edit_Harga
         object t_datauser: TcxGridDBColumn
           Caption = 'User'
           DataBinding.FieldName = 'kode_user'
+          Visible = False
           Width = 66
         end
         object t_dataColumn1: TcxGridDBColumn
@@ -249,7 +250,8 @@ object F_Edit_Harga: TF_Edit_Harga
             end>
           Properties.ShowDescriptions = False
           HeaderAlignmentHorz = taCenter
-          Width = 47
+          Options.AutoWidthSizable = False
+          Width = 40
         end
       end
       object l_data: TcxGridLevel

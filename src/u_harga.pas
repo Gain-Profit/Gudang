@@ -82,7 +82,7 @@ uses
 const
   sHargaSQL =
     'SELECT br.kd_barang, br.barcode3, br.n_barang, brhg.kd_macam_harga, ' +
-    'br.hpp_lama, br.hpp_ahir, (brhg.harga_jual3 - br.hpp_ahir) AS laba, ' +
+    'br.hpp_lama, br.hpp_ahir, (brhg.harga_jual3 - br.hpp_aktif) AS laba, ' +
     'br.hpp_aktif, brhg.harga_jual3, brhg.harga_jual2, brhg.harga_jual1, brhg.kode_user, ' +
     'IF((br.hpp_lama > br.hpp_ahir),-(1),IF((br.hpp_lama < br.hpp_ahir),1,0)) AS `NATUR`' +
     'FROM (tb_barang br LEFT JOIN tb_barang_harga brhg ON(((br.kd_barang = brhg.kd_barang) ' +
