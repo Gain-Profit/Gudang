@@ -129,7 +129,7 @@ object F_ubah_harga: TF_ubah_harga
   object ed_pokok: TsCurrencyEdit
     Left = 104
     Top = 80
-    Width = 177
+    Width = 155
     Height = 24
     AutoSize = False
     Color = clWhite
@@ -905,6 +905,15 @@ object F_ubah_harga: TF_ubah_harga
         DisplayFormat = '###,###,##0;-###,###,##0;0'
       end
     end
+  end
+  object BtnSamakan: TButton
+    Left = 265
+    Top = 79
+    Width = 120
+    Height = 25
+    Caption = 'Hpp (Jual) = Hpp (Beli)'
+    TabOrder = 20
+    OnClick = BtnSamakanClick
   end
   object sSkinProvider1: TsSkinProvider
     AddedTitle.Font.Charset = DEFAULT_CHARSET

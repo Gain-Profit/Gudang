@@ -64,6 +64,7 @@ type
     ed_marginRpNew: TsCurrencyEdit;
     l_8: TsLabel;
     l_9: TsLabel;
+    BtnSamakan: TButton;
     procedure btn_simpanClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure cb_macamChange(Sender: TObject);
@@ -77,6 +78,7 @@ type
     procedure ed_discRpExit(Sender: TObject);
     procedure ed_marginPExit(Sender: TObject);
     procedure ed_discPExit(Sender: TObject);
+    procedure BtnSamakanClick(Sender: TObject);
   private
     procedure ubahHarga(perusahaan: string);
     procedure UbahJenis(Jenis: Byte);
@@ -152,6 +154,15 @@ begin
   ed_sat3.Text := dm.Q_Exe.FieldByName('n_singkat').AsString;
 
   UbahJenis(cb_macam.ItemIndex);
+end;
+
+procedure TF_ubah_harga.BtnSamakanClick(Sender: TObject);
+begin
+  fungsi.SQLExec(dm.Q_Exe, 'update tb_barang set hpp_aktif = hpp_ahir ' +
+    'WHERE kd_barang="' + ed_plu.Text + '" and kd_perusahaan="' +
+    dm.kd_perusahaan + '"', false);
+  ubah(Ed_Plu.Text, cb_macam.Text);
+  showmessage('proses ubah hpp(jual) = hpp(beli) berhasil');
 end;
 
 procedure TF_ubah_harga.btn_simpanClick(Sender: TObject);
