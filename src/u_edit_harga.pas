@@ -321,14 +321,19 @@ begin
 end;
 
 procedure TF_ubah_harga.UbahJenis(Jenis: Byte);
+var
+  LSql: string;
 begin
   if Jenis = 1 then
     ed_macam.Text := 'HARGA GROSIR'
   else
     ed_macam.Text := 'HARGA ECERAN';
 
-  fungsi.SQLExec(dm.Q_temp, 'select * from tb_barang_harga where kd_barang = "'
-    + ed_plu.Text + '"and kd_macam_harga = "' + cb_macam.Text + '"', true);
+  LSql := Format('SELECT * FROM tb_barang_harga WHERE kd_barang = "%s" ' +
+  'AND kd_macam_harga = "%s" AND kd_perusahaan = "%s"', [ed_plu.Text,
+  cb_macam.Text, dm.kd_perusahaan]);
+
+  fungsi.SQLExec(dm.Q_temp, LSql, true);
 
   ed_harga1.Value := dm.Q_temp.FieldByName('harga_jual1').AsCurrency;
   ed_harga2.Value := dm.Q_temp.FieldByName('harga_jual2').AsCurrency;
