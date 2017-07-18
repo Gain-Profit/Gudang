@@ -46,11 +46,11 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
-        <VerInfo_Release>18</VerInfo_Release>
+        <VerInfo_Release>13</VerInfo_Release>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_MajorVer>17</VerInfo_MajorVer>
-        <VerInfo_MinorVer>5</VerInfo_MinorVer>
-        <VerInfo_Keys>CompanyName=Gain-Profit;FileDescription=$(MSBuildProjectName);FileVersion=17.5.18.0;InternalName=Gudang;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_MinorVer>7</VerInfo_MinorVer>
+        <VerInfo_Keys>CompanyName=Gain-Profit;FileDescription=$(MSBuildProjectName);FileVersion=17.7.13.0;InternalName=Gudang;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
         <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
@@ -66,6 +66,7 @@
         <DCC_K>false</DCC_K>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <Icon_MainIcon>..\img\icon.ico</Icon_MainIcon>
         <DCC_ExeOutput>..\..\Gain Profit\$(Platform)\$(Config)</DCC_ExeOutput>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <DCC_UsePackage>DBXSqliteDriver;RESTComponents;dxmdsRS24;dxSkinBlueprintRS24;DBXInterBaseDriver;dxPSDBTeeChartRS24;vclactnband;dxSpreadSheetRS24;vclFireDAC;tethering;svnui;dxSkinVisualStudio2013BlueRS24;FireDACADSDriver;dxFireDACServerModeRS24;dxSkinMetropolisRS24;dxSkinMoneyTwinsRS24;dxSkinOffice2007BlackRS24;dxPSTeeChartRS24;dxPScxPCProdRS24;vcltouch;vcldb;bindcompfmx;svn;Intraweb;dxSkinXmas2008BlueRS24;inetdb;dxSkinOffice2016ColorfulRS24;dxSkinOffice2010BlackRS24;dxADOServerModeRS24;FmxTeeUI;dacfmx240;dxGDIPlusRS24;FireDACIBDriver;fmx;fmxdae;dxSkinSpringTimeRS24;frx24;vclib;dxSkinLondonLiquidSkyRS24;dxSkinLilianRS24;dxSkinValentineRS24;dxSkinWhiteprintRS24;crcontrols240;dbexpress;IndyCore;dxSkiniMaginaryRS24;vclx;dxSkinOffice2016DarkRS24;dsnap;dxSkinOffice2007PinkRS24;dxPSdxSpreadSheetLnkRS24;cxDataRS24;FireDACCommon;dxSkinDevExpressDarkStyleRS24;RESTBackendComponents;VCLRESTComponents;dxSkinDevExpressStyleRS24;soapserver;dxSkinOffice2013LightGrayRS24;cxExportRS24;mydacvcl240;dxOfficeCoreRS24;dac240;dxSkinVisualStudio2013LightRS24;vclie;dxSkinMetropolisDarkRS24;bindengine;DBXMySQLDriver;CloudService;FireDACMySQLDriver;dxPScxCommonRS24;FireDACCommonODBC;FireDACCommonDriver;dxSkinBlackRS24;dxSkinSharpRS24;inet;dxPSLnksRS24;bindcompdbx;IndyIPCommon;dxSkinCoffeeRS24;dxSkinVS2010RS24;vcl;IndyIPServer;dxSkinSharpPlusRS24;dxCoreRS24;IndySystem;dxThemeRS24;acntDX10Berlin_R;dxSkinOffice2013DarkGrayRS24;dsnapcon;dxSkinOffice2007GreenRS24;FireDACMSAccDriver;fmxFireDAC;vclimg;TeeDB;FireDAC;dxPScxGridLnkRS24;dxSkinDarkSideRS24;FireDACSqliteDriver;FireDACPgDriver;ibmonitor;dxSkinOffice2010BlueRS24;dxSkinOffice2013WhiteRS24;dxPSdxLCLnkRS24;FMXTee;dxServerModeRS24;dxPScxExtCommonRS24;soaprtl;DbxCommonDriver;mydac240;ibxpress;Tee;dacvcl240;xmlrtl;soapmidas;ibxbindings;fmxobj;vclwinx;dxSkinMcSkinRS24;rtl;dxLayoutControlRS24;DbxClientDriver;dxSkinOffice2007BlueRS24;dxPSCoreRS24;frxTee24;CustomIPTransport;vcldsnap;dxSkinBlueRS24;dxSkinGlassOceansRS24;cxLibraryRS24;dxSkinStardustRS24;dxSkinSummer2008RS24;dxSkinCaramelRS24;bindcomp;appanalytics;dxSkinsCoreRS24;dxDBXServerModeRS24;dxSkinDarkRoomRS24;dxSkinFoggyRS24;IndyIPClient;dxSkinHighContrastRS24;dxSkinOffice2010SilverRS24;bindcompvcl;cxGridRS24;dxSkinTheAsphaltWorldRS24;TeeUI;frxe24;cxPageControlRS24;cxEditorsRS24;dxSkinSevenClassicRS24;dbxcds;VclSmp;EntityDac;adortl;dxSkinSilverRS24;mydacfmx240;dxSkinVisualStudio2013DarkRS24;dxComnRS24;dxSkinPumpkinRS24;mysqlmon240;dxSkinscxPCPainterRS24;frxDB24;dxSpreadSheetReportDesignerRS24;dsnapxml;dbrtl;inetdbxpress;IndyProtocols;dxSkinOffice2007SilverRS24;dxSkinSevenRS24;dxSkinLiquidSkyRS24;dxHttpIndyRequestRS24;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
@@ -106,6 +107,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
+        <DCCReference Include="..\..\tools\pascal\UTerbilang.pas"/>
         <DCCReference Include="..\..\tools\pascal\UFungsi.pas"/>
         <DCCReference Include="..\src\u_dm.pas">
             <Form>dm</Form>
@@ -255,8 +257,8 @@
                     <Source Name="MainSource">gudang.dpr</Source>
                 </Source>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k250.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp250.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k240.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp240.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
