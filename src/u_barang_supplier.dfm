@@ -72,24 +72,8 @@ object F_barang_supp: TF_barang_supp
         Width = 335
       end
       object cxGridDBColumn4: TcxGridDBColumn
-        Caption = 'Jenis'
-        DataBinding.FieldName = 'n_jenis'
+        DataBinding.FieldName = 'Stok'
         Width = 79
-      end
-      object cxGridDBColumn5: TcxGridDBColumn
-        Caption = 'Golongan'
-        DataBinding.FieldName = 'n_golbrg'
-        Width = 77
-      end
-      object cxGridDBColumn6: TcxGridDBColumn
-        Caption = 'Merk'
-        DataBinding.FieldName = 'n_merk'
-        Width = 67
-      end
-      object cxGridDBColumn7: TcxGridDBColumn
-        Caption = 'Kategori'
-        DataBinding.FieldName = 'n_kategori'
-        Width = 71
       end
     end
     object cxGridLevel1: TcxGridLevel

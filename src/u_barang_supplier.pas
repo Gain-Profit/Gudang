@@ -20,9 +20,6 @@ type
     cxGridDBColumn2: TcxGridDBColumn;
     cxGridDBColumn3: TcxGridDBColumn;
     cxGridDBColumn4: TcxGridDBColumn;
-    cxGridDBColumn5: TcxGridDBColumn;
-    cxGridDBColumn6: TcxGridDBColumn;
-    cxGridDBColumn7: TcxGridDBColumn;
     cxGridLevel1: TcxGridLevel;
     sSkinProvider1: TsSkinProvider;
     sb_cari: TsSpeedButton;
