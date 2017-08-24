@@ -21,6 +21,16 @@ type
     { Public declarations }
   end;
 
+  TSetting = class
+  private
+    FNilai : Boolean;
+    FKeterangan : string;
+  public
+    constructor Create(AKeterangan: string);
+    property Nilai: Boolean read FNilai write FNilai;
+    property Keterangan: string read FKeterangan;
+  end;
+
 var
   FrmSetting: TFrmSetting;
 
@@ -30,9 +40,9 @@ uses u_dm;
 
 {$R *.dfm}
 
-function ubahCB(checkbox: TCheckBox): string;
+function ChangeBoolToStr(AValue: Boolean): string;
 begin
-  if checkbox.Checked = true then
+  if AValue then
     result := 'Y'
   else
     result := 'N';
@@ -43,26 +53,41 @@ var
   i, LPosisi : Integer;
   LSql : string;
   LCheck : TCheckBox;
+  LParam : string;
+  LSetting : TSetting;
 begin
   FCheck := TStringList.Create;
 
+  FCheck.AddObject('canoutonstockout',
+    TSetting.Create('Barang Dapat Keluar Ketika Stok Habis'));
+
+  FCheck.AddObject('checkin',
+    TSetting.Create('User Hanya Dapat Login Setelah Melakukan checkin'));
+
+  FCheck.AddObject('fingerprint',
+    TSetting.Create('CheckIN dilakukan dengan Alat Finger Print'));
+
   LPosisi := 8;
-  LSql := 'SELECT * FROM tb_settings';
-  fungsi.SQLExec(dm.Q_temp, LSql, True);
-  for i := 0 to dm.Q_temp.RecordCount - 1 do
+
+  for i := 0 to Pred(FCheck.Count) do
   begin
+    LParam := FCheck.Strings[i];
+    LSetting := TSetting(FCheck.Objects[i]);
+    LSql := Format('SELECT * FROM tb_settings WHERE parameter = "%s"', [LParam]);
+    fungsi.SQLExec(dm.Q_temp, LSql, True);
+    LSetting.Nilai := dm.Q_temp.FieldByName('nilai').AsBoolean;
+
     LCheck := TCheckBox.Create(Self);
+    LCheck.Name := Format('CB_%s', [LParam]);
     LCheck.Parent := Self;
     LCheck.Left := 8;
     LCheck.Top := LPosisi;
     LCheck.Width := 370;
     LCheck.Height := 17;
     LCheck.TabOrder := i;
-    LCheck.Caption := dm.Q_temp.FieldByName('keterangan').AsString;
-    LCheck.Checked := dm.Q_temp.FieldByName('nilai').AsBoolean;
+    LCheck.Caption := LSetting.Keterangan;
+    LCheck.Checked := LSetting.Nilai;
     LCheck.Show;
-
-    FCheck.AddObject(dm.Q_temp.FieldByName('id').AsString, LCheck);
 
     LPosisi := LPosisi + 24;
     dm.Q_temp.Next;
@@ -78,24 +103,32 @@ end;
 procedure TFrmSetting.btnSimpanClick(Sender: TObject);
 var
   i: Integer;
-  Lid, Lids, LNilai, LNilais, LSql :string;
+  LParam, LSql, LValues : string;
+  LSetting : TSetting;
 begin
   for i:= 0 to FCheck.Count - 1 do
   begin
-    Lid := FCheck.Strings[i];
-    LNilai := ubahCB(TCheckBox(FCheck.Objects[i]));
+    LParam := FCheck.Strings[i];
+    LSetting := TSetting(FCheck.Objects[i]);
+    LSetting.Nilai := TCheckBox(FindComponent(Format('CB_%s', [LParam]))).Checked;
 
-    LNilais := LNilais + Format('WHEN "%s" THEN "%s" ', [Lid, LNilai]);
-    Lids := Lids + Format('"%s", ', [Lid]);
+    LValues := LValues + Format('("%s", "%s"), ', [LParam, ChangeBoolToStr(Lsetting.Nilai)]);
+
   end;
-  SetLength(LNilais, Length(LNilais) - 1);
-  SetLength(Lids, Length(Lids) - 2);
+  SetLength(LValues, Length(LValues) - 2);
 
-  LSql := Format('UPDATE tb_settings SET nilai = (CASE id %s END) WHERE id IN (%s)',
-    [LNilais, Lids]);
+  LSql := Format('REPLACE INTO tb_settings(parameter, nilai) VALUES %s', [LValues]);
 
   fungsi.SQLExec(dm.Q_Exe, LSql, False);
   ShowMessage('Penyimpan Data Setting Berhasil...');
+end;
+
+{ TSetting }
+
+constructor TSetting.Create(AKeterangan: string);
+begin
+  FNilai := False;
+  FKeterangan := AKeterangan;
 end;
 
 end.
