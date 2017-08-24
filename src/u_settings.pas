@@ -61,6 +61,9 @@ begin
   FCheck.AddObject('canoutonstockout',
     TSetting.Create('Barang Dapat Keluar Ketika Stok Habis'));
 
+  FCheck.AddObject('warnonstocklow',
+    TSetting.Create('Peringatkan Kasir jika Stok Kurang Dari Minimal Stok'));
+
   FCheck.AddObject('checkin',
     TSetting.Create('User Hanya Dapat Login Setelah Melakukan checkin'));
 
