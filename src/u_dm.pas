@@ -5,7 +5,8 @@ interface
 uses
   SysUtils, Classes, DB, sSkinManager, dialogs, forms, ImgList, Controls,
   acAlphaImageList, frxClass, frxDBSet, inifiles, frxBarcode, cxStyles,
-  Windows, SHFolder, DBAccess, MyAccess, MemDS, cxClasses, System.ImageList;
+  Windows, SHFolder, DBAccess, MyAccess, MemDS, cxClasses, System.ImageList,
+  frxExportPDF, frxExportCSV;
 
 type
   Tdm = class(TDataModule)
@@ -40,6 +41,8 @@ type
     Q_child_sales: TMyQuery;
     ds_list_return_jual: TDataSource;
     Q_list_return_jual: TMyQuery;
+    CSVExport: TfrxCSVExport;
+    PDFExport: TfrxPDFExport;
     procedure DataModuleCreate(Sender: TObject);
     procedure smAfterChange(Sender: TObject);
     procedure koneksikan;

@@ -20721,4 +20721,41 @@ object dm: Tdm
     Left = 136
     Top = 424
   end
+  object CSVExport: TfrxCSVExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    Separator = ','
+    OEMCodepage = False
+    UTF8 = False
+    NoSysSymbols = True
+    ForcedQuotes = False
+    Left = 440
+    Top = 112
+  end
+  object PDFExport: TfrxPDFExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    PrintOptimized = False
+    Outline = False
+    Background = False
+    HTMLTags = True
+    Quality = 95
+    Transparency = False
+    Author = 'FastReport'
+    Subject = 'FastReport PDF export'
+    ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
+    HideToolbar = False
+    HideMenubar = False
+    HideWindowUI = False
+    FitWindow = False
+    CenterWindow = False
+    PrintScaling = False
+    PdfA = False
+    Left = 520
+    Top = 112
+  end
 end
