@@ -2,6 +2,7 @@ program gudang;
 
 uses
   Vcl.Forms,
+  UTerbilang in '..\..\tools\pascal\UTerbilang.pas',
   UFungsi in '..\..\tools\pascal\UFungsi.pas',
   u_dm in '..\src\u_dm.pas' {dm: TDataModule},
   u_cari in '..\src\u_cari.pas' {F_cari},
