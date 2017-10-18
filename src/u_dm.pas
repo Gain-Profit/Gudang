@@ -139,7 +139,7 @@ begin
     db_conn.Port := strtoint(jalur1);
     db_conn.Username := krupuk(nama, 6);
     db_conn.Password := krupuk(kata, 6);
-    //db_conn.Connected := true;
+    db_conn.Connected := true;
   except
     showmessage('koneksi tidak berhasil');
     application.Terminate;
