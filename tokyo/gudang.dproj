@@ -64,7 +64,7 @@
         <Icon_MainIcon>..\img\icon.ico</Icon_MainIcon>
         <DCC_ExeOutput>..\..\Gain Profit\$(Platform)\$(Config)</DCC_ExeOutput>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
-        <DCC_UsePackage>dxmdsRS25;dxPSDBTeeChartRS25;dxSpreadSheetRS25;dxFireDACServerModeRS25;dxPSTeeChartRS25;dxPScxPCProdRS25;dxSkinXmas2008BlueRS25;dxADOServerModeRS25;dxGDIPlusRS25;dxPSdxSpreadSheetLnkRS25;cxDataRS25;cxExportRS25;mydacvcl250;dxOfficeCoreRS25;dxPScxCommonRS25;dxPSLnksRS25;dxCoreRS25;dxThemeRS25;acntDX10Tokyo_R;dxSkinOffice2013DarkGrayRS25;dxSkinOffice2007GreenRS25;FireDACMSAccDriver;dxPScxGridLnkRS25;dxSkinDarkSideRS25;dxSkinOffice2010BlueRS25;dxSkinOffice2013WhiteRS25;dxPSdxLCLnkRS25;dxServerModeRS25;dxPScxExtCommonRS25;mydac250;dacvcl250;dxSkinMcSkinRS25;dxLayoutControlRS25;DbxClientDriver;dxPSCoreRS25;cxLibraryRS25;appanalytics;dxDBXServerModeRS25;IndyIPClient;cxGridRS25;frxe25;cxPageControlRS25;cxEditorsRS25;dbxcds;mydacfmx250;dxComnRS25;mysqlmon250;dxSpreadSheetReportDesignerRS25;dxHttpIndyRequestRS25;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_UsePackage>acntDX10Tokyo_R;cxDataRS25;cxEditorsRS25;cxExportRS25;cxGridRS25;cxLibraryRS25;cxPageControlRS25;dac250;dxCoreRS25;dxGDIPlusRS25;dxLayoutControlRS25;dxOfficeCoreRS25;dxServerModeRS25;dxSpreadSheetRS25;dxThemeRS25;frxe25;mydac250;$(DCC_UsePackage)</DCC_UsePackage>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <BT_BuildType>Debug</BT_BuildType>
     </PropertyGroup>
