@@ -80,6 +80,19 @@ object F_comp: TF_comp
     Font.Name = 'MS Sans Serif'
     Font.Style = []
   end
+  object sLabel6: TsLabel
+    Left = 8
+    Top = 168
+    Width = 33
+    Height = 13
+    Caption = 'NPWP'
+    ParentFont = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+  end
   object ed_kode: TEdit
     Left = 104
     Top = 8
@@ -100,6 +113,7 @@ object F_comp: TF_comp
     Width = 257
     Height = 21
     Color = clWhite
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
     Font.Height = -11
@@ -111,7 +125,7 @@ object F_comp: TF_comp
   object ed_telp: TEdit
     Left = 104
     Top = 120
-    Width = 169
+    Width = 255
     Height = 21
     Color = clWhite
     Font.Charset = DEFAULT_CHARSET
@@ -125,7 +139,7 @@ object F_comp: TF_comp
   object ed_mail: TEdit
     Left = 104
     Top = 144
-    Width = 169
+    Width = 255
     Height = 21
     Color = clWhite
     Font.Charset = DEFAULT_CHARSET
@@ -149,33 +163,37 @@ object F_comp: TF_comp
     Font.Style = []
     ParentFont = False
     TabOrder = 2
+    BoundLabel.ParentFont = False
     BoundLabel.Font.Charset = DEFAULT_CHARSET
     BoundLabel.Font.Color = clWindowText
     BoundLabel.Font.Height = -11
     BoundLabel.Font.Name = 'MS Sans Serif'
     BoundLabel.Font.Style = []
-    BoundLabel.ParentFont = False
     SkinData.SkinSection = 'EDIT'
-  end
-  object B_new: TsButton
-    Left = 200
-    Top = 184
-    Width = 75
-    Height = 25
-    Caption = 'Baru'
-    TabOrder = 6
-    OnClick = B_newClick
-    SkinData.SkinSection = 'BUTTON_BIG'
   end
   object B_save: TsButton
     Left = 284
-    Top = 184
+    Top = 202
     Width = 75
     Height = 25
     Caption = 'Simpan'
-    TabOrder = 5
+    TabOrder = 6
     OnClick = B_saveClick
     SkinData.SkinSection = 'BUTTON_BIG'
+  end
+  object ed_npwp: TEdit
+    Left = 104
+    Top = 168
+    Width = 255
+    Height = 21
+    Color = clWhite
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 5
   end
   object sSkinProvider1: TsSkinProvider
     AddedTitle.Font.Charset = DEFAULT_CHARSET
@@ -185,6 +203,7 @@ object F_comp: TF_comp
     AddedTitle.Font.Style = []
     SkinData.SkinSection = 'FORM'
     TitleButtons = <>
-    Top = 120
+    Left = 8
+    Top = 176
   end
 end

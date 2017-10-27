@@ -18,12 +18,12 @@ type
     ed_mail: TEdit;
     sLabel5: TsLabel;
     mm_alamat: TsMemo;
-    B_new: TsButton;
     B_save: TsButton;
     sSkinProvider1: TsSkinProvider;
+    ed_npwp: TEdit;
+    sLabel6: TsLabel;
     procedure baru;
     procedure ubah;
-    procedure B_newClick(Sender: TObject);
     procedure B_saveClick(Sender: TObject);
   private
     comp_baru: boolean;
@@ -49,6 +49,7 @@ begin
   mm_alamat.Clear;
   ed_telp.Clear;
   ed_mail.Clear;
+  ed_npwp.Clear;
 
   comp_baru := true;
 end;
@@ -61,35 +62,28 @@ begin
     ed_kode.Text + '"', true);
   ed_desk.text := dm.Q_temp.FieldByName('n_perusahaan').AsString;
   mm_alamat.Text := dm.Q_temp.FieldByName('alamat').AsString;
-  ;
   ed_telp.text := dm.Q_temp.FieldByName('telp').AsString;
-  ;
   ed_mail.text := dm.Q_temp.FieldByName('e_mail').AsString;
-  ;
+  ed_npwp.text := dm.Q_temp.FieldByName('NPWP').AsString;
 
   comp_baru := false;
 end;
 
-procedure TF_comp.B_newClick(Sender: TObject);
-begin
-  baru;
-end;
-
 procedure TF_comp.B_saveClick(Sender: TObject);
+var
+  LSql : string;
 begin
+  if comp_baru then
+    LSql := Format('INSERT INTO tb_company(kd_perusahaan, n_perusahaan, alamat, telp, ' +
+      'e_mail, npwp) VALUES ("%s", "%s", "%s", "%s", "%s", "%s")', [ed_kode.Text,
+      ed_desk.Text, mm_alamat.Text, ed_telp.Text, ed_mail.Text, ed_npwp.Text]) else
+    LSql := Format('UPDATE tb_company SET alamat = "%s", telp = "%s", e_mail = "%s", ' +
+      'npwp = "%s" WHERE kd_perusahaan = "%s"', [mm_alamat.Text, ed_telp.Text,
+      ed_mail.Text, ed_npwp.Text, ed_kode.Text]);
+
   dm.db_conn.StartTransaction;
   try
-    if comp_baru = true then
-      fungsi.SQLExec(dm.Q_Exe,
-        'insert into tb_company (kd_perusahaan, n_perusahaan,alamat,telp,e_mail)values ("' +
-        ed_kode.Text + '","' + ed_desk.Text + '","' + mm_alamat.Text + '","' +
-        ed_telp.Text + '","' + ed_mail.Text + '")', false)
-    else
-      fungsi.SQLExec(dm.Q_Exe, 'update tb_company set n_perusahaan="' + ed_desk.Text
-        + '", alamat="' + mm_alamat.Text + '", telp="' + ed_telp.Text +
-        '", e_mail="' + ed_mail.Text + '" where kd_perusahaan="' + ed_kode.Text
-        + '"', false);
-
+    fungsi.SQLExec(dm.Q_Exe, LSql, false);
     dm.db_conn.Commit;
     showmessage('penyimpanan data sukses....');
   except
