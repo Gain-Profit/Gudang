@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, sSkinProvider, sEdit, sLabel, sCurrEdit, sCurrencyEdit, ComCtrls,
   sStatusBar, ExtCtrls, DBCtrls, UFungsi, Buttons, sBitBtn, sComboBox, sTooledit,
-  cxControls, sGroupBox, StdCtrls, Mask, sMaskEdit, sCustomComboEdit;
+  cxControls, sGroupBox, StdCtrls, Mask, sMaskEdit, sCustomComboEdit, System.UITypes;
 
 type
   THarga = record

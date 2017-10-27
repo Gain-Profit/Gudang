@@ -9,7 +9,7 @@ uses
   ExtCtrls, sBevel, sLabel, Mask, sCustomComboEdit, sCurrEdit, sCurrencyEdit,
   sMemo, cxGridLevel, cxGridCustomTableView, cxGridTableView, cxClasses,
   cxControls, cxGridCustomView, cxGrid, sPanel, sSkinProvider, sDialogs,
-  uTerbilang, cxFilter, cxData, sMaskEdit, cxLookAndFeels,
+  uTerbilang, cxFilter, cxData, sMaskEdit, cxLookAndFeels, System.UITypes,
   cxLookAndFeelPainters, dxSkinsCore, dxSkinsDefaultPainters,
   dxSkinscxPCPainter, cxNavigator;
 

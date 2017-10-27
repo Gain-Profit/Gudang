@@ -10,7 +10,7 @@ uses
   cxControls, cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGrid,
   cxCurrencyEdit, UFungsi, sBevel, ComCtrls, sSkinProvider, cxImageComboBox,
   cxStyles, sDialogs, uTerbilang, cxFilter, cxData, sMaskEdit,
-  cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore,
+  cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore, System.UITypes,
   dxSkinsDefaultPainters, dxSkinscxPCPainter, cxNavigator;
 
 type

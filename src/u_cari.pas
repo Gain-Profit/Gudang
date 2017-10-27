@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, UFungsi, sEdit, sButton, ExtCtrls, DBCtrls, sSkinProvider,
   cxCustomData, cxGraphics, cxDataStorage, cxEdit, DB, cxDBData, cxGridLevel,
-  cxClasses, cxControls, cxGridCustomView, cxGridCustomTableView,
+  cxClasses, cxControls, cxGridCustomView, cxGridCustomTableView, System.UITypes,
   cxGridTableView, cxGridDBTableView, cxGrid, cxStyles, MyAccess, cxFilter,
   cxData, MemDS, DBAccess, StdCtrls, cxLookAndFeels, cxLookAndFeelPainters,
   dxSkinsCore, dxSkinsDefaultPainters, dxSkinscxPCPainter, cxNavigator;

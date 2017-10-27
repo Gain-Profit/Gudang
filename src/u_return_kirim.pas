@@ -10,7 +10,7 @@ uses
   sCurrEdit, sCurrencyEdit, sMemo, cxGridLevel, cxGridCustomTableView,
   cxGridTableView, cxClasses, uTerbilang, cxControls, cxGridCustomView, cxGrid,
   sPanel, UFungsi, cxFilter, cxData, sMaskEdit, cxLookAndFeels,
-  cxLookAndFeelPainters, dxSkinsCore, dxSkinsDefaultPainters,
+  cxLookAndFeelPainters, dxSkinsCore, dxSkinsDefaultPainters, System.UITypes,
   dxSkinscxPCPainter, cxNavigator;
 
 type

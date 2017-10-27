@@ -10,7 +10,7 @@ uses
   cxClasses, cxControls, cxGridCustomView, cxGrid, cxSpinEdit,
   cxGridCustomPopupMenu, sButton, sSkinProvider, cxStyles, cxTextEdit,
   sSpeedButton, MyAccess, cxFilter, cxData, MemDS, DBAccess, StdCtrls,
-  cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore,
+  cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore, System.UITypes,
   dxSkinsDefaultPainters, dxSkinscxPCPainter, cxNavigator;
 
 const

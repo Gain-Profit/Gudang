@@ -8,7 +8,7 @@ uses
   cxCurrencyEdit, sComboBox, cxGridLevel, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxClasses, cxControls, cxGridCustomView, cxGrid, sButton,
   sGroupBox, UFungsi, ExtCtrls, sPanel, MyAccess, cxCustomData, cxFilter, cxData,
-  MemDS, DBAccess, StdCtrls, cxLookAndFeels, cxLookAndFeelPainters,
+  MemDS, DBAccess, StdCtrls, cxLookAndFeels, cxLookAndFeelPainters, System.UITypes,
   dxSkinsCore, dxSkinsDefaultPainters, dxSkinscxPCPainter, cxNavigator;
 
 type

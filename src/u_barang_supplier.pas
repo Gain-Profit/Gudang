@@ -9,7 +9,7 @@ uses
   cxGridTableView, cxGridDBTableView, cxClasses, cxControls, cxGridCustomView,
   cxGrid, sSkinProvider, cxStyles, ExtCtrls, sPanel, sButton, DBAccess, MyAccess,
   cxCustomData, cxFilter, cxData, MemDS, StdCtrls, cxLookAndFeels,
-  cxLookAndFeelPainters, dxSkinsCore, dxSkinsDefaultPainters,
+  cxLookAndFeelPainters, dxSkinsCore, dxSkinsDefaultPainters, System.UITypes,
   dxSkinscxPCPainter, cxNavigator;
 
 type

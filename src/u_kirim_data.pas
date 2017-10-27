@@ -12,7 +12,7 @@ uses
   cxGridDBTableView, cxClasses, cxControls, cxGridCustomView, cxGrid, sComboBox,
   MyAccess, cxCustomData, cxFilter, cxData, MemDS, DBAccess, AbBase, AbZBrows,
   StdCtrls, sEdit, Grids, Mask, sMaskEdit, sCustomComboEdit,
-  cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore,
+  cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore, System.UITypes,
   dxSkinsDefaultPainters, dxSkinscxPCPainter, cxNavigator;
 
 type

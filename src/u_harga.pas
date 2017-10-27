@@ -9,7 +9,7 @@ uses
   cxClasses, cxControls, cxGridCustomView, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxGrid, cxCheckBox, cxCurrencyEdit,
   cxTextEdit, cxImageComboBox, cxStyles, sSpeedButton, cxFilter, cxData,
-  StdCtrls, MemDS, DBAccess, MyAccess, cxLookAndFeels,
+  StdCtrls, MemDS, DBAccess, MyAccess, cxLookAndFeels, System.UITypes,
   cxLookAndFeelPainters, dxSkinsCore, dxSkinsDefaultPainters,
   dxSkinscxPCPainter, cxNavigator;
 

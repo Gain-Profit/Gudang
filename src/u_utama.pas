@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, sSkinProvider, ComCtrls, sStatusBar, Menus, ActnList,
+  Dialogs, sSkinProvider, ComCtrls, sStatusBar, Menus, ActnList, System.UITypes,
   XPStyleActnCtrls, ActnMan, UFungsi, sPageControl, Buttons, sSpeedButton,
   ExtCtrls, sPanel, inifiles, shellapi, DB, sGauge, sTabControl, cxStyles,
   cxGraphics, cxDataStorage, cxEdit, cxDBData, cxGridCustomTableView,

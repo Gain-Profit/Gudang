@@ -10,7 +10,7 @@ uses
   sPanel, StdCtrls, sButton, sEdit, sLabel, Buttons, sSpeedButton, sBevel,
   cxCurrencyEdit, sCurrEdit, sCurrencyEdit, cxFilter, cxData, Mask, sMaskEdit,
   sCustomComboEdit, cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore,
-  dxSkinsDefaultPainters, dxSkinscxPCPainter, cxNavigator;
+  dxSkinsDefaultPainters, dxSkinscxPCPainter, cxNavigator, System.UITypes;
 
 type
   TFGroupBarangDetail = class(TForm)

@@ -8,7 +8,7 @@ uses
   sSpeedButton, Menus, cxStyles, cxCustomData, cxGraphics, cxDataStorage, cxEdit,
   cxCurrencyEdit, cxGridLevel, cxGridCustomTableView, cxGridTableView, cxClasses,
   cxControls, cxGridCustomView, cxGrid, frxClass, cxFilter, cxData, StdCtrls,
-  cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore,
+  cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore, System.UITypes,
   dxSkinsDefaultPainters, dxSkinscxPCPainter, cxNavigator;
 
 type
