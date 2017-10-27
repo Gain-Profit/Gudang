@@ -53,7 +53,8 @@ type
     PPN: Currency;
     CanLogin, metu_kabeh: boolean;
     waktu_sekarang: TDateTime;
-    kd_perusahaan, kd_pengguna, WPath, AppPath, DocPath: string;
+    kd_perusahaan, n_perusahaan, kd_pengguna: string;
+    WPath, AppPath, DocPath: string;
     function FRMemo(FastReport: TfrxReport; ObjectName: string): TfrxMemoView;
     { Public declarations }
   end;
@@ -64,9 +65,6 @@ var
   cabang: TStringList;
 
 implementation
-
-
-
 
 {$R *.dfm}
 

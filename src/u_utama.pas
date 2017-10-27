@@ -532,6 +532,8 @@ begin
 end;
 
 procedure TF_utama.FormShow(Sender: TObject);
+var
+  LSql : string;
 begin
   cek_update;
   sb.Panels[9].Text := 'Versi: ' + FVersion.AsString;
@@ -540,10 +542,23 @@ begin
   dm.metu_kabeh := False;
 
   sb.Panels[2].Text := dm.db_conn.Database + '@' + dm.db_conn.Server;
+  if (dm.kd_perusahaan = '') then
+    LSql := 'SELECT * FROM tb_company LIMIT 1' else
+    LSql := Format('SELECT * FROM tb_company WHERE kd_perusahaan = "%s"',
+      [dm.kd_perusahaan]);
+
+  fungsi.SQLExec(dm.Q_Show, LSql, True);
+
+  if dm.Q_Show.Eof then
+  begin
+    ShowMessage('Tidak Ada Perusahaan yang terdaftar di database.');
+    Application.Terminate;
+  end;
+
+  dm.kd_perusahaan := dm.Q_Show.fieldbyname('kd_perusahaan').AsString;
   sb.Panels[3].Text := dm.kd_perusahaan;
-  fungsi.SQLExec(dm.Q_Show, 'select * from tb_company where kd_perusahaan = "' +
-    dm.kd_perusahaan + '"', true);
-  sb.Panels[4].Text := dm.Q_Show.fieldbyname('n_perusahaan').AsString;
+  dm.n_perusahaan := dm.Q_Show.fieldbyname('n_perusahaan').AsString;
+  sb.Panels[4].Text := dm.n_perusahaan;
 
   sb.Panels[8].Text := dm.Q_Show.fieldbyname('ket').AsString;
 

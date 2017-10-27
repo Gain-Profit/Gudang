@@ -243,8 +243,9 @@ begin
     if ShowModal = mrOk then
     begin
       dm.kd_perusahaan := TblVal[0];
+      dm.n_perusahaan := TblVal[1];
       sb.Panels[0].Text := dm.kd_perusahaan;
-      sb.Panels[1].Text := TblVal[1];
+      sb.Panels[1].Text := dm.n_perusahaan;
       F_Login.FormShow(Sender);
     end;
   finally
