@@ -140,9 +140,11 @@ begin
     db_conn.Username := krupuk(nama, 6);
     db_conn.Password := krupuk(kata, 6);
     db_conn.Connected := true;
-  except
-    showmessage('koneksi tidak berhasil');
-    application.Terminate;
+  except on E: Exception do
+    begin
+      showmessage('koneksi tidak berhasil' + sLineBreak + E.Message);
+      application.Terminate;
+    end;
   end;
 end;
 
