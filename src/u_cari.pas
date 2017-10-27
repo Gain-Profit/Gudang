@@ -122,9 +122,7 @@ begin
       end;
     8: //perusahaan
       begin
-        application.CreateForm(TF_comp, F_comp);
-        F_comp.baru;
-        F_comp.ShowModal;
+        ShowMessage('Tidak Bisa Buat Perusahaan Baru Secara Manual.');
       end;
     9: //supplier
       begin
