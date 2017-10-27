@@ -107,21 +107,15 @@ end;
 function FRObject(FastReport: TfrxReport; ObjectName: string): TObject;
 var
   i: Integer;
-  AFound: Boolean;
 begin
-  AFound := False;
-  for I := 0 to FastReport.ComponentCount - 1 do
+  Result := nil;
+  for i := 0 to FastReport.ComponentCount - 1 do
   begin
     if LowerCase(FastReport.Components[i].Name) = LowerCase(ObjectName) then
     begin
       Result := TObject(FastReport.Components[i]);
-      AFound := True;
       Break;
     end;
-  end;
-  if not AFound then
-  begin
-    Result := nil;
   end;
 end;
 

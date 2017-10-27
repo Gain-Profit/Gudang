@@ -968,13 +968,13 @@ end;
 
 procedure TF_utama.tc_childChange(Sender: TObject);
 var
-  cHandle: Integer;
+  cHandle: Cardinal;
   k: Integer;
 begin
-  cHandle := Integer(tc_child.Tabs.Objects[tc_child.TabIndex]);
-
   if tc_child.Tag = -1 then
     Exit;
+
+  cHandle := Cardinal(tc_child.Tabs.Objects[tc_child.TabIndex]);
 
   for k := 0 to MDIChildCount - 1 do
   begin
@@ -999,13 +999,13 @@ end;
 
 procedure TF_utama.utup1Click(Sender: TObject);
 var
-  cHandle: Integer;
+  cHandle: Cardinal;
   k: Integer;
 begin
-  cHandle := Integer(tc_child.Tabs.Objects[tc_child.TabIndex]);
-
   if tc_child.Tag = -1 then
     Exit;
+
+  cHandle := Cardinal(tc_child.Tabs.Objects[tc_child.TabIndex]);
 
   for k := 0 to MDIChildCount - 1 do
   begin
@@ -1019,13 +1019,13 @@ end;
 
 procedure TF_utama.utupSemuaKecualiini1Click(Sender: TObject);
 var
-  cHandle: Integer;
+  cHandle: Cardinal;
   k: Integer;
 begin
-  cHandle := Integer(tc_child.Tabs.Objects[tc_child.TabIndex]);
-
   if tc_child.Tag = -1 then
     Exit;
+
+  cHandle := Cardinal(tc_child.Tabs.Objects[tc_child.TabIndex]);
 
   for k := 0 to MDIChildCount - 1 do
   begin

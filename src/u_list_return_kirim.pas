@@ -8,7 +8,7 @@ uses
   cxCurrencyEdit, cxGridLevel, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxClasses, cxControls, cxGridCustomView, cxGrid, Buttons,
   ExtCtrls, sPanel, sSkinProvider, UFungsi, sSpeedButton, sTooledit, sLabel,
-  sButton, sComboBox, sCheckBox, FileCtrl, cxCustomData, cxFilter, cxData,
+  sButton, sComboBox, sCheckBox, cxCustomData, cxFilter, cxData,
   StdCtrls, Mask, sMaskEdit, sCustomComboEdit, cxLookAndFeels,
   cxLookAndFeelPainters, dxSkinsCore, dxSkinsDefaultPainters,
   dxSkinscxPCPainter, cxNavigator;
@@ -148,59 +148,56 @@ end;
 
 procedure TF_list_return_kirim.btnSimpanClick(Sender: TObject);
 var
-  tempat, nama_file: string;
+  nama_file: string;
   y: Integer;
   F: TextFile;
   qty, hpp, tot: Currency;
 begin
-  if SelectDirectory('Pilih Folder', ExtractFileDrive(dm.DocPath), tempat) then
+  dm.Q_list_return_kirim.First;
+  while not (dm.Q_list_return_kirim.Eof) do
   begin
-    dm.Q_list_return_kirim.First;
-    while not (dm.Q_list_return_kirim.Eof) do
+    fungsi.SQLExec(dm.Q_temp,
+      'select * from tb_return_kirim_rinci where kd_perusahaan="' + dm.Q_list_return_kirim.fieldbyname
+      ('kd_perusahaan').AsString + '" and kd_return_kirim="' + dm.Q_list_return_kirim.fieldbyname
+      ('kd_return_kirim').AsString + '"', true);
+
+    nama_file := dm.DocPath + '\' + dm.Q_list_return_kirim.fieldbyname('kd_return_kirim').AsString
+      + '.srk';
+
+    AssignFile(F, nama_file);
+    Rewrite(F);
+    Writeln(F, dm.Q_list_return_kirim.fieldbyname('kd_return_kirim').AsString);
+    Writeln(F, dm.Q_list_return_kirim.fieldbyname('kd_kirim').AsString);
+    Writeln(F, dm.Q_list_return_kirim.fieldbyname('kd_pelanggan').AsString);
+    Writeln(F, dm.Q_list_return_kirim.fieldbyname('n_pelanggan').AsString);
+    Writeln(F, formatdatetime('dd/MM/yyyy', dm.Q_list_return_kirim.fieldbyname
+      ('tgl_return_kirim').AsDateTime));
+    Writeln(F, dm.q_temp.recordcount);
+
+    if dm.Q_temp.RecordCount <> 0 then
     begin
-      fungsi.SQLExec(dm.Q_temp,
-        'select * from tb_return_kirim_rinci where kd_perusahaan="' + dm.Q_list_return_kirim.fieldbyname
-        ('kd_perusahaan').AsString + '" and kd_return_kirim="' + dm.Q_list_return_kirim.fieldbyname
-        ('kd_return_kirim').AsString + '"', true);
-
-      nama_file := tempat + '\' + dm.Q_list_return_kirim.fieldbyname('kd_return_kirim').AsString
-        + '.srk';
-
-      AssignFile(F, nama_file);
-      Rewrite(F);
-      Writeln(F, dm.Q_list_return_kirim.fieldbyname('kd_return_kirim').AsString);
-      Writeln(F, dm.Q_list_return_kirim.fieldbyname('kd_kirim').AsString);
-      Writeln(F, dm.Q_list_return_kirim.fieldbyname('kd_pelanggan').AsString);
-      Writeln(F, dm.Q_list_return_kirim.fieldbyname('n_pelanggan').AsString);
-      Writeln(F, formatdatetime('dd/MM/yyyy', dm.Q_list_return_kirim.fieldbyname
-        ('tgl_return_kirim').AsDateTime));
-      Writeln(F, dm.q_temp.recordcount);
-
-      if dm.Q_temp.RecordCount <> 0 then
+      for y := 0 to dm.Q_temp.RecordCount - 1 do
       begin
-        for y := 0 to dm.Q_temp.RecordCount - 1 do
-        begin
-          qty := dm.Q_temp.FieldByName('qty_return_kirim').AsInteger;
-          hpp := dm.Q_temp.fieldbyname('harga_pokok').AsCurrency;
-          tot := hpp / qty;
+        qty := dm.Q_temp.FieldByName('qty_return_kirim').AsInteger;
+        hpp := dm.Q_temp.fieldbyname('harga_pokok').AsCurrency;
+        tot := hpp / qty;
 
-          Writeln(F, dm.Q_temp.FieldByName('kd_barang').AsString);
-          Writeln(F, dm.Q_temp.fieldbyname('n_barang').AsString);
-          Writeln(F, dm.Q_temp.FieldByName('qty_return_kirim').AsString);
-          Writeln(F, floattostr(tot));
-          Writeln(F, dm.Q_temp.fieldbyname('harga_pokok').AsString);
-          Writeln(F, dm.Q_temp.fieldbyname('barcode').AsString);
+        Writeln(F, dm.Q_temp.FieldByName('kd_barang').AsString);
+        Writeln(F, dm.Q_temp.fieldbyname('n_barang').AsString);
+        Writeln(F, dm.Q_temp.FieldByName('qty_return_kirim').AsString);
+        Writeln(F, floattostr(tot));
+        Writeln(F, dm.Q_temp.fieldbyname('harga_pokok').AsString);
+        Writeln(F, dm.Q_temp.fieldbyname('barcode').AsString);
 
-          dm.Q_temp.Next;
-        end;
+        dm.Q_temp.Next;
       end;
-      CloseFile(F);
-      fungsi.amankan(nama_file, nama_file, 159);
-
-      dm.Q_list_return_kirim.Next;
     end;
-    showmessage('penyimpanan data berhasil...');
+    CloseFile(F);
+    fungsi.amankan(nama_file, nama_file, 159);
+
+    dm.Q_list_return_kirim.Next;
   end;
+  showmessage('penyimpanan data berhasil...');
 end;
 
 end.

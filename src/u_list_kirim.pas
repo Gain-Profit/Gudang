@@ -8,7 +8,7 @@ uses
   sSkinProvider, cxGridLevel, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxClasses, cxControls, cxGridCustomView, cxGrid, Buttons,
   ExtCtrls, sPanel, UFungsi, sSpeedButton, cxCurrencyEdit, sTooledit, sLabel,
-  sCheckBox, sComboBox, sButton, sDialogs, FileCtrl, cxCustomData, cxFilter,
+  sCheckBox, sComboBox, sButton, sDialogs, cxCustomData, cxFilter,
   cxData, StdCtrls, Mask, sMaskEdit, sCustomComboEdit, cxLookAndFeels,
   cxLookAndFeelPainters, dxSkinsCore, dxSkinsDefaultPainters,
   dxSkinscxPCPainter, cxNavigator;
@@ -147,57 +147,54 @@ end;
 
 procedure TF_list_kirim.btnSimpanClick(Sender: TObject);
 var
-  tempat, nama_file: string;
+  nama_file: string;
   y: Integer;
   F: TextFile;
   qty, hpp, tot: Currency;
 begin
-  if SelectDirectory('Pilih Folder', ExtractFileDrive(dm.DocPath), tempat) then
+  dm.Q_list_kirim.First;
+  while not (dm.Q_list_kirim.Eof) do
   begin
-    dm.Q_list_kirim.First;
-    while not (dm.Q_list_kirim.Eof) do
+    fungsi.SQLExec(dm.Q_temp,
+      'select * from tb_kirim_rinci where kd_perusahaan="' + dm.Q_list_kirim.fieldbyname
+      ('kd_perusahaan').AsString + '" and kd_kirim="' + dm.Q_list_kirim.fieldbyname
+      ('kd_kirim').AsString + '"', true);
+
+    nama_file := dm.DocPath + '\' + dm.Q_list_kirim.fieldbyname('kd_kirim').AsString
+      + '.skr';
+
+    AssignFile(F, nama_file);
+    Rewrite(F);
+    Writeln(F, dm.Q_list_kirim.fieldbyname('kd_tk_kirim').AsString);
+    Writeln(F, dm.Q_list_kirim.fieldbyname('n_pelanggan').AsString);
+    Writeln(F, dm.Q_list_kirim.fieldbyname('kd_kirim').AsString);
+    Writeln(F, formatdatetime('dd/MM/yyyy', dm.Q_list_kirim.fieldbyname('tgl_kirim').AsDateTime));
+    Writeln(F, dm.q_temp.recordcount);
+
+    if dm.Q_temp.RecordCount <> 0 then
     begin
-      fungsi.SQLExec(dm.Q_temp,
-        'select * from tb_kirim_rinci where kd_perusahaan="' + dm.Q_list_kirim.fieldbyname
-        ('kd_perusahaan').AsString + '" and kd_kirim="' + dm.Q_list_kirim.fieldbyname
-        ('kd_kirim').AsString + '"', true);
-
-      nama_file := tempat + '\' + dm.Q_list_kirim.fieldbyname('kd_kirim').AsString
-        + '.skr';
-
-      AssignFile(F, nama_file);
-      Rewrite(F);
-      Writeln(F, dm.Q_list_kirim.fieldbyname('kd_tk_kirim').AsString);
-      Writeln(F, dm.Q_list_kirim.fieldbyname('n_pelanggan').AsString);
-      Writeln(F, dm.Q_list_kirim.fieldbyname('kd_kirim').AsString);
-      Writeln(F, formatdatetime('dd/MM/yyyy', dm.Q_list_kirim.fieldbyname('tgl_kirim').AsDateTime));
-      Writeln(F, dm.q_temp.recordcount);
-
-      if dm.Q_temp.RecordCount <> 0 then
+      for y := 0 to dm.Q_temp.RecordCount - 1 do
       begin
-        for y := 0 to dm.Q_temp.RecordCount - 1 do
-        begin
-          qty := dm.Q_temp.FieldByName('qty_kirim').AsInteger;
-          hpp := dm.Q_temp.fieldbyname('harga_pokok').AsCurrency;
-          tot := hpp / qty;
+        qty := dm.Q_temp.FieldByName('qty_kirim').AsInteger;
+        hpp := dm.Q_temp.fieldbyname('harga_pokok').AsCurrency;
+        tot := hpp / qty;
 
-          Writeln(F, dm.Q_temp.FieldByName('kd_barang').AsString);
-          Writeln(F, dm.Q_temp.fieldbyname('n_barang').AsString);
-          Writeln(F, dm.Q_temp.FieldByName('qty_kirim').asstring);
-          Writeln(F, floattostr(tot));
-          Writeln(F, dm.Q_temp.fieldbyname('harga_pokok').AsString);
-          Writeln(F, dm.Q_temp.fieldbyname('barcode').AsString);
+        Writeln(F, dm.Q_temp.FieldByName('kd_barang').AsString);
+        Writeln(F, dm.Q_temp.fieldbyname('n_barang').AsString);
+        Writeln(F, dm.Q_temp.FieldByName('qty_kirim').asstring);
+        Writeln(F, floattostr(tot));
+        Writeln(F, dm.Q_temp.fieldbyname('harga_pokok').AsString);
+        Writeln(F, dm.Q_temp.fieldbyname('barcode').AsString);
 
-          dm.Q_temp.Next;
-        end;
+        dm.Q_temp.Next;
       end;
-      CloseFile(F);
-      fungsi.amankan(nama_file, nama_file, 321);
-
-      dm.Q_list_kirim.Next;
     end;
-    showmessage('penyimpanan data berhasil...');
+    CloseFile(F);
+    fungsi.amankan(nama_file, nama_file, 321);
+
+    dm.Q_list_kirim.Next;
   end;
+  showmessage('penyimpanan data berhasil...');
 end;
 
 end.
