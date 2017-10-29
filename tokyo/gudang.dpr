@@ -52,6 +52,9 @@ uses
 begin
   Application.Initialize;
   Application.CreateForm(Tdm, dm);
-  Application.CreateForm(TF_utama, F_utama);
-  Application.Run;
+  if dm.db_conn.Connected then
+  begin
+    Application.CreateForm(TF_utama, F_utama);
+    Application.Run;
+  end;
 end.

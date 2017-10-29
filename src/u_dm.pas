@@ -6,7 +6,7 @@ uses
   SysUtils, Classes, DB, sSkinManager, dialogs, forms, ImgList, Controls,
   acAlphaImageList, frxClass, frxDBSet, inifiles, frxBarcode, cxStyles,
   Windows, SHFolder, DBAccess, MyAccess, MemDS, cxClasses, System.ImageList,
-  frxExportPDF, frxExportCSV;
+  frxExportPDF, frxExportCSV, System.UITypes;
 
 type
   Tdm = class(TDataModule)
@@ -140,7 +140,7 @@ begin
     db_conn.Connected := true;
   except on E: Exception do
     begin
-      showmessage('koneksi tidak berhasil' + sLineBreak + E.Message);
+      MessageDlg('koneksi tidak berhasil' + sLineBreak + e.Message, mtError, [mbOk], 0);
       application.Terminate;
     end;
   end;
