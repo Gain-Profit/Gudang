@@ -130,9 +130,9 @@ type
     sb_list_sales: TsSpeedButton;
     tc_child: TsTabControl;
     pm1: TPopupMenu;
-    utupSemua1: TMenuItem;
-    utupSemuaKecualiini1: TMenuItem;
-    utup1: TMenuItem;
+    MiTutupSemua: TMenuItem;
+    MiTutupSemuaKecualiIni: TMenuItem;
+    MiTutup: TMenuItem;
     N3: TMenuItem;
     N5: TMenuItem;
     ac_realcard: TAction;
@@ -190,9 +190,9 @@ type
     procedure MDIChildCreated(const childHandle: THandle);
     procedure MDIChildDestroyed(const childHandle: THandle);
     procedure tc_childChange(Sender: TObject);
-    procedure utupSemua1Click(Sender: TObject);
-    procedure utup1Click(Sender: TObject);
-    procedure utupSemuaKecualiini1Click(Sender: TObject);
+    procedure MiTutupSemuaClick(Sender: TObject);
+    procedure MiTutupClick(Sender: TObject);
+    procedure MiTutupSemuaKecualiIniClick(Sender: TObject);
     procedure ac_return_kirimExecute(Sender: TObject);
     procedure ac_list_return_kirimExecute(Sender: TObject);
     procedure panel_auto_width;
@@ -986,7 +986,7 @@ begin
   end;
 end;
 
-procedure TF_utama.utupSemua1Click(Sender: TObject);
+procedure TF_utama.MiTutupSemuaClick(Sender: TObject);
 var
   h: Integer;
 begin
@@ -997,7 +997,7 @@ begin
   tc_child.Visible := False;
 end;
 
-procedure TF_utama.utup1Click(Sender: TObject);
+procedure TF_utama.MiTutupClick(Sender: TObject);
 var
   cHandle: Cardinal;
   k: Integer;
@@ -1017,7 +1017,7 @@ begin
   end;
 end;
 
-procedure TF_utama.utupSemuaKecualiini1Click(Sender: TObject);
+procedure TF_utama.MiTutupSemuaKecualiIniClick(Sender: TObject);
 var
   cHandle: Cardinal;
   k: Integer;

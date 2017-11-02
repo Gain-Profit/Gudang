@@ -305,10 +305,6 @@ object F_utama: TF_utama
     end
     object ts_transaksi: TsTabSheet
       Caption = 'Transaksi'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object sPanel3: TsPanel
         Left = 0
         Top = 0
@@ -500,10 +496,6 @@ object F_utama: TF_utama
     end
     object ts_1: TsTabSheet
       Caption = 'Daftar Transaksi'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object spnl1: TsPanel
         Left = 0
         Top = 0
@@ -709,10 +701,6 @@ object F_utama: TF_utama
     end
     object sTabSheet2: TsTabSheet
       Caption = 'Master Data'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object sCoolBar1: TsPanel
         Left = 0
         Top = 0
@@ -906,10 +894,6 @@ object F_utama: TF_utama
     end
     object ts_set_inv: TsTabSheet
       Caption = 'Setting Inventory'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object sPanel1: TsPanel
         Left = 0
         Top = 0
@@ -1409,23 +1393,23 @@ object F_utama: TF_utama
   object pm1: TPopupMenu
     Left = 16
     Top = 120
-    object utup1: TMenuItem
+    object MiTutup: TMenuItem
       Caption = 'Tutup'
-      OnClick = utup1Click
+      OnClick = MiTutupClick
     end
     object N3: TMenuItem
       Caption = '-'
     end
-    object utupSemua1: TMenuItem
+    object MiTutupSemua: TMenuItem
       Caption = 'Tutup Semua'
-      OnClick = utupSemua1Click
+      OnClick = MiTutupSemuaClick
     end
     object N5: TMenuItem
       Caption = '-'
     end
-    object utupSemuaKecualiini1: TMenuItem
+    object MiTutupSemuaKecualiIni: TMenuItem
       Caption = 'Tutup Semua Kecuali ini'
-      OnClick = utupSemuaKecualiini1Click
+      OnClick = MiTutupSemuaKecualiIniClick
     end
   end
   object Q_time: TMyQuery
