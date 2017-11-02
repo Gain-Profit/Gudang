@@ -271,7 +271,7 @@ begin
   if not (HakAkses('gdInvBarang')) then
   begin
     messagedlg('Anda tidak mempunyai hak untuk ' + #13#10 +
-      'melanjutkan AKSES ke dalamMENU ini...', mtWarning, [mbOk], 0);
+      'melanjutkan AKSES ke dalam MENU ini...', mtWarning, [mbOk], 0);
     Exit;
   end;
 
@@ -286,7 +286,7 @@ begin
   if not (HakAkses('gdInvHarga')) then
   begin
     messagedlg('Anda tidak mempunyai hak untuk ' + #13#10 +
-      'melanjutkan AKSES ke dalamMENU ini...', mtWarning, [mbOk], 0);
+      'melanjutkan AKSES ke dalam MENU ini...', mtWarning, [mbOk], 0);
     Exit;
   end;
 
@@ -301,7 +301,7 @@ begin
   if not (HakAkses('gdTrRO')) then
   begin
     messagedlg('Anda tidak mempunyai hak untuk ' + #13#10 +
-      'melanjutkan AKSES ke dalamMENU ini...', mtWarning, [mbOk], 0);
+      'melanjutkan AKSES ke dalam MENU ini...', mtWarning, [mbOk], 0);
     Exit;
   end;
 
@@ -314,7 +314,7 @@ begin
   if not (HakAkses('gdTrReturn')) then
   begin
     messagedlg('Anda tidak mempunyai hak untuk ' + #13#10 +
-      'melanjutkan AKSES ke dalamMENU ini...', mtWarning, [mbOk], 0);
+      'melanjutkan AKSES ke dalam MENU ini...', mtWarning, [mbOk], 0);
     Exit;
   end;
 
@@ -327,14 +327,14 @@ begin
   if not (HakAkses('gdMaster')) then
   begin
     messagedlg('Anda tidak mempunyai hak untuk ' + #13#10 +
-      'melanjutkan AKSES ke dalamMENU ini...', mtWarning, [mbOk], 0);
+      'melanjutkan AKSES ke dalam MENU ini...', mtWarning, [mbOk], 0);
     Exit;
   end;
 
   application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
-    _SQLi := 'select kd_perusahaan, n_perusahaan from tb_company';
+    _SQLi := 'SELECT kd_perusahaan, n_perusahaan FROM tb_company';
     tblcap[0] := 'Kode';
     tblCap[1] := 'Nama';
     Caption := 'Daftar Perusahaan';
@@ -351,14 +351,14 @@ begin
   if not (HakAkses('gdSetting')) then
   begin
     messagedlg('Anda tidak mempunyai hak untuk ' + #13#10 +
-      'melanjutkan AKSES ke dalamMENU ini...', mtWarning, [mbOk], 0);
+      'melanjutkan AKSES ke dalam MENU ini...', mtWarning, [mbOk], 0);
     Exit;
   end;
 
   application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
-    _SQLi := 'select kd_jenis,n_jenis from tb_jenis';
+    _SQLi := 'SELECT kd_jenis, n_jenis FROM tb_jenis';
     tblcap[0] := 'No';
     tblCap[1] := 'Deskripsi';
     Caption := 'Daftar Jenis Barang';
@@ -375,14 +375,14 @@ begin
   if not (HakAkses('gdSetting')) then
   begin
     messagedlg('Anda tidak mempunyai hak untuk ' + #13#10 +
-      'melanjutkan AKSES ke dalamMENU ini...', mtWarning, [mbOk], 0);
+      'melanjutkan AKSES ke dalam MENU ini...', mtWarning, [mbOk], 0);
     Exit;
   end;
 
   application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
-    _SQLi := 'select kd_jenis, kd_golbrg, n_golbrg from tb_golongan';
+    _SQLi := 'SELECT kd_jenis, kd_golbrg, n_golbrg FROM tb_golongan';
     tblCap[0] := 'kd Jenis';
     tblcap[1] := 'Kd Gol';
     tblCap[2] := 'Deskripsi';
@@ -400,14 +400,14 @@ begin
   if not (HakAkses('gdSetting')) then
   begin
     messagedlg('Anda tidak mempunyai hak untuk ' + #13#10 +
-      'melanjutkan AKSES ke dalamMENU ini...', mtWarning, [mbOk], 0);
+      'melanjutkan AKSES ke dalam MENU ini...', mtWarning, [mbOk], 0);
     Exit;
   end;
 
   application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
-    _SQLi := 'select tag,n_kategori from tb_kategori';
+    _SQLi := 'SELECT tag, n_kategori FROM tb_kategori';
     tblcap[0] := 'No';
     tblCap[1] := 'Deskripsi';
     Caption := 'Daftar Kategori Barang';
@@ -424,14 +424,14 @@ begin
   if not (HakAkses('gdSetting')) then
   begin
     messagedlg('Anda tidak mempunyai hak untuk ' + #13#10 +
-      'melanjutkan AKSES ke dalamMENU ini...', mtWarning, [mbOk], 0);
+      'melanjutkan AKSES ke dalam MENU ini...', mtWarning, [mbOk], 0);
     Exit;
   end;
 
   application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
-    _SQLi := 'select kd_merk,n_merk from tb_merk';
+    _SQLi := 'SELECT kd_merk, n_merk FROM tb_merk';
     tblcap[0] := 'No';
     tblCap[1] := 'Deskripsi';
     Caption := 'Daftar Merk Barang';
@@ -448,15 +448,16 @@ begin
   if not (HakAkses('gdMaster')) then
   begin
     messagedlg('Anda tidak mempunyai hak untuk ' + #13#10 +
-      'melanjutkan AKSES ke dalamMENU ini...', mtWarning, [mbOk], 0);
+      'melanjutkan AKSES ke dalam MENU ini...', mtWarning, [mbOk], 0);
     Exit;
   end;
 
   application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
-    _SQLi := 'select kode,n_supp from tb_supp where kd_perusahaan = "' + dm.kd_perusahaan
-      + '"';
+    _SQLi := Format('SELECT kode, n_supp FROM tb_supp WHERE kd_perusahaan = "%s"',
+      [dm.kd_perusahaan]);
+
     tblcap[0] := 'Kode';
     tblCap[1] := 'Nama Supplier';
     Caption := 'Daftar Supplier';
@@ -473,14 +474,14 @@ begin
   if not (HakAkses('gdSetting')) then
   begin
     messagedlg('Anda tidak mempunyai hak untuk ' + #13#10 +
-      'melanjutkan AKSES ke dalamMENU ini...', mtWarning, [mbOk], 0);
+      'melanjutkan AKSES ke dalam MENU ini...', mtWarning, [mbOk], 0);
     Exit;
   end;
 
   application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
-    _SQLi := 'select kd_satuan,n_satuan,n_singkat from tb_satuan';
+    _SQLi := 'SELECT kd_satuan, n_satuan, n_singkat FROM tb_satuan';
     tblcap[0] := 'No';
     tblCap[1] := 'Deskripsi';
     tblCap[2] := 'Singkatan';
@@ -497,7 +498,7 @@ begin
   if not (HakAkses('gdTrPO')) then
   begin
     messagedlg('Anda tidak mempunyai hak untuk ' + #13#10 +
-      'melanjutkan AKSES ke dalamMENU ini...', mtWarning, [mbOk], 0);
+      'melanjutkan AKSES ke dalam MENU ini...', mtWarning, [mbOk], 0);
     Exit;
   end;
 
@@ -510,7 +511,7 @@ begin
   if not (HakAkses('gdInvBrgSupp')) then
   begin
     messagedlg('Anda tidak mempunyai hak untuk ' + #13#10 +
-      'melanjutkan AKSES ke dalamMENU ini...', mtWarning, [mbOk], 0);
+      'melanjutkan AKSES ke dalam MENU ini...', mtWarning, [mbOk], 0);
     Exit;
   end;
 
@@ -523,7 +524,7 @@ begin
   if not (HakAkses('gdInvPlano')) then
   begin
     messagedlg('Anda tidak mempunyai hak untuk ' + #13#10 +
-      'melanjutkan AKSES ke dalamMENU ini...', mtWarning, [mbOk], 0);
+      'melanjutkan AKSES ke dalam MENU ini...', mtWarning, [mbOk], 0);
     Exit;
   end;
 
@@ -570,16 +571,16 @@ begin
   if not (HakAkses('gdMaster')) then
   begin
     messagedlg('Anda tidak mempunyai hak untuk ' + #13#10 +
-      'melanjutkan AKSES ke dalamMENU ini...', mtWarning, [mbOk], 0);
+      'melanjutkan AKSES ke dalam MENU ini...', mtWarning, [mbOk], 0);
     Exit;
   end;
 
   application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
-    _SQLi :=
-      'select kd_pelanggan,n_pelanggan from tb_pelanggan where kd_perusahaan="' + dm.kd_perusahaan
-      + '"';
+    _SQLi := Format('SELECT kd_pelanggan, n_pelanggan FROM tb_pelanggan ' +
+      'WHERE kd_perusahaan="%s"', [dm.kd_perusahaan]);
+
     tblcap[0] := 'Kode';
     tblCap[1] := 'Nama Pelanggan';
     Caption := 'Daftar Pelanggan';
@@ -596,14 +597,14 @@ begin
   if not (HakAkses('admin')) then
   begin
     messagedlg('Anda tidak mempunyai hak untuk ' + #13#10 +
-      'melanjutkan AKSES ke dalamMENU ini...', mtWarning, [mbOk], 0);
+      'melanjutkan AKSES ke dalam MENU ini...', mtWarning, [mbOk], 0);
     Exit;
   end;
 
   application.CreateForm(TF_cari, F_cari);
   with F_cari do
   try
-    _SQLi := 'SELECT kd_user, n_user FROM tb_user where aktif ="Y"';
+    _SQLi := 'SELECT kd_user, n_user FROM tb_user where aktif = "Y"';
 
     tblcap[0] := 'Kode';
     tblCap[1] := 'Nama Pengguna';
@@ -687,7 +688,7 @@ begin
   days[7] := 'Sabtu';
 
   try
-    fungsi.SQLExec(Q_time, 'select now() as sekarang', True);
+    fungsi.SQLExec(Q_time, 'SELECT NOW() as sekarang', True);
 
     sb.Panels[5].Text := days[DayOfWeek(Q_time.fieldbyname('sekarang').AsDateTime)];
     sb.Panels[6].Text := formatdatetime('dd mmm yyyy', Q_time.fieldbyname('sekarang').AsDateTime);
@@ -773,7 +774,7 @@ begin
   if not (HakAkses('gdTrKirim')) then
   begin
     messagedlg('Anda tidak mempunyai hak untuk ' + #13#10 +
-      'melanjutkan AKSES ke dalamMENU ini...', mtWarning, [mbOk], 0);
+      'melanjutkan AKSES ke dalam MENU ini...', mtWarning, [mbOk], 0);
     Exit;
   end;
 
@@ -794,7 +795,7 @@ begin
   if not (HakAkses('gdInvBrgUpdate')) then
   begin
     messagedlg('Anda tidak mempunyai hak untuk ' + #13#10 +
-      'melanjutkan AKSES ke dalamMENU ini...', mtWarning, [mbOk], 0);
+      'melanjutkan AKSES ke dalam MENU ini...', mtWarning, [mbOk], 0);
     Exit;
   end;
   application.CreateForm(TF_kirim_data, F_kirim_data);
@@ -808,7 +809,7 @@ begin
   if not (HakAkses('gdInvBrgUpdate')) then
   begin
     messagedlg('Anda tidak mempunyai hak untuk ' + #13#10 +
-      'melanjutkan AKSES ke dalamMENU ini...', mtWarning, [mbOk], 0);
+      'melanjutkan AKSES ke dalam MENU ini...', mtWarning, [mbOk], 0);
     Exit;
   end;
 
@@ -1080,8 +1081,8 @@ function TF_utama.HakAkses(kunci: string): Boolean;
 var
   sql: string;
 begin
-  sql := 'SELECT ' + kunci + ' FROM tb_user_company WHERE ' + 'kd_user="' + dm.kd_pengguna
-    + '" AND kd_perusahaan="' + dm.kd_perusahaan + '"';
+  sql := Format('SELECT %s FROM tb_user_company WHERE kd_user="%s" ' +
+    'AND kd_perusahaan="%s"', [kunci, dm.kd_pengguna, dm.kd_perusahaan]);
 
   fungsi.SQLExec(dm.Q_temp, sql, true);
   Result := dm.Q_temp.FieldByName(kunci).AsBoolean;
@@ -1112,7 +1113,7 @@ var
   LSql :string;
 begin
   LVersiAPP := FVersion;
-  LSql := 'SELECT versi_terbaru FROM app_versi WHERE kode="gudang.exe"';
+  LSql := 'SELECT versi_terbaru FROM app_versi WHERE kode = "gudang.exe"';
   fungsi.SQLExec(dm.Q_Show, LSql, true);
   LVersiDB := TVersion.Create(dm.Q_Show.FieldByName('versi_terbaru').AsString);
 
