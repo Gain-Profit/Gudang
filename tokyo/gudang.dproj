@@ -207,9 +207,6 @@
         <DCCReference Include="..\src\u_list_stock_opname.pas">
             <Form>F_list_SO</Form>
         </DCCReference>
-        <DCCReference Include="..\src\u_kirim_data.pas">
-            <Form>F_kirim_data</Form>
-        </DCCReference>
         <DCCReference Include="..\src\u_laporan.pas">
             <Form>F_toko</Form>
         </DCCReference>
