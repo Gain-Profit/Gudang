@@ -39,7 +39,6 @@ uses
   u_list_jual in '..\src\u_list_jual.pas' {F_list_sales},
   u_list_return_jual in '..\src\u_list_return_jual.pas' {F_list_return_jual},
   u_list_stock_opname in '..\src\u_list_stock_opname.pas' {F_list_SO},
-  u_kirim_data in '..\src\u_kirim_data.pas' {F_kirim_data},
   u_laporan in '..\src\u_laporan.pas' {F_toko},
   u_ganti_hari in '..\src\u_ganti_hari.pas' {F_hari},
   u_ubah_password in '..\src\u_ubah_password.pas' {F_ubahPassword},

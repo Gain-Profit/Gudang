@@ -144,7 +144,6 @@ begin
 
       if F_utama.sb.Panels[8].Text = 'PUSAT' then
       begin
-        F_utama.ac_kirim_data.Visible := False;
         F_utama.ac_update.Visible := False;
 
         F_utama.ac_company.Visible := True;
@@ -170,7 +169,6 @@ begin
       end
       else
       begin
-        F_utama.ac_kirim_data.Visible := True;
         F_utama.ac_update.Visible := True;
 
         F_utama.ac_company.Visible := False;
@@ -185,7 +183,6 @@ begin
 
         if (onServer = 'Y') then
         begin
-          F_utama.ac_kirim_data.Visible := False;
           F_utama.ac_update.Visible := False;
         end;
       end;

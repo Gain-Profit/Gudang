@@ -82,7 +82,6 @@ type
     sSpeedButton13: TsSpeedButton;
     sSpeedButton14: TsSpeedButton;
     sSpeedButton15: TsSpeedButton;
-    sb_kirim_data: TsSpeedButton;
     sSpeedButton2: TsSpeedButton;
     sCoolBar1: TsPanel;
     sBitBtn1: TsSpeedButton;
@@ -109,7 +108,6 @@ type
     KirimData1: TMenuItem;
     DaftarKirimBarang1: TMenuItem;
     sb_lap: TsSpeedButton;
-    ac_kirim_data: TAction;
     sb_update_barang_harga: TsSpeedButton;
     ac_update: TAction;
     sg_update: TsGauge;
@@ -183,7 +181,6 @@ type
     procedure FormCreate(Sender: TObject);
     procedure ac_kirimExecute(Sender: TObject);
     procedure ac_list_kirimExecute(Sender: TObject);
-    procedure ac_kirim_dataExecute(Sender: TObject);
     procedure ac_updateExecute(Sender: TObject);
     procedure ac_list_salesExecute(Sender: TObject);
     procedure ac_list_soExecute(Sender: TObject);
@@ -223,7 +220,7 @@ implementation
 uses
   u_barang, u_harga, u_return, u_cari, u_dm, u_purchase, u_barang_supplier,
   u_planogram, u_list_purchase, u_list_receipt, u_list_return, u_Login,
-  acselectskin, u_receipt, u_kirim, u_list_kirim, u_kirim_data, u_list_jual,
+  acselectskin, u_receipt, u_kirim, u_list_kirim, u_list_jual,
   u_list_stock_opname, u_return_kirim, u_list_return_kirim, u_laporan,
   u_ganti_hari, u_ubah_password, u_list_return_jual, u_barcode, u_real_card,
   u_Group_Barang, u_settings;
@@ -788,18 +785,6 @@ begin
     application.CreateForm(TF_List_kirim, F_List_kirim);
 
   F_List_kirim.Show;
-end;
-
-procedure TF_utama.ac_kirim_dataExecute(Sender: TObject);
-begin
-  if not (HakAkses('gdInvBrgUpdate')) then
-  begin
-    messagedlg('Anda tidak mempunyai hak untuk ' + #13#10 +
-      'melanjutkan AKSES ke dalam MENU ini...', mtWarning, [mbOk], 0);
-    Exit;
-  end;
-  application.CreateForm(TF_kirim_data, F_kirim_data);
-  F_kirim_data.ShowModal;
 end;
 
 procedure TF_utama.ac_updateExecute(Sender: TObject);

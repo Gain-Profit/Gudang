@@ -213,28 +213,6 @@ object F_utama: TF_utama
           ImageIndex = 15
           Reflected = True
         end
-        object sb_kirim_data: TsSpeedButton
-          Left = 568
-          Top = 6
-          Width = 120
-          Height = 69
-          Cursor = crHandPoint
-          Action = ac_kirim_data
-          Align = alLeft
-          Flat = True
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Rockwell'
-          Font.Style = [fsBold]
-          Layout = blGlyphTop
-          ParentFont = False
-          Spacing = 0
-          SkinData.SkinSection = 'TOOLBUTTON'
-          Images = dm.image
-          ImageIndex = 2
-          Reflected = True
-        end
         object sSpeedButton2: TsSpeedButton
           Left = 297
           Top = 6
@@ -280,7 +258,7 @@ object F_utama: TF_utama
           Reflected = True
         end
         object sb_update_barang_harga: TsSpeedButton
-          Left = 688
+          Left = 568
           Top = 6
           Width = 120
           Height = 69
@@ -1359,12 +1337,6 @@ object F_utama: TF_utama
       ImageIndex = 8
       OnExecute = ac_kirimExecute
     end
-    object ac_kirim_data: TAction
-      Caption = 'Tukar Data'
-      ImageIndex = 2
-      Visible = False
-      OnExecute = ac_kirim_dataExecute
-    end
     object ac_update: TAction
       Caption = 'Update Data'
       ImageIndex = 0
@@ -1414,6 +1386,7 @@ object F_utama: TF_utama
   end
   object Q_time: TMyQuery
     Connection = dm.db_conn
+    Constraints = <>
     Left = 56
     Top = 192
   end
