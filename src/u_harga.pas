@@ -45,7 +45,9 @@ type
     CkSemua: TCheckBox;
     pnlFilter: TPanel;
     t_dataHppLama: TcxGridDBColumn;
-    t_datalaba: TcxGridDBColumn;
+    t_datalaba3: TcxGridDBColumn;
+    t_datalaba2: TcxGridDBColumn;
+    t_datalaba1: TcxGridDBColumn;
     procedure WMMDIACTIVATE(var msg: TWMMDIACTIVATE); message WM_MDIACTIVATE;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure T(Sender: TObject);
@@ -82,7 +84,9 @@ uses
 const
   sHargaSQL =
     'SELECT br.kd_barang, br.barcode3, br.n_barang, brhg.kd_macam_harga, ' +
-    'br.hpp_lama, br.hpp_ahir, (brhg.harga_jual3 - br.hpp_aktif) AS laba, ' +
+    'br.hpp_lama, br.hpp_ahir, (brhg.harga_jual3 - br.hpp_aktif) AS laba3, ' +
+    '(brhg.harga_jual2 - (br.hpp_aktif * br.qty2)) AS laba2, ' +
+    '(brhg.harga_jual1 - (br.hpp_aktif * br.qty2 * br.qty1)) AS laba1, ' +
     'br.hpp_aktif, brhg.harga_jual3, brhg.harga_jual2, brhg.harga_jual1, brhg.kode_user, ' +
     'IF((br.hpp_lama > br.hpp_ahir),-(1),IF((br.hpp_lama < br.hpp_ahir),1,0)) AS `NATUR`' +
     'FROM (tb_barang br LEFT JOIN tb_barang_harga brhg ON(((br.kd_barang = brhg.kd_barang) ' +

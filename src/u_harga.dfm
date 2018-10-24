@@ -192,9 +192,9 @@ object F_Edit_Harga: TF_Edit_Harga
           HeaderAlignmentHorz = taRightJustify
           Width = 64
         end
-        object t_datalaba: TcxGridDBColumn
-          Caption = 'Laba'
-          DataBinding.FieldName = 'laba'
+        object t_datalaba3: TcxGridDBColumn
+          Caption = 'Laba 3'
+          DataBinding.FieldName = 'laba3'
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.Alignment.Horz = taRightJustify
           Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
@@ -210,6 +210,15 @@ object F_Edit_Harga: TF_Edit_Harga
           HeaderAlignmentHorz = taRightJustify
           Width = 55
         end
+        object t_datalaba2: TcxGridDBColumn
+          Caption = 'Laba 2'
+          DataBinding.FieldName = 'laba2'
+          PropertiesClassName = 'TcxCurrencyEditProperties'
+          Properties.Alignment.Horz = taRightJustify
+          Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
+          Visible = False
+          HeaderAlignmentHorz = taRightJustify
+        end
         object t_dataharga_jual1: TcxGridDBColumn
           Caption = 'Harga 1'
           DataBinding.FieldName = 'harga_jual1'
@@ -219,6 +228,15 @@ object F_Edit_Harga: TF_Edit_Harga
           Visible = False
           HeaderAlignmentHorz = taRightJustify
           Width = 74
+        end
+        object t_datalaba1: TcxGridDBColumn
+          Caption = 'Laba 1'
+          DataBinding.FieldName = 'laba1'
+          PropertiesClassName = 'TcxCurrencyEditProperties'
+          Properties.Alignment.Horz = taRightJustify
+          Properties.DisplayFormat = '###,###,##0.00;(###,###,##0.00);0.00'
+          Visible = False
+          HeaderAlignmentHorz = taRightJustify
         end
         object t_datauser: TcxGridDBColumn
           Caption = 'User'
@@ -280,7 +298,7 @@ object F_Edit_Harga: TF_Edit_Harga
         ParentFont = False
         TabOrder = 0
         OnKeyDown = Ed_CariKeyDown
-        ExplicitHeight = 29
+        ExplicitHeight = 30
       end
       object pnlcheck: TPanel
         Left = 486
@@ -330,6 +348,7 @@ object F_Edit_Harga: TF_Edit_Harga
   end
   object Q_harga: TMyQuery
     Connection = dm.db_conn
+    Constraints = <>
     Left = 8
     Top = 216
   end
