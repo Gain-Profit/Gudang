@@ -1,7 +1,7 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
         <ProjectGuid>{30BF82FB-F800-4F47-8864-1C8153887DE6}</ProjectGuid>
-        <ProjectVersion>18.2</ProjectVersion>
+        <ProjectVersion>22.7</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <MainSource>gudang.dpr</MainSource>
         <Base>True</Base>
@@ -43,9 +43,9 @@
     <PropertyGroup Condition="'$(Base)'!=''">
         <VerInfo_Release>24</VerInfo_Release>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_MajorVer>18</VerInfo_MajorVer>
-        <VerInfo_MinorVer>10</VerInfo_MinorVer>
-        <VerInfo_Keys>CompanyName=Gain-Profit;FileDescription=$(MSBuildProjectName);FileVersion=18.10.24.0;InternalName=Gudang;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_MajorVer>22</VerInfo_MajorVer>
+        <VerInfo_MinorVer>7</VerInfo_MinorVer>
+        <VerInfo_Keys>CompanyName=Gain-Profit;FileDescription=$(MSBuildProjectName);FileVersion=22.7.24.0;InternalName=Gudang;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
         <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>

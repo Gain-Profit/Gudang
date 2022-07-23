@@ -289,7 +289,7 @@ begin
 
     if (cb_ppn.Checked = false) then
       HPP_ahir := per_barang - ((ce_diskonpr.Value / 100) * per_barang) + (per_barang
-        / dm.PPN)
+        * (dm.PPN/100))
     else
       HPP_ahir := per_barang - ((ce_diskonpr.Value / 100) * per_barang);
 
@@ -412,7 +412,7 @@ begin
     diskon := AValue;
     ed_sub_total.Value := sub_sub_total - diskon;
     if (cb_ppn.Checked = false) then
-      Ce_PPN.Value := (ed_sub_total.Value - ce_diskonrp.Value) / dm.PPN
+      Ce_PPN.Value := (ed_sub_total.Value - ce_diskonrp.Value) * (dm.PPN/100)
     else
       Ce_PPN.Value := 0;
     ed_nilai_faktur.Value := ed_sub_total.Value - ce_diskonrp.Value + ce_PPN.Value;
@@ -476,7 +476,7 @@ end;
 procedure TF_RO.cb_PPNClick(Sender: TObject);
 begin
   if (cb_ppn.Checked = false) then
-    Ce_PPN.Value := (ed_sub_total.Value - ce_diskonrp.Value) / dm.PPN
+    Ce_PPN.Value := (ed_sub_total.Value - ce_diskonrp.Value) * (dm.PPN/100)
   else
     Ce_PPN.Value := 0;
 
@@ -935,7 +935,7 @@ begin
     ce_diskonrp.Value := (ce_diskonpr.Value / 100) * ed_sub_total.Value;
 
   if (cb_ppn.Checked = false) then
-    Ce_PPN.Value := (ed_sub_total.Value - ce_diskonrp.Value) / dm.PPN
+    Ce_PPN.Value := (ed_sub_total.Value - ce_diskonrp.Value) * (dm.PPN/100)
   else
     Ce_PPN.Value := 0;
 
@@ -947,7 +947,7 @@ end;
 procedure TF_RO.ce_diskonrpExit(Sender: TObject);
 begin
   if (cb_ppn.Checked = false) then
-    Ce_PPN.Value := (ed_sub_total.Value - ce_diskonrp.Value) / dm.PPN
+    Ce_PPN.Value := (ed_sub_total.Value - ce_diskonrp.Value)* (dm.PPN/100)
   else
     Ce_PPN.Value := 0;
 
